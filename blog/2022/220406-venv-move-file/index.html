@@ -1,0 +1,1352 @@
+
+<!doctype html>
+<html lang="zh" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Arisa 的个人博客">
+      
+      
+        <meta name="author" content="Akiba Arisa">
+      
+      
+        <link rel="canonical" href="https://blog.arisa.moe/blog/2022/220406-venv-move-file/">
+      
+      <link rel="icon" href="../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.3.0, mkdocs-material-8.2.8">
+    
+    
+      
+        <title>移动 python 项目文件夹位置后如何解决 PyCharm 找不到解释器与无法正常使用终端的问题 - Arisa | Blog</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.644de097.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.e6a45f82.min.css">
+        
+      
+    
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../../stylesheets/custom.css">
+    
+    <script>__md_scope=new URL("../../..",location),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="" data-md-color-accent="">
+  
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&"object"==typeof palette.color)for(var key of Object.keys(palette.color))document.body.setAttribute("data-md-color-"+key,palette.color[key])</script>
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#_1" class="md-skip">
+          跳转至
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="页眉">
+    <a href="../../.." title="Arisa | Blog" class="md-header__button md-logo" aria-label="Arisa | Blog" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Arisa | Blog
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              移动 python 项目文件夹位置后如何解决 PyCharm 找不到解释器与无法正常使用终端的问题
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      <form class="md-header__option" data-md-component="palette">
+        
+          
+          
+          <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="" data-md-color-accent=""  aria-label="进入夜间模式"  type="radio" name="__palette" id="__palette_1">
+          
+            <label class="md-header__button md-icon" title="进入夜间模式" for="__palette_2" hidden>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0-7 2.39 3.42C13.65 5.15 12.84 5 12 5c-.84 0-1.65.15-2.39.42L12 2M3.34 7l4.16-.35A7.2 7.2 0 0 0 5.94 8.5c-.44.74-.69 1.5-.83 2.29L3.34 7m.02 10 1.76-3.77a7.131 7.131 0 0 0 2.38 4.14L3.36 17M20.65 7l-1.77 3.79a7.023 7.023 0 0 0-2.38-4.15l4.15.36m-.01 10-4.14.36c.59-.51 1.12-1.14 1.54-1.86.42-.73.69-1.5.83-2.29L20.64 17M12 22l-2.41-3.44c.74.27 1.55.44 2.41.44.82 0 1.63-.17 2.37-.44L12 22z"/></svg>
+            </label>
+          
+        
+          
+          
+          <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="" data-md-color-accent=""  aria-label="进入日间模式"  type="radio" name="__palette" id="__palette_2">
+          
+            <label class="md-header__button md-icon" title="进入日间模式" for="__palette_1" hidden>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m17.75 4.09-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.06-3 1.06 3 3.19.09m3.5 6.91-1.64 1.25.59 1.98-1.7-1.17-1.7 1.17.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95 2.06.05m-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14.4-.4.82-.76 1.27-1.08.75-.53 1.93.36 1.85 1.19-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82-2.81 3.14-2.7 7.96.31 10.98 3.02 3.01 7.84 3.12 10.98.31z"/></svg>
+            </label>
+          
+        
+      </form>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="搜索" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="查找">
+        
+        <button type="reset" class="md-search__icon md-icon" aria-label="清空当前内容" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            正在初始化搜索引擎
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="标签" data-md-component="tabs">
+  <div class="md-tabs__inner md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="../../.." class="md-tabs__link">
+      首页
+    </a>
+  </li>
+
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="../../../tags/" class="md-tabs__link">
+      标签
+    </a>
+  </li>
+
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="../../../toc/" class="md-tabs__link">
+      目录
+    </a>
+  </li>
+
+      
+        
+  
+  
+    
+  
+
+
+  
+  
+  
+    
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../220406-nginx-stream/" class="md-tabs__link md-tabs__link--active">
+        Blog
+      </a>
+    </li>
+  
+
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="导航栏" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="Arisa | Blog" class="md-nav__button md-logo" aria-label="Arisa | Blog" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    Arisa | Blog
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../.." class="md-nav__link">
+        首页
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../tags/" class="md-nav__link">
+        标签
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../toc/" class="md-nav__link">
+        目录
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4" type="checkbox" id="__nav_4" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4">
+          Blog
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Blog" data-md-level="1">
+        <label class="md-nav__title" for="__nav_4">
+          <span class="md-nav__icon md-icon"></span>
+          Blog
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_1" type="checkbox" id="__nav_4_1" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4_1">
+          2022
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="2022" data-md-level="2">
+        <label class="md-nav__title" for="__nav_4_1">
+          <span class="md-nav__icon md-icon"></span>
+          2022
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../220406-nginx-stream/" class="md-nav__link">
+        nginx 如何设置 stream 转发
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../220406-set-http-proxy/" class="md-nav__link">
+        解决使用代理后 pip 和 python 无法连接到网络的问题
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          移动 python 项目文件夹位置后如何解决 PyCharm 找不到解释器与无法正常使用终端的问题
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        移动 python 项目文件夹位置后如何解决 PyCharm 找不到解释器与无法正常使用终端的问题
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    背景
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    现象
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    解决
+  </a>
+  
+    <nav class="md-nav" aria-label="解决">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    找不到解释器
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#venv" class="md-nav__link">
+    终端只能够使用全局包与无法进入 venv 环境
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pip" class="md-nav__link">
+    无法使用 pip
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    背景
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    现象
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    解决
+  </a>
+  
+    <nav class="md-nav" aria-label="解决">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    找不到解释器
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#venv" class="md-nav__link">
+    终端只能够使用全局包与无法进入 venv 环境
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pip" class="md-nav__link">
+    无法使用 pip
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content" data-md-component="content">
+            <article class="md-content__inner md-typeset">
+              
+
+<!--
+Hack: check whether the content contains a h1 headline. If it
+doesn't, the page title (or respectively site name) is used
+as the main headline.
+-->
+
+    <h1>移动 python 项目文件夹位置后如何解决 PyCharm 找不到解释器与无法正常使用终端的问题</h1>
+
+
+<!-- Markdown content -->
+
+    
+    <aside class="mdx-author">
+        <p>
+        <img src="https://avatars.githubusercontent.com/zhanbao2000" alt="@zhanbao2000">
+        </p>
+        <p>
+        <span> 
+        <b>Akiba Arisa</b> · <a href="https://github.com/zhanbao2000">@zhanbao2000</a>
+        </span>
+        <span>
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-calendar2" viewBox="0 0 16 16">
+                <path d="M3.5 0a.5.5 0 0 1 .5.5V1h8V.5a.5.5 0 0 1 1 0V1h1a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V3a2 2 0 0 1 2-2h1V.5a.5.5 0 0 1 .5-.5zM2 2a1 1 0 0 0-1 1v11a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V3a1 1 0 0 0-1-1H2z"/>
+                <path d="M2.5 4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5H3a.5.5 0 0 1-.5-.5V4z"/>
+            </svg> 2022-04-06 17:55 ·
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-clock" viewBox="0 0 16 16">
+                <path d="M8 3.5a.5.5 0 0 0-1 0V9a.5.5 0 0 0 .252.434l3.5 2a.5.5 0 0 0 .496-.868L8 8.71V3.5z"/>
+                <path d="M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16zm7-8A7 7 0 1 1 1 8a7 7 0 0 1 14 0z"/>
+            </svg> 5 min read
+        </span>
+        </p>
+    </aside>
+    
+
+    
+        <div class="tags">
+        
+            <a href="/blog/tags/#python" class="tag"><code>#python</code></a>
+        
+            <a href="/blog/tags/#venv" class="tag"><code>#venv</code></a>
+        
+            <a href="/blog/tags/#pycharm" class="tag"><code>#pycharm</code></a>
+        
+            <a href="/blog/tags/#pip" class="tag"><code>#pip</code></a>
+        
+        </div>
+    
+
+    <h2 id="_1">背景</h2>
+<p>因为项目需要，将部分 python 项目移动到了其他文件夹，导致在 PyCharm 中找不到解释器，也无法正常使用终端。</p>
+<h2 id="_2">现象</h2>
+<p>我使用的 IDE 是 <code>PyCharm 专业版 2021.3.2</code>，具体表现为在 IDE 内打开终端后：</p>
+<ul>
+<li>PyCharm 找不到解释器</li>
+<li>终端内执行 python 程序只能够使用全局包</li>
+<li>无法进入 venv 环境（包括 PyCharm 自动进入和手动进入）</li>
+<li>无法使用 pip</li>
+</ul>
+<h2 id="_3">解决</h2>
+<ul>
+<li>
+<h3 id="_4">找不到解释器</h3>
+</li>
+</ul>
+<p>这个问题好解决，PyCharm 会自动检测当前目录下的 venv 文件夹，如果存在，则会将 <code>venv/Scripts/python</code> 设置为解释器。问题直接解决。</p>
+<p>需要注意的是，因为我们是移动了 python 项目文件夹的，因此原来的解释器路径还保留在 PyCharm 内，所以需要手动将其删除。可以按照以下步骤进行操作：</p>
+<p>找到 <code>文件</code> -&gt; <code>设置</code> -&gt; <code>项目</code> -&gt; <code>Python 解释器</code></p>
+<p>选择当前解释器右边的齿轮图标，点击 <code>全部显示</code>，找到红色标记的解释器，点击删除即可。</p>
+<ul>
+<li>
+<h3 id="venv">终端只能够使用全局包与无法进入 venv 环境</h3>
+</li>
+</ul>
+<p>具体有以下几个表现：</p>
+<ol>
+<li>
+<p>自己的实际项目中有第三方库（例如 <code>aiohttp</code>），项目文件直接右键运行可以正常执行，但是在终端里面执行时会报错，提示 <code>ModuleNotFoundError: No module named 'aiohttp'</code>。</p>
+</li>
+<li>
+<p>终端里直接执行 <code>where python</code> 显示的是全局 python 路径，而不是 venv 中的路径。</p>
+</li>
+<li>
+<p>终端里直接执行 <code>pip list</code> 会提示只有 <code>pip</code> 和 <code>setuptools</code> 两个包，而我们项目里依赖的包一个都没有。</p>
+</li>
+</ol>
+<p>原因在于 PyCharm 自动进入 venv 环境的时候是从 <code>venv/Scripts/activate.bat</code> 进入的，这个文件定义了 <code>%PATH%</code>，当我们已经移动了项目文件夹后，<code>activate.bat</code> 里记录的路径并没有改，而原来的路径已经不存在了，所以我们放在 <code>venv</code> 下的 <code>python.exe</code> 并不会自动进入到 <code>%PATH%</code> 中。</p>
+<p>解决方式很简单，直接编辑 <code>venv/Scripts/activate.bat</code> 文件，linux 同理。</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="1:4"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><input id="__tabbed_1_3" name="__tabbed_1" type="radio" /><input id="__tabbed_1_4" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">CMD</label><label for="__tabbed_1_2">Bash</label><label for="__tabbed_1_3">FishShell</label><label for="__tabbed_1_4">Xonsh</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<table class="highlighttable"><tr><th colspan="2" class="filename"><div class="highlight"><span class="filename">activate.bat</span></div></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span>
+<span class="normal">22</span>
+<span class="normal">23</span>
+<span class="normal">24</span>
+<span class="normal">25</span>
+<span class="normal">26</span>
+<span class="normal">27</span>
+<span class="normal">28</span>
+<span class="normal">29</span>
+<span class="normal">30</span>
+<span class="normal">31</span>
+<span class="normal">32</span>
+<span class="normal">33</span>
+<span class="normal">34</span>
+<span class="normal">35</span>
+<span class="normal">36</span>
+<span class="normal">37</span>
+<span class="normal">38</span>
+<span class="normal">39</span>
+<span class="normal">40</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="p">@</span><span class="k">echo</span> off
+
+<span class="hll"><span class="k">set</span> <span class="s2">&quot;VIRTUAL_ENV=I:\Developer\web\blog_mkdocs\venv&quot;</span>
+</span>
+<span class="k">if</span> <span class="k">defined</span> <span class="nv">_OLD_VIRTUAL_PROMPT</span> <span class="p">(</span>
+    <span class="k">set</span> <span class="s2">&quot;PROMPT=</span><span class="nv">%_OLD_VIRTUAL_PROMPT%</span><span class="s2">&quot;</span>
+<span class="p">)</span> <span class="k">else</span> <span class="p">(</span>
+    <span class="k">if</span> <span class="k">not</span> <span class="k">defined</span> <span class="nv">PROMPT</span> <span class="p">(</span>
+        <span class="k">set</span> <span class="s2">&quot;PROMPT=$P$G&quot;</span>
+    <span class="p">)</span>
+    <span class="k">if</span> <span class="k">not</span> <span class="k">defined</span> <span class="nv">VIRTUAL_ENV_DISABLE_PROMPT</span> <span class="p">(</span>
+        <span class="k">set</span> <span class="s2">&quot;_OLD_VIRTUAL_PROMPT=</span><span class="nv">%PROMPT%</span><span class="s2">&quot;</span>
+    <span class="p">)</span>
+<span class="p">)</span>
+<span class="k">if</span> <span class="k">not</span> <span class="k">defined</span> <span class="nv">VIRTUAL_ENV_DISABLE_PROMPT</span> <span class="p">(</span>
+    <span class="k">set</span> <span class="s2">&quot;ENV_PROMPT=&quot;</span>
+    <span class="k">if</span> <span class="k">NOT</span> <span class="k">DEFINED</span> <span class="nv">ENV_PROMPT</span> <span class="p">(</span>
+        <span class="k">for</span> <span class="se">%%</span>d <span class="k">in</span> <span class="p">(</span><span class="s2">&quot;</span><span class="nv">%VIRTUAL_ENV%</span><span class="s2">&quot;</span><span class="p">)</span> <span class="k">do</span> <span class="k">set</span> <span class="s2">&quot;ENV_PROMPT=(</span><span class="se">%%</span><span class="s2">~nxd) &quot;</span>
+    <span class="p">)</span>
+    <span class="p">)</span>
+    <span class="k">set</span> <span class="s2">&quot;PROMPT=</span><span class="nv">%ENV_PROMPT%%PROMPT%</span><span class="s2">&quot;</span>
+<span class="c1">)</span>
+
+<span class="c1">REM Don&#39;t use () to avoid problems with them in %PATH%</span>
+<span class="k">if</span> <span class="k">defined</span> <span class="nv">_OLD_VIRTUAL_PYTHONHOME</span> <span class="k">goto</span> <span class="nl">ENDIFVHOME</span>
+    <span class="k">set</span> <span class="s2">&quot;_OLD_VIRTUAL_PYTHONHOME=</span><span class="nv">%PYTHONHOME%</span><span class="s2">&quot;</span>
+<span class="p">:</span><span class="nl">ENDIFVHOME</span>
+
+<span class="k">set</span> <span class="nv">PYTHONHOME</span><span class="p">=</span>
+
+<span class="c1">REM if defined _OLD_VIRTUAL_PATH (</span>
+<span class="k">if</span> <span class="k">not</span> <span class="k">defined</span> <span class="nv">_OLD_VIRTUAL_PATH</span> <span class="k">goto</span> <span class="nl">ENDIFVPATH1</span>
+    <span class="k">set</span> <span class="s2">&quot;PATH=</span><span class="nv">%_OLD_VIRTUAL_PATH%</span><span class="s2">&quot;</span>
+<span class="p">:</span><span class="nl">ENDIFVPATH1</span>
+<span class="c1">REM ) else (</span>
+<span class="k">if</span> <span class="k">defined</span> <span class="nv">_OLD_VIRTUAL_PATH</span> <span class="k">goto</span> <span class="nl">ENDIFVPATH2</span>
+    <span class="k">set</span> <span class="s2">&quot;_OLD_VIRTUAL_PATH=</span><span class="nv">%PATH%</span><span class="s2">&quot;</span>
+<span class="p">:</span><span class="nl">ENDIFVPATH2</span>
+
+<span class="k">set</span> <span class="s2">&quot;PATH=</span><span class="nv">%VIRTUAL_ENV%</span><span class="s2">\Scripts;</span><span class="nv">%PATH%</span><span class="s2">&quot;</span>
+</code></pre></div>
+</td></tr></table>
+</div>
+<div class="tabbed-block">
+<table class="highlighttable"><tr><th colspan="2" class="filename"><div class="highlight"><span class="filename">activate</span></div></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span>
+<span class="normal">22</span>
+<span class="normal">23</span>
+<span class="normal">24</span>
+<span class="normal">25</span>
+<span class="normal">26</span>
+<span class="normal">27</span>
+<span class="normal">28</span>
+<span class="normal">29</span>
+<span class="normal">30</span>
+<span class="normal">31</span>
+<span class="normal">32</span>
+<span class="normal">33</span>
+<span class="normal">34</span>
+<span class="normal">35</span>
+<span class="normal">36</span>
+<span class="normal">37</span>
+<span class="normal">38</span>
+<span class="normal">39</span>
+<span class="normal">40</span>
+<span class="normal">41</span>
+<span class="normal">42</span>
+<span class="normal">43</span>
+<span class="normal">44</span>
+<span class="normal">45</span>
+<span class="normal">46</span>
+<span class="normal">47</span>
+<span class="normal">48</span>
+<span class="normal">49</span>
+<span class="normal">50</span>
+<span class="normal">51</span>
+<span class="normal">52</span>
+<span class="normal">53</span>
+<span class="normal">54</span>
+<span class="normal">55</span>
+<span class="normal">56</span>
+<span class="normal">57</span>
+<span class="normal">58</span>
+<span class="normal">59</span>
+<span class="normal">60</span>
+<span class="normal">61</span>
+<span class="normal">62</span>
+<span class="normal">63</span>
+<span class="normal">64</span>
+<span class="normal">65</span>
+<span class="normal">66</span>
+<span class="normal">67</span>
+<span class="normal">68</span>
+<span class="normal">69</span>
+<span class="normal">70</span>
+<span class="normal">71</span>
+<span class="normal">72</span>
+<span class="normal">73</span>
+<span class="normal">74</span>
+<span class="normal">75</span>
+<span class="normal">76</span>
+<span class="normal">77</span>
+<span class="normal">78</span>
+<span class="normal">79</span>
+<span class="normal">80</span>
+<span class="normal">81</span>
+<span class="normal">82</span>
+<span class="normal">83</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="c1"># This file must be used with &quot;source bin/activate&quot; *from bash*</span>
+<span class="c1"># you cannot run it directly</span>
+
+
+<span class="k">if</span> <span class="o">[</span> <span class="s2">&quot;</span><span class="si">${</span><span class="nv">BASH_SOURCE</span><span class="p">-</span><span class="si">}</span><span class="s2">&quot;</span> <span class="o">=</span> <span class="s2">&quot;</span><span class="nv">$0</span><span class="s2">&quot;</span> <span class="o">]</span><span class="p">;</span> <span class="k">then</span>
+    <span class="nb">echo</span> <span class="s2">&quot;You must source this script: \$ source </span><span class="nv">$0</span><span class="s2">&quot;</span> &gt;<span class="p">&amp;</span><span class="m">2</span>
+    <span class="nb">exit</span> <span class="m">33</span>
+<span class="k">fi</span>
+
+deactivate <span class="o">()</span> <span class="o">{</span>
+    <span class="nb">unset</span> -f pydoc &gt;/dev/null <span class="m">2</span>&gt;<span class="p">&amp;</span><span class="m">1</span> <span class="o">||</span> <span class="nb">true</span>
+
+    <span class="c1"># reset old environment variables</span>
+    <span class="c1"># ! [ -z ${VAR+_} ] returns true if VAR is declared at all</span>
+    <span class="k">if</span> ! <span class="o">[</span> -z <span class="s2">&quot;</span><span class="si">${</span><span class="nv">_OLD_VIRTUAL_PATH</span><span class="p">:+_</span><span class="si">}</span><span class="s2">&quot;</span> <span class="o">]</span> <span class="p">;</span> <span class="k">then</span>
+        <span class="nv">PATH</span><span class="o">=</span><span class="s2">&quot;</span><span class="nv">$_OLD_VIRTUAL_PATH</span><span class="s2">&quot;</span>
+        <span class="nb">export</span> PATH
+        <span class="nb">unset</span> _OLD_VIRTUAL_PATH
+    <span class="k">fi</span>
+    <span class="k">if</span> ! <span class="o">[</span> -z <span class="s2">&quot;</span><span class="si">${</span><span class="nv">_OLD_VIRTUAL_PYTHONHOME</span><span class="p">+_</span><span class="si">}</span><span class="s2">&quot;</span> <span class="o">]</span> <span class="p">;</span> <span class="k">then</span>
+        <span class="nv">PYTHONHOME</span><span class="o">=</span><span class="s2">&quot;</span><span class="nv">$_OLD_VIRTUAL_PYTHONHOME</span><span class="s2">&quot;</span>
+        <span class="nb">export</span> PYTHONHOME
+        <span class="nb">unset</span> _OLD_VIRTUAL_PYTHONHOME
+    <span class="k">fi</span>
+
+    <span class="c1"># The hash command must be called to get it to forget past</span>
+    <span class="c1"># commands. Without forgetting past commands the $PATH changes</span>
+    <span class="c1"># we made may not be respected</span>
+    <span class="nb">hash</span> -r <span class="m">2</span>&gt;/dev/null
+
+    <span class="k">if</span> ! <span class="o">[</span> -z <span class="s2">&quot;</span><span class="si">${</span><span class="nv">_OLD_VIRTUAL_PS1</span><span class="p">+_</span><span class="si">}</span><span class="s2">&quot;</span> <span class="o">]</span> <span class="p">;</span> <span class="k">then</span>
+        <span class="nv">PS1</span><span class="o">=</span><span class="s2">&quot;</span><span class="nv">$_OLD_VIRTUAL_PS1</span><span class="s2">&quot;</span>
+        <span class="nb">export</span> PS1
+        <span class="nb">unset</span> _OLD_VIRTUAL_PS1
+    <span class="k">fi</span>
+
+    <span class="nb">unset</span> VIRTUAL_ENV
+    <span class="k">if</span> <span class="o">[</span> ! <span class="s2">&quot;</span><span class="si">${</span><span class="nv">1</span><span class="p">-</span><span class="si">}</span><span class="s2">&quot;</span> <span class="o">=</span> <span class="s2">&quot;nondestructive&quot;</span> <span class="o">]</span> <span class="p">;</span> <span class="k">then</span>
+    <span class="c1"># Self destruct!</span>
+        <span class="nb">unset</span> -f deactivate
+    <span class="k">fi</span>
+<span class="o">}</span>
+
+<span class="c1"># unset irrelevant variables</span>
+deactivate nondestructive
+
+<span class="hll"><span class="nv">VIRTUAL_ENV</span><span class="o">=</span><span class="s1">&#39;I:\Developer\web\blog_mkdocs\venv&#39;</span>
+</span><span class="k">if</span> <span class="o">([</span> <span class="s2">&quot;</span><span class="nv">$OSTYPE</span><span class="s2">&quot;</span> <span class="o">=</span> <span class="s2">&quot;cygwin&quot;</span> <span class="o">]</span> <span class="o">||</span> <span class="o">[</span> <span class="s2">&quot;</span><span class="nv">$OSTYPE</span><span class="s2">&quot;</span> <span class="o">=</span> <span class="s2">&quot;msys&quot;</span> <span class="o">])</span> <span class="o">&amp;&amp;</span> <span class="k">$(</span><span class="nb">command</span> -v cygpath <span class="p">&amp;</span>&gt; /dev/null<span class="k">)</span> <span class="p">;</span> <span class="k">then</span>
+    <span class="nv">VIRTUAL_ENV</span><span class="o">=</span><span class="k">$(</span>cygpath -u <span class="s2">&quot;</span><span class="nv">$VIRTUAL_ENV</span><span class="s2">&quot;</span><span class="k">)</span>
+<span class="k">fi</span>
+<span class="nb">export</span> VIRTUAL_ENV
+
+<span class="nv">_OLD_VIRTUAL_PATH</span><span class="o">=</span><span class="s2">&quot;</span><span class="nv">$PATH</span><span class="s2">&quot;</span>
+<span class="nv">PATH</span><span class="o">=</span><span class="s2">&quot;</span><span class="nv">$VIRTUAL_ENV</span><span class="s2">/Scripts:</span><span class="nv">$PATH</span><span class="s2">&quot;</span>
+<span class="nb">export</span> PATH
+
+<span class="c1"># unset PYTHONHOME if set</span>
+<span class="k">if</span> ! <span class="o">[</span> -z <span class="s2">&quot;</span><span class="si">${</span><span class="nv">PYTHONHOME</span><span class="p">+_</span><span class="si">}</span><span class="s2">&quot;</span> <span class="o">]</span> <span class="p">;</span> <span class="k">then</span>
+    <span class="nv">_OLD_VIRTUAL_PYTHONHOME</span><span class="o">=</span><span class="s2">&quot;</span><span class="nv">$PYTHONHOME</span><span class="s2">&quot;</span>
+    <span class="nb">unset</span> PYTHONHOME
+<span class="k">fi</span>
+
+<span class="k">if</span> <span class="o">[</span> -z <span class="s2">&quot;</span><span class="si">${</span><span class="nv">VIRTUAL_ENV_DISABLE_PROMPT</span><span class="p">-</span><span class="si">}</span><span class="s2">&quot;</span> <span class="o">]</span> <span class="p">;</span> <span class="k">then</span>
+    <span class="nv">_OLD_VIRTUAL_PS1</span><span class="o">=</span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">PS1</span><span class="p">-</span><span class="si">}</span><span class="s2">&quot;</span>
+    <span class="k">if</span> <span class="o">[</span> <span class="s2">&quot;x&quot;</span> !<span class="o">=</span> x <span class="o">]</span> <span class="p">;</span> <span class="k">then</span>
+        <span class="nv">PS1</span><span class="o">=</span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">PS1</span><span class="p">-</span><span class="si">}</span><span class="s2">&quot;</span>
+    <span class="k">else</span>
+        <span class="nv">PS1</span><span class="o">=</span><span class="s2">&quot;(`basename \&quot;</span><span class="nv">$VIRTUAL_ENV</span><span class="s2">\&quot;`) </span><span class="si">${</span><span class="nv">PS1</span><span class="p">-</span><span class="si">}</span><span class="s2">&quot;</span>
+    <span class="k">fi</span>
+    <span class="nb">export</span> PS1
+<span class="k">fi</span>
+
+<span class="c1"># Make sure to unalias pydoc if it&#39;s already there</span>
+<span class="nb">alias</span> pydoc <span class="m">2</span>&gt;/dev/null &gt;/dev/null <span class="o">&amp;&amp;</span> <span class="nb">unalias</span> pydoc <span class="o">||</span> <span class="nb">true</span>
+
+pydoc <span class="o">()</span> <span class="o">{</span>
+    python -m pydoc <span class="s2">&quot;</span><span class="nv">$@</span><span class="s2">&quot;</span>
+<span class="o">}</span>
+
+<span class="c1"># The hash command must be called to get it to forget past</span>
+<span class="c1"># commands. Without forgetting past commands the $PATH changes</span>
+<span class="c1"># we made may not be respected</span>
+<span class="nb">hash</span> -r <span class="m">2</span>&gt;/dev/null
+</code></pre></div>
+</td></tr></table>
+</div>
+<div class="tabbed-block">
+<table class="highlighttable"><tr><th colspan="2" class="filename"><div class="highlight"><span class="filename">activate.fish</span></div></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">  1</span>
+<span class="normal">  2</span>
+<span class="normal">  3</span>
+<span class="normal">  4</span>
+<span class="normal">  5</span>
+<span class="normal">  6</span>
+<span class="normal">  7</span>
+<span class="normal">  8</span>
+<span class="normal">  9</span>
+<span class="normal"> 10</span>
+<span class="normal"> 11</span>
+<span class="normal"> 12</span>
+<span class="normal"> 13</span>
+<span class="normal"> 14</span>
+<span class="normal"> 15</span>
+<span class="normal"> 16</span>
+<span class="normal"> 17</span>
+<span class="normal"> 18</span>
+<span class="normal"> 19</span>
+<span class="normal"> 20</span>
+<span class="normal"> 21</span>
+<span class="normal"> 22</span>
+<span class="normal"> 23</span>
+<span class="normal"> 24</span>
+<span class="normal"> 25</span>
+<span class="normal"> 26</span>
+<span class="normal"> 27</span>
+<span class="normal"> 28</span>
+<span class="normal"> 29</span>
+<span class="normal"> 30</span>
+<span class="normal"> 31</span>
+<span class="normal"> 32</span>
+<span class="normal"> 33</span>
+<span class="normal"> 34</span>
+<span class="normal"> 35</span>
+<span class="normal"> 36</span>
+<span class="normal"> 37</span>
+<span class="normal"> 38</span>
+<span class="normal"> 39</span>
+<span class="normal"> 40</span>
+<span class="normal"> 41</span>
+<span class="normal"> 42</span>
+<span class="normal"> 43</span>
+<span class="normal"> 44</span>
+<span class="normal"> 45</span>
+<span class="normal"> 46</span>
+<span class="normal"> 47</span>
+<span class="normal"> 48</span>
+<span class="normal"> 49</span>
+<span class="normal"> 50</span>
+<span class="normal"> 51</span>
+<span class="normal"> 52</span>
+<span class="normal"> 53</span>
+<span class="normal"> 54</span>
+<span class="normal"> 55</span>
+<span class="normal"> 56</span>
+<span class="normal"> 57</span>
+<span class="normal"> 58</span>
+<span class="normal"> 59</span>
+<span class="normal"> 60</span>
+<span class="normal"> 61</span>
+<span class="normal"> 62</span>
+<span class="normal"> 63</span>
+<span class="normal"> 64</span>
+<span class="normal"> 65</span>
+<span class="normal"> 66</span>
+<span class="normal"> 67</span>
+<span class="normal"> 68</span>
+<span class="normal"> 69</span>
+<span class="normal"> 70</span>
+<span class="normal"> 71</span>
+<span class="normal"> 72</span>
+<span class="normal"> 73</span>
+<span class="normal"> 74</span>
+<span class="normal"> 75</span>
+<span class="normal"> 76</span>
+<span class="normal"> 77</span>
+<span class="normal"> 78</span>
+<span class="normal"> 79</span>
+<span class="normal"> 80</span>
+<span class="normal"> 81</span>
+<span class="normal"> 82</span>
+<span class="normal"> 83</span>
+<span class="normal"> 84</span>
+<span class="normal"> 85</span>
+<span class="normal"> 86</span>
+<span class="normal"> 87</span>
+<span class="normal"> 88</span>
+<span class="normal"> 89</span>
+<span class="normal"> 90</span>
+<span class="normal"> 91</span>
+<span class="normal"> 92</span>
+<span class="normal"> 93</span>
+<span class="normal"> 94</span>
+<span class="normal"> 95</span>
+<span class="normal"> 96</span>
+<span class="normal"> 97</span>
+<span class="normal"> 98</span>
+<span class="normal"> 99</span>
+<span class="normal">100</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="c"># This file must be used using `source bin/activate.fish` *within a running fish ( http://fishshell.com ) session*.</span>
+<span class="c"># Do not run it directly.</span>
+
+<span class="k">function</span> _bashify_path -d <span class="s2">&quot;Converts a fish path to something bash can recognize&quot;</span>
+    <span class="k">set</span> fishy_path <span class="nv">$argv</span>
+    <span class="k">set</span> bashy_path <span class="nv">$fishy_path</span><span class="o">[</span>1<span class="o">]</span>
+    <span class="k">for</span> path_part <span class="k">in</span> <span class="nv">$fishy_path</span><span class="o">[</span>2..-1<span class="o">]</span>
+        <span class="k">set</span> bashy_path <span class="s2">&quot;</span><span class="nv">$bashy_path</span><span class="s2">:</span><span class="nv">$path_part</span><span class="s2">&quot;</span>
+    <span class="k">end</span>
+    <span class="k">echo</span> <span class="nv">$bashy_path</span>
+<span class="k">end</span>
+
+<span class="k">function</span> _fishify_path -d <span class="s2">&quot;Converts a bash path to something fish can recognize&quot;</span>
+    <span class="k">echo</span> <span class="nv">$argv</span> <span class="o">|</span> tr <span class="s1">&#39;:&#39;</span> <span class="s1">&#39;\n&#39;</span>
+<span class="k">end</span>
+
+<span class="k">function</span> deactivate -d <span class="s1">&#39;Exit virtualenv mode and return to the normal environment.&#39;</span>
+    <span class="c"># reset old environment variables</span>
+    <span class="k">if</span> <span class="k">test</span> -n <span class="s2">&quot;</span><span class="nv">$_OLD_VIRTUAL_PATH</span><span class="s2">&quot;</span>
+        <span class="c"># https://github.com/fish-shell/fish-shell/issues/436 altered PATH handling</span>
+        <span class="k">if</span> <span class="k">test</span> <span class="o">(</span><span class="k">echo</span> <span class="nv">$FISH_VERSION</span> <span class="o">|</span> head -c 1<span class="o">)</span> -lt 3
+            <span class="k">set</span> -gx PATH <span class="o">(</span>_fishify_path <span class="s2">&quot;</span><span class="nv">$_OLD_VIRTUAL_PATH</span><span class="s2">&quot;</span><span class="o">)</span>
+        <span class="k">else</span>
+            <span class="k">set</span> -gx PATH <span class="s2">&quot;</span><span class="nv">$_OLD_VIRTUAL_PATH</span><span class="s2">&quot;</span>
+        <span class="k">end</span>
+        <span class="k">set</span> -e _OLD_VIRTUAL_PATH
+    <span class="k">end</span>
+
+    <span class="k">if</span> <span class="k">test</span> -n <span class="s2">&quot;</span><span class="nv">$_OLD_VIRTUAL_PYTHONHOME</span><span class="s2">&quot;</span>
+        <span class="k">set</span> -gx PYTHONHOME <span class="s2">&quot;</span><span class="nv">$_OLD_VIRTUAL_PYTHONHOME</span><span class="s2">&quot;</span>
+        <span class="k">set</span> -e _OLD_VIRTUAL_PYTHONHOME
+    <span class="k">end</span>
+
+    <span class="k">if</span> <span class="k">test</span> -n <span class="s2">&quot;</span><span class="nv">$_OLD_FISH_PROMPT_OVERRIDE</span><span class="s2">&quot;</span>
+       <span class="k">and</span> <span class="nb">functions</span> -q _old_fish_prompt
+        <span class="c"># Set an empty local `$fish_function_path` to allow the removal of `fish_prompt` using `functions -e`.</span>
+        <span class="k">set</span> -l fish_function_path
+
+        <span class="c"># Erase virtualenv&#39;s `fish_prompt` and restore the original.</span>
+        <span class="nb">functions</span> -e <span class="nb">fish_prompt</span>
+<span class="nb">        functions</span> -c _old_fish_prompt <span class="nb">fish_prompt</span>
+<span class="nb">        functions</span> -e _old_fish_prompt
+        <span class="k">set</span> -e _OLD_FISH_PROMPT_OVERRIDE
+    <span class="k">end</span>
+
+    <span class="k">set</span> -e VIRTUAL_ENV
+
+    <span class="k">if</span> <span class="k">test</span> <span class="s2">&quot;</span><span class="nv">$argv</span><span class="s2">[1]&quot;</span> !<span class="o">=</span> <span class="s1">&#39;nondestructive&#39;</span>
+        <span class="c"># Self-destruct!</span>
+        <span class="nb">functions</span> -e pydoc
+        <span class="nb">functions</span> -e deactivate
+        <span class="nb">functions</span> -e _bashify_path
+        <span class="nb">functions</span> -e _fishify_path
+    <span class="k">end</span>
+<span class="k">end</span>
+
+<span class="c"># Unset irrelevant variables.</span>
+deactivate nondestructive
+
+<span class="hll"><span class="k">set</span> -gx VIRTUAL_ENV <span class="s1">&#39;I:\Developer\web\blog_mkdocs\venv&#39;</span>
+</span>
+<span class="c"># https://github.com/fish-shell/fish-shell/issues/436 altered PATH handling</span>
+<span class="k">if</span> <span class="k">test</span> <span class="o">(</span><span class="k">echo</span> <span class="nv">$FISH_VERSION</span> <span class="o">|</span> head -c 1<span class="o">)</span> -lt 3
+   <span class="k">set</span> -gx _OLD_VIRTUAL_PATH <span class="o">(</span>_bashify_path <span class="nv">$PATH</span><span class="o">)</span>
+<span class="k">else</span>
+    <span class="k">set</span> -gx _OLD_VIRTUAL_PATH <span class="s2">&quot;</span><span class="nv">$PATH</span><span class="s2">&quot;</span>
+<span class="k">end</span>
+<span class="k">set</span> -gx PATH <span class="s2">&quot;</span><span class="nv">$VIRTUAL_ENV</span><span class="s2">&quot;</span><span class="s1">&#39;/Scripts&#39;</span> <span class="nv">$PATH</span>
+
+<span class="c"># Unset `$PYTHONHOME` if set.</span>
+<span class="k">if</span> <span class="k">set</span> -q PYTHONHOME
+    <span class="k">set</span> -gx _OLD_VIRTUAL_PYTHONHOME <span class="nv">$PYTHONHOME</span>
+    <span class="k">set</span> -e PYTHONHOME
+<span class="k">end</span>
+
+<span class="k">function</span> pydoc
+    python -m pydoc <span class="nv">$argv</span>
+<span class="k">end</span>
+
+<span class="k">if</span> <span class="k">test</span> -z <span class="s2">&quot;</span><span class="nv">$VIRTUAL_ENV_DISABLE_PROMPT</span><span class="s2">&quot;</span>
+    <span class="c"># Copy the current `fish_prompt` function as `_old_fish_prompt`.</span>
+    <span class="nb">functions</span> -c <span class="nb">fish_prompt </span>_old_fish_prompt
+
+    <span class="k">function</span> <span class="nb">fish_prompt</span>
+        <span class="c"># Run the user&#39;s prompt first; it might depend on (pipe)status.</span>
+        <span class="k">set</span> -l prompt <span class="o">(</span>_old_fish_prompt<span class="o">)</span>
+
+        <span class="c"># Prompt override provided?</span>
+        <span class="c"># If not, just prepend the environment name.</span>
+        <span class="k">if</span> <span class="k">test</span> -n <span class="s1">&#39;&#39;</span>
+            <span class="nb">printf</span> <span class="s1">&#39;%s%s&#39;</span> <span class="s1">&#39;&#39;</span> <span class="o">(</span><span class="nb">set_color </span>normal<span class="o">)</span>
+        <span class="k">else</span>
+            <span class="nb">printf</span> <span class="s1">&#39;%s(%s) &#39;</span> <span class="o">(</span><span class="nb">set_color </span>normal<span class="o">)</span> <span class="o">(</span>basename <span class="s2">&quot;</span><span class="nv">$VIRTUAL_ENV</span><span class="s2">&quot;</span><span class="o">)</span>
+        <span class="k">end</span>
+
+        string join -- <span class="se">\n</span> <span class="nv">$prompt</span> <span class="c"># handle multi-line prompts</span>
+    <span class="k">end</span>
+
+    <span class="k">set</span> -gx _OLD_FISH_PROMPT_OVERRIDE <span class="s2">&quot;</span><span class="nv">$VIRTUAL_ENV</span><span class="s2">&quot;</span>
+<span class="k">end</span>
+</code></pre></div>
+</td></tr></table>
+</div>
+<div class="tabbed-block">
+<table class="highlighttable"><tr><th colspan="2" class="filename"><div class="highlight"><span class="filename">activate.xsh</span></div></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span>
+<span class="normal">22</span>
+<span class="normal">23</span>
+<span class="normal">24</span>
+<span class="normal">25</span>
+<span class="normal">26</span>
+<span class="normal">27</span>
+<span class="normal">28</span>
+<span class="normal">29</span>
+<span class="normal">30</span>
+<span class="normal">31</span>
+<span class="normal">32</span>
+<span class="normal">33</span>
+<span class="normal">34</span>
+<span class="normal">35</span>
+<span class="normal">36</span>
+<span class="normal">37</span>
+<span class="normal">38</span>
+<span class="normal">39</span>
+<span class="normal">40</span>
+<span class="normal">41</span>
+<span class="normal">42</span>
+<span class="normal">43</span>
+<span class="normal">44</span>
+<span class="normal">45</span>
+<span class="normal">46</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>&quot;&quot;&quot;Xonsh activate script for virtualenv&quot;&quot;&quot;
+from xonsh.tools import get_sep as _get_sep
+
+def _deactivate(args):
+    if &quot;pydoc&quot; in aliases:
+        del aliases[&quot;pydoc&quot;]
+
+    if ${...}.get(&quot;_OLD_VIRTUAL_PATH&quot;, &quot;&quot;):
+        $PATH = $_OLD_VIRTUAL_PATH
+        del $_OLD_VIRTUAL_PATH
+
+    if ${...}.get(&quot;_OLD_VIRTUAL_PYTHONHOME&quot;, &quot;&quot;):
+        $PYTHONHOME = $_OLD_VIRTUAL_PYTHONHOME
+        del $_OLD_VIRTUAL_PYTHONHOME
+
+    if &quot;VIRTUAL_ENV&quot; in ${...}:
+        del $VIRTUAL_ENV
+
+    if &quot;VIRTUAL_ENV_PROMPT&quot; in ${...}:
+        del $VIRTUAL_ENV_PROMPT
+
+    if &quot;nondestructive&quot; not in args:
+        # Self destruct!
+        del aliases[&quot;deactivate&quot;]
+
+
+# unset irrelevant variables
+_deactivate([&quot;nondestructive&quot;])
+aliases[&quot;deactivate&quot;] = _deactivate
+
+<span class="hll">$VIRTUAL_ENV = r&quot;I:\Developer\web\blog_mkdocs\venv&quot;
+</span>
+$_OLD_VIRTUAL_PATH = $PATH
+$PATH = $PATH[:]
+$PATH.add($VIRTUAL_ENV + _get_sep() + &quot;Scripts&quot;, front=True, replace=True)
+
+if ${...}.get(&quot;PYTHONHOME&quot;, &quot;&quot;):
+    # unset PYTHONHOME if set
+    $_OLD_VIRTUAL_PYTHONHOME = $PYTHONHOME
+    del $PYTHONHOME
+
+$VIRTUAL_ENV_PROMPT = &quot;&quot;
+if not $VIRTUAL_ENV_PROMPT:
+    del $VIRTUAL_ENV_PROMPT
+
+aliases[&quot;pydoc&quot;] = [&quot;python&quot;, &quot;-m&quot;, &quot;pydoc&quot;]
+</code></pre></div>
+</td></tr></table>
+</div>
+</div>
+</div>
+<ul>
+<li>
+<h3 id="pip">无法使用 pip</h3>
+</li>
+</ul>
+<p>通过修改 <code>activate.bat</code> 使得能正常进入 venv 环境后，会迎来第三个问题，就是无法使用 pip 安装包。</p>
+<p>具体表现为，使用 <code>pip</code> 命令后，终端会报错：<code>Fatal error in launcher: unable to create process using: 'XXXXXXX/python.exe' 'XXXXXXXXX/pip.exe'</code>。</p>
+<p>我一看，这个所谓的 <code>'XXXXXXX/python.exe'</code> 正是我们在移动项目文件之前的 venv 的 python 路径，可是我们已经修改了 <code>activate.bat</code> 中的路径，怎么还是会出现这个问题呢。</p>
+<p>参考了 <a href="https://blog.csdn.net/FY_2018/article/details/110204630">Fatal error in launcher: Unable to create process using</a> 这篇文章，了解到 <code>pip.exe</code> 同样也保存了路径，而且就保存在 <code>pip.exe</code> 这个二进制文件里，如果想要修改也不是不行，用 <code>WinHex</code> 这类工具改就行。</p>
+<p>但是我们没必要这么麻烦，我的建议是直接原地重装 <code>pip</code>，步骤如下：</p>
+<ol>
+<li>
+<p>首先有了上一步的铺垫，我们已经能够进入 venv，那么进入 venv</p>
+<div class="highlight"><pre><span></span><code>I<span class="p">:</span><span class="nl">\Developer\web\blog_mkdocs\venv\Scripts\activate.bat</span>
+</code></pre></div>
+</li>
+<li>
+<p>然后重装 <code>pip</code>（注意此时你已经在 venv 里了）</p>
+<div class="highlight"><pre><span></span><code>python -m pip install --upgrade --force-reinstall pip
+</code></pre></div>
+</li>
+</ol>
+<p>此时，该 venv 里的 <code>pip</code> 应该可以正常使用。</p>
+<p>同理，继续检查 <code>venv/Scripts</code> 下的其他二进制文件，例如 <code>mkdocs.exe</code>，这些都要通过相同方式重装才能正常用。</p>
+<div class="highlight"><pre><span></span><code>pip install --upgrade --force-reinstall mkdocs
+</code></pre></div>
+
+    <!-- Last update of source file -->
+    
+        
+    
+
+
+    <!-- Get setting from mkdocs.yml, but allow page-level overrides -->
+    
+    
+
+
+            </article>
+          </div>
+        </div>
+        
+          <a href="#" class="md-top md-icon" data-md-component="top" data-md-state="hidden">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12z"/></svg>
+            回到页面顶部
+          </a>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    <nav class="md-footer__inner md-grid" aria-label="页脚">
+      
+        
+        <a href="../220406-set-http-proxy/" class="md-footer__link md-footer__link--prev" aria-label="上一页: 解决使用代理后 pip 和 python 无法连接到网络的问题" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                上一页
+              </span>
+              解决使用代理后 pip 和 python 无法连接到网络的问题
+            </div>
+          </div>
+        </a>
+      
+      
+    </nav>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy; 2023 Akiba Arisa
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+        <div class="md-social">
+  
+    
+    
+    <a href="https://github.com/zhanbao2000" target="_blank" rel="noopener" title="AkibaArisa on GitHub" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.1.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.tabs", "navigation.top", "navigation.tracking"], "search": "../../../assets/javascripts/workers/search.5e67fbfe.min.js", "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.config.lang": "ja", "search.config.pipeline": "trimmer, stemmer", "search.config.separator": "[\\uff0c\\u3002]+", "search.placeholder": "\u641c\u7d22", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version.title": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.c44cc438.min.js"></script>
+      
+    
+  </body>
+</html>
