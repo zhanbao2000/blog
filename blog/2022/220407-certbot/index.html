@@ -12,14 +12,14 @@
         <meta name="author" content="Akiba Arisa">
       
       
-        <link rel="canonical" href="https://blog.arisa.moe/blog/2022/220407-github-pages/">
+        <link rel="canonical" href="https://blog.arisa.moe/blog/2022/220407-certbot/">
       
       <link rel="icon" href="../../../assets/images/favicon.png">
       <meta name="generator" content="mkdocs-1.3.0, mkdocs-material-8.2.8">
     
     
       
-        <title>GitHub Pages 文档自动化部署 - MkDocs - Arisa | Blog</title>
+        <title>certbot 常用操作 - Arisa | Blog</title>
       
     
     
@@ -104,7 +104,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              GitHub Pages 文档自动化部署 - MkDocs
+              certbot 常用操作
             
           </span>
         </div>
@@ -425,20 +425,6 @@
               
   
   
-  
-    <li class="md-nav__item">
-      <a href="../220407-certbot/" class="md-nav__link">
-        certbot 常用操作
-      </a>
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
     
   
   
@@ -449,12 +435,12 @@
       
       
         <label class="md-nav__link md-nav__link--active" for="__toc">
-          GitHub Pages 文档自动化部署 - MkDocs
+          certbot 常用操作
           <span class="md-nav__icon md-icon"></span>
         </label>
       
       <a href="./" class="md-nav__link md-nav__link--active">
-        GitHub Pages 文档自动化部署 - MkDocs
+        certbot 常用操作
       </a>
       
         
@@ -472,55 +458,56 @@
       
         <li class="md-nav__item">
   <a href="#_1" class="md-nav__link">
-    本地部署测试
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#vcs-github" class="md-nav__link">
-    创建本地 VCS 并和 GitHub 关联
-  </a>
-  
-    <nav class="md-nav" aria-label="创建本地 VCS 并和 GitHub 关联">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#vcs" class="md-nav__link">
-    创建本地 VCS
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#github" class="md-nav__link">
-    和 GitHub 关联
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#github-actions" class="md-nav__link">
-    在 GitHub 上创建 Actions 任务
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#pages" class="md-nav__link">
-    设置 Pages
+    安装
   </a>
   
 </li>
       
         <li class="md-nav__item">
   <a href="#_2" class="md-nav__link">
-    （可选）使用自定义域名
+    申请多个域名证书
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    申请泛域名证书（也叫通配符证书）
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    查看自动续期的计划任务
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    手动为证书续期
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    为证书续期（泛域名）
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    吊销（撤销）证书
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    删除证书
   </a>
   
 </li>
@@ -529,6 +516,20 @@
   
 </nav>
       
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../220407-github-pages/" class="md-nav__link">
+        GitHub Pages 文档自动化部署 - MkDocs
+      </a>
     </li>
   
 
@@ -573,55 +574,56 @@
       
         <li class="md-nav__item">
   <a href="#_1" class="md-nav__link">
-    本地部署测试
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#vcs-github" class="md-nav__link">
-    创建本地 VCS 并和 GitHub 关联
-  </a>
-  
-    <nav class="md-nav" aria-label="创建本地 VCS 并和 GitHub 关联">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#vcs" class="md-nav__link">
-    创建本地 VCS
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#github" class="md-nav__link">
-    和 GitHub 关联
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#github-actions" class="md-nav__link">
-    在 GitHub 上创建 Actions 任务
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#pages" class="md-nav__link">
-    设置 Pages
+    安装
   </a>
   
 </li>
       
         <li class="md-nav__item">
   <a href="#_2" class="md-nav__link">
-    （可选）使用自定义域名
+    申请多个域名证书
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    申请泛域名证书（也叫通配符证书）
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    查看自动续期的计划任务
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    手动为证书续期
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    为证书续期（泛域名）
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    吊销（撤销）证书
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    删除证书
   </a>
   
 </li>
@@ -644,7 +646,7 @@ doesn't, the page title (or respectively site name) is used
 as the main headline.
 -->
 
-    <h1>GitHub Pages 文档自动化部署 - MkDocs</h1>
+    <h1>certbot 常用操作</h1>
 
 
 <!-- Markdown content -->
@@ -662,11 +664,11 @@ as the main headline.
             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-calendar2" viewBox="0 0 16 16">
                 <path d="M3.5 0a.5.5 0 0 1 .5.5V1h8V.5a.5.5 0 0 1 1 0V1h1a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V3a2 2 0 0 1 2-2h1V.5a.5.5 0 0 1 .5-.5zM2 2a1 1 0 0 0-1 1v11a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V3a1 1 0 0 0-1-1H2z"/>
                 <path d="M2.5 4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5H3a.5.5 0 0 1-.5-.5V4z"/>
-            </svg> 2022-04-07 00:24 ·
+            </svg> 2022-04-06 02:56 ·
             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-clock" viewBox="0 0 16 16">
                 <path d="M8 3.5a.5.5 0 0 0-1 0V9a.5.5 0 0 0 .252.434l3.5 2a.5.5 0 0 0 .496-.868L8 8.71V3.5z"/>
                 <path d="M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16zm7-8A7 7 0 1 1 1 8a7 7 0 0 1 14 0z"/>
-            </svg> 15 min read
+            </svg> 1 min read
         </span>
         </p>
     </aside>
@@ -675,221 +677,97 @@ as the main headline.
     
         <div class="tags">
         
-            <a href="/blog/tags/#github actions" class="tag"><code>#github actions</code></a>
+            <a href="/blog/tags/#ssl" class="tag"><code>#ssl</code></a>
         
-            <a href="/blog/tags/#github pages" class="tag"><code>#github pages</code></a>
+            <a href="/blog/tags/#letsencrypt" class="tag"><code>#letsencrypt</code></a>
         
-            <a href="/blog/tags/#mkdocs" class="tag"><code>#mkdocs</code></a>
+            <a href="/blog/tags/#certbot" class="tag"><code>#certbot</code></a>
         
         </div>
     
 
-    <p>这篇文章讲述了如何使用 GitHub Actions / Pages 自动化部署文档，以及遇到的坑。</p>
-<p>如你所见，这个博客也是使用 GitHub Actions 自动部署在 GitHub Pages 上的。</p>
-<p>这篇文章将以 <a href="https://www.mkdocs.org/">MkDocs</a> 为例讲述。</p>
-<h2 id="_1">本地部署测试</h2>
-<p>首先你自己搭建的文档得在本地能用嘛，首先测试下本地是否能用：</p>
-<div class="highlight"><pre><span></span><code>mkdocs serve
+    <h2 id="_1">安装</h2>
+<p>官网建议用 <code>snap</code> 安装。👉 <a href="https://certbot.eff.org/instructions?ws=other&amp;os=ubuntufocal">https://certbot.eff.org/instructions?ws=other&amp;os=ubuntufocal</a></p>
+<div class="highlight"><pre><span></span><code>sudo snap install core
+sudo snap refresh core
+sudo snap install --classic certbot
 </code></pre></div>
-<div class="admonition 小提示">
-<p class="admonition-title">小提示</p>
-<p>使用以下参数可以使 mkdocs 运行在指定地址和端口上：
-<div class="highlight"><pre><span></span><code>mkdocs serve -a localhost:8001
-mkdocs serve --dev-addr localhost:8001
-</code></pre></div></p>
+<h2 id="_2">申请多个域名证书</h2>
+<div class="admonition 警告 danger">
+<p class="admonition-title">警告</p>
+<p>无论你需要申请多少个证书，在申请之前，都请在你的 DNS 提供商处将你所需要申请 SSL 证书的域名解析到你的服务器上。</p>
 </div>
-<h2 id="vcs-github">创建本地 VCS 并和 GitHub 关联</h2>
-<p>这里以 PyCharm 为例：</p>
-<h3 id="vcs">创建本地 VCS</h3>
-<pre class="mermaid"><code>graph LR
-  A[VCS] --&gt; B;
-  B[启用版本控制集成] --&gt; C;
-  C[选择 Git] --&gt; D[确定];</code></pre>
-<div class="admonition 注意有坑 attention">
-<p class="admonition-title">注意有坑</p>
-<p>记得在提交之前先创建好 <code>.gitignore</code> 文件，否则你提交之后还要继续提交一次 <code>.gitignore</code> 文件。</p>
+<div class="admonition 提示 tips">
+<p class="admonition-title">提示</p>
+<p>根据你的 <code>80</code> 端口有没有被占用，你需要使用两种模式—— <code>nginx</code> 或者 <code>standalone</code>。</p>
 </div>
-<p>然后选择提交。</p>
-<h3 id="github">和 GitHub 关联</h3>
-<p>这一步其实是在 GitHub 上自动创建一个同名仓库。如果仓库已经存在的话，可能需要 Merge 或者 Rebase。</p>
-<pre class="mermaid"><code>graph LR
-  A[Git] --&gt; B;
-  B[GitHub] --&gt; C;
-  C[在 GitHub 上共享项目] --&gt; D[确定];</code></pre>
-<h2 id="github-actions">在 GitHub 上创建 Actions 任务</h2>
-<p>这一步坑巨多。</p>
-<p>首先点击 <code>Actions</code> -&gt; <code>set up a workflow yourself</code></p>
-<p>按照任何一个你能找到的 Pages 部署文档来写这个 <code>yml</code> 文件，这里我们采用 <a href="https://squidfunk.github.io/mkdocs-material/publishing-your-site/#with-github-actions">Material for MkDocs</a> 的模板。</p>
-<div class="admonition 小提示">
-<p class="admonition-title">小提示</p>
-<p>用 MkDocs <a href="https://www.mkdocs.org/user-guide/deploying-your-docs/">官网</a> 的也行，只不过人家不会告诉你怎么写这个 <code>yml</code> 文件。</p>
-</div>
-<p>在 <code>2022年4月6日</code> 的时候我从这里找到的模板是这样的，随着时间的推移可能会有变更，建议从原文档去复制。</p>
-<table class="highlighttable"><tr><th colspan="2" class="filename"><div class="highlight"><span class="filename">main.yml</span></div></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
-<span class="normal"> 2</span>
-<span class="normal"> 3</span>
-<span class="normal"> 4</span>
-<span class="normal"> 5</span>
-<span class="normal"> 6</span>
-<span class="normal"> 7</span>
-<span class="normal"> 8</span>
-<span class="normal"> 9</span>
-<span class="normal">10</span>
-<span class="normal">11</span>
-<span class="normal">12</span>
-<span class="normal">13</span>
-<span class="normal">14</span>
-<span class="normal">15</span>
-<span class="normal">16</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ci</span><span class="w"> </span>
-<span class="nt">on</span><span class="p">:</span><span class="w"></span>
-<span class="w">  </span><span class="nt">push</span><span class="p">:</span><span class="w"></span>
-<span class="w">    </span><span class="nt">branches</span><span class="p">:</span><span class="w"></span>
-<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">master</span><span class="w"> </span>
-<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">main</span><span class="w"></span>
-<span class="nt">jobs</span><span class="p">:</span><span class="w"></span>
-<span class="w">  </span><span class="nt">deploy</span><span class="p">:</span><span class="w"></span>
-<span class="w">    </span><span class="nt">runs-on</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ubuntu-latest</span><span class="w"></span>
-<span class="w">    </span><span class="nt">steps</span><span class="p">:</span><span class="w"></span>
-<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">uses</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">actions/checkout@v2</span><span class="w"></span>
-<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">uses</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">actions/setup-python@v2</span><span class="w"></span>
-<span class="w">        </span><span class="nt">with</span><span class="p">:</span><span class="w"></span>
-<span class="w">          </span><span class="nt">python-version</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">3.x</span><span class="w"></span>
-<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">run</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">pip install mkdocs-material</span><span class="w"> </span>
-<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">run</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">mkdocs gh-deploy --force</span><span class="w"></span>
+<ul>
+<li>你的 <code>80</code> 端口已经被 <code>nginx</code>（或者其他服务）占用了：</li>
+</ul>
+<div class="highlight"><pre><span></span><code>certbot certonly --nginx -d example.com -d www.example.com -d another.example.com
 </code></pre></div>
-</td></tr></table>
-<div class="admonition 注意有坑 attention">
-<p class="admonition-title">注意有坑</p>
-<p>首先他这个流程，很明显只用 <code>pip</code> 安装了 <code>mkdocs-material</code>，但是它并没有安装 <code>mkdocs</code>。其实这无所谓，因为 <code>mkdocs-material</code> 的 <code>requirements.txt</code> 中已经包含了 <code>mkdocs</code>，会一并安装。<br />
-重点的地方是，如果你在本地构建的时候依赖了其他的库（比如 <code>mkdocs-blogging-plugin</code>），那你得在 <code>run:</code> 中通过 <code>pip install</code> 安装这些库。</p>
-</div>
-<div class="admonition 注意有坑 attention">
-<p class="admonition-title">注意有坑</p>
-<p>坑还没完，如果你和我一样是 <code>mkdocs-blogging-plugin</code> 的使用者，你还会遇到网站的渲染问题，这里官网也给了解决方案。<br />
-<a href="https://liang2kl.codes/mkdocs-blogging-plugin/#publish-with-github-pages">https://liang2kl.codes/mkdocs-blogging-plugin/#publish-with-github-pages</a><br />
-注意，请不要跟随官网那篇文档里所说的设定 <code>locale: zh-CN</code> 这个键，后面会说到原因。</p>
-</div>
-<p>最终我的 <code>main.yml</code>（后来重命名成 <code>ci.yml</code> 了）长这样：</p>
-<table class="highlighttable"><tr><th colspan="2" class="filename"><div class="highlight"><span class="filename">main.yml</span></div></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
-<span class="normal"> 2</span>
-<span class="normal"> 3</span>
-<span class="normal"> 4</span>
-<span class="normal"> 5</span>
-<span class="normal"> 6</span>
-<span class="normal"> 7</span>
-<span class="normal"> 8</span>
-<span class="normal"> 9</span>
-<span class="normal">10</span>
-<span class="normal">11</span>
-<span class="normal">12</span>
-<span class="normal">13</span>
-<span class="normal">14</span>
-<span class="normal">15</span>
-<span class="normal">16</span>
-<span class="normal">17</span>
-<span class="normal">18</span>
-<span class="normal">19</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ci</span><span class="w"> </span>
-<span class="nt">on</span><span class="p">:</span><span class="w"></span>
-<span class="w">  </span><span class="nt">push</span><span class="p">:</span><span class="w"></span>
-<span class="w">    </span><span class="nt">branches</span><span class="p">:</span><span class="w"></span>
-<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">master</span><span class="w"> </span>
-<span class="nt">jobs</span><span class="p">:</span><span class="w"></span>
-<span class="w">  </span><span class="nt">deploy</span><span class="p">:</span><span class="w"></span>
-<span class="w">    </span><span class="nt">runs-on</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ubuntu-latest</span><span class="w"></span>
-<span class="w">    </span><span class="nt">steps</span><span class="p">:</span><span class="w"></span>
-<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">uses</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">actions/checkout@v2</span><span class="w"></span>
-<span class="hll"><span class="w">        </span><span class="nt">with</span><span class="p">:</span><span class="w">  </span><span class="c1"># mkdocs-blogging-plugin 给出的渲染问题解决方案</span><span class="w"></span>
-</span><span class="hll"><span class="w">          </span><span class="nt">fetch-depth</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0</span><span class="w"></span>
-</span><span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">uses</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">actions/setup-python@v2</span><span class="w"></span>
-<span class="w">        </span><span class="nt">with</span><span class="p">:</span><span class="w"></span>
-<span class="w">          </span><span class="nt">python-version</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">3.x</span><span class="w"></span>
-<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">run</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">pip install mkdocs</span><span class="w"></span>
-<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">run</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">pip install mkdocs-material</span><span class="w"></span>
-<span class="hll"><span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">run</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">pip install mkdocs-blogging-plugin</span><span class="w">  </span><span class="c1"># 记得安装其他依赖的库</span><span class="w"></span>
-</span><span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">run</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">mkdocs gh-deploy --force</span><span class="w"></span>
+<ul>
+<li>你的 <code>80</code> 端口没有被任何服务占用：</li>
+</ul>
+<div class="highlight"><pre><span></span><code>certbot certonly --standalone -d example.com -d www.example.com -d another.example.com
 </code></pre></div>
-</td></tr></table>
-<p>这个时候你就可以在 Actions 页面点 <code>Start commit</code> 了。只要你的本地部署可以通过，在 Actions 上应该也是可以通过的。</p>
-<p>如果 Actions 的 <code>build</code> 或者 <code>deploy</code> 阶段出现了问题，说明可能是那几个 <code>run</code> 里出现了错误，那你应该在本地试一下：</p>
+<h2 id="_3">申请泛域名证书（也叫通配符证书）</h2>
+<p>比较麻烦，需要在 DNS 服务提供商处设置 <code>TXT</code> 记录。并且<strong>只能</strong>通过这个方式来续期。</p>
+<div class="highlight"><pre><span></span><code>certbot certonly -d <span class="s2">&quot;*.example.com&quot;</span> -d <span class="s2">&quot;example.com&quot;</span> --manual --preferred-challenges dns --server https://acme-v02.api.letsencrypt.org/directory
+</code></pre></div>
+<p>执行之后会交给你一个或两个设置 <code>TXT</code> 记录的任务。去你的 DNS 服务提供商处设置好即可。</p>
+<h2 id="_4">查看自动续期的计划任务</h2>
+<div class="highlight"><pre><span></span><code>systemctl list-timers
+</code></pre></div>
+<h2 id="_5">手动为证书续期</h2>
 <ul>
-<li>是不是有包忘了 <code>pip install</code> ？</li>
-<li>本地能正常 <code>mkdocs build</code> 嘛？</li>
+<li>不加任何参数，没有临近到期时间的话会停止执行</li>
 </ul>
-<p>之前遇到了一个典型的问题导致 build 失败：</p>
-<div class="admonition 注意有坑 attention">
-<p class="admonition-title">注意有坑</p>
-<p><code>mkdocs-blogging-plugin</code> 的官网 <a href="https://liang2kl.codes/mkdocs-blogging-plugin/#publish-with-github-pages">文档</a> 里说，要在 <code>blogging</code> 里建一个 <code>locale: zh-CN</code> 来设置时间格式，但是实际这样做会报错：<code>ValueError: expected only letters, got 'zh-cn'</code>，<br />
-解决方法：不要写 <code>locale: zh-CN</code>，要写 <code>locale: zh_CN</code> 或者干脆写 <code>locale: zh</code></p>
-<table class="highlighttable"><tr><th colspan="2" class="filename"><div class="highlight"><span class="filename">mkdocs.yml</span></div></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
-<span class="normal">2</span>
-<span class="normal">3</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="nt">plugins</span><span class="p">:</span><span class="w"></span>
-<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">blogging</span><span class="p">:</span><span class="w"></span>
-<span class="hll"><span class="w">      </span><span class="nt">locale</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">zh_CN</span><span class="w"></span>
-</span></code></pre></div>
-</td></tr></table>
-</div>
-<p>坑还没结束，继续往下看</p>
-<h2 id="pages">设置 Pages</h2>
-<p>你以为这样就结束了？</p>
-<p>还没有！</p>
-<p>Actions 结束后会给你一个页面（当然也可以自己去找），你点开这个页面会直接告诉你 <code>404</code>。</p>
-<p>这是因为你还没有为 Pages 指定具体的页面。</p>
-<div class="admonition 小提示">
-<p class="admonition-title">小提示</p>
-<p>这里简单说一下，很多人认为 <code>Actions</code> 和 <code>Pages</code> 是一个东西，因为很多人经常用这俩一起来部署页面。但是其实这俩的功能是各有分工。<br />
- - <code>Actions</code> 的主要功能是编译，就是你指定一个环境，给出一些编译中要执行的命令行，然后给出你的源代码（这里的源代码 GitHub 会自动从你的 repo 里获取所以不用管），GitHub Actions 就会从源代码里编译出对应的静态文件，这些静态文件可能是各种文件，比如二进制文件，或者是网页。<br />
- - <code>Pages</code> 的主要功能是在 <code>&lt;user&gt;.github.io</code> 上部署网页。</p>
-</div>
-<p>Actions 毕竟只是 Actions，他又不是和 Pages 联动的，所以你就算 Actions 编译出了网页也是不会给你自动部署到 Pages 上的。</p>
-<p>接下来手动设置 Pages：</p>
-<pre class="mermaid"><code>graph LR
-  A[打开你的项目仓库] --&gt; B;
-  B[Settings] --&gt; C;
-  C[Pages] --&gt; D[Source];</code></pre>
-<p>选择分支为 <code>gh-pages</code>，这是 Actions 自动构建的文件所存放的分支，目录选择 <code>/</code>。</p>
-<p>点 <code>save</code>，这下是真没问题了。</p>
-<h2 id="_2">（可选）使用自定义域名</h2>
-<p>使用自定义域名又会带来两个坑，无语。</p>
-<p>首先你在设置 <code>Source</code> 的时候，能看到下面一栏是 <code>Custom domain</code>，这个就是设置自定义域名的地方，比如我这个博客构建在了 <a href="https://zhanbao2000.github.io/blog">https://zhanbao2000.github.io/blog</a> ，但是我想让 <a href="https://blog.arisa.moe/">https://blog.arisa.moe/</a> 指向这个博客，就得修改这玩意。</p>
-<div class="admonition 小提示">
-<p class="admonition-title">小提示</p>
-<p>现在访问 <a href="https://zhanbao2000.github.io/blog">https://zhanbao2000.github.io/blog</a> 会被 <code>301</code> 重定向到 <a href="https://blog.arisa.moe/">https://blog.arisa.moe/</a></p>
-</div>
-<p>直接在框框里写你的域名肯定是不行的，应该遵循以下步骤，以本站为例：</p>
-<ol>
-<li>
-<p>找到你域名的 DNS 服务商，添加一个 CNAME 记录：
-    <div class="highlight"><pre><span></span><code>blog.arisa.moe. 1   IN  CNAME   zhanbao2000.github.io.
-</code></pre></div></p>
-</li>
-<li>
-<p>在刚刚那个框里输入 <code>blog.arisa.moe</code>，点 <code>save</code>。</p>
-</li>
-</ol>
-<p>过一会就好了。</p>
-<p>你以为这样就完了？</p>
-<div class="admonition 注意有坑 attention">
-<p class="admonition-title">注意有坑</p>
-<p>如果你以为这样就完了，等你下次再通过 <code>git push</code> 提交文档/博客的时候，你就会发现你的自定义域名已经变成 <code>404</code> 了。<br />
-此时你打开 GitHub 对应仓库的 Settings 一看，好家伙，框框里什么都没有了。</p>
-</div>
-<p>先说解决方法再说原因。</p>
-<p>解决方法是，在 <code>docs</code> 文件夹里创建一个 <code>CNAME</code> 文件，内容写上你的自定义域名，下次 Actions 运行的时候，Pages 就会自动把这个域名设置成自定义域名了。</p>
-<p>参考以下：</p>
+<div class="highlight"><pre><span></span><code>certbot renew
+</code></pre></div>
 <ul>
-<li><a href="https://github.com/tschaub/gh-pages/issues/213">Deploying seems to overwrite custom domain #213</a></li>
-<li><a href="https://github.com/tschaub/gh-pages/issues/127">gh-pages -d dist overwrites custom domain #127</a></li>
-<li><a href="https://www.mkdocs.org/user-guide/deploying-your-docs/#custom-domains">MkDocs - Custom Domains</a> 👉 其实 MkDocs 官网有写</li>
+<li>测试续期，不会真的续期</li>
 </ul>
-<p>这些 issues 无一例外都提到了要创建一个 <code>CNAME</code> 文件来指示自己的自定义域名。但是距离 issue 提出好像已经过了5年了也没见到 GitHub 官方修复这个问题。</p>
-<p>我自己推测的原因是这样的：</p>
-<p>在 Pages 页面设置自定义域名的时候，实际上是在项目生成目录里自动创建了一个 <code>CNAME</code> 文件的，和我们手动创建的效果一样。但是在 Actions 运作的时候，会覆盖掉整个项目生成目录，包括这个 <code>CNAME</code> 文件。</p>
-<p>那么就有两个办法来解决：</p>
+<div class="highlight"><pre><span></span><code>certbot renew --dry-run
+</code></pre></div>
 <ul>
-<li>每次 Actions 结束之后，手动去 Pages 页面添加自定义域名。</li>
-<li>让 Actions 结束之后，项目生成目录里始终有这个 <code>CNAME</code> 文件。</li>
+<li>强制续期</li>
 </ul>
-<p>于是我们选择了后者。</p>
+<div class="highlight"><pre><span></span><code>certbot renew --force-renewal
+</code></pre></div>
+<h2 id="_6">为证书续期（泛域名）</h2>
+<p>泛域名证书不能通过 <code>certbot renew</code> 来续期，需要手动续期。否则会报错。</p>
+<p>原因很简单，就是你在申请泛域名证书的时候在 DNS 服务商那里添加的 <code>TXT</code> 记录，这是一个会变化的值。</p>
+<p>续期方法和申请方法一模一样，相当于重新申请一次。</p>
+<div class="highlight"><pre><span></span><code>certbot certonly -d <span class="s2">&quot;*.example.com&quot;</span> -d <span class="s2">&quot;example.com&quot;</span> --manual --preferred-challenges dns --server https://acme-v02.api.letsencrypt.org/directory
+</code></pre></div>
+<p>中途同样需要修改 DNS 的 <code>TXT</code> 记录这样的操作。有人可能会觉得很麻烦，麻烦你就去写个脚本啊。</p>
+<p>事实上 certbot 的报错也说得很清楚了，他的意思就是要我们去写个脚本：</p>
+<blockquote>
+<p>An <strong>authentication script</strong> must be provided with --manual-auth-hook when using the manual plugin non-interactively.</p>
+</blockquote>
+<p>网上有各个版本的脚本，大概原理都是通过你 DNS 服务商提供的 Token，在服务器上直接修改 DNS 的 <code>TXT</code> 记录。一搜一大堆。</p>
+<h2 id="_7">吊销（撤销）证书</h2>
+<p>这里直接引用 <a href="https://letsencrypt.org/zh-cn/docs/revoking/">Let's Encrypt 官网</a></p>
+<ul>
+<li>用颁发证书的账户吊销证书</li>
+</ul>
+<div class="highlight"><pre><span></span><code>certbot revoke --cert-path /etc/letsencrypt/archive/<span class="si">${</span><span class="nv">YOUR_DOMAIN</span><span class="si">}</span>/cert1.pem
+</code></pre></div>
+<ul>
+<li>使用证书私钥吊销证书</li>
+</ul>
+<div class="highlight"><pre><span></span><code>certbot revoke --cert-path /PATH/TO/cert.pem --key-path /PATH/TO/key.pem
+</code></pre></div>
+<ul>
+<li>使用其他授权帐户吊销证书</li>
+</ul>
+<p>先从 <a href="https://crt.sh/">crt.sh</a> 中下载证书，然后：</p>
+<div class="highlight"><pre><span></span><code>certbot revoke --cert-path /PATH/TO/downloaded-cert.pem
+</code></pre></div>
+<h2 id="_8">删除证书</h2>
+<div class="highlight"><pre><span></span><code>certbot delete 
+</code></pre></div>
 
     <!-- Last update of source file -->
     
@@ -918,7 +796,7 @@ mkdocs serve --dev-addr localhost:8001
     <nav class="md-footer__inner md-grid" aria-label="页脚">
       
         
-        <a href="../220407-certbot/" class="md-footer__link md-footer__link--prev" aria-label="上一页: certbot 常用操作" rel="prev">
+        <a href="../220406-venv-move-file/" class="md-footer__link md-footer__link--prev" aria-label="上一页: 移动 python 项目文件夹位置后如何解决 PyCharm 找不到解释器与无法正常使用终端的问题" rel="prev">
           <div class="md-footer__button md-icon">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
           </div>
@@ -927,11 +805,26 @@ mkdocs serve --dev-addr localhost:8001
               <span class="md-footer__direction">
                 上一页
               </span>
-              certbot 常用操作
+              移动 python 项目文件夹位置后如何解决 PyCharm 找不到解释器与无法正常使用终端的问题
             </div>
           </div>
         </a>
       
+      
+        
+        <a href="../220407-github-pages/" class="md-footer__link md-footer__link--next" aria-label="下一页: GitHub Pages 文档自动化部署 - MkDocs" rel="next">
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                下一页
+              </span>
+              GitHub Pages 文档自动化部署 - MkDocs
+            </div>
+          </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
+          </div>
+        </a>
       
     </nav>
   
