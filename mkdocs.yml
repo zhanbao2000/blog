@@ -33,7 +33,7 @@ extra_css:
 plugins:
   - search
   - blogging:
-      locale: zh-CN
+      locale: 'zh_CN'
       dirs:
         - blog
       features:
