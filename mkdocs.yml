@@ -1,7 +1,7 @@
 site_name: Arisa | Blog
 site_description: Arisa 的个人博客
 site_author: Akiba Arisa
-site_url: https://blog.arisa.moe/
+site_url: https://zhanbao2000.github.io/blog/
 
 theme:
   name: material
