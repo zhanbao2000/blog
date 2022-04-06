@@ -58,4 +58,4 @@ aw 的建议是用 `socat` (Linux server) 或者 `netsh` (Windows server)
 load_module /usr/lib/nginx/modules/ngx_stream_module.so;
 ```
 
-如此一来边能正常使用 stream 模块。
+如此一来便能正常使用 stream 模块。
