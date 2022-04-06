@@ -1,7 +1,7 @@
 ---
 author: Akiba Arisa
 author_gh_user: zhanbao2000
-read_time: 5 min
+read_time: 2 min
 publish_date: 2022-04-06 17:55
 tags:
     - nginx
@@ -46,7 +46,7 @@ aw 的建议是用 `socat` (Linux server) 或者 `netsh` (Windows server)
 
 这个方法实属过于麻烦，还要重装 nginx。
 
-### 解决方案
+## 解决方案
 
 从这篇文章了解到了不用重新编译也能支持 stream 模块的方法：
 
