@@ -426,18 +426,12 @@
     初次尝试
   </a>
   
-    <nav class="md-nav" aria-label="初次尝试">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
+</li>
+      
+        <li class="md-nav__item">
   <a href="#_3" class="md-nav__link">
     解决方案
   </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
       
@@ -555,18 +549,12 @@
     初次尝试
   </a>
   
-    <nav class="md-nav" aria-label="初次尝试">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
+</li>
+      
+        <li class="md-nav__item">
   <a href="#_3" class="md-nav__link">
     解决方案
   </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
       
@@ -610,7 +598,7 @@ as the main headline.
             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-clock" viewBox="0 0 16 16">
                 <path d="M8 3.5a.5.5 0 0 0-1 0V9a.5.5 0 0 0 .252.434l3.5 2a.5.5 0 0 0 .496-.868L8 8.71V3.5z"/>
                 <path d="M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16zm7-8A7 7 0 1 1 1 8a7 7 0 0 1 14 0z"/>
-            </svg> 5 min read
+            </svg> 2 min read
         </span>
         </p>
     </aside>
@@ -652,7 +640,7 @@ as the main headline.
 </code></pre></div>
 <p><a href="http://nginx.org/en/docs/stream/ngx_stream_core_module.html">官网的说法</a></p>
 <p>这个方法实属过于麻烦，还要重装 nginx。</p>
-<h3 id="_3">解决方案</h3>
+<h2 id="_3">解决方案</h2>
 <p>从这篇文章了解到了不用重新编译也能支持 stream 模块的方法：</p>
 <p><a href="https://serverfault.com/questions/858067/unknown-directive-stream-in-etc-nginx-nginx-conf86">unknown directive "stream" in /etc/nginx/nginx.conf:86 - Server Fault</a></p>
 <p>简单来说就是，即使我们没有在编译时指定 <code>--with-stream</code> 选项，nginx 也会将 stream 模块编译进来，但是并没有让 nginx 默认支持，而是需要我们自行导入，即：</p>
