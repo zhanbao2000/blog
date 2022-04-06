@@ -187,11 +187,11 @@ graph LR
 
 使用自定义域名又会带来两个坑，无语。
 
-首先你在设置 `Source` 的时候，能看到下面一栏是 `Custom domain`，这个就是设置自定义域名的地方，比如我这个博客构建在了 https://zhanbao2000.github.io/blog_mkdocs ，但是我想让 https://blog.arisa.moe/ 指向这个博客，就得修改这玩意。
+首先你在设置 `Source` 的时候，能看到下面一栏是 `Custom domain`，这个就是设置自定义域名的地方，比如我这个博客构建在了 https://zhanbao2000.github.io/blog ，但是我想让 https://blog.arisa.moe/ 指向这个博客，就得修改这玩意。
 
 !!! 小提示
 
-    现在访问 https://zhanbao2000.github.io/blog_mkdocs 会被 `301` 重定向到 https://blog.arisa.moe/
+    现在访问 https://zhanbao2000.github.io/blog 会被 `301` 重定向到 https://blog.arisa.moe/
 
 直接在框框里写你的域名肯定是不行的，应该遵循以下步骤，以本站为例：
 
