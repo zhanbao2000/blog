@@ -1,0 +1,53 @@
+site_name: Arisa | Blog
+site_description: Arisa 的个人博客
+site_author: Akiba Arisa
+site_url: https://blog.arisa.moe/
+
+theme:
+  name: material
+  custom_dir: overrides
+  palette:
+    - scheme: default
+      toggle:
+        icon: material/weather-sunny
+        name: 进入夜间模式
+    - scheme: slate
+      toggle:
+        icon: material/weather-night
+        name: 进入日间模式
+  language: 'zh'
+  features:
+    - navigation.tabs
+    - navigation.top
+    - navigation.tracking
+
+extra:
+  social:
+    - icon: fontawesome/brands/github
+      link: https://github.com/zhanbao2000
+      name: AkibaArisa on GitHub
+
+extra_css:
+  - stylesheets/custom.css
+
+plugins:
+  - search
+  - blogging:
+      dirs:
+        - blog
+      features:
+        tags: {}
+      theme:
+        name: card
+        time_format: '%Y-%m-%d %H:%M:%S'
+        meta_time_format: '%Y-%m-%d %H:%M:%S'
+
+markdown_extensions:
+  - admonition
+  - pymdownx.magiclink
+  - pymdownx.superfences
+  - pymdownx.highlight
+  - pymdownx.tabbed:
+      alternate_style: true
+
+copyright: 'Copyright &copy; 2023 Akiba Arisa'
