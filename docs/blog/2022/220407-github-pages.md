@@ -2,7 +2,6 @@
 author: Akiba Arisa
 author_gh_user: zhanbao2000
 read_time: 16 min
-publish_date: 2022-04-07 00:24
 tags:
     - github actions
     - github pages

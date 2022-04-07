@@ -2,7 +2,6 @@
 author: Akiba Arisa
 author_gh_user: zhanbao2000
 read_time: 4 min
-publish_date: 2022-04-06 19:46
 tags:
     - python
     - pip
