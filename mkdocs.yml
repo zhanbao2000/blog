@@ -51,6 +51,9 @@ plugins:
         name: card
         time_format: '%Y-%m-%d %H:%M:%S'
         meta_time_format: '%Y-%m-%d %H:%M:%S'
+  - git-revision-date-localized:
+      enable_creation_date: true
+      type: iso_datetime
 
 markdown_extensions:
   - admonition
