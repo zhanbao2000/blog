@@ -551,55 +551,22 @@ as the main headline.
     <!-- Last update of source file -->
     
         
+            <hr>
+<div class="md-source-file">
+  <small>
     
-
+      最后更新:
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_datetime">2022-04-06 16:25:14</span>
+      
+        <br>
+        创建日期:
+        <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_datetime">2022-04-06 09:51:16</span>
+      
     
-
-        <!-- Giscus -->
-        <h2 id="__comments">评论</h2>
-        <script src="https://giscus.app/client.js"
-                data-repo="zhanbao2000/blog"
-                data-repo-id="R_kgDOHIZK7A"
-                data-category="Announcements"
-                data-category-id="DIC_kwDOHIZK7M4COdSe"
-                data-mapping="pathname"
-                data-reactions-enabled="1"
-                data-emit-metadata="0"
-                data-input-position="top"
-                data-theme="light"
-                data-lang="zh-CN"
-                data-loading="lazy"
-                crossorigin="anonymous"
-                async>
-        </script>
-
-        <!-- Reload on palette change -->
-        <script>
-            const palette = __md_get("__palette");
-            if (palette && typeof palette.color === "object")
-                if (palette.color.scheme === "slate") {
-                    const giscus = document.querySelector("script[src*=giscus]");
-                    giscus.setAttribute("data-theme", "dark")
-                }
-
-            /* Register event handlers after documented loaded */
-            document.addEventListener("DOMContentLoaded", function() {
-                const ref = document.querySelector("[data-md-component=palette]");
-                ref.addEventListener("change", function() {
-                    const palette = __md_get("__palette");
-                    if (palette && typeof palette.color === "object") {
-                        const theme = palette.color.scheme === "slate" ? "dark" : "light";
-
-                        /* Instruct Giscus to change theme */
-                        const frame = document.querySelector(".giscus-frame");
-                        frame.contentWindow.postMessage(
-                            { giscus: { setConfig: { theme } } },
-                            "https://giscus.app"
-                        )
-                    }
-                })
-            })
-        </script>
+  </small>
+</div>
+        
+    
 
     
 
