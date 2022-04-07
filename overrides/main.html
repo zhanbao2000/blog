@@ -54,7 +54,7 @@ as the main headline.
         {% endif %}
     {% endif %}
 
-    {% block comment %}
+    {% if page and page.meta and not page.meta.hide %}
 
         <!-- Giscus -->
         <h2 id="__comments">{{ lang.t("meta.comments") }}</h2>
@@ -102,6 +102,6 @@ as the main headline.
             })
         </script>
 
-    {% endblock %}
+    {% endif %}
 
 {% endblock %}
