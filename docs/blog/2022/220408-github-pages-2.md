@@ -170,11 +170,15 @@ jobs:
         CNAME: docs-mokabot.arisa.moe
 ```
 
+但是先不要提交，设置好密钥之后再提交，这个密钥是提供给 `vuepress-deploy` 应用来使用的。
+
 ## 设置密钥
 
 这一步必不可少，不然即使 Actions 可以生成，但是 `vuepress-deploy` 没法部署到你的 `gh-pages` 分支里。
 
 看这个 [文档](https://github.com/jenkey2011/vuepress-deploy/blob/master/README.zh-CN.md#%E8%AF%A6%E7%BB%86%E6%95%99%E7%A8%8B) 就行。
+
+设置好密钥之后就可以提交那个 `yml` 文件了。
 
 ## 完成
 
