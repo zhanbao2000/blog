@@ -57,13 +57,14 @@ plugins:
 
 markdown_extensions:
   - admonition
+  - pymdownx.highlight
+  - pymdownx.inlinehilite
   - pymdownx.magiclink
   - pymdownx.superfences:
       custom_fences:
         - name: mermaid
           class: mermaid
           format: !!python/name:pymdownx.superfences.fence_code_format
-  - pymdownx.highlight
   - pymdownx.tabbed:
       alternate_style: true
 

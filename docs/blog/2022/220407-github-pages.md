@@ -75,7 +75,7 @@ graph LR
 
 在 `2022年4月6日` 的时候我从这里找到的模板是这样的，随着时间的推移可能会有变更，建议从原文档去复制。
 
-```yaml title="main.yml" linenums="1"
+```yaml title="main.yml（请勿直接使用）" linenums="1"
 name: ci 
 on:
   push:
