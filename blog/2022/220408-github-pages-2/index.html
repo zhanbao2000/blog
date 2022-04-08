@@ -12,14 +12,14 @@
         <meta name="author" content="Akiba Arisa">
       
       
-        <link rel="canonical" href="https://blog.arisa.moe/blog/2022/220407-certbot/">
+        <link rel="canonical" href="https://blog.arisa.moe/blog/2022/220408-github-pages-2/">
       
       <link rel="icon" href="../../../assets/images/favicon.png">
       <meta name="generator" content="mkdocs-1.3.0, mkdocs-material-8.2.8">
     
     
       
-        <title>certbot 常用操作 - Arisa | Blog</title>
+        <title>GitHub Pages 文档自动化部署 - VuePress - Arisa | Blog</title>
       
     
     
@@ -104,7 +104,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              certbot 常用操作
+              GitHub Pages 文档自动化部署 - VuePress
             
           </span>
         </div>
@@ -449,97 +449,11 @@
               
   
   
-    
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
-      
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          certbot 常用操作
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../220407-certbot/" class="md-nav__link">
         certbot 常用操作
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="目录">
-  
-  
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      目录
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#_1" class="md-nav__link">
-    安装
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_2" class="md-nav__link">
-    申请多个域名证书
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_3" class="md-nav__link">
-    申请泛域名证书（也叫通配符证书）
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_4" class="md-nav__link">
-    查看自动续期的计划任务
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_5" class="md-nav__link">
-    手动为证书续期
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_6" class="md-nav__link">
-    为证书续期（泛域名）
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_7" class="md-nav__link">
-    吊销（撤销）证书
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_8" class="md-nav__link">
-    删除证书
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -563,11 +477,69 @@
               
   
   
+    
   
-    <li class="md-nav__item">
-      <a href="../220408-github-pages-2/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          GitHub Pages 文档自动化部署 - VuePress
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         GitHub Pages 文档自动化部署 - VuePress
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    本地部署测试
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#github-actions" class="md-nav__link">
+    在 GitHub 上创建 Actions 任务
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    设置密钥
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    完成
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -612,56 +584,28 @@
       
         <li class="md-nav__item">
   <a href="#_1" class="md-nav__link">
-    安装
+    本地部署测试
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#github-actions" class="md-nav__link">
+    在 GitHub 上创建 Actions 任务
   </a>
   
 </li>
       
         <li class="md-nav__item">
   <a href="#_2" class="md-nav__link">
-    申请多个域名证书
+    设置密钥
   </a>
   
 </li>
       
         <li class="md-nav__item">
   <a href="#_3" class="md-nav__link">
-    申请泛域名证书（也叫通配符证书）
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_4" class="md-nav__link">
-    查看自动续期的计划任务
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_5" class="md-nav__link">
-    手动为证书续期
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_6" class="md-nav__link">
-    为证书续期（泛域名）
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_7" class="md-nav__link">
-    吊销（撤销）证书
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_8" class="md-nav__link">
-    删除证书
+    完成
   </a>
   
 </li>
@@ -684,7 +628,7 @@ doesn't, the page title (or respectively site name) is used
 as the main headline.
 -->
 
-    <h1>certbot 常用操作</h1>
+    <h1>GitHub Pages 文档自动化部署 - VuePress</h1>
 
 
 <!-- Markdown content -->
@@ -703,7 +647,7 @@ as the main headline.
                     <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" fill="currentColor" class="bi bi-clock" viewBox="0 0 16 16">
                         <path d="M8 3.5a.5.5 0 0 0-1 0V9a.5.5 0 0 0 .252.434l3.5 2a.5.5 0 0 0 .496-.868L8 8.71V3.5z"/>
                         <path d="M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16zm7-8A7 7 0 1 1 1 8a7 7 0 0 1 14 0z"/>
-                    </svg> 8 min read
+                    </svg> 15 min read
                 </span>
             </p>
         </aside>
@@ -713,97 +657,255 @@ as the main headline.
     
         <div class="tags">
         
-            <a href="/blog/tags/#ssl" class="tag"><code>#ssl</code></a>
+            <a href="/blog/tags/#github actions" class="tag"><code>#github actions</code></a>
         
-            <a href="/blog/tags/#letsencrypt" class="tag"><code>#letsencrypt</code></a>
+            <a href="/blog/tags/#github pages" class="tag"><code>#github pages</code></a>
         
-            <a href="/blog/tags/#certbot" class="tag"><code>#certbot</code></a>
+            <a href="/blog/tags/#vuepress" class="tag"><code>#vuepress</code></a>
         
         </div>
     
 
-    <h2 id="_1">安装</h2>
-<p>官网建议用 <code>snap</code> 安装。👉 <a href="https://certbot.eff.org/instructions?ws=other&amp;os=ubuntufocal">https://certbot.eff.org/instructions?ws=other&amp;os=ubuntufocal</a></p>
-<div class="highlight"><pre><span></span><code>sudo snap install core
-sudo snap refresh core
-sudo snap install --classic certbot
-</code></pre></div>
-<h2 id="_2">申请多个域名证书</h2>
-<div class="admonition 警告 danger">
-<p class="admonition-title">警告</p>
-<p>无论你需要申请多少个证书，在申请之前，都请在你的 DNS 提供商处将你所需要申请 SSL 证书的域名解析到你的服务器上。</p>
+    <p>上一篇博客说到了 MkDocs 部署遇到的坑，这篇文章来说说 VuePress 的部署。</p>
+<div class="admonition 注意 attention">
+<p class="admonition-title">注意</p>
+<p>我使用的是 <a href="https://vuepress.vuejs.org/zh/">VuePress v1.x</a>，跨版本出现的坑本人一概不知。</p>
 </div>
-<div class="admonition 提示 tips">
-<p class="admonition-title">提示</p>
-<p>根据你的 <code>80</code> 端口有没有被占用，你需要使用两种模式—— <code>nginx</code> 或者 <code>standalone</code>。</p>
+<h2 id="_1">本地部署测试</h2>
+<p>首先同样是本地部署</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="1:2"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">npm</label><label for="__tabbed_1_2">yarn</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code>npm run docs:build
+</code></pre></div>
 </div>
-<ul>
-<li>你的 <code>80</code> 端口已经被 <code>nginx</code>（或者其他服务）占用了：</li>
-</ul>
-<div class="highlight"><pre><span></span><code>certbot certonly --nginx -d example.com -d www.example.com -d another.example.com
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code>yarn docs:build
 </code></pre></div>
-<ul>
-<li>你的 <code>80</code> 端口没有被任何服务占用：</li>
-</ul>
-<div class="highlight"><pre><span></span><code>certbot certonly --standalone -d example.com -d www.example.com -d another.example.com
+</div>
+</div>
+</div>
+<p>要是本地编译都没法通过，那就别继续了。</p>
+<h2 id="github-actions">在 GitHub 上创建 Actions 任务</h2>
+<p>让我们跳过创建本地 VCS 并和 GitHub 关联的步骤，因为上一篇博客已经说的很明确了，这篇博客我们直接从 <code>yam</code> 文件怎么写开始说起。</p>
+<p>同样是去找官方文档，注意 <code>1.x</code> 和 <code>2.x</code> 的文档有所不同。</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="2:2"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio" /><input id="__tabbed_2_2" name="__tabbed_2" type="radio" /><div class="tabbed-labels"><label for="__tabbed_2_1">1.x</label><label for="__tabbed_2_2">2.x（仅做示范，不标注）</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<table class="highlighttable"><tr><th colspan="2" class="filename"><div class="highlight"><span class="filename">main.yml（请勿直接使用）</span></div></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Build and Deploy</span><span class="w"></span>
+<span class="nt">on</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">push</span><span class="p p-Indicator">]</span><span class="w"></span>
+<span class="nt">jobs</span><span class="p">:</span><span class="w"></span>
+<span class="w">  </span><span class="nt">build-and-deploy</span><span class="p">:</span><span class="w"></span>
+<span class="w">    </span><span class="nt">runs-on</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ubuntu-latest</span><span class="w"></span>
+<span class="w">    </span><span class="nt">steps</span><span class="p">:</span><span class="w"></span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Checkout</span><span class="w"></span>
+<span class="w">      </span><span class="nt">uses</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">actions/checkout@master</span><span class="w"></span>
+
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">vuepress-deploy</span><span class="w"></span>
+<span class="w">      </span><span class="nt">uses</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">jenkey2011/vuepress-deploy@master</span><span class="w"></span>
+<span class="w">      </span><span class="nt">env</span><span class="p">:</span><span class="w"></span>
+<span class="w">        </span><span class="nt">ACCESS_TOKEN</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">${{ secrets.ACCESS_TOKEN }}</span><span class="w"></span>
+<span class="w">        </span><span class="nt">TARGET_REPO</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">username/repo</span><span class="w"></span>
+<span class="hll"><span class="w">        </span><span class="nt">TARGET_BRANCH</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">master</span><span class="w"></span>
+</span><span class="hll"><span class="w">        </span><span class="nt">BUILD_SCRIPT</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">yarn &amp;&amp; yarn build</span><span class="w"></span>
+</span><span class="w">        </span><span class="nt">BUILD_DIR</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">docs/.vuepress/dist</span><span class="w"></span>
+<span class="hll"><span class="w">        </span><span class="nt">CNAME</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://www.xxx.com</span><span class="w"></span>
+</span></code></pre></div>
+</td></tr></table>
+</div>
+<div class="tabbed-block">
+<table class="highlighttable"><tr><th colspan="2" class="filename"><div class="highlight"><span class="filename">main.yml（请勿直接使用）</span></div></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span>
+<span class="normal">22</span>
+<span class="normal">23</span>
+<span class="normal">24</span>
+<span class="normal">25</span>
+<span class="normal">26</span>
+<span class="normal">27</span>
+<span class="normal">28</span>
+<span class="normal">29</span>
+<span class="normal">30</span>
+<span class="normal">31</span>
+<span class="normal">32</span>
+<span class="normal">33</span>
+<span class="normal">34</span>
+<span class="normal">35</span>
+<span class="normal">36</span>
+<span class="normal">37</span>
+<span class="normal">38</span>
+<span class="normal">39</span>
+<span class="normal">40</span>
+<span class="normal">41</span>
+<span class="normal">42</span>
+<span class="normal">43</span>
+<span class="normal">44</span>
+<span class="normal">45</span>
+<span class="normal">46</span>
+<span class="normal">47</span>
+<span class="normal">48</span>
+<span class="normal">49</span>
+<span class="normal">50</span>
+<span class="normal">51</span>
+<span class="normal">52</span>
+<span class="normal">53</span>
+<span class="normal">54</span>
+<span class="normal">55</span>
+<span class="normal">56</span>
+<span class="normal">57</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">docs</span><span class="w"></span>
+
+<span class="nt">on</span><span class="p">:</span><span class="w"></span>
+<span class="w">  </span><span class="c1"># 每当 push 到 main 分支时触发部署</span><span class="w"></span>
+<span class="w">  </span><span class="nt">push</span><span class="p">:</span><span class="w"></span>
+<span class="w">    </span><span class="nt">branches</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">main</span><span class="p p-Indicator">]</span><span class="w"></span>
+<span class="w">  </span><span class="c1"># 手动触发部署</span><span class="w"></span>
+<span class="w">  </span><span class="nt">workflow_dispatch</span><span class="p">:</span><span class="w"></span>
+
+<span class="nt">jobs</span><span class="p">:</span><span class="w"></span>
+<span class="w">  </span><span class="nt">docs</span><span class="p">:</span><span class="w"></span>
+<span class="w">    </span><span class="nt">runs-on</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ubuntu-latest</span><span class="w"></span>
+
+<span class="w">    </span><span class="nt">steps</span><span class="p">:</span><span class="w"></span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">uses</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">actions/checkout@v2</span><span class="w"></span>
+<span class="w">        </span><span class="nt">with</span><span class="p">:</span><span class="w"></span>
+<span class="w">          </span><span class="c1"># “最近更新时间” 等 git 日志相关信息，需要拉取全部提交记录</span><span class="w"></span>
+<span class="w">          </span><span class="nt">fetch-depth</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0</span><span class="w"></span>
+
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Setup Node.js</span><span class="w"></span>
+<span class="w">        </span><span class="nt">uses</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">actions/setup-node@v1</span><span class="w"></span>
+<span class="w">        </span><span class="nt">with</span><span class="p">:</span><span class="w"></span>
+<span class="w">          </span><span class="c1"># 选择要使用的 node 版本</span><span class="w"></span>
+<span class="w">          </span><span class="nt">node-version</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;14&#39;</span><span class="w"></span>
+
+<span class="w">      </span><span class="c1"># 缓存 node_modules</span><span class="w"></span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Cache dependencies</span><span class="w"></span>
+<span class="w">        </span><span class="nt">uses</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">actions/cache@v2</span><span class="w"></span>
+<span class="w">        </span><span class="nt">id</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">yarn-cache</span><span class="w"></span>
+<span class="w">        </span><span class="nt">with</span><span class="p">:</span><span class="w"></span>
+<span class="w">          </span><span class="nt">path</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">|</span><span class="w"></span>
+<span class="w">            </span><span class="no">**/node_modules</span><span class="w"></span>
+<span class="w">          </span><span class="nt">key</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">${{ runner.os }}-yarn-${{ hashFiles(&#39;**/yarn.lock&#39;) }}</span><span class="w"></span>
+<span class="w">          </span><span class="nt">restore-keys</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">|</span><span class="w"></span>
+<span class="w">            </span><span class="no">${{ runner.os }}-yarn-</span><span class="w"></span>
+
+<span class="w">      </span><span class="c1"># 如果缓存没有命中，安装依赖</span><span class="w"></span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Install dependencies</span><span class="w"></span>
+<span class="w">        </span><span class="nt">if</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">steps.yarn-cache.outputs.cache-hit != &#39;true&#39;</span><span class="w"></span>
+<span class="w">        </span><span class="nt">run</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">yarn --frozen-lockfile</span><span class="w"></span>
+
+<span class="w">      </span><span class="c1"># 运行构建脚本</span><span class="w"></span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Build VuePress site</span><span class="w"></span>
+<span class="w">        </span><span class="nt">run</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">yarn docs:build</span><span class="w"></span>
+
+<span class="w">      </span><span class="c1"># 查看 workflow 的文档来获取更多信息</span><span class="w"></span>
+<span class="w">      </span><span class="c1"># @see https://github.com/crazy-max/ghaction-github-pages</span><span class="w"></span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Deploy to GitHub Pages</span><span class="w"></span>
+<span class="w">        </span><span class="nt">uses</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">crazy-max/ghaction-github-pages@v2</span><span class="w"></span>
+<span class="w">        </span><span class="nt">with</span><span class="p">:</span><span class="w"></span>
+<span class="w">          </span><span class="c1"># 部署到 gh-pages 分支</span><span class="w"></span>
+<span class="w">          </span><span class="nt">target_branch</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">gh-pages</span><span class="w"></span>
+<span class="w">          </span><span class="c1"># 部署目录为 VuePress 的默认输出目录</span><span class="w"></span>
+<span class="w">          </span><span class="nt">build_dir</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">docs/.vuepress/dist</span><span class="w"></span>
+<span class="w">        </span><span class="nt">env</span><span class="p">:</span><span class="w"></span>
+<span class="w">          </span><span class="c1"># @see https://docs.github.com/cn/actions/reference/authentication-in-a-workflow#about-the-github_token-secret</span><span class="w"></span>
+<span class="w">          </span><span class="nt">GITHUB_TOKEN</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">${{ secrets.GITHUB_TOKEN }}</span><span class="w"></span>
 </code></pre></div>
-<h2 id="_3">申请泛域名证书（也叫通配符证书）</h2>
-<p>比较麻烦，需要在 DNS 服务提供商处设置 <code>TXT</code> 记录。并且<strong>只能</strong>通过这个方式来续期。</p>
-<div class="highlight"><pre><span></span><code>certbot certonly -d <span class="s2">&quot;*.example.com&quot;</span> -d <span class="s2">&quot;example.com&quot;</span> --manual --preferred-challenges dns --server https://acme-v02.api.letsencrypt.org/directory
+</td></tr></table>
+</div>
+</div>
+</div>
+<div class="admonition 注意有坑 attention">
+<p class="admonition-title">注意有坑</p>
+<p>上面标注的地方，看到没有？全都是坑！<br />
+尤其是第15行这个 <code class="highlight"><span class="nt">TARGET_BRANCH</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">master</span><span class="w"></span></code>，简直是一键删库跑路级别的坑。</p>
+</div>
+<p>首先说下15行这个。</p>
+<p><code>TARGET_BRANCH</code> 的意思是，指定 build 出来的 HTML 页面存放的分支，而不是指定 markdown 文件存放的分支。当初就被这个东西坑了，以为是从 <code>TARGET_BRANCH</code> 这个分支获取 markdown，我就设置的默认的 <code>master</code>，结果他把生成的 HTML 全部给 rebase 到我的 <code>master</code> 分支了。好了，我写的 markdown 被全部覆盖了。</p>
+<p>正确的做法是：<code class="highlight"><span class="nt">TARGET_BRANCH</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">gh-pages</span><span class="w"></span></code></p>
+<p>这样他就会把生成的 HTML 存放到 <code>gh-pages</code> 分支，这也是大多数自动化 Pages 应用（比如 <code>MkDocs</code>）生成的页面所在分支。</p>
+<p>然后是16行这个 <code class="highlight"><span class="nt">BUILD_SCRIPT</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">yarn &amp;&amp; yarn build</span><span class="w"></span></code>。</p>
+<p>你这咋 build？</p>
+<p>改成：<code class="highlight"><span class="nt">BUILD_SCRIPT</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">yarn &amp;&amp; yarn docs:build</span><span class="w"></span></code></p>
+<p>然后是18行这个 <code>CNAME</code>，这个已经在上一篇博客里提到了，就是用来自动设置自定义域名的，这里改成你想要的域名就可以了。没什么大坑。</p>
+<p>最后改一下 <code class="highlight"><span class="nt">TARGET_REPO</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">username/repo</span><span class="w"></span></code>，指向你自己的 repo，这里以我的 <a href="https://github.com/MokaDevelopers/mokabot2">mokabot2</a> 为例。</p>
+<p>最终的成品应该是这样的：</p>
+<table class="highlighttable"><tr><th colspan="2" class="filename"><div class="highlight"><span class="filename">main.yml</span></div></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Build and Deploy</span><span class="w"></span>
+<span class="nt">on</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">push</span><span class="p p-Indicator">]</span><span class="w"></span>
+<span class="nt">jobs</span><span class="p">:</span><span class="w"></span>
+<span class="w">  </span><span class="nt">build-and-deploy</span><span class="p">:</span><span class="w"></span>
+<span class="w">    </span><span class="nt">runs-on</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ubuntu-latest</span><span class="w"></span>
+<span class="w">    </span><span class="nt">steps</span><span class="p">:</span><span class="w"></span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Checkout</span><span class="w"></span>
+<span class="w">      </span><span class="nt">uses</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">actions/checkout@master</span><span class="w"></span>
+
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">vuepress-deploy</span><span class="w"></span>
+<span class="w">      </span><span class="nt">uses</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">jenkey2011/vuepress-deploy@master</span><span class="w"></span>
+<span class="w">      </span><span class="nt">env</span><span class="p">:</span><span class="w"></span>
+<span class="w">        </span><span class="nt">ACCESS_TOKEN</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">${{ secrets.ACCESS_TOKEN }}</span><span class="w"></span>
+<span class="w">        </span><span class="nt">TARGET_REPO</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">MokaDevelopers/mokabot2</span><span class="w"></span>
+<span class="w">        </span><span class="nt">TARGET_BRANCH</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">gh-pages</span><span class="w"></span>
+<span class="w">        </span><span class="nt">BUILD_SCRIPT</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">yarn &amp;&amp; yarn docs:build</span><span class="w"></span>
+<span class="w">        </span><span class="nt">BUILD_DIR</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">docs/.vuepress/dist</span><span class="w"></span>
+<span class="w">        </span><span class="nt">CNAME</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">docs-mokabot.arisa.moe</span><span class="w"></span>
 </code></pre></div>
-<p>执行之后会交给你一个或两个设置 <code>TXT</code> 记录的任务。去你的 DNS 服务提供商处设置好即可。</p>
-<h2 id="_4">查看自动续期的计划任务</h2>
-<div class="highlight"><pre><span></span><code>systemctl list-timers
-</code></pre></div>
-<h2 id="_5">手动为证书续期</h2>
-<ul>
-<li>不加任何参数，没有临近到期时间的话会停止执行</li>
-</ul>
-<div class="highlight"><pre><span></span><code>certbot renew
-</code></pre></div>
-<ul>
-<li>测试续期，不会真的续期</li>
-</ul>
-<div class="highlight"><pre><span></span><code>certbot renew --dry-run
-</code></pre></div>
-<ul>
-<li>强制续期</li>
-</ul>
-<div class="highlight"><pre><span></span><code>certbot renew --force-renewal
-</code></pre></div>
-<h2 id="_6">为证书续期（泛域名）</h2>
-<p>泛域名证书不能通过 <code>certbot renew</code> 来续期，需要手动续期。否则会报错。</p>
-<p>原因很简单，就是你在申请泛域名证书的时候在 DNS 服务商那里添加的 <code>TXT</code> 记录，这是一个会变化的值。</p>
-<p>续期方法和申请方法一模一样，相当于重新申请一次。</p>
-<div class="highlight"><pre><span></span><code>certbot certonly -d <span class="s2">&quot;*.example.com&quot;</span> -d <span class="s2">&quot;example.com&quot;</span> --manual --preferred-challenges dns --server https://acme-v02.api.letsencrypt.org/directory
-</code></pre></div>
-<p>中途同样需要修改 DNS 的 <code>TXT</code> 记录这样的操作。有人可能会觉得很麻烦，麻烦你就去写个脚本啊。</p>
-<p>事实上 certbot 的报错也说得很清楚了，他的意思就是要我们去写个脚本：</p>
-<blockquote>
-<p>An <strong>authentication script</strong> must be provided with --manual-auth-hook when using the manual plugin non-interactively.</p>
-</blockquote>
-<p>网上有各个版本的脚本，大概原理都是通过你 DNS 服务商提供的 Token，在服务器上直接修改 DNS 的 <code>TXT</code> 记录。一搜一大堆。</p>
-<h2 id="_7">吊销（撤销）证书</h2>
-<p>这里直接引用 <a href="https://letsencrypt.org/zh-cn/docs/revoking/">Let's Encrypt 官网</a></p>
-<ul>
-<li>用颁发证书的账户吊销证书</li>
-</ul>
-<div class="highlight"><pre><span></span><code>certbot revoke --cert-path /etc/letsencrypt/archive/<span class="si">${</span><span class="nv">YOUR_DOMAIN</span><span class="si">}</span>/cert1.pem
-</code></pre></div>
-<ul>
-<li>使用证书私钥吊销证书</li>
-</ul>
-<div class="highlight"><pre><span></span><code>certbot revoke --cert-path /PATH/TO/cert.pem --key-path /PATH/TO/key.pem
-</code></pre></div>
-<ul>
-<li>使用其他授权帐户吊销证书</li>
-</ul>
-<p>先从 <a href="https://crt.sh/">crt.sh</a> 中下载证书，然后：</p>
-<div class="highlight"><pre><span></span><code>certbot revoke --cert-path /PATH/TO/downloaded-cert.pem
-</code></pre></div>
-<h2 id="_8">删除证书</h2>
-<div class="highlight"><pre><span></span><code>certbot delete 
-</code></pre></div>
+</td></tr></table>
+<h2 id="_2">设置密钥</h2>
+<p>这一步必不可少，不然即使 Actions 可以生成，但是 <code>vuepress-deploy</code> 没法部署到你的 <code>gh-pages</code> 分支里。</p>
+<p>看这个 <a href="https://github.com/jenkey2011/vuepress-deploy/blob/master/README.zh-CN.md#%E8%AF%A6%E7%BB%86%E6%95%99%E7%A8%8B">文档</a> 就行。</p>
+<h2 id="_3">完成</h2>
+<p>设置完这些之后，就可以正常通过 <code>push</code> 操作触发 Actions 流程自动构建文档了。</p>
 
     <!-- Last update of source file -->
     
@@ -813,11 +915,11 @@ sudo snap install --classic certbot
   <small>
     
       最后更新:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_datetime">2022-04-07 10:44:59</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_datetime">2022-04-08 07:06:43</span>
       
         <br>
         创建日期:
-        <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_datetime">2022-04-06 18:56:35</span>
+        <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_datetime">2022-04-08 07:06:43</span>
       
     
   </small>
@@ -892,7 +994,7 @@ sudo snap install --classic certbot
     <nav class="md-footer__inner md-grid" aria-label="页脚">
       
         
-        <a href="../220406-venv-move-file/" class="md-footer__link md-footer__link--prev" aria-label="上一页: 移动 python 项目文件夹位置后如何解决 PyCharm 找不到解释器与无法正常使用终端的问题" rel="prev">
+        <a href="../220407-github-pages/" class="md-footer__link md-footer__link--prev" aria-label="上一页: GitHub Pages 文档自动化部署 - MkDocs" rel="prev">
           <div class="md-footer__button md-icon">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
           </div>
@@ -901,26 +1003,11 @@ sudo snap install --classic certbot
               <span class="md-footer__direction">
                 上一页
               </span>
-              移动 python 项目文件夹位置后如何解决 PyCharm 找不到解释器与无法正常使用终端的问题
-            </div>
-          </div>
-        </a>
-      
-      
-        
-        <a href="../220407-github-pages/" class="md-footer__link md-footer__link--next" aria-label="下一页: GitHub Pages 文档自动化部署 - MkDocs" rel="next">
-          <div class="md-footer__title">
-            <div class="md-ellipsis">
-              <span class="md-footer__direction">
-                下一页
-              </span>
               GitHub Pages 文档自动化部署 - MkDocs
             </div>
           </div>
-          <div class="md-footer__button md-icon">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
-          </div>
         </a>
+      
       
     </nav>
   
