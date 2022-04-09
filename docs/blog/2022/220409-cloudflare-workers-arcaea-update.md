@@ -1,7 +1,7 @@
 ---
 author: Akiba Arisa
 author_gh_user: zhanbao2000
-read_time: 15 min
+read_time: 5 min
 tags:
     - cloudflare
     - cloudflare-workers
@@ -102,3 +102,7 @@ title: 如何使用 Cloudflare Workers 来搭建 Arcaea 镜像下载服务器
 ### 6. 测试的你的子域
 
 现在打开你的浏览器，输入你的子域，如 `https://dl.example.com/` ，你的浏览器此时应该正确开始下载最新版本的 Arcaea。，
+
+## 许可证
+
+本文档遵循以下许可证：[`616 SB License`](https://github.com/Arcaea-Infinity/616SBLicense)
