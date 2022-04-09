@@ -38,7 +38,7 @@ as the main headline.
     {% if page and page.meta and page.meta.tags %}
         <div class="tags">
         {% for tag in page.meta.tags %}
-            <a href="/blog/tags/#{{ tag }}" class="tag"><code>#{{ tag }}</code></a>
+            <a href="/tags/#{{ tag }}" class="tag"><code>#{{ tag }}</code></a>
         {% endfor %}
         </div>
     {% endif %}
