@@ -12,21 +12,21 @@
         <meta name="author" content="Akiba Arisa">
       
       
-        <link rel="canonical" href="https://blog.arisa.moe/tags/">
+        <link rel="canonical" href="https://blog.arisa.moe/blog/2022/220409-cloudflare-workers-arcaea-update/">
       
-      <link rel="icon" href="../assets/images/favicon.png">
+      <link rel="icon" href="../../../assets/images/favicon.png">
       <meta name="generator" content="mkdocs-1.3.0, mkdocs-material-8.2.9">
     
     
       
-        <title>标签 - Arisa | Blog</title>
+        <title>如何使用 Cloudflare Workers 来搭建 Arcaea 镜像下载服务器 - Arisa | Blog</title>
       
     
     
-      <link rel="stylesheet" href="../assets/stylesheets/main.120efc48.min.css">
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.120efc48.min.css">
       
         
-        <link rel="stylesheet" href="../assets/stylesheets/palette.9647289d.min.css">
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.9647289d.min.css">
         
       
     
@@ -41,9 +41,9 @@
       
     
     
-      <link rel="stylesheet" href="../stylesheets/custom.css">
+      <link rel="stylesheet" href="../../../stylesheets/custom.css">
     
-    <script>__md_scope=new URL("..",location),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    <script>__md_scope=new URL("../../..",location),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
 
@@ -70,6 +70,11 @@
     <label class="md-overlay" for="__drawer"></label>
     <div data-md-component="skip">
       
+        
+        <a href="#_1" class="md-skip">
+          跳转至
+        </a>
+      
     </div>
     <div data-md-component="announce">
       
@@ -80,7 +85,7 @@
 
 <header class="md-header" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="页眉">
-    <a href=".." title="Arisa | Blog" class="md-header__button md-logo" aria-label="Arisa | Blog" data-md-component="logo">
+    <a href="../../.." title="Arisa | Blog" class="md-header__button md-logo" aria-label="Arisa | Blog" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
@@ -99,7 +104,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              标签
+              如何使用 Cloudflare Workers 来搭建 Arcaea 镜像下载服务器
             
           </span>
         </div>
@@ -196,7 +201,7 @@
 
 
   <li class="md-tabs__item">
-    <a href=".." class="md-tabs__link">
+    <a href="../../.." class="md-tabs__link">
       首页
     </a>
   </li>
@@ -205,12 +210,10 @@
         
   
   
-    
-  
 
 
   <li class="md-tabs__item">
-    <a href="./" class="md-tabs__link md-tabs__link--active">
+    <a href="../../../tags/" class="md-tabs__link">
       标签
     </a>
   </li>
@@ -222,7 +225,7 @@
 
 
   <li class="md-tabs__item">
-    <a href="../toc/" class="md-tabs__link">
+    <a href="../../../toc/" class="md-tabs__link">
       目录
     </a>
   </li>
@@ -230,6 +233,8 @@
       
         
   
+  
+    
   
 
 
@@ -242,7 +247,7 @@
   
   
     <li class="md-tabs__item">
-      <a href="../blog/2022/220406-nginx-stream/" class="md-tabs__link">
+      <a href="../220406-nginx-stream/" class="md-tabs__link md-tabs__link--active">
         Blog
       </a>
     </li>
@@ -262,9 +267,7 @@
           
             
               
-                
-              
-              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" hidden>
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
                 <div class="md-sidebar__scrollwrap">
                   <div class="md-sidebar__inner">
                     
@@ -274,7 +277,7 @@
 
 <nav class="md-nav md-nav--primary md-nav--lifted" aria-label="导航栏" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href=".." title="Arisa | Blog" class="md-nav__button md-logo" aria-label="Arisa | Blog" data-md-component="logo">
+    <a href="../../.." title="Arisa | Blog" class="md-nav__button md-logo" aria-label="Arisa | Blog" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
@@ -305,7 +308,7 @@
   
   
     <li class="md-nav__item">
-      <a href=".." class="md-nav__link">
+      <a href="../../.." class="md-nav__link">
         首页
       </a>
     </li>
@@ -318,19 +321,11 @@
 
   
   
-    
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
-      
-      
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../../../tags/" class="md-nav__link">
         标签
       </a>
-      
     </li>
   
 
@@ -343,7 +338,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../toc/" class="md-nav__link">
+      <a href="../../../toc/" class="md-nav__link">
         目录
       </a>
     </li>
@@ -356,12 +351,14 @@
 
   
   
+    
+  
   
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4" type="checkbox" id="__nav_4" >
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4" type="checkbox" id="__nav_4" checked>
       
       
       
@@ -382,12 +379,14 @@
               
   
   
+    
+  
   
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_1" type="checkbox" id="__nav_4_1" >
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_1" type="checkbox" id="__nav_4_1" checked>
       
       
       
@@ -410,7 +409,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../blog/2022/220406-nginx-stream/" class="md-nav__link">
+      <a href="../220406-nginx-stream/" class="md-nav__link">
         nginx 如何设置 stream 转发
       </a>
     </li>
@@ -424,7 +423,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../blog/2022/220406-set-http-proxy/" class="md-nav__link">
+      <a href="../220406-set-http-proxy/" class="md-nav__link">
         解决使用代理后 pip 和 python 无法连接到网络的问题
       </a>
     </li>
@@ -438,7 +437,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../blog/2022/220406-venv-move-file/" class="md-nav__link">
+      <a href="../220406-venv-move-file/" class="md-nav__link">
         移动 python 项目文件夹位置后如何解决 PyCharm 找不到解释器与无法正常使用终端的问题
       </a>
     </li>
@@ -452,7 +451,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../blog/2022/220407-certbot/" class="md-nav__link">
+      <a href="../220407-certbot/" class="md-nav__link">
         certbot 常用操作
       </a>
     </li>
@@ -466,7 +465,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../blog/2022/220407-github-pages/" class="md-nav__link">
+      <a href="../220407-github-pages/" class="md-nav__link">
         GitHub Pages 文档自动化部署 - MkDocs
       </a>
     </li>
@@ -480,7 +479,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../blog/2022/220408-github-pages-2/" class="md-nav__link">
+      <a href="../220408-github-pages-2/" class="md-nav__link">
         GitHub Pages 文档自动化部署 - VuePress
       </a>
     </li>
@@ -492,11 +491,103 @@
               
   
   
+    
   
-    <li class="md-nav__item">
-      <a href="../blog/2022/220409-cloudflare-workers-arcaea-update/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          如何使用 Cloudflare Workers 来搭建 Arcaea 镜像下载服务器
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         如何使用 Cloudflare Workers 来搭建 Arcaea 镜像下载服务器
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    简介
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    部署
+  </a>
+  
+    <nav class="md-nav" aria-label="部署">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-cloudflare-workers" class="md-nav__link">
+    1. 创建一个 Cloudflare Workers 实例
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2" class="md-nav__link">
+    2. 设置该服务
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3" class="md-nav__link">
+    3. 测试服务可用性
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-dns" class="md-nav__link">
+    4. 设置自定义域名的 DNS 记录
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#5" class="md-nav__link">
+    5. 将你的自定义域名的子域设置为该服务的路由:
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#6" class="md-nav__link">
+    6. 测试的你的子域
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -523,8 +614,6 @@
             
             
               
-                
-              
               <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
                 <div class="md-sidebar__scrollwrap">
                   <div class="md-sidebar__inner">
@@ -534,6 +623,76 @@
   
   
   
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    简介
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    部署
+  </a>
+  
+    <nav class="md-nav" aria-label="部署">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-cloudflare-workers" class="md-nav__link">
+    1. 创建一个 Cloudflare Workers 实例
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2" class="md-nav__link">
+    2. 设置该服务
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3" class="md-nav__link">
+    3. 测试服务可用性
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-dns" class="md-nav__link">
+    4. 设置自定义域名的 DNS 记录
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#5" class="md-nav__link">
+    5. 将你的自定义域名的子域设置为该服务的路由:
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#6" class="md-nav__link">
+    6. 测试的你的子域
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
   
 </nav>
                   </div>
@@ -551,374 +710,147 @@ doesn't, the page title (or respectively site name) is used
 as the main headline.
 -->
 
-    <h1>标签</h1>
+    <h1>如何使用 Cloudflare Workers 来搭建 Arcaea 镜像下载服务器</h1>
 
 
 <!-- Markdown content -->
 
     
 
+        <aside class="mdx-author">
+            <p>
+                <img src="https://avatars.githubusercontent.com/zhanbao2000" alt="@zhanbao2000">
+            </p>
+            <p>
+                <span>
+                    <b>Akiba Arisa</b> · <a href="https://github.com/zhanbao2000">@zhanbao2000</a>
+                </span>
+                <span>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" fill="currentColor" class="bi bi-clock" viewBox="0 0 16 16">
+                        <path d="M8 3.5a.5.5 0 0 0-1 0V9a.5.5 0 0 0 .252.434l3.5 2a.5.5 0 0 0 .496-.868L8 8.71V3.5z"/>
+                        <path d="M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16zm7-8A7 7 0 1 1 1 8a7 7 0 0 1 14 0z"/>
+                    </svg> 15 min read
+                </span>
+            </p>
+        </aside>
+
     
 
-    <p>
-
-<div class="blogging-tags-grid">
+    
+        <div class="tags">
         
-        <a href="#nginx" class="blogging-tag"><code>#nginx</code></a>
+            <a href="/blog/tags/#cloudflare" class="tag"><code>#cloudflare</code></a>
         
-        <a href="#arcaea" class="blogging-tag"><code>#arcaea</code></a>
+            <a href="/blog/tags/#cloudflare-workers" class="tag"><code>#cloudflare-workers</code></a>
         
-        <a href="#stream" class="blogging-tag"><code>#stream</code></a>
+            <a href="/blog/tags/#arcaea" class="tag"><code>#arcaea</code></a>
         
-        <a href="#python" class="blogging-tag"><code>#python</code></a>
-        
-        <a href="#pip" class="blogging-tag"><code>#pip</code></a>
-        
-        <a href="#proxy" class="blogging-tag"><code>#proxy</code></a>
-        
-        <a href="#venv" class="blogging-tag"><code>#venv</code></a>
-        
-        <a href="#pycharm" class="blogging-tag"><code>#pycharm</code></a>
-        
-        <a href="#ssl" class="blogging-tag"><code>#ssl</code></a>
-        
-        <a href="#letsencrypt" class="blogging-tag"><code>#letsencrypt</code></a>
-        
-        <a href="#certbot" class="blogging-tag"><code>#certbot</code></a>
-        
-        <a href="#github actions" class="blogging-tag"><code>#github actions</code></a>
-        
-        <a href="#github pages" class="blogging-tag"><code>#github pages</code></a>
-        
-        <a href="#mkdocs" class="blogging-tag"><code>#mkdocs</code></a>
-        
-        <a href="#vuepress" class="blogging-tag"><code>#vuepress</code></a>
-        
-        <a href="#cloudflare" class="blogging-tag"><code>#cloudflare</code></a>
-        
-        <a href="#cloudflare-workers" class="blogging-tag"><code>#cloudflare-workers</code></a>
-        
-    </div>
+        </div>
     
 
-
-
-
-<h3 id="nginx">#nginx</h3>
-    
-        
-            
-            
-        
-        <li>
-            <a href="https://blog.arisa.moe/blog/2022/220406-nginx-stream/">nginx 如何设置 stream 转发</a>
-            &nbsp;&nbsp;
-            <span style="color: var(--md-default-fg-color--light)">
-                2022/4/6 上午9:51
-            </span>
-        </li>
-    
-
-<h3 id="arcaea">#arcaea</h3>
-    
-        
-            
-            
-        
-        <li>
-            <a href="https://blog.arisa.moe/blog/2022/220409-cloudflare-workers-arcaea-update/">如何使用 Cloudflare Workers 来搭建 Arcaea 镜像下载服务器</a>
-            &nbsp;&nbsp;
-            <span style="color: var(--md-default-fg-color--light)">
-                2022/4/9 上午8:52
-            </span>
-        </li>
-    
-        
-            
-            
-        
-        <li>
-            <a href="https://blog.arisa.moe/blog/2022/220406-nginx-stream/">nginx 如何设置 stream 转发</a>
-            &nbsp;&nbsp;
-            <span style="color: var(--md-default-fg-color--light)">
-                2022/4/6 上午9:51
-            </span>
-        </li>
-    
-
-<h3 id="stream">#stream</h3>
-    
-        
-            
-            
-        
-        <li>
-            <a href="https://blog.arisa.moe/blog/2022/220406-nginx-stream/">nginx 如何设置 stream 转发</a>
-            &nbsp;&nbsp;
-            <span style="color: var(--md-default-fg-color--light)">
-                2022/4/6 上午9:51
-            </span>
-        </li>
-    
-
-<h3 id="python">#python</h3>
-    
-        
-            
-            
-        
-        <li>
-            <a href="https://blog.arisa.moe/blog/2022/220406-set-http-proxy/">解决使用代理后 pip 和 python 无法连接到网络的问题</a>
-            &nbsp;&nbsp;
-            <span style="color: var(--md-default-fg-color--light)">
-                2022/4/6 上午11:45
-            </span>
-        </li>
-    
-        
-            
-            
-        
-        <li>
-            <a href="https://blog.arisa.moe/blog/2022/220406-venv-move-file/">移动 python 项目文件夹位置后如何解决 PyCharm 找不到解释器与无法正常使用终端的问题</a>
-            &nbsp;&nbsp;
-            <span style="color: var(--md-default-fg-color--light)">
-                2022/4/6 上午9:51
-            </span>
-        </li>
-    
-
-<h3 id="pip">#pip</h3>
-    
-        
-            
-            
-        
-        <li>
-            <a href="https://blog.arisa.moe/blog/2022/220406-set-http-proxy/">解决使用代理后 pip 和 python 无法连接到网络的问题</a>
-            &nbsp;&nbsp;
-            <span style="color: var(--md-default-fg-color--light)">
-                2022/4/6 上午11:45
-            </span>
-        </li>
-    
-        
-            
-            
-        
-        <li>
-            <a href="https://blog.arisa.moe/blog/2022/220406-venv-move-file/">移动 python 项目文件夹位置后如何解决 PyCharm 找不到解释器与无法正常使用终端的问题</a>
-            &nbsp;&nbsp;
-            <span style="color: var(--md-default-fg-color--light)">
-                2022/4/6 上午9:51
-            </span>
-        </li>
-    
-
-<h3 id="proxy">#proxy</h3>
-    
-        
-            
-            
-        
-        <li>
-            <a href="https://blog.arisa.moe/blog/2022/220406-set-http-proxy/">解决使用代理后 pip 和 python 无法连接到网络的问题</a>
-            &nbsp;&nbsp;
-            <span style="color: var(--md-default-fg-color--light)">
-                2022/4/6 上午11:45
-            </span>
-        </li>
-    
-
-<h3 id="venv">#venv</h3>
-    
-        
-            
-            
-        
-        <li>
-            <a href="https://blog.arisa.moe/blog/2022/220406-venv-move-file/">移动 python 项目文件夹位置后如何解决 PyCharm 找不到解释器与无法正常使用终端的问题</a>
-            &nbsp;&nbsp;
-            <span style="color: var(--md-default-fg-color--light)">
-                2022/4/6 上午9:51
-            </span>
-        </li>
-    
-
-<h3 id="pycharm">#pycharm</h3>
-    
-        
-            
-            
-        
-        <li>
-            <a href="https://blog.arisa.moe/blog/2022/220406-venv-move-file/">移动 python 项目文件夹位置后如何解决 PyCharm 找不到解释器与无法正常使用终端的问题</a>
-            &nbsp;&nbsp;
-            <span style="color: var(--md-default-fg-color--light)">
-                2022/4/6 上午9:51
-            </span>
-        </li>
-    
-
-<h3 id="ssl">#ssl</h3>
-    
-        
-            
-            
-        
-        <li>
-            <a href="https://blog.arisa.moe/blog/2022/220407-certbot/">certbot 常用操作</a>
-            &nbsp;&nbsp;
-            <span style="color: var(--md-default-fg-color--light)">
-                2022/4/6 下午6:56
-            </span>
-        </li>
-    
-
-<h3 id="letsencrypt">#letsencrypt</h3>
-    
-        
-            
-            
-        
-        <li>
-            <a href="https://blog.arisa.moe/blog/2022/220407-certbot/">certbot 常用操作</a>
-            &nbsp;&nbsp;
-            <span style="color: var(--md-default-fg-color--light)">
-                2022/4/6 下午6:56
-            </span>
-        </li>
-    
-
-<h3 id="certbot">#certbot</h3>
-    
-        
-            
-            
-        
-        <li>
-            <a href="https://blog.arisa.moe/blog/2022/220407-certbot/">certbot 常用操作</a>
-            &nbsp;&nbsp;
-            <span style="color: var(--md-default-fg-color--light)">
-                2022/4/6 下午6:56
-            </span>
-        </li>
-    
-
-<h3 id="github actions">#github actions</h3>
-    
-        
-            
-            
-        
-        <li>
-            <a href="https://blog.arisa.moe/blog/2022/220408-github-pages-2/">GitHub Pages 文档自动化部署 - VuePress</a>
-            &nbsp;&nbsp;
-            <span style="color: var(--md-default-fg-color--light)">
-                2022/4/8 上午7:06
-            </span>
-        </li>
-    
-        
-            
-            
-        
-        <li>
-            <a href="https://blog.arisa.moe/blog/2022/220407-github-pages/">GitHub Pages 文档自动化部署 - MkDocs</a>
-            &nbsp;&nbsp;
-            <span style="color: var(--md-default-fg-color--light)">
-                2022/4/6 下午4:25
-            </span>
-        </li>
-    
-
-<h3 id="github pages">#github pages</h3>
-    
-        
-            
-            
-        
-        <li>
-            <a href="https://blog.arisa.moe/blog/2022/220408-github-pages-2/">GitHub Pages 文档自动化部署 - VuePress</a>
-            &nbsp;&nbsp;
-            <span style="color: var(--md-default-fg-color--light)">
-                2022/4/8 上午7:06
-            </span>
-        </li>
-    
-        
-            
-            
-        
-        <li>
-            <a href="https://blog.arisa.moe/blog/2022/220407-github-pages/">GitHub Pages 文档自动化部署 - MkDocs</a>
-            &nbsp;&nbsp;
-            <span style="color: var(--md-default-fg-color--light)">
-                2022/4/6 下午4:25
-            </span>
-        </li>
-    
-
-<h3 id="mkdocs">#mkdocs</h3>
-    
-        
-            
-            
-        
-        <li>
-            <a href="https://blog.arisa.moe/blog/2022/220407-github-pages/">GitHub Pages 文档自动化部署 - MkDocs</a>
-            &nbsp;&nbsp;
-            <span style="color: var(--md-default-fg-color--light)">
-                2022/4/6 下午4:25
-            </span>
-        </li>
-    
-
-<h3 id="vuepress">#vuepress</h3>
-    
-        
-            
-            
-        
-        <li>
-            <a href="https://blog.arisa.moe/blog/2022/220408-github-pages-2/">GitHub Pages 文档自动化部署 - VuePress</a>
-            &nbsp;&nbsp;
-            <span style="color: var(--md-default-fg-color--light)">
-                2022/4/8 上午7:06
-            </span>
-        </li>
-    
-
-<h3 id="cloudflare">#cloudflare</h3>
-    
-        
-            
-            
-        
-        <li>
-            <a href="https://blog.arisa.moe/blog/2022/220409-cloudflare-workers-arcaea-update/">如何使用 Cloudflare Workers 来搭建 Arcaea 镜像下载服务器</a>
-            &nbsp;&nbsp;
-            <span style="color: var(--md-default-fg-color--light)">
-                2022/4/9 上午8:52
-            </span>
-        </li>
-    
-
-<h3 id="cloudflare-workers">#cloudflare-workers</h3>
-    
-        
-            
-            
-        
-        <li>
-            <a href="https://blog.arisa.moe/blog/2022/220409-cloudflare-workers-arcaea-update/">如何使用 Cloudflare Workers 来搭建 Arcaea 镜像下载服务器</a>
-            &nbsp;&nbsp;
-            <span style="color: var(--md-default-fg-color--light)">
-                2022/4/9 上午8:52
-            </span>
-        </li>
-    
-</p>
+    <blockquote>
+<p>转载自 <a href="https://github.com/Arcaea-Infinity/dl.arcaea.moe/blob/main/usage.md">Arcaea-Infinity/dl.arcaea.moe</a> <br>（部署文档部分是本人写的，而 js 脚本由 <a href="https://github.com/TheSnowfield">TheSnowfield</a> 提供）</p>
+</blockquote>
+<h2 id="_1">简介</h2>
+<p>这是一个 Arcaea 镜像下载服务，该服务通过 Cloudflare Workers 反向代理实现，本质上是通过 <a href="https://webapi.lowiro.com/webapi/serve/static/bin/arcaea/apk">Lowiro webapi</a> 获取最新的 APK 文件 URL，然后通过该 URL 下载文件。</p>
+<p>目前该服务已经搭建在了：</p>
+<ul>
+<li><a href="https://dl.arcaea.moe">https://dl.arcaea.moe</a></li>
+<li><a href="https://dl.lcwiro.com">https://dl.lcwiro.com</a></li>
+</ul>
+<p>你可以使用这些网址随时下载最新的 <code>arcaea_X.X.Xc.apk</code> 文件。</p>
+<h2 id="_2">部署</h2>
+<h3 id="1-cloudflare-workers">1. 创建一个 Cloudflare Workers 实例</h3>
+<p>进入 Cloudflare 控制台，点击 <code>Workers</code> 标签页，然后点击 <code>Create a Service</code> 按钮。</p>
+<p><img alt="Create a Service" src="../images/220409-cloudflare-workers-arcaea-update/Create-a-Service.png" /></p>
+<p>选择 <code>HTTP handler</code>，然后点击 <code>Create service</code> 按钮。</p>
+<p><img alt="HTTP handler" src="../images/220409-cloudflare-workers-arcaea-update/HTTP-handler.png" /></p>
+<p>此时你的服务已经搭建好了，你应该可以得到一个类似于 <code>aaaaabbbbb.ccccc.workers.dev</code> 的 URL，这就是你的 <code>Workers</code> 实例的 URL。</p>
+<div class="admonition 提示">
+<p class="admonition-title">提示</p>
+<p>一个 <code>Workers</code> 实例也叫 <code>服务</code>，下文一律简称 <code>服务</code>。</p>
+</div>
+<h3 id="2">2. 设置该服务</h3>
+<p>在上一步操作的同一个页面内，选择 <code>Resources</code> 标签，然后点击 <code>Quick edit</code> 按钮。</p>
+<p><img alt="Quick edit" src="../images/220409-cloudflare-workers-arcaea-update/Quick-edit.png" /></p>
+<p>从我们的 <a href="https://github.com/Arcaea-Infinity/dl.arcaea.moe">Repo</a> 下载到 <a href="https://github.com/Arcaea-Infinity/dl.arcaea.moe/blob/main/index.js">index.js 的代码</a> ，直接复制全文，然后粘贴到如下区域，记得是全文覆盖。</p>
+<p><img alt="paste code" src="../images/220409-cloudflare-workers-arcaea-update/paste.png" /></p>
+<p>然后点击 <code>Save and Deploy</code> 按钮。</p>
+<p>此时你的服务已经可以投入使用了。</p>
+<h3 id="3">3. 测试服务可用性</h3>
+<p>打开你的浏览器，输入你的服务的 URL，如 <code>https://aaaaabbbbb.ccccc.workers.dev</code>，你的浏览器此时应该正确开始下载最新版本的 Arcaea。</p>
+<div class="admonition 注意 attention">
+<p class="admonition-title">注意</p>
+<p>如果你只是想部署到 Cloudflare Workers，此时你需要做的事情已经做完了。如果你想继续将其部署到你的自定义域名，你需要继续看下去。</p>
+</div>
+<h3 id="4-dns">4. 设置自定义域名的 DNS 记录</h3>
+<p>打开你的 DNS 控制台，添加一个 <code>CNAME</code> 记录。</p>
+<p><img alt="CNAME" src="../images/220409-cloudflare-workers-arcaea-update/CNAME.png" /></p>
+<p>注意以下值的填写：</p>
+<table>
+<thead>
+<tr>
+<th>字段</th>
+<th>值</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Type</td>
+<td><code>CNAME</code></td>
+<td></td>
+</tr>
+<tr>
+<td>Name</td>
+<td><code>dl</code></td>
+<td>你想部署到哪个子域就使用哪个值</td>
+</tr>
+<tr>
+<td>Target</td>
+<td><code>aaaaabbbbb.ccccc.workers.dev</code></td>
+<td>使用你服务所在的 URL</td>
+</tr>
+<tr>
+<td>Proxy status</td>
+<td><code>Proxied</code></td>
+<td>必须是 <code>Proxied</code></td>
+</tr>
+</tbody>
+</table>
+<p>然后点击 <code>Save</code> 按钮。</p>
+<h3 id="5">5. 将你的自定义域名的子域设置为该服务的路由:</h3>
+<p>在控制台中进入 <code>Workers</code> 标签页然后点击 <code>Add route</code> 按钮。</p>
+<div class="admonition 注意 attention">
+<p class="admonition-title">注意</p>
+<p>这里的 <code>Workers</code> 标签页不是 Cloudflare 主页的那个标签页，而是你点击你的域名之后出现的 <code>Workers</code> 标签页。</p>
+</div>
+<p><img alt="Add route" src="../images/220409-cloudflare-workers-arcaea-update/Add-route.png" /></p>
+<p>注意以下值的填写：</p>
+<table>
+<thead>
+<tr>
+<th>字段</th>
+<th>值</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Route</td>
+<td><code>dl.example.com/*</code></td>
+<td>必须是 <code>你的子域</code> + <code>/*</code></td>
+</tr>
+<tr>
+<td>Service</td>
+<td><code>aaaaabbbbb</code></td>
+<td>使用你的服务的名字</td>
+</tr>
+</tbody>
+</table>
+<p>然后点击 <code>Save</code> 按钮。</p>
+<h3 id="6">6. 测试的你的子域</h3>
+<p>现在打开你的浏览器，输入你的子域，如 <code>https://dl.example.com/</code> ，你的浏览器此时应该正确开始下载最新版本的 Arcaea。，</p>
 
     <!-- Last update of source file -->
     
@@ -928,17 +860,65 @@ as the main headline.
   <small>
     
       最后更新:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_datetime">2022-04-06 09:51:16</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_datetime">2022-04-09 08:52:30</span>
       
         <br>
         创建日期:
-        <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_datetime">2022-04-06 09:51:16</span>
+        <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_datetime">2022-04-09 08:52:30</span>
       
     
   </small>
 </div>
         
     
+
+    
+
+        <!-- Giscus -->
+        <h2 id="__comments">评论</h2>
+        <script src="https://giscus.app/client.js"
+                data-repo="zhanbao2000/blog"
+                data-repo-id="R_kgDOHIZK7A"
+                data-category="Announcements"
+                data-category-id="DIC_kwDOHIZK7M4COdSe"
+                data-mapping="pathname"
+                data-reactions-enabled="1"
+                data-emit-metadata="0"
+                data-input-position="top"
+                data-theme="light"
+                data-lang="zh-CN"
+                data-loading="lazy"
+                crossorigin="anonymous"
+                async>
+        </script>
+
+        <!-- Reload on palette change -->
+        <script>
+            const palette = __md_get("__palette");
+            if (palette && typeof palette.color === "object")
+                if (palette.color.scheme === "slate") {
+                    const giscus = document.querySelector("script[src*=giscus]");
+                    giscus.setAttribute("data-theme", "dark")
+                }
+
+            /* Register event handlers after documented loaded */
+            document.addEventListener("DOMContentLoaded", function() {
+                const ref = document.querySelector("[data-md-component=palette]");
+                ref.addEventListener("change", function() {
+                    const palette = __md_get("__palette");
+                    if (palette && typeof palette.color === "object") {
+                        const theme = palette.color.scheme === "slate" ? "dark" : "light";
+
+                        /* Instruct Giscus to change theme */
+                        const frame = document.querySelector(".giscus-frame");
+                        frame.contentWindow.postMessage(
+                            { giscus: { setConfig: { theme } } },
+                            "https://giscus.app"
+                        )
+                    }
+                })
+            })
+        </script>
 
     
 
@@ -959,7 +939,7 @@ as the main headline.
     <nav class="md-footer__inner md-grid" aria-label="页脚">
       
         
-        <a href=".." class="md-footer__link md-footer__link--prev" aria-label="上一页: 首页" rel="prev">
+        <a href="../220408-github-pages-2/" class="md-footer__link md-footer__link--prev" aria-label="上一页: GitHub Pages 文档自动化部署 - VuePress" rel="prev">
           <div class="md-footer__button md-icon">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
           </div>
@@ -968,26 +948,11 @@ as the main headline.
               <span class="md-footer__direction">
                 上一页
               </span>
-              首页
+              GitHub Pages 文档自动化部署 - VuePress
             </div>
           </div>
         </a>
       
-      
-        
-        <a href="../toc/" class="md-footer__link md-footer__link--next" aria-label="下一页: 目录" rel="next">
-          <div class="md-footer__title">
-            <div class="md-ellipsis">
-              <span class="md-footer__direction">
-                下一页
-              </span>
-              目录
-            </div>
-          </div>
-          <div class="md-footer__button md-icon">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4Z"/></svg>
-          </div>
-        </a>
       
     </nav>
   
@@ -1037,10 +1002,10 @@ as the main headline.
     <div class="md-dialog" data-md-component="dialog">
       <div class="md-dialog__inner md-typeset"></div>
     </div>
-    <script id="__config" type="application/json">{"base": "..", "features": ["navigation.tabs", "navigation.top", "navigation.tracking"], "search": "../assets/javascripts/workers/search.2a1c317c.min.js", "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.config.lang": "ja", "search.config.pipeline": "trimmer, stemmer", "search.config.separator": "[\\uff0c\\u3002]+", "search.placeholder": "\u641c\u7d22", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version.title": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}}</script>
+    <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.tabs", "navigation.top", "navigation.tracking"], "search": "../../../assets/javascripts/workers/search.2a1c317c.min.js", "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.config.lang": "ja", "search.config.pipeline": "trimmer, stemmer", "search.config.separator": "[\\uff0c\\u3002]+", "search.placeholder": "\u641c\u7d22", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version.title": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}}</script>
     
     
-      <script src="../assets/javascripts/bundle.6e54b5cd.min.js"></script>
+      <script src="../../../assets/javascripts/bundle.6e54b5cd.min.js"></script>
       
     
   </body>

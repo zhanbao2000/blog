@@ -45,4 +45,9 @@
          <lastmod>2022-04-09</lastmod>
          <changefreq>daily</changefreq>
     </url>
+    <url>
+         <loc>https://blog.arisa.moe/blog/2022/220409-cloudflare-workers-arcaea-update/</loc>
+         <lastmod>2022-04-09</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
 </urlset>
