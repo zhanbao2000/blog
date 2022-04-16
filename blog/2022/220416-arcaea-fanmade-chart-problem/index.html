@@ -651,11 +651,36 @@ as the main headline.
 </ul>
 </li>
 </ul>
+<p>我们以白魔王为例：</p>
+<table class="highlighttable"><tr><th colspan="2" class="filename"><div class="highlight"><span class="filename">pragmatism_2.aff</span></div></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="hll">timing(0,87.00,2.00);
+</span>timing(11034,174.00,4.00);
+timing(33103,348.00,1.00);
+timing(34482,174.00,4.00);
+timing(57930,87.00,2.00);
+timing(68964,130.50,3.00);
+timing(78620,174.00,4.00);
+<span class="hll">timing(103447,0.00,4.00);
+</span>timing(104826,87.00,4.00);
+...
+</code></pre></div>
+</td></tr></table>
+<p>注意，白魔王的 <code>base_bpm</code> 在 <code>songlist</code> 里设置为 <code>174</code>。</p>
+<p>因此，<code>0~11034</code> 内谱面速度会降到原来的一半，而 <code>103447~104826</code> 内谱面速度变成 <code>0</code>（骤停效果）。</p>
 <p>二、虽然官方曲子的 <code>base.jpg</code> 是 512x512，<code>base_256.jpg</code> 是 256x256，但是实际上这个尺寸是可以随便设计的，甚至不是正方形都行。</p>
 <p>三、某些自制谱中 <code>aff</code> 文件的语句不符合 Arcaea 规范。这些谱面在 Arcade 中能正常播放，但是在 Arcaea 中选曲完成后会立即闪退。以下是我找到的一些问题：</p>
 <ul>
-<li><code>timing</code> 语句中，<code>beats</code> 不能为 0.00（不是 wiki 上所说的 <code>t=0</code> 的 <code>timing</code> 语句，而是所有的 <code>timing</code> 语句）</li>
-<li><code>timing</code> 语句中，<code>bpm</code> 必须保留两位小数</li>
+<li><code>timing</code> 语句中，<code>beats</code> 参数不能为 <code>0.00</code>，很多自制谱为了不出现节拍线会设置成 <code>0.00</code></li>
+<li>每个谱面有且仅有一个 <code>t=0</code>的 <code>timing</code> 语句，且其 <code>bpm</code> 参数不可为负数。</li>
+<li><code>timing</code> 语句中，<code>bpm</code> 参数必须保留两位小数</li>
 <li><code>camera</code> 语句的第 2-7 个参数（即 <code>transverse</code>, <code>bottomzoom</code>, <code>linezoom</code>, <code>steadyangle</code>, <code>topzoom</code>, <code>angle</code>）必须保留两位小数</li>
 <li><code>arc</code> 语句中 <code>color</code> 参数的值只能是 <code>0/1/2</code>，某些自制谱会写 <code>-1</code></li>
 <li><code>arc</code> 语句中 <code>t1</code>、<code>t2</code> 参数的值均为非负整数，某些自制谱会写成负数</li>
@@ -755,7 +780,7 @@ as the main headline.
   <small>
     
       最后更新:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_datetime">2022-04-16 09:46:25</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_datetime">2022-04-16 10:15:01</span>
       
         <br>
         创建日期:
