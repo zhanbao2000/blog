@@ -12,14 +12,14 @@
         <meta name="author" content="Akiba Arisa">
       
       
-        <link rel="canonical" href="https://blog.arisa.moe/blog/2022/220413-Intranet-penetration-bitcomit/">
+        <link rel="canonical" href="https://blog.arisa.moe/blog/2022/220417-linux-clean-up-disk-space/">
       
       <link rel="icon" href="../../../assets/images/favicon.png">
       <meta name="generator" content="mkdocs-1.3.0, mkdocs-material-8.2.9">
     
     
       
-        <title>利用内网穿透和代理获取公网 IP 地址解决比特彗星黄灯 - Arisa | Blog</title>
+        <title>Linux 清理磁盘空间常见操作 - Arisa | Blog</title>
       
     
     
@@ -71,7 +71,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#_1" class="md-skip">
+        <a href="#journal" class="md-skip">
           跳转至
         </a>
       
@@ -104,7 +104,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              利用内网穿透和代理获取公网 IP 地址解决比特彗星黄灯
+              Linux 清理磁盘空间常见操作
             
           </span>
         </div>
@@ -519,110 +519,11 @@
               
   
   
-    
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
-      
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          利用内网穿透和代理获取公网 IP 地址解决比特彗星黄灯
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../220413-Intranet-penetration-bitcomit/" class="md-nav__link">
         利用内网穿透和代理获取公网 IP 地址解决比特彗星黄灯
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="目录">
-  
-  
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      目录
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#_1" class="md-nav__link">
-    背景
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_2" class="md-nav__link">
-    前提条件
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_3" class="md-nav__link">
-    操作
-  </a>
-  
-    <nav class="md-nav" aria-label="操作">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#frps" class="md-nav__link">
-    部署 frps
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#frpc" class="md-nav__link">
-    部署 frpc
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#frp" class="md-nav__link">
-    测试 frp 连接
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_4" class="md-nav__link">
-    设置代理
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_5" class="md-nav__link">
-    关闭防吸血
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_6" class="md-nav__link">
-    测试效果
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -660,11 +561,69 @@
               
   
   
+    
   
-    <li class="md-nav__item">
-      <a href="../220417-linux-clean-up-disk-space/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Linux 清理磁盘空间常见操作
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         Linux 清理磁盘空间常见操作
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#journal" class="md-nav__link">
+    清理 journal 日志
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#apt-get" class="md-nav__link">
+    清理 apt-get 缓存
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#pip" class="md-nav__link">
+    清理 pip 缓存
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#snap" class="md-nav__link">
+    清理旧版本 snap 包
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -708,70 +667,29 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#_1" class="md-nav__link">
-    背景
+  <a href="#journal" class="md-nav__link">
+    清理 journal 日志
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#_2" class="md-nav__link">
-    前提条件
+  <a href="#apt-get" class="md-nav__link">
+    清理 apt-get 缓存
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#_3" class="md-nav__link">
-    操作
-  </a>
-  
-    <nav class="md-nav" aria-label="操作">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#frps" class="md-nav__link">
-    部署 frps
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#frpc" class="md-nav__link">
-    部署 frpc
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#frp" class="md-nav__link">
-    测试 frp 连接
+  <a href="#pip" class="md-nav__link">
+    清理 pip 缓存
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#_4" class="md-nav__link">
-    设置代理
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_5" class="md-nav__link">
-    关闭防吸血
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_6" class="md-nav__link">
-    测试效果
+  <a href="#snap" class="md-nav__link">
+    清理旧版本 snap 包
   </a>
   
 </li>
@@ -794,7 +712,7 @@ doesn't, the page title (or respectively site name) is used
 as the main headline.
 -->
 
-    <h1>利用内网穿透和代理获取公网 IP 地址解决比特彗星黄灯</h1>
+    <h1>Linux 清理磁盘空间常见操作</h1>
 
 
 <!-- Markdown content -->
@@ -813,7 +731,7 @@ as the main headline.
                     <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" fill="currentColor" class="bi bi-clock" viewBox="0 0 16 16">
                         <path d="M8 3.5a.5.5 0 0 0-1 0V9a.5.5 0 0 0 .252.434l3.5 2a.5.5 0 0 0 .496-.868L8 8.71V3.5z"/>
                         <path d="M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16zm7-8A7 7 0 1 1 1 8a7 7 0 0 1 14 0z"/>
-                    </svg> 16 min read
+                    </svg> 6 min read
                 </span>
             </p>
         </aside>
@@ -823,173 +741,92 @@ as the main headline.
     
         <div class="tags">
         
-            <a href="/tags/#frp" class="tag"><code>#frp</code></a>
-        
-            <a href="/tags/#bitcomit" class="tag"><code>#bitcomit</code></a>
-        
-            <a href="/tags/#proxy" class="tag"><code>#proxy</code></a>
+            <a href="/tags/#linux" class="tag"><code>#linux</code></a>
         
         </div>
     
 
-    <h2 id="_1">背景</h2>
-<p>想用比特彗星下种子，但是因为身处数个 NAT 身后，根本没有公网 IP，导致无法让别的 peer 连接到你，下载速度堪忧。</p>
-<p>没有公网 IP 怎么办？打电话问运营商？还是算了吧，干脆向自己 VPS 借一个。</p>
-<h2 id="_2">前提条件</h2>
+    <p>使用如下方式可以清理 Linux 的绝大部分垃圾。</p>
+<h2 id="journal">清理 journal 日志</h2>
+<p>一般可以清理 2~3 GB。</p>
 <ul>
-<li>一台有公网 IP 的机器（最好是固定的 IP）</li>
-<li>这台机器被允许搭建 frp 等内网穿透服务</li>
-<li>这台机器被允许搭建代理服务</li>
-</ul>
-<h2 id="_3">操作</h2>
-<h3 id="frps">部署 frps</h3>
-<p>首先在有公网 IP 的那台机器上部署 frp 服务端。</p>
-<p>去 <a href="https://github.com/fatedier/frp/releases/tag/v0.41.0">release</a> 下载对应系统的 frp，下载之后解压，里面的 frps 就是我们需要的 frp 服务端。</p>
-<p>写 <code>frps.ini</code>：</p>
-<table class="highlighttable"><tr><th colspan="2" class="filename"><div class="highlight"><span class="filename">frps.ini</span></div></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
-<span class="normal">2</span>
-<span class="normal">3</span>
-<span class="normal">4</span>
-<span class="normal">5</span>
-<span class="normal">6</span>
-<span class="normal">7</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="k">[common]</span><span class="w"></span>
-<span class="na">bind_port</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">7000</span><span class="w"></span>
-<span class="na">bind_udp_port</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">7000</span><span class="w"></span>
-<span class="na">bind_addr</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">0.0.0.0</span><span class="w"></span>
-<span class="na">allow_ports</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">1001-1500,10001-22500</span><span class="w"></span>
-<span class="na">token</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">你的密码</span><span class="w"></span>
-<span class="na">tls_only</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">true</span><span class="w"></span>
+<li>
+<p>查看 journal 日志占用的硬盘空间：</p>
+<div class="highlight"><pre><span></span><code>journalctl -x --disk-usage
 </code></pre></div>
-</td></tr></table>
-<p>注意以下配置项：</p>
+</li>
+<li>
+<p>一次性清理 journal 日志：</p>
+<div class="highlight"><pre><span></span><code>journalctl --vacuum-size<span class="o">=</span>10M  <span class="c1"># 清理日志到只剩下 10M</span>
+journalctl --vacuum-time<span class="o">=</span>1d   <span class="c1"># 清理一天前的日志</span>
+</code></pre></div>
+</li>
+</ul>
+<div class="admonition 注意 attention">
+<p class="admonition-title">注意</p>
+<p>这两个操作只是一次性清除日志，<strong>并不能限制以后的日志文件不会超过这个大小</strong>。很多博客里说这两个操作可以限制日志文件的大小，属实是误导人。</p>
+<p>如果需要永久限制日志文件的大小，需要修改 <code>/etc/systemd/journald.conf</code> 文件。</p>
+</div>
 <ul>
-<li><code>allow_ports</code> 是指经过 frp 代理/转发的连接可以使用的端口范围。</li>
-<li><code>token</code> 请自己随便设置一个。</li>
-<li><code>tls_only</code> 则要求所有的 frpc 客户端（是你，不是指那些 peers）也启用 TLS 才能连接。建议设置成 <code>true</code>。</li>
+<li>
+<p>永久限制 journal 日志的大小：</p>
+<div class="highlight"><span class="filename">journald.conf</span><pre><span></span><code>[Journal]
+SystemMaxUse=10M   # 硬盘中只保留最近 10M 的日志
+RuntimeMaxUse=10M  # 内存中只保留最近 10M 的日志
+</code></pre></div>
+</li>
+<li>
+<p>不保留日志</p>
+<div class="highlight"><span class="filename">journald.conf</span><pre><span></span><code>[Journal]
+Storage=none       # 丢弃所有的日志，不保存到内存或磁盘
+</code></pre></div>
+</li>
 </ul>
-<p>其他的参数可以通过 <a href="https://gofrp.org/docs/reference/server-configures/">官网文档</a> 查看。</p>
-<p>然后通过</p>
-<div class="highlight"><pre><span></span><code>frps.exe -c frps.ini
+<h2 id="apt-get">清理 apt-get 缓存</h2>
+<p>一般可以清理数百 MB。</p>
+<div class="highlight"><pre><span></span><code>apt-get clean
 </code></pre></div>
-<p>启用 frps 服务端。</p>
-<p>此时你的服务端上应该显示如下日志：</p>
-<div class="highlight"><pre><span></span><code>2022/04/13 09:42:18 [I] [root.go:200] frps uses config file: frps.ini
-2022/04/13 09:42:18 [I] [service.go:192] frps tcp listen on 0.0.0.0:7000
-2022/04/13 09:42:18 [I] [service.go:276] nat hole udp service listen on 0.0.0.0:7000
-2022/04/13 09:42:18 [I] [root.go:209] frps started successfully
+<h2 id="pip">清理 pip 缓存</h2>
+<p>一般可以清理两三百 MB。</p>
+<div class="highlight"><pre><span></span><code>rm -r ~/.cache/pip
 </code></pre></div>
-<p>说明你的服务端正在监听所有来自 <code>7000</code> 端口的 frp 连接。</p>
-<h3 id="frpc">部署 frpc</h3>
-<p>在自己需要运行比特彗星的电脑上部署 frp 客户端。</p>
-<p>同样，去下载对应系统版本的 frp，解压获取 frpc。</p>
-<p>写 <code>frpc.ini</code>：</p>
-<table class="highlighttable"><tr><th colspan="2" class="filename"><div class="highlight"><span class="filename">frpc.ini</span></div></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
-<span class="normal"> 2</span>
-<span class="normal"> 3</span>
-<span class="normal"> 4</span>
-<span class="normal"> 5</span>
-<span class="normal"> 6</span>
-<span class="normal"> 7</span>
-<span class="normal"> 8</span>
-<span class="normal"> 9</span>
-<span class="normal">10</span>
-<span class="normal">11</span>
-<span class="normal">12</span>
-<span class="normal">13</span>
-<span class="normal">14</span>
-<span class="normal">15</span>
-<span class="normal">16</span>
-<span class="normal">17</span>
-<span class="normal">18</span>
-<span class="normal">19</span>
-<span class="normal">20</span>
-<span class="normal">21</span>
-<span class="normal">22</span>
-<span class="normal">23</span>
-<span class="normal">24</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="k">[common]</span><span class="w"></span>
-<span class="na">server_addr</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">给定的IPv4地址/IPv6地址/域名</span><span class="w"></span>
-<span class="na">server_port</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">7000</span><span class="w"></span>
-<span class="na">protocol</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">websocket</span><span class="w"></span>
-<span class="na">token</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">你的密码</span><span class="w"></span>
-<span class="na">tls_enable</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">true</span><span class="w"></span>
-
-<span class="k">[Remote Download]</span><span class="w"></span>
-<span class="na">type</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">tcp</span><span class="w"></span>
-<span class="na">local_ip</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">127.0.0.1</span><span class="w"></span>
-<span class="na">local_port</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">2333</span><span class="w"></span>
-<span class="na">remote_port</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">2333</span><span class="w"></span>
-
-<span class="k">[BT Listen TCP]</span><span class="w"></span>
-<span class="na">type</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">tcp</span><span class="w"></span>
-<span class="na">local_ip</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">127.0.0.1</span><span class="w"></span>
-<span class="na">local_port</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">10400</span><span class="w"></span>
-<span class="na">remote_port</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">10400</span><span class="w"></span>
-
-<span class="k">[BT Listen UDP]</span><span class="w"></span>
-<span class="na">type</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">udp</span><span class="w"></span>
-<span class="na">local_ip</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">127.0.0.1</span><span class="w"></span>
-<span class="na">local_port</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">10400</span><span class="w"></span>
-<span class="na">remote_port</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">10400</span><span class="w"></span>
-</code></pre></div>
-</td></tr></table>
-<p>注意以下配置项：</p>
+<h2 id="snap">清理旧版本 snap 包</h2>
+<p>一般每个旧的 snap 包可以清理 100 MB。</p>
 <ul>
-<li><code>server_addr</code> 设置成那台有公网 IP 的机器的 IP 地址，可以是 IPv4/IPv6/域名。设置成 IPv6 地址时不需要加括号 <code>[</code> 和 <code>]</code> 。<code>server_port</code> 和 <code>frps.ini</code> 保持一致。</li>
-<li><code>protocol</code> 一律选择 <code>websocket</code>。</li>
-<li><code>token</code> 和 <code>tls_enable</code> 均与 <code>frps.ini</code> 保持一致。</li>
+<li>
+<p>列出所有的 snap 包：</p>
+<div class="highlight"><pre><span></span><code>snap list --all
+</code></pre></div>
+<p>可以见到很多标记为 <code>disabled</code> 的 snap 包，这些包是可以直接卸载的。</p>
+<div class="highlight"><pre><span></span><code>Name     Version    Rev    Tracking       Publisher     Notes
+certbot  1.26.0     1952   latest/stable  certbot-eff✓  classic
+<span class="hll">cmake    3.23.0     1070   latest/stable  crascit✓      disabled,classic
+</span>cmake    3.23.1     1082   latest/stable  crascit✓      classic
+<span class="hll">core     16-2.55.2  12941  latest/stable  canonical✓    core,disabled
+</span>core     16-2.54.4  12834  latest/stable  canonical✓    core
+core18   20220309   2344   latest/stable  canonical✓    base
+core20   20220318   1405   latest/stable  canonical✓    base
+</code></pre></div>
+</li>
+<li>
+<p>删除这些重复的 snap 包：</p>
+<div class="highlight"><pre><span></span><code>snap remove core --revision xxx   <span class="c1"># xxx 是软件的 revision</span>
+</code></pre></div>
+</li>
+<li>
+<p>也可以使用这个脚本清除：</p>
+<p>来自 <a href="https://itsfoss.com/clean-snap-packages/">How to Clean Up Snap Package Versions in Linux</a></p>
+<div class="highlight"><pre><span></span><code><span class="ch">#!/bin/bash</span>
+<span class="c1"># Removes old revisions of snaps</span>
+<span class="c1"># CLOSE ALL SNAPS BEFORE RUNNING THIS</span>
+<span class="nb">set</span> -eu
+snap list --all <span class="p">|</span> awk <span class="s1">&#39;/disabled/{print $1, $3}&#39;</span> <span class="p">|</span>
+    <span class="k">while</span> <span class="nb">read</span> snapname revision<span class="p">;</span> <span class="k">do</span>
+        snap remove <span class="s2">&quot;</span><span class="nv">$snapname</span><span class="s2">&quot;</span> --revision<span class="o">=</span><span class="s2">&quot;</span><span class="nv">$revision</span><span class="s2">&quot;</span>
+    <span class="k">done</span>
+</code></pre></div>
+</li>
 </ul>
-<p><code>Remote Download</code> 指的是比特彗星的远程下载服务，如果你比特彗星需要开这个功能，你可以把他打开，端口号和比特彗星上的设置保持一致，比如 <code>2333</code>。</p>
-<p><img alt="Remote Download" src="../images/220413-Intranet-penetration-bitcomit/Remote-Download.png" /></p>
-<p><code>BT Listen TCP/UDP</code> 就是 peer 的通信端口，均设置成 <code>127.0.0.1</code> 上的 <code>10400</code>，和比特彗星保持一致。</p>
-<p><img alt="listen port" src="../images/220413-Intranet-penetration-bitcomit/listen-port.png" /></p>
-<h2 id="frp">测试 frp 连接</h2>
-<p>现在在你的客户端上执行：</p>
-<div class="highlight"><pre><span></span><code>frpc.exe -c frpc.ini
-</code></pre></div>
-<p>客户端上应该会显示日志：</p>
-<div class="highlight"><pre><span></span><code>2022/04/13 09:43:20 [I] [service.go:301] [44dfbb2737aff979] login to server success, get run id [44dfbb2737aff979], server udp port [7000]
-2022/04/13 09:43:20 [I] [proxy_manager.go:144] [44dfbb2737aff979] proxy added: [Remote Download BT Listen TCP BT Listen UDP]
-2022/04/13 09:43:20 [I] [control.go:180] [44dfbb2737aff979] [Remote Download] start proxy success
-2022/04/13 09:43:20 [I] [control.go:180] [44dfbb2737aff979] [BT Listen TCP] start proxy success
-2022/04/13 09:43:20 [I] [control.go:180] [44dfbb2737aff979] [BT Listen UDP] start proxy success
-2022/04/13 09:43:21 [I] [proxy.go:481] [44dfbb2737aff979] [BT Listen UDP] incoming a new work connection for udp proxy, ws://XXX.XXX.XXX.XXX:7000/~!frp
-</code></pre></div>
-<p>同时服务端上应该会立即显示一条日志：</p>
-<div class="highlight"><pre><span></span><code>2022/04/13 09:43:21 [I] [service.go:447] [44dfbb2737aff979] client login info: ip http://XXX.XXX.XXX.XXX:7000 version [0.38.0] hostname [] os [windows] arch [amd64]
-</code></pre></div>
-<p>其中的 <code>XXX.XXX.XXX.XXX:7000</code> 应该是你服务端的 IP + 端口，而 <code>44dfbb2737aff979</code> 是你被服务端分配的用户 ID，每次你连接到服务端时，都会被服务端随机分配一个用户 ID。</p>
-<pre class="mermaid"><code>graph TB
-
-  PeerA((peer1)) --&gt; frps_10400;
-  PeerB((peer2)) --&gt; frps_10400;
-
-  subgraph frps.exe
-    frps_10400[0.0.0.0:10400] --&gt; frps_7000;
-  end
-
-  frps_7000[0.0.0.0:7000] --&gt; |websocket| frpc[frpc];
-
-  subgraph frpc and BitComit
-    bitcomit_10400 --&gt; frpc;
-  end
-
-  frpc --&gt; bitcomit_10400[localhost:10400];</code></pre>
-<p>现在，所有 peers 发送到那台具有公网 IP 的机器的 <code>allow_ports</code> 端口（包括 <code>10400</code>）的 TCP 和 UDP 数据包，都会被 <code>frps.exe</code> 通过反向 websocket 转发回客户端上的 <code>frpc.exe</code>，然后 <code>frpc.exe</code> 再发送到 <code>localhost:10400</code>，由于此时比特彗星正在监听本地的 <code>10400</code> 端口，因此比特彗星将会把这些 <code>frpc.exe</code> 发来的数据包认为是 peers 发送过来的数据包。</p>
-<h2 id="_4">设置代理</h2>
-<p>frp 只能解决一个方向上的问题，就是 peers 连接到客户端，而客户端连接到 peers 的方式将会由代理服务器实现。</p>
-<p>你需要在那台具有公网 IP 地址的机器上搭建一个代理服务，从而让你的比特彗星能通过代理连接到 peers。</p>
-<p>具体搭建方法这里不做介绍，网上有很多教程。假设我们已经搭建好了这个代理，并且映射在了 <code>socks5://localhost:1089</code> 上。</p>
-<p>然后我们在比特彗星设置里做好代理设置。</p>
-<p><img alt="proxy" src="../images/220413-Intranet-penetration-bitcomit/proxy.png" /></p>
-<p>除了 <code>使用代理服务器进行 DNS 查询</code> 以外，其他都不勾选。这相当于使比特彗星进入全局代理模式。</p>
-<p>此时我们已经等价于具有了公网 IP，并且可以以公网 IP 身份与互联网进行双向通信。不出意外的话，这个时候比特彗星的灯已经🟢了</p>
-<p><img alt="green" src="../images/220413-Intranet-penetration-bitcomit/green.png" /></p>
-<h2 id="_5">关闭防吸血</h2>
-<p>因为比特彗星接收到的数据包都是 <code>frpc.exe</code> 发来的，因此所有的 peers 的外网 IP 都是 <code>127.0.0.1</code>，大量相同 IP 可能会触发比特彗星的防吸血机制，因此把他关掉。</p>
-<p><img alt="anti leech" src="../images/220413-Intranet-penetration-bitcomit/anti-leech.png" /></p>
-<h2 id="_6">测试效果</h2>
-<p>现在去下载任意一个 BT 种子，如果点开 <code>用户</code> 选项卡，发现很多来自 <code>127.0.0.1</code> 的连接，并且来源是 <code>被动</code>，发起是 <code>远程</code>，此时就说明你已经设置正确了。</p>
-<p><img alt="peers" src="../images/220413-Intranet-penetration-bitcomit/peers.png" /></p>
 
     <!-- Last update of source file -->
     
@@ -999,11 +836,11 @@ as the main headline.
   <small>
     
       最后更新:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_datetime">2022-04-13 03:45:30</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_datetime">2022-04-17 13:21:51</span>
       
         <br>
         创建日期:
-        <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_datetime">2022-04-13 03:45:30</span>
+        <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_datetime">2022-04-17 13:21:51</span>
       
     
   </small>
@@ -1078,7 +915,7 @@ as the main headline.
     <nav class="md-footer__inner md-grid" aria-label="页脚">
       
         
-        <a href="../220412-ida-substitute-usage/" class="md-footer__link md-footer__link--prev" aria-label="上一页: IDA 替换二进制文件" rel="prev">
+        <a href="../220416-arcaea-fanmade-chart-problem/" class="md-footer__link md-footer__link--prev" aria-label="上一页: Arcaea 自制谱移植常见问题" rel="prev">
           <div class="md-footer__button md-icon">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
           </div>
@@ -1087,26 +924,11 @@ as the main headline.
               <span class="md-footer__direction">
                 上一页
               </span>
-              IDA 替换二进制文件
+              Arcaea 自制谱移植常见问题
             </div>
           </div>
         </a>
       
-      
-        
-        <a href="../220414-fk-arcaea-songlist-hash/" class="md-footer__link md-footer__link--next" aria-label="下一页: 解除 Arcaea 对 songlist 等文件的哈希校验" rel="next">
-          <div class="md-footer__title">
-            <div class="md-ellipsis">
-              <span class="md-footer__direction">
-                下一页
-              </span>
-              解除 Arcaea 对 songlist 等文件的哈希校验
-            </div>
-          </div>
-          <div class="md-footer__button md-icon">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4Z"/></svg>
-          </div>
-        </a>
       
     </nav>
   
