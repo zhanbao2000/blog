@@ -1,0 +1,108 @@
+---
+author: Akiba Arisa
+author_gh_user: zhanbao2000
+read_time: 6 min
+tags:
+    - linux
+title: Linux 清理磁盘空间常见操作
+---
+
+使用如下方式可以清理 Linux 的绝大部分垃圾。
+
+## 清理 journal 日志
+
+一般可以清理 2~3 GB。
+
+ - 查看 journal 日志占用的硬盘空间：
+
+    ```bash
+    journalctl -x --disk-usage
+    ```
+
+ - 一次性清理 journal 日志：
+
+    ```bash
+    journalctl --vacuum-size=10M  # 清理日志到只剩下 10M
+    journalctl --vacuum-time=1d   # 清理一天前的日志
+    ```
+
+!!! 注意 attention
+
+    这两个操作只是一次性清除日志，**并不能限制以后的日志文件不会超过这个大小**。很多博客里说这两个操作可以限制日志文件的大小，属实是误导人。
+
+    如果需要永久限制日志文件的大小，需要修改 `/etc/systemd/journald.conf` 文件。
+
+ - 永久限制 journal 日志的大小：
+
+    ```conf title="journald.conf"
+    [Journal]
+    SystemMaxUse=10M   # 硬盘中只保留最近 10M 的日志
+    RuntimeMaxUse=10M  # 内存中只保留最近 10M 的日志
+    ```
+   
+ - 不保留日志
+
+    ```conf title="journald.conf"
+    [Journal]
+    Storage=none       # 丢弃所有的日志，不保存到内存或磁盘
+    ```
+   
+## 清理 apt-get 缓存
+
+一般可以清理数百 MB。
+
+```bash
+apt-get clean
+```
+
+## 清理 pip 缓存
+
+一般可以清理两三百 MB。
+
+```bash
+rm -r ~/.cache/pip
+```
+
+## 清理旧版本 snap 包
+
+一般每个旧的 snap 包可以清理 100 MB。
+
+ - 列出所有的 snap 包：
+
+    ```bash
+    snap list --all
+    ```
+
+    可以见到很多标记为 `disabled` 的 snap 包，这些包是可以直接卸载的。
+
+    ``` hl_lines="3 5"
+    Name     Version    Rev    Tracking       Publisher     Notes
+    certbot  1.26.0     1952   latest/stable  certbot-eff✓  classic
+    cmake    3.23.0     1070   latest/stable  crascit✓      disabled,classic
+    cmake    3.23.1     1082   latest/stable  crascit✓      classic
+    core     16-2.55.2  12941  latest/stable  canonical✓    core,disabled
+    core     16-2.54.4  12834  latest/stable  canonical✓    core
+    core18   20220309   2344   latest/stable  canonical✓    base
+    core20   20220318   1405   latest/stable  canonical✓    base
+    ```
+
+ - 删除这些重复的 snap 包：
+
+    ```bash
+    snap remove core --revision xxx   # xxx 是软件的 revision
+    ```
+ 
+ - 也可以使用这个脚本清除：
+
+    来自 [How to Clean Up Snap Package Versions in Linux](https://itsfoss.com/clean-snap-packages/)
+
+    ```bash
+    #!/bin/bash
+    # Removes old revisions of snaps
+    # CLOSE ALL SNAPS BEFORE RUNNING THIS
+    set -eu
+    snap list --all | awk '/disabled/{print $1, $3}' |
+        while read snapname revision; do
+            snap remove "$snapname" --revision="$revision"
+        done
+    ```
