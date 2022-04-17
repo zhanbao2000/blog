@@ -31,15 +31,15 @@ sudo snap install --classic certbot
 
  - 你的 `80` 端口已经被 `nginx`（或者其他服务）占用了：
 
-```bash
-certbot certonly --nginx -d example.com -d www.example.com -d another.example.com
-```
+    ```bash
+    certbot certonly --nginx -d example.com -d www.example.com -d another.example.com
+    ```
 
  - 你的 `80` 端口没有被任何服务占用：
 
-```bash
-certbot certonly --standalone -d example.com -d www.example.com -d another.example.com
-```
+    ```bash
+    certbot certonly --standalone -d example.com -d www.example.com -d another.example.com
+    ```
 
 ## 申请泛域名证书（也叫通配符证书）
 
@@ -61,21 +61,21 @@ systemctl list-timers
 
  - 不加任何参数，没有临近到期时间的话会停止执行
 
-```bash
-certbot renew
-```
+    ```bash
+    certbot renew
+    ```
 
  - 测试续期，不会真的续期
 
-```bash
-certbot renew --dry-run
-```
+    ```bash
+    certbot renew --dry-run
+    ```
 
  - 强制续期
 
-```bash
-certbot renew --force-renewal
-```
+    ```bash
+    certbot renew --force-renewal
+    ```
 
 ## 为证书续期（泛域名）
 
@@ -103,15 +103,15 @@ certbot certonly -d "*.example.com" -d "example.com" --manual --preferred-challe
 
  - 用颁发证书的账户吊销证书
 
-```bash
-certbot revoke --cert-path /etc/letsencrypt/archive/${YOUR_DOMAIN}/cert1.pem
-```
+    ```bash
+    certbot revoke --cert-path /etc/letsencrypt/archive/${YOUR_DOMAIN}/cert1.pem
+    ```
 
  - 使用证书私钥吊销证书
 
-```bash
-certbot revoke --cert-path /PATH/TO/cert.pem --key-path /PATH/TO/key.pem
-```
+    ```bash
+    certbot revoke --cert-path /PATH/TO/cert.pem --key-path /PATH/TO/key.pem
+    ```
 
  - 使用其他授权帐户吊销证书
 
