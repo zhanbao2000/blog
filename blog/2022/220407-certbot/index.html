@@ -822,15 +822,17 @@ sudo snap install --classic certbot
 <p>根据你的 <code>80</code> 端口有没有被占用，你需要使用两种模式—— <code>nginx</code> 或者 <code>standalone</code>。</p>
 </div>
 <ul>
-<li>你的 <code>80</code> 端口已经被 <code>nginx</code>（或者其他服务）占用了：</li>
-</ul>
+<li>
+<p>你的 <code>80</code> 端口已经被 <code>nginx</code>（或者其他服务）占用了：</p>
 <div class="highlight"><pre><span></span><code>certbot certonly --nginx -d example.com -d www.example.com -d another.example.com
 </code></pre></div>
-<ul>
-<li>你的 <code>80</code> 端口没有被任何服务占用：</li>
-</ul>
+</li>
+<li>
+<p>你的 <code>80</code> 端口没有被任何服务占用：</p>
 <div class="highlight"><pre><span></span><code>certbot certonly --standalone -d example.com -d www.example.com -d another.example.com
 </code></pre></div>
+</li>
+</ul>
 <h2 id="_3">申请泛域名证书（也叫通配符证书）</h2>
 <p>比较麻烦，需要在 DNS 服务提供商处设置 <code>TXT</code> 记录。并且<strong>只能</strong>通过这个方式来续期。</p>
 <div class="highlight"><pre><span></span><code>certbot certonly -d <span class="s2">&quot;*.example.com&quot;</span> -d <span class="s2">&quot;example.com&quot;</span> --manual --preferred-challenges dns --server https://acme-v02.api.letsencrypt.org/directory
@@ -841,20 +843,22 @@ sudo snap install --classic certbot
 </code></pre></div>
 <h2 id="_5">手动为证书续期</h2>
 <ul>
-<li>不加任何参数，没有临近到期时间的话会停止执行</li>
-</ul>
+<li>
+<p>不加任何参数，没有临近到期时间的话会停止执行</p>
 <div class="highlight"><pre><span></span><code>certbot renew
 </code></pre></div>
-<ul>
-<li>测试续期，不会真的续期</li>
-</ul>
+</li>
+<li>
+<p>测试续期，不会真的续期</p>
 <div class="highlight"><pre><span></span><code>certbot renew --dry-run
 </code></pre></div>
-<ul>
-<li>强制续期</li>
-</ul>
+</li>
+<li>
+<p>强制续期</p>
 <div class="highlight"><pre><span></span><code>certbot renew --force-renewal
 </code></pre></div>
+</li>
+</ul>
 <h2 id="_6">为证书续期（泛域名）</h2>
 <p>泛域名证书不能通过 <code>certbot renew</code> 来续期，需要手动续期。否则会报错。</p>
 <p>原因很简单，就是你在申请泛域名证书的时候在 DNS 服务商那里添加的 <code>TXT</code> 记录，这是一个会变化的值。</p>
@@ -870,17 +874,19 @@ sudo snap install --classic certbot
 <h2 id="_7">吊销（撤销）证书</h2>
 <p>这里直接引用 <a href="https://letsencrypt.org/zh-cn/docs/revoking/">Let's Encrypt 官网</a></p>
 <ul>
-<li>用颁发证书的账户吊销证书</li>
-</ul>
+<li>
+<p>用颁发证书的账户吊销证书</p>
 <div class="highlight"><pre><span></span><code>certbot revoke --cert-path /etc/letsencrypt/archive/<span class="si">${</span><span class="nv">YOUR_DOMAIN</span><span class="si">}</span>/cert1.pem
 </code></pre></div>
-<ul>
-<li>使用证书私钥吊销证书</li>
-</ul>
+</li>
+<li>
+<p>使用证书私钥吊销证书</p>
 <div class="highlight"><pre><span></span><code>certbot revoke --cert-path /PATH/TO/cert.pem --key-path /PATH/TO/key.pem
 </code></pre></div>
-<ul>
-<li>使用其他授权帐户吊销证书</li>
+</li>
+<li>
+<p>使用其他授权帐户吊销证书</p>
+</li>
 </ul>
 <p>先从 <a href="https://crt.sh/">crt.sh</a> 中下载证书，然后：</p>
 <div class="highlight"><pre><span></span><code>certbot revoke --cert-path /PATH/TO/downloaded-cert.pem
@@ -897,7 +903,7 @@ sudo snap install --classic certbot
   <small>
     
       最后更新:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_datetime">2022-04-07 10:44:59</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_datetime">2022-04-17 13:25:44</span>
       
         <br>
         创建日期:
