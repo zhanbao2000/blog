@@ -89,7 +89,7 @@ rm -r ~/.cache/pip
  - 删除这些重复的 snap 包：
 
     ```bash
-    snap remove core --revision xxx   # xxx 是软件的 revision
+    snap remove XXXX --revision YYYY   # XXXX 是软件的 name，YYYY 是软件的 Rev
     ```
  
  - 也可以使用这个脚本清除：
