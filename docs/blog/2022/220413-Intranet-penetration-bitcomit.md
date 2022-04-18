@@ -101,6 +101,18 @@ type = udp
 local_ip = 127.0.0.1
 local_port = 10400
 remote_port = 10400
+
+[eMule Listen TCP]
+type = tcp
+local_ip = 127.0.0.1
+local_port = 22224
+remote_port = 22224
+
+[eMule Listen UDP]
+type = udp
+local_ip = 127.0.0.1
+local_port = 22224
+remote_port = 22224
 ```
 
 注意以下配置项：
@@ -117,6 +129,12 @@ remote_port = 10400
 
 ![listen port](images/220413-Intranet-penetration-bitcomit/listen-port.png)
 
+`eMule Listen TCP/UDP` 是比特彗星电驴插件的通信端口，均设置成 `127.0.0.1` 上的 `22224`，和比特彗星与电驴插件内的设置保持一致。如果你的比特彗星版本没有电驴插件，那么你可以忽略该项。
+
+![listen emule](images/220413-Intranet-penetration-bitcomit/emule.jpg)
+
+![listen emule2](images/220413-Intranet-penetration-bitcomit/emule2.jpg)
+
 ## 测试 frp 连接
 
 现在在你的客户端上执行：
@@ -127,22 +145,25 @@ frpc.exe -c frpc.ini
 
 客户端上应该会显示日志：
 
-```
-2022/04/13 09:43:20 [I] [service.go:301] [44dfbb2737aff979] login to server success, get run id [44dfbb2737aff979], server udp port [7000]
-2022/04/13 09:43:20 [I] [proxy_manager.go:144] [44dfbb2737aff979] proxy added: [Remote Download BT Listen TCP BT Listen UDP]
-2022/04/13 09:43:20 [I] [control.go:180] [44dfbb2737aff979] [Remote Download] start proxy success
-2022/04/13 09:43:20 [I] [control.go:180] [44dfbb2737aff979] [BT Listen TCP] start proxy success
-2022/04/13 09:43:20 [I] [control.go:180] [44dfbb2737aff979] [BT Listen UDP] start proxy success
-2022/04/13 09:43:21 [I] [proxy.go:481] [44dfbb2737aff979] [BT Listen UDP] incoming a new work connection for udp proxy, ws://XXX.XXX.XXX.XXX:7000/~!frp
+``` log
+2022/04/18 15:04:44 [I] [service.go:301] [39744ebb9b0e3aab] login to server success, get run id [39744ebb9b0e3aab], server udp port [7000]
+2022/04/18 15:04:44 [I] [proxy_manager.go:144] [39744ebb9b0e3aab] proxy added: [eMule Listen UDP Remote Download BT Listen TCP BT Listen UDP eMule Listen TCP]
+2022/04/18 15:04:44 [I] [control.go:180] [39744ebb9b0e3aab] [eMule Listen UDP] start proxy success
+2022/04/18 15:04:44 [I] [control.go:180] [39744ebb9b0e3aab] [BT Listen TCP] start proxy success
+2022/04/18 15:04:44 [I] [control.go:180] [39744ebb9b0e3aab] [Remote Download] start proxy success
+2022/04/18 15:04:44 [I] [control.go:180] [39744ebb9b0e3aab] [BT Listen UDP] start proxy success
+2022/04/18 15:04:44 [I] [control.go:180] [39744ebb9b0e3aab] [eMule Listen TCP] start proxy success
+2022/04/18 15:04:45 [I] [proxy.go:481] [39744ebb9b0e3aab] [eMule Listen UDP] incoming a new work connection for udp proxy, ws://XXX.XXX.XXX.XXX:7000/~!frp
+2022/04/18 15:04:45 [I] [proxy.go:481] [39744ebb9b0e3aab] [BT Listen UDP] incoming a new work connection for udp proxy, ws://XXX.XXX.XXX.XXX:7000/~!frp```
 ```
 
 同时服务端上应该会立即显示一条日志：
 
-```
-2022/04/13 09:43:21 [I] [service.go:447] [44dfbb2737aff979] client login info: ip http://XXX.XXX.XXX.XXX:7000 version [0.38.0] hostname [] os [windows] arch [amd64]
+``` log
+2022/04/13 09:43:21 [I] [service.go:447] [39744ebb9b0e3aab] client login info: ip http://XXX.XXX.XXX.XXX:7000 version [0.38.0] hostname [] os [windows] arch [amd64]
 ```
 
-其中的 `XXX.XXX.XXX.XXX:7000` 应该是你服务端的 IP + 端口，而 `44dfbb2737aff979` 是你被服务端分配的用户 ID，每次你连接到服务端时，都会被服务端随机分配一个用户 ID。
+其中的 `XXX.XXX.XXX.XXX:7000` 应该是你服务端的 IP + 端口，而 `39744ebb9b0e3aab` 是你被服务端分配的用户 ID，每次你连接到服务端时，都会被服务端随机分配一个用户 ID。
 
 ``` mermaid
 graph TB
@@ -182,6 +203,10 @@ frp 只能解决一个方向上的问题，就是 peers 连接到客户端，而
 此时我们已经等价于具有了公网 IP，并且可以以公网 IP 身份与互联网进行双向通信。不出意外的话，这个时候比特彗星的灯已经🟢了
 
 ![green](images/220413-Intranet-penetration-bitcomit/green.png)
+
+如果你的比特彗星客户端内有电驴插件，那么你应当同时为电驴插件也打开代理。如图：
+
+![emule-proxy](images/220413-Intranet-penetration-bitcomit/emule-proxy.jpg)
 
 ## 关闭防吸血
 
