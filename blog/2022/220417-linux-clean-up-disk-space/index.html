@@ -620,6 +620,13 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    清理登录日志
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -690,6 +697,13 @@
         <li class="md-nav__item">
   <a href="#snap" class="md-nav__link">
     清理旧版本 snap 包
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    清理登录日志
   </a>
   
 </li>
@@ -782,6 +796,10 @@ Storage=none       # 丢弃所有的日志，不保存到内存或磁盘
 </code></pre></div>
 </li>
 </ul>
+<div class="admonition 危险 danger">
+<p class="admonition-title">危险</p>
+<p>不要使用 <code>rm</code> 命令来删除 journal 日志。参考 <a href="https://www.cnblogs.com/pennychen/p/8681119.html">删除日志释放空间最好不要用rm</a></p>
+</div>
 <h2 id="apt-get">清理 apt-get 缓存</h2>
 <p>一般可以清理数百 MB。</p>
 <div class="highlight"><pre><span></span><code>apt-get clean
@@ -827,6 +845,14 @@ snap list --all <span class="p">|</span> awk <span class="s1">&#39;/disabled/{pr
 </code></pre></div>
 </li>
 </ul>
+<h2 id="_1">清理登录日志</h2>
+<p>这个文件是记录错误登录的日志，如果有人每天试你的密码来暴力破解你的 ssh，那你的这个文件就会很大。</p>
+<div class="highlight"><pre><span></span><code><span class="nb">echo</span> <span class="s2">&quot;&quot;</span> &gt; /var/log/btmp
+</code></pre></div>
+<p>该文件同理</p>
+<div class="highlight"><pre><span></span><code><span class="nb">echo</span> <span class="s2">&quot;&quot;</span> &gt; /var/log/auth.log
+</code></pre></div>
+<p>同理，不应当使用 <code>rm</code> 而是使用 <code>echo</code> 来清空这两个日志。</p>
 
     <!-- Last update of source file -->
     
@@ -836,7 +862,7 @@ snap list --all <span class="p">|</span> awk <span class="s1">&#39;/disabled/{pr
   <small>
     
       最后更新:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_datetime">2022-04-17 13:24:03</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_datetime">2022-04-20 19:04:16</span>
       
         <br>
         创建日期:
