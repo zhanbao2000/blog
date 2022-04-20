@@ -47,6 +47,10 @@ title: Linux 清理磁盘空间常见操作
     Storage=none       # 丢弃所有的日志，不保存到内存或磁盘
     ```
    
+!!! 危险 danger
+
+    不要使用 `rm` 命令来删除 journal 日志。参考 [删除日志释放空间最好不要用rm](https://www.cnblogs.com/pennychen/p/8681119.html)
+   
 ## 清理 apt-get 缓存
 
 一般可以清理数百 MB。
@@ -106,3 +110,19 @@ rm -r ~/.cache/pip
             snap remove "$snapname" --revision="$revision"
         done
     ```
+   
+## 清理登录日志
+
+这个文件是记录错误登录的日志，如果有人每天试你的密码来暴力破解你的 ssh，那你的这个文件就会很大。
+
+```bash
+echo "" > /var/log/btmp
+```
+
+该文件同理
+
+```bash
+echo "" > /var/log/auth.log
+```
+
+同理，不应当使用 `rm` 而是使用 `echo` 来清空这两个日志。
