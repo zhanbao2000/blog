@@ -5,7 +5,6 @@ read_time: 2 min
 tags:
     - nginx
     - arcaea
-    - stream
 title: nginx 如何设置 stream 转发
 ---
 
