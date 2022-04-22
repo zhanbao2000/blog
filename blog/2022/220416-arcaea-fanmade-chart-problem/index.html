@@ -574,6 +574,20 @@
 
             
           
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../220421-use-gzip-bomb-against-scanner/" class="md-nav__link">
+        如何使用 gzip 压缩包炸弹对恶意扫描器进行反击
+      </a>
+    </li>
+  
+
+            
+          
         </ul>
       </nav>
     </li>
@@ -658,7 +672,7 @@ as the main headline.
     <p>一、Arcade 生成的自制谱（以及 Arcaoid 谱）没有确定 <code>base_bpm</code>，但是 <code>songlist</code> 中这个值比较重要，这体现在：</p>
 <ul>
 <li><code>bpm</code> 字段不影响谱面基准流速，只影响选曲界面的显示效果，因此可以设置为任意值，或者写一些奇奇怪怪的东西（比如定数）</li>
-<li><code>bpm_base</code> 的值与 <code>timing</code> 语句中声明的 bpm 的比值决定该段 timing 内的实际流速倍率（？）。<ul>
+<li><code>bpm_base</code> 的值与 <code>timing</code> 语句中声明的 bpm 的比值决定该段 timing 内的实际流速倍率（？）<ul>
 <li>这个比值越小，流速越快</li>
 <li>一般情况下建议把 <code>bpm_base</code> 直接设置为 <code>t=0</code> 的 <code>timing</code> 语句中规定的 bpm，因为<strong>绝大部分</strong>情况下这个值都是这首歌的 bpm 值</li>
 <li>但当遇到某些谱面开头流速异常（例如白魔王）时，建议把 <code>base_bpm</code> 设置成其他 <code>timing</code> 语句中规定的 bpm 值</li>
@@ -693,7 +707,7 @@ timing(78620,174.00,4.00);
 <p>三、某些自制谱中 <code>aff</code> 文件的语句不符合 Arcaea 规范。这些谱面在 Arcade 中能正常播放，但是在 Arcaea 中选曲完成后会立即闪退。以下是我找到的一些问题：</p>
 <ul>
 <li><code>timing</code> 语句中，<code>beats</code> 参数不能为 <code>0.00</code>，很多自制谱为了不出现节拍线会设置成 <code>0.00</code></li>
-<li>每个谱面有且仅有一个 <code>t=0</code>的 <code>timing</code> 语句，且其 <code>bpm</code> 参数不可为负数。</li>
+<li>每个谱面有且仅有一个 <code>t=0</code>的 <code>timing</code> 语句，且其 <code>bpm</code> 参数不可为负数</li>
 <li><code>timing</code> 语句中，<code>bpm</code> 参数必须保留两位小数</li>
 <li><code>camera</code> 语句的第 2-7 个参数（即 <code>transverse</code>, <code>bottomzoom</code>, <code>linezoom</code>, <code>steadyangle</code>, <code>topzoom</code>, <code>angle</code>）必须保留两位小数</li>
 <li><code>arc</code> 语句中 <code>color</code> 参数的值只能是 <code>0/1/2</code>，某些自制谱会写 <code>-1</code></li>
@@ -794,7 +808,7 @@ timing(78620,174.00,4.00);
   <small>
     
       最后更新:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_datetime">2022-04-16 10:15:01</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_datetime">2022-04-22 08:05:24</span>
       
         <br>
         创建日期:
