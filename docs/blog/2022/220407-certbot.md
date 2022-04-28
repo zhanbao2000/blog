@@ -49,6 +49,8 @@ sudo snap install --classic certbot
 certbot certonly -d "*.example.com" -d "example.com" --manual --preferred-challenges dns --server https://acme-v02.api.letsencrypt.org/directory
 ```
 
+其中 `--server` 参数所指向的 url 也许会变化，但是你总能在 Let's Encrypt 的 [文档](https://letsencrypt.org/docs/staging-environment/) 上找到最新的。
+
 执行之后会交给你一个或两个设置 `TXT` 记录的任务。去你的 DNS 服务提供商处设置好即可。
 
 ## 查看自动续期的计划任务
@@ -115,14 +117,14 @@ certbot certonly -d "*.example.com" -d "example.com" --manual --preferred-challe
 
  - 使用其他授权帐户吊销证书
 
-先从 [crt.sh](https://crt.sh/) 中下载证书，然后：
-
-```bash
-certbot revoke --cert-path /PATH/TO/downloaded-cert.pem
-```
-
-## 删除证书
-
-```bash
-certbot delete 
-```
+    先从 [crt.sh](https://crt.sh/) 中下载证书，然后：
+    
+    ```bash
+    certbot revoke --cert-path /PATH/TO/downloaded-cert.pem
+    ```
+    
+    ## 删除证书
+    
+    ```bash
+    certbot delete 
+    ```
