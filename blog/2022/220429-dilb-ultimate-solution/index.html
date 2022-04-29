@@ -12,14 +12,14 @@
         <meta name="author" content="Akiba Arisa">
       
       
-        <link rel="canonical" href="https://blog.arisa.moe/blog/2022/220407-certbot/">
+        <link rel="canonical" href="https://blog.arisa.moe/blog/2022/220429-dilb-ultimate-solution/">
       
       <link rel="icon" href="../../../assets/images/favicon.png">
       <meta name="generator" content="mkdocs-1.3.0, mkdocs-material-8.2.11">
     
     
       
-        <title>certbot 常用操作 - Arisa | Blog</title>
+        <title>基于 Anaconda 的 dlib（CUDA 版本）安装的终极解决方案 - Arisa | Blog</title>
       
     
     
@@ -104,7 +104,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              certbot 常用操作
+              基于 Anaconda 的 dlib（CUDA 版本）安装的终极解决方案
             
           </span>
         </div>
@@ -449,97 +449,11 @@
               
   
   
-    
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
-      
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          certbot 常用操作
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../220407-certbot/" class="md-nav__link">
         certbot 常用操作
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="目录">
-  
-  
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      目录
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#_1" class="md-nav__link">
-    安装
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_2" class="md-nav__link">
-    申请多个域名证书
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_3" class="md-nav__link">
-    申请泛域名证书（也叫通配符证书）
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_4" class="md-nav__link">
-    查看自动续期的计划任务
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_5" class="md-nav__link">
-    手动为证书续期
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_6" class="md-nav__link">
-    为证书续期（泛域名）
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_7" class="md-nav__link">
-    吊销（撤销）证书
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_8" class="md-nav__link">
-    删除证书
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -675,11 +589,185 @@
               
   
   
+    
   
-    <li class="md-nav__item">
-      <a href="../220429-dilb-ultimate-solution/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          基于 Anaconda 的 dlib（CUDA 版本）安装的终极解决方案
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         基于 Anaconda 的 dlib（CUDA 版本）安装的终极解决方案
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    绪论
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    拟议方案的前提条件
+  </a>
+  
+    <nav class="md-nav" aria-label="拟议方案的前提条件">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    系统架构
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#conda" class="md-nav__link">
+    Conda
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#visual-studio" class="md-nav__link">
+    Visual Studio
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    拟议方案的执行步骤
+  </a>
+  
+    <nav class="md-nav" aria-label="拟议方案的执行步骤">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#conda_1" class="md-nav__link">
+    构建 Conda 环境
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cuda-cudnn" class="md-nav__link">
+    安装 CUDA 和 cuDNN
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#dlib" class="md-nav__link">
+    获取 dlib 源码
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    在构建之前
+  </a>
+  
+    <nav class="md-nav" aria-label="在构建之前">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#msvc-x64" class="md-nav__link">
+    进入 MSVC x64 编译环境
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#dlib_1" class="md-nav__link">
+    修改 dlib 源码
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    开始构建
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    尝试编译
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    尝试安装
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    在安装之后
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_10" class="md-nav__link">
+    结论
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_11" class="md-nav__link">
+    致谢
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -724,56 +812,144 @@
       
         <li class="md-nav__item">
   <a href="#_1" class="md-nav__link">
-    安装
+    绪论
   </a>
   
 </li>
       
         <li class="md-nav__item">
   <a href="#_2" class="md-nav__link">
-    申请多个域名证书
+    拟议方案的前提条件
+  </a>
+  
+    <nav class="md-nav" aria-label="拟议方案的前提条件">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    系统架构
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#_3" class="md-nav__link">
-    申请泛域名证书（也叫通配符证书）
+        
+          <li class="md-nav__item">
+  <a href="#conda" class="md-nav__link">
+    Conda
   </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#visual-studio" class="md-nav__link">
+    Visual Studio
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
         <li class="md-nav__item">
   <a href="#_4" class="md-nav__link">
-    查看自动续期的计划任务
+    拟议方案的执行步骤
+  </a>
+  
+    <nav class="md-nav" aria-label="拟议方案的执行步骤">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#conda_1" class="md-nav__link">
+    构建 Conda 环境
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
+        
+          <li class="md-nav__item">
+  <a href="#cuda-cudnn" class="md-nav__link">
+    安装 CUDA 和 cuDNN
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#dlib" class="md-nav__link">
+    获取 dlib 源码
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#_5" class="md-nav__link">
-    手动为证书续期
+    在构建之前
+  </a>
+  
+    <nav class="md-nav" aria-label="在构建之前">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#msvc-x64" class="md-nav__link">
+    进入 MSVC x64 编译环境
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
+        
+          <li class="md-nav__item">
+  <a href="#dlib_1" class="md-nav__link">
+    修改 dlib 源码
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#_6" class="md-nav__link">
-    为证书续期（泛域名）
+    开始构建
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
+        
+          <li class="md-nav__item">
   <a href="#_7" class="md-nav__link">
-    吊销（撤销）证书
+    尝试编译
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    尝试安装
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    在安装之后
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_10" class="md-nav__link">
+    结论
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#_8" class="md-nav__link">
-    删除证书
+  <a href="#_11" class="md-nav__link">
+    致谢
   </a>
   
 </li>
@@ -796,7 +972,7 @@ doesn't, the page title (or respectively site name) is used
 as the main headline.
 -->
 
-    <h1>certbot 常用操作</h1>
+    <h1>基于 Anaconda 的 dlib（CUDA 版本）安装的终极解决方案</h1>
 
 
 <!-- Markdown content -->
@@ -815,7 +991,7 @@ as the main headline.
                     <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" fill="currentColor" class="bi bi-clock" viewBox="0 0 16 16">
                         <path d="M8 3.5a.5.5 0 0 0-1 0V9a.5.5 0 0 0 .252.434l3.5 2a.5.5 0 0 0 .496-.868L8 8.71V3.5z"/>
                         <path d="M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16zm7-8A7 7 0 1 1 1 8a7 7 0 0 1 14 0z"/>
-                    </svg> 8 min read
+                    </svg> 30 min read
                 </span>
             </p>
         </aside>
@@ -825,104 +1001,241 @@ as the main headline.
     
         <div class="tags">
         
-            <a href="/tags/#ssl" class="tag"><code>#ssl</code></a>
+            <a href="/tags/#dlib" class="tag"><code>#dlib</code></a>
         
-            <a href="/tags/#letsencrypt" class="tag"><code>#letsencrypt</code></a>
+            <a href="/tags/#visual-studio" class="tag"><code>#visual-studio</code></a>
         
-            <a href="/tags/#certbot" class="tag"><code>#certbot</code></a>
+            <a href="/tags/#python" class="tag"><code>#python</code></a>
+        
+            <a href="/tags/#anaconda" class="tag"><code>#anaconda</code></a>
         
         </div>
     
 
-    <h2 id="_1">安装</h2>
-<p>官网建议用 <code>snap</code> 安装。👉 <a href="https://certbot.eff.org/instructions?ws=other&amp;os=ubuntufocal">https://certbot.eff.org/instructions?ws=other&amp;os=ubuntufocal</a></p>
-<div class="highlight"><pre><span></span><code>sudo snap install core
-sudo snap refresh core
-sudo snap install --classic certbot
-</code></pre></div>
-<h2 id="_2">申请多个域名证书</h2>
-<div class="admonition 警告 danger">
-<p class="admonition-title">警告</p>
-<p>无论你需要申请多少个证书，在申请之前，都请在你的 DNS 提供商处将你所需要申请 SSL 证书的域名解析到你的服务器上。</p>
-</div>
-<div class="admonition 提示 tips">
-<p class="admonition-title">提示</p>
-<p>根据你的 <code>80</code> 端口有没有被占用，你需要使用两种模式—— <code>nginx</code> 或者 <code>standalone</code>。</p>
-</div>
-<ul>
-<li>
-<p>你的 <code>80</code> 端口已经被 <code>nginx</code>（或者其他服务）占用了：</p>
-<div class="highlight"><pre><span></span><code>certbot certonly --nginx -d example.com -d www.example.com -d another.example.com
-</code></pre></div>
-</li>
-<li>
-<p>你的 <code>80</code> 端口没有被任何服务占用：</p>
-<div class="highlight"><pre><span></span><code>certbot certonly --standalone -d example.com -d www.example.com -d another.example.com
-</code></pre></div>
-</li>
-</ul>
-<h2 id="_3">申请泛域名证书（也叫通配符证书）</h2>
-<p>比较麻烦，需要在 DNS 服务提供商处设置 <code>TXT</code> 记录。并且<strong>只能</strong>通过这个方式来续期。</p>
-<div class="highlight"><pre><span></span><code>certbot certonly -d <span class="s2">&quot;*.example.com&quot;</span> -d <span class="s2">&quot;example.com&quot;</span> --manual --preferred-challenges dns --server https://acme-v02.api.letsencrypt.org/directory
-</code></pre></div>
-<p>其中 <code>--server</code> 参数所指向的 url 也许会变化，但是你总能在 Let's Encrypt 的 <a href="https://letsencrypt.org/docs/staging-environment/">文档</a> 上找到最新的。</p>
-<p>执行之后会交给你一个或两个设置 <code>TXT</code> 记录的任务。去你的 DNS 服务提供商处设置好即可。</p>
-<h2 id="_4">查看自动续期的计划任务</h2>
-<div class="highlight"><pre><span></span><code>systemctl list-timers
-</code></pre></div>
-<h2 id="_5">手动为证书续期</h2>
-<ul>
-<li>
-<p>不加任何参数，没有临近到期时间的话会停止执行</p>
-<div class="highlight"><pre><span></span><code>certbot renew
-</code></pre></div>
-</li>
-<li>
-<p>测试续期，不会真的续期</p>
-<div class="highlight"><pre><span></span><code>certbot renew --dry-run
-</code></pre></div>
-</li>
-<li>
-<p>强制续期</p>
-<div class="highlight"><pre><span></span><code>certbot renew --force-renewal
-</code></pre></div>
-</li>
-</ul>
-<h2 id="_6">为证书续期（泛域名）</h2>
-<p>泛域名证书不能通过 <code>certbot renew</code> 来续期，需要手动续期。否则会报错。</p>
-<p>原因很简单，就是你在申请泛域名证书的时候在 DNS 服务商那里添加的 <code>TXT</code> 记录，这是一个会变化的值。</p>
-<p>续期方法和申请方法一模一样，相当于重新申请一次。</p>
-<div class="highlight"><pre><span></span><code>certbot certonly -d <span class="s2">&quot;*.example.com&quot;</span> -d <span class="s2">&quot;example.com&quot;</span> --manual --preferred-challenges dns --server https://acme-v02.api.letsencrypt.org/directory
-</code></pre></div>
-<p>中途同样需要修改 DNS 的 <code>TXT</code> 记录这样的操作。有人可能会觉得很麻烦，麻烦你就去写个脚本啊。</p>
-<p>事实上 certbot 的报错也说得很清楚了，他的意思就是要我们去写个脚本：</p>
+    <h2 id="_1">绪论</h2>
 <blockquote>
-<p>An <strong>authentication script</strong> must be provided with --manual-auth-hook when using the manual plugin non-interactively.</p>
+<p>历时 14 个小时，反复下载高达 60 GB，重新部署整个 Visual Studio 多达 5 次，从而打磨出的 dlib 安装终极解决方案，专注于解决 dlib 安装过程中出现的各种疑难杂症。</p>
 </blockquote>
-<p>网上有各个版本的脚本，大概原理都是通过你 DNS 服务商提供的 Token，在服务器上直接修改 DNS 的 <code>TXT</code> 记录。一搜一大堆。</p>
-<h2 id="_7">吊销（撤销）证书</h2>
-<p>这里直接引用 <a href="https://letsencrypt.org/zh-cn/docs/revoking/">Let's Encrypt 官网</a></p>
+<p>你是否有以下苦恼？</p>
 <ul>
-<li>
-<p>用颁发证书的账户吊销证书</p>
-<div class="highlight"><pre><span></span><code>certbot revoke --cert-path /etc/letsencrypt/archive/<span class="si">${</span><span class="nv">YOUR_DOMAIN</span><span class="si">}</span>/cert1.pem
-</code></pre></div>
-</li>
-<li>
-<p>使用证书私钥吊销证书</p>
-<div class="highlight"><pre><span></span><code>certbot revoke --cert-path /PATH/TO/cert.pem --key-path /PATH/TO/key.pem
-</code></pre></div>
-</li>
-<li>
-<p>使用其他授权帐户吊销证书</p>
-<p>先从 <a href="https://crt.sh/">crt.sh</a> 中下载证书，然后：</p>
-<div class="highlight"><pre><span></span><code>certbot revoke --cert-path /PATH/TO/downloaded-cert.pem
-</code></pre></div>
-<h2 id="_8">删除证书</h2>
-<div class="highlight"><pre><span></span><code>certbot delete 
-</code></pre></div>
-</li>
+<li>You must use Visual Studio to build a python extension on Windows</li>
+<li>对着十几个 GB 的 Visual Studio 发愁</li>
+<li>anaconda 装上的 dlib 没法调用 GPU</li>
+<li>不仅 GPU 占用率为 0，CPU 也跑不满</li>
+<li>装上了 Visual Studio，仍然无法编译 dlib</li>
+<li>x64 和 x86 打架</li>
+<li>几个 CMake 一起打架</li>
+<li>英伟达 CUDA 驱动在 C 盘到处释放文件（lashi）</li>
+<li>明明装了 CUDA，安装脚本却不让用</li>
+<li>嫌弃你的 CUDA 版本太高或太低</li>
+<li>嫌弃你的 Visual Studio 版本太高或太低</li>
+<li>CMakeList.txt 第 5 行经典报错</li>
+<li>Permission Denied</li>
+<li>Temp 文件夹写入不了了</li>
+<li>error C2734: “GifAsciiTable8x8”: 如果不是外部的，则必须初始化常量对象</li>
+<li>error C2065: “ssize_t”: 未声明的标识符</li>
+<li>历经千辛万苦装完了结果还是 <code class="highlight"><span class="n">dlib</span><span class="o">.</span><span class="n">DLIB_USE_CUDA</span> <span class="o">==</span> <span class="kc">False</span></code></li>
+<li>...</li>
 </ul>
+<p>装 <a href="https://github.com/davisking/dlib">dlib</a> 一直是机器学习领域的一个大难题，它要求开发人员拥有某些特定的 CUDA + Visual Studio + dlib + python 版本的组合，这些组合一旦有一个环节出了问题，就会导致整个 dlib 没法用，而 dlib 又是很多库（例如 <a href="https://github.com/ageitgey/face_recognition">face_recognition</a> ）的依赖库。这些艰难险阻将极大地打击开发人员在机器学习领域攻坚的信心。</p>
+<p>即使是有 <code>万能</code> 之称的 <a href="https://anaconda.org">Anaconda</a> ，它也不能完全这个问题。因为它下载的 dlib 没有提供 GPU 支持，这直接造成了 <code>一核有难，万核围观</code> 的经典局面。而目前（2022 年 4 月底）唯一能在 Anaconda 仓库中找到的有关 CUDA 和 GPU 的软件包只提供了 Linux 的编译版本（<a href="https://anaconda.org/zeroae/dlib-cuda">zeroae/dlib-cuda</a> 和 <a href="https://anaconda.org/hoan/dlib-gpu">hoan/dlib-gpu</a> ）且均很长时间没有更新。</p>
+<p>这使得手头没有 Visual Studio 的开发人员（其实就算有 Visual Studio 也差不多）在 Windows 平台上利用 CNN（卷积神经网络）进行人脸识别或者其他机器学习任务时，简直和坐牢一样。</p>
+<p>这个方案的出现，就是为了用一个简单、直观、有效的方法，一次性解决这个问题。</p>
+<h2 id="_2">拟议方案的前提条件</h2>
+<p>在所有步骤开始之前，请先确保你满足以下前提条件：</p>
+<h3 id="_3">系统架构</h3>
+<p>为了避免不必要的麻烦，请在接下来的<strong>所有步骤</strong>中，均使用 64 位系统架构（amd64 或者 x64）。</p>
+<h3 id="conda">Conda</h3>
+<p>目前我的版本是 <a href="https://anaconda.org">Anaconda</a> 1.9.0，其他版本<strong>应该</strong>不影响。同理，Python 版本<strong>应该</strong>也不影响。</p>
+<h3 id="visual-studio"><a href="https://my.visualstudio.com/Downloads/Featured?mkt=zh-cn">Visual Studio</a></h3>
+<p>以下 Visual Studio 中，你至少需要拥有一个：</p>
+<ul>
+<li>Visual Studio 2019</li>
+<li>Build Tools for Visual Studio 2019</li>
+<li>Visual Studio 2017</li>
+<li>Build Tools for Visual Studio 2017</li>
+</ul>
+<p>因为我不想下十几个 GB 的 Visual Studio 2019/2017，所以我使用的是 Build Tools for Visual Studio 2019。即使是这样，他仍然会占用我大约 4 GB 的磁盘空间（其中 C 盘固定占用约 2 GB），但这比起来已经足够小了。</p>
+<div class="admonition 危险 danger">
+<p class="admonition-title">危险</p>
+<p>你可能想问 Visual Studio 2015（含）以下等不在此列的 Visual Studio 版本行不行，这里明确表示：</p>
+<p><strong><em>不行！！！</em></strong></p>
+<div class="highlight"><pre><span></span><code><span class="cp">#if _MSC_VER &lt; 1910 || _MSC_VER &gt;= 1930</span>
+<span class="cp">#error -- unsupported Microsoft Visual Studio version! Only the versions between 2017 and 2019 (inclusive) are</span>
+</code></pre></div>
+<p>另见：</p>
+<ul>
+<li><a href="https://docs.nvidia.com/cuda/cuda-installation-guide-microsoft-windows/index.html">CUDA Installation Guide for Microsoft Windows</a></li>
+<li><a href="https://gist.github.com/ax3l/9489132#nvcc">CUDA Compilers</a></li>
+</ul>
+</div>
+<p>以下 Visual Studio 工作负载中，<strong>必须</strong>全部拥有：</p>
+<ul>
+<li>MSVC VS 2017（或 2019）C++ x64/x86 生成工具</li>
+<li>Windows 10 SDK</li>
+<li>用于 Windows 的 C++ CMake 工具</li>
+</ul>
+<div class="admonition 危险 danger">
+<p class="admonition-title">危险</p>
+<p>注意最后一个</p>
+<ul>
+<li>用于 Windows 的 C++ CMake 工具</li>
+</ul>
+<p>就算你已经有了 <a href="https://github.com/Kitware/CMake">Kitware 的 CMake</a> 你仍然需要勾选，不然就算通过了 CXX 编译器测试阶段，在实际编译的时候仍然可能 broken。</p>
+</div>
+<p>如图所示：</p>
+<p><img alt="vs-installer" src="../images/220429-dilb-ultimate-solution/vs-installer.jpg" /></p>
+<p>记得修改安装路径，别一股脑全塞 C 盘了：</p>
+<p><img alt="change-install-path" src="../images/220429-dilb-ultimate-solution/change-install-path.jpg" /></p>
+<div class="admonition 危险 danger">
+<p class="admonition-title">危险</p>
+<p>请在退出 Visual Studio Installer 后立即检查你的临时文件夹，例如 <code>C:\Users\用户名\Temp</code>，Visual Studio Installer 可能会修改这个文件夹的权限，导致除了 <code>以管理员权限运行</code> 的程序以外，均无法写入该文件夹。</p>
+<p>你所需要做的就是检查这个临时文件夹的权限，如果发现有问题，则用以下方法修改这个文件夹的权限：</p>
+<p>右键该文件夹 - <code>属性</code> - <code>安全</code> - <code>编辑</code> - <code>Everyone</code> - 勾选 <code>完全控制</code> - <code>确认</code></p>
+</div>
+<h2 id="_4">拟议方案的执行步骤</h2>
+<h3 id="conda_1">构建 Conda 环境</h3>
+<p>笔者的 PyCharm 能让新项目选择 Conda 环境并默认构建好，这里略过使用 IDE 构建的方法。</p>
+<p><img alt="pycharm-new-project" src="../images/220429-dilb-ultimate-solution/pycharm-new-project.jpg" /></p>
+<p>或者使用手动构建：</p>
+<div class="highlight"><pre><span></span><code>conda create -n dlib_build_test python=3.10
+</code></pre></div>
+<p>然后进入虚拟环境：</p>
+<div class="highlight"><pre><span></span><code>conda activate dlib_build_test
+</code></pre></div>
+<h3 id="cuda-cudnn">安装 CUDA 和 cuDNN</h3>
+<p>不通过 Nvidia 官网，而是通过 Conda 安装 CUDA 和 cuDNN。</p>
+<div class="highlight"><pre><span></span><code>conda install cuda cudnn -c nvidia
+</code></pre></div>
+<p>接下来可能会等待一会，因为要下载很多东西。</p>
+<p>安装后可以通过 <code>conda list</code> 命令确认安装的版本：</p>
+<div class="highlight"><pre><span></span><code># Name                    Version                   Build    Channel
+...
+<span class="hll">cuda                      11.6.2               h65bbf44_0    nvidia
+</span>cuda-cccl                 11.6.55              hd268e57_0    nvidia
+cuda-command-line-tools   11.6.2               h65bbf44_0    nvidia
+cuda-compiler             11.6.2               h65bbf44_0    nvidia
+cuda-cudart               11.6.55              h5fb1900_0    nvidia
+cuda-cuobjdump            11.6.124             h8654613_0    nvidia
+cuda-cupti                11.6.124             h532822a_0    nvidia
+cuda-cuxxfilt             11.6.124             h3f9c74b_0    nvidia
+cuda-libraries            11.6.2               h65bbf44_0    nvidia
+cuda-libraries-dev        11.6.2               h65bbf44_0    nvidia
+cuda-memcheck             11.6.124             hea6bc18_0    nvidia
+cuda-nvcc                 11.6.124             h769bc0d_0    nvidia
+cuda-nvdisasm             11.6.124             he05ff55_0    nvidia
+cuda-nvml-dev             11.6.55              h2bb381e_0    nvidia
+cuda-nvprof               11.6.124             he581663_0    nvidia
+cuda-nvprune              11.6.124             hb892de1_0    nvidia
+cuda-nvrtc                11.6.124             h231bd66_0    nvidia
+cuda-nvrtc-dev            11.6.124             hd7d06dc_0    nvidia
+cuda-nvtx                 11.6.124             hee9d5a4_0    nvidia
+cuda-nvvp                 11.6.124             h6a974fa_0    nvidia
+cuda-runtime              11.6.2               h65bbf44_0    nvidia
+cuda-sanitizer-api        11.6.124             ha4888a7_0    nvidia
+cuda-toolkit              11.6.2               h65bbf44_0    nvidia
+cuda-tools                11.6.2               h65bbf44_0    nvidia
+cuda-visual-tools         11.6.2               h65bbf44_0    nvidia
+cudatoolkit               11.3.1               h59b6b97_2
+<span class="hll">cudnn                     8.2.1                cuda11.3_0
+</span>...
+</code></pre></div>
+<p>显然，我安装的 CUDA 版本是 <code>11.6.2</code>，cuDNN 版本是 <code>8.2.1</code>。</p>
+<p>安装完成后确认 <code>nvcc.exe</code> 的安装位置，并记住它。</p>
+<div class="highlight"><pre><span></span><code><span class="p">(</span>dlib_build_test<span class="p">)</span> I:\Developer\Python\project\dlib_build_test<span class="p">&gt;</span>where nvcc
+<span class="p">:</span><span class="c1">: I:\ProgramData\Anaconda3\envs\dlib_build_test\bin\nvcc.exe</span>
+</code></pre></div>
+<p>例如现在它在 <code>I:\ProgramData\Anaconda3\envs\dlib_build_test\bin\nvcc.exe</code>。</p>
+<h3 id="dlib">获取 dlib 源码</h3>
+<p>从 Releases 下载：（推荐）<a href="https://github.com/davisking/dlib/archive/refs/tags/v19.23.zip">v19.23</a></p>
+<p>或者从 GitHub克隆：</p>
+<div class="highlight"><pre><span></span><code>git clone https://github.com/davisking/dlib.git
+<span class="k">cd</span> dlib
+</code></pre></div>
+<h3 id="_5">在构建之前</h3>
+<h4 id="msvc-x64">进入 MSVC x64 编译环境</h4>
+<div class="highlight"><pre><span></span><code><span class="nv">%comspec%</span> /k <span class="s2">&quot;I:\Program Files (x86)\Microsoft Visual Studio\2019\BuildTools\VC\Auxiliary\Build\vcvars64.bat&quot;</span>
+</code></pre></div>
+<p>其中的路径需要根据你的 Visual Studio 的安装位置而改变，但最简单的方法其实是从开始菜单中找到 <code>x64 Native Tools Command Prompt for VS 2019</code> 的快捷方式，然后点击右键查看属性。</p>
+<p><img alt="x64-native-prompt" src="../images/220429-dilb-ultimate-solution/x64-native-prompt.jpg" /></p>
+<p>复制并粘贴其 <code>目标</code> 即可。</p>
+<p>运行后，这个 bat 脚本将会自动把 MSVC 的环境变量设置到你的临时环境变量中（仅在当前控制台有效），这样就可以在构建 dlib 的时候使用 MSVC 的编译器了。</p>
+<p>现在我们尝试一下重要的环境变量是否设置正确：</p>
+<div class="highlight"><pre><span></span><code>where cmake
+<span class="p">:</span><span class="c1">: G:\Tools for Windows\CMake\bin\cmake.exe</span>
+<span class="p">:</span><span class="c1">: I:\Program Files (x86)\Microsoft Visual Studio\2019\BuildTools\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe</span>
+where nmake
+<span class="p">:</span><span class="c1">: I:\Program Files (x86)\Microsoft Visual Studio\2019\BuildTools\VC\Tools\MSVC\14.29.30133\bin\Hostx64\x64\nmake.exe</span>
+where cl
+<span class="p">:</span><span class="c1">: I:\Program Files (x86)\Microsoft Visual Studio\2019\BuildTools\VC\Tools\MSVC\14.29.30133\bin\Hostx64\x64\cl.exe</span>
+</code></pre></div>
+<div class="admonition 提示 note">
+<p class="admonition-title">提示</p>
+<p>运行 <code>where cmake</code> 的时候出现了两个 <code>cmake</code>，其中一个是 Kitware 的 cmake，另一个是 MSVC 的 cmake。而 dlib 在编译过程中会检查所有 cmake 的路径，如果不存在 MSVC 的 cmake，脚本会报错而停止。</p>
+</div>
+<h4 id="dlib_1">修改 dlib 源码</h4>
+<p>见 <a href="https://github.com/davisking/dlib/issues/2463">Dlib failed to build due to many errors: error C2065 and C2338 · Issue #2463 · davisking/dlib</a></p>
+<p>打开 <code>dlib\dlib\external\pybind11\include\pybind11/numpy.h</code>，找到：</p>
+<table class="highlighttable"><tr><th colspan="2" class="filename"><div class="highlight"><span class="filename">numpy.h</span></div></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">26</span>
+<span class="normal">27</span>
+<span class="normal">28</span>
+<span class="normal">29</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="cp">#if defined(_MSC_VER)</span>
+<span class="cp">#  pragma warning(push)</span>
+<span class="cp">#  pragma warning(disable: 4127) </span><span class="c1">// warning C4127: Conditional expression is constant</span>
+<span class="cp">#endif</span>
+</code></pre></div>
+</td></tr></table>
+<p>添加两行，改为：</p>
+<table class="highlighttable"><tr><th colspan="2" class="filename"><div class="highlight"><span class="filename">numpy.h</span></div></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">26</span>
+<span class="normal">27</span>
+<span class="normal">28</span>
+<span class="normal">29</span>
+<span class="normal">30</span>
+<span class="normal">31</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="cp">#if defined(_MSC_VER)</span>
+<span class="cp">#  pragma warning(push)</span>
+<span class="cp">#  pragma warning(disable: 4127) </span><span class="c1">// warning C4127: Conditional expression is constant</span>
+<span class="hll"><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;BaseTsd.h&gt;</span><span class="cp"></span>
+</span><span class="hll"><span class="k">typedef</span><span class="w"> </span><span class="n">SSIZE_T</span><span class="w"> </span><span class="kt">ssize_t</span><span class="p">;</span><span class="w"></span>
+</span><span class="cp">#endif</span>
+</code></pre></div>
+</td></tr></table>
+<h3 id="_6">开始构建</h3>
+<div class="highlight"><pre><span></span><code><span class="k">mkdir</span> build
+<span class="k">cd</span> build
+cmake .. -DDLIB_USE_CUDA=1 -DUSE_AVX_INSTRUCTIONS=1 -DCUDAToolkit_ROOT=<span class="nv">%NVCC_PATH%</span>
+</code></pre></div>
+<p>其中 <code class="highlight"><span class="nv">%NVCC_PATH%</span></code> 是你在之前获取的路径，例如 <code>I:\ProgramData\Anaconda3\envs\dlib_build_test\bin\nvcc.exe</code>。</p>
+<p>基于我们做好的前期铺垫，理论上这里可以一次性构建成功，如果构建仍然没有成功，请仔细阅读 <code>CMakeError.log</code> 文件，分析其中出现的错误。在每次重新构建之前，请先删除 <code>build</code> 文件夹里的所有内容。</p>
+<h3 id="_7">尝试编译</h3>
+<div class="highlight"><pre><span></span><code>cmake --build .
+</code></pre></div>
+<p>同上，理论上是一次性构建成功。</p>
+<h3 id="_8">尝试安装</h3>
+<div class="highlight"><pre><span></span><code>python setup.py install --set DLIB_USE_CUDA=1 --no DLIB_GIF_SUPPORT
+</code></pre></div>
+<div class="admonition 危险 danger">
+<p class="admonition-title">危险</p>
+<p>必须添加 <code>--no DLIB_GIF_SUPPORT</code> 参数，否则会发生错误：<code>error C2734: “GifAsciiTable8x8”: 如果不是外部的，则必须初始化常量对象</code></p>
+<p>见 <a href="https://github.com/davisking/dlib/issues/2358">Dlib install errors out : error C2734: 'GifAsciiTable8x8' : 'const' object must be initialized if not 'extern' · Issue #2358 · davisking/dlib</a></p>
+</div>
+<h3 id="_9">在安装之后</h3>
+<p>就算在上一步的 <code>python setup.py install</code> 没有任何报错，我们的 dlib 也<strong>可能</strong>还没有正确安装。</p>
+<p>对于一些用户，他们可能是属于<em>中途</em>加入这个方案的。例如，他们在此之前已经从</p>
+<div class="highlight"><pre><span></span><code>conda install -c conda-forge dlib 
+</code></pre></div>
+<p>安装了不带 CUDA 的 dlib。</p>
+<p>因为版本原因（Release 下载的是 <code>19.23</code> 版本，而 <code>conda install</code> 安装的是 <code>19.23.1</code> 版本），旧版本的 dlib 不会被使用，因此 <code class="highlight"><span class="n">dlib</span><span class="o">.</span><span class="n">DLIB_USE_CUDA</span></code> 的值将仍然是 <code class="highlight"><span class="kc">False</span></code>。</p>
+<p>此时卸载原来安装的 <code>dlib</code></p>
+<div class="highlight"><pre><span></span><code>conda remove dlib
+</code></pre></div>
+<p>然后再进行一次上一步的安装操作</p>
+<div class="highlight"><pre><span></span><code>python setup.py install --set DLIB_USE_CUDA=1 --no DLIB_GIF_SUPPORT
+</code></pre></div>
+<p>现在 <code class="highlight"><span class="n">dlib</span><span class="o">.</span><span class="n">DLIB_USE_CUDA</span></code> 的值应当是 <code class="highlight"><span class="kc">True</span></code></p>
+<h2 id="_10">结论</h2>
+<p>特定的 CUDA + Visual Studio + dlib + python 版本的组合目前仍然是 dlib 中的一大难题。如你所见，这个方案的阅读加实践的总时长可能超过了半个小时，奈何不同软件，不同平台之间的配套的确很困难，但我们仍将解决他们。相信这个方案可以帮助到更多的人。</p>
+<h2 id="_11">致谢</h2>
+<p>感谢 dlib 的所有贡献者为我们带来了实用的机器学习工具；感谢所有在 GitHub dlib 仓库下提出和解决 issue 的开发者和研究人员，没有他们这篇文章将无从下手；也感谢我的毕设老师，选了一个这样的课题，把我憋出了一篇这样的文章。</p>
 
     <!-- Last update of source file -->
     
@@ -932,11 +1245,11 @@ sudo snap install --classic certbot
   <small>
     
       最后更新:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_datetime">2022-04-28 10:02:17</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_datetime">2022-04-29 06:47:56</span>
       
         <br>
         创建日期:
-        <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_datetime">2022-04-06 18:56:35</span>
+        <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_datetime">2022-04-29 06:47:56</span>
       
     
   </small>
@@ -1011,7 +1324,7 @@ sudo snap install --classic certbot
     <nav class="md-footer__inner md-grid" aria-label="页脚">
       
         
-        <a href="../220406-venv-move-file/" class="md-footer__link md-footer__link--prev" aria-label="上一页: 移动 python 项目文件夹位置后如何解决 PyCharm 找不到解释器与无法正常使用终端的问题" rel="prev">
+        <a href="../220421-use-gzip-bomb-against-scanner/" class="md-footer__link md-footer__link--prev" aria-label="上一页: 如何使用 gzip 压缩包炸弹对恶意扫描器进行反击" rel="prev">
           <div class="md-footer__button md-icon">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
           </div>
@@ -1020,26 +1333,11 @@ sudo snap install --classic certbot
               <span class="md-footer__direction">
                 上一页
               </span>
-              移动 python 项目文件夹位置后如何解决 PyCharm 找不到解释器与无法正常使用终端的问题
+              如何使用 gzip 压缩包炸弹对恶意扫描器进行反击
             </div>
           </div>
         </a>
       
-      
-        
-        <a href="../220407-github-pages/" class="md-footer__link md-footer__link--next" aria-label="下一页: GitHub Pages 文档自动化部署 - MkDocs" rel="next">
-          <div class="md-footer__title">
-            <div class="md-ellipsis">
-              <span class="md-footer__direction">
-                下一页
-              </span>
-              GitHub Pages 文档自动化部署 - MkDocs
-            </div>
-          </div>
-          <div class="md-footer__button md-icon">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4Z"/></svg>
-          </div>
-        </a>
       
     </nav>
   
