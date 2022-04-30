@@ -18,15 +18,15 @@ title: 基于 Anaconda 的 dlib（CUDA 版本）安装的终极解决方案
 
  - You must use Visual Studio to build a python extension on Windows
  - 对着十几个 GB 的 Visual Studio 发愁
- - anaconda 装上的 dlib 没法调用 GPU
+ - Anaconda 装上的 dlib 没法调用 GPU
  - 不仅 GPU 占用率为 0，CPU 也跑不满
  - 装上了 Visual Studio，仍然无法编译 dlib
  - x64 和 x86 打架
  - 几个 CMake 一起打架
  - 英伟达 CUDA 驱动在 C 盘到处释放文件（lashi）
- - 明明装了 CUDA，安装脚本却不让用
- - 嫌弃你的 CUDA 版本太高或太低
- - 嫌弃你的 Visual Studio 版本太高或太低
+ - 明明装了 CUDA，CMakeList 却以各种各样的理由不让你用
+ - 例如嫌弃你的 CUDA 版本太高或太低
+ - 例如嫌弃你的 Visual Studio 版本太高或太低
  - CMakeList.txt 第 5 行经典报错
  - Permission Denied
  - Temp 文件夹写入不了了
