@@ -743,6 +743,26 @@
     在安装之后
   </a>
   
+    <nav class="md-nav" aria-label="在安装之后">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#dlib_2" class="md-nav__link">
+    卸载旧版本的 dlib
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#windows" class="md-nav__link">
+    关闭 Windows 错误报告服务
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
         
       </ul>
@@ -933,6 +953,26 @@
     在安装之后
   </a>
   
+    <nav class="md-nav" aria-label="在安装之后">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#dlib_2" class="md-nav__link">
+    卸载旧版本的 dlib
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#windows" class="md-nav__link">
+    关闭 Windows 错误报告服务
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
         
       </ul>
@@ -1089,7 +1129,7 @@ as the main headline.
 <p><img alt="change-install-path" src="../images/220429-dilb-ultimate-solution/change-install-path.jpg" /></p>
 <div class="admonition 危险 danger">
 <p class="admonition-title">危险</p>
-<p>请在退出 Visual Studio Installer 后立即检查你的临时文件夹，例如 <code>C:\Users\用户名\Temp</code>，Visual Studio Installer 可能会修改这个文件夹的权限，导致除了 <code>以管理员权限运行</code> 的程序以外，均无法写入该文件夹。</p>
+<p>请在退出 Visual Studio Installer 后立即检查你的临时文件夹，例如 <code>C:\Users\AkibaArisa\Temp</code>，Visual Studio Installer 可能会修改这个文件夹的权限，导致除了 <code>以管理员权限运行</code> 的程序以外，均无法写入该文件夹。</p>
 <p>你所需要做的就是检查这个临时文件夹的权限，如果发现有问题，则用以下方法修改这个文件夹的权限：</p>
 <p>右键该文件夹 - <code>属性</code> - <code>安全</code> - <code>编辑</code> - <code>Everyone</code> - 勾选 <code>完全控制</code> - <code>确认</code></p>
 </div>
@@ -1219,6 +1259,7 @@ cmake .. -DDLIB_USE_CUDA=1 -DUSE_AVX_INSTRUCTIONS=1 -DCUDAToolkit_ROOT=<span cla
 <p>见 <a href="https://github.com/davisking/dlib/issues/2358">Dlib install errors out : error C2734: 'GifAsciiTable8x8' : 'const' object must be initialized if not 'extern' · Issue #2358 · davisking/dlib</a></p>
 </div>
 <h3 id="_9">在安装之后</h3>
+<h4 id="dlib_2">卸载旧版本的 dlib</h4>
 <p>就算在上一步的 <code>python setup.py install</code> 没有任何报错，我们的 dlib 也<strong>可能</strong>还没有正确安装。</p>
 <p>对于一些用户，他们可能是属于<em>中途</em>加入这个方案的。例如，他们在此之前已经从</p>
 <div class="highlight"><pre><span></span><code>conda install -c conda-forge dlib 
@@ -1232,6 +1273,94 @@ cmake .. -DDLIB_USE_CUDA=1 -DUSE_AVX_INSTRUCTIONS=1 -DCUDAToolkit_ROOT=<span cla
 <div class="highlight"><pre><span></span><code>python setup.py install --set DLIB_USE_CUDA=1 --no DLIB_GIF_SUPPORT
 </code></pre></div>
 <p>现在 <code class="highlight"><span class="n">dlib</span><span class="o">.</span><span class="n">DLIB_USE_CUDA</span></code> 的值应当是 <code class="highlight"><span class="kc">True</span></code></p>
+<h4 id="windows">关闭 Windows 错误报告服务</h4>
+<p>这是一个比较玄学的东西。在启用了 CUDA 的 dlib 正确安装完成后，有些人在运行的时候可能会发生这个错误。具体体现如下：</p>
+<p>这里有两份差不多的人脸检测 demo，其中一个使用 HOG，另一个使用 CNN。</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="1:2"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">HOG</label><label for="__tabbed_1_2">CNN</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<table class="highlighttable"><tr><th colspan="2" class="filename"><div class="highlight"><span class="filename">detection.py</span></div></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">cv2</span>
+<span class="kn">import</span> <span class="nn">imutils</span>
+<span class="kn">import</span> <span class="nn">dlib</span>
+
+<span class="hll"><span class="n">detector</span> <span class="o">=</span> <span class="n">dlib</span><span class="o">.</span><span class="n">get_frontal_face_detector</span><span class="p">()</span>
+</span><span class="n">image</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">imread</span><span class="p">(</span><span class="s1">&#39;image/test.jpg&#39;</span><span class="p">)</span>
+<span class="n">resized_image</span> <span class="o">=</span> <span class="n">imutils</span><span class="o">.</span><span class="n">resize</span><span class="p">(</span><span class="n">image</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mi">600</span><span class="p">)</span>
+<span class="n">rgb</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">cvtColor</span><span class="p">(</span><span class="n">resized_image</span><span class="p">,</span> <span class="n">cv2</span><span class="o">.</span><span class="n">COLOR_BGR2RGB</span><span class="p">)</span>
+
+<span class="n">results</span> <span class="o">=</span> <span class="n">detector</span><span class="p">(</span><span class="n">rgb</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">result</span> <span class="ow">in</span> <span class="n">results</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>
+</code></pre></div>
+</td></tr></table>
+</div>
+<div class="tabbed-block">
+<table class="highlighttable"><tr><th colspan="2" class="filename"><div class="highlight"><span class="filename">detection.py</span></div></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">cv2</span>
+<span class="kn">import</span> <span class="nn">imutils</span>
+<span class="kn">import</span> <span class="nn">dlib</span>
+
+<span class="hll"><span class="n">detector</span> <span class="o">=</span> <span class="n">dlib</span><span class="o">.</span><span class="n">cnn_face_detection_model_v1</span><span class="p">(</span><span class="s1">&#39;model/mmod_human_face_detector.dat&#39;</span><span class="p">)</span>
+</span><span class="n">image</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">imread</span><span class="p">(</span><span class="s1">&#39;image/test.jpg&#39;</span><span class="p">)</span>
+<span class="n">resized_image</span> <span class="o">=</span> <span class="n">imutils</span><span class="o">.</span><span class="n">resize</span><span class="p">(</span><span class="n">image</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mi">600</span><span class="p">)</span>
+<span class="n">rgb</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">cvtColor</span><span class="p">(</span><span class="n">resized_image</span><span class="p">,</span> <span class="n">cv2</span><span class="o">.</span><span class="n">COLOR_BGR2RGB</span><span class="p">)</span>
+
+<span class="n">results</span> <span class="o">=</span> <span class="n">detector</span><span class="p">(</span><span class="n">rgb</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">result</span> <span class="ow">in</span> <span class="n">results</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">result</span><span class="o">.</span><span class="n">rect</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">result</span><span class="o">.</span><span class="n">confidence</span><span class="p">)</span>
+</code></pre></div>
+</td></tr></table>
+</div>
+</div>
+</div>
+<p>当 dlib 使用 <code class="highlight"><span class="n">get_frontal_face_detector</span><span class="p">()</span></code>（HOG）进行人脸检测时，不会发生任何问题。</p>
+<p>当 dlib 使用 <code class="highlight"><span class="n">cnn_face_detection_model_v1</span><span class="p">()</span></code>（CNN）进行人脸检测时，能顺利进行检测，任务管理器的 CUDA 使用率也会正常上涨。</p>
+<p>但是在检测结束之后，这个脚本会卡住，打开任务管理器可以发现 C 盘使用率接近 100%。大约 1~2 分钟后 C 盘使用率恢复正常，脚本也正常结束。</p>
+<p>事后调查发现，是 <code>Windows 错误报告</code> 正在向 C 盘写入大量内容（内存转储），写入的位置是 <code>C:\Users\AkibaArisa\AppData\Local\CrashDumps</code>，每次写入一个大小约为 1 GB 的 <code>.dmp</code> 文件，文件名与 python 有关。</p>
+<p>实际上我们的 python 脚本并没有发生任何崩溃，而且也是正常结束的，因此这个错误报告纯属画蛇添足。</p>
+<p>现在关闭掉 <code>Windows 错误报告服务</code>：</p>
+<ol>
+<li>
+<p>首先使用 PowerShell 停用：</p>
+<p>（见 <a href="https://docs.microsoft.com/en-us/locale/?target=https://docs.microsoft.com/en-us/powershell/module/windowserrorreporting/disable-windowserrorreporting?view=windowsserver2022-ps&amp;viewFallbackFrom=win10-ps">Disable-WindowsErrorReporting (WindowsErrorReporting) | Microsoft Docs</a> ）    </p>
+<div class="highlight"><pre><span></span><code><span class="nb">PS </span><span class="n">C</span><span class="p">:\&gt;</span> <span class="nb">Disable-WindowsErrorReporting</span>
+<span class="c"># False</span>
+</code></pre></div>
+</li>
+<li>
+<p>然后在服务中停用：</p>
+<ol>
+<li>打开 <code>服务</code>（运行 <code>services.msc</code> 或者使用任务管理器）。</li>
+<li>找到 <code>Windows Error Reporting Service</code>，右键 <code>属性</code>。</li>
+<li>将 <code>启动类型</code> 设为 <code>禁用</code>。</li>
+<li>在 <code>服务状态</code> 处点击 <code>停止</code>。</li>
+</ol>
+</li>
+</ol>
+<p>如此一来，Windows 将不会再产生错误报告，我们使用了 <code class="highlight"><span class="n">cnn_face_detection_model_v1</span><span class="p">()</span></code> 的 python 脚本也将在检测完成后正常结束，不会一直搁这卡着。</p>
 <h2 id="_10">结论</h2>
 <p>特定的 CUDA + Visual Studio + dlib + python 版本的组合目前仍然是 dlib 中的一大难题。如你所见，这个方案的阅读加实践的总时长可能超过了半个小时，奈何不同软件，不同平台之间的配套的确很困难，但我们仍将解决他们。相信这个方案可以帮助到更多的人。</p>
 <h2 id="_11">致谢</h2>
@@ -1245,7 +1374,7 @@ cmake .. -DDLIB_USE_CUDA=1 -DUSE_AVX_INSTRUCTIONS=1 -DCUDAToolkit_ROOT=<span cla
   <small>
     
       最后更新:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_datetime">2022-04-30 06:31:26</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_datetime">2022-04-30 09:44:21</span>
       
         <br>
         创建日期:
