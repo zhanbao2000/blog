@@ -106,7 +106,7 @@ title: 基于 Anaconda 的 dlib（CUDA 版本）安装的终极解决方案
 
 !!! 危险 danger
 
-    请在退出 Visual Studio Installer 后立即检查你的临时文件夹，例如 `C:\Users\用户名\Temp`，Visual Studio Installer 可能会修改这个文件夹的权限，导致除了 `以管理员权限运行` 的程序以外，均无法写入该文件夹。
+    请在退出 Visual Studio Installer 后立即检查你的临时文件夹，例如 `C:\Users\AkibaArisa\Temp`，Visual Studio Installer 可能会修改这个文件夹的权限，导致除了 `以管理员权限运行` 的程序以外，均无法写入该文件夹。
 
     你所需要做的就是检查这个临时文件夹的权限，如果发现有问题，则用以下方法修改这个文件夹的权限：
 
@@ -289,6 +289,8 @@ python setup.py install --set DLIB_USE_CUDA=1 --no DLIB_GIF_SUPPORT
 
 ### 在安装之后
 
+#### 卸载旧版本的 dlib
+
 就算在上一步的 `python setup.py install` 没有任何报错，我们的 dlib 也**可能**还没有正确安装。
 
 对于一些用户，他们可能是属于*中途*加入这个方案的。例如，他们在此之前已经从
@@ -314,6 +316,77 @@ python setup.py install --set DLIB_USE_CUDA=1 --no DLIB_GIF_SUPPORT
 ```
 
 现在 `#!python dlib.DLIB_USE_CUDA` 的值应当是 `#!python True`
+
+#### 关闭 Windows 错误报告服务
+
+这是一个比较玄学的东西。在启用了 CUDA 的 dlib 正确安装完成后，有些人在运行的时候可能会发生这个错误。具体体现如下：
+
+这里有两份差不多的人脸检测 demo，其中一个使用 HOG，另一个使用 CNN。
+
+=== "HOG"
+
+    ```python title="detection.py" linenums="1" hl_lines="5"
+    import cv2
+    import imutils
+    import dlib
+
+    detector = dlib.get_frontal_face_detector()
+    image = cv2.imread('image/test.jpg')
+    resized_image = imutils.resize(image, width=600)
+    rgb = cv2.cvtColor(resized_image, cv2.COLOR_BGR2RGB)
+    
+    results = detector(rgb, 1)
+    for result in results:
+        print(result)
+    ```
+
+=== "CNN"
+
+    ```python title="detection.py" linenums="1" hl_lines="5"
+    import cv2
+    import imutils
+    import dlib
+    
+    detector = dlib.cnn_face_detection_model_v1('model/mmod_human_face_detector.dat')
+    image = cv2.imread('image/test.jpg')
+    resized_image = imutils.resize(image, width=600)
+    rgb = cv2.cvtColor(resized_image, cv2.COLOR_BGR2RGB)
+    
+    results = detector(rgb, 1)
+    for result in results:
+        print(result.rect)
+        print(result.confidence)
+    ```
+
+当 dlib 使用 `#!python get_frontal_face_detector()`（HOG）进行人脸检测时，不会发生任何问题。
+
+当 dlib 使用 `#!python cnn_face_detection_model_v1()`（CNN）进行人脸检测时，能顺利进行检测，任务管理器的 CUDA 使用率也会正常上涨。
+
+但是在检测结束之后，这个脚本会卡住，打开任务管理器可以发现 C 盘使用率接近 100%。大约 1~2 分钟后 C 盘使用率恢复正常，脚本也正常结束。
+
+事后调查发现，是 `Windows 错误报告` 正在向 C 盘写入大量内容（内存转储），写入的位置是 `C:\Users\AkibaArisa\AppData\Local\CrashDumps`，每次写入一个大小约为 1 GB 的 `.dmp` 文件，文件名与 python 有关。
+
+实际上我们的 python 脚本并没有发生任何崩溃，而且也是正常结束的，因此这个错误报告纯属画蛇添足。
+
+现在关闭掉 `Windows 错误报告服务`：
+
+1. 首先使用 PowerShell 停用：
+
+    （见 [Disable-WindowsErrorReporting (WindowsErrorReporting) | Microsoft Docs](https://docs.microsoft.com/en-us/locale/?target=https://docs.microsoft.com/en-us/powershell/module/windowserrorreporting/disable-windowserrorreporting?view=windowsserver2022-ps&viewFallbackFrom=win10-ps) ）    
+
+    ```powershell
+    PS C:\> Disable-WindowsErrorReporting
+    # False
+    ```
+   
+2. 然后在服务中停用：
+
+    1. 打开 `服务`（运行 `services.msc` 或者使用任务管理器）。
+    2. 找到 `Windows Error Reporting Service`，右键 `属性`。
+    3. 将 `启动类型` 设为 `禁用`。
+    4. 在 `服务状态` 处点击 `停止`。
+
+如此一来，Windows 将不会再产生错误报告，我们使用了 `#!python cnn_face_detection_model_v1()` 的 python 脚本也将在检测完成后正常结束，不会一直搁这卡着。
 
 ## 结论
 
