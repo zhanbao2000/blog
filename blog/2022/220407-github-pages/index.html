@@ -15,7 +15,7 @@
         <link rel="canonical" href="https://blog.arisa.moe/blog/2022/220407-github-pages/">
       
       <link rel="icon" href="../../../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.3.0, mkdocs-material-8.2.11">
+      <meta name="generator" content="mkdocs-1.3.0, mkdocs-material-8.2.13">
     
     
       
@@ -23,10 +23,10 @@
       
     
     
-      <link rel="stylesheet" href="../../../assets/stylesheets/main.8c5ef100.min.css">
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.e411adfe.min.css">
       
         
-        <link rel="stylesheet" href="../../../assets/stylesheets/palette.9647289d.min.css">
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.cc9b2e1e.min.css">
         
       
     
@@ -684,6 +684,20 @@
 
             
           
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../220502-how-dogs-work-in-epic7/" class="md-nav__link">
+        第七史诗升六星的正确理解
+      </a>
+    </li>
+  
+
+            
+          
         </ul>
       </nav>
     </li>
@@ -873,7 +887,7 @@ mkdocs serve --dev-addr localhost:8001
 <p>用 MkDocs <a href="https://www.mkdocs.org/user-guide/deploying-your-docs/">官网</a> 的也行，只不过人家不会告诉你怎么写这个 <code>yml</code> 文件。</p>
 </div>
 <p>在 <code>2022年4月6日</code> 的时候我从这里找到的模板是这样的，随着时间的推移可能会有变更，建议从原文档去复制。</p>
-<table class="highlighttable"><tr><th colspan="2" class="filename"><div class="highlight"><span class="filename">main.yml（请勿直接使用）</span></div></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<div class="highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">main.yml（请勿直接使用）</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
 <span class="normal"> 4</span>
@@ -888,7 +902,7 @@ mkdocs serve --dev-addr localhost:8001
 <span class="normal">13</span>
 <span class="normal">14</span>
 <span class="normal">15</span>
-<span class="normal">16</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ci</span><span class="w"> </span>
+<span class="normal">16</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ci</span><span class="w"> </span>
 <span class="nt">on</span><span class="p">:</span><span class="w"></span>
 <span class="w">  </span><span class="nt">push</span><span class="p">:</span><span class="w"></span>
 <span class="w">    </span><span class="nt">branches</span><span class="p">:</span><span class="w"></span>
@@ -904,8 +918,7 @@ mkdocs serve --dev-addr localhost:8001
 <span class="w">          </span><span class="nt">python-version</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">3.x</span><span class="w"></span>
 <span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">run</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">pip install mkdocs-material</span><span class="w"> </span>
 <span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">run</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">mkdocs gh-deploy --force</span><span class="w"></span>
-</code></pre></div>
-</td></tr></table>
+</code></pre></div></td></tr></table></div>
 <div class="admonition 注意有坑 attention">
 <p class="admonition-title">注意有坑</p>
 <p>首先他这个流程，很明显只用 <code>pip</code> 安装了 <code>mkdocs-material</code>，但是它并没有安装 <code>mkdocs</code>。其实这无所谓，因为 <code>mkdocs-material</code> 的 <code>requirements.txt</code> 中已经包含了 <code>mkdocs</code>，会一并安装。<br />
@@ -918,7 +931,7 @@ mkdocs serve --dev-addr localhost:8001
 注意，请不要跟随官网那篇文档里所说的设定 <code>locale: zh-CN</code> 这个键，后面会说到原因。</p>
 </div>
 <p>最终我的 <code>main.yml</code>（后来重命名成 <code>ci.yml</code> 了）长这样：</p>
-<table class="highlighttable"><tr><th colspan="2" class="filename"><div class="highlight"><span class="filename">main.yml</span></div></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<div class="highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">main.yml</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
 <span class="normal"> 4</span>
@@ -936,7 +949,7 @@ mkdocs serve --dev-addr localhost:8001
 <span class="normal">16</span>
 <span class="normal">17</span>
 <span class="normal">18</span>
-<span class="normal">19</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ci</span><span class="w"> </span>
+<span class="normal">19</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ci</span><span class="w"> </span>
 <span class="nt">on</span><span class="p">:</span><span class="w"></span>
 <span class="w">  </span><span class="nt">push</span><span class="p">:</span><span class="w"></span>
 <span class="w">    </span><span class="nt">branches</span><span class="p">:</span><span class="w"></span>
@@ -955,8 +968,7 @@ mkdocs serve --dev-addr localhost:8001
 <span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">run</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">pip install mkdocs-material</span><span class="w"></span>
 <span class="hll"><span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">run</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">pip install mkdocs-blogging-plugin</span><span class="w">  </span><span class="c1"># 记得安装其他依赖的库</span><span class="w"></span>
 </span><span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">run</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">mkdocs gh-deploy --force</span><span class="w"></span>
-</code></pre></div>
-</td></tr></table>
+</code></pre></div></td></tr></table></div>
 <p>这个时候你就可以在 Actions 页面点 <code>Start commit</code> 了。只要你的本地部署可以通过，在 Actions 上应该也是可以通过的。</p>
 <p>如果 Actions 的 <code>build</code> 或者 <code>deploy</code> 阶段出现了问题，说明可能是那几个 <code>run</code> 里出现了错误，那你应该在本地试一下：</p>
 <ul>
@@ -968,13 +980,12 @@ mkdocs serve --dev-addr localhost:8001
 <p class="admonition-title">注意有坑</p>
 <p><code>mkdocs-blogging-plugin</code> 的官网 <a href="https://liang2kl.codes/mkdocs-blogging-plugin/#publish-with-github-pages">文档</a> 里说，要在 <code>blogging</code> 里建一个 <code>locale: zh-CN</code> 来设置时间格式，但是实际这样做会报错：<code>ValueError: expected only letters, got 'zh-cn'</code>，<br />
 解决方法：不要写 <code>locale: zh-CN</code>，要写 <code>locale: zh_CN</code> 或者干脆写 <code>locale: zh</code></p>
-<table class="highlighttable"><tr><th colspan="2" class="filename"><div class="highlight"><span class="filename">mkdocs.yml</span></div></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<div class="highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">mkdocs.yml</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
-<span class="normal">3</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="nt">plugins</span><span class="p">:</span><span class="w"></span>
+<span class="normal">3</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="nt">plugins</span><span class="p">:</span><span class="w"></span>
 <span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">blogging</span><span class="p">:</span><span class="w"></span>
 <span class="hll"><span class="w">      </span><span class="nt">locale</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">zh_CN</span><span class="w"></span>
-</span></code></pre></div>
-</td></tr></table>
+</span></code></pre></div></td></tr></table></div>
 </div>
 <p>坑还没结束，继续往下看</p>
 <h2 id="pages">设置 Pages</h2>
@@ -1207,7 +1218,7 @@ mkdocs serve --dev-addr localhost:8001
     <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.tabs", "navigation.top", "navigation.tracking"], "search": "../../../assets/javascripts/workers/search.2a1c317c.min.js", "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.config.lang": "ja", "search.config.pipeline": "trimmer, stemmer", "search.config.separator": "[\\uff0c\\u3002]+", "search.placeholder": "\u641c\u7d22", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version.title": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}}</script>
     
     
-      <script src="../../../assets/javascripts/bundle.748e2769.min.js"></script>
+      <script src="../../../assets/javascripts/bundle.ed9748b7.min.js"></script>
       
     
   </body>

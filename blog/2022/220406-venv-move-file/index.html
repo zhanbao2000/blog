@@ -15,7 +15,7 @@
         <link rel="canonical" href="https://blog.arisa.moe/blog/2022/220406-venv-move-file/">
       
       <link rel="icon" href="../../../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.3.0, mkdocs-material-8.2.11">
+      <meta name="generator" content="mkdocs-1.3.0, mkdocs-material-8.2.13">
     
     
       
@@ -23,10 +23,10 @@
       
     
     
-      <link rel="stylesheet" href="../../../assets/stylesheets/main.8c5ef100.min.css">
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.e411adfe.min.css">
       
         
-        <link rel="stylesheet" href="../../../assets/stylesheets/palette.9647289d.min.css">
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.cc9b2e1e.min.css">
         
       
     
@@ -677,6 +677,20 @@
 
             
           
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../220502-how-dogs-work-in-epic7/" class="md-nav__link">
+        第七史诗升六星的正确理解
+      </a>
+    </li>
+  
+
+            
+          
         </ul>
       </nav>
     </li>
@@ -862,7 +876,7 @@ as the main headline.
 <div class="tabbed-set tabbed-alternate" data-tabs="1:4"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><input id="__tabbed_1_3" name="__tabbed_1" type="radio" /><input id="__tabbed_1_4" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">CMD</label><label for="__tabbed_1_2">Bash</label><label for="__tabbed_1_3">FishShell</label><label for="__tabbed_1_4">Xonsh</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<table class="highlighttable"><tr><th colspan="2" class="filename"><div class="highlight"><span class="filename">activate.bat</span></div></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<div class="highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">activate.bat</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
 <span class="normal"> 4</span>
@@ -901,7 +915,7 @@ as the main headline.
 <span class="normal">37</span>
 <span class="normal">38</span>
 <span class="normal">39</span>
-<span class="normal">40</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="p">@</span><span class="k">echo</span> off
+<span class="normal">40</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="p">@</span><span class="k">echo</span> off
 
 <span class="hll"><span class="k">set</span> <span class="s2">&quot;VIRTUAL_ENV=I:\Developer\web\blog_mkdocs\venv&quot;</span>
 </span>
@@ -941,11 +955,10 @@ as the main headline.
 <span class="p">:</span><span class="nl">ENDIFVPATH2</span>
 
 <span class="k">set</span> <span class="s2">&quot;PATH=</span><span class="nv">%VIRTUAL_ENV%</span><span class="s2">\Scripts;</span><span class="nv">%PATH%</span><span class="s2">&quot;</span>
-</code></pre></div>
-</td></tr></table>
+</code></pre></div></td></tr></table></div>
 </div>
 <div class="tabbed-block">
-<table class="highlighttable"><tr><th colspan="2" class="filename"><div class="highlight"><span class="filename">activate</span></div></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<div class="highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">activate</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
 <span class="normal"> 4</span>
@@ -1027,7 +1040,7 @@ as the main headline.
 <span class="normal">80</span>
 <span class="normal">81</span>
 <span class="normal">82</span>
-<span class="normal">83</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="c1"># This file must be used with &quot;source bin/activate&quot; *from bash*</span>
+<span class="normal">83</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="c1"># This file must be used with &quot;source bin/activate&quot; *from bash*</span>
 <span class="c1"># you cannot run it directly</span>
 
 
@@ -1110,11 +1123,10 @@ pydoc <span class="o">()</span> <span class="o">{</span>
 <span class="c1"># commands. Without forgetting past commands the $PATH changes</span>
 <span class="c1"># we made may not be respected</span>
 <span class="nb">hash</span> -r <span class="m">2</span>&gt;/dev/null
-</code></pre></div>
-</td></tr></table>
+</code></pre></div></td></tr></table></div>
 </div>
 <div class="tabbed-block">
-<table class="highlighttable"><tr><th colspan="2" class="filename"><div class="highlight"><span class="filename">activate.fish</span></div></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">  1</span>
+<div class="highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">activate.fish</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">  1</span>
 <span class="normal">  2</span>
 <span class="normal">  3</span>
 <span class="normal">  4</span>
@@ -1213,7 +1225,7 @@ pydoc <span class="o">()</span> <span class="o">{</span>
 <span class="normal"> 97</span>
 <span class="normal"> 98</span>
 <span class="normal"> 99</span>
-<span class="normal">100</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="c"># This file must be used using `source bin/activate.fish` *within a running fish ( http://fishshell.com ) session*.</span>
+<span class="normal">100</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="c"># This file must be used using `source bin/activate.fish` *within a running fish ( http://fishshell.com ) session*.</span>
 <span class="c"># Do not run it directly.</span>
 
 <span class="k">function</span> _bashify_path -d <span class="s2">&quot;Converts a fish path to something bash can recognize&quot;</span>
@@ -1313,11 +1325,10 @@ deactivate nondestructive
 
     <span class="k">set</span> -gx _OLD_FISH_PROMPT_OVERRIDE <span class="s2">&quot;</span><span class="nv">$VIRTUAL_ENV</span><span class="s2">&quot;</span>
 <span class="k">end</span>
-</code></pre></div>
-</td></tr></table>
+</code></pre></div></td></tr></table></div>
 </div>
 <div class="tabbed-block">
-<table class="highlighttable"><tr><th colspan="2" class="filename"><div class="highlight"><span class="filename">activate.xsh</span></div></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<div class="highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">activate.xsh</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
 <span class="normal"> 4</span>
@@ -1362,7 +1373,7 @@ deactivate nondestructive
 <span class="normal">43</span>
 <span class="normal">44</span>
 <span class="normal">45</span>
-<span class="normal">46</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>&quot;&quot;&quot;Xonsh activate script for virtualenv&quot;&quot;&quot;
+<span class="normal">46</span></pre></div></td><td class="code"><div><pre><span></span><code>&quot;&quot;&quot;Xonsh activate script for virtualenv&quot;&quot;&quot;
 from xonsh.tools import get_sep as _get_sep
 
 def _deactivate(args):
@@ -1408,8 +1419,7 @@ if not $VIRTUAL_ENV_PROMPT:
     del $VIRTUAL_ENV_PROMPT
 
 aliases[&quot;pydoc&quot;] = [&quot;python&quot;, &quot;-m&quot;, &quot;pydoc&quot;]
-</code></pre></div>
-</td></tr></table>
+</code></pre></div></td></tr></table></div>
 </div>
 </div>
 </div>
@@ -1608,7 +1618,7 @@ aliases[&quot;pydoc&quot;] = [&quot;python&quot;, &quot;-m&quot;, &quot;pydoc&qu
     <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.tabs", "navigation.top", "navigation.tracking"], "search": "../../../assets/javascripts/workers/search.2a1c317c.min.js", "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.config.lang": "ja", "search.config.pipeline": "trimmer, stemmer", "search.config.separator": "[\\uff0c\\u3002]+", "search.placeholder": "\u641c\u7d22", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version.title": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}}</script>
     
     
-      <script src="../../../assets/javascripts/bundle.748e2769.min.js"></script>
+      <script src="../../../assets/javascripts/bundle.ed9748b7.min.js"></script>
       
     
   </body>

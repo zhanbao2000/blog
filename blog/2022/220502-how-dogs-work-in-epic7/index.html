@@ -12,14 +12,14 @@
         <meta name="author" content="Akiba Arisa">
       
       
-        <link rel="canonical" href="https://blog.arisa.moe/blog/2022/220413-Intranet-penetration-bitcomit/">
+        <link rel="canonical" href="https://blog.arisa.moe/blog/2022/220502-how-dogs-work-in-epic7/">
       
       <link rel="icon" href="../../../assets/images/favicon.png">
       <meta name="generator" content="mkdocs-1.3.0, mkdocs-material-8.2.13">
     
     
       
-        <title>利用内网穿透和代理获取公网 IP 地址解决比特彗星黄灯 - Arisa | Blog</title>
+        <title>第七史诗升六星的正确理解 - Arisa | Blog</title>
       
     
     
@@ -104,7 +104,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              利用内网穿透和代理获取公网 IP 地址解决比特彗星黄灯
+              第七史诗升六星的正确理解
             
           </span>
         </div>
@@ -519,110 +519,11 @@
               
   
   
-    
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
-      
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          利用内网穿透和代理获取公网 IP 地址解决比特彗星黄灯
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../220413-Intranet-penetration-bitcomit/" class="md-nav__link">
         利用内网穿透和代理获取公网 IP 地址解决比特彗星黄灯
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="目录">
-  
-  
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      目录
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#_1" class="md-nav__link">
-    背景
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_2" class="md-nav__link">
-    前提条件
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_3" class="md-nav__link">
-    操作
-  </a>
-  
-    <nav class="md-nav" aria-label="操作">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#frps" class="md-nav__link">
-    部署 frps
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#frpc" class="md-nav__link">
-    部署 frpc
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#frp" class="md-nav__link">
-    测试 frp 连接
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_4" class="md-nav__link">
-    设置代理
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_5" class="md-nav__link">
-    关闭防吸血
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_6" class="md-nav__link">
-    测试效果
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -702,11 +603,205 @@
               
   
   
+    
   
-    <li class="md-nav__item">
-      <a href="../220502-how-dogs-work-in-epic7/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          第七史诗升六星的正确理解
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         第七史诗升六星的正确理解
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    绪论
+  </a>
+  
+    <nav class="md-nav" aria-label="绪论">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    背景
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    本博客的行文结构
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    各个素材的身份
+  </a>
+  
+    <nav class="md-nav" aria-label="各个素材的身份">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    二星狗粮（初始）
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#21" class="md-nav__link">
+    三星狗粮（21 级）
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    二星银狗（初始）
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#21_1" class="md-nav__link">
+    三星银狗（21 级）
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#31" class="md-nav__link">
+    四星银狗（31 级）
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    三星金狗（初始）
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#31_1" class="md-nav__link">
+    四星金狗（31 级）
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#40" class="md-nav__link">
+    四星黑狗（40 级）
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    所有的五星狗
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    如何快速升六星？
+  </a>
+  
+    <nav class="md-nav" aria-label="如何快速升六星？">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_10" class="md-nav__link">
+    材料准备
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_11" class="md-nav__link">
+    处理二星狗粮
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_12" class="md-nav__link">
+    制造五星金狗（或者黑狗）
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_13" class="md-nav__link">
+    二星狗粮的获取方式
+  </a>
+  
+    <nav class="md-nav" aria-label="二星狗粮的获取方式">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_14" class="md-nav__link">
+    刷冒险
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_15" class="md-nav__link">
+    友情书签换
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -751,36 +846,22 @@
       
         <li class="md-nav__item">
   <a href="#_1" class="md-nav__link">
+    绪论
+  </a>
+  
+    <nav class="md-nav" aria-label="绪论">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
     背景
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#_2" class="md-nav__link">
-    前提条件
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
+        
+          <li class="md-nav__item">
   <a href="#_3" class="md-nav__link">
-    操作
-  </a>
-  
-    <nav class="md-nav" aria-label="操作">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#frps" class="md-nav__link">
-    部署 frps
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#frpc" class="md-nav__link">
-    部署 frpc
+    本博客的行文结构
   </a>
   
 </li>
@@ -791,30 +872,139 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#frp" class="md-nav__link">
-    测试 frp 连接
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#_4" class="md-nav__link">
-    设置代理
+    各个素材的身份
   </a>
   
-</li>
-      
-        <li class="md-nav__item">
+    <nav class="md-nav" aria-label="各个素材的身份">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
   <a href="#_5" class="md-nav__link">
-    关闭防吸血
+    二星狗粮（初始）
   </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#21" class="md-nav__link">
+    三星狗粮（21 级）
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    二星银狗（初始）
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#21_1" class="md-nav__link">
+    三星银狗（21 级）
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#31" class="md-nav__link">
+    四星银狗（31 级）
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    三星金狗（初始）
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#31_1" class="md-nav__link">
+    四星金狗（31 级）
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#40" class="md-nav__link">
+    四星黑狗（40 级）
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    所有的五星狗
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#_6" class="md-nav__link">
-    测试效果
+  <a href="#_9" class="md-nav__link">
+    如何快速升六星？
   </a>
+  
+    <nav class="md-nav" aria-label="如何快速升六星？">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_10" class="md-nav__link">
+    材料准备
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_11" class="md-nav__link">
+    处理二星狗粮
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_12" class="md-nav__link">
+    制造五星金狗（或者黑狗）
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_13" class="md-nav__link">
+    二星狗粮的获取方式
+  </a>
+  
+    <nav class="md-nav" aria-label="二星狗粮的获取方式">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_14" class="md-nav__link">
+    刷冒险
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_15" class="md-nav__link">
+    友情书签换
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -836,7 +1026,7 @@ doesn't, the page title (or respectively site name) is used
 as the main headline.
 -->
 
-    <h1>利用内网穿透和代理获取公网 IP 地址解决比特彗星黄灯</h1>
+    <h1>第七史诗升六星的正确理解</h1>
 
 
 <!-- Markdown content -->
@@ -855,7 +1045,7 @@ as the main headline.
                     <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" fill="currentColor" class="bi bi-clock" viewBox="0 0 16 16">
                         <path d="M8 3.5a.5.5 0 0 0-1 0V9a.5.5 0 0 0 .252.434l3.5 2a.5.5 0 0 0 .496-.868L8 8.71V3.5z"/>
                         <path d="M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16zm7-8A7 7 0 1 1 1 8a7 7 0 0 1 14 0z"/>
-                    </svg> 16 min read
+                    </svg> 10 min read
                 </span>
             </p>
         </aside>
@@ -865,203 +1055,113 @@ as the main headline.
     
         <div class="tags">
         
-            <a href="/tags/#frp" class="tag"><code>#frp</code></a>
-        
-            <a href="/tags/#bitcomit" class="tag"><code>#bitcomit</code></a>
-        
-            <a href="/tags/#proxy" class="tag"><code>#proxy</code></a>
+            <a href="/tags/#epic7" class="tag"><code>#epic7</code></a>
         
         </div>
     
 
-    <h2 id="_1">背景</h2>
-<p>想用比特彗星下种子，但是因为身处数个 NAT 身后，根本没有公网 IP，导致无法让别的 peer 连接到你，下载速度堪忧。</p>
-<p>没有公网 IP 怎么办？打电话问运营商？还是算了吧，干脆向自己 VPS 借一个。</p>
-<h2 id="_2">前提条件</h2>
+    <h2 id="_1">绪论</h2>
+<h3 id="_2">背景</h3>
+<p><img alt="qq" src="images/220502-how-dogs-work-in-epic7/qq.jpg" /></p>
+<p>有群友用<strong>二星银狗</strong>喂<strong>二星银狗</strong>。我一看你这不太奢侈了嘛，于是便有了这条博客。</p>
+<h3 id="_3">本博客的行文结构</h3>
+<p>第二章主要介绍了各个素材在将一个角色升为六星的过程中所担当的身份。</p>
+<p>第三章<strong><em>才是本博客的主要部分</em></strong>，主要介绍了将一个角色升为六星的最简洁方法。</p>
+<p>第四章主要介绍了两种快速获取<strong>二星狗粮</strong>的方法。</p>
+<h2 id="_4">各个素材的身份</h2>
+<p>这章主要介绍各个素材（狗/狗粮）在将一个角色升为六星的过程中所担当的身份。</p>
+<h3 id="_5">二星狗粮（初始）</h3>
+<p>什么是<strong>二星狗粮</strong>？</p>
+<p><strong>二星狗粮</strong>就是冒险过程中掉落的二星小怪，等级一般为 1。</p>
+<p>如果是从友情召唤那里抽来的，那么初始等级为 5。</p>
+<p><img alt="2xgl" src="images/220502-how-dogs-work-in-epic7/2xgl.jpg" /></p>
+<p><strong>二星狗粮</strong>目前主要有以下两个出路：</p>
 <ul>
-<li>一台有公网 IP 的机器（最好是固定的 IP）</li>
-<li>这台机器被允许搭建 frp 等内网穿透服务</li>
-<li>这台机器被允许搭建代理服务</li>
+<li>直接喂给<strong>20 级的二星银狗</strong>（满级的初始银狗），使这个<strong>20 级的二星银狗</strong>变成<strong>21 级的三星银狗</strong>。
+   <img alt="2xgl_usage_1" src="images/220502-how-dogs-work-in-epic7/2xgl_usage_1.jpg" /></li>
+<li>自己吃企鹅，使自己变成<strong>20 级的二星狗粮</strong>，然后通过吃掉两个<strong>二星狗粮</strong>，使自己成为<strong>21 级的三星狗粮</strong>。
+   <img alt="2xgl_usage_2" src="images/220502-how-dogs-work-in-epic7/2xgl_usage_2.jpg" /></li>
 </ul>
-<h2 id="_3">操作</h2>
-<h3 id="frps">部署 frps</h3>
-<p>首先在有公网 IP 的那台机器上部署 frp 服务端。</p>
-<p>去 <a href="https://github.com/fatedier/frp/releases/tag/v0.41.0">release</a> 下载对应系统的 frp，下载之后解压，里面的 frps 就是我们需要的 frp 服务端。</p>
-<p>写 <code>frps.ini</code>：</p>
-<div class="highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">frps.ini</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
-<span class="normal">2</span>
-<span class="normal">3</span>
-<span class="normal">4</span>
-<span class="normal">5</span>
-<span class="normal">6</span>
-<span class="normal">7</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">[common]</span><span class="w"></span>
-<span class="na">bind_port</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">7000</span><span class="w"></span>
-<span class="na">bind_udp_port</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">7000</span><span class="w"></span>
-<span class="na">bind_addr</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">0.0.0.0</span><span class="w"></span>
-<span class="na">allow_ports</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">1001-1500,10001-22500</span><span class="w"></span>
-<span class="na">token</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">你的密码</span><span class="w"></span>
-<span class="na">tls_only</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">true</span><span class="w"></span>
-</code></pre></div></td></tr></table></div>
-<p>注意以下配置项：</p>
+<h3 id="21">三星狗粮（21 级）</h3>
+<p><strong>三星狗粮</strong>唯一的获取方法在上一节中已经介绍过了，就是<strong>二星狗粮</strong>自己吃掉同类。</p>
+<p><strong>三星狗粮</strong>目前主要有以下两个出路：</p>
 <ul>
-<li><code>allow_ports</code> 是指经过 frp 代理/转发的连接可以使用的端口范围。</li>
-<li><code>token</code> 请自己随便设置一个。</li>
-<li><code>tls_only</code> 则要求所有的 frpc 客户端（是你，不是指那些 peers）也启用 TLS 才能连接。建议设置成 <code>true</code>。</li>
+<li>直接喂给<strong>30 级的三星银狗</strong>（满级的三星银狗），使这个<strong>30 级的三银金狗</strong>变成<strong>31 级的四星银狗</strong>。
+   <img alt="3xgl_usage_1" src="images/220502-how-dogs-work-in-epic7/3xgl_usage_1.jpg" /></li>
+<li>直接喂给<strong>30 级的三星金狗</strong>（满级的初始金狗），使这个<strong>30 级的三星金狗</strong>变成<strong>31 级的四星金狗</strong>。
+   <img alt="3xgl_usage_2" src="images/220502-how-dogs-work-in-epic7/3xgl_usage_2.jpg" /></li>
 </ul>
-<p>其他的参数可以通过 <a href="https://gofrp.org/docs/reference/server-configures/">官网文档</a> 查看。</p>
-<p>然后通过</p>
-<div class="highlight"><pre><span></span><code>frps.exe -c frps.ini
-</code></pre></div>
-<p>启用 frps 服务端。</p>
-<p>此时你的服务端上应该显示如下日志：</p>
-<div class="highlight"><pre><span></span><code>2022/04/13 09:42:18 [I] [root.go:200] frps uses config file: frps.ini
-2022/04/13 09:42:18 [I] [service.go:192] frps tcp listen on 0.0.0.0:7000
-2022/04/13 09:42:18 [I] [service.go:276] nat hole udp service listen on 0.0.0.0:7000
-2022/04/13 09:42:18 [I] [root.go:209] frps started successfully
-</code></pre></div>
-<p>说明你的服务端正在监听所有来自 <code>7000</code> 端口的 frp 连接。</p>
-<h3 id="frpc">部署 frpc</h3>
-<p>在自己需要运行比特彗星的电脑上部署 frp 客户端。</p>
-<p>同样，去下载对应系统版本的 frp，解压获取 frpc。</p>
-<p>写 <code>frpc.ini</code>：</p>
-<div class="highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">frpc.ini</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
-<span class="normal"> 2</span>
-<span class="normal"> 3</span>
-<span class="normal"> 4</span>
-<span class="normal"> 5</span>
-<span class="normal"> 6</span>
-<span class="normal"> 7</span>
-<span class="normal"> 8</span>
-<span class="normal"> 9</span>
-<span class="normal">10</span>
-<span class="normal">11</span>
-<span class="normal">12</span>
-<span class="normal">13</span>
-<span class="normal">14</span>
-<span class="normal">15</span>
-<span class="normal">16</span>
-<span class="normal">17</span>
-<span class="normal">18</span>
-<span class="normal">19</span>
-<span class="normal">20</span>
-<span class="normal">21</span>
-<span class="normal">22</span>
-<span class="normal">23</span>
-<span class="normal">24</span>
-<span class="normal">25</span>
-<span class="normal">26</span>
-<span class="normal">27</span>
-<span class="normal">28</span>
-<span class="normal">29</span>
-<span class="normal">30</span>
-<span class="normal">31</span>
-<span class="normal">32</span>
-<span class="normal">33</span>
-<span class="normal">34</span>
-<span class="normal">35</span>
-<span class="normal">36</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">[common]</span><span class="w"></span>
-<span class="na">server_addr</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">给定的IPv4地址/IPv6地址/域名</span><span class="w"></span>
-<span class="na">server_port</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">7000</span><span class="w"></span>
-<span class="na">protocol</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">websocket</span><span class="w"></span>
-<span class="na">token</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">你的密码</span><span class="w"></span>
-<span class="na">tls_enable</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">true</span><span class="w"></span>
-
-<span class="k">[Remote Download]</span><span class="w"></span>
-<span class="na">type</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">tcp</span><span class="w"></span>
-<span class="na">local_ip</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">127.0.0.1</span><span class="w"></span>
-<span class="na">local_port</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">2333</span><span class="w"></span>
-<span class="na">remote_port</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">2333</span><span class="w"></span>
-
-<span class="k">[BT Listen TCP]</span><span class="w"></span>
-<span class="na">type</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">tcp</span><span class="w"></span>
-<span class="na">local_ip</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">127.0.0.1</span><span class="w"></span>
-<span class="na">local_port</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">10400</span><span class="w"></span>
-<span class="na">remote_port</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">10400</span><span class="w"></span>
-
-<span class="k">[BT Listen UDP]</span><span class="w"></span>
-<span class="na">type</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">udp</span><span class="w"></span>
-<span class="na">local_ip</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">127.0.0.1</span><span class="w"></span>
-<span class="na">local_port</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">10400</span><span class="w"></span>
-<span class="na">remote_port</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">10400</span><span class="w"></span>
-
-<span class="k">[eMule Listen TCP]</span><span class="w"></span>
-<span class="na">type</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">tcp</span><span class="w"></span>
-<span class="na">local_ip</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">127.0.0.1</span><span class="w"></span>
-<span class="na">local_port</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">22224</span><span class="w"></span>
-<span class="na">remote_port</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">22224</span><span class="w"></span>
-
-<span class="k">[eMule Listen UDP]</span><span class="w"></span>
-<span class="na">type</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">udp</span><span class="w"></span>
-<span class="na">local_ip</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">127.0.0.1</span><span class="w"></span>
-<span class="na">local_port</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">22224</span><span class="w"></span>
-<span class="na">remote_port</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">22224</span><span class="w"></span>
-</code></pre></div></td></tr></table></div>
-<p>注意以下配置项：</p>
+<h3 id="_6">二星银狗（初始）</h3>
+<p><strong>二星银狗</strong>的唯一任务就是想办法通过各种方式变成<strong>31 级的四星银狗</strong>。</p>
+<p>那么第一步，就是通过吃掉 2 个<strong>二星狗粮</strong>，把自己变成<strong>21 级的三星银狗</strong>。</p>
+<p><img alt="2xgl_usage_1" src="images/220502-how-dogs-work-in-epic7/2xgl_usage_1.jpg" /></p>
+<h3 id="21_1">三星银狗（21 级）</h3>
+<p><strong>21级 的三星银狗</strong>的唯一任务就是喂<strong>企鹅</strong>变成<strong>30 级的三星银狗</strong>（满级的三星银狗），然后通过吃掉 3 个<strong>三星狗粮</strong>，使自己成为<strong>31 级的四星银狗</strong>。</p>
+<p><img alt="3xgl_usage_1" src="images/220502-how-dogs-work-in-epic7/3xgl_usage_1.jpg" /></p>
+<h3 id="31">四星银狗（31 级）</h3>
+<p><strong>31 级的四星银狗</strong>目前主要有以下两个出路：</p>
 <ul>
-<li><code>server_addr</code> 设置成那台有公网 IP 的机器的 IP 地址，可以是 IPv4/IPv6/域名。设置成 IPv6 地址时不需要加括号 <code>[</code> 和 <code>]</code> 。<code>server_port</code> 和 <code>frps.ini</code> 保持一致。</li>
-<li><code>protocol</code> 一律选择 <code>websocket</code>。</li>
-<li><code>token</code> 和 <code>tls_enable</code> 均与 <code>frps.ini</code> 保持一致。</li>
+<li>喂给你想要的初始四星角色，让她变成五星，任务就此终结（当然本文探讨的是怎么升六星）。</li>
+<li>喂给<strong>40 级的四星金狗（满级的四星金狗）</strong>，使这个金狗变成<strong>41 级的五星金狗</strong>。
+   <img alt="4xgl_usage_1" src="images/220502-how-dogs-work-in-epic7/4xgl_usage_1.jpg" /></li>
 </ul>
-<p><code>Remote Download</code> 指的是比特彗星的远程下载服务，如果你比特彗星需要开这个功能，你可以把他打开，端口号和比特彗星上的设置保持一致，比如 <code>2333</code>。</p>
-<p><img alt="Remote Download" src="../images/220413-Intranet-penetration-bitcomit/Remote-Download.png" /></p>
-<p><code>BT Listen TCP/UDP</code> 就是 peer 的通信端口，均设置成 <code>127.0.0.1</code> 上的 <code>10400</code>，和比特彗星保持一致。</p>
-<p><img alt="listen port" src="../images/220413-Intranet-penetration-bitcomit/listen-port.png" /></p>
-<p><code>eMule Listen TCP/UDP</code> 是比特彗星电驴插件的通信端口，均设置成 <code>127.0.0.1</code> 上的 <code>22224</code>，和比特彗星与电驴插件内的设置保持一致。如果你的比特彗星版本没有电驴插件，那么你可以忽略该项。</p>
-<p><img alt="listen emule" src="../images/220413-Intranet-penetration-bitcomit/emule.jpg" /></p>
-<p><img alt="listen emule2" src="../images/220413-Intranet-penetration-bitcomit/emule2.jpg" /></p>
-<h2 id="frp">测试 frp 连接</h2>
-<p>现在在你的客户端上执行：</p>
-<div class="highlight"><pre><span></span><code>frpc.exe -c frpc.ini
-</code></pre></div>
-<p>客户端上应该会显示日志：</p>
-<div class="highlight"><pre><span></span><code>2022/04/18 15:04:44 [I] [service.go:301] [39744ebb9b0e3aab] login to server success, get run id [39744ebb9b0e3aab], server udp port [7000]
-2022/04/18 15:04:44 [I] [proxy_manager.go:144] [39744ebb9b0e3aab] proxy added: [eMule Listen UDP Remote Download BT Listen TCP BT Listen UDP eMule Listen TCP]
-2022/04/18 15:04:44 [I] [control.go:180] [39744ebb9b0e3aab] [eMule Listen UDP] start proxy success
-2022/04/18 15:04:44 [I] [control.go:180] [39744ebb9b0e3aab] [BT Listen TCP] start proxy success
-2022/04/18 15:04:44 [I] [control.go:180] [39744ebb9b0e3aab] [Remote Download] start proxy success
-2022/04/18 15:04:44 [I] [control.go:180] [39744ebb9b0e3aab] [BT Listen UDP] start proxy success
-2022/04/18 15:04:44 [I] [control.go:180] [39744ebb9b0e3aab] [eMule Listen TCP] start proxy success
-2022/04/18 15:04:45 [I] [proxy.go:481] [39744ebb9b0e3aab] [eMule Listen UDP] incoming a new work connection for udp proxy, ws://XXX.XXX.XXX.XXX:7000/~!frp
-2022/04/18 15:04:45 [I] [proxy.go:481] [39744ebb9b0e3aab] [BT Listen UDP] incoming a new work connection for udp proxy, ws://XXX.XXX.XXX.XXX:7000/~!frp```
-</code></pre></div>
-<p>同时服务端上应该会立即显示一条日志：</p>
-<div class="highlight"><pre><span></span><code>2022/04/13 09:43:21 [I] [service.go:447] [39744ebb9b0e3aab] client login info: ip http://XXX.XXX.XXX.XXX:7000 version [0.38.0] hostname [] os [windows] arch [amd64]
-</code></pre></div>
-<p>其中的 <code>XXX.XXX.XXX.XXX:7000</code> 应该是你服务端的 IP + 端口，而 <code>39744ebb9b0e3aab</code> 是你被服务端分配的用户 ID，每次你连接到服务端时，都会被服务端随机分配一个用户 ID。</p>
-<pre class="mermaid"><code>graph TB
-
-  PeerA((peer1)) --&gt; frps_10400;
-  PeerB((peer2)) --&gt; frps_10400;
-
-  subgraph frps.exe
-    frps_10400[0.0.0.0:10400] --&gt; frps_7000;
-  end
-
-  frps_7000[0.0.0.0:7000] --&gt; |websocket| frpc[frpc];
-
-  subgraph frpc and BitComit
-    bitcomit_10400 --&gt; frpc;
-  end
-
-  frpc --&gt; bitcomit_10400[localhost:10400];</code></pre>
-<p>现在，所有 peers 发送到那台具有公网 IP 的机器的 <code>allow_ports</code> 端口（包括 <code>10400</code>）的 TCP 和 UDP 数据包，都会被 <code>frps.exe</code> 通过反向 websocket 转发回客户端上的 <code>frpc.exe</code>，然后 <code>frpc.exe</code> 再发送到 <code>localhost:10400</code>，由于此时比特彗星正在监听本地的 <code>10400</code> 端口，因此比特彗星将会把这些 <code>frpc.exe</code> 发来的数据包认为是 peers 发送过来的数据包。</p>
-<h2 id="_4">设置代理</h2>
-<p>frp 只能解决一个方向上的问题，就是 peers 连接到客户端，而客户端连接到 peers 的方式将会由代理服务器实现。</p>
-<p>你需要在那台具有公网 IP 地址的机器上搭建一个代理服务，从而让你的比特彗星能通过代理连接到 peers。</p>
-<p>具体搭建方法这里不做介绍，网上有很多教程。假设我们已经搭建好了这个代理，并且映射在了 <code>socks5://localhost:1089</code> 上。</p>
-<p>然后我们在比特彗星设置里做好代理设置。</p>
-<p><img alt="proxy" src="../images/220413-Intranet-penetration-bitcomit/proxy.png" /></p>
-<p>除了 <code>使用代理服务器进行 DNS 查询</code> 以外，其他都不勾选。这相当于使比特彗星进入全局代理模式。</p>
-<p>此时我们已经等价于具有了公网 IP，并且可以以公网 IP 身份与互联网进行双向通信。不出意外的话，这个时候比特彗星的灯已经🟢了</p>
-<p><img alt="green" src="../images/220413-Intranet-penetration-bitcomit/green.png" /></p>
-<p>如果你的比特彗星客户端内有电驴插件，那么你应当同时为电驴插件也打开代理。如图：</p>
-<p><img alt="emule-proxy" src="../images/220413-Intranet-penetration-bitcomit/emule-proxy.jpg" /></p>
-<h2 id="_5">关闭防吸血</h2>
-<p>因为比特彗星接收到的数据包都是 <code>frpc.exe</code> 发来的，因此所有的 peers 的外网 IP 都是 <code>127.0.0.1</code>，大量相同 IP 可能会触发比特彗星的防吸血机制，因此把他关掉。</p>
-<p><img alt="anti leech" src="../images/220413-Intranet-penetration-bitcomit/anti-leech.png" /></p>
-<h2 id="_6">测试效果</h2>
-<p>现在去下载任意一个 BT 种子，如果点开 <code>用户</code> 选项卡，发现很多来自 <code>127.0.0.1</code> 的连接，并且来源是 <code>被动</code>，发起是 <code>远程</code>，此时就说明你已经设置正确了。</p>
-<p><img alt="peers" src="../images/220413-Intranet-penetration-bitcomit/peers.png" /></p>
+<h3 id="_7">三星金狗（初始）</h3>
+<p><strong>三星金狗</strong>的唯一任务就是想办法通过各种方式变成<strong>41 级的五星银狗</strong></p>
+<p>那么第一步，就是通过吃掉 3 个<strong>21 级的三星狗粮</strong>，把自己变成<strong>31 级的四星金狗</strong></p>
+<p><img alt="3xgl_usage_1" src="images/220502-how-dogs-work-in-epic7/3xgl_usage_1.jpg" /></p>
+<h3 id="31_1">四星金狗（31 级）</h3>
+<p><strong>31 级的四星金狗</strong>目前主要有以下两个出路：</p>
+<ul>
+<li>喂给你想要的初始四星角色，让她变成五星，任务就此终结（这一点和<strong>31 级的四星银狗</strong>一模一样）。</li>
+<li>通过吃<strong>企鹅</strong>，把自己变成<strong>40 级的四星金狗</strong>，然后通过吃掉 4 个<strong>31 级的四星银狗</strong>，使自己成为<strong>41 级的五星金狗</strong>。
+   <img alt="4xgl_usage_1" src="images/220502-how-dogs-work-in-epic7/4xgl_usage_1.jpg" /></li>
+</ul>
+<h3 id="40">四星黑狗（40 级）</h3>
+<p>同<strong>31 级的四星金狗</strong>，喂成<strong>41 级的五星黑狗</strong></p>
+<p><img alt="4xgl_usage_2" src="images/220502-how-dogs-work-in-epic7/4xgl_usage_2.jpg" /></p>
+<h3 id="_8">所有的五星狗</h3>
+<p>用来给你的角色升六星。</p>
+<h2 id="_9">如何快速升六星？</h2>
+<p>这才是这篇博客的主要部分。</p>
+<h3 id="_10">材料准备</h3>
+<p>首先去准备非常多的<strong>二星狗粮</strong>（具体方法看第四章介绍）、<strong>初始银狗</strong>、<strong>初始金狗</strong>和非常多<strong>企鹅</strong>。</p>
+<h3 id="_11">处理二星狗粮</h3>
+<p>将你的<strong>二星狗粮</strong>分成两部分，</p>
+<p>一部分用来做这个：</p>
+<p><img alt="2xgl_usage_1" src="images/220502-how-dogs-work-in-epic7/2xgl_usage_1.jpg" /></p>
+<p>剩下的拿来做这个（这里的消耗会很多，注意）：</p>
+<p><img alt="2xgl_usage_2" src="images/220502-how-dogs-work-in-epic7/2xgl_usage_2.jpg" /></p>
+<p>现在，你拥有了很多<strong>三星狗粮</strong>和<strong>21 级的三星银狗</strong></p>
+<p>把这些<strong>三星银狗</strong>全部升到 30 级（建议用 1 个<strong>传说企鹅</strong>）：</p>
+<p><img alt="yg_21_to_30" src="images/220502-how-dogs-work-in-epic7/yg_21_to_30.jpg" /></p>
+<p>然后用一些<strong>三星狗粮</strong>来喂他：</p>
+<p><img alt="3xgl_usage_1" src="images/220502-how-dogs-work-in-epic7/3xgl_usage_1.jpg" /></p>
+<p>然后把你剩下的<strong>三星狗粮</strong>全部喂给<strong>初始金狗</strong>：</p>
+<p><img alt="3xgl_usage_2" src="images/220502-how-dogs-work-in-epic7/3xgl_usage_2.jpg" /></p>
+<p>现在所有的<strong>二星狗粮</strong>应当已被处理完毕，接下来已经没有他的事了。</p>
+<p>最复杂的部分已经阐述完毕，接下来的是非常简单的内容</p>
+<h3 id="_12">制造五星金狗（或者黑狗）</h3>
+<p>把所有的<strong>31 级的四星金狗</strong>喂企鹅，喂到满级（建议用 1 个<strong>传说企鹅</strong> + 2 个<strong>初始企鹅</strong>）：</p>
+<p><img alt="jg_31_to_40" src="images/220502-how-dogs-work-in-epic7/jg_31_to_40.jpg" /></p>
+<p>然后用刚刚做好的<strong>31 级的四星银狗</strong>来喂他：</p>
+<p><img alt="4xgl_usage_1" src="images/220502-how-dogs-work-in-epic7/4xgl_usage_1.jpg" /></p>
+<p><strong>初始黑狗</strong>在此时发挥作用，同样用<strong>31 级的四星银狗</strong>来喂他：</p>
+<p><img alt="4xgl_usage_2" src="images/220502-how-dogs-work-in-epic7/4xgl_usage_2.jpg" /></p>
+<p>如法炮制，造 5 个这样的五星金（黑）狗即可。</p>
+<h2 id="_13">二星狗粮的获取方式</h2>
+<p>由于<strong>银狗</strong>和<strong>企鹅</strong>的获取方式过于简单，而<strong>金狗</strong>和<strong>黑狗</strong>的获取方式过于困难，这里主要介绍<strong>二星狗粮</strong>的获取方式。</p>
+<p>有主要以下两种方式：</p>
+<h3 id="_14">刷冒险</h3>
+<p>个人推荐刷普通难度的 9-4（E1-9-1-4（絮语森林））。这个迷宫的好处就是，走完一遍路径刚好可以用完 50 体力。</p>
+<p><img alt="migong" src="images/220502-how-dogs-work-in-epic7/migong.jpg" /></p>
+<p>用这个方式，基本上是 10 体力换大概 2~4 个<strong>二星狗粮</strong>，还是很赚的。</p>
+<details class="温馨提示 note">
+<summary>温馨提示</summary>
+<p>但是长时间刷迷宫建议用脚本刷，不然真的纯属精神污染。🤮</p>
+</details>
+<p>或者刷当前活动的支线，也是个不错的选择。</p>
+<h3 id="_15">友情书签换</h3>
+<p><img alt="zhaohuan" src="images/220502-how-dogs-work-in-epic7/zhaohuan.jpg" /></p>
 
     <!-- Last update of source file -->
     
@@ -1071,11 +1171,11 @@ as the main headline.
   <small>
     
       最后更新:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_datetime">2022-04-18 07:11:53</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_datetime">2022-05-02 08:34:54</span>
       
         <br>
         创建日期:
-        <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_datetime">2022-04-13 03:45:30</span>
+        <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_datetime">2022-05-02 08:34:54</span>
       
     
   </small>
@@ -1150,7 +1250,7 @@ as the main headline.
     <nav class="md-footer__inner md-grid" aria-label="页脚">
       
         
-        <a href="../220412-ida-substitute-usage/" class="md-footer__link md-footer__link--prev" aria-label="上一页: IDA 替换二进制文件" rel="prev">
+        <a href="../220429-dilb-ultimate-solution/" class="md-footer__link md-footer__link--prev" aria-label="上一页: 基于 Anaconda 的 dlib（CUDA 版本）安装的终极解决方案" rel="prev">
           <div class="md-footer__button md-icon">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
           </div>
@@ -1159,26 +1259,11 @@ as the main headline.
               <span class="md-footer__direction">
                 上一页
               </span>
-              IDA 替换二进制文件
+              基于 Anaconda 的 dlib（CUDA 版本）安装的终极解决方案
             </div>
           </div>
         </a>
       
-      
-        
-        <a href="../220414-fk-arcaea-songlist-hash/" class="md-footer__link md-footer__link--next" aria-label="下一页: 解除 Arcaea 对 songlist 等文件的哈希校验" rel="next">
-          <div class="md-footer__title">
-            <div class="md-ellipsis">
-              <span class="md-footer__direction">
-                下一页
-              </span>
-              解除 Arcaea 对 songlist 等文件的哈希校验
-            </div>
-          </div>
-          <div class="md-footer__button md-icon">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4Z"/></svg>
-          </div>
-        </a>
       
     </nav>
   

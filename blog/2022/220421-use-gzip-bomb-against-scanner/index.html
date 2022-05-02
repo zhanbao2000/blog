@@ -15,7 +15,7 @@
         <link rel="canonical" href="https://blog.arisa.moe/blog/2022/220421-use-gzip-bomb-against-scanner/">
       
       <link rel="icon" href="../../../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.3.0, mkdocs-material-8.2.11">
+      <meta name="generator" content="mkdocs-1.3.0, mkdocs-material-8.2.13">
     
     
       
@@ -23,10 +23,10 @@
       
     
     
-      <link rel="stylesheet" href="../../../assets/stylesheets/main.8c5ef100.min.css">
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.e411adfe.min.css">
       
         
-        <link rel="stylesheet" href="../../../assets/stylesheets/palette.9647289d.min.css">
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.cc9b2e1e.min.css">
         
       
     
@@ -691,6 +691,20 @@
 
             
           
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../220502-how-dogs-work-in-epic7/" class="md-nav__link">
+        第七史诗升六星的正确理解
+      </a>
+    </li>
+  
+
+            
+          
         </ul>
       </nav>
     </li>
@@ -869,7 +883,7 @@ as the main headline.
 </blockquote>
 <p>（敲碗等 cf 上线免费托管规则集）</p>
 <p>本文着重讨论第一种情况。第一种情况可以使 nginx 阻止所有的通过 IP 地址直接访问80端口的请求，具体设置如下：</p>
-<table class="highlighttable"><tr><th colspan="2" class="filename"><div class="highlight"><span class="filename">nginx.conf（部分）</span></div></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<div class="highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">nginx.conf（部分）</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
 <span class="normal"> 4</span>
@@ -883,7 +897,7 @@ as the main headline.
 <span class="normal">12</span>
 <span class="normal">13</span>
 <span class="normal">14</span>
-<span class="normal">15</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="k">server</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="normal">15</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">server</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
 <span class="w">    </span><span class="kn">listen</span><span class="w"> </span><span class="mi">80</span><span class="w"> </span><span class="s">default_server</span><span class="p">;</span><span class="w"></span>
 <span class="w">    </span><span class="kn">listen</span><span class="w"> </span><span class="s">[::]:80</span><span class="w"> </span><span class="s">default_server</span><span class="p">;</span><span class="w"></span>
 <span class="hll"><span class="w">    </span><span class="kn">server_name</span><span class="w"> </span><span class="s">_</span><span class="p">;</span><span class="w"></span>
@@ -898,8 +912,7 @@ as the main headline.
 </span>
 <span class="w">    </span><span class="kn">...</span><span class="w"></span>
 <span class="err">}</span><span class="w"></span>
-</code></pre></div>
-</td></tr></table>
+</code></pre></div></td></tr></table></div>
 <p>nginx 的 <code>default_server</code> 指令可以定义默认的 <code>server</code> 去处理一些没有匹配到 <code>server_name</code> 的请求，如果没有显式定义，则会选取第一个定义的 <code>server</code> 作为 <code>default_server</code>。（见 <a href="https://segmentfault.com/a/1190000015681272">nginx 的 default_server 定义及匹配规则</a> ）</p>
 <p>这里我们显式定义一个 <code>default_server</code>，其 <code>server_name</code> 随便取，取什么值都没有关系，请注意不要和已定义的 <code>server_name</code> 重复，所以一般是采用 <code>_</code>。</p>
 <p>现在，所有未被 <code>server_name</code> 匹配到的请求（一般来说就是通过 IP 地址直接访问80端口的请求）都会被 <code>default_server</code> 处理，并且返回 <code>403 Forbidden</code>。</p>
@@ -934,7 +947,7 @@ as the main headline.
 <div class="highlight"><pre><span></span><code><span class="nb">echo</span> <span class="s2">&quot;test&quot;</span> <span class="p">|</span> gzip &gt; test.gzip
 </code></pre></div>
 <p>我们部署一个简易的 Flask 服务器，并让其将我们在上文制造的 <code>test.gzip</code> 作为压缩后的响应：</p>
-<table class="highlighttable"><tr><th colspan="2" class="filename"><div class="highlight"><span class="filename">app.py</span></div></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<div class="highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">app.py</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
 <span class="normal"> 4</span>
@@ -956,7 +969,7 @@ as the main headline.
 <span class="normal">20</span>
 <span class="normal">21</span>
 <span class="normal">22</span>
-<span class="normal">23</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">flask</span> <span class="kn">import</span> <span class="n">Flask</span><span class="p">,</span> <span class="n">Response</span><span class="p">,</span> <span class="n">request</span>
+<span class="normal">23</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">from</span> <span class="nn">flask</span> <span class="kn">import</span> <span class="n">Flask</span><span class="p">,</span> <span class="n">Response</span><span class="p">,</span> <span class="n">request</span>
 <span class="kn">import</span> <span class="nn">logging</span>
 
 <span class="n">app</span> <span class="o">=</span> <span class="n">Flask</span><span class="p">(</span><span class="vm">__name__</span><span class="p">)</span>
@@ -979,8 +992,7 @@ as the main headline.
 <span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
 <span class="hll">    <span class="n">logging</span><span class="o">.</span><span class="n">basicConfig</span><span class="p">(</span><span class="n">filename</span><span class="o">=</span><span class="s1">&#39;flask.log&#39;</span><span class="p">,</span> <span class="n">level</span><span class="o">=</span><span class="n">logging</span><span class="o">.</span><span class="n">INFO</span><span class="p">)</span>
 </span>    <span class="n">app</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">host</span><span class="o">=</span><span class="s1">&#39;127.0.0.1&#39;</span><span class="p">,</span> <span class="n">port</span><span class="o">=</span><span class="mi">8082</span><span class="p">)</span>
-</code></pre></div>
-</td></tr></table>
+</code></pre></div></td></tr></table></div>
 <p>这个简易的 Flask 服务器的代码中有以下要点：</p>
 <ul>
 <li>第7行 - <code class="highlight"><span class="nd">@app</span><span class="o">.</span><span class="n">route</span><span class="p">(</span><span class="s2">&quot;/&quot;</span><span class="p">,</span> <span class="n">defaults</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;path&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">})</span></code>：当匹配到 <code>"/"</code> 的路由时（比如直接访问 <code>http://</code> + <code>你的公网 IP 地址</code>），将 <code>send_gzip_bomb</code> 函数的 <code>path</code> 参数设置成 <code>""</code></li>
@@ -1013,7 +1025,7 @@ dd <span class="k">if</span><span class="o">=</span>/dev/zero <span class="nv">b
 <h3 id="nginx">部署于 nginx</h3>
 <p>现在，我们需要将其部署到我们的服务器上，这样才能将其作为反击工具使用。</p>
 <p>修改先前提到的 nginx 的配置：</p>
-<table class="highlighttable"><tr><th colspan="2" class="filename"><div class="highlight"><span class="filename">nginx.conf（部分）</span></div></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<div class="highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">nginx.conf（部分）</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
 <span class="normal"> 4</span>
@@ -1033,7 +1045,7 @@ dd <span class="k">if</span><span class="o">=</span>/dev/zero <span class="nv">b
 <span class="normal">18</span>
 <span class="normal">19</span>
 <span class="normal">20</span>
-<span class="normal">21</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="k">server</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="normal">21</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">server</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
 <span class="w">    </span><span class="kn">listen</span><span class="w"> </span><span class="mi">80</span><span class="w"> </span><span class="s">default_server</span><span class="p">;</span><span class="w"></span>
 <span class="w">    </span><span class="kn">listen</span><span class="w"> </span><span class="s">[::]:80</span><span class="w"> </span><span class="s">default_server</span><span class="p">;</span><span class="w"></span>
 <span class="w">    </span><span class="kn">server_name</span><span class="w"> </span><span class="s">_</span><span class="p">;</span><span class="w"></span>
@@ -1054,8 +1066,7 @@ dd <span class="k">if</span><span class="o">=</span>/dev/zero <span class="nv">b
 
 <span class="w">    </span><span class="kn">...</span><span class="w"></span>
 <span class="err">}</span><span class="w"></span>
-</code></pre></div>
-</td></tr></table>
+</code></pre></div></td></tr></table></div>
 <p>之前我们是 <code class="highlight"><span class="k">return</span><span class="w"> </span><span class="mi">403</span><span class="p">;</span><span class="w"></span></code>，现在我们把 <code>default_server</code> 所在的 <code>server</code> 添加一个 <code>/</code> 的 <code>location</code>，并将原来返回403改为反代到 <code>127.0.0.1:8082</code>。</p>
 <p>注意第10行，我们需要向反代的请求头中放上一个 <code>X-Forwarded-For</code>，以表示 nginx 帮助哪个客户端进行了反向代理。此时我们的 Flask 服务器才能知道访问了我们的服务器的客户端的 IP 地址。</p>
 <p>如此一来，所有通过我们服务器的公网 IP 地址访问服务器80端口的连接，无论 path 为如何，均会被反代到 Flask 服务器上，然后 Flask 服务器返回一个 10G 的 gzip 炸弹，是不是很炫酷？</p>
@@ -1247,7 +1258,7 @@ dd <span class="k">if</span><span class="o">=</span>/dev/zero <span class="nv">b
     <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.tabs", "navigation.top", "navigation.tracking"], "search": "../../../assets/javascripts/workers/search.2a1c317c.min.js", "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.config.lang": "ja", "search.config.pipeline": "trimmer, stemmer", "search.config.separator": "[\\uff0c\\u3002]+", "search.placeholder": "\u641c\u7d22", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version.title": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}}</script>
     
     
-      <script src="../../../assets/javascripts/bundle.748e2769.min.js"></script>
+      <script src="../../../assets/javascripts/bundle.ed9748b7.min.js"></script>
       
     
   </body>
