@@ -32,9 +32,6 @@ extra:
     - icon: fontawesome/brands/steam
       link: https://steamcommunity.com/id/akibaarisa
       name: AkibaArisa on Steam
-    - icon: fontawesome/solid/envelope
-      link: mailto:contact@arisa.moe
-      name: Contact me
 
 extra_css:
   - stylesheets/custom.css
