@@ -1272,6 +1272,9 @@ cmake .. -DDLIB_USE_CUDA=1 -DUSE_AVX_INSTRUCTIONS=1 -DCUDAToolkit_ROOT=<span cla
 <p>实际上，在非手动编译环境中（例如直接使用 <code>pip install</code>）安装时，也可以通过以下方式指定该参数：</p>
 <div class="highlight"><pre><span></span><code>pip install -v --install-option=<span class="s2">&quot;--no&quot;</span> --install-option=<span class="s2">&quot;DLIB_GIF_SUPPORT&quot;</span> dlib
 </code></pre></div>
+<p>以及如果你想编译出 <code>.whl</code> 文件造福他人，在编译时同样需要加入该参数，即：</p>
+<div class="highlight"><pre><span></span><code>python setup.py bdist_wheel --set DLIB_USE_CUDA=1 --no DLIB_GIF_SUPPORT
+</code></pre></div>
 </div>
 <h3 id="_9">在安装之后</h3>
 <h4 id="dlib_2">卸载旧版本的 dlib</h4>
@@ -1387,7 +1390,7 @@ cmake .. -DDLIB_USE_CUDA=1 -DUSE_AVX_INSTRUCTIONS=1 -DCUDAToolkit_ROOT=<span cla
   <small>
     
       最后更新:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_datetime">2022-05-04 16:58:35</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_datetime">2022-05-04 18:11:14</span>
       
         <br>
         创建日期:
