@@ -293,6 +293,12 @@ python setup.py install --set DLIB_USE_CUDA=1 --no DLIB_GIF_SUPPORT
     pip install -v --install-option="--no" --install-option="DLIB_GIF_SUPPORT" dlib
     ```
 
+    以及如果你想编译出 `.whl` 文件造福他人，在编译时同样需要加入该参数，即：
+
+    ```bat
+    python setup.py bdist_wheel --set DLIB_USE_CUDA=1 --no DLIB_GIF_SUPPORT
+    ```
+
 ### 在安装之后
 
 #### 卸载旧版本的 dlib
