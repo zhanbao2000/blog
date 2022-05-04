@@ -287,6 +287,12 @@ python setup.py install --set DLIB_USE_CUDA=1 --no DLIB_GIF_SUPPORT
 
     见 [Dlib install errors out : error C2734: 'GifAsciiTable8x8' : 'const' object must be initialized if not 'extern' · Issue #2358 · davisking/dlib](https://github.com/davisking/dlib/issues/2358)
 
+    实际上，在非手动编译环境中（例如直接使用 `pip install`）安装时，也可以通过以下方式指定该参数：
+
+    ```bat
+    pip install -v --install-option="--no" --install-option="DLIB_GIF_SUPPORT" dlib
+    ```
+
 ### 在安装之后
 
 #### 卸载旧版本的 dlib
