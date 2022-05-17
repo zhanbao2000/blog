@@ -1,6 +1,7 @@
 ---
 hide:
     - navigation
+    - toc
 ---
 
 # 首页
@@ -12,3 +13,10 @@ hide:
  - [MkDocs](https://www.mkdocs.org/)
  - [Material for MkDocs](https://squidfunk.github.io/mkdocs-material/)
  - [mkdocs-blogging-plugin](https://liang2kl.codes/mkdocs-blogging-plugin/)
+
+## 友情链接
+
+ - [HEAVENLYHEAVEN - NUIK BLOG](http://blog.nijikuu.com/)
+ - [MBR's Blog](https://blog.mbrjun.cn/)
+ - [InariAimu's Blog](https://blog.inariaimu.com/)
+ - [Akula<>Blog](https://lolicon.akulak.icu/)
