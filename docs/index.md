@@ -1,18 +1,25 @@
 ---
 hide:
     - navigation
-    - toc
 ---
 
-# 首页
+# 主页
 
-一个大四学生写的博客，目前十分简陋。该博客均为实验性内容，不代表以后最终成品。
+!!! abstract "摘要"
 
-使用以下工具构建：
+    这里是 秋葉亜里沙 的个人博客。
+    
+    主要记录分享一些学习和生活过程中的点滴。
 
- - [MkDocs](https://www.mkdocs.org/)
- - [Material for MkDocs](https://squidfunk.github.io/mkdocs-material/)
- - [mkdocs-blogging-plugin](https://liang2kl.codes/mkdocs-blogging-plugin/)
+    该博客均为实验性内容，不代表以后最终成品。
+
+## 关于我
+
+ - 本科非计科，因爱好而学习计算机相关知识，最主要使用的程序语言是 Python。
+ - 目前已经毕业，正在二战考研。
+ - 喜欢音游，目前正在玩的是邦邦和 Arcaea。
+ - 在其他朋友的带领下，现在迷上了 Bot 开发、服务器运维以及逆向工程。
+ - ~~长期接邦邦代打。~~
 
 ## 友情链接
 
