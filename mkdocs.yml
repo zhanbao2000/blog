@@ -9,6 +9,9 @@ repo_name: zhanbao2000/blog
 theme:
   name: material
   custom_dir: overrides
+  favicon: assets/favicon.webp
+  icon:
+    logo: octicons/code-review-16
   palette:
     - scheme: default
       toggle:
