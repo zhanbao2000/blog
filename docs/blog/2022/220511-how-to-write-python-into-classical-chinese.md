@@ -187,3 +187,66 @@ except (
 ):
     ...
 ```
+
+### 4. 将 `if-else` 块改为 `if-else` 三目运算符（伪）
+
+现代文：
+
+```python
+if a > 0:
+    b = 1
+else:
+    b = -1
+```
+
+文言文：
+
+```python
+b = 1 if a > 0 else -1
+```
+
+这个很多人应该都知道，就不赘述了。
+
+这和三目运算符有点相似：
+
+```C
+b = a > 0 ? 1 : -1
+```
+
+### 5. 利用 `if-else` 三目运算符处理序列
+
+现代文：
+
+```python
+msg = 'the fox jumped over the lazy dog'
+new_msg = ''
+
+for char in msg:
+    if char == ' ':
+        new_msg += ' '
+    else:
+        # 凯撒密码
+        new_msg += chr((ord(char) - ord('a') + 1) % 26 + ord('a'))
+```
+
+文言文：
+
+```python
+msg = 'the quick brown fox jumps over the lazy dog'
+new_msg = ''.join(' ' if char == ' ' else chr((ord(char) - ord('a') + 1) % 26 + ord('a')) for char in msg)
+```
+
+为了叙述方便，我们把文言文里出现的 `#!python chr((ord(char) - ord('a') + 1) % 26 + ord('a'))` 这个表达式称为 `caesar(char)`，即：
+
+```python
+msg = 'the quick brown fox jumps over the lazy dog'
+new_msg = ''.join(' ' if char == ' ' else caesar(char) for char in msg)
+```
+
+需要注意的是，这里需要把 `#!python ' ' if char == ' ' else caesar(char)` 看作一个整体，而不是把 `#!python caesar(char) for char in msg` 看作一个整体。也就是说，这个复杂的表达式最终是一个生成器（由 `for-in` 语句制造），而不是一个表达式（`if-else` 三目运算符）。
+
+另外，你也可以利用 `#!python map()` 函数和 `#!python lambda` 表达式写成以下的形式：
+
+```python
+new_msg = ''.join(map(lambda char: ' ' if char == ' ' else caesar(char), msg))
+```
