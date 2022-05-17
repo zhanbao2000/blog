@@ -15,7 +15,7 @@
         <link rel="canonical" href="https://blog.arisa.moe/blog/2022/220511-how-to-write-python-into-classical-chinese/">
       
       <link rel="icon" href="../../../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.3.0, mkdocs-material-8.2.14">
+      <meta name="generator" content="mkdocs-1.3.0, mkdocs-material-8.2.15">
     
     
       
@@ -23,7 +23,7 @@
       
     
     
-      <link rel="stylesheet" href="../../../assets/stylesheets/main.3de6f41f.min.css">
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.c382b1dc.min.css">
       
         
         <link rel="stylesheet" href="../../../assets/stylesheets/palette.cc9b2e1e.min.css">
@@ -684,6 +684,20 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#4-if-else-if-else" class="md-nav__link">
+    4. 将 if-else 块改为 if-else 三目运算符（伪）
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#5-if-else" class="md-nav__link">
+    5. 利用 if-else 三目运算符处理序列
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -767,6 +781,20 @@
           <li class="md-nav__item">
   <a href="#3-pass" class="md-nav__link">
     3. 使用 ... 方法取代 pass 语句
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-if-else-if-else" class="md-nav__link">
+    4. 将 if-else 块改为 if-else 三目运算符（伪）
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#5-if-else" class="md-nav__link">
+    5. 利用 if-else 三目运算符处理序列
   </a>
   
 </li>
@@ -965,6 +993,44 @@ as the main headline.
 <span class="p">):</span>
     <span class="o">...</span>
 </code></pre></div>
+<h3 id="4-if-else-if-else">4. 将 <code>if-else</code> 块改为 <code>if-else</code> 三目运算符（伪）</h3>
+<p>现代文：</p>
+<div class="highlight"><pre><span></span><code><span class="k">if</span> <span class="n">a</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+    <span class="n">b</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="n">b</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span>
+</code></pre></div>
+<p>文言文：</p>
+<div class="highlight"><pre><span></span><code><span class="n">b</span> <span class="o">=</span> <span class="mi">1</span> <span class="k">if</span> <span class="n">a</span> <span class="o">&gt;</span> <span class="mi">0</span> <span class="k">else</span> <span class="o">-</span><span class="mi">1</span>
+</code></pre></div>
+<p>这个很多人应该都知道，就不赘述了。</p>
+<p>这和三目运算符有点相似：</p>
+<div class="highlight"><pre><span></span><code><span class="n">b</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="o">?</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="mi">-1</span><span class="w"></span>
+</code></pre></div>
+<h3 id="5-if-else">5. 利用 <code>if-else</code> 三目运算符处理序列</h3>
+<p>现代文：</p>
+<div class="highlight"><pre><span></span><code><span class="n">msg</span> <span class="o">=</span> <span class="s1">&#39;the fox jumped over the lazy dog&#39;</span>
+<span class="n">new_msg</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span>
+
+<span class="k">for</span> <span class="n">char</span> <span class="ow">in</span> <span class="n">msg</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">char</span> <span class="o">==</span> <span class="s1">&#39; &#39;</span><span class="p">:</span>
+        <span class="n">new_msg</span> <span class="o">+=</span> <span class="s1">&#39; &#39;</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="c1"># 凯撒密码</span>
+        <span class="n">new_msg</span> <span class="o">+=</span> <span class="nb">chr</span><span class="p">((</span><span class="nb">ord</span><span class="p">(</span><span class="n">char</span><span class="p">)</span> <span class="o">-</span> <span class="nb">ord</span><span class="p">(</span><span class="s1">&#39;a&#39;</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="o">%</span> <span class="mi">26</span> <span class="o">+</span> <span class="nb">ord</span><span class="p">(</span><span class="s1">&#39;a&#39;</span><span class="p">))</span>
+</code></pre></div>
+<p>文言文：</p>
+<div class="highlight"><pre><span></span><code><span class="n">msg</span> <span class="o">=</span> <span class="s1">&#39;the quick brown fox jumps over the lazy dog&#39;</span>
+<span class="n">new_msg</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="s1">&#39; &#39;</span> <span class="k">if</span> <span class="n">char</span> <span class="o">==</span> <span class="s1">&#39; &#39;</span> <span class="k">else</span> <span class="nb">chr</span><span class="p">((</span><span class="nb">ord</span><span class="p">(</span><span class="n">char</span><span class="p">)</span> <span class="o">-</span> <span class="nb">ord</span><span class="p">(</span><span class="s1">&#39;a&#39;</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="o">%</span> <span class="mi">26</span> <span class="o">+</span> <span class="nb">ord</span><span class="p">(</span><span class="s1">&#39;a&#39;</span><span class="p">))</span> <span class="k">for</span> <span class="n">char</span> <span class="ow">in</span> <span class="n">msg</span><span class="p">)</span>
+</code></pre></div>
+<p>为了叙述方便，我们把文言文里出现的 <code class="highlight"><span class="nb">chr</span><span class="p">((</span><span class="nb">ord</span><span class="p">(</span><span class="n">char</span><span class="p">)</span> <span class="o">-</span> <span class="nb">ord</span><span class="p">(</span><span class="s1">&#39;a&#39;</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="o">%</span> <span class="mi">26</span> <span class="o">+</span> <span class="nb">ord</span><span class="p">(</span><span class="s1">&#39;a&#39;</span><span class="p">))</span></code> 这个表达式称为 <code>caesar(char)</code>，即：</p>
+<div class="highlight"><pre><span></span><code><span class="n">msg</span> <span class="o">=</span> <span class="s1">&#39;the quick brown fox jumps over the lazy dog&#39;</span>
+<span class="n">new_msg</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="s1">&#39; &#39;</span> <span class="k">if</span> <span class="n">char</span> <span class="o">==</span> <span class="s1">&#39; &#39;</span> <span class="k">else</span> <span class="n">caesar</span><span class="p">(</span><span class="n">char</span><span class="p">)</span> <span class="k">for</span> <span class="n">char</span> <span class="ow">in</span> <span class="n">msg</span><span class="p">)</span>
+</code></pre></div>
+<p>需要注意的是，这里需要把 <code class="highlight"><span class="s1">&#39; &#39;</span> <span class="k">if</span> <span class="n">char</span> <span class="o">==</span> <span class="s1">&#39; &#39;</span> <span class="k">else</span> <span class="n">caesar</span><span class="p">(</span><span class="n">char</span><span class="p">)</span></code> 看作一个整体，而不是把 <code class="highlight"><span class="n">caesar</span><span class="p">(</span><span class="n">char</span><span class="p">)</span> <span class="k">for</span> <span class="n">char</span> <span class="ow">in</span> <span class="n">msg</span></code> 看作一个整体。也就是说，这个复杂的表达式最终是一个生成器（由 <code>for-in</code> 语句制造），而不是一个表达式（<code>if-else</code> 三目运算符）。</p>
+<p>另外，你也可以利用 <code class="highlight"><span class="nb">map</span><span class="p">()</span></code> 函数和 <code class="highlight"><span class="k">lambda</span></code> 表达式写成以下的形式：</p>
+<div class="highlight"><pre><span></span><code><span class="n">new_msg</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="nb">map</span><span class="p">(</span><span class="k">lambda</span> <span class="n">char</span><span class="p">:</span> <span class="s1">&#39; &#39;</span> <span class="k">if</span> <span class="n">char</span> <span class="o">==</span> <span class="s1">&#39; &#39;</span> <span class="k">else</span> <span class="n">caesar</span><span class="p">(</span><span class="n">char</span><span class="p">),</span> <span class="n">msg</span><span class="p">))</span>
+</code></pre></div>
 
     <!-- Last update of source file -->
     
@@ -974,7 +1040,7 @@ as the main headline.
   <small>
     
       最后更新:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_datetime">2022-05-11 18:45:02</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_datetime">2022-05-17 00:29:17</span>
       
         <br>
         创建日期:
@@ -1110,10 +1176,10 @@ as the main headline.
     <div class="md-dialog" data-md-component="dialog">
       <div class="md-dialog__inner md-typeset"></div>
     </div>
-    <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.tabs", "navigation.top", "navigation.tracking"], "search": "../../../assets/javascripts/workers/search.2a1c317c.min.js", "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.config.lang": "ja", "search.config.pipeline": "trimmer, stemmer", "search.config.separator": "[\\\uff0c\\\u3002]+", "search.placeholder": "\u641c\u7d22", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version.title": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}}</script>
+    <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.tabs", "navigation.top", "navigation.tracking"], "search": "../../../assets/javascripts/workers/search.2a1c317c.min.js", "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.config.lang": "ja", "search.config.pipeline": "trimmer, stemmer", "search.config.separator": "[\\s\\-\uff0c\u3002]+", "search.placeholder": "\u641c\u7d22", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version.title": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}}</script>
     
     
-      <script src="../../../assets/javascripts/bundle.c2e1ee47.min.js"></script>
+      <script src="../../../assets/javascripts/bundle.a6c66575.min.js"></script>
       
     
   </body>
