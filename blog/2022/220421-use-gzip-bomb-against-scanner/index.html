@@ -989,16 +989,16 @@ as the main headline.
 <span class="n">app</span> <span class="o">=</span> <span class="n">Flask</span><span class="p">(</span><span class="vm">__name__</span><span class="p">)</span>
 
 
-<span class="hll"><span class="nd">@app</span><span class="o">.</span><span class="n">route</span><span class="p">(</span><span class="s2">&quot;/&quot;</span><span class="p">,</span> <span class="n">defaults</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;path&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">})</span>
-</span><span class="hll"><span class="nd">@app</span><span class="o">.</span><span class="n">route</span><span class="p">(</span><span class="s2">&quot;/&lt;path:path&gt;&quot;</span><span class="p">)</span>
+<span class="hll"><span class="nd">@app</span><span class="o">.</span><span class="n">route</span><span class="p">(</span><span class="s1">&#39;/&#39;</span><span class="p">,</span> <span class="n">defaults</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;path&#39;</span><span class="p">:</span> <span class="s1">&#39;&#39;</span><span class="p">})</span>
+</span><span class="hll"><span class="nd">@app</span><span class="o">.</span><span class="n">route</span><span class="p">(</span><span class="s1">&#39;/&lt;path:path&gt;&#39;</span><span class="p">)</span>
 </span><span class="k">def</span> <span class="nf">send_gzip_bomb</span><span class="p">(</span><span class="n">path</span><span class="p">):</span>
 <span class="hll">    <span class="n">remote_addr</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">headers</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;X-Forwarded-For&#39;</span><span class="p">,</span> <span class="n">request</span><span class="o">.</span><span class="n">remote_addr</span><span class="p">)</span>
 </span>    <span class="n">app</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;client [</span><span class="si">{</span><span class="n">remote_addr</span><span class="si">}</span><span class="s1">] </span><span class="si">{</span><span class="n">request</span><span class="o">.</span><span class="n">method</span><span class="si">}</span><span class="s1"> [</span><span class="si">{</span><span class="n">request</span><span class="o">.</span><span class="n">host</span><span class="si">}</span><span class="s1">] as </span><span class="si">{</span><span class="n">request</span><span class="o">.</span><span class="n">url</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
     <span class="n">app</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;User-Agent: </span><span class="si">{</span><span class="n">request</span><span class="o">.</span><span class="n">headers</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;User-Agent&quot;</span><span class="p">)</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
 
-    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;static/test.gzip&#39;</span><span class="p">,</span> <span class="s2">&quot;rb&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">payload_gzip</span><span class="p">:</span>
+    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;static/test.gzip&#39;</span><span class="p">,</span> <span class="s1">&#39;rb&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">payload_gzip</span><span class="p">:</span>
         <span class="n">resp</span> <span class="o">=</span> <span class="n">payload_gzip</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
-<span class="hll">    <span class="n">final_response</span> <span class="o">=</span> <span class="n">Response</span><span class="p">(</span><span class="n">response</span><span class="o">=</span><span class="n">resp</span><span class="p">,</span> <span class="n">status</span><span class="o">=</span><span class="mi">200</span><span class="p">,</span> <span class="n">mimetype</span><span class="o">=</span><span class="s2">&quot;text/html&quot;</span><span class="p">)</span>
+<span class="hll">    <span class="n">final_response</span> <span class="o">=</span> <span class="n">Response</span><span class="p">(</span><span class="n">response</span><span class="o">=</span><span class="n">resp</span><span class="p">,</span> <span class="n">status</span><span class="o">=</span><span class="mi">200</span><span class="p">,</span> <span class="n">mimetype</span><span class="o">=</span><span class="s1">&#39;text/html&#39;</span><span class="p">)</span>
 </span><span class="hll">    <span class="n">final_response</span><span class="o">.</span><span class="n">headers</span><span class="p">[</span><span class="s1">&#39;Content-Encoding&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;gzip&#39;</span>
 </span>    <span class="k">return</span> <span class="n">final_response</span>
 
@@ -1009,8 +1009,8 @@ as the main headline.
 </code></pre></div></td></tr></table></div>
 <p>这个简易的 Flask 服务器的代码中有以下要点：</p>
 <ul>
-<li>第7行 - <code class="highlight"><span class="nd">@app</span><span class="o">.</span><span class="n">route</span><span class="p">(</span><span class="s2">&quot;/&quot;</span><span class="p">,</span> <span class="n">defaults</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;path&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">})</span></code>：当匹配到 <code>"/"</code> 的路由时（比如直接访问 <code>http://</code> + <code>你的公网 IP 地址</code>），将 <code>send_gzip_bomb</code> 函数的 <code>path</code> 参数设置成 <code>""</code></li>
-<li>第8行 - <code class="highlight"><span class="nd">@app</span><span class="o">.</span><span class="n">route</span><span class="p">(</span><span class="s2">&quot;/&lt;path:path&gt;&quot;</span><span class="p">))</span></code>：当匹配到任何带 path 的路由时，将 <code>send_gzip_bomb</code> 函数的 <code>path</code> 参数设置成 URL 中的 path 值</li>
+<li>第7行 - <code class="highlight"><span class="nd">@app</span><span class="o">.</span><span class="n">route</span><span class="p">(</span><span class="s1">&#39;/&#39;</span><span class="p">,</span> <span class="n">defaults</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;path&#39;</span><span class="p">:</span> <span class="s1">&#39;&#39;</span><span class="p">})</span></code>：当匹配到 <code>'/'</code> 的路由时（比如直接访问 <code>http://</code> + <code>你的公网 IP 地址</code>），将 <code>send_gzip_bomb</code> 函数的 <code>path</code> 参数设置成 <code>''</code></li>
+<li>第8行 - <code class="highlight"><span class="nd">@app</span><span class="o">.</span><span class="n">route</span><span class="p">(</span><span class="s1">&#39;/&lt;path:path&gt;&#39;</span><span class="p">))</span></code>：当匹配到任何带 path 的路由时，将 <code>send_gzip_bomb</code> 函数的 <code>path</code> 参数设置成 URL 中的 path 值</li>
 </ul>
 <p>如此一来，这个 <code>send_gzip_bomb</code> 函数便能捕获所有的路由（即使函数中从未使用 <code>path</code> 参数）。</p>
 <ul>
@@ -1021,7 +1021,7 @@ as the main headline.
 <p>使用 <code>X-Real-IP</code> 替代 <code>X-Forwarded-For</code> 同样也可以，前提是这两个值在 nginx 反代时已经被定义。<br>见 <a href="#nginx">部署于 nginx</a></p>
 </div>
 <ul>
-<li>第16行 - <code class="highlight"><span class="n">mimetype</span><span class="o">=</span><span class="s2">&quot;text/html&quot;</span></code>：在响应头中指定响应类型为文本，这样被害的扫描器服务器便会无条件解压我们发来的载荷</li>
+<li>第16行 - <code class="highlight"><span class="n">mimetype</span><span class="o">=</span><span class="s1">&#39;text/html&#39;</span></code>：在响应头中指定响应类型为文本，这样被害的扫描器服务器便会无条件解压我们发来的载荷</li>
 <li>第17行 - <code class="highlight"><span class="n">final_response</span><span class="o">.</span><span class="n">headers</span><span class="p">[</span><span class="s1">&#39;Content-Encoding&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;gzip&#39;</span></code>：同上，告知被害的扫描器服务器使用 <code>gzip</code> 解压载荷</li>
 <li>第22行 - <code class="highlight"><span class="n">filename</span><span class="o">=</span><span class="s1">&#39;flask.log&#39;</span></code>：将 Flask 的日志输出重定向到文件，方便我们记录是谁恶意访问了我们的服务器</li>
 </ul>
@@ -1093,15 +1093,15 @@ dd <span class="k">if</span><span class="o">=</span>/dev/zero <span class="nv">b
 
 <span class="n">resp</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
 
-<span class="n">decompressed</span> <span class="o">=</span> <span class="n">resp</span><span class="o">.</span><span class="n">raw</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
-<span class="n">decompressed_size</span> <span class="o">=</span> <span class="n">sys</span><span class="o">.</span><span class="n">getsizeof</span><span class="p">(</span><span class="n">decompressed</span><span class="p">)</span>
-<span class="k">with</span> <span class="n">gzip</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="n">io</span><span class="o">.</span><span class="n">BytesIO</span><span class="p">(</span><span class="n">decompressed</span><span class="p">),</span> <span class="s1">&#39;rb&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">g</span><span class="p">:</span>
+<span class="n">compressed</span> <span class="o">=</span> <span class="n">resp</span><span class="o">.</span><span class="n">raw</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+<span class="n">compressed_size</span> <span class="o">=</span> <span class="n">sys</span><span class="o">.</span><span class="n">getsizeof</span><span class="p">(</span><span class="n">compressed</span><span class="p">)</span>
+<span class="k">with</span> <span class="n">gzip</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="n">io</span><span class="o">.</span><span class="n">BytesIO</span><span class="p">(</span><span class="n">compressed</span><span class="p">),</span> <span class="s1">&#39;rb&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">g</span><span class="p">:</span>
     <span class="n">g</span><span class="o">.</span><span class="n">seek</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
     <span class="n">origin_size</span> <span class="o">=</span> <span class="n">g</span><span class="o">.</span><span class="n">tell</span><span class="p">()</span>
 
-<span class="nb">print</span><span class="p">(</span><span class="n">decompressed_size</span><span class="p">,</span> <span class="n">origin_size</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">compressed_size</span><span class="p">,</span> <span class="n">origin_size</span><span class="p">)</span>
 </code></pre></div>
-<p>其中 <code>origin_size</code> 反映的是载荷解压之后的大小，<code>decompressed_size</code> 反映的是载荷压缩后的大小（也是实际传输的大小），它们的单位都是 B。</p>
+<p>其中 <code>origin_size</code> 反映的是载荷解压之后的大小，<code>compressed_size</code> 反映的是载荷压缩后的大小（也是实际传输的大小），它们的单位都是 B。</p>
 <p>如果发现这两个值的比值过大，那么这个载荷很有可能是压缩包炸弹。</p>
 
     <!-- Last update of source file -->
@@ -1112,7 +1112,7 @@ dd <span class="k">if</span><span class="o">=</span>/dev/zero <span class="nv">b
   <small>
     
       最后更新:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_datetime">2022-04-22 12:57:48</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_datetime">2022-05-18 23:36:33</span>
       
         <br>
         创建日期:
