@@ -698,6 +698,13 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#6-inline" class="md-nav__link">
+    6. 利用 inline 循环移除列表中的重复元素
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -795,6 +802,13 @@
           <li class="md-nav__item">
   <a href="#5-if-else" class="md-nav__link">
     5. 利用 if-else 三目运算符处理序列
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#6-inline" class="md-nav__link">
+    6. 利用 inline 循环移除列表中的重复元素
   </a>
   
 </li>
@@ -1031,6 +1045,17 @@ as the main headline.
 <p>另外，你也可以利用 <code class="highlight"><span class="nb">map</span><span class="p">()</span></code> 函数和 <code class="highlight"><span class="k">lambda</span></code> 表达式写成以下的形式：</p>
 <div class="highlight"><pre><span></span><code><span class="n">new_msg</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="nb">map</span><span class="p">(</span><span class="k">lambda</span> <span class="n">char</span><span class="p">:</span> <span class="s1">&#39; &#39;</span> <span class="k">if</span> <span class="n">char</span> <span class="o">==</span> <span class="s1">&#39; &#39;</span> <span class="k">else</span> <span class="n">caesar</span><span class="p">(</span><span class="n">char</span><span class="p">),</span> <span class="n">msg</span><span class="p">))</span>
 </code></pre></div>
+<h3 id="6-inline">6. 利用 inline 循环移除列表中的重复元素</h3>
+<p>现代文：</p>
+<div class="highlight"><pre><span></span><code><span class="n">ls</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span>
+<span class="k">while</span> <span class="mi">1</span> <span class="ow">in</span> <span class="n">ls</span><span class="p">:</span>
+    <span class="n">ls</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+</code></pre></div>
+<p>文言文：</p>
+<div class="highlight"><pre><span></span><code><span class="n">ls</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span>
+<span class="n">ls</span> <span class="o">=</span> <span class="p">[</span><span class="n">item</span> <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">ls</span> <span class="k">if</span> <span class="n">item</span> <span class="o">!=</span> <span class="mi">1</span><span class="p">]</span>
+</code></pre></div>
+<p>有没有感兴趣的同学来一波性能分析？</p>
 
     <!-- Last update of source file -->
     
@@ -1040,7 +1065,7 @@ as the main headline.
   <small>
     
       最后更新:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_datetime">2022-05-17 00:29:17</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_datetime">2022-05-18 09:38:00</span>
       
         <br>
         创建日期:
