@@ -121,16 +121,16 @@ import logging
 app = Flask(__name__)
 
 
-@app.route("/", defaults={"path": ""})
-@app.route("/<path:path>")
+@app.route('/', defaults={'path': ''})
+@app.route('/<path:path>')
 def send_gzip_bomb(path):
     remote_addr = request.headers.get('X-Forwarded-For', request.remote_addr)
     app.logger.info(f'client [{remote_addr}] {request.method} [{request.host}] as {request.url}')
     app.logger.info(f'User-Agent: {request.headers.get("User-Agent")}')
 
-    with open(r'static/test.gzip', "rb") as payload_gzip:
+    with open(r'static/test.gzip', 'rb') as payload_gzip:
         resp = payload_gzip.read()
-    final_response = Response(response=resp, status=200, mimetype="text/html")
+    final_response = Response(response=resp, status=200, mimetype='text/html')
     final_response.headers['Content-Encoding'] = 'gzip'
     return final_response
 
@@ -142,8 +142,8 @@ if __name__ == '__main__':
 
 这个简易的 Flask 服务器的代码中有以下要点：
 
- - 第7行 - `#!python @app.route("/", defaults={"path": ""})`：当匹配到 `"/"` 的路由时（比如直接访问 `http://` + `你的公网 IP 地址`），将 `send_gzip_bomb` 函数的 `path` 参数设置成 `""`
- - 第8行 - `#!python @app.route("/<path:path>"))`：当匹配到任何带 path 的路由时，将 `send_gzip_bomb` 函数的 `path` 参数设置成 URL 中的 path 值
+ - 第7行 - `#!python @app.route('/', defaults={'path': ''})`：当匹配到 `'/'` 的路由时（比如直接访问 `http://` + `你的公网 IP 地址`），将 `send_gzip_bomb` 函数的 `path` 参数设置成 `''`
+ - 第8行 - `#!python @app.route('/<path:path>'))`：当匹配到任何带 path 的路由时，将 `send_gzip_bomb` 函数的 `path` 参数设置成 URL 中的 path 值
 
 如此一来，这个 `send_gzip_bomb` 函数便能捕获所有的路由（即使函数中从未使用 `path` 参数）。
 
@@ -153,7 +153,7 @@ if __name__ == '__main__':
 
     使用 `X-Real-IP` 替代 `X-Forwarded-For` 同样也可以，前提是这两个值在 nginx 反代时已经被定义。<br>见 [部署于 nginx](#nginx)
 
- - 第16行 - `#!python mimetype="text/html"`：在响应头中指定响应类型为文本，这样被害的扫描器服务器便会无条件解压我们发来的载荷
+ - 第16行 - `#!python mimetype='text/html'`：在响应头中指定响应类型为文本，这样被害的扫描器服务器便会无条件解压我们发来的载荷
  - 第17行 - `#!python final_response.headers['Content-Encoding'] = 'gzip'`：同上，告知被害的扫描器服务器使用 `gzip` 解压载荷
  - 第22行 - `#!python filename='flask.log'`：将 Flask 的日志输出重定向到文件，方便我们记录是谁恶意访问了我们的服务器
 
@@ -226,15 +226,15 @@ import sys
 
 resp = requests.get(url)
 
-decompressed = resp.raw.read()
-decompressed_size = sys.getsizeof(decompressed)
-with gzip.open(io.BytesIO(decompressed), 'rb') as g:
+compressed = resp.raw.read()
+compressed_size = sys.getsizeof(compressed)
+with gzip.open(io.BytesIO(compressed), 'rb') as g:
     g.seek(0, 2)
     origin_size = g.tell()
 
-print(decompressed_size, origin_size)
+print(compressed_size, origin_size)
 ```
 
-其中 `origin_size` 反映的是载荷解压之后的大小，`decompressed_size` 反映的是载荷压缩后的大小（也是实际传输的大小），它们的单位都是 B。
+其中 `origin_size` 反映的是载荷解压之后的大小，`compressed_size` 反映的是载荷压缩后的大小（也是实际传输的大小），它们的单位都是 B。
 
 如果发现这两个值的比值过大，那么这个载荷很有可能是压缩包炸弹。
