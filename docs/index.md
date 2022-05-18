@@ -13,6 +13,9 @@ hide:
 
     该博客均为实验性内容，不代表以后最终成品。
 
+[目录 :material-table-of-contents:](tags){ .md-button .md-button--primary }
+[标签 :octicons-tag-16:](toc){ .md-button }
+
 ## 关于我
 
  - 本科非计科，因爱好而学习计算机相关知识，最主要使用的程序语言是 Python。
