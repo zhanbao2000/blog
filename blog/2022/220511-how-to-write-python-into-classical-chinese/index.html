@@ -705,6 +705,13 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#7-locals-api" class="md-nav__link">
+    7. 使用 locals() 取代 API 请求参数列表
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -809,6 +816,13 @@
           <li class="md-nav__item">
   <a href="#6-inline" class="md-nav__link">
     6. 利用 inline 循环移除列表中的重复元素
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#7-locals-api" class="md-nav__link">
+    7. 使用 locals() 取代 API 请求参数列表
   </a>
   
 </li>
@@ -1056,6 +1070,37 @@ as the main headline.
 <span class="n">ls</span> <span class="o">=</span> <span class="p">[</span><span class="n">item</span> <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">ls</span> <span class="k">if</span> <span class="n">item</span> <span class="o">!=</span> <span class="mi">1</span><span class="p">]</span>
 </code></pre></div>
 <p>有没有感兴趣的同学来一波性能分析？</p>
+<h3 id="7-locals-api">7. 使用 <code class="highlight"><span class="nb">locals</span><span class="p">()</span></code> 取代 API 请求参数列表</h3>
+<p>现代文：</p>
+<div class="highlight"><pre><span></span><code><span class="k">async</span> <span class="k">def</span> <span class="nf">user_best</span><span class="p">(</span><span class="n">user</span><span class="p">,</span> <span class="n">usercode</span><span class="p">,</span> <span class="n">songname</span><span class="p">,</span> <span class="n">songid</span><span class="p">,</span> <span class="n">difficulty</span><span class="p">,</span> <span class="n">withrecent</span><span class="p">,</span> <span class="n">withsonginfo</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">dict</span><span class="p">:</span>
+
+    <span class="n">user_best_params</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span>
+        <span class="n">user</span><span class="o">=</span><span class="n">user</span><span class="p">,</span>
+        <span class="n">usercode</span><span class="o">=</span><span class="n">usercode</span><span class="p">,</span>
+        <span class="n">songname</span><span class="o">=</span><span class="n">songname</span><span class="p">,</span>
+        <span class="n">songid</span><span class="o">=</span><span class="n">songid</span><span class="p">,</span>
+        <span class="n">difficulty</span><span class="o">=</span><span class="n">difficulty</span><span class="p">,</span>
+        <span class="n">withrecent</span><span class="o">=</span><span class="n">withrecent</span><span class="p">,</span>
+        <span class="n">withsonginfo</span><span class="o">=</span><span class="n">withsonginfo</span><span class="p">,</span>
+    <span class="p">)</span>
+
+    <span class="k">return</span> <span class="k">await</span> <span class="n">_request</span><span class="p">(</span><span class="n">Endpoint</span><span class="o">.</span><span class="n">V1</span><span class="o">.</span><span class="n">User</span><span class="o">.</span><span class="n">best</span><span class="p">,</span> <span class="n">user_best_params</span><span class="p">)</span>
+</code></pre></div>
+<p>文言文：</p>
+<div class="highlight"><pre><span></span><code><span class="k">async</span> <span class="k">def</span> <span class="nf">user_best</span><span class="p">(</span><span class="n">user</span><span class="p">,</span> <span class="n">usercode</span><span class="p">,</span> <span class="n">songname</span><span class="p">,</span> <span class="n">songid</span><span class="p">,</span> <span class="n">difficulty</span><span class="p">,</span> <span class="n">withrecent</span><span class="p">,</span> <span class="n">withsonginfo</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">dict</span><span class="p">:</span> <span class="k">return</span> <span class="k">await</span> <span class="n">_request</span><span class="p">(</span><span class="n">Endpoint</span><span class="o">.</span><span class="n">V1</span><span class="o">.</span><span class="n">User</span><span class="o">.</span><span class="n">best</span><span class="p">,</span> <span class="nb">locals</span><span class="p">())</span>
+</code></pre></div>
+<p>这样的好处不言而喻——不用每次写 API 函数都要复读一遍参数列表。甚至非常简洁——可以一行写完这个函数。</p>
+<p>但是缺点也很明显：在调用 <code class="highlight"><span class="nb">locals</span><span class="p">()</span></code> 函数之前，该函数内部不能定义任何变量，否则这个新变量将加入 API 的参数列表。</p>
+<div class="admonition 题外话">
+<p class="admonition-title">题外话</p>
+<p>若考虑传递给 API 的参数可能为 <code class="highlight"><span class="kc">None</span></code> 的情况，那么必须在 <code>_request()</code> 函数中清理这些 <code class="highlight"><span class="kc">None</span></code>，如下：</p>
+<div class="highlight"><pre><span></span><code><span class="n">clear_params</span> <span class="o">=</span> <span class="p">{</span><span class="n">k</span><span class="p">:</span> <span class="n">v</span> <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">params</span><span class="o">.</span><span class="n">items</span><span class="p">()</span> <span class="k">if</span> <span class="n">v</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">}</span>
+</code></pre></div>
+<p>甚至可以将其包装为一个单独的 <code>set_params()</code> 函数：</p>
+<div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">set_params</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">):</span> <span class="k">return</span> <span class="p">{</span><span class="n">k</span><span class="p">:</span> <span class="n">v</span> <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">items</span><span class="p">()</span> <span class="k">if</span> <span class="n">v</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">}</span>
+</code></pre></div>
+<p>无论是文言文版本还是现代文版本，这都是不可避免的。</p>
+</div>
 
     <!-- Last update of source file -->
     
@@ -1065,7 +1110,7 @@ as the main headline.
   <small>
     
       最后更新:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_datetime">2022-05-18 09:38:00</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_datetime">2022-05-18 13:26:07</span>
       
         <br>
         创建日期:
