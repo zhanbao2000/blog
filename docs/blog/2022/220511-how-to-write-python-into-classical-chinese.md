@@ -269,3 +269,49 @@ ls = [item for item in ls if item != 1]
 ```
 
 有没有感兴趣的同学来一波性能分析？
+
+### 7. 使用 `#!python locals()` 取代 API 请求参数列表
+
+现代文：
+
+```python
+async def user_best(user, usercode, songname, songid, difficulty, withrecent, withsonginfo) -> dict:
+
+    user_best_params = dict(
+        user=user,
+        usercode=usercode,
+        songname=songname,
+        songid=songid,
+        difficulty=difficulty,
+        withrecent=withrecent,
+        withsonginfo=withsonginfo,
+    )
+    
+    return await _request(Endpoint.V1.User.best, user_best_params)
+```
+
+文言文：
+
+```python
+async def user_best(user, usercode, songname, songid, difficulty, withrecent, withsonginfo) -> dict: return await _request(Endpoint.V1.User.best, locals())
+```
+
+这样的好处不言而喻——不用每次写 API 函数都要复读一遍参数列表。甚至非常简洁——可以一行写完这个函数。
+
+但是缺点也很明显：在调用 `#!python locals()` 函数之前，该函数内部不能定义任何变量，否则这个新变量将加入 API 的参数列表。
+
+!!! 题外话
+
+    若考虑传递给 API 的参数可能为 `#!python None` 的情况，那么必须在 `_request()` 函数中清理这些 `#!python None`，如下：
+    
+    ```python
+    clear_params = {k: v for k, v in params.items() if v is not None}
+    ```
+
+    甚至可以将其包装为一个单独的 `set_params()` 函数：
+
+    ```python
+    def set_params(**kwargs): return {k: v for k, v in kwargs.items() if v is not None}
+    ```
+
+    无论是文言文版本还是现代文版本，这都是不可避免的。
