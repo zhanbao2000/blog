@@ -250,3 +250,22 @@ new_msg = ''.join(' ' if char == ' ' else caesar(char) for char in msg)
 ```python
 new_msg = ''.join(map(lambda char: ' ' if char == ' ' else caesar(char), msg))
 ```
+
+### 6. 利用 inline 循环移除列表中的重复元素
+
+现代文：
+
+```python
+ls = [1, 1, 1, 2, 2, 3]
+while 1 in ls:
+    ls.remove(1)
+```
+
+文言文：
+
+```python
+ls = [1, 1, 1, 2, 2, 3]
+ls = [item for item in ls if item != 1]
+```
+
+有没有感兴趣的同学来一波性能分析？
