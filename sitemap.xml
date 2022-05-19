@@ -2,97 +2,102 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
          <loc>https://blog.arisa.moe/</loc>
-         <lastmod>2022-05-18</lastmod>
+         <lastmod>2022-05-19</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://blog.arisa.moe/tags/</loc>
-         <lastmod>2022-05-18</lastmod>
+         <lastmod>2022-05-19</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://blog.arisa.moe/toc/</loc>
-         <lastmod>2022-05-18</lastmod>
+         <lastmod>2022-05-19</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://blog.arisa.moe/blog/2022/220406-nginx-stream/</loc>
-         <lastmod>2022-05-18</lastmod>
+         <lastmod>2022-05-19</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://blog.arisa.moe/blog/2022/220406-set-http-proxy/</loc>
-         <lastmod>2022-05-18</lastmod>
+         <lastmod>2022-05-19</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://blog.arisa.moe/blog/2022/220406-venv-move-file/</loc>
-         <lastmod>2022-05-18</lastmod>
+         <lastmod>2022-05-19</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://blog.arisa.moe/blog/2022/220407-certbot/</loc>
-         <lastmod>2022-05-18</lastmod>
+         <lastmod>2022-05-19</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://blog.arisa.moe/blog/2022/220407-github-pages/</loc>
-         <lastmod>2022-05-18</lastmod>
+         <lastmod>2022-05-19</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://blog.arisa.moe/blog/2022/220408-github-pages-2/</loc>
-         <lastmod>2022-05-18</lastmod>
+         <lastmod>2022-05-19</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://blog.arisa.moe/blog/2022/220409-cloudflare-workers-arcaea-update/</loc>
-         <lastmod>2022-05-18</lastmod>
+         <lastmod>2022-05-19</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://blog.arisa.moe/blog/2022/220412-ida-substitute-usage/</loc>
-         <lastmod>2022-05-18</lastmod>
+         <lastmod>2022-05-19</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://blog.arisa.moe/blog/2022/220413-Intranet-penetration-bitcomit/</loc>
-         <lastmod>2022-05-18</lastmod>
+         <lastmod>2022-05-19</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://blog.arisa.moe/blog/2022/220414-fk-arcaea-songlist-hash/</loc>
-         <lastmod>2022-05-18</lastmod>
+         <lastmod>2022-05-19</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://blog.arisa.moe/blog/2022/220416-arcaea-fanmade-chart-problem/</loc>
-         <lastmod>2022-05-18</lastmod>
+         <lastmod>2022-05-19</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://blog.arisa.moe/blog/2022/220417-linux-clean-up-disk-space/</loc>
-         <lastmod>2022-05-18</lastmod>
+         <lastmod>2022-05-19</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://blog.arisa.moe/blog/2022/220421-use-gzip-bomb-against-scanner/</loc>
-         <lastmod>2022-05-18</lastmod>
+         <lastmod>2022-05-19</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://blog.arisa.moe/blog/2022/220428-how-to-ask-questions-like-a-retard/</loc>
+         <lastmod>2022-05-19</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://blog.arisa.moe/blog/2022/220429-dilb-ultimate-solution/</loc>
-         <lastmod>2022-05-18</lastmod>
+         <lastmod>2022-05-19</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://blog.arisa.moe/blog/2022/220502-how-dogs-work-in-epic7/</loc>
-         <lastmod>2022-05-18</lastmod>
+         <lastmod>2022-05-19</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://blog.arisa.moe/blog/2022/220511-how-to-write-python-into-classical-chinese/</loc>
-         <lastmod>2022-05-18</lastmod>
+         <lastmod>2022-05-19</lastmod>
          <changefreq>daily</changefreq>
     </url>
 </urlset>
