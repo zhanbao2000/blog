@@ -78,7 +78,9 @@ description: 这篇文章致力于告诉读者如何像一个弱智一样提问�
 
 ## 询问不相关的问题
 
-这里特指 GitHub 中可能出现的情形。
+!!! warning "注意"
+
+    这里特指 GitHub issue 中可能出现的情形。
 
 GitHub 的 [issue](https://docs.github.com/articles/about-issues) 是用于向仓库中的项目提问、发起建议或寻求帮助的地方。如果你想让自己成为 issue 提问者中最靓的仔，你可以在 issue 中提出与原项目毫不相关的问题。
 
@@ -132,4 +134,6 @@ GitHub 的 [issue](https://docs.github.com/articles/about-issues) 是用于向�
 
     A: 能否直接说问题？
 
-请注意，如果你真的是为了单纯描述错误（而非提出问题），那么这条途径不适用于你，因为描述错误可以不使用疑问句。
+!!! warning "注意"
+
+    如果你真的是为了单纯描述错误（而非提出问题），那么这条途径不适用于你，因为描述错误可以不使用疑问句。
