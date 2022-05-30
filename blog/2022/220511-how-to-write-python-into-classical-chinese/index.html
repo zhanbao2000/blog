@@ -15,7 +15,7 @@
         <link rel="canonical" href="https://blog.arisa.moe/blog/2022/220511-how-to-write-python-into-classical-chinese/">
       
       <link rel="icon" href="../../../assets/favicon.webp">
-      <meta name="generator" content="mkdocs-1.3.0, mkdocs-material-8.2.15">
+      <meta name="generator" content="mkdocs-1.3.0, mkdocs-material-8.2.16">
     
     
       
@@ -23,7 +23,7 @@
       
     
     
-      <link rel="stylesheet" href="../../../assets/stylesheets/main.c382b1dc.min.css">
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.1c3799f8.min.css">
       
         
         <link rel="stylesheet" href="../../../assets/stylesheets/palette.cc9b2e1e.min.css">
@@ -740,6 +740,20 @@
 
             
           
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../220529-python-personal-styleguide/" class="md-nav__link">
+        Python 个人代码风格指导
+      </a>
+    </li>
+  
+
+            
+          
         </ul>
       </nav>
     </li>
@@ -898,7 +912,7 @@ as the main headline.
         </div>
     
 
-    <h2 id="_1">绪论</h2>
+    <h2 id="_1">绪论<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
 <p>俗话说得好：</p>
 <div class="admonition cite">
 <p>“用 Python 写程序就像是用白话写作文。”</p>
@@ -908,9 +922,9 @@ as the main headline.
 <p>“（文学意义上的）文言文何尝不就是一个语法糖的合集呢？”</p>
 </div>
 <p>本篇博客的意义，便是介绍如何利用各种语法糖，将 Python 写成文言文。当然，如果你想在生产环境中用这种写法写 Python 程序，理论上也不是不行，但是你真的见过有人在自己的文章里写一大堆文言文吗？</p>
-<h2 id="_2">写法示范</h2>
+<h2 id="_2">写法示范<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
 <p>为了更好地运用语法糖，本博客涉及到的所有 Python 版本均为 Python 3.10。</p>
-<h3 id="1-filter-if-elif-else">1. 使用 <code class="highlight"><span class="nb">filter</span><span class="p">()</span></code> 函数取代 <code>if-elif-else</code> 判断链</h3>
+<h3 id="1-filter-if-elif-else">1. 使用 <code class="highlight"><span class="nb">filter</span><span class="p">()</span></code> 函数取代 <code>if-elif-else</code> 判断链<a class="headerlink" href="#1-filter-if-elif-else" title="Permanent link">&para;</a></h3>
 <p>现代文：</p>
 <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">calc_const</span><span class="p">(</span><span class="n">score</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="nb">float</span><span class="p">,</span> <span class="n">rating</span><span class="p">:</span> <span class="nb">float</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span><span class="p">:</span>
     <span class="k">if</span> <span class="n">rating</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
@@ -944,7 +958,7 @@ as the main headline.
 </code></pre></div>
 <p>乍一看，文言文版本似乎比现代文版本更长一些，其实不然，如果我们将 <code class="highlight"><span class="n">if_pattern</span><span class="p">()</span></code> 函数合并到 <code class="highlight"><span class="n">calc_const</span><span class="p">()</span></code> 函数中，那么文言文版本就会更短一些。并且由于延长一个判断项，现代文版本需要增加两行，而文言文版本只需要一行，所以当判断链很长时，文言文版本会更短一些。</p>
 <p>这个文言文版本的唯一缺点是，当进入 <code class="highlight"><span class="n">calc_const</span><span class="p">()</span></code> 函数时，需要计算 <code>const_pattern</code> 里所有布尔表达式的值，因此在性能上可能会稍稍逊色于现代文版本。</p>
-<h3 id="2-dictget-match-case">2. 使用 <code class="highlight"><span class="nb">dict</span><span class="o">.</span><span class="n">get</span><span class="p">()</span></code> 方法取代 <code>match-case</code> 模式匹配</h3>
+<h3 id="2-dictget-match-case">2. 使用 <code class="highlight"><span class="nb">dict</span><span class="o">.</span><span class="n">get</span><span class="p">()</span></code> 方法取代 <code>match-case</code> 模式匹配<a class="headerlink" href="#2-dictget-match-case" title="Permanent link">&para;</a></h3>
 <p>现代文：</p>
 <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">return_relation_between_vn</span><span class="p">(</span><span class="n">relation</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
     <span class="k">match</span> <span class="n">relation</span><span class="p">:</span>
@@ -1010,7 +1024,7 @@ as the main headline.
         <span class="s1">&#39;//&#39;</span><span class="p">:</span> <span class="k">lambda</span><span class="p">:</span> <span class="n">a</span> <span class="o">//</span> <span class="n">b</span><span class="p">,</span>
     <span class="p">}</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">op</span><span class="p">,</span> <span class="k">lambda</span><span class="p">:</span> <span class="kc">None</span><span class="p">)()</span>
 </code></pre></div>
-<h3 id="3-pass">3. 使用 <code class="highlight"><span class="o">...</span></code> 方法取代 <code class="highlight"><span class="k">pass</span></code> 语句</h3>
+<h3 id="3-pass">3. 使用 <code class="highlight"><span class="o">...</span></code> 方法取代 <code class="highlight"><span class="k">pass</span></code> 语句<a class="headerlink" href="#3-pass" title="Permanent link">&para;</a></h3>
 <p>现代文：</p>
 <div class="highlight"><pre><span></span><code><span class="k">try</span><span class="p">:</span>
     <span class="n">a</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">/</span> <span class="mi">0</span>
@@ -1035,7 +1049,7 @@ as the main headline.
 <span class="p">):</span>
     <span class="o">...</span>
 </code></pre></div>
-<h3 id="4-if-else-if-else">4. 将 <code>if-else</code> 块改为 <code>if-else</code> 三目运算符（伪）</h3>
+<h3 id="4-if-else-if-else">4. 将 <code>if-else</code> 块改为 <code>if-else</code> 三目运算符（伪）<a class="headerlink" href="#4-if-else-if-else" title="Permanent link">&para;</a></h3>
 <p>现代文：</p>
 <div class="highlight"><pre><span></span><code><span class="k">if</span> <span class="n">a</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
     <span class="n">b</span> <span class="o">=</span> <span class="mi">1</span>
@@ -1049,7 +1063,7 @@ as the main headline.
 <p>这和三目运算符有点相似：</p>
 <div class="highlight"><pre><span></span><code><span class="n">b</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="o">?</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="mi">-1</span><span class="w"></span>
 </code></pre></div>
-<h3 id="5-if-else">5. 利用 <code>if-else</code> 三目运算符处理序列</h3>
+<h3 id="5-if-else">5. 利用 <code>if-else</code> 三目运算符处理序列<a class="headerlink" href="#5-if-else" title="Permanent link">&para;</a></h3>
 <p>现代文：</p>
 <div class="highlight"><pre><span></span><code><span class="n">msg</span> <span class="o">=</span> <span class="s1">&#39;the fox jumped over the lazy dog&#39;</span>
 <span class="n">new_msg</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span>
@@ -1073,7 +1087,7 @@ as the main headline.
 <p>另外，你也可以利用 <code class="highlight"><span class="nb">map</span><span class="p">()</span></code> 函数和 <code class="highlight"><span class="k">lambda</span></code> 表达式写成以下的形式：</p>
 <div class="highlight"><pre><span></span><code><span class="n">new_msg</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="nb">map</span><span class="p">(</span><span class="k">lambda</span> <span class="n">char</span><span class="p">:</span> <span class="s1">&#39; &#39;</span> <span class="k">if</span> <span class="n">char</span> <span class="o">==</span> <span class="s1">&#39; &#39;</span> <span class="k">else</span> <span class="n">caesar</span><span class="p">(</span><span class="n">char</span><span class="p">),</span> <span class="n">msg</span><span class="p">))</span>
 </code></pre></div>
-<h3 id="6-inline">6. 利用 inline 循环移除列表中的重复元素</h3>
+<h3 id="6-inline">6. 利用 inline 循环移除列表中的重复元素<a class="headerlink" href="#6-inline" title="Permanent link">&para;</a></h3>
 <p>现代文：</p>
 <div class="highlight"><pre><span></span><code><span class="n">ls</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span>
 <span class="k">while</span> <span class="mi">1</span> <span class="ow">in</span> <span class="n">ls</span><span class="p">:</span>
@@ -1084,7 +1098,7 @@ as the main headline.
 <span class="n">ls</span> <span class="o">=</span> <span class="p">[</span><span class="n">item</span> <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">ls</span> <span class="k">if</span> <span class="n">item</span> <span class="o">!=</span> <span class="mi">1</span><span class="p">]</span>
 </code></pre></div>
 <p>有没有感兴趣的同学来一波性能分析？</p>
-<h3 id="7-locals-api">7. 使用 <code class="highlight"><span class="nb">locals</span><span class="p">()</span></code> 取代 API 请求参数列表</h3>
+<h3 id="7-locals-api">7. 使用 <code class="highlight"><span class="nb">locals</span><span class="p">()</span></code> 取代 API 请求参数列表<a class="headerlink" href="#7-locals-api" title="Permanent link">&para;</a></h3>
 <p>现代文：</p>
 <div class="highlight"><pre><span></span><code><span class="k">async</span> <span class="k">def</span> <span class="nf">user_best</span><span class="p">(</span><span class="n">user</span><span class="p">,</span> <span class="n">usercode</span><span class="p">,</span> <span class="n">songname</span><span class="p">,</span> <span class="n">songid</span><span class="p">,</span> <span class="n">difficulty</span><span class="p">,</span> <span class="n">withrecent</span><span class="p">,</span> <span class="n">withsonginfo</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">dict</span><span class="p">:</span>
 
@@ -1218,6 +1232,21 @@ as the main headline.
         </a>
       
       
+        
+        <a href="../220529-python-personal-styleguide/" class="md-footer__link md-footer__link--next" aria-label="下一页: Python 个人代码风格指导" rel="next">
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                下一页
+              </span>
+              Python 个人代码风格指导
+            </div>
+          </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4Z"/></svg>
+          </div>
+        </a>
+      
     </nav>
   
   <div class="md-footer-meta md-typeset">
@@ -1263,7 +1292,7 @@ as the main headline.
     <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.tabs", "navigation.top", "navigation.tracking"], "search": "../../../assets/javascripts/workers/search.2a1c317c.min.js", "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.config.lang": "ja", "search.config.pipeline": "trimmer, stemmer", "search.config.separator": "[\\s\\-\uff0c\u3002]+", "search.placeholder": "\u641c\u7d22", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version.title": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}}</script>
     
     
-      <script src="../../../assets/javascripts/bundle.a6c66575.min.js"></script>
+      <script src="../../../assets/javascripts/bundle.3a4b43e5.min.js"></script>
       
     
   </body>

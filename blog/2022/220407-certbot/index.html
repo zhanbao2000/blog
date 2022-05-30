@@ -15,7 +15,7 @@
         <link rel="canonical" href="https://blog.arisa.moe/blog/2022/220407-certbot/">
       
       <link rel="icon" href="../../../assets/favicon.webp">
-      <meta name="generator" content="mkdocs-1.3.0, mkdocs-material-8.2.15">
+      <meta name="generator" content="mkdocs-1.3.0, mkdocs-material-8.2.16">
     
     
       
@@ -23,7 +23,7 @@
       
     
     
-      <link rel="stylesheet" href="../../../assets/stylesheets/main.c382b1dc.min.css">
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.1c3799f8.min.css">
       
         
         <link rel="stylesheet" href="../../../assets/stylesheets/palette.cc9b2e1e.min.css">
@@ -727,6 +727,20 @@
 
             
           
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../220529-python-personal-styleguide/" class="md-nav__link">
+        Python 个人代码风格指导
+      </a>
+    </li>
+  
+
+            
+          
         </ul>
       </nav>
     </li>
@@ -876,13 +890,13 @@ as the main headline.
         </div>
     
 
-    <h2 id="_1">安装</h2>
+    <h2 id="_1">安装<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
 <p>官网建议用 <code>snap</code> 安装。👉 <a href="https://certbot.eff.org/instructions?ws=other&amp;os=ubuntufocal">https://certbot.eff.org/instructions?ws=other&amp;os=ubuntufocal</a></p>
 <div class="highlight"><pre><span></span><code>sudo snap install core
 sudo snap refresh core
 sudo snap install --classic certbot
 </code></pre></div>
-<h2 id="_2">申请多个域名证书</h2>
+<h2 id="_2">申请多个域名证书<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
 <div class="admonition 警告 danger">
 <p class="admonition-title">警告</p>
 <p>无论你需要申请多少个证书，在申请之前，都请在你的 DNS 提供商处将你所需要申请 SSL 证书的域名解析到你的服务器上。</p>
@@ -903,16 +917,16 @@ sudo snap install --classic certbot
 </code></pre></div>
 </li>
 </ul>
-<h2 id="_3">申请泛域名证书（也叫通配符证书）</h2>
+<h2 id="_3">申请泛域名证书（也叫通配符证书）<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h2>
 <p>比较麻烦，需要在 DNS 服务提供商处设置 <code>TXT</code> 记录。并且<strong>只能</strong>通过这个方式来续期。</p>
 <div class="highlight"><pre><span></span><code>certbot certonly -d <span class="s2">&quot;*.example.com&quot;</span> -d <span class="s2">&quot;example.com&quot;</span> --manual --preferred-challenges dns --server https://acme-v02.api.letsencrypt.org/directory
 </code></pre></div>
 <p>其中 <code>--server</code> 参数所指向的 url 也许会变化，但是你总能在 Let's Encrypt 的 <a href="https://letsencrypt.org/docs/staging-environment/">文档</a> 上找到最新的。</p>
 <p>执行之后会交给你一个或两个设置 <code>TXT</code> 记录的任务。去你的 DNS 服务提供商处设置好即可。</p>
-<h2 id="_4">查看自动续期的计划任务</h2>
+<h2 id="_4">查看自动续期的计划任务<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h2>
 <div class="highlight"><pre><span></span><code>systemctl list-timers
 </code></pre></div>
-<h2 id="_5">手动为证书续期</h2>
+<h2 id="_5">手动为证书续期<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h2>
 <ul>
 <li>
 <p>不加任何参数，没有临近到期时间的话会停止执行</p>
@@ -930,7 +944,7 @@ sudo snap install --classic certbot
 </code></pre></div>
 </li>
 </ul>
-<h2 id="_6">为证书续期（泛域名）</h2>
+<h2 id="_6">为证书续期（泛域名）<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h2>
 <p>泛域名证书不能通过 <code>certbot renew</code> 来续期，需要手动续期。否则会报错。</p>
 <p>原因很简单，就是你在申请泛域名证书的时候在 DNS 服务商那里添加的 <code>TXT</code> 记录，这是一个会变化的值。</p>
 <p>续期方法和申请方法一模一样，相当于重新申请一次。</p>
@@ -942,7 +956,7 @@ sudo snap install --classic certbot
 <p>An <strong>authentication script</strong> must be provided with --manual-auth-hook when using the manual plugin non-interactively.</p>
 </blockquote>
 <p>网上有各个版本的脚本，大概原理都是通过你 DNS 服务商提供的 Token，在服务器上直接修改 DNS 的 <code>TXT</code> 记录。一搜一大堆。</p>
-<h2 id="_7">吊销（撤销）证书</h2>
+<h2 id="_7">吊销（撤销）证书<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h2>
 <p>这里直接引用 <a href="https://letsencrypt.org/zh-cn/docs/revoking/">Let's Encrypt 官网</a></p>
 <ul>
 <li>
@@ -960,7 +974,7 @@ sudo snap install --classic certbot
 <p>先从 <a href="https://crt.sh/">crt.sh</a> 中下载证书，然后：</p>
 <div class="highlight"><pre><span></span><code>certbot revoke --cert-path /PATH/TO/downloaded-cert.pem
 </code></pre></div>
-<h2 id="_8">删除证书</h2>
+<h2 id="_8">删除证书<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h2>
 <div class="highlight"><pre><span></span><code>certbot delete 
 </code></pre></div>
 </li>
@@ -1128,7 +1142,7 @@ sudo snap install --classic certbot
     <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.tabs", "navigation.top", "navigation.tracking"], "search": "../../../assets/javascripts/workers/search.2a1c317c.min.js", "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.config.lang": "ja", "search.config.pipeline": "trimmer, stemmer", "search.config.separator": "[\\s\\-\uff0c\u3002]+", "search.placeholder": "\u641c\u7d22", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version.title": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}}</script>
     
     
-      <script src="../../../assets/javascripts/bundle.a6c66575.min.js"></script>
+      <script src="../../../assets/javascripts/bundle.3a4b43e5.min.js"></script>
       
     
   </body>

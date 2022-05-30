@@ -15,7 +15,7 @@
         <link rel="canonical" href="https://blog.arisa.moe/blog/2022/220421-use-gzip-bomb-against-scanner/">
       
       <link rel="icon" href="../../../assets/favicon.webp">
-      <meta name="generator" content="mkdocs-1.3.0, mkdocs-material-8.2.15">
+      <meta name="generator" content="mkdocs-1.3.0, mkdocs-material-8.2.16">
     
     
       
@@ -23,7 +23,7 @@
       
     
     
-      <link rel="stylesheet" href="../../../assets/stylesheets/main.c382b1dc.min.css">
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.1c3799f8.min.css">
       
         
         <link rel="stylesheet" href="../../../assets/stylesheets/palette.cc9b2e1e.min.css">
@@ -733,6 +733,20 @@
 
             
           
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../220529-python-personal-styleguide/" class="md-nav__link">
+        Python 个人代码风格指导
+      </a>
+    </li>
+  
+
+            
+          
         </ul>
       </nav>
     </li>
@@ -888,7 +902,7 @@ as the main headline.
         </div>
     
 
-    <h2 id="_1">起因</h2>
+    <h2 id="_1">起因<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
 <div class="highlight"><pre><span></span><code>cat /var/log/nginx/error.log
 </code></pre></div>
 <p>然后发现 nginx 日志里全是扫描器的 404，让我们放两个上来展示一下：</p>
@@ -897,7 +911,7 @@ as the main headline.
 </code></pre></div>
 <p>很烦，一堆扫描器在扫我的配置，另一堆扫描器在帮我调用 nginx 的 shell 来 <code>rm -rf *</code>，还有一堆扫描器在帮我执行恶意脚本。</p>
 <p>不得不说，扫配置的扫描器虽然没什么伤害力，但是天天给 <code>error.log</code> 加无意义的 log，本质上也算是一种骚扰了。但是执行脚本的我真的看不下去了，而且万一哪天出了个某某漏洞，然后真执行成功了呢，看来得用点手段处理掉。</p>
-<h2 id="_2">温和的处理方法</h2>
+<h2 id="_2">温和的处理方法<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
 <p>恶意扫描器扫网站，根据日志中显示的 <code>host</code> 的值可以分为三个情况：</p>
 <ul>
 <li><code>host</code> 是自己的公网 IP：说明扫描器在公网上扫 IP 段，并且通过 IP 地址直接访问你的主机的80端口</li>
@@ -954,9 +968,9 @@ as the main headline.
 <li>有人将他自己的域名恶意解析到我们的服务器上，这种情况下日志中的 <code>host</code> 值将会显示他的域名。</li>
 </ul>
 </div>
-<h2 id="_3">狠一点的处理方法（本番）</h2>
+<h2 id="_3">狠一点的处理方法（本番）<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h2>
 <p>这里是本番，主要介绍如何用 gzip 压缩包炸弹对恶意扫描器进行反击。</p>
-<h3 id="_4">什么是压缩包炸弹</h3>
+<h3 id="_4">什么是压缩包炸弹<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h3>
 <p>首先简要介绍下什么是压缩包炸弹（也叫 zip 炸弹）：</p>
 <div class="admonition 什么是压缩包炸弹 faq">
 <p class="admonition-title">什么是压缩包炸弹</p>
@@ -965,12 +979,12 @@ as the main headline.
 </div>
 <p>也就是说小小的几十 KB 的压缩包可以解压出数 GB 的数据，再大一点的压缩包甚至可以解压出几 TB 甚至几 PB 的数据。</p>
 <p>如果尝试将这些数据解压在硬盘里，则会导致硬盘 IO 直接100%；如果尝试将这些数据解压到内存中，会导致内存占用率不断上升，直到 OOM。</p>
-<h3 id="gzip">gzip 压缩包炸弹如何工作</h3>
+<h3 id="gzip">gzip 压缩包炸弹如何工作<a class="headerlink" href="#gzip" title="Permanent link">&para;</a></h3>
 <p>现代浏览器中（当然也包括各个语言的网络请求库，例如 python 的 <code>requests</code>）通常都可以处理以 gzip 方式压缩的 html 响应（载荷）。</p>
 <p>设想一个扫描器，他尝试通过你的公网 IP 扫描你的服务器，我们从某些方式了解到这是一个扫描器后，故意返回一个以 gzip 方式压缩的 html 响应，但是这个响应在解压出来之后有足足数 GB，会怎么样？</p>
 <p>没错，这个可怜而愚蠢的扫描器会试图解压这个载荷，随后，他内存将会被数 GB 的垃圾所填满，然后 OOM。</p>
 <p>这就是我们想要达到的效果——使用 gzip 压缩包炸弹反击恶意扫描器。</p>
-<h3 id="_5">制造并部署在本地</h3>
+<h3 id="_5">制造并部署在本地<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h3>
 <p>为了测试，首先制造一个仅包含 <code>test</code> 为内容的压缩文件作为载荷：</p>
 <div class="highlight"><pre><span></span><code><span class="nb">echo</span> <span class="s2">&quot;test&quot;</span> <span class="p">|</span> gzip &gt; test.gzip
 </code></pre></div>
@@ -1050,7 +1064,7 @@ dd <span class="k">if</span><span class="o">=</span>/dev/zero <span class="nv">b
 <p>然后再访问一次 <a href="http://127.0.0.1:8082">http://127.0.0.1:8082</a>。</p>
 <p><img alt="respond_10G" src="../images/220421-use-gzip-bomb-against-spiders/respond_10G.jpg" /></p>
 <p>可以见到内存占用正在不断上涨，因为我怕我电脑 OOM 所以就没有继续测试下去了。</p>
-<h3 id="nginx">部署于 nginx</h3>
+<h3 id="nginx">部署于 nginx<a class="headerlink" href="#nginx" title="Permanent link">&para;</a></h3>
 <p>现在，我们需要将其部署到我们的服务器上，这样才能将其作为反击工具使用。</p>
 <p>修改先前提到的 nginx 的配置：</p>
 <div class="highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">nginx.conf（部分）</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
@@ -1098,7 +1112,7 @@ dd <span class="k">if</span><span class="o">=</span>/dev/zero <span class="nv">b
 <p>之前我们是 <code class="highlight"><span class="k">return</span><span class="w"> </span><span class="mi">403</span><span class="p">;</span><span class="w"></span></code>，现在我们把 <code>default_server</code> 所在的 <code>server</code> 添加一个 <code>/</code> 的 <code>location</code>，并将原来返回403改为反代到 <code>127.0.0.1:8082</code>。</p>
 <p>注意第10行，我们需要向反代的请求头中放上一个 <code>X-Forwarded-For</code>，以表示 nginx 帮助哪个客户端进行了反向代理。此时我们的 Flask 服务器才能知道访问了我们的服务器的客户端的 IP 地址。</p>
 <p>如此一来，所有通过我们服务器的公网 IP 地址访问服务器80端口的连接，无论 path 为如何，均会被反代到 Flask 服务器上，然后 Flask 服务器返回一个 10G 的 gzip 炸弹，是不是很炫酷？</p>
-<h2 id="_6">预防方法</h2>
+<h2 id="_6">预防方法<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h2>
 <p>最主要的预防方法就是在查看响应内容之前检查响应的原始大小。</p>
 <div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">gzip</span>
 <span class="kn">import</span> <span class="nn">io</span>
@@ -1280,7 +1294,7 @@ dd <span class="k">if</span><span class="o">=</span>/dev/zero <span class="nv">b
     <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.tabs", "navigation.top", "navigation.tracking"], "search": "../../../assets/javascripts/workers/search.2a1c317c.min.js", "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.config.lang": "ja", "search.config.pipeline": "trimmer, stemmer", "search.config.separator": "[\\s\\-\uff0c\u3002]+", "search.placeholder": "\u641c\u7d22", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version.title": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}}</script>
     
     
-      <script src="../../../assets/javascripts/bundle.a6c66575.min.js"></script>
+      <script src="../../../assets/javascripts/bundle.3a4b43e5.min.js"></script>
       
     
   </body>

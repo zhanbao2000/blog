@@ -15,7 +15,7 @@
         <link rel="canonical" href="https://blog.arisa.moe/blog/2022/220417-linux-clean-up-disk-space/">
       
       <link rel="icon" href="../../../assets/favicon.webp">
-      <meta name="generator" content="mkdocs-1.3.0, mkdocs-material-8.2.15">
+      <meta name="generator" content="mkdocs-1.3.0, mkdocs-material-8.2.16">
     
     
       
@@ -23,7 +23,7 @@
       
     
     
-      <link rel="stylesheet" href="../../../assets/stylesheets/main.c382b1dc.min.css">
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.1c3799f8.min.css">
       
         
         <link rel="stylesheet" href="../../../assets/stylesheets/palette.cc9b2e1e.min.css">
@@ -706,6 +706,20 @@
 
             
           
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../220529-python-personal-styleguide/" class="md-nav__link">
+        Python 个人代码风格指导
+      </a>
+    </li>
+  
+
+            
+          
         </ul>
       </nav>
     </li>
@@ -831,7 +845,7 @@ as the main headline.
     
 
     <p>使用如下方式可以清理 Linux 的绝大部分垃圾。</p>
-<h2 id="journal">清理 journal 日志</h2>
+<h2 id="journal">清理 journal 日志<a class="headerlink" href="#journal" title="Permanent link">&para;</a></h2>
 <p>一般可以清理 2~3 GB。</p>
 <ul>
 <li>
@@ -870,15 +884,15 @@ Storage=none       # 丢弃所有的日志，不保存到内存或磁盘
 <p class="admonition-title">危险</p>
 <p>不要使用 <code>rm</code> 命令来删除 journal 日志。参考 <a href="https://www.cnblogs.com/pennychen/p/8681119.html">删除日志释放空间最好不要用rm</a></p>
 </div>
-<h2 id="apt-get">清理 apt-get 缓存</h2>
+<h2 id="apt-get">清理 apt-get 缓存<a class="headerlink" href="#apt-get" title="Permanent link">&para;</a></h2>
 <p>一般可以清理数百 MB。</p>
 <div class="highlight"><pre><span></span><code>apt-get clean
 </code></pre></div>
-<h2 id="pip">清理 pip 缓存</h2>
+<h2 id="pip">清理 pip 缓存<a class="headerlink" href="#pip" title="Permanent link">&para;</a></h2>
 <p>一般可以清理两三百 MB。</p>
 <div class="highlight"><pre><span></span><code>rm -r ~/.cache/pip
 </code></pre></div>
-<h2 id="snap">清理旧版本 snap 包</h2>
+<h2 id="snap">清理旧版本 snap 包<a class="headerlink" href="#snap" title="Permanent link">&para;</a></h2>
 <p>一般每个旧的 snap 包可以清理 100 MB。</p>
 <ul>
 <li>
@@ -915,7 +929,7 @@ snap list --all <span class="p">|</span> awk <span class="s1">&#39;/disabled/{pr
 </code></pre></div>
 </li>
 </ul>
-<h2 id="_1">清理登录日志</h2>
+<h2 id="_1">清理登录日志<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
 <p>这个文件是记录错误登录的日志，如果有人每天试你的密码来暴力破解你的 ssh，那你的这个文件就会很大。</p>
 <div class="highlight"><pre><span></span><code><span class="nb">echo</span> <span class="s2">&quot;&quot;</span> &gt; /var/log/btmp
 </code></pre></div>
@@ -1086,7 +1100,7 @@ snap list --all <span class="p">|</span> awk <span class="s1">&#39;/disabled/{pr
     <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.tabs", "navigation.top", "navigation.tracking"], "search": "../../../assets/javascripts/workers/search.2a1c317c.min.js", "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.config.lang": "ja", "search.config.pipeline": "trimmer, stemmer", "search.config.separator": "[\\s\\-\uff0c\u3002]+", "search.placeholder": "\u641c\u7d22", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version.title": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}}</script>
     
     
-      <script src="../../../assets/javascripts/bundle.a6c66575.min.js"></script>
+      <script src="../../../assets/javascripts/bundle.3a4b43e5.min.js"></script>
       
     
   </body>

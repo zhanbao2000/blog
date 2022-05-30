@@ -1,0 +1,1727 @@
+
+<!doctype html>
+<html lang="zh" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="这是一篇简要的 Python 代码风格指导，代表了我个人所倾向的代码风格。使用这些风格可以让你的代码看起来更 Pythonic，更精炼地描述你代码所作的工作，或许也可以减轻你的重构压力。">
+      
+      
+        <meta name="author" content="Akiba Arisa">
+      
+      
+        <link rel="canonical" href="https://blog.arisa.moe/blog/2022/220529-python-personal-styleguide/">
+      
+      <link rel="icon" href="../../../assets/favicon.webp">
+      <meta name="generator" content="mkdocs-1.3.0, mkdocs-material-8.2.16">
+    
+    
+      
+        <title>Python 个人代码风格指导 - Arisa | Blog</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.1c3799f8.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.cc9b2e1e.min.css">
+        
+      
+    
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../../stylesheets/custom.css">
+    
+    <script>__md_scope=new URL("../../..",location),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="" data-md-color-accent="">
+  
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&"object"==typeof palette.color)for(var key of Object.keys(palette.color))document.body.setAttribute("data-md-color-"+key,palette.color[key])</script>
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#_1" class="md-skip">
+          跳转至
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="页眉">
+    <a href="../../.." title="Arisa | Blog" class="md-header__button md-logo" aria-label="Arisa | Blog" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M1.5 2.75a.25.25 0 0 1 .25-.25h12.5a.25.25 0 0 1 .25.25v8.5a.25.25 0 0 1-.25.25h-6.5a.75.75 0 0 0-.53.22L4.5 14.44v-2.19a.75.75 0 0 0-.75-.75h-2a.25.25 0 0 1-.25-.25v-8.5zM1.75 1A1.75 1.75 0 0 0 0 2.75v8.5C0 12.216.784 13 1.75 13H3v1.543a1.457 1.457 0 0 0 2.487 1.03L8.061 13h6.189A1.75 1.75 0 0 0 16 11.25v-8.5A1.75 1.75 0 0 0 14.25 1H1.75zm5.03 3.47a.75.75 0 0 1 0 1.06L5.31 7l1.47 1.47a.75.75 0 0 1-1.06 1.06l-2-2a.75.75 0 0 1 0-1.06l2-2a.75.75 0 0 1 1.06 0zm2.44 0a.75.75 0 0 0 0 1.06L10.69 7 9.22 8.47a.75.75 0 0 0 1.06 1.06l2-2a.75.75 0 0 0 0-1.06l-2-2a.75.75 0 0 0-1.06 0z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Arisa | Blog
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Python 个人代码风格指导
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      <form class="md-header__option" data-md-component="palette">
+        
+          
+          
+          <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="" data-md-color-accent=""  aria-label="进入夜间模式"  type="radio" name="__palette" id="__palette_1">
+          
+            <label class="md-header__button md-icon" title="进入夜间模式" for="__palette_2" hidden>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0-7 2.39 3.42C13.65 5.15 12.84 5 12 5c-.84 0-1.65.15-2.39.42L12 2M3.34 7l4.16-.35A7.2 7.2 0 0 0 5.94 8.5c-.44.74-.69 1.5-.83 2.29L3.34 7m.02 10 1.76-3.77a7.131 7.131 0 0 0 2.38 4.14L3.36 17M20.65 7l-1.77 3.79a7.023 7.023 0 0 0-2.38-4.15l4.15.36m-.01 10-4.14.36c.59-.51 1.12-1.14 1.54-1.86.42-.73.69-1.5.83-2.29L20.64 17M12 22l-2.41-3.44c.74.27 1.55.44 2.41.44.82 0 1.63-.17 2.37-.44L12 22Z"/></svg>
+            </label>
+          
+        
+          
+          
+          <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="" data-md-color-accent=""  aria-label="进入日间模式"  type="radio" name="__palette" id="__palette_2">
+          
+            <label class="md-header__button md-icon" title="进入日间模式" for="__palette_1" hidden>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m17.75 4.09-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.06-3 1.06 3 3.19.09m3.5 6.91-1.64 1.25.59 1.98-1.7-1.17-1.7 1.17.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95 2.06.05m-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14.4-.4.82-.76 1.27-1.08.75-.53 1.93.36 1.85 1.19-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82-2.81 3.14-2.7 7.96.31 10.98 3.02 3.01 7.84 3.12 10.98.31Z"/></svg>
+            </label>
+          
+        
+      </form>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="搜索" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="查找">
+        
+        <button type="reset" class="md-search__icon md-icon" aria-label="清空当前内容" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            正在初始化搜索引擎
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/zhanbao2000/blog" title="前往仓库" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.1.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    zhanbao2000/blog
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="标签" data-md-component="tabs">
+  <div class="md-tabs__inner md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="../../.." class="md-tabs__link">
+      主页
+    </a>
+  </li>
+
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="../../../tags/" class="md-tabs__link">
+      标签
+    </a>
+  </li>
+
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="../../../toc/" class="md-tabs__link">
+      目录
+    </a>
+  </li>
+
+      
+        
+  
+  
+    
+  
+
+
+  
+  
+  
+    
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../220406-nginx-stream/" class="md-tabs__link md-tabs__link--active">
+        Blog
+      </a>
+    </li>
+  
+
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="导航栏" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="Arisa | Blog" class="md-nav__button md-logo" aria-label="Arisa | Blog" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M1.5 2.75a.25.25 0 0 1 .25-.25h12.5a.25.25 0 0 1 .25.25v8.5a.25.25 0 0 1-.25.25h-6.5a.75.75 0 0 0-.53.22L4.5 14.44v-2.19a.75.75 0 0 0-.75-.75h-2a.25.25 0 0 1-.25-.25v-8.5zM1.75 1A1.75 1.75 0 0 0 0 2.75v8.5C0 12.216.784 13 1.75 13H3v1.543a1.457 1.457 0 0 0 2.487 1.03L8.061 13h6.189A1.75 1.75 0 0 0 16 11.25v-8.5A1.75 1.75 0 0 0 14.25 1H1.75zm5.03 3.47a.75.75 0 0 1 0 1.06L5.31 7l1.47 1.47a.75.75 0 0 1-1.06 1.06l-2-2a.75.75 0 0 1 0-1.06l2-2a.75.75 0 0 1 1.06 0zm2.44 0a.75.75 0 0 0 0 1.06L10.69 7 9.22 8.47a.75.75 0 0 0 1.06 1.06l2-2a.75.75 0 0 0 0-1.06l-2-2a.75.75 0 0 0-1.06 0z"/></svg>
+
+    </a>
+    Arisa | Blog
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/zhanbao2000/blog" title="前往仓库" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.1.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    zhanbao2000/blog
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../.." class="md-nav__link">
+        主页
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../tags/" class="md-nav__link">
+        标签
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../toc/" class="md-nav__link">
+        目录
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4" type="checkbox" id="__nav_4" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4">
+          Blog
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Blog" data-md-level="1">
+        <label class="md-nav__title" for="__nav_4">
+          <span class="md-nav__icon md-icon"></span>
+          Blog
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_1" type="checkbox" id="__nav_4_1" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4_1">
+          2022
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="2022" data-md-level="2">
+        <label class="md-nav__title" for="__nav_4_1">
+          <span class="md-nav__icon md-icon"></span>
+          2022
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../220406-nginx-stream/" class="md-nav__link">
+        nginx 如何设置 stream 转发
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../220406-set-http-proxy/" class="md-nav__link">
+        解决使用代理后 pip 和 python 无法连接到网络的问题
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../220406-venv-move-file/" class="md-nav__link">
+        移动 python 项目文件夹位置后如何解决 PyCharm 找不到解释器与无法正常使用终端的问题
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../220407-certbot/" class="md-nav__link">
+        certbot 常用操作
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../220407-github-pages/" class="md-nav__link">
+        GitHub Pages 文档自动化部署 - MkDocs
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../220408-github-pages-2/" class="md-nav__link">
+        GitHub Pages 文档自动化部署 - VuePress
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../220409-cloudflare-workers-arcaea-update/" class="md-nav__link">
+        如何使用 Cloudflare Workers 来搭建 Arcaea 镜像下载服务器
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../220412-ida-substitute-usage/" class="md-nav__link">
+        IDA 替换二进制文件
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../220413-Intranet-penetration-bitcomit/" class="md-nav__link">
+        利用内网穿透和代理获取公网 IP 地址解决比特彗星黄灯
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../220414-fk-arcaea-songlist-hash/" class="md-nav__link">
+        解除 Arcaea 对 songlist 等文件的哈希校验
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../220416-arcaea-fanmade-chart-problem/" class="md-nav__link">
+        Arcaea 自制谱移植常见问题
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../220417-linux-clean-up-disk-space/" class="md-nav__link">
+        Linux 清理磁盘空间常见操作
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../220421-use-gzip-bomb-against-scanner/" class="md-nav__link">
+        如何使用 gzip 压缩包炸弹对恶意扫描器进行反击
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../220428-how-to-ask-questions-like-a-retard/" class="md-nav__link">
+        如何像一个弱智一样提问
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../220429-dilb-ultimate-solution/" class="md-nav__link">
+        基于 Anaconda 的 dlib（CUDA 版本）安装的终极解决方案
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../220502-how-dogs-work-in-epic7/" class="md-nav__link">
+        第七史诗升六星的正确理解
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../220511-how-to-write-python-into-classical-chinese/" class="md-nav__link">
+        如何将 Python 写成文言文
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Python 个人代码风格指导
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        Python 个人代码风格指导
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    一、绪论
+  </a>
+  
+    <nav class="md-nav" aria-label="一、绪论">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#11-python-import-this" class="md-nav__link">
+    1.1 Python 之禅：import this
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#12-pep-8" class="md-nav__link">
+    1.2 PEP-8
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    二、该使用什么
+  </a>
+  
+    <nav class="md-nav" aria-label="二、该使用什么">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#21" class="md-nav__link">
+    2.1 使用合适的对象作为数据结构
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#22" class="md-nav__link">
+    2.2 积极使用类型注释
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#23" class="md-nav__link">
+    2.3 函数的功能应具有专一性
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    三、该取代什么
+  </a>
+  
+    <nav class="md-nav" aria-label="三、该取代什么">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#31" class="md-nav__link">
+    3.1 使用优美的现有方法取代丑陋的自行实现
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#32" class="md-nav__link">
+    3.2 使用括号换行取代换行符换行
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    四、该避免什么
+  </a>
+  
+    <nav class="md-nav" aria-label="四、该避免什么">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#41" class="md-nav__link">
+    4.1 避免迷惑命名
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#42" class="md-nav__link">
+    4.2 避免过长的函数
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#43" class="md-nav__link">
+    4.3 避免构造重复的函数
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#44-try-except" class="md-nav__link">
+    4.4 避免滥用 try except 语句
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#45" class="md-nav__link">
+    4.5 不要消化自己不该处理的错误
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    一、绪论
+  </a>
+  
+    <nav class="md-nav" aria-label="一、绪论">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#11-python-import-this" class="md-nav__link">
+    1.1 Python 之禅：import this
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#12-pep-8" class="md-nav__link">
+    1.2 PEP-8
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    二、该使用什么
+  </a>
+  
+    <nav class="md-nav" aria-label="二、该使用什么">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#21" class="md-nav__link">
+    2.1 使用合适的对象作为数据结构
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#22" class="md-nav__link">
+    2.2 积极使用类型注释
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#23" class="md-nav__link">
+    2.3 函数的功能应具有专一性
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    三、该取代什么
+  </a>
+  
+    <nav class="md-nav" aria-label="三、该取代什么">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#31" class="md-nav__link">
+    3.1 使用优美的现有方法取代丑陋的自行实现
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#32" class="md-nav__link">
+    3.2 使用括号换行取代换行符换行
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    四、该避免什么
+  </a>
+  
+    <nav class="md-nav" aria-label="四、该避免什么">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#41" class="md-nav__link">
+    4.1 避免迷惑命名
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#42" class="md-nav__link">
+    4.2 避免过长的函数
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#43" class="md-nav__link">
+    4.3 避免构造重复的函数
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#44-try-except" class="md-nav__link">
+    4.4 避免滥用 try except 语句
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#45" class="md-nav__link">
+    4.5 不要消化自己不该处理的错误
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content" data-md-component="content">
+            <article class="md-content__inner md-typeset">
+              
+
+<!--
+Hack: check whether the content contains a h1 headline. If it
+doesn't, the page title (or respectively site name) is used
+as the main headline.
+-->
+
+    <h1>Python 个人代码风格指导</h1>
+
+
+<!-- Markdown content -->
+
+    
+
+        <aside class="mdx-author">
+            <p>
+                <img src="https://avatars.githubusercontent.com/zhanbao2000" alt="@zhanbao2000">
+            </p>
+            <p>
+                <span>
+                    <b>Akiba Arisa</b> · <a href="https://github.com/zhanbao2000">@zhanbao2000</a>
+                </span>
+                <span>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" fill="currentColor" class="bi bi-clock" viewBox="0 0 16 16">
+                        <path d="M8 3.5a.5.5 0 0 0-1 0V9a.5.5 0 0 0 .252.434l3.5 2a.5.5 0 0 0 .496-.868L8 8.71V3.5z"/>
+                        <path d="M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16zm7-8A7 7 0 1 1 1 8a7 7 0 0 1 14 0z"/>
+                    </svg> 20 min read
+                </span>
+            </p>
+        </aside>
+
+    
+
+    
+        <div class="tags">
+        
+            <a href="/tags/#python" class="tag"><code>#python</code></a>
+        
+        </div>
+    
+
+    <div class="admonition abstract">
+<p class="admonition-title">摘要</p>
+<p>这是一篇简要的 Python 代码风格指导，代表了我个人所倾向的代码风格。使用这些风格可以让你的代码看起来更 Pythonic，更精炼地描述你代码所作的工作，或许也可以减轻你的重构压力。</p>
+<p>每个人的风格可能大同小异，也有可能大相径庭，写在这里并不代表我的就是最好的。我所希望的是，读者阅读完此篇文章后能够有所启发，或是发现自己从未使用过的优雅方法，或是改善自己从未意识到的丑陋写法，如此一来我就已经很满足了。</p>
+<p>这里面的很多示例代码（包括坏代码）来源于我修改自己的代码而得出的经验与风格，我也正是在修改并美化这些代码的过程中产生了写这么一篇文章的想法。</p>
+</div>
+<h2 id="_1">一、绪论<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
+<h3 id="11-python-import-this">1.1 Python 之禅：<code class="highlight"><span class="kn">import</span> <span class="nn">this</span></code><a class="headerlink" href="#11-python-import-this" title="Permanent link">&para;</a></h3>
+<p>Python之禅最早由 Tim Peters 在 Python <a href="https://mail.python.org/pipermail/python-list/1999-June/001951.html">邮件列表</a> 中发表，它包含了影响 Python 编程语言设计的19条软件编写原则。</p>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">this</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>The Zen of Python, by Tim Peters
+
+Beautiful is better than ugly.
+优美优于丑陋
+
+Explicit is better than implicit.
+明了优于隐晦
+
+Simple is better than complex.
+简单优于复杂
+
+Complex is better than complicated.
+复杂优于繁杂
+
+Flat is better than nested.
+扁平优于嵌套
+
+Sparse is better than dense.
+稀疏优于稠密
+
+Readability counts.
+可读性很重要
+
+Special cases aren&#39;t special enough to break the rules.
+特例亦不可违背原则
+
+Although practicality beats purity.
+即使实用比纯粹更优
+
+Errors should never pass silently.
+错误绝不能悄悄忽略
+
+Unless explicitly silenced.
+除非它明确需要如此
+
+In the face of ambiguity, refuse the temptation to guess.
+面对不确定性，拒绝妄加猜测
+
+There should be one-- and preferably only one --obvious way to do it.
+任何问题应有一种，且最好只有一种，显而易见的解决方法
+
+Although that way may not be obvious at first unless you&#39;re Dutch.
+尽管这方法一开始并非如此直观（除非你是荷兰人）
+
+Now is better than never.
+做优于不做
+
+Although never is often better than *right* now.
+然而不假思索还不如不做
+
+If the implementation is hard to explain, it&#39;s a bad idea.
+很难解释的，必然是坏方法
+
+If the implementation is easy to explain, it may be a good idea.
+很好解释的，可能是好方法
+
+Namespaces are one honking great idea -- let&#39;s do more of those!
+命名空间是个绝妙的主意，我们应好好利用它
+</code></pre></div>
+<h3 id="12-pep-8">1.2 PEP-8<a class="headerlink" href="#12-pep-8" title="Permanent link">&para;</a></h3>
+<p><a href="https://www.python.org/dev/peps/pep-0008/">PEP-8</a> 全称 <code>PEP 8 – Style Guide for Python Code</code>，它给出了构成 Python 主发行版中标准库的 Python 代码的编码规范。</p>
+<p>遵守 PEP-8 是一个很好的习惯，它并不是一个必须的规范。然而我自己的建议是：</p>
+<p><strong><em>无论在任何情况下，都请遵守 PEP-8 规范</em></strong>。</p>
+<p>PEP-8 可以让你的代码看起来更规范，更简洁，更易读。尤其是统一的格式，更容易被人阅读。</p>
+<p>一些 IDE（例如 PyCharm）可以自动标记你代码中不遵守 PEP-8 的情况。除此以外，你也可以通过以下方式来检查你的代码是否遵守了 PEP-8 规范：</p>
+<div class="highlight"><pre><span></span><code>python -m pep8 --statistics my_file.py
+</code></pre></div>
+<p><del>习惯性遵守 PEP-8 可能会让您变成 PEP-8 的受害者，导致您使用其他语言时仍然保留了 PEP-8 中的习惯，尽管这些语言中并没有类似的要求。</del></p>
+<h2 id="_2">二、该使用什么<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
+<h3 id="21">2.1 使用合适的对象作为数据结构<a class="headerlink" href="#21" title="Permanent link">&para;</a></h3>
+<p>Python 中有多种对象——列表、字典、集合、元组和字符串，以下是对比：</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th align="center">元素可重复</th>
+<th align="center">元素可追加</th>
+<th align="center">对象可哈希</th>
+<th align="center">元素可索引</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>列表</td>
+<td align="center">🟢</td>
+<td align="center">🟢</td>
+<td align="center">🔴</td>
+<td align="center">🟢</td>
+</tr>
+<tr>
+<td>字典</td>
+<td align="center">🔴</td>
+<td align="center">🟢</td>
+<td align="center">🔴</td>
+<td align="center">🔴</td>
+</tr>
+<tr>
+<td>集合</td>
+<td align="center">🔴</td>
+<td align="center">🟢</td>
+<td align="center">🔴</td>
+<td align="center">🔴</td>
+</tr>
+<tr>
+<td>元组</td>
+<td align="center">🟢</td>
+<td align="center">🔴</td>
+<td align="center">🟢</td>
+<td align="center">🟢</td>
+</tr>
+<tr>
+<td>字符串</td>
+<td align="center">🟢</td>
+<td align="center">🔴</td>
+<td align="center">🟢</td>
+<td align="center">🟢</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition note">
+<p class="admonition-title">注：</p>
+<ol>
+<li>字典的不可重复指的是，字典中的键不能重复。</li>
+<li>是否可追加的标准是，首先这个对象可以追加新元素，其次在追加前后，使用 <code class="highlight"><span class="nb">id</span><span class="p">()</span></code> 函数计算出的指针是否一致（即是否仍为同一个对象）。</li>
+<li>可以使用 <code class="highlight"><span class="nb">hash</span><span class="p">()</span></code> 函数或是 <code class="highlight"><span class="fm">__hash__</span><span class="p">()</span></code> 魔法方法的对象视为可哈希。</li>
+<li>由于所有的可迭代对象（上面5个都是）都可以使用 <code class="highlight"><span class="nb">sorted</span><span class="p">()</span></code> 函数进行排序，采用这个标准来进行比较是没有意义的，所以不采用元素是否有序作为这5个对象的对比项目。</li>
+<li>元素可索引指的是对象中的元素是否可以按顺序索引（或者说是否具有类似线性表一样的存储结构），而不是指该对象是否具有 <code class="highlight"><span class="fm">__setitem__</span><span class="p">()</span></code> 魔法方法。</li>
+</ol>
+</div>
+<p>除字符串外，其余4个通常用于表示一组数据（或映射，例如字典）。以下是我总结的<strong>在什么时候使用什么样的数据结构</strong>：</p>
+<dl>
+<dt>列表（<code class="highlight"><span class="nb">list</span></code>）-&gt; <strong>绝大多数情况下的最佳选择</strong></dt>
+<dd>你的数据是按顺序索引的，并且需要频繁地修改、追加、删除。（换句能听懂的人话：链表）</dd>
+<dt>字典（<code class="highlight"><span class="nb">dict</span></code>）</dt>
+<dd>你需要使用一个类似哈希表（散列表）的数据结构。</dd>
+<dt>集合（<code class="highlight"><span class="nb">set</span></code>）</dt>
+<dd>你的数据需要频繁地追加、删除，并且你确信你可能会追加相同的数据，而这是你想要避免的。</dd>
+<dt>元组（<code class="highlight"><span class="nb">tuple</span></code>）</dt>
+<dd>你的数据只需要定义一次，并且从不修改、追加、删除。或者当你的数据总是组队出现时（例如坐标、TCP四元组）。</dd>
+</dl>
+<p><del>可能此时某些人看完会钻牛角尖，非得搁这纠结什么链表和数组性能差异和实现上的不同，我已经说得很清楚了，和线性表这类东西作比较<strong>仅仅是为了打比方</strong>。你要这么纠结你就去用 <code>np.ndarray</code>，或者干脆别用 Python 了，直接去用你心爱的 C/C++，而不用在这纠结 Python 的几个对象。</del></p>
+<h3 id="22">2.2 积极使用类型注释<a class="headerlink" href="#22" title="Permanent link">&para;</a></h3>
+<p>使用类型注释可以让你的 IDE 和其他开发者更好地阅读你的代码，并且在后期的重构时，能更大胆地进行代码复用，而无须纠结参数的类型。</p>
+<div class="admonition example">
+<p class="admonition-title">Example</p>
+<p>Good:
+<div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">foo</span><span class="p">(</span><span class="n">x</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">y</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+    <span class="k">return</span> <span class="n">x</span> <span class="o">+</span> <span class="n">y</span>
+</code></pre></div></p>
+<p>Bad:
+<div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">foo</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">x</span> <span class="o">+</span> <span class="n">y</span>
+</code></pre></div></p>
+</div>
+<p>可以使用 <code>typing</code> 标准库来编写更高级的类型注释，例如：</p>
+<div class="admonition example">
+<p class="admonition-title">Example</p>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">TypeVar</span><span class="p">,</span> <span class="n">Union</span>
+
+<span class="n">RealNumeric</span> <span class="o">=</span> <span class="n">TypeVar</span><span class="p">(</span><span class="s1">&#39;RealNumeric&#39;</span><span class="p">,</span> <span class="nb">int</span><span class="p">,</span> <span class="nb">float</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">create_complex</span><span class="p">(</span><span class="n">re</span><span class="p">:</span> <span class="n">RealNumeric</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="n">im</span><span class="p">:</span> <span class="n">RealNumeric</span> <span class="o">=</span> <span class="mi">0</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Union</span><span class="p">[</span><span class="n">RealNumeric</span><span class="p">,</span> <span class="nb">complex</span><span class="p">]:</span>
+    <span class="k">return</span> <span class="n">re</span> <span class="o">+</span> <span class="n">im</span> <span class="o">*</span> <span class="mi">1</span><span class="n">j</span>
+</code></pre></div>
+</div>
+<p>甚至使用泛型：</p>
+<div class="admonition example">
+<p class="admonition-title">Example</p>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">TypeVar</span>
+
+<span class="n">_T</span> <span class="o">=</span> <span class="n">TypeVar</span><span class="p">(</span><span class="s1">&#39;_T&#39;</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">if_pattern</span><span class="p">(</span><span class="n">pattern</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">tuple</span><span class="p">[</span><span class="nb">bool</span><span class="p">,</span> <span class="n">_T</span><span class="p">]])</span> <span class="o">-&gt;</span> <span class="n">_T</span><span class="p">:</span>
+    <span class="k">return</span> <span class="nb">filter</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">pattern</span><span class="p">)</span><span class="o">.</span><span class="fm">__next__</span><span class="p">()[</span><span class="mi">1</span><span class="p">]</span>
+</code></pre></div>
+</div>
+<h3 id="23">2.3 函数的功能应具有专一性<a class="headerlink" href="#23" title="Permanent link">&para;</a></h3>
+<div class="admonition example">
+<p class="admonition-title">Example</p>
+<p>Ugly:
+<div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">calc</span><span class="p">(</span><span class="n">const</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">float</span><span class="p">],</span> <span class="n">rating</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">float</span><span class="p">],</span> <span class="n">score</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">float</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">const</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">calc_const</span><span class="p">(</span><span class="n">rating</span><span class="p">,</span> <span class="n">score</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">rating</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">calc_rating</span><span class="p">(</span><span class="n">const</span><span class="p">,</span> <span class="n">score</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">score</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">calc_score</span><span class="p">(</span><span class="n">const</span><span class="p">,</span> <span class="n">rating</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;Invalid input!&#39;</span><span class="p">)</span>
+</code></pre></div></p>
+</div>
+<p>请注意，这是我曾经用于计算某个🇬🇧游戏的一些数值时采用的函数写法，现在我觉得它奇丑无比。</p>
+<h2 id="_3">三、该取代什么<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h2>
+<h3 id="31">3.1 使用<strong>优美</strong>的现有方法取代<strong>丑陋</strong>的自行实现<a class="headerlink" href="#31" title="Permanent link">&para;</a></h3>
+<p>以判断字典中是否有某个键的方法为例：</p>
+<div class="admonition example">
+<p class="admonition-title">Example</p>
+<p>Good:</p>
+<div class="highlight"><pre><span></span><code><span class="k">if</span> <span class="s1">&#39;some_key&#39;</span> <span class="ow">in</span> <span class="n">d</span><span class="p">:</span>
+    <span class="o">...</span>
+</code></pre></div>
+<p>Bad:</p>
+<div class="highlight"><pre><span></span><code><span class="k">if</span> <span class="n">d</span><span class="o">.</span><span class="fm">__contains__</span><span class="p">(</span><span class="s1">&#39;some_key&#39;</span><span class="p">):</span>
+    <span class="o">...</span>
+
+<span class="k">if</span> <span class="n">d</span><span class="o">.</span><span class="n">has_key</span><span class="p">(</span><span class="s1">&#39;some_key&#39;</span><span class="p">):</span>
+    <span class="o">...</span>
+</code></pre></div>
+</div>
+<p>并且请注意：事实上，<code class="highlight"><span class="nb">dict</span></code> 类的 <code class="highlight"><span class="n">has_key</span><span class="p">()</span></code> 方法已经 <a href="https://docs.python.org/3.1/whatsnew/3.0.html#builtins">在 Python3 中被移除</a>，所以大部分情况下你也用不着它（或者没法用它）。</p>
+<p>由于 Python 自身的性质，使用 Python 实现一个特定的功能非常容易，但也正因为如此，有不少初学者在学习前期会使用大量的自行实现，这种自行实现又常常被称为 <code>重复发明轮子</code>。</p>
+<p>重复发明轮子并不一无是处，对于初学者而言，这常常是一种提升自身基本能力的有效手段。然而对于并非初学者的我们，重复发明轮子已经不再有任何用途了，因此需要极力避免这种情况发生。</p>
+<p>一般来说，选择具体的实现方法时，考虑以下优先顺序：</p>
+<ul>
+<li>语句、<a href="https://docs.python.org/zh-cn/3/library/functions.html"><code>Builtins</code> 函数</a></li>
+<li><a href="https://rszalski.github.io/magicmethods/">魔法方法</a>、方法</li>
+<li><a href="https://docs.python.org/zh-cn/3/library/index.html">Python 标准库</a></li>
+<li>第三方库</li>
+<li>自行实现</li>
+</ul>
+<p>在多种实现的复杂度相差无几时，上面排序越靠前的实现方法看起来越优雅，而越往后的实现方法看起来越丑陋。只有在你发现靠前的方法无法满足你的需求（或过于复杂）时，才有必要考虑靠后的方法。</p>
+<h3 id="32">3.2 使用括号换行取代换行符换行<a class="headerlink" href="#32" title="Permanent link">&para;</a></h3>
+<p>Python 中的括号有个 <a href="https://docs.python.org/2/reference/lexical_analysis.html#implicit-line-joining">特性</a>，就是括号中的表达式可以在一个行上直接分割，而无须使用 <code>\</code> 换行。</p>
+<p>以 <code class="highlight"><span class="kn">import</span></code> 语句为例：</p>
+<div class="admonition example">
+<p class="admonition-title">Example</p>
+<p>Good:</p>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">.make_score_image</span> <span class="kn">import</span> <span class="p">(</span>
+    <span class="n">moe_draw_recent</span><span class="p">,</span> <span class="n">guin_draw_recent</span><span class="p">,</span> <span class="n">bandori_draw_recent</span><span class="p">,</span>
+    <span class="n">andreal_v1_draw_recent</span><span class="p">,</span> <span class="n">andreal_v2_draw_recent</span><span class="p">,</span> <span class="n">andreal_v3_draw_recent</span><span class="p">,</span> <span class="n">andreal_draw_b30</span><span class="p">,</span>
+    <span class="n">song_list</span><span class="p">,</span> <span class="n">draw_b30</span><span class="p">,</span>
+<span class="p">)</span>
+</code></pre></div>
+<p>Bad:</p>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">.make_score_image</span> <span class="kn">import</span> <span class="n">moe_draw_recent</span><span class="p">,</span> <span class="n">guin_draw_recent</span><span class="p">,</span> <span class="n">bandori_draw_recent</span><span class="p">,</span> <span class="n">song_list</span><span class="p">,</span> <span class="n">draw_b30</span><span class="p">,</span> \
+    <span class="n">andreal_v1_draw_recent</span><span class="p">,</span> <span class="n">andreal_v2_draw_recent</span><span class="p">,</span> <span class="n">andreal_v3_draw_recent</span><span class="p">,</span> <span class="n">andreal_draw_b30</span>
+</code></pre></div>
+</div>
+<p>值得注意的是，在括号内进行换行后，请注意缩进。要么使用垂直缩进，要么使用悬挂缩进。</p>
+<p>以 <code class="highlight"><span class="k">if</span></code> 语句为例：</p>
+<div class="admonition example">
+<p class="admonition-title">Example</p>
+<p>Good:</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># 4空格悬挂缩进</span>
+<span class="k">if</span> <span class="p">(</span>
+    <span class="n">this_vid</span> <span class="o">!=</span> <span class="n">last_vid</span>
+    <span class="ow">or</span> <span class="n">this_vid</span> <span class="o">==</span> <span class="n">last_vid</span> <span class="ow">and</span> <span class="p">(</span>
+        <span class="n">this_lang</span> <span class="ow">in</span> <span class="p">[</span><span class="s1">&#39;zh-Hans&#39;</span><span class="p">,</span> <span class="s1">&#39;zh&#39;</span><span class="p">]</span>
+        <span class="ow">or</span> <span class="n">this_lang</span> <span class="o">==</span> <span class="s1">&#39;ja&#39;</span> <span class="ow">and</span> <span class="n">last_lang</span> <span class="ow">not</span> <span class="ow">in</span> <span class="p">[</span><span class="s1">&#39;zh-Hans&#39;</span><span class="p">,</span> <span class="s1">&#39;zh&#39;</span><span class="p">]</span>
+        <span class="ow">or</span> <span class="n">this_lang</span> <span class="o">==</span> <span class="s1">&#39;en&#39;</span> <span class="ow">and</span> <span class="n">last_lang</span> <span class="ow">not</span> <span class="ow">in</span> <span class="p">[</span><span class="s1">&#39;zh-Hans&#39;</span><span class="p">,</span> <span class="s1">&#39;zh&#39;</span><span class="p">,</span> <span class="s1">&#39;ja&#39;</span><span class="p">]</span>
+    <span class="p">)</span>
+<span class="p">):</span>
+    <span class="o">...</span>
+
+<span class="c1"># 使用垂直缩进</span>
+<span class="k">if</span> <span class="p">(</span><span class="n">this_vid</span> <span class="o">!=</span> <span class="n">last_vid</span>
+    <span class="ow">or</span> <span class="n">this_vid</span> <span class="o">==</span> <span class="n">last_vid</span> <span class="ow">and</span> <span class="p">(</span><span class="n">this_lang</span> <span class="ow">in</span> <span class="p">[</span><span class="s1">&#39;zh-Hans&#39;</span><span class="p">,</span> <span class="s1">&#39;zh&#39;</span><span class="p">]</span>
+                                 <span class="ow">or</span> <span class="n">this_lang</span> <span class="o">==</span> <span class="s1">&#39;ja&#39;</span> <span class="ow">and</span> <span class="n">last_lang</span> <span class="ow">not</span> <span class="ow">in</span> <span class="p">[</span><span class="s1">&#39;zh-Hans&#39;</span><span class="p">,</span> <span class="s1">&#39;zh&#39;</span><span class="p">]</span>
+                                 <span class="ow">or</span> <span class="n">this_lang</span> <span class="o">==</span> <span class="s1">&#39;en&#39;</span> <span class="ow">and</span> <span class="n">last_lang</span> <span class="ow">not</span> <span class="ow">in</span> <span class="p">[</span><span class="s1">&#39;zh-Hans&#39;</span><span class="p">,</span> <span class="s1">&#39;zh&#39;</span><span class="p">,</span> <span class="s1">&#39;ja&#39;</span><span class="p">])):</span>
+    <span class="o">...</span>
+</code></pre></div>
+<p>Bad:</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># 无任何缩进</span>
+<span class="k">if</span> <span class="n">this_vid</span> <span class="o">!=</span> <span class="n">last_vid</span> <span class="ow">or</span> <span class="n">this_vid</span> <span class="o">==</span> <span class="n">last_vid</span> <span class="ow">and</span> <span class="p">(</span><span class="n">this_lang</span> <span class="ow">in</span> <span class="p">[</span><span class="s1">&#39;zh-Hans&#39;</span><span class="p">,</span> <span class="s1">&#39;zh&#39;</span><span class="p">]</span> <span class="ow">or</span> <span class="n">this_lang</span> <span class="o">==</span> <span class="s1">&#39;ja&#39;</span> <span class="ow">and</span> <span class="n">last_lang</span> <span class="ow">not</span> <span class="ow">in</span> <span class="p">[</span><span class="s1">&#39;zh-Hans&#39;</span><span class="p">,</span> <span class="s1">&#39;zh&#39;</span><span class="p">]</span> <span class="ow">or</span> <span class="n">this_lang</span> <span class="o">==</span> <span class="s1">&#39;en&#39;</span> <span class="ow">and</span> <span class="n">last_lang</span> <span class="ow">not</span> <span class="ow">in</span> <span class="p">[</span><span class="s1">&#39;zh-Hans&#39;</span><span class="p">,</span> <span class="s1">&#39;zh&#39;</span><span class="p">,</span> <span class="s1">&#39;ja&#39;</span><span class="p">]):</span>
+    <span class="o">...</span>
+
+<span class="c1"># 使用丑陋的 \ 进行换行</span>
+<span class="k">if</span> <span class="n">this_vid</span> <span class="o">!=</span> <span class="n">last_vid</span> <span class="ow">or</span> <span class="n">this_vid</span> <span class="o">==</span> <span class="n">last_vid</span> \
+    <span class="ow">and</span> <span class="p">(</span><span class="n">this_lang</span> <span class="ow">in</span> <span class="p">[</span><span class="s1">&#39;zh-Hans&#39;</span><span class="p">,</span> <span class="s1">&#39;zh&#39;</span><span class="p">]</span> <span class="ow">or</span> <span class="n">this_lang</span> <span class="o">==</span> <span class="s1">&#39;ja&#39;</span> \
+         <span class="ow">and</span> <span class="n">last_lang</span> <span class="ow">not</span> <span class="ow">in</span> <span class="p">[</span><span class="s1">&#39;zh-Hans&#39;</span><span class="p">,</span> <span class="s1">&#39;zh&#39;</span><span class="p">]</span> <span class="ow">or</span> <span class="n">this_lang</span> <span class="o">==</span> <span class="s1">&#39;en&#39;</span> \
+         <span class="ow">and</span> <span class="n">last_lang</span> <span class="ow">not</span> <span class="ow">in</span> <span class="p">[</span><span class="s1">&#39;zh-Hans&#39;</span><span class="p">,</span> <span class="s1">&#39;zh&#39;</span><span class="p">,</span> <span class="s1">&#39;ja&#39;</span><span class="p">]):</span>
+    <span class="o">...</span>
+
+<span class="c1"># 4空格悬挂缩进对齐到 if</span>
+<span class="k">if</span> <span class="n">this_vid</span> <span class="o">!=</span> <span class="n">last_vid</span> <span class="ow">or</span> <span class="n">this_vid</span> <span class="o">==</span> <span class="n">last_vid</span> <span class="ow">and</span> <span class="p">(</span><span class="n">this_lang</span> <span class="ow">in</span> <span class="p">[</span><span class="s1">&#39;zh-Hans&#39;</span><span class="p">,</span> <span class="s1">&#39;zh&#39;</span><span class="p">]</span> <span class="ow">or</span> <span class="n">this_lang</span> <span class="o">==</span> <span class="s1">&#39;ja&#39;</span> <span class="ow">and</span> <span class="n">last_lang</span> 
+    <span class="ow">not</span> <span class="ow">in</span> <span class="p">[</span><span class="s1">&#39;zh-Hans&#39;</span><span class="p">,</span> <span class="s1">&#39;zh&#39;</span><span class="p">]</span> <span class="ow">or</span> <span class="n">this_lang</span> <span class="o">==</span> <span class="s1">&#39;en&#39;</span> <span class="ow">and</span> <span class="n">last_lang</span> <span class="ow">not</span> <span class="ow">in</span> 
+    <span class="p">[</span><span class="s1">&#39;zh-Hans&#39;</span><span class="p">,</span> <span class="s1">&#39;zh&#39;</span><span class="p">,</span> <span class="s1">&#39;ja&#39;</span><span class="p">]):</span>
+    <span class="o">...</span>
+</code></pre></div>
+</div>
+<p>以字符串的多行拼接为例：</p>
+<div class="admonition example">
+<p class="admonition-title">Example</p>
+<p>Good:</p>
+<div class="highlight"><pre><span></span><code><span class="n">text</span> <span class="o">=</span> <span class="p">(</span>
+    <span class="sa">f</span><span class="s1">&#39;项目：</span><span class="si">{</span><span class="n">repo</span><span class="o">.</span><span class="n">name</span><span class="si">}</span><span class="se">\n</span><span class="s1">&#39;</span>
+    <span class="sa">f</span><span class="s1">&#39;作者：</span><span class="si">{</span><span class="n">owner</span><span class="si">}</span><span class="se">\n</span><span class="s1">&#39;</span>
+    <span class="sa">f</span><span class="s1">&#39;大小：</span><span class="si">{</span><span class="n">repo</span><span class="o">.</span><span class="n">size</span><span class="si">}</span><span class="s1"> KB</span><span class="se">\n</span><span class="s1">&#39;</span>
+    <span class="sa">f</span><span class="s1">&#39;语言：</span><span class="si">{</span><span class="n">repo</span><span class="o">.</span><span class="n">language</span> <span class="ow">or</span> <span class="s2">&quot;无&quot;</span><span class="si">}</span><span class="se">\n</span><span class="s1">&#39;</span>
+    <span class="sa">f</span><span class="s1">&#39;许可证：</span><span class="si">{</span><span class="n">license_</span><span class="si">}</span><span class="se">\n</span><span class="s1">&#39;</span>
+    <span class="sa">f</span><span class="s1">&#39;🐞:</span><span class="si">{</span><span class="n">repo</span><span class="o">.</span><span class="n">open_issues_count</span><span class="si">}</span><span class="s1"> ⭐:</span><span class="si">{</span><span class="n">repo</span><span class="o">.</span><span class="n">stargazers_count</span><span class="si">}</span><span class="s1"> 🍴:</span><span class="si">{</span><span class="n">repo</span><span class="o">.</span><span class="n">forks_count</span><span class="si">}</span><span class="se">\n</span><span class="s1">&#39;</span>
+    <span class="sa">f</span><span class="s1">&#39;创建时间：</span><span class="si">{</span><span class="n">format_time</span><span class="p">(</span><span class="n">repo</span><span class="o">.</span><span class="n">created_at</span><span class="p">)</span><span class="si">}</span><span class="se">\n</span><span class="s1">&#39;</span>
+    <span class="sa">f</span><span class="s1">&#39;上次提交：</span><span class="si">{</span><span class="n">format_time</span><span class="p">(</span><span class="n">repo</span><span class="o">.</span><span class="n">pushed_at</span><span class="p">)</span><span class="si">}</span><span class="se">\n</span><span class="s1">&#39;</span>
+    <span class="sa">f</span><span class="s1">&#39;描述：</span><span class="si">{</span><span class="n">repo</span><span class="o">.</span><span class="n">description</span> <span class="ow">or</span> <span class="s2">&quot;无&quot;</span><span class="si">}</span><span class="se">\n</span><span class="s1">&#39;</span>
+    <span class="sa">f</span><span class="s1">&#39;标签：</span><span class="si">{</span><span class="n">tags</span><span class="si">}</span><span class="s1">&#39;</span>
+<span class="p">)</span>
+</code></pre></div>
+<p>Bad:</p>
+<div class="highlight"><pre><span></span><code><span class="n">text</span> <span class="o">=</span> <span class="sa">f</span><span class="s1">&#39;项目：</span><span class="si">{</span><span class="n">repo</span><span class="o">.</span><span class="n">name</span><span class="si">}</span><span class="se">\n</span><span class="s1">&#39;</span> \
+       <span class="sa">f</span><span class="s1">&#39;作者：</span><span class="si">{</span><span class="n">owner</span><span class="si">}</span><span class="se">\n</span><span class="s1">&#39;</span> \
+       <span class="sa">f</span><span class="s1">&#39;大小：</span><span class="si">{</span><span class="n">repo</span><span class="o">.</span><span class="n">size</span><span class="si">}</span><span class="s1"> KB</span><span class="se">\n</span><span class="s1">&#39;</span> \
+       <span class="sa">f</span><span class="s1">&#39;语言：</span><span class="si">{</span><span class="n">repo</span><span class="o">.</span><span class="n">language</span> <span class="ow">or</span> <span class="s2">&quot;无&quot;</span><span class="si">}</span><span class="se">\n</span><span class="s1">&#39;</span> \
+       <span class="sa">f</span><span class="s1">&#39;许可证：</span><span class="si">{</span><span class="n">license_</span><span class="si">}</span><span class="se">\n</span><span class="s1">&#39;</span> \
+       <span class="sa">f</span><span class="s1">&#39;🐞:</span><span class="si">{</span><span class="n">repo</span><span class="o">.</span><span class="n">open_issues_count</span><span class="si">}</span><span class="s1"> ⭐:</span><span class="si">{</span><span class="n">repo</span><span class="o">.</span><span class="n">stargazers_count</span><span class="si">}</span><span class="s1"> 🍴:</span><span class="si">{</span><span class="n">repo</span><span class="o">.</span><span class="n">forks_count</span><span class="si">}</span><span class="se">\n</span><span class="s1">&#39;</span> \
+       <span class="sa">f</span><span class="s1">&#39;创建时间：</span><span class="si">{</span><span class="n">format_time</span><span class="p">(</span><span class="n">repo</span><span class="o">.</span><span class="n">created_at</span><span class="p">)</span><span class="si">}</span><span class="se">\n</span><span class="s1">&#39;</span> \
+       <span class="sa">f</span><span class="s1">&#39;上次提交：</span><span class="si">{</span><span class="n">format_time</span><span class="p">(</span><span class="n">repo</span><span class="o">.</span><span class="n">pushed_at</span><span class="p">)</span><span class="si">}</span><span class="se">\n</span><span class="s1">&#39;</span> \
+       <span class="sa">f</span><span class="s1">&#39;描述：</span><span class="si">{</span><span class="n">repo</span><span class="o">.</span><span class="n">description</span> <span class="ow">or</span> <span class="s2">&quot;无&quot;</span><span class="si">}</span><span class="se">\n</span><span class="s1">&#39;</span> \
+       <span class="sa">f</span><span class="s1">&#39;标签：</span><span class="si">{</span><span class="n">tags</span><span class="si">}</span><span class="s1">&#39;</span>
+</code></pre></div>
+</div>
+<p>提示：对于需要很多换行的字符串，使用 <code>"""</code> 搭配 <a href="https://docs.python.org/zh-cn/3/library/textwrap.html#textwrap.dedent"><code>textwrap.dedent()</code></a> 是<strong>最优</strong>的选择：</p>
+<div class="admonition example">
+<p class="admonition-title">Example</p>
+<p>⭐<strong>Best:</strong></p>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">textwrap</span>
+
+<span class="n">text</span> <span class="o">=</span> <span class="n">textwrap</span><span class="o">.</span><span class="n">dedent</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">    项目：</span><span class="si">{</span><span class="n">repo</span><span class="o">.</span><span class="n">name</span><span class="si">}</span><span class="s2"></span>
+<span class="s2">    作者：</span><span class="si">{</span><span class="n">owner</span><span class="si">}</span><span class="s2"></span>
+<span class="s2">    大小：</span><span class="si">{</span><span class="n">repo</span><span class="o">.</span><span class="n">size</span><span class="si">}</span><span class="s2"> KB</span>
+<span class="s2">    语言：</span><span class="si">{</span><span class="n">repo</span><span class="o">.</span><span class="n">language</span> <span class="ow">or</span> <span class="s2">&quot;无&quot;</span><span class="si">}</span><span class="s2"></span>
+<span class="s2">    许可证：</span><span class="si">{</span><span class="n">license_</span><span class="si">}</span><span class="s2"></span>
+<span class="s2">    🐞:</span><span class="si">{</span><span class="n">repo</span><span class="o">.</span><span class="n">open_issues_count</span><span class="si">}</span><span class="s2"> ⭐:</span><span class="si">{</span><span class="n">repo</span><span class="o">.</span><span class="n">stargazers_count</span><span class="si">}</span><span class="s2"> 🍴:</span><span class="si">{</span><span class="n">repo</span><span class="o">.</span><span class="n">forks_count</span><span class="si">}</span><span class="s2"></span>
+<span class="s2">    创建时间：</span><span class="si">{</span><span class="n">format_time</span><span class="p">(</span><span class="n">repo</span><span class="o">.</span><span class="n">created_at</span><span class="p">)</span><span class="si">}</span><span class="s2"></span>
+<span class="s2">    上次提交：</span><span class="si">{</span><span class="n">format_time</span><span class="p">(</span><span class="n">repo</span><span class="o">.</span><span class="n">pushed_at</span><span class="p">)</span><span class="si">}</span><span class="s2"></span>
+<span class="s2">    描述：</span><span class="si">{</span><span class="n">repo</span><span class="o">.</span><span class="n">description</span> <span class="ow">or</span> <span class="s2">&quot;无&quot;</span><span class="si">}</span><span class="s2"></span>
+<span class="s2">    标签：</span><span class="si">{</span><span class="n">tags</span><span class="si">}</span><span class="s2"></span>
+<span class="s2">&quot;&quot;&quot;</span><span class="p">)</span>
+</code></pre></div>
+</div>
+<p><code>textwrap</code> 是 Python 标准库之一，其中的 <code>dedent()</code> 函数可以移除 <code>text</code> 中每一行的任何相同前缀空白符。这可以用来清除三重引号字符串行左侧空格，并在源码中仍然显示为缩进格式。</p>
+<h2 id="_4">四、该避免什么<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h2>
+<h3 id="41">4.1 避免迷惑命名<a class="headerlink" href="#41" title="Permanent link">&para;</a></h3>
+<div class="admonition cite">
+<p class="admonition-title">引用</p>
+<p>改名不仅仅是修改名字而已。如果你想不出一个好名字，说明背后很可能潜藏着更深的设计问题。为一个恼人的名字所付出的纠结，常常能推动我们对代码进行精简。</p>
+<p>—— 《重构：改善既有代码的设计》</p>
+</div>
+<p>命名是程序员最难解决的一个问题之一，而迷惑命名将导致后期重构时无法正确理解对象的含义。</p>
+<p>虽然我们无法做到 100% 的完美命名，使每个对象的名字都恰到好处，但是我们可以避免出现迷惑命名。一个不佳的命名可能仅仅会给阅读代码带来困难，而迷惑命名则会使我们完全混淆代码的含义。以下列举了一些迷惑命名的例子：</p>
+<ol>
+<li>
+<p>滥用复数形式</p>
+<div class="admonition example">
+<p class="admonition-title">Example</p>
+<p>Good:</p>
+<div class="highlight"><pre><span></span><code><span class="k">for</span> <span class="n">user</span> <span class="ow">in</span> <span class="n">user_list</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">user</span><span class="p">)</span>
+</code></pre></div>
+<p>Bad:</p>
+<div class="highlight"><pre><span></span><code><span class="k">for</span> <span class="n">user</span> <span class="ow">in</span> <span class="n">users</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">user</span><span class="p">)</span>
+</code></pre></div>
+</div>
+</li>
+<li>
+<p>随意忽略下划线</p>
+<div class="admonition example">
+<p class="admonition-title">Example</p>
+<div class="highlight"><pre><span></span><code><span class="n">song_list</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">Song</span><span class="p">]</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="n">songlist</span><span class="p">:</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]</span> <span class="o">=</span> <span class="p">{}</span>
+</code></pre></div>
+</div>
+<p>以上写法非常令人迷惑，<code>song_list</code> 和 <code>songlist</code> 可能都是表示某个🇬🇧游戏的歌曲列表，但是表示这个 “列表” 的数据结构却是不同的。在同一个过程内部同时使用这两个变量将会使其他开发者（甚至自己！）在调用它们时罔知所措。</p>
+<p>得亏这是有 typing hint 的情况，要是遇到一些没有标注 typing hint 还这样写的代码（<del>例如我的早期代码</del>），那就真的让人背地里想骂人了。</p>
+</li>
+<li>
+<p>变量名加入累赘的前/后缀</p>
+<div class="admonition example">
+<p class="admonition-title">Example</p>
+<div class="highlight"><pre><span></span><code><span class="n">user</span><span class="p">:</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]</span> <span class="o">=</span> <span class="p">{}</span>
+<span class="n">user_info</span><span class="p">:</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]</span> <span class="o">=</span> <span class="p">{}</span>
+<span class="n">user_detail</span><span class="p">:</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]</span> <span class="o">=</span> <span class="p">{}</span>
+</code></pre></div>
+</div>
+<p>这种命名何止是迷惑，简直是令人恼火！假如一个过程内同时定义了 <code>user</code>、<code>user_info</code> 和 <code>user_detail</code>，如果我要获取用户的信息，请问我该调用那个变量呢？</p>
+<p>建议在新的变量命名之前，仔细检查已经命名过的变量，如果出现这种多个不同后缀表示同一数据的情况，则可能说明<strong>这已经不是简单的命名问题了</strong>。</p>
+</li>
+<li>
+<p>不恰当的缩写</p>
+<div class="admonition example">
+<p class="admonition-title">Example</p>
+<p>Good:</p>
+<div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">get_classifier_K_nearest_neighbors</span><span class="p">(</span><span class="n">dataset</span><span class="p">:</span> <span class="n">Dataset</span><span class="p">,</span> <span class="n">k</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Classifier</span><span class="p">:</span>
+    <span class="o">...</span>
+</code></pre></div>
+<p>Bad:</p>
+<div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">get_classifier_KNN</span><span class="p">(</span><span class="n">dataset</span><span class="p">:</span> <span class="n">Dataset</span><span class="p">,</span> <span class="n">k</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Classifier</span><span class="p">:</span>
+    <span class="o">...</span>
+</code></pre></div>
+</div>
+<p><code>KNN</code> 指的是 <code>K-近邻算法</code>，是一种用于分类和回归的非参数统计方法，借由计算与已知类别案例之相似度，来评估未知类别案例可能的分类。</p>
+<p>使用缩写的方式，可能会使代码更加简洁，但是也会使代码更加难以理解，尤其是以上这种只有在专业领域才会用到的缩写。</p>
+</li>
+</ol>
+<p>命名的具体写法并不是该节的讨论重点，驼峰命名法、下划线命名法和匈牙利命名法的具体内容也已人尽皆知，这里便不再赘述。</p>
+<p>具体可以参照 Python 之父 Guido 推荐的规范：</p>
+<table>
+<thead>
+<tr>
+<th align="left">Type</th>
+<th align="left">Public</th>
+<th align="left">Internal</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">Modules</td>
+<td align="left"><code>lower_with_under</code></td>
+<td align="left"><code>_lower_with_under</code></td>
+</tr>
+<tr>
+<td align="left">Packages</td>
+<td align="left"><code>lower_with_under</code></td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">Classes</td>
+<td align="left"><code>CapWords</code></td>
+<td align="left"><code>_CapWords</code></td>
+</tr>
+<tr>
+<td align="left">Exceptions</td>
+<td align="left"><code>CapWords</code></td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">Functions</td>
+<td align="left"><code>lower_with_under()</code></td>
+<td align="left"><code>_lower_with_under()</code></td>
+</tr>
+<tr>
+<td align="left">Global/Class Constants</td>
+<td align="left"><code>CAPS_WITH_UNDER</code></td>
+<td align="left"><code>_CAPS_WITH_UNDER</code></td>
+</tr>
+<tr>
+<td align="left">Global/Class Variables</td>
+<td align="left"><code>lower_with_under</code></td>
+<td align="left"><code>_lower_with_under</code></td>
+</tr>
+<tr>
+<td align="left">Instance Variables</td>
+<td align="left"><code>lower_with_under</code></td>
+<td align="left"><code>_lower_with_under</code> (protected) <br/> <code>__lower_with_under</code> (private)</td>
+</tr>
+<tr>
+<td align="left">Method Names</td>
+<td align="left"><code>lower_with_under()</code></td>
+<td align="left"><code>_lower_with_under()</code> (protected) <br/> <code>__lower_with_under()</code> (private)</td>
+</tr>
+<tr>
+<td align="left">Function/Method Parameters</td>
+<td align="left"><code>lower_with_under</code></td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">Local Variables</td>
+<td align="left"><code>lower_with_under</code></td>
+<td align="left"></td>
+</tr>
+</tbody>
+</table>
+<p>和 PEP-8 一样，某些 IDE（例如 PyCharm）或者插件（例如 SonarLint）也可以自动标记你代码中不遵守上述命名法的情况。</p>
+<h3 id="42">4.2 避免过长的函数<a class="headerlink" href="#42" title="Permanent link">&para;</a></h3>
+<p>如果你发现一个函数的长度超过了50行，那么大概率说明这个函数需要精简。</p>
+<p>TODO</p>
+<h3 id="43">4.3 避免构造重复的函数<a class="headerlink" href="#43" title="Permanent link">&para;</a></h3>
+<p>TODO</p>
+<h3 id="44-try-except">4.4 避免滥用 <code class="highlight"><span class="k">try</span> <span class="k">except</span></code> 语句<a class="headerlink" href="#44-try-except" title="Permanent link">&para;</a></h3>
+<p>不要懒惰到让 <code class="highlight"><span class="k">try</span> <span class="k">except</span></code> 语句来帮你找到错误！</p>
+<p><code class="highlight"><span class="k">try</span> <span class="k">except</span></code> 语句通常是用于处理错误和异常的，但这不意味着所有的错误和异常都必须经过它的手处理。如果是一些显而易见的错误，则应当避免使用 <code class="highlight"><span class="k">try</span> <span class="k">except</span></code> 语句，而是直接消化这个可能抛出的异常。</p>
+<div class="admonition example">
+<p class="admonition-title">Example</p>
+<p>Good:</p>
+<div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">get_player_name</span><span class="p">(</span><span class="n">play_record</span><span class="p">:</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">play_record</span> <span class="ow">and</span> <span class="s1">&#39;name&#39;</span> <span class="ow">in</span> <span class="n">play_record</span><span class="p">[</span><span class="mi">0</span><span class="p">]:</span>
+        <span class="k">return</span> <span class="n">play_record</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="s1">&#39;name&#39;</span><span class="p">]</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">return</span> <span class="s1">&#39;Unknown&#39;</span>
+</code></pre></div>
+<p>Bad:</p>
+<div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">get_player_name</span><span class="p">(</span><span class="n">play_record</span><span class="p">:</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">play_record</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="s1">&#39;name&#39;</span><span class="p">]</span>
+    <span class="k">except</span> <span class="p">(</span><span class="ne">KeyError</span><span class="p">,</span> <span class="ne">IndexError</span><span class="p">):</span>
+        <span class="k">return</span> <span class="s1">&#39;Unknown&#39;</span>
+</code></pre></div>
+</div>
+<p>此举是为了明确错误的原因。以上面为例，在对一个 <code class="highlight"><span class="nb">list</span></code> 或 <code class="highlight"><span class="nb">dict</span></code> 反复使用 <code class="highlight"><span class="fm">__getitem__</span></code> 时（例如有些构造复杂的 json 可能会嵌套好几层），可能会导致 <code class="highlight"><span class="ne">KeyError</span></code> 和 <code class="highlight"><span class="ne">IndexError</span></code> 的错误。但是简单地接住错误并不能知道具体是哪个地方调用 <code class="highlight"><span class="fm">__getitem__</span></code> 方法时出错了，是一种晦涩的处理方法。</p>
+<h3 id="45">4.5 不要消化自己不该处理的错误<a class="headerlink" href="#45" title="Permanent link">&para;</a></h3>
+<p>什么是自己不该处理的错误？</p>
+<p>举个例子，你需要创建一个函数，它读取一个 json 文件，并将其转换为一个 <code class="highlight"><span class="nb">dict</span></code> 对象。</p>
+<p>那么问题来了：</p>
+<ul>
+<li>如果文件不存在，函数怎么办？</li>
+<li>如果文件内容不是一个 json 字符串，函数怎么办？</li>
+</ul>
+<p>一些开发者可能会让该函数遇到错误时返回一个空字典，或者返回 <code class="highlight"><span class="kc">None</span></code> 对象。我个人是很不赞同这个做法的。</p>
+<p>第一个问题显然不是它需要关心的事情，因此如果遇到文件不存在的情况，它原则上应该照常向上抛出 <code class="highlight"><span class="ne">FileNotFoundError</span></code> 异常，而不是私自消化掉这个异常。</p>
+<p>第二个问题显然才是它需要关心的事，但处理方式也绝不是当作没有错误发生并返回一个空字典或是 <code class="highlight"><span class="kc">None</span></code> 对象。正确的处理方式依然是向上抛出一个异常，这个异常可以是 <code class="highlight"><span class="ne">RuntimeError</span></code> 或是继承自它的自定义异常。</p>
+<p>事实上，Python 标准库中的 json 库（<code class="highlight"><span class="n">json</span><span class="o">.</span><span class="n">load</span><span class="p">()</span></code> 函数）便是这么做的。</p>
+<ul>
+<li>
+<p><code>如果文件不存在，函数怎么办？</code></p>
+<p>不可能在 <code class="highlight"><span class="n">json</span><span class="o">.</span><span class="n">load</span><span class="p">()</span></code> 函数中触发该异常，因为它并不直接读取文件，而是只使用传递到参数的文件指针，即它的第一个形参：<code class="highlight"><span class="n">fp</span><span class="p">:</span> <span class="n">SupportsRead</span><span class="p">[</span><span class="nb">str</span> <span class="o">|</span> <span class="nb">bytes</span><span class="p">]</span></code>。</p>
+<p>而抛出 <code class="highlight"><span class="ne">FileNotFoundError</span></code> 异常的函数通常是构造文件指针的函数，即 <code class="highlight"><span class="nb">open</span><span class="p">()</span></code> 函数。</p>
+</li>
+<li>
+<p><code>如果文件内容不是一个 json 字符串，函数怎么办？</code></p>
+<p><code class="highlight"><span class="n">json</span><span class="o">.</span><span class="n">load</span><span class="p">()</span></code> 会向上抛出 <code class="highlight"><span class="n">json</span><span class="o">.</span><span class="n">decoder</span><span class="o">.</span><span class="n">JSONDecodeError</span></code> 异常，而绝不是私自消化它。</p>
+</li>
+</ul>
+<p>一个私自消化不该处理的异常的函数，就像是一个唯唯诺诺的小男孩，当受到了欺负的时候，被家长问起来也只是一问三不知，丝毫不透露自己发生了什么事情。</p>
+<p>只有当你很明确这个函数该消化这个异常的时候，才去处理它，不该消化的时候，记得直接向上抛出！只有这样，Python 的 traceback 才能更加清晰地显示出错的原因。</p>
+
+    <!-- Last update of source file -->
+    
+        
+            <hr>
+<div class="md-source-file">
+  <small>
+    
+      最后更新:
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_datetime">2022-05-30 05:33:08</span>
+      
+        <br>
+        创建日期:
+        <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_datetime">2022-05-30 05:33:08</span>
+      
+    
+  </small>
+</div>
+        
+    
+
+    
+
+        <!-- Giscus -->
+        <h2 id="__comments">评论</h2>
+        <script src="https://giscus.app/client.js"
+                data-repo="zhanbao2000/blog"
+                data-repo-id="R_kgDOHIZK7A"
+                data-category="Announcements"
+                data-category-id="DIC_kwDOHIZK7M4COdSe"
+                data-mapping="pathname"
+                data-reactions-enabled="1"
+                data-emit-metadata="0"
+                data-input-position="top"
+                data-theme="light"
+                data-lang="zh-CN"
+                data-loading="lazy"
+                crossorigin="anonymous"
+                async>
+        </script>
+
+        <!-- Reload on palette change -->
+        <script>
+            const palette = __md_get("__palette");
+            if (palette && typeof palette.color === "object")
+                if (palette.color.scheme === "slate") {
+                    const giscus = document.querySelector("script[src*=giscus]");
+                    giscus.setAttribute("data-theme", "dark")
+                }
+
+            /* Register event handlers after documented loaded */
+            document.addEventListener("DOMContentLoaded", function() {
+                const ref = document.querySelector("[data-md-component=palette]");
+                ref.addEventListener("change", function() {
+                    const palette = __md_get("__palette");
+                    if (palette && typeof palette.color === "object") {
+                        const theme = palette.color.scheme === "slate" ? "dark" : "light";
+
+                        /* Instruct Giscus to change theme */
+                        const frame = document.querySelector(".giscus-frame");
+                        frame.contentWindow.postMessage(
+                            { giscus: { setConfig: { theme } } },
+                            "https://giscus.app"
+                        )
+                    }
+                })
+            })
+        </script>
+
+    
+
+
+            </article>
+          </div>
+        </div>
+        
+          <a href="#" class="md-top md-icon" data-md-component="top" data-md-state="hidden">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12Z"/></svg>
+            回到页面顶部
+          </a>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    <nav class="md-footer__inner md-grid" aria-label="页脚">
+      
+        
+        <a href="../220511-how-to-write-python-into-classical-chinese/" class="md-footer__link md-footer__link--prev" aria-label="上一页: 如何将 Python 写成文言文" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                上一页
+              </span>
+              如何将 Python 写成文言文
+            </div>
+          </div>
+        </a>
+      
+      
+    </nav>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy; 2023 Akiba Arisa
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+        <div class="md-social">
+  
+    
+    
+    <a href="https://github.com/zhanbao2000" target="_blank" rel="noopener" title="AkibaArisa on GitHub" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.1.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+    </a>
+  
+    
+    
+    <a href="https://steamcommunity.com/id/akibaarisa" target="_blank" rel="noopener" title="AkibaArisa on Steam" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.1.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M496 256c0 137-111.2 248-248.4 248-113.8 0-209.6-76.3-239-180.4l95.2 39.3c6.4 32.1 34.9 56.4 68.9 56.4 39.2 0 71.9-32.4 70.2-73.5l84.5-60.2c52.1 1.3 95.8-40.9 95.8-93.5 0-51.6-42-93.5-93.7-93.5s-93.7 42-93.7 93.5v1.2L176.6 279c-15.5-.9-30.7 3.4-43.5 12.1L0 236.1C10.2 108.4 117.1 8 247.6 8 384.8 8 496 119 496 256zM155.7 384.3l-30.5-12.6a52.79 52.79 0 0 0 27.2 25.8c26.9 11.2 57.8-1.6 69-28.4 5.4-13 5.5-27.3.1-40.3-5.4-13-15.5-23.2-28.5-28.6-12.9-5.4-26.7-5.2-38.9-.6l31.5 13c19.8 8.2 29.2 30.9 20.9 50.7-8.3 19.9-31 29.2-50.8 21zm173.8-129.9c-34.4 0-62.4-28-62.4-62.3s28-62.3 62.4-62.3 62.4 28 62.4 62.3-27.9 62.3-62.4 62.3zm.1-15.6c25.9 0 46.9-21 46.9-46.8 0-25.9-21-46.8-46.9-46.8s-46.9 21-46.9 46.8c.1 25.8 21.1 46.8 46.9 46.8z"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.tabs", "navigation.top", "navigation.tracking"], "search": "../../../assets/javascripts/workers/search.2a1c317c.min.js", "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.config.lang": "ja", "search.config.pipeline": "trimmer, stemmer", "search.config.separator": "[\\s\\-\uff0c\u3002]+", "search.placeholder": "\u641c\u7d22", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version.title": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.3a4b43e5.min.js"></script>
+      
+    
+  </body>
+</html>

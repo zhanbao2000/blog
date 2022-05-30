@@ -15,7 +15,7 @@
         <link rel="canonical" href="https://blog.arisa.moe/blog/2022/220413-Intranet-penetration-bitcomit/">
       
       <link rel="icon" href="../../../assets/favicon.webp">
-      <meta name="generator" content="mkdocs-1.3.0, mkdocs-material-8.2.15">
+      <meta name="generator" content="mkdocs-1.3.0, mkdocs-material-8.2.16">
     
     
       
@@ -23,7 +23,7 @@
       
     
     
-      <link rel="stylesheet" href="../../../assets/stylesheets/main.c382b1dc.min.css">
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.1c3799f8.min.css">
       
         
         <link rel="stylesheet" href="../../../assets/stylesheets/palette.cc9b2e1e.min.css">
@@ -740,6 +740,20 @@
 
             
           
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../220529-python-personal-styleguide/" class="md-nav__link">
+        Python 个人代码风格指导
+      </a>
+    </li>
+  
+
+            
+          
         </ul>
       </nav>
     </li>
@@ -902,17 +916,17 @@ as the main headline.
         </div>
     
 
-    <h2 id="_1">背景</h2>
+    <h2 id="_1">背景<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
 <p>想用比特彗星下种子，但是因为身处数个 NAT 身后，根本没有公网 IP，导致无法让别的 peer 连接到你，下载速度堪忧。</p>
 <p>没有公网 IP 怎么办？打电话问运营商？还是算了吧，干脆向自己 VPS 借一个。</p>
-<h2 id="_2">前提条件</h2>
+<h2 id="_2">前提条件<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
 <ul>
 <li>一台有公网 IP 的机器（最好是固定的 IP）</li>
 <li>这台机器被允许搭建 frp 等内网穿透服务</li>
 <li>这台机器被允许搭建代理服务</li>
 </ul>
-<h2 id="_3">操作</h2>
-<h3 id="frps">部署 frps</h3>
+<h2 id="_3">操作<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h2>
+<h3 id="frps">部署 frps<a class="headerlink" href="#frps" title="Permanent link">&para;</a></h3>
 <p>首先在有公网 IP 的那台机器上部署 frp 服务端。</p>
 <p>去 <a href="https://github.com/fatedier/frp/releases/tag/v0.41.0">release</a> 下载对应系统的 frp，下载之后解压，里面的 frps 就是我们需要的 frp 服务端。</p>
 <p>写 <code>frps.ini</code>：</p>
@@ -948,7 +962,7 @@ as the main headline.
 2022/04/13 09:42:18 [I] [root.go:209] frps started successfully
 </code></pre></div>
 <p>说明你的服务端正在监听所有来自 <code>7000</code> 端口的 frp 连接。</p>
-<h3 id="frpc">部署 frpc</h3>
+<h3 id="frpc">部署 frpc<a class="headerlink" href="#frpc" title="Permanent link">&para;</a></h3>
 <p>在自己需要运行比特彗星的电脑上部署 frp 客户端。</p>
 <p>同样，去下载对应系统版本的 frp，解压获取 frpc。</p>
 <p>写 <code>frpc.ini</code>：</p>
@@ -1037,7 +1051,7 @@ as the main headline.
 <p><code>eMule Listen TCP/UDP</code> 是比特彗星电驴插件的通信端口，均设置成 <code>127.0.0.1</code> 上的 <code>22224</code>，和比特彗星与电驴插件内的设置保持一致。如果你的比特彗星版本没有电驴插件，那么你可以忽略该项。</p>
 <p><img alt="listen emule" src="../images/220413-Intranet-penetration-bitcomit/emule.jpg" /></p>
 <p><img alt="listen emule2" src="../images/220413-Intranet-penetration-bitcomit/emule2.jpg" /></p>
-<h2 id="frp">测试 frp 连接</h2>
+<h2 id="frp">测试 frp 连接<a class="headerlink" href="#frp" title="Permanent link">&para;</a></h2>
 <p>现在在你的客户端上执行：</p>
 <div class="highlight"><pre><span></span><code>frpc.exe -c frpc.ini
 </code></pre></div>
@@ -1073,7 +1087,7 @@ as the main headline.
 
   frpc --&gt; bitcomit_10400[localhost:10400];</code></pre>
 <p>现在，所有 peers 发送到那台具有公网 IP 的机器的 <code>allow_ports</code> 端口（包括 <code>10400</code>）的 TCP 和 UDP 数据包，都会被 <code>frps.exe</code> 通过反向 websocket 转发回客户端上的 <code>frpc.exe</code>，然后 <code>frpc.exe</code> 再发送到 <code>localhost:10400</code>，由于此时比特彗星正在监听本地的 <code>10400</code> 端口，因此比特彗星将会把这些 <code>frpc.exe</code> 发来的数据包认为是 peers 发送过来的数据包。</p>
-<h2 id="_4">设置代理</h2>
+<h2 id="_4">设置代理<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h2>
 <p>frp 只能解决一个方向上的问题，就是 peers 连接到客户端，而客户端连接到 peers 的方式将会由代理服务器实现。</p>
 <p>你需要在那台具有公网 IP 地址的机器上搭建一个代理服务，从而让你的比特彗星能通过代理连接到 peers。</p>
 <p>具体搭建方法这里不做介绍，网上有很多教程。假设我们已经搭建好了这个代理，并且映射在了 <code>socks5://localhost:1089</code> 上。</p>
@@ -1084,10 +1098,10 @@ as the main headline.
 <p><img alt="green" src="../images/220413-Intranet-penetration-bitcomit/green.png" /></p>
 <p>如果你的比特彗星客户端内有电驴插件，那么你应当同时为电驴插件也打开代理。如图：</p>
 <p><img alt="emule-proxy" src="../images/220413-Intranet-penetration-bitcomit/emule-proxy.jpg" /></p>
-<h2 id="_5">关闭防吸血</h2>
+<h2 id="_5">关闭防吸血<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h2>
 <p>因为比特彗星接收到的数据包都是 <code>frpc.exe</code> 发来的，因此所有的 peers 的外网 IP 都是 <code>127.0.0.1</code>，大量相同 IP 可能会触发比特彗星的防吸血机制，因此把他关掉。</p>
 <p><img alt="anti leech" src="../images/220413-Intranet-penetration-bitcomit/anti-leech.png" /></p>
-<h2 id="_6">测试效果</h2>
+<h2 id="_6">测试效果<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h2>
 <p>现在去下载任意一个 BT 种子，如果点开 <code>用户</code> 选项卡，发现很多来自 <code>127.0.0.1</code> 的连接，并且来源是 <code>被动</code>，发起是 <code>远程</code>，此时就说明你已经设置正确了。</p>
 <p><img alt="peers" src="../images/220413-Intranet-penetration-bitcomit/peers.png" /></p>
 
@@ -1253,7 +1267,7 @@ as the main headline.
     <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.tabs", "navigation.top", "navigation.tracking"], "search": "../../../assets/javascripts/workers/search.2a1c317c.min.js", "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.config.lang": "ja", "search.config.pipeline": "trimmer, stemmer", "search.config.separator": "[\\s\\-\uff0c\u3002]+", "search.placeholder": "\u641c\u7d22", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version.title": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}}</script>
     
     
-      <script src="../../../assets/javascripts/bundle.a6c66575.min.js"></script>
+      <script src="../../../assets/javascripts/bundle.3a4b43e5.min.js"></script>
       
     
   </body>

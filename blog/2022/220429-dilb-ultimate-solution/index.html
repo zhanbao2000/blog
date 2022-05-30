@@ -15,7 +15,7 @@
         <link rel="canonical" href="https://blog.arisa.moe/blog/2022/220429-dilb-ultimate-solution/">
       
       <link rel="icon" href="../../../assets/favicon.webp">
-      <meta name="generator" content="mkdocs-1.3.0, mkdocs-material-8.2.15">
+      <meta name="generator" content="mkdocs-1.3.0, mkdocs-material-8.2.16">
     
     
       
@@ -23,7 +23,7 @@
       
     
     
-      <link rel="stylesheet" href="../../../assets/stylesheets/main.c382b1dc.min.css">
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.1c3799f8.min.css">
       
         
         <link rel="stylesheet" href="../../../assets/stylesheets/palette.cc9b2e1e.min.css">
@@ -835,6 +835,20 @@
 
             
           
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../220529-python-personal-styleguide/" class="md-nav__link">
+        Python 个人代码风格指导
+      </a>
+    </li>
+  
+
+            
+          
         </ul>
       </nav>
     </li>
@@ -1094,7 +1108,7 @@ as the main headline.
         </div>
     
 
-    <h2 id="_1">绪论</h2>
+    <h2 id="_1">绪论<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
 <blockquote>
 <p>历时 14 个小时，反复下载高达 60 GB，重新部署整个 Visual Studio 多达 5 次，从而打磨出的 dlib 安装终极解决方案，专注于解决 dlib 安装过程中出现的各种疑难杂症。</p>
 </blockquote>
@@ -1123,13 +1137,13 @@ as the main headline.
 <p>即使是有 <code>万能</code> 之称的 <a href="https://anaconda.org">Anaconda</a> ，它也不能完全这个问题。因为它下载的 dlib 没有提供 GPU 支持，这直接造成了 <code>一核有难，万核围观</code> 的经典局面。而目前（2022 年 4 月底）唯一能在 Anaconda 仓库中找到的有关 CUDA 和 GPU 的软件包只提供了 Linux 的编译版本（<a href="https://anaconda.org/zeroae/dlib-cuda">zeroae/dlib-cuda</a> 和 <a href="https://anaconda.org/hoan/dlib-gpu">hoan/dlib-gpu</a> ）且均很长时间没有更新。</p>
 <p>这使得手头没有 Visual Studio 的开发人员（其实就算有 Visual Studio 也差不多）在 Windows 平台上利用 CNN（卷积神经网络）进行人脸识别或者其他机器学习任务时，简直和坐牢一样。</p>
 <p>这个方案的出现，就是为了用一个简单、直观、有效的方法，一次性解决这个问题。</p>
-<h2 id="_2">拟议方案的前提条件</h2>
+<h2 id="_2">拟议方案的前提条件<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
 <p>在所有步骤开始之前，请先确保你满足以下前提条件：</p>
-<h3 id="_3">系统架构</h3>
+<h3 id="_3">系统架构<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
 <p>为了避免不必要的麻烦，请在接下来的<strong>所有步骤</strong>中，均使用 64 位系统架构（amd64 或者 x64）。</p>
-<h3 id="conda">Conda</h3>
+<h3 id="conda">Conda<a class="headerlink" href="#conda" title="Permanent link">&para;</a></h3>
 <p>目前我的版本是 <a href="https://anaconda.org">Anaconda</a> 1.9.0，其他版本<strong>应该</strong>不影响。同理，Python 版本<strong>应该</strong>也不影响。</p>
-<h3 id="visual-studio"><a href="https://my.visualstudio.com/Downloads/Featured?mkt=zh-cn">Visual Studio</a></h3>
+<h3 id="visual-studio"><a href="https://my.visualstudio.com/Downloads/Featured?mkt=zh-cn">Visual Studio</a><a class="headerlink" href="#visual-studio" title="Permanent link">&para;</a></h3>
 <p>以下 Visual Studio 中，你至少需要拥有一个：</p>
 <ul>
 <li>Visual Studio 2019</li>
@@ -1175,8 +1189,8 @@ as the main headline.
 <p>你所需要做的就是检查这个临时文件夹的权限，如果发现有问题，则用以下方法修改这个文件夹的权限：</p>
 <p>右键该文件夹 - <code>属性</code> - <code>安全</code> - <code>编辑</code> - <code>Everyone</code> - 勾选 <code>完全控制</code> - <code>确认</code></p>
 </div>
-<h2 id="_4">拟议方案的执行步骤</h2>
-<h3 id="conda_1">构建 Conda 环境</h3>
+<h2 id="_4">拟议方案的执行步骤<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h2>
+<h3 id="conda_1">构建 Conda 环境<a class="headerlink" href="#conda_1" title="Permanent link">&para;</a></h3>
 <p>笔者的 PyCharm 能让新项目选择 Conda 环境并默认构建好，这里略过使用 IDE 构建的方法。</p>
 <p><img alt="pycharm-new-project" src="../images/220429-dilb-ultimate-solution/pycharm-new-project.jpg" /></p>
 <p>或者使用手动构建：</p>
@@ -1185,7 +1199,7 @@ as the main headline.
 <p>然后进入虚拟环境：</p>
 <div class="highlight"><pre><span></span><code>conda activate dlib_build_test
 </code></pre></div>
-<h3 id="cuda-cudnn">安装 CUDA 和 cuDNN</h3>
+<h3 id="cuda-cudnn">安装 CUDA 和 cuDNN<a class="headerlink" href="#cuda-cudnn" title="Permanent link">&para;</a></h3>
 <p>不通过 Nvidia 官网，而是通过 Conda 安装 CUDA 和 cuDNN。</p>
 <div class="highlight"><pre><span></span><code>conda install cuda cudnn -c nvidia
 </code></pre></div>
@@ -1228,14 +1242,14 @@ cudatoolkit               11.3.1               h59b6b97_2
 <span class="p">:</span><span class="c1">: I:\ProgramData\Anaconda3\envs\dlib_build_test\bin\nvcc.exe</span>
 </code></pre></div>
 <p>例如现在它在 <code>I:\ProgramData\Anaconda3\envs\dlib_build_test\bin\nvcc.exe</code>。</p>
-<h3 id="dlib">获取 dlib 源码</h3>
+<h3 id="dlib">获取 dlib 源码<a class="headerlink" href="#dlib" title="Permanent link">&para;</a></h3>
 <p>从 Releases 下载：（推荐）<a href="https://github.com/davisking/dlib/archive/refs/tags/v19.23.zip">v19.23</a></p>
 <p>或者从 GitHub克隆：</p>
 <div class="highlight"><pre><span></span><code>git clone https://github.com/davisking/dlib.git
 <span class="k">cd</span> dlib
 </code></pre></div>
-<h3 id="_5">在构建之前</h3>
-<h4 id="msvc-x64">进入 MSVC x64 编译环境</h4>
+<h3 id="_5">在构建之前<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h3>
+<h4 id="msvc-x64">进入 MSVC x64 编译环境<a class="headerlink" href="#msvc-x64" title="Permanent link">&para;</a></h4>
 <div class="highlight"><pre><span></span><code><span class="nv">%comspec%</span> /k <span class="s2">&quot;I:\Program Files (x86)\Microsoft Visual Studio\2019\BuildTools\VC\Auxiliary\Build\vcvars64.bat&quot;</span>
 </code></pre></div>
 <p>其中的路径需要根据你的 Visual Studio 的安装位置而改变，但最简单的方法其实是从开始菜单中找到 <code>x64 Native Tools Command Prompt for VS 2019</code> 的快捷方式，然后点击右键查看属性。</p>
@@ -1255,7 +1269,7 @@ where cl
 <p class="admonition-title">提示</p>
 <p>运行 <code>where cmake</code> 的时候出现了两个 <code>cmake</code>，其中一个是 Kitware 的 cmake，另一个是 MSVC 的 cmake。而 dlib 在编译过程中会检查所有 cmake 的路径，如果不存在 MSVC 的 cmake，脚本会报错而停止。</p>
 </div>
-<h4 id="dlib_1">修改 dlib 源码</h4>
+<h4 id="dlib_1">修改 dlib 源码<a class="headerlink" href="#dlib_1" title="Permanent link">&para;</a></h4>
 <p>见 <a href="https://github.com/davisking/dlib/issues/2463">Dlib failed to build due to many errors: error C2065 and C2338 · Issue #2463 · davisking/dlib</a></p>
 <p>打开 <code>dlib\dlib\external\pybind11\include\pybind11/numpy.h</code>，找到：</p>
 <div class="highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">numpy.h</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">26</span>
@@ -1279,18 +1293,18 @@ where cl
 </span><span class="hll"><span class="k">typedef</span><span class="w"> </span><span class="n">SSIZE_T</span><span class="w"> </span><span class="kt">ssize_t</span><span class="p">;</span><span class="w"></span>
 </span><span class="cp">#endif</span>
 </code></pre></div></td></tr></table></div>
-<h3 id="_6">开始构建</h3>
+<h3 id="_6">开始构建<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h3>
 <div class="highlight"><pre><span></span><code><span class="k">mkdir</span> build
 <span class="k">cd</span> build
 cmake .. -DDLIB_USE_CUDA=1 -DUSE_AVX_INSTRUCTIONS=1 -DCUDAToolkit_ROOT=<span class="nv">%NVCC_PATH%</span>
 </code></pre></div>
 <p>其中 <code class="highlight"><span class="nv">%NVCC_PATH%</span></code> 是你在之前获取的路径，例如 <code>I:\ProgramData\Anaconda3\envs\dlib_build_test\bin\nvcc.exe</code>。</p>
 <p>基于我们做好的前期铺垫，理论上这里可以一次性构建成功，如果构建仍然没有成功，请仔细阅读 <code>CMakeError.log</code> 文件，分析其中出现的错误。在每次重新构建之前，请先删除 <code>build</code> 文件夹里的所有内容。</p>
-<h3 id="_7">尝试编译</h3>
+<h3 id="_7">尝试编译<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h3>
 <div class="highlight"><pre><span></span><code>cmake --build .
 </code></pre></div>
 <p>同上，理论上是一次性构建成功。</p>
-<h3 id="_8">尝试安装</h3>
+<h3 id="_8">尝试安装<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h3>
 <div class="highlight"><pre><span></span><code>python setup.py install --set DLIB_USE_CUDA=1 --no DLIB_GIF_SUPPORT
 </code></pre></div>
 <div class="admonition 危险 danger">
@@ -1304,8 +1318,8 @@ cmake .. -DDLIB_USE_CUDA=1 -DUSE_AVX_INSTRUCTIONS=1 -DCUDAToolkit_ROOT=<span cla
 <div class="highlight"><pre><span></span><code>python setup.py bdist_wheel --set DLIB_USE_CUDA=1 --no DLIB_GIF_SUPPORT
 </code></pre></div>
 </div>
-<h3 id="_9">在安装之后</h3>
-<h4 id="dlib_2">卸载旧版本的 dlib</h4>
+<h3 id="_9">在安装之后<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h3>
+<h4 id="dlib_2">卸载旧版本的 dlib<a class="headerlink" href="#dlib_2" title="Permanent link">&para;</a></h4>
 <p>就算在上一步的 <code>python setup.py install</code> 没有任何报错，我们的 dlib 也<strong>可能</strong>还没有正确安装。</p>
 <p>对于一些用户，他们可能是属于<em>中途</em>加入这个方案的。例如，他们在此之前已经从</p>
 <div class="highlight"><pre><span></span><code>conda install -c conda-forge dlib 
@@ -1319,7 +1333,7 @@ cmake .. -DDLIB_USE_CUDA=1 -DUSE_AVX_INSTRUCTIONS=1 -DCUDAToolkit_ROOT=<span cla
 <div class="highlight"><pre><span></span><code>python setup.py install --set DLIB_USE_CUDA=1 --no DLIB_GIF_SUPPORT
 </code></pre></div>
 <p>现在 <code class="highlight"><span class="n">dlib</span><span class="o">.</span><span class="n">DLIB_USE_CUDA</span></code> 的值应当是 <code class="highlight"><span class="kc">True</span></code></p>
-<h4 id="windows">关闭 Windows 错误报告服务</h4>
+<h4 id="windows">关闭 Windows 错误报告服务<a class="headerlink" href="#windows" title="Permanent link">&para;</a></h4>
 <p>这是一个比较玄学的东西。在启用了 CUDA 的 dlib 正确安装完成后，有些人在运行的时候可能会发生这个错误。具体体现如下：</p>
 <p>这里有两份差不多的人脸检测 demo，其中一个使用 HOG，另一个使用 CNN。</p>
 <div class="tabbed-set tabbed-alternate" data-tabs="1:2"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">HOG</label><label for="__tabbed_1_2">CNN</label></div>
@@ -1405,9 +1419,9 @@ cmake .. -DDLIB_USE_CUDA=1 -DUSE_AVX_INSTRUCTIONS=1 -DCUDAToolkit_ROOT=<span cla
 </li>
 </ol>
 <p>如此一来，Windows 将不会再产生错误报告，我们使用了 <code class="highlight"><span class="n">cnn_face_detection_model_v1</span><span class="p">()</span></code> 的 python 脚本也将在检测完成后正常结束，不会一直搁这卡着。</p>
-<h2 id="_10">结论</h2>
+<h2 id="_10">结论<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h2>
 <p>特定的 CUDA + Visual Studio + dlib + python 版本的组合目前仍然是 dlib 中的一大难题。如你所见，这个方案的阅读加实践的总时长可能超过了半个小时，奈何不同软件，不同平台之间的配套的确很困难，但我们仍将解决他们。相信这个方案可以帮助到更多的人。</p>
-<h2 id="_11">致谢</h2>
+<h2 id="_11">致谢<a class="headerlink" href="#_11" title="Permanent link">&para;</a></h2>
 <p>感谢 dlib 的所有贡献者为我们带来了实用的机器学习工具；感谢所有在 GitHub dlib 仓库下提出和解决 issue 的开发者和研究人员，没有他们这篇文章将无从下手；也感谢我的毕设老师，选了一个这样的课题，把我憋出了一篇这样的文章。</p>
 
     <!-- Last update of source file -->
@@ -1572,7 +1586,7 @@ cmake .. -DDLIB_USE_CUDA=1 -DUSE_AVX_INSTRUCTIONS=1 -DCUDAToolkit_ROOT=<span cla
     <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.tabs", "navigation.top", "navigation.tracking"], "search": "../../../assets/javascripts/workers/search.2a1c317c.min.js", "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.config.lang": "ja", "search.config.pipeline": "trimmer, stemmer", "search.config.separator": "[\\s\\-\uff0c\u3002]+", "search.placeholder": "\u641c\u7d22", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version.title": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}}</script>
     
     
-      <script src="../../../assets/javascripts/bundle.a6c66575.min.js"></script>
+      <script src="../../../assets/javascripts/bundle.3a4b43e5.min.js"></script>
       
     
   </body>

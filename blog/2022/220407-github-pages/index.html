@@ -15,7 +15,7 @@
         <link rel="canonical" href="https://blog.arisa.moe/blog/2022/220407-github-pages/">
       
       <link rel="icon" href="../../../assets/favicon.webp">
-      <meta name="generator" content="mkdocs-1.3.0, mkdocs-material-8.2.15">
+      <meta name="generator" content="mkdocs-1.3.0, mkdocs-material-8.2.16">
     
     
       
@@ -23,7 +23,7 @@
       
     
     
-      <link rel="stylesheet" href="../../../assets/stylesheets/main.c382b1dc.min.css">
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.1c3799f8.min.css">
       
         
         <link rel="stylesheet" href="../../../assets/stylesheets/palette.cc9b2e1e.min.css">
@@ -726,6 +726,20 @@
 
             
           
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../220529-python-personal-styleguide/" class="md-nav__link">
+        Python 个人代码风格指导
+      </a>
+    </li>
+  
+
+            
+          
         </ul>
       </nav>
     </li>
@@ -877,7 +891,7 @@ as the main headline.
     <p>这篇文章讲述了如何使用 GitHub Actions / Pages 自动化部署文档，以及遇到的坑。</p>
 <p>如你所见，这个博客也是使用 GitHub Actions 自动部署在 GitHub Pages 上的。</p>
 <p>这篇文章将以 <a href="https://www.mkdocs.org/">MkDocs</a> 为例讲述。</p>
-<h2 id="_1">本地部署测试</h2>
+<h2 id="_1">本地部署测试<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
 <p>首先你自己搭建的文档得在本地能用嘛，首先测试下本地是否能用：</p>
 <div class="highlight"><pre><span></span><code>mkdocs serve
 </code></pre></div>
@@ -888,9 +902,9 @@ as the main headline.
 mkdocs serve --dev-addr localhost:8001
 </code></pre></div></p>
 </div>
-<h2 id="vcs-github">创建本地 VCS 并和 GitHub 关联</h2>
+<h2 id="vcs-github">创建本地 VCS 并和 GitHub 关联<a class="headerlink" href="#vcs-github" title="Permanent link">&para;</a></h2>
 <p>这里以 PyCharm 为例：</p>
-<h3 id="vcs">创建本地 VCS</h3>
+<h3 id="vcs">创建本地 VCS<a class="headerlink" href="#vcs" title="Permanent link">&para;</a></h3>
 <pre class="mermaid"><code>graph LR
   A[VCS] --&gt; B;
   B[启用版本控制集成] --&gt; C;
@@ -900,13 +914,13 @@ mkdocs serve --dev-addr localhost:8001
 <p>记得在提交之前先创建好 <code>.gitignore</code> 文件，否则你提交之后还要继续提交一次 <code>.gitignore</code> 文件。</p>
 </div>
 <p>然后选择提交。</p>
-<h3 id="github">和 GitHub 关联</h3>
+<h3 id="github">和 GitHub 关联<a class="headerlink" href="#github" title="Permanent link">&para;</a></h3>
 <p>这一步其实是在 GitHub 上自动创建一个同名仓库。如果仓库已经存在的话，可能需要 Merge 或者 Rebase。</p>
 <pre class="mermaid"><code>graph LR
   A[Git] --&gt; B;
   B[GitHub] --&gt; C;
   C[在 GitHub 上共享项目] --&gt; D[确定];</code></pre>
-<h2 id="github-actions">在 GitHub 上创建 Actions 任务</h2>
+<h2 id="github-actions">在 GitHub 上创建 Actions 任务<a class="headerlink" href="#github-actions" title="Permanent link">&para;</a></h2>
 <p>这一步坑巨多。</p>
 <p>首先点击 <code>Actions</code> -&gt; <code>set up a workflow yourself</code></p>
 <p>按照任何一个你能找到的 Pages 部署文档来写这个 <code>yml</code> 文件，这里我们采用 <a href="https://squidfunk.github.io/mkdocs-material/publishing-your-site/#with-github-actions">Material for MkDocs</a> 的模板。</p>
@@ -1016,7 +1030,7 @@ mkdocs serve --dev-addr localhost:8001
 </span></code></pre></div></td></tr></table></div>
 </div>
 <p>坑还没结束，继续往下看</p>
-<h2 id="pages">设置 Pages</h2>
+<h2 id="pages">设置 Pages<a class="headerlink" href="#pages" title="Permanent link">&para;</a></h2>
 <p>你以为这样就结束了？</p>
 <p>还没有！</p>
 <p>Actions 结束后会给你一个页面（当然也可以自己去找），你点开这个页面会直接告诉你 <code>404</code>。</p>
@@ -1035,7 +1049,7 @@ mkdocs serve --dev-addr localhost:8001
   C[Pages] --&gt; D[Source];</code></pre>
 <p>选择分支为 <code>gh-pages</code>，这是 Actions 自动构建的文件所存放的分支，目录选择 <code>/</code>。</p>
 <p>点 <code>save</code>，这下是真没问题了。</p>
-<h2 id="_2">（可选）使用自定义域名</h2>
+<h2 id="_2">（可选）使用自定义域名<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
 <p>使用自定义域名又会带来两个坑，无语。</p>
 <p>首先你在设置 <code>Source</code> 的时候，能看到下面一栏是 <code>Custom domain</code>，这个就是设置自定义域名的地方，比如我这个博客构建在了 <a href="https://zhanbao2000.github.io/blog">https://zhanbao2000.github.io/blog</a> ，但是我想让 <a href="https://blog.arisa.moe/">https://blog.arisa.moe/</a> 指向这个博客，就得修改这玩意。</p>
 <div class="admonition 小提示">
@@ -1240,7 +1254,7 @@ mkdocs serve --dev-addr localhost:8001
     <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.tabs", "navigation.top", "navigation.tracking"], "search": "../../../assets/javascripts/workers/search.2a1c317c.min.js", "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.config.lang": "ja", "search.config.pipeline": "trimmer, stemmer", "search.config.separator": "[\\s\\-\uff0c\u3002]+", "search.placeholder": "\u641c\u7d22", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version.title": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}}</script>
     
     
-      <script src="../../../assets/javascripts/bundle.a6c66575.min.js"></script>
+      <script src="../../../assets/javascripts/bundle.3a4b43e5.min.js"></script>
       
     
   </body>

@@ -15,7 +15,7 @@
         <link rel="canonical" href="https://blog.arisa.moe/blog/2022/220414-fk-arcaea-songlist-hash/">
       
       <link rel="icon" href="../../../assets/favicon.webp">
-      <meta name="generator" content="mkdocs-1.3.0, mkdocs-material-8.2.15">
+      <meta name="generator" content="mkdocs-1.3.0, mkdocs-material-8.2.16">
     
     
       
@@ -23,7 +23,7 @@
       
     
     
-      <link rel="stylesheet" href="../../../assets/stylesheets/main.c382b1dc.min.css">
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.1c3799f8.min.css">
       
         
         <link rel="stylesheet" href="../../../assets/stylesheets/palette.cc9b2e1e.min.css">
@@ -685,6 +685,20 @@
 
             
           
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../220529-python-personal-styleguide/" class="md-nav__link">
+        Python 个人代码风格指导
+      </a>
+    </li>
+  
+
+            
+          
         </ul>
       </nav>
     </li>
@@ -800,7 +814,7 @@ as the main headline.
 <p class="admonition-title">提示</p>
 <p>iOS 那边的 <code>Arc-mobile</code> 也可以用同样思路进行修改。</p>
 </div>
-<h2 id="_1">定位</h2>
+<h2 id="_1">定位<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
 <p>首先字符串搜索 <code>songlist</code>，找到 <code>songs/songlist</code>，双击。</p>
 <p><img alt="string-songlist" src="../images/220414-fk-arcaea-songlist-hash/string-songlist.png" /></p>
 <p>右键 <code>Xrefs graph to</code>，看看这个变量被引用的位置。</p>
@@ -819,7 +833,7 @@ as the main headline.
 <p>找到调用 <code>exit()</code> 函数的标签 <code>loc_9459F0</code>，向上高亮所有跳转到这个标签的指令。</p>
 <p><img alt="jump" src="../images/220414-fk-arcaea-songlist-hash/jump.png" /></p>
 <p>可以看到，都是一些 <code>CBNZ</code> 和 <code>B.NE</code> 指令，那就很好办了，全部改成 <code>NOP</code> 就行。</p>
-<h2 id="_2">修改</h2>
+<h2 id="_2">修改<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
 <p>直接上 Keypatch。</p>
 <p><img alt="keypatch" src="../images/220414-fk-arcaea-songlist-hash/keypatch.png" /></p>
 <p>总共6处，全部改成 <code>NOP</code>，改完再 F5 一次，搜一下 <code>exit</code>。</p>
@@ -988,7 +1002,7 @@ as the main headline.
     <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.tabs", "navigation.top", "navigation.tracking"], "search": "../../../assets/javascripts/workers/search.2a1c317c.min.js", "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.config.lang": "ja", "search.config.pipeline": "trimmer, stemmer", "search.config.separator": "[\\s\\-\uff0c\u3002]+", "search.placeholder": "\u641c\u7d22", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version.title": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}}</script>
     
     
-      <script src="../../../assets/javascripts/bundle.a6c66575.min.js"></script>
+      <script src="../../../assets/javascripts/bundle.3a4b43e5.min.js"></script>
       
     
   </body>

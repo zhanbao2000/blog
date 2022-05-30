@@ -15,7 +15,7 @@
         <link rel="canonical" href="https://blog.arisa.moe/blog/2022/220412-ida-substitute-usage/">
       
       <link rel="icon" href="../../../assets/favicon.webp">
-      <meta name="generator" content="mkdocs-1.3.0, mkdocs-material-8.2.15">
+      <meta name="generator" content="mkdocs-1.3.0, mkdocs-material-8.2.16">
     
     
       
@@ -23,7 +23,7 @@
       
     
     
-      <link rel="stylesheet" href="../../../assets/stylesheets/main.c382b1dc.min.css">
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.1c3799f8.min.css">
       
         
         <link rel="stylesheet" href="../../../assets/stylesheets/palette.cc9b2e1e.min.css">
@@ -713,6 +713,20 @@
 
             
           
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../220529-python-personal-styleguide/" class="md-nav__link">
+        Python 个人代码风格指导
+      </a>
+    </li>
+  
+
+            
+          
         </ul>
       </nav>
     </li>
@@ -845,15 +859,15 @@ as the main headline.
     
 
     <p>最近在修改某个🇬🇧游戏，涉及到一些 IDA 在替换方面的使用，这里记录一下，免得每次都去麻烦群友问 IDA 怎么用。</p>
-<h2 id="_1">文本搜索</h2>
+<h2 id="_1">文本搜索<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
 <pre class="mermaid"><code>graph LR
   A[Search] --&gt; B[text];</code></pre>
 <p>输入想要搜索的文本即可。</p>
-<h2 id="_2">搜索字节（十六进制、十进制和八进制）</h2>
+<h2 id="_2">搜索字节（十六进制、十进制和八进制）<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
 <pre class="mermaid"><code>graph LR
   A[Search] --&gt; B[sequence of bytes];</code></pre>
 <p>然后选择 <code>Hex</code>、<code>Decimal</code> 或 <code>Octal</code>，输入你需要搜索的字节，每个字节使用空格分隔。</p>
-<h2 id="hex">Hex 替换</h2>
+<h2 id="hex">Hex 替换<a class="headerlink" href="#hex" title="Permanent link">&para;</a></h2>
 <p>首先在 <code>IDA View</code> 选项卡中选择到你想要替换的内容所在的字节（以字符串为例），然后切换到 <code>Hex View</code> 选项卡（十六进制编辑器）。选择一个字节，你接下来要会从这里开始编辑。</p>
 <div class="admonition 如果没有这个选项卡">
 <p class="admonition-title">如果没有这个选项卡</p>
@@ -871,14 +885,14 @@ as the main headline.
 <p>选择 <code>Edit</code> -&gt; <code>Patch Program</code> -&gt; <code>Change Byte..</code>，在弹出的对话框中对应填写你要替换的十六进制值（一次性替换16个字节），然后点 <code>OK</code>。</p>
 </li>
 </ol>
-<h2 id="_3">搜索字符串</h2>
+<h2 id="_3">搜索字符串<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h2>
 <pre class="mermaid"><code>graph LR
   A[View] --&gt; B;
   B[Open subviews] --&gt; C[Strings];</code></pre>
 <p>在出来的字符串列表中直接使用 <code>Ctrl+F</code> 搜索即可。</p>
-<h2 id="_4">生成伪代码</h2>
+<h2 id="_4">生成伪代码<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h2>
 <p>在 <code>IDA View</code> 选项卡中选择到你生成的函数，按 <code>F5</code> 生成伪代码。</p>
-<h2 id="_5">保存二进制文件</h2>
+<h2 id="_5">保存二进制文件<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h2>
 <p><pre class="mermaid"><code>graph LR
   A[Edit] --&gt; B;
   B[Patch Program] --&gt; C[Apply patches to input file..];</code></pre>
@@ -1046,7 +1060,7 @@ as the main headline.
     <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.tabs", "navigation.top", "navigation.tracking"], "search": "../../../assets/javascripts/workers/search.2a1c317c.min.js", "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.config.lang": "ja", "search.config.pipeline": "trimmer, stemmer", "search.config.separator": "[\\s\\-\uff0c\u3002]+", "search.placeholder": "\u641c\u7d22", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version.title": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}}</script>
     
     
-      <script src="../../../assets/javascripts/bundle.a6c66575.min.js"></script>
+      <script src="../../../assets/javascripts/bundle.3a4b43e5.min.js"></script>
       
     
   </body>

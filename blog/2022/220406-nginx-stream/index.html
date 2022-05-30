@@ -15,7 +15,7 @@
         <link rel="canonical" href="https://blog.arisa.moe/blog/2022/220406-nginx-stream/">
       
       <link rel="icon" href="../../../assets/favicon.webp">
-      <meta name="generator" content="mkdocs-1.3.0, mkdocs-material-8.2.15">
+      <meta name="generator" content="mkdocs-1.3.0, mkdocs-material-8.2.16">
     
     
       
@@ -23,7 +23,7 @@
       
     
     
-      <link rel="stylesheet" href="../../../assets/stylesheets/main.c382b1dc.min.css">
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.1c3799f8.min.css">
       
         
         <link rel="stylesheet" href="../../../assets/stylesheets/palette.cc9b2e1e.min.css">
@@ -692,6 +692,20 @@
 
             
           
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../220529-python-personal-styleguide/" class="md-nav__link">
+        Python 个人代码风格指导
+      </a>
+    </li>
+  
+
+            
+          
         </ul>
       </nav>
     </li>
@@ -804,7 +818,7 @@ as the main headline.
         </div>
     
 
-    <h2 id="_1">背景</h2>
+    <h2 id="_1">背景<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
 <p>帮 aw 做 AUA 转发节点的时候遇到了这个需求，因为 AUA 需要频繁向 616 请求 API，但是 616 对 同一个 IP 的请求数量有限制，所以 AUA 需要大量的转发节点来维持使用。</p>
 <p>aw 的建议是用 <code>socat</code> (Linux server) 或者 <code>netsh</code> (Windows server)</p>
 <div class="tabbed-set tabbed-alternate" data-tabs="1:2"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">Linux server</label><label for="__tabbed_1_2">Windows server</label></div>
@@ -820,7 +834,7 @@ as the main headline.
 </div>
 </div>
 <p>问题是我服务器上已经有 <code>nginx</code> 了，不是很想装 <code>socat</code>。</p>
-<h2 id="_2">初次尝试</h2>
+<h2 id="_2">初次尝试<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
 <p>了解到 <code>nginx</code> 从 <code>1.9.0</code> 开始，新增加了一个 stream 模块，用来实现四层协议的转发、代理或者负载均衡等。用法是直接在 <code>nginx.conf</code> 中配置 <code>stream</code> 字段。</p>
 <p>但是实际配置完成后发现，nginx 并不认识 stream 模块。使用 <code>nginx -t</code> 检查配置无法通过。报错提示 <code>unknown directive "stream" in /etc/nginx/nginx.conf</code>。</p>
 <p>后来了解到，如果需要使 nginx 内置支持 stream 模块，需要在编译时指定 <code>--with-stream</code> 选项。即</p>
@@ -828,7 +842,7 @@ as the main headline.
 </code></pre></div>
 <p><a href="http://nginx.org/en/docs/stream/ngx_stream_core_module.html">官网的说法</a></p>
 <p>这个方法实属过于麻烦，还要重装 nginx。</p>
-<h2 id="_3">解决方案</h2>
+<h2 id="_3">解决方案<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h2>
 <p>从这篇文章了解到了不用重新编译也能支持 stream 模块的方法：</p>
 <p><a href="https://serverfault.com/questions/858067/unknown-directive-stream-in-etc-nginx-nginx-conf86">unknown directive "stream" in /etc/nginx/nginx.conf:86 - Server Fault</a></p>
 <p>简单来说就是，即使我们没有在编译时指定 <code>--with-stream</code> 选项，nginx 也会将 stream 模块编译进来，但是并没有让 nginx 默认支持，而是需要我们自行导入，即：</p>
@@ -998,7 +1012,7 @@ as the main headline.
     <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.tabs", "navigation.top", "navigation.tracking"], "search": "../../../assets/javascripts/workers/search.2a1c317c.min.js", "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.config.lang": "ja", "search.config.pipeline": "trimmer, stemmer", "search.config.separator": "[\\s\\-\uff0c\u3002]+", "search.placeholder": "\u641c\u7d22", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version.title": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}}</script>
     
     
-      <script src="../../../assets/javascripts/bundle.a6c66575.min.js"></script>
+      <script src="../../../assets/javascripts/bundle.3a4b43e5.min.js"></script>
       
     
   </body>
