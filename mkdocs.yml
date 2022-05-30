@@ -58,6 +58,8 @@ plugins:
 markdown_extensions:
   - admonition
   - attr_list
+  - def_list
+  - footnotes
   - pymdownx.caret
   - pymdownx.critic
   - pymdownx.details
@@ -77,5 +79,7 @@ markdown_extensions:
   - pymdownx.tabbed:
       alternate_style: true
   - pymdownx.tilde
+  - toc:
+      permalink: true
 
 copyright: 'Copyright &copy; 2023 Akiba Arisa'
