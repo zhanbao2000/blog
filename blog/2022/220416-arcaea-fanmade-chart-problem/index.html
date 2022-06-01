@@ -779,7 +779,7 @@ timing(78620,174.00,4.00);
 <li>每个谱面有且仅有一个 <code>t=0</code>的 <code>timing</code> 语句，且其 <code>bpm</code> 参数不可为负数</li>
 <li><code>timing</code> 语句中，<code>bpm</code> 参数必须保留两位小数</li>
 <li><code>camera</code> 语句的第 2-7 个参数（即 <code>transverse</code>, <code>bottomzoom</code>, <code>linezoom</code>, <code>steadyangle</code>, <code>topzoom</code>, <code>angle</code>）必须保留两位小数</li>
-<li><code>arc</code> 语句中 <code>color</code> 参数的值只能是 <code>0/1/2</code>，某些自制谱会写 <code>-1</code></li>
+<li><code>arc</code> 语句中 <code>color</code> 参数的值只能是 <code>0/1/2/3</code>（白魔王是 <code>3</code>），某些自制谱会写 <code>-1</code></li>
 <li><code>arc</code> 语句中 <code>t1</code>、<code>t2</code> 参数的值均为非负整数，某些自制谱会写成负数</li>
 </ul>
 <p>我写了一个简单的 patch 函数来解决这个问题：</p>
@@ -876,7 +876,7 @@ timing(78620,174.00,4.00);
   <small>
     
       最后更新:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_datetime">2022-04-22 08:05:24</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_datetime">2022-06-01 08:43:44</span>
       
         <br>
         创建日期:
