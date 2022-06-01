@@ -39,6 +39,7 @@ timing(104826,87.00,4.00);
 三、某些自制谱中 `aff` 文件的语句不符合 Arcaea 规范。这些谱面在 Arcade 中能正常播放，但是在 Arcaea 中选曲完成后会立即闪退。以下是我找到的一些问题：
 
  - `timing` 语句中，`beats` 参数不能为 `0.00`，很多自制谱为了不出现节拍线会设置成 `0.00`
+ - 如果 `timing` 语句出现在 `timinggroup` 语句块中，那么 `beats` 参数和 `bpm` 参数均可为 `0.00`，不受上一条的约束
  - 每个谱面有且仅有一个 `t=0 `的 `timing` 语句，且其 `bpm` 参数不可为负数
  - `timing` 语句中，`bpm` 参数必须保留两位小数
  - `camera` 语句的第 2-7 个参数（即 `transverse`, `bottomzoom`, `linezoom`, `steadyangle`, `topzoom`, `angle`）必须保留两位小数
