@@ -776,6 +776,7 @@ timing(78620,174.00,4.00);
 <p>三、某些自制谱中 <code>aff</code> 文件的语句不符合 Arcaea 规范。这些谱面在 Arcade 中能正常播放，但是在 Arcaea 中选曲完成后会立即闪退。以下是我找到的一些问题：</p>
 <ul>
 <li><code>timing</code> 语句中，<code>beats</code> 参数不能为 <code>0.00</code>，很多自制谱为了不出现节拍线会设置成 <code>0.00</code></li>
+<li>如果 <code>timing</code> 语句出现在 <code>timinggroup</code> 语句块中，那么 <code>beats</code> 参数和 <code>bpm</code> 参数均可为 <code>0.00</code>，不受上一条的约束</li>
 <li>每个谱面有且仅有一个 <code>t=0</code>的 <code>timing</code> 语句，且其 <code>bpm</code> 参数不可为负数</li>
 <li><code>timing</code> 语句中，<code>bpm</code> 参数必须保留两位小数</li>
 <li><code>camera</code> 语句的第 2-7 个参数（即 <code>transverse</code>, <code>bottomzoom</code>, <code>linezoom</code>, <code>steadyangle</code>, <code>topzoom</code>, <code>angle</code>）必须保留两位小数</li>
@@ -876,7 +877,7 @@ timing(78620,174.00,4.00);
   <small>
     
       最后更新:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_datetime">2022-06-01 08:43:44</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_datetime">2022-06-01 15:25:58</span>
       
         <br>
         创建日期:
