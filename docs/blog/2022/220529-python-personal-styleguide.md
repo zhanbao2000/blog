@@ -26,66 +26,55 @@ Python之禅最早由 Tim Peters 在 Python [邮件列表](https://mail.python.o
 import this
 ```
 
-```
-The Zen of Python, by Tim Peters
+=== "英文版 🇬🇧"
 
-Beautiful is better than ugly.
-优美优于丑陋
+    ``` linenums="1"
+    Beautiful is better than ugly.
+    Explicit is better than implicit.
+    Simple is better than complex.
+    Complex is better than complicated.
+    Flat is better than nested.
+    Sparse is better than dense.
+    Readability counts.
+    Special cases aren't special enough to break the rules.
+    Although practicality beats purity.
+    Errors should never pass silently.
+    Unless explicitly silenced.
+    In the face of ambiguity, refuse the temptation to guess.
+    There should be one-- and preferably only one --obvious way to do it.
+    Although that way may not be obvious at first unless you're Dutch.
+    Now is better than never.
+    Although never is often better than *right* now.
+    If the implementation is hard to explain, it's a bad idea.
+    If the implementation is easy to explain, it may be a good idea.
+    Namespaces are one honking great idea -- let's do more of those!
+    ```
 
-Explicit is better than implicit.
-明了优于隐晦
+=== "中文版 🇨🇳"
 
-Simple is better than complex.
-简单优于复杂
+    ``` linenums="1"
 
-Complex is better than complicated.
-复杂优于繁杂
-
-Flat is better than nested.
-扁平优于嵌套
-
-Sparse is better than dense.
-稀疏优于稠密
-
-Readability counts.
-可读性很重要
-
-Special cases aren't special enough to break the rules.
-特例亦不可违背原则
-
-Although practicality beats purity.
-即使实用比纯粹更优
-
-Errors should never pass silently.
-错误绝不能悄悄忽略
-
-Unless explicitly silenced.
-除非它明确需要如此
-
-In the face of ambiguity, refuse the temptation to guess.
-面对不确定性，拒绝妄加猜测
-
-There should be one-- and preferably only one --obvious way to do it.
-任何问题应有一种，且最好只有一种，显而易见的解决方法
-
-Although that way may not be obvious at first unless you're Dutch.
-尽管这方法一开始并非如此直观（除非你是荷兰人）
-
-Now is better than never.
-做优于不做
-
-Although never is often better than *right* now.
-然而不假思索还不如不做
-
-If the implementation is hard to explain, it's a bad idea.
-很难解释的，必然是坏方法
-
-If the implementation is easy to explain, it may be a good idea.
-很好解释的，可能是好方法
-
-Namespaces are one honking great idea -- let's do more of those!
-命名空间是个绝妙的主意，我们应好好利用它
-```
+    ``` linenums="1"
+    优美优于丑陋
+    明了优于隐晦
+    简单优于复杂
+    复杂优于繁杂
+    扁平优于嵌套
+    稀疏优于稠密
+    可读性很重要
+    特例亦不可违背原则
+    即使实用比纯粹更优
+    错误绝不能悄悄忽略
+    除非它明确需要如此
+    面对不确定性，拒绝妄加猜测
+    任何问题应有一种，且最好只有一种，显而易见的解决方法
+    尽管这方法一开始并非如此直观（除非你是荷兰人）
+    做优于不做
+    然而不假思索还不如不做
+    很难解释的，必然是坏方法
+    很好解释的，可能是好方法
+    命名空间是个绝妙的主意，我们应好好利用它
+    ```
 
 ### 1.2 PEP-8
 
@@ -395,25 +384,23 @@ Python 中的括号有个 [特性](https://docs.python.org/2/reference/lexical_a
 
 虽然我们无法做到 100% 的完美命名，使每个对象的名字都恰到好处，但是我们可以避免出现迷惑命名。一个不佳的命名可能仅仅会给阅读代码带来困难，而迷惑命名则会使我们完全混淆代码的含义。以下列举了一些迷惑命名的例子：
 
-1. 滥用复数形式
+1. 混淆使用元素列表命名
 
     !!! Example
-    
-        Good:
     
         ```python
         for user in user_list:
             print(user)
         ```
     
-        Bad:
-    
         ```python
         for user in users:
             print(user)
         ```
 
-2. 随意忽略下划线
+    `user_list` 和 `users` 都可以表示一个存储用户信息的列表。假如一个过程内同时定义了 `user_list` 和 `users`，你会怎样去区分呢？最好的方法是只使用其中的一种命名方式，而我选择的是前者（后者当然也行，但请不要混淆使用！）
+
+2. 混淆使用下划线
 
     !!! Example
     
@@ -432,11 +419,14 @@ Python 中的括号有个 [特性](https://docs.python.org/2/reference/lexical_a
     
         ```python
         user: dict[str, Any] = {}
+        user_data: dict[str, Any] = {}
         user_info: dict[str, Any] = {}
         user_detail: dict[str, Any] = {}
+        user_metadata: dict[str, Any] = {}
+        user_information: dict[str, Any] = {}
         ```
 
-    这种命名何止是迷惑，简直是令人恼火！假如一个过程内同时定义了 `user`、`user_info` 和 `user_detail`，如果我要获取用户的信息，请问我该调用那个变量呢？
+    这种命名何止是迷惑，简直是令人恼火！假如一个过程内同时定义了 `user`、`user_data`、`user_info`、`user_detail`、`user_metadata` 和 `user_information`，如果我要获取用户的信息，请问我该调用那个变量呢？
 
     建议在新的变量命名之前，仔细检查已经命名过的变量，如果出现这种多个不同后缀表示同一数据的情况，则可能说明**这已经不是简单的命名问题了**。
 
@@ -461,6 +451,22 @@ Python 中的括号有个 [特性](https://docs.python.org/2/reference/lexical_a
     `KNN` 指的是 `K-近邻算法`，是一种用于分类和回归的非参数统计方法，借由计算与已知类别案例之相似度，来评估未知类别案例可能的分类。
 
     使用缩写的方式，可能会使代码更加简洁，但是也会使代码更加难以理解，尤其是以上这种只有在专业领域才会用到的缩写。
+
+5. 混淆使用自定义异常的后缀
+
+    !!! Example
+
+        ```python
+        class PotentialHiddenError(RuntimeError):
+            ...
+
+        class PotentialHiddenException(RuntimeError):
+            ...
+        ```
+
+    假设一个月前你在 `exceptions.py` 里定义了这两个异常，一个月之后你项目的其他贡献者写代码的时候需要抛出一个 “用户潜力值被隐藏” 的异常，请问该抛出谁？这种迷惑（混淆）情形和先前提到的简直是殊途同归。
+
+    此外，需要注意的是，在 Python 中，更常用的异常的后缀是 `Error`，而不是 `Exception`。（见官方文档中的 [用户自定义异常](https://docs.python.org/zh-cn/3/tutorial/errors.html#user-defined-exceptions)）
 
 命名的具体写法并不是该节的讨论重点，驼峰命名法、下划线命名法和匈牙利命名法的具体内容也已人尽皆知，这里便不再赘述。
 
