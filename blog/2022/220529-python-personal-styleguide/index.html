@@ -1072,65 +1072,92 @@ as the main headline.
 <p>Python之禅最早由 Tim Peters 在 Python <a href="https://mail.python.org/pipermail/python-list/1999-June/001951.html">邮件列表</a> 中发表，它包含了影响 Python 编程语言设计的19条软件编写原则。</p>
 <div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">this</span>
 </code></pre></div>
-<div class="highlight"><pre><span></span><code>The Zen of Python, by Tim Peters
-
-Beautiful is better than ugly.
-优美优于丑陋
-
+<div class="tabbed-set tabbed-alternate" data-tabs="1:2"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">英文版 🇬🇧</label><label for="__tabbed_1_2">中文版 🇨🇳</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span></pre></div></td><td class="code"><div><pre><span></span><code>Beautiful is better than ugly.
 Explicit is better than implicit.
-明了优于隐晦
-
 Simple is better than complex.
-简单优于复杂
-
 Complex is better than complicated.
-复杂优于繁杂
-
 Flat is better than nested.
-扁平优于嵌套
-
 Sparse is better than dense.
-稀疏优于稠密
-
 Readability counts.
-可读性很重要
-
 Special cases aren&#39;t special enough to break the rules.
-特例亦不可违背原则
-
 Although practicality beats purity.
-即使实用比纯粹更优
-
 Errors should never pass silently.
-错误绝不能悄悄忽略
-
 Unless explicitly silenced.
-除非它明确需要如此
-
 In the face of ambiguity, refuse the temptation to guess.
-面对不确定性，拒绝妄加猜测
-
 There should be one-- and preferably only one --obvious way to do it.
-任何问题应有一种，且最好只有一种，显而易见的解决方法
-
 Although that way may not be obvious at first unless you&#39;re Dutch.
-尽管这方法一开始并非如此直观（除非你是荷兰人）
-
 Now is better than never.
-做优于不做
-
 Although never is often better than *right* now.
-然而不假思索还不如不做
-
 If the implementation is hard to explain, it&#39;s a bad idea.
-很难解释的，必然是坏方法
-
 If the implementation is easy to explain, it may be a good idea.
-很好解释的，可能是好方法
-
 Namespaces are one honking great idea -- let&#39;s do more of those!
+</code></pre></div></td></tr></table></div>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span></pre></div></td><td class="code"><div><pre><span></span><code>``` linenums=&quot;1&quot;
+优美优于丑陋
+明了优于隐晦
+简单优于复杂
+复杂优于繁杂
+扁平优于嵌套
+稀疏优于稠密
+可读性很重要
+特例亦不可违背原则
+即使实用比纯粹更优
+错误绝不能悄悄忽略
+除非它明确需要如此
+面对不确定性，拒绝妄加猜测
+任何问题应有一种，且最好只有一种，显而易见的解决方法
+尽管这方法一开始并非如此直观（除非你是荷兰人）
+做优于不做
+然而不假思索还不如不做
+很难解释的，必然是坏方法
+很好解释的，可能是好方法
 命名空间是个绝妙的主意，我们应好好利用它
-</code></pre></div>
+</code></pre></div></td></tr></table></div>
+</div>
+</div>
+</div>
 <h3 id="12-pep-8">1.2 PEP-8<a class="headerlink" href="#12-pep-8" title="Permanent link">&para;</a></h3>
 <p><a href="https://www.python.org/dev/peps/pep-0008/">PEP-8</a> 全称 <code>PEP 8 – Style Guide for Python Code</code>，它给出了构成 Python 主发行版中标准库的 Python 代码的编码规范。</p>
 <p>遵守 PEP-8 是一个很好的习惯，它并不是一个必须的规范。然而我自己的建议是：</p>
@@ -1414,21 +1441,20 @@ Namespaces are one honking great idea -- let&#39;s do more of those!
 <p>虽然我们无法做到 100% 的完美命名，使每个对象的名字都恰到好处，但是我们可以避免出现迷惑命名。一个不佳的命名可能仅仅会给阅读代码带来困难，而迷惑命名则会使我们完全混淆代码的含义。以下列举了一些迷惑命名的例子：</p>
 <ol>
 <li>
-<p>滥用复数形式</p>
+<p>混淆使用元素列表命名</p>
 <div class="admonition example">
 <p class="admonition-title">Example</p>
-<p>Good:</p>
 <div class="highlight"><pre><span></span><code><span class="k">for</span> <span class="n">user</span> <span class="ow">in</span> <span class="n">user_list</span><span class="p">:</span>
     <span class="nb">print</span><span class="p">(</span><span class="n">user</span><span class="p">)</span>
 </code></pre></div>
-<p>Bad:</p>
 <div class="highlight"><pre><span></span><code><span class="k">for</span> <span class="n">user</span> <span class="ow">in</span> <span class="n">users</span><span class="p">:</span>
     <span class="nb">print</span><span class="p">(</span><span class="n">user</span><span class="p">)</span>
 </code></pre></div>
 </div>
+<p><code>user_list</code> 和 <code>users</code> 都可以表示一个存储用户信息的列表。假如一个过程内同时定义了 <code>user_list</code> 和 <code>users</code>，你会怎样去区分呢？最好的方法是只使用其中的一种命名方式，而我选择的是前者（后者当然也行，但请不要混淆使用！）</p>
 </li>
 <li>
-<p>随意忽略下划线</p>
+<p>混淆使用下划线</p>
 <div class="admonition example">
 <p class="admonition-title">Example</p>
 <div class="highlight"><pre><span></span><code><span class="n">song_list</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">Song</span><span class="p">]</span> <span class="o">=</span> <span class="p">[]</span>
@@ -1443,11 +1469,14 @@ Namespaces are one honking great idea -- let&#39;s do more of those!
 <div class="admonition example">
 <p class="admonition-title">Example</p>
 <div class="highlight"><pre><span></span><code><span class="n">user</span><span class="p">:</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]</span> <span class="o">=</span> <span class="p">{}</span>
+<span class="n">user_data</span><span class="p">:</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]</span> <span class="o">=</span> <span class="p">{}</span>
 <span class="n">user_info</span><span class="p">:</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]</span> <span class="o">=</span> <span class="p">{}</span>
 <span class="n">user_detail</span><span class="p">:</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]</span> <span class="o">=</span> <span class="p">{}</span>
+<span class="n">user_metadata</span><span class="p">:</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]</span> <span class="o">=</span> <span class="p">{}</span>
+<span class="n">user_information</span><span class="p">:</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]</span> <span class="o">=</span> <span class="p">{}</span>
 </code></pre></div>
 </div>
-<p>这种命名何止是迷惑，简直是令人恼火！假如一个过程内同时定义了 <code>user</code>、<code>user_info</code> 和 <code>user_detail</code>，如果我要获取用户的信息，请问我该调用那个变量呢？</p>
+<p>这种命名何止是迷惑，简直是令人恼火！假如一个过程内同时定义了 <code>user</code>、<code>user_data</code>、<code>user_info</code>、<code>user_detail</code>、<code>user_metadata</code> 和 <code>user_information</code>，如果我要获取用户的信息，请问我该调用那个变量呢？</p>
 <p>建议在新的变量命名之前，仔细检查已经命名过的变量，如果出现这种多个不同后缀表示同一数据的情况，则可能说明<strong>这已经不是简单的命名问题了</strong>。</p>
 </li>
 <li>
@@ -1465,6 +1494,20 @@ Namespaces are one honking great idea -- let&#39;s do more of those!
 </div>
 <p><code>KNN</code> 指的是 <code>K-近邻算法</code>，是一种用于分类和回归的非参数统计方法，借由计算与已知类别案例之相似度，来评估未知类别案例可能的分类。</p>
 <p>使用缩写的方式，可能会使代码更加简洁，但是也会使代码更加难以理解，尤其是以上这种只有在专业领域才会用到的缩写。</p>
+</li>
+<li>
+<p>混淆使用自定义异常的后缀</p>
+<div class="admonition example">
+<p class="admonition-title">Example</p>
+<div class="highlight"><pre><span></span><code><span class="k">class</span> <span class="nc">PotentialHiddenError</span><span class="p">(</span><span class="ne">RuntimeError</span><span class="p">):</span>
+    <span class="o">...</span>
+
+<span class="k">class</span> <span class="nc">PotentialHiddenException</span><span class="p">(</span><span class="ne">RuntimeError</span><span class="p">):</span>
+    <span class="o">...</span>
+</code></pre></div>
+</div>
+<p>假设一个月前你在 <code>exceptions.py</code> 里定义了这两个异常，一个月之后你项目的其他贡献者写代码的时候需要抛出一个 “用户潜力值被隐藏” 的异常，请问该抛出谁？这种迷惑（混淆）情形和先前提到的简直是殊途同归。</p>
+<p>此外，需要注意的是，在 Python 中，更常用的异常的后缀是 <code>Error</code>，而不是 <code>Exception</code>。（见官方文档中的 <a href="https://docs.python.org/zh-cn/3/tutorial/errors.html#user-defined-exceptions">用户自定义异常</a>）</p>
 </li>
 </ol>
 <p>命名的具体写法并不是该节的讨论重点，驼峰命名法、下划线命名法和匈牙利命名法的具体内容也已人尽皆知，这里便不再赘述。</p>
@@ -1596,7 +1639,7 @@ Namespaces are one honking great idea -- let&#39;s do more of those!
   <small>
     
       最后更新:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_datetime">2022-05-30 05:33:08</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_datetime">2022-06-05 17:02:25</span>
       
         <br>
         创建日期:
