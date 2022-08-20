@@ -1964,7 +1964,7 @@ Namespaces are one honking great idea -- let&#39;s do more of those!
 <div class="highlight"><pre><span></span><code><span class="n">A</span> <span class="k">if</span> <span class="n">condition</span> <span class="k">else</span> <span class="p">(</span><span class="n">f</span><span class="p">(</span><span class="n">B</span><span class="p">)</span> <span class="k">for</span> <span class="n">B</span> <span class="ow">in</span> <span class="n">list_of_B</span><span class="p">)</span>
 </code></pre></div>
 <p>（事实上前者是正确的执行顺序）</p>
-<p>因此，在你费尽心思用语法糖写出一些让人不明觉厉代码的同时，也请关照一下不使用你这种语言的开发者。</p>
+<p>因此，在你费尽心思用语法糖写出一些让人不明觉厉代码的同时，也请关照一下不使用你这种语言的开发者。当然，如果你写的时候就没想着让非 Python 使用者看懂，那你也可以忽略这一条。</p>
 <p>典型 3：滥用魔法方法</p>
 <p>Python 的强大之处在于，它对 <code>对象</code> 提供了各种各样丰富的 <a href="https://pyzh.readthedocs.io/en/latest/python-magic-methods-guide.html">魔法方法</a>。对于 Python 新手，可以将魔法方法理解为 Python 对 <code>对象</code> 的运算符重载。得益于 Python <code>一切皆对象</code> 的世界观，你可以借助这些魔法在整个 Python 世界中实现各种各样的奇技淫巧。</p>
 <p>你在 Python 代码中能见到的几乎所有运算符都可以无需顾虑地直接重载。除了熟到已经不能再熟的经典运算符重载外，你还可以：</p>
@@ -1986,7 +1986,7 @@ Namespaces are one honking great idea -- let&#39;s do more of those!
 <li>...</li>
 </ul>
 <p>（写完这些东西恐怕需要三页纸吧，如果感兴趣可以参考官方 <a href="https://docs.python.org/zh-cn/3/reference/datamodel.html#special-method-names">文档</a>）</p>
-<p>和 <a href="#31-">3.1 使用<strong>优美</strong>的现有方法取代<strong>丑陋</strong>的自行实现</a> 中提到的并无冲突，本节所述的内容是<strong>不要滥用</strong>魔法方法。如果你为了实现一个目标需要大量地使用魔法方法，或许你应该考虑一下 Python 标准库或者第三方库。</p>
+<p>和 <a href="#31">3.1 使用<strong>优美</strong>的现有方法取代<strong>丑陋</strong>的自行实现</a> 中提到的并无冲突，本节所述的内容是<strong>不要滥用</strong>魔法方法。如果你为了实现一个目标需要大量地使用魔法方法，或许你应该考虑一下 Python 标准库或者第三方库。</p>
 <p>例如你需要重载大量序列操作符和关系运算符以实现一个自定义的数据结构。可是你有没有想过一种可能——说不定你所需要实现的这个数据结构早就在 Python 标准库 <a href="https://docs.python.org/zh-cn/3/library/collections.html"><code>collections</code></a> 里帮你定义好了呢？</p>
 <p>作为一个 Python 开发者，这些魔法方法为我们的代码带来了几乎无限的可能性，那无与伦比的强大的功能让我们不再惧怕任何难以实现的目标。</p>
 <p>然而，能力越强责任越大，知道这些魔法方法什么时候该用，什么时候不该用，对于我们来说才是最重要的。</p>
@@ -2000,7 +2000,7 @@ Namespaces are one honking great idea -- let&#39;s do more of those!
   <small>
     
       最后更新:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_datetime">2022-08-20 08:04:45</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_datetime">2022-08-20 08:15:22</span>
       
         <br>
         创建日期:
