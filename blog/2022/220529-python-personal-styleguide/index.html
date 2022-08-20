@@ -1802,7 +1802,7 @@ Namespaces are one honking great idea -- let&#39;s do more of those!
 
     <span class="nd">@wraps</span><span class="p">(</span><span class="n">func</span><span class="p">)</span>
     <span class="k">def</span> <span class="nf">wrapper</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
-        <span class="n">item</span><span class="p">,</span> <span class="n">quantity</span> <span class="o">=</span> <span class="n">args</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">args</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+        <span class="n">item</span><span class="p">,</span> <span class="n">quantity</span><span class="p">,</span> <span class="o">*</span><span class="n">_</span> <span class="o">=</span> <span class="n">args</span>
         <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Try to </span><span class="si">{</span><span class="n">action</span><span class="si">}</span><span class="s1"> </span><span class="si">{</span><span class="n">quantity</span><span class="si">}</span><span class="s1"> </span><span class="si">{</span><span class="n">item</span><span class="si">}</span><span class="s1">(s)&#39;</span><span class="p">)</span>
         <span class="k">try</span><span class="p">:</span>
             <span class="k">return</span> <span class="n">func</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
@@ -2000,7 +2000,7 @@ Namespaces are one honking great idea -- let&#39;s do more of those!
   <small>
     
       最后更新:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_datetime">2022-08-20 07:35:11</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_datetime">2022-08-20 08:04:45</span>
       
         <br>
         创建日期:
