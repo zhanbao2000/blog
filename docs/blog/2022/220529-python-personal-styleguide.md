@@ -406,11 +406,11 @@ Python 中的括号有个 [特性](https://docs.python.org/2/reference/lexical_a
 
 !!! cite "引用"
 
-    如果询问一个 Python 开发者他最喜欢 Python 的哪一点，他们通常会说是其可读性。确实，高可读性是 Python 语言设计的核心准则之一，主要是基于这样一个事实：阅读代码要远多于编写代码。
+    如果询问一个 Python 开发者他最喜欢 Python 的哪一点，他们通常会说是其可读性。确实，高可读性是 Python 语言设计的核心准则之一。一个不争的事实是，相对于写代码而言，读代码才是更加平常的事情。
 
-    Python 代码之所以容易阅读和理解，原因之一就是它相对完整的编码风格指南以及“Pythonic”的惯用方式。
+    Python 代码之所以容易阅读和理解，原因之一就是它有着相对完整的编码风格指南以及各种各样 “Pythonic” 的习语。
 
-    此外，当一个富有经验的 Python 开发者（一个 Pythonista）指出一部分代码不够 “Pythonic” 的时，通常意味着这部分代码没有遵循通用的风格指南，并且没有按照最佳方式（即：最具有可读性）来进行缩进处理。
+    当一个富有经验的 Python 开发者（也称为 Pythonista）指出一部分代码不够 “Pythonic” 的时，通常意味着这部分代码没有遵循通用的风格指南，同时也没有按照最佳方式（即：最具有可读性）来表达出代码的意图。
 
     —— [realpython/python-guide](https://github.com/realpython/python-guide)
 
@@ -680,15 +680,70 @@ Python 中的括号有个 [特性](https://docs.python.org/2/reference/lexical_a
 
 如果你发现一个函数的长度超过了 40 行，那么大概率说明这个函数需要精简。
 
-不对函数长度做硬性限制，但是若一个函数超过来40行，推荐考虑一下是否可以在不损害程序结构的情况下对其进行分解。
+不对函数长度做硬性限制，但是若一个函数超过来 40 行，推荐考虑一下是否可以在不损害程序结构的情况下对其进行分解。
 
-因为即使现在长函数运行良好，但几个月后可能会有人修改它并添加一些新的行为，这容易产生难以发现的bug。保持函数的简练，使其更加容易阅读和修改。
+因为即使现在长函数运行良好，但几个月后可能会有人修改它并添加一些新的行为，这容易产生难以发现的 bug。保持函数的简练，使其更加容易阅读和修改。
 
 当遇到一些很长的函数时，若发现调试比较困难或是想在其他地方使用函数的一部分功能，不妨考虑将这个场函数进行拆分。
 
-### 4.3 避免构造重复的函数
+### 4.3 避免在多个函数里构造一样的代码
 
-TODO
+解决这个问题的核心就是 [装饰器](https://www.runoob.com/w3cnote/python-func-decorators.html)。
+
+例如，我们需要在每个函数内都输出日志：
+
+```python
+def buy(item: str, quantity: int):
+    print(f'Try to buy {quantity} {item}(s)')
+    try:
+        _inner_buy(item, quantity)
+    except Exception as e:
+        print(f'Action failed, reason: {e}')
+    finally:
+        print(time.asctime(time.localtime(time.time())))
+
+def sell(item: str, quantity: int, operator: str):
+    print(f'Try to sell {quantity} {item}(s)')
+    try:
+        _inner_sell(item, quantity, operator)
+    except Exception as e:
+        print(f'Action failed, reason: {e}')
+    finally:
+        print(time.asctime(time.localtime(time.time())))
+```
+
+可见，我们每写一个函数，都需要重复实现那几个日志输出。为此，我们可以写一个装饰器，将重复操作提炼出来：
+
+```python
+def logger(func):
+    action = func.__name__
+    
+    @wraps(func)
+    def wrapper(*args, **kwargs):
+        item, quantity = args[0], args[1]
+        print(f'Try to {action} {quantity} {item}(s)')
+        try:
+            return func(*args, **kwargs)
+        except Exception as e:
+            print(f'Action failed, reason: {e}')
+        finally:
+            print(time.asctime(time.localtime(time.time())))
+    return wrapper
+```
+
+这样，我们的 `buy` 和 `sell` 函数便可以写成
+
+```python
+@logger
+def buy(item: str, quantity: int):
+    _inner_buy(item, quantity)
+
+@logger
+def sell(item: str, quantity: int, operator: str):
+    _inner_sell(item, quantity, operator)
+
+```
+
 
 ### 4.4 避免滥用 `#!python try except` 语句
 
@@ -846,7 +901,11 @@ TODO
     new_msg = ''.join(' ' if char == ' ' else chr((ord(char) - ord('a') + 1) % 26 + ord('a')) for char in msg)
     ```
 
-滥用语法糖的最大问题是，对非 Python 使用者非常不友好。请注意，你所写的代码不仅仅是给 Python 使用者看的，同时也是给所有人看的。这就像你用文言文写出一段非常**优雅**（？）的小作文，然后拿给中文不熟练的国际友人看，并问他 “嘿老外，看看我写的文章，多么优雅！”，人家可能并不会觉得你优雅，甚至会觉得你有什么大病。为了让所有人都能看懂，有个时候不得不放弃一些较为 Pythonic 的写法。
+滥用语法糖的最大问题是，对非 Python 使用者非常不友好。请注意，你所写的代码不仅仅是给 Python 使用者看的，同时也是给所有人看的。
+
+这就像你用文言文写出一段非常**优雅**（？）的小作文，然后拿给中文不熟练的国际友人看，并问他 “嘿老外，看看我写的文章，多么优雅！”，人家可能并不会觉得你优雅，甚至会觉得你有什么大病。
+
+为了让所有人都能看懂，有个时候不得不放弃一些较为 Pythonic 的写法。
 
 例如这里的
 
@@ -881,6 +940,34 @@ A if condition else (f(B) for B in list_of_B)
 
 典型 3：滥用魔法方法
 
-Python 的强大之处在于，它对类提供了各种各样丰富的 [魔法方法](https://pyzh.readthedocs.io/en/latest/python-magic-methods-guide.html)（或者说，钩子）。你可以借助这些魔法方法实现各种各样的奇技淫巧。
+Python 的强大之处在于，它对 `对象` 提供了各种各样丰富的 [魔法方法](https://pyzh.readthedocs.io/en/latest/python-magic-methods-guide.html)。对于 Python 新手，可以将魔法方法理解为 Python 对 `对象` 的运算符重载。得益于 Python `一切皆对象` 的世界观，你可以借助这些魔法在整个 Python 世界中实现各种各样的奇技淫巧。
 
-TODO
+你在 Python 代码中能见到的几乎所有运算符都可以无需顾虑地直接重载。除了熟到已经不能再熟的经典运算符重载外，你还可以：
+
+ - 逻辑运算符重载：例如使用 `__xor__(self, other)` 重新定义实现按位异或运算符 `^` 的行为。
+ - 增强赋值运算符重载：例如使用 `__iadd__(self, other)` 重新定义 `+=` 的行为。
+ - 一元操作符重载：例如使用 `__neg__(self)` 方法重新定义取负操作 `-xxx` 的行为；例如使用`__abs__(self)` 方法重新定义该对象被绝对值函数 `abs()` 调用时的行为
+ - 类型转换操作符重载：例如使用 `__int__(self)` 方法重新定义该对象被取整函数 `int()` 调用时的行为，`__str__(self)` 等同理。
+ - 访问控制操作符重载：例如使用 `__getattr__(self, item)` 方法重新定义 `.` 的行为，当且仅当用户访问一个不存在的属性时触发， `__setattr__(self, key, value)` 等同理。
+ - 序列操作符重载：例如使用 `__getitem__(self, key)` 方法重新定义 `[` 的行为，`__setitem__(self, key, value)` 等同理。
+ - ...
+
+除了上面提到的运算符重载以外，你还可以：
+
+ - 假装自己是函数：使用 `__call__(self, *args, **kwargs)` 方法重新定义 `obj()` 的行为。
+ - 变身成为上下文管理器：定义 `__enter__(self)` 和 `__exit__(self, exception_type, exception_value, traceback)` 方法后，可对该对象使用 `#!python with` 语句。（异步时使用 `__aenter__` 和 `__aexit__`）
+ - 变身成为协程：定义了 `__await__(self)` 方法的对象是可等待对象。
+ - 创建描述符对象：例如使用 `__get__(self, instance, owner)` 定义当试图取出描述符（类属性或实例属性）的值时的行为。
+ - ...
+
+（写完这些东西恐怕需要三页纸吧，如果感兴趣可以参考官方 [文档](https://docs.python.org/zh-cn/3/reference/datamodel.html#special-method-names)）
+
+和 [3.1 使用**优美**的现有方法取代**丑陋**的自行实现](#31-) 中提到的并无冲突，本节所述的内容是**不要滥用**魔法方法。如果你为了实现一个目标需要大量地使用魔法方法，或许你应该考虑一下 Python 标准库或者第三方库。
+
+例如你需要重载大量序列操作符和关系运算符以实现一个自定义的数据结构。可是你有没有想过一种可能——说不定你所需要实现的这个数据结构早就在 Python 标准库 [`collections`](https://docs.python.org/zh-cn/3/library/collections.html) 里帮你定义好了呢？
+
+作为一个 Python 开发者，这些魔法方法为我们的代码带来了几乎无限的可能性，那无与伦比的强大的功能让我们不再惧怕任何难以实现的目标。
+
+然而，能力越强责任越大，知道这些魔法方法什么时候该用，什么时候不该用，对于我们来说才是最重要的。
+
+就像功夫大师一样，一个 Pythonista 知道如何用一个手指杀死对方，但他从不会那么去做。
