@@ -720,7 +720,7 @@ def logger(func):
     
     @wraps(func)
     def wrapper(*args, **kwargs):
-        item, quantity = args[0], args[1]
+        item, quantity, *_ = args
         print(f'Try to {action} {quantity} {item}(s)')
         try:
             return func(*args, **kwargs)
