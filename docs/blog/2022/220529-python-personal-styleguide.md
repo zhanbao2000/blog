@@ -684,7 +684,7 @@ Python 中的括号有个 [特性](https://docs.python.org/2/reference/lexical_a
 
 因为即使现在长函数运行良好，但几个月后可能会有人修改它并添加一些新的行为，这容易产生难以发现的 bug。保持函数的简练，使其更加容易阅读和修改。
 
-当遇到一些很长的函数时，若发现调试比较困难或是想在其他地方使用函数的一部分功能，不妨考虑将这个场函数进行拆分。
+当遇到一些很长的函数时，若发现调试比较困难或是想在其他地方使用函数的一部分功能，不妨考虑将这个长函数进行拆分。
 
 ### 4.3 避免在多个函数里构造一样的代码
 
@@ -942,7 +942,9 @@ A if condition else (f(B) for B in list_of_B)
 
 Python 的强大之处在于，它对 `对象` 提供了各种各样丰富的 [魔法方法](https://pyzh.readthedocs.io/en/latest/python-magic-methods-guide.html)。对于 Python 新手，可以将魔法方法理解为 Python 对 `对象` 的运算符重载。得益于 Python `一切皆对象` 的世界观，你可以借助这些魔法在整个 Python 世界中实现各种各样的奇技淫巧。
 
-你在 Python 代码中能见到的几乎所有运算符都可以无需顾虑地直接重载。除了熟到已经不能再熟的经典运算符重载外，你还可以：
+和其他所有支持运算符重载的语言不同，你在 Python 代码中能见到的几乎所有运算符都可以无需顾虑地直接重载（赋值运算符 `=` 除外），这也是为什么唯独只有 Python 将 `运算符重载` 称为 `魔法方法`。
+
+除了那些大部分语言都可以实现的经典运算符重载外，你还可以：
 
  - 逻辑运算符重载：例如使用 `__xor__(self, other)` 重新定义实现按位异或运算符 `^` 的行为。
  - 增强赋值运算符重载：例如使用 `__iadd__(self, other)` 重新定义 `+=` 的行为。
@@ -954,13 +956,14 @@ Python 的强大之处在于，它对 `对象` 提供了各种各样丰富的 [�
 
 除了上面提到的运算符重载以外，你还可以：
 
- - 假装自己是函数：使用 `__call__(self, *args, **kwargs)` 方法重新定义 `obj()` 的行为。
+ - `in` 重载：使用 `__contains__(self, item)` 方法重新定义该对象在 `in` 语句中的行为。
+ - `invoke` 重载：使用 `__call__(self, *args, **kwargs)` 方法重新定义 `obj()` 的行为。
  - 变身成为上下文管理器：定义 `__enter__(self)` 和 `__exit__(self, exception_type, exception_value, traceback)` 方法后，可对该对象使用 `#!python with` 语句。（异步时使用 `__aenter__` 和 `__aexit__`）
  - 变身成为协程：定义了 `__await__(self)` 方法的对象是可等待对象。
  - 创建描述符对象：例如使用 `__get__(self, instance, owner)` 定义当试图取出描述符（类属性或实例属性）的值时的行为。
  - ...
 
-（写完这些东西恐怕需要三页纸吧，如果感兴趣可以参考官方 [文档](https://docs.python.org/zh-cn/3/reference/datamodel.html#special-method-names)）
+（上述提到的魔法方法仅仅是 Python 所有的魔法方法中的冰山一角，如果感兴趣可以参考官方 [文档](https://docs.python.org/zh-cn/3/reference/datamodel.html#special-method-names)）
 
 和 [3.1 使用**优美**的现有方法取代**丑陋**的自行实现](#31) 中提到的并无冲突，本节所述的内容是**不要滥用**魔法方法。如果你为了实现一个目标需要大量地使用魔法方法，或许你应该考虑一下 Python 标准库或者第三方库。
 
