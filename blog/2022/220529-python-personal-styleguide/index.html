@@ -15,7 +15,7 @@
         <link rel="canonical" href="https://blog.arisa.moe/blog/2022/220529-python-personal-styleguide/">
       
       <link rel="icon" href="../../../assets/favicon.webp">
-      <meta name="generator" content="mkdocs-1.3.1, mkdocs-material-8.4.0">
+      <meta name="generator" content="mkdocs-1.3.1, mkdocs-material-8.4.1">
     
     
       
@@ -1774,7 +1774,7 @@ Namespaces are one honking great idea -- let&#39;s do more of those!
 <p>如果你发现一个函数的长度超过了 40 行，那么大概率说明这个函数需要精简。</p>
 <p>不对函数长度做硬性限制，但是若一个函数超过来 40 行，推荐考虑一下是否可以在不损害程序结构的情况下对其进行分解。</p>
 <p>因为即使现在长函数运行良好，但几个月后可能会有人修改它并添加一些新的行为，这容易产生难以发现的 bug。保持函数的简练，使其更加容易阅读和修改。</p>
-<p>当遇到一些很长的函数时，若发现调试比较困难或是想在其他地方使用函数的一部分功能，不妨考虑将这个场函数进行拆分。</p>
+<p>当遇到一些很长的函数时，若发现调试比较困难或是想在其他地方使用函数的一部分功能，不妨考虑将这个长函数进行拆分。</p>
 <h3 id="43">4.3 避免在多个函数里构造一样的代码<a class="headerlink" href="#43" title="Permanent link">&para;</a></h3>
 <p>解决这个问题的核心就是 <a href="https://www.runoob.com/w3cnote/python-func-decorators.html">装饰器</a>。</p>
 <p>例如，我们需要在每个函数内都输出日志：</p>
@@ -1967,7 +1967,8 @@ Namespaces are one honking great idea -- let&#39;s do more of those!
 <p>因此，在你费尽心思用语法糖写出一些让人不明觉厉代码的同时，也请关照一下不使用你这种语言的开发者。当然，如果你写的时候就没想着让非 Python 使用者看懂，那你也可以忽略这一条。</p>
 <p>典型 3：滥用魔法方法</p>
 <p>Python 的强大之处在于，它对 <code>对象</code> 提供了各种各样丰富的 <a href="https://pyzh.readthedocs.io/en/latest/python-magic-methods-guide.html">魔法方法</a>。对于 Python 新手，可以将魔法方法理解为 Python 对 <code>对象</code> 的运算符重载。得益于 Python <code>一切皆对象</code> 的世界观，你可以借助这些魔法在整个 Python 世界中实现各种各样的奇技淫巧。</p>
-<p>你在 Python 代码中能见到的几乎所有运算符都可以无需顾虑地直接重载。除了熟到已经不能再熟的经典运算符重载外，你还可以：</p>
+<p>和其他所有支持运算符重载的语言不同，你在 Python 代码中能见到的几乎所有运算符都可以无需顾虑地直接重载（赋值运算符 <code>=</code> 除外），这也是为什么唯独只有 Python 将 <code>运算符重载</code> 称为 <code>魔法方法</code>。</p>
+<p>除了那些大部分语言都可以实现的经典运算符重载外，你还可以：</p>
 <ul>
 <li>逻辑运算符重载：例如使用 <code>__xor__(self, other)</code> 重新定义实现按位异或运算符 <code>^</code> 的行为。</li>
 <li>增强赋值运算符重载：例如使用 <code>__iadd__(self, other)</code> 重新定义 <code>+=</code> 的行为。</li>
@@ -1979,13 +1980,14 @@ Namespaces are one honking great idea -- let&#39;s do more of those!
 </ul>
 <p>除了上面提到的运算符重载以外，你还可以：</p>
 <ul>
-<li>假装自己是函数：使用 <code>__call__(self, *args, **kwargs)</code> 方法重新定义 <code>obj()</code> 的行为。</li>
+<li><code>in</code> 重载：使用 <code>__contains__(self, item)</code> 方法重新定义该对象在 <code>in</code> 语句中的行为。</li>
+<li><code>invoke</code> 重载：使用 <code>__call__(self, *args, **kwargs)</code> 方法重新定义 <code>obj()</code> 的行为。</li>
 <li>变身成为上下文管理器：定义 <code>__enter__(self)</code> 和 <code>__exit__(self, exception_type, exception_value, traceback)</code> 方法后，可对该对象使用 <code class="highlight"><span class="k">with</span></code> 语句。（异步时使用 <code>__aenter__</code> 和 <code>__aexit__</code>）</li>
 <li>变身成为协程：定义了 <code>__await__(self)</code> 方法的对象是可等待对象。</li>
 <li>创建描述符对象：例如使用 <code>__get__(self, instance, owner)</code> 定义当试图取出描述符（类属性或实例属性）的值时的行为。</li>
 <li>...</li>
 </ul>
-<p>（写完这些东西恐怕需要三页纸吧，如果感兴趣可以参考官方 <a href="https://docs.python.org/zh-cn/3/reference/datamodel.html#special-method-names">文档</a>）</p>
+<p>（上述提到的魔法方法仅仅是 Python 所有的魔法方法中的冰山一角，如果感兴趣可以参考官方 <a href="https://docs.python.org/zh-cn/3/reference/datamodel.html#special-method-names">文档</a>）</p>
 <p>和 <a href="#31">3.1 使用<strong>优美</strong>的现有方法取代<strong>丑陋</strong>的自行实现</a> 中提到的并无冲突，本节所述的内容是<strong>不要滥用</strong>魔法方法。如果你为了实现一个目标需要大量地使用魔法方法，或许你应该考虑一下 Python 标准库或者第三方库。</p>
 <p>例如你需要重载大量序列操作符和关系运算符以实现一个自定义的数据结构。可是你有没有想过一种可能——说不定你所需要实现的这个数据结构早就在 Python 标准库 <a href="https://docs.python.org/zh-cn/3/library/collections.html"><code>collections</code></a> 里帮你定义好了呢？</p>
 <p>作为一个 Python 开发者，这些魔法方法为我们的代码带来了几乎无限的可能性，那无与伦比的强大的功能让我们不再惧怕任何难以实现的目标。</p>
@@ -2000,7 +2002,7 @@ Namespaces are one honking great idea -- let&#39;s do more of those!
   <small>
     
       最后更新:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_datetime">2022-08-20 08:15:22</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_datetime">2022-08-22 13:01:00</span>
       
         <br>
         创建日期:
