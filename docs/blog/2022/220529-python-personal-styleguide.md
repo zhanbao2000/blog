@@ -955,9 +955,8 @@ Python 的强大之处在于，它对 `对象` 提供了各种各样丰富的 [�
  - ...
 
 除了上面提到的运算符重载以外，你还可以：
-
- - `in` 重载：使用 `__contains__(self, item)` 方法重新定义该对象在 `in` 语句中的行为。
- - `invoke` 重载：使用 `__call__(self, *args, **kwargs)` 方法重新定义 `obj()` 的行为。
+ - 成员运算符重载：使用 `__contains__(self, item)` 方法重新定义成员运算符 `in` 的行为。
+ - 可调用对象操作符重载：例如使用 `__call__(self, *args, **kwargs)` 方法重新定义该对象被调用时的行为。
  - 变身成为上下文管理器：定义 `__enter__(self)` 和 `__exit__(self, exception_type, exception_value, traceback)` 方法后，可对该对象使用 `#!python with` 语句。（异步时使用 `__aenter__` 和 `__aexit__`）
  - 变身成为协程：定义了 `__await__(self)` 方法的对象是可等待对象。
  - 创建描述符对象：例如使用 `__get__(self, instance, owner)` 定义当试图取出描述符（类属性或实例属性）的值时的行为。
