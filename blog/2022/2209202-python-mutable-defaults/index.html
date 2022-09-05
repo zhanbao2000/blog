@@ -12,14 +12,14 @@
         <meta name="author" content="Akiba Arisa">
       
       
-        <link rel="canonical" href="https://blog.arisa.moe/blog/2022/220407-certbot/">
+        <link rel="canonical" href="https://blog.arisa.moe/blog/2022/2209202-python-mutable-defaults/">
       
       <link rel="icon" href="../../../assets/favicon.webp">
       <meta name="generator" content="mkdocs-1.3.1, mkdocs-material-8.4.2">
     
     
       
-        <title>certbot 常用操作 - Arisa | Blog</title>
+        <title>Python 默认参数可变的危险性 - Arisa | Blog</title>
       
     
     
@@ -105,7 +105,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              certbot 常用操作
+              Python 默认参数可变的危险性
             
           </span>
         </div>
@@ -450,97 +450,11 @@
               
   
   
-    
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
-      
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          certbot 常用操作
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../220407-certbot/" class="md-nav__link">
         certbot 常用操作
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="目录">
-  
-  
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      目录
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#_1" class="md-nav__link">
-    安装
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_2" class="md-nav__link">
-    申请多个域名证书
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_3" class="md-nav__link">
-    申请泛域名证书（也叫通配符证书）
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_4" class="md-nav__link">
-    查看自动续期的计划任务
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_5" class="md-nav__link">
-    手动为证书续期
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_6" class="md-nav__link">
-    为证书续期（泛域名）
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_7" class="md-nav__link">
-    吊销（撤销）证书
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_8" class="md-nav__link">
-    删除证书
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -774,11 +688,116 @@
               
   
   
+    
   
-    <li class="md-nav__item">
-      <a href="../2209202-python-mutable-defaults/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Python 默认参数可变的危险性
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         Python 默认参数可变的危险性
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    一、什么是默认参数可变
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    二、默认参数可变背后的原理
+  </a>
+  
+    <nav class="md-nav" aria-label="二、默认参数可变背后的原理">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#21" class="md-nav__link">
+    2.1 可变对象与不可变对象
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#22" class="md-nav__link">
+    2.2 默认参数的本质是什么
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#23" class="md-nav__link">
+    2.3 谁动了我的实参
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#24" class="md-nav__link">
+    2.4 默认参数如何惨遭修改
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    三、默认参数可变带来的问题及其规避方法
+  </a>
+  
+    <nav class="md-nav" aria-label="三、默认参数可变带来的问题及其规避方法">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#31-digg" class="md-nav__link">
+    3.1 Digg 的问题
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#32" class="md-nav__link">
+    3.2 如何规避
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -823,57 +842,76 @@
       
         <li class="md-nav__item">
   <a href="#_1" class="md-nav__link">
-    安装
+    一、什么是默认参数可变
   </a>
   
 </li>
       
         <li class="md-nav__item">
   <a href="#_2" class="md-nav__link">
-    申请多个域名证书
+    二、默认参数可变背后的原理
   </a>
+  
+    <nav class="md-nav" aria-label="二、默认参数可变背后的原理">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#21" class="md-nav__link">
+    2.1 可变对象与不可变对象
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#22" class="md-nav__link">
+    2.2 默认参数的本质是什么
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#23" class="md-nav__link">
+    2.3 谁动了我的实参
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#24" class="md-nav__link">
+    2.4 默认参数如何惨遭修改
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
         <li class="md-nav__item">
   <a href="#_3" class="md-nav__link">
-    申请泛域名证书（也叫通配符证书）
+    三、默认参数可变带来的问题及其规避方法
+  </a>
+  
+    <nav class="md-nav" aria-label="三、默认参数可变带来的问题及其规避方法">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#31-digg" class="md-nav__link">
+    3.1 Digg 的问题
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#_4" class="md-nav__link">
-    查看自动续期的计划任务
+        
+          <li class="md-nav__item">
+  <a href="#32" class="md-nav__link">
+    3.2 如何规避
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#_5" class="md-nav__link">
-    手动为证书续期
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_6" class="md-nav__link">
-    为证书续期（泛域名）
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_7" class="md-nav__link">
-    吊销（撤销）证书
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_8" class="md-nav__link">
-    删除证书
-  </a>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -895,7 +933,7 @@ doesn't, the page title (or respectively site name) is used
 as the main headline.
 -->
 
-    <h1>certbot 常用操作</h1>
+    <h1>Python 默认参数可变的危险性</h1>
 
 
 <!-- Markdown content -->
@@ -924,104 +962,206 @@ as the main headline.
     
         <div class="tags">
         
-            <a href="/tags/#ssl" class="tag"><code>#ssl</code></a>
-        
-            <a href="/tags/#letsencrypt" class="tag"><code>#letsencrypt</code></a>
-        
-            <a href="/tags/#certbot" class="tag"><code>#certbot</code></a>
+            <a href="/tags/#python" class="tag"><code>#python</code></a>
         
         </div>
     
 
-    <h2 id="_1">安装<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
-<p>官网建议用 <code>snap</code> 安装。👉 <a href="https://certbot.eff.org/instructions?ws=other&amp;os=ubuntufocal">https://certbot.eff.org/instructions?ws=other&amp;os=ubuntufocal</a></p>
-<div class="highlight"><pre><span></span><code>sudo snap install core
-sudo snap refresh core
-sudo snap install --classic certbot
-</code></pre></div>
-<h2 id="_2">申请多个域名证书<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
-<div class="admonition 警告 danger">
-<p class="admonition-title">警告</p>
-<p>无论你需要申请多少个证书，在申请之前，都请在你的 DNS 提供商处将你所需要申请 SSL 证书的域名解析到你的服务器上。</p>
+    <div class="admonition abstract">
+<p class="admonition-title">摘要</p>
+<p>这两天看到的一篇叫做 <a href="https://blog.csdn.net/csdnnews/article/details/126634939">《当年 1.6 亿美金估值的公司 —— Digg 是如何被一句 Python 函数可变默参毁掉的》</a> 的文章，引发了我对 Python 默认参数可变的危险性的思考。</p>
+<p>这篇文章的内容讲述的是，当年曾可以与 Reddit 匹敌的科技网站 Digg，在它的新版本（v4）仓促上线时，因为 Python 默认参数可变的特性而导致了一个内存泄露问题，最终在新产品上线一个月之后修复了该 Bug。但一切已经晚了，这个 Bug 让 Digg 的用户迅速流失，最终在一年以后被 Beatworks 以 50 万美金的价格收购。</p>
+<p>这个故事也被亲身经历者 Will Larson 记载于 <a href="https://lethain.com/digg-v4/">《Digg's v4 launch: an optimism born of necessity.》</a>。</p>
+<p>这篇文章并不分析这个悲剧的故事发生的前因后果，而是重点介绍与讨论 Python 默认参数可变的危险性。本文也将从这个角度来分析这个问题，以及探讨如何避免这个问题。</p>
 </div>
-<div class="admonition 提示 tips">
-<p class="admonition-title">提示</p>
-<p>根据你的 <code>80</code> 端口有没有被占用，你需要使用两种模式—— <code>nginx</code> 或者 <code>standalone</code>。</p>
+<h2 id="_1">一、什么是默认参数可变<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
+<p>我们通过 Digg 在引发这次事故中的一行最关键的代码为例，介绍什么是默认参数可变：</p>
+<div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">get_user_by_ids</span><span class="p">(</span><span class="n">ids</span><span class="o">=</span><span class="p">[]):</span>
+    <span class="o">...</span>
+</code></pre></div>
+<p>在上面这个例子中，我们声明了一个函数 <code>get_user_by_ids</code>，它有一个默认参数 <code>ids</code>，默认值为一个空列表 <code>[]</code>。这个函数的作用是根据用户 ID 列表 <code>ids</code> 获取用户信息。</p>
+<p>显然，我们的期望是，每次调用这个函数时，如果没有传入 <code>ids</code> 参数，那么 <code>ids</code> 的值就是一个空列表 <code>[]</code>，随后在函数体内对形参 <code>ids</code> 进行操作（如 <code>append</code> 方法），均是在这个空列表的基础上进行操作，例如：</p>
+<div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">get_user_by_ids</span><span class="p">(</span><span class="n">ids</span><span class="o">=</span><span class="p">[]):</span>
+    <span class="n">ids</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">ids</span><span class="p">)</span>
+</code></pre></div>
+<p>期望的结果：</p>
+<div class="highlight"><pre><span></span><code>&gt;&gt;&gt; get_user_by_ids()
+[1]
+&gt;&gt;&gt; get_user_by_ids()
+[1]
+&gt;&gt;&gt; get_user_by_ids()
+[1]
+</code></pre></div>
+<p>然而实际的结果是：
+<div class="highlight"><pre><span></span><code>&gt;&gt;&gt; get_user_by_ids()
+[1]
+&gt;&gt;&gt; get_user_by_ids()
+[1, 1]
+&gt;&gt;&gt; get_user_by_ids()
+[1, 1, 1]
+</code></pre></div></p>
+<p>可见，作为默认参数的列表 <code>[]</code> 在函数体内被修改后，会被保留下来，作为下一次调用时的默认值。这种将可变对象当作默认参数的做法，就叫做<strong>默认参数可变</strong>。</p>
+<h2 id="_2">二、默认参数可变背后的原理<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
+<h3 id="21">2.1 可变对象与不可变对象<a class="headerlink" href="#21" title="Permanent link">&para;</a></h3>
+<p>在探讨这个原理之前，我们先复习一下什么是可变对象与不可变对象。</p>
+<ul>
+<li>
+<p>可变对象（Mutable Object）：例如 <code class="highlight"><span class="nb">dict</span></code>、<code class="highlight"><span class="nb">list</span></code>、<code class="highlight"><span class="nb">set</span></code> 等。当一个可变对象被修改时，会直接在内存原地址上修改内存的值，而对象的<strong>地址保持不变</strong>：
+   <div class="highlight"><pre><span></span><code><span class="n">a</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+<span class="nb">id</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>  <span class="c1"># 2681945788288</span>
+<span class="n">a</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+<span class="nb">id</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>  <span class="c1"># 2681945788288，地址保持不变</span>
+</code></pre></div></p>
+</li>
+<li>
+<p>不可变对象（Immutable Object）：例如 <code class="highlight"><span class="nb">int</span></code>、<code class="highlight"><span class="nb">str</span></code>、<code class="highlight"><span class="nb">tuple</span></code> 等。而当一个不可变对象被修改时，会先在内存中<strong>创建一个新的对象</strong>，然后将对象的地址指向新的内存地址，再把原来的那片内存进行垃圾回收：
+   <div class="highlight"><pre><span></span><code><span class="n">a</span> <span class="o">=</span> <span class="s1">&#39;1&#39;</span>
+<span class="nb">id</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>  <span class="c1"># 2681895738544</span>
+<span class="n">a</span> <span class="o">=</span> <span class="n">a</span> <span class="o">+</span> <span class="s1">&#39;2&#39;</span>
+<span class="nb">id</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>  <span class="c1"># 2681944549232，地址发生变化</span>
+</code></pre></div></p>
+</li>
+</ul>
+<p>由此可见，第一个例子中的列表，在修改过后，对象的地址并没有发生变化，而第二个例子中的字符串，在修改过后，对象被分配了一个新的地址。</p>
+<div class="admonition example">
+<p class="admonition-title">思考</p>
+<p>若在不可变对象 <code>my_tuple</code> 内保存一个可变对象 <code>my_list</code>，然后修改这个可变对象 <code>my_list</code> 的值，不可变对象 <code>my_tuple</code> 的地址会发生改变吗？</p>
+<p>留做习题答案略，读者自证不难。</p>
 </div>
+<h3 id="22">2.2 默认参数的本质是什么<a class="headerlink" href="#22" title="Permanent link">&para;</a></h3>
+<p>在 Python 中，一切皆对象。函数也是对象：</p>
+<div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">foo</span><span class="p">():</span>
+    <span class="k">pass</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">foo</span><span class="p">))</span>  <span class="c1"># &lt;class &#39;function&#39;&gt;</span>
+</code></pre></div>
+<p>函数对象有一个 <code class="highlight"><span class="vm">__defaults__</span></code> 属性，它是一个元组，用于存储函数的默认参数：</p>
+<div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">foo</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="mi">2</span><span class="p">):</span>
+    <span class="k">pass</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">foo</span><span class="o">.</span><span class="vm">__defaults__</span><span class="p">)</span>  <span class="c1"># (1, 2)</span>
+</code></pre></div>
+<p>因此，我们可以将函数的定义，看作成是一个类的实例化过程。</p>
+<p>例如下面这个函数：</p>
+<div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">foo</span><span class="p">(</span><span class="n">a</span><span class="o">=</span><span class="p">[]):</span>
+    <span class="n">a</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+
+<span class="n">foo</span><span class="p">()</span>  <span class="c1"># [1]</span>
+<span class="n">foo</span><span class="p">()</span>  <span class="c1"># [1, 1]</span>
+</code></pre></div>
+<p>几乎等价于：</p>
+<div class="highlight"><pre><span></span><code><span class="k">class</span> <span class="nc">Foo</span><span class="p">:</span>
+
+    <span class="vm">__defaults__</span> <span class="o">=</span> <span class="p">([],)</span>
+
+    <span class="k">def</span> <span class="fm">__call__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="n">a</span> <span class="o">=</span> <span class="n">args</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="k">if</span> <span class="n">args</span> <span class="k">else</span> <span class="bp">self</span><span class="o">.</span><span class="vm">__defaults__</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+        <span class="n">a</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+
+<span class="n">foo</span> <span class="o">=</span> <span class="n">Foo</span><span class="p">()</span>
+<span class="n">foo</span><span class="p">()</span>  <span class="c1"># [1]</span>
+<span class="n">foo</span><span class="p">()</span>  <span class="c1"># [1, 1]</span>
+</code></pre></div>
+<h3 id="23">2.3 谁动了我的实参<a class="headerlink" href="#23" title="Permanent link">&para;</a></h3>
+<div class="admonition tips">
+<p class="admonition-title">形参和实参</p>
+<p>这里复习一下形参和实参的区别。</p>
 <ul>
 <li>
-<p>你的 <code>80</code> 端口已经被 <code>nginx</code>（或者其他服务）占用了：</p>
-<div class="highlight"><pre><span></span><code>certbot certonly --nginx -d example.com -d www.example.com -d another.example.com
-</code></pre></div>
+<p>形参（Formal Parameter 或 Parameter）：在函数定义时，用于接收传入的参数的变量。形参用于描述（在函数内）期望被提供的值的名字。如 <code class="highlight"><span class="k">def</span> <span class="nf">calc</span><span class="p">(</span><span class="n">a</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">b</span><span class="p">:</span> <span class="nb">bool</span><span class="p">):</span></code> 中的 <code>a</code> 和 <code>b</code> 是形参。</p>
 </li>
 <li>
-<p>你的 <code>80</code> 端口没有被任何服务占用：</p>
-<div class="highlight"><pre><span></span><code>certbot certonly --standalone -d example.com -d www.example.com -d another.example.com
-</code></pre></div>
+<p>实参（Actual Parameter 或 Argument）：在函数调用时，传入函数的参数。实参被用于描述（调用函数时）提供给每个形参的值。如 <code class="highlight"><span class="n">result</span> <span class="o">=</span> <span class="n">calc</span><span class="p">(</span><span class="n">num</span><span class="p">,</span> <span class="kc">True</span><span class="p">)</span></code> 中，<code>num</code> 和 <code class="highlight"><span class="kc">True</span></code> 是实参。</p>
 </li>
 </ul>
-<h2 id="_3">申请泛域名证书（也叫通配符证书）<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h2>
-<p>比较麻烦，需要在 DNS 服务提供商处设置 <code>TXT</code> 记录。并且<strong>只能</strong>通过这个方式来续期。</p>
-<div class="highlight"><pre><span></span><code>certbot certonly -d <span class="s2">&quot;*.example.com&quot;</span> -d <span class="s2">&quot;example.com&quot;</span> --manual --preferred-challenges dns --server https://acme-v02.api.letsencrypt.org/directory
-</code></pre></div>
-<p>其中 <code>--server</code> 参数所指向的 url 也许会变化，但是你总能在 Let's Encrypt 的 <a href="https://letsencrypt.org/docs/staging-environment/">文档</a> 上找到最新的。</p>
-<p>执行之后会交给你一个或两个设置 <code>TXT</code> 记录的任务。去你的 DNS 服务提供商处设置好即可。</p>
-<h2 id="_4">查看自动续期的计划任务<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h2>
-<div class="highlight"><pre><span></span><code>systemctl list-timers
-</code></pre></div>
-<h2 id="_5">手动为证书续期<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h2>
+</div>
+<p>在 Python 函数中，所有的参数传递<strong>在本质上都是传引用调用</strong>。当我们调用函数时，传递的参数是对象的引用，而不是对象本身。</p>
+<p>看到这里可能会有读者会很疑惑，既然本质上都是传引用调用，为什么在函数体内修改形参的值，位于函数体外部的实参（在绝大多数情况下）却不会改变呢？其实这里的关键在于，在调用函数时，<strong>实参是可变对象还是不可变对象</strong>。</p>
+<p>前面已经说过，可变对象在修改时，会直接在内存原地址上修改内存的值。而不可变对象在修改时，会先在内存中创建一个新的对象，再将对象的地址指向新的内存地址。因此：</p>
 <ul>
 <li>
-<p>不加任何参数，没有临近到期时间的话会停止执行</p>
-<div class="highlight"><pre><span></span><code>certbot renew
+<p>当我们向函数内传递了一个对象的引用（即地址）时，形参立即成为了实参的指针。若实参是<strong>可变对象</strong>，形参和实参指向的是同一个内存地址，因此在函数体内修改形参的值，实参的值也会随之改变。这个过程的本质是：
+   <div class="highlight"><pre><span></span><code><span class="kt">void</span><span class="w"> </span><span class="nf">foo</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="o">&amp;</span><span class="n">arg</span><span class="p">)</span><span class="w"> </span>
+<span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="o">*</span><span class="n">param</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">&amp;</span><span class="n">arg</span><span class="p">;</span><span class="w">                 </span><span class="c1">// 使形参成为实参的指针</span>
+<span class="w">    </span><span class="o">*</span><span class="n">param</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span><span class="w">                       </span><span class="c1">// 对形参进行其他操作</span>
+<span class="p">}</span><span class="w"></span>
 </code></pre></div>
+   <pre class="mermaid"><code>graph TD
+
+  Param[形参] --&gt; Obj[对象]
+  Arg[实参] --&gt; Obj</code></pre></p>
 </li>
 <li>
-<p>测试续期，不会真的续期</p>
-<div class="highlight"><pre><span></span><code>certbot renew --dry-run
+<p>而当实参是<strong>不可变对象</strong>时，形参和实参指向的仍然是同一个内存地址，但是<em>当我们尝试修改形参的值时，因为实参是不可变对象，不允许在原地址上进行修改，因此只能开辟一块新内存区域，保存形参被修改之后的值</em>。最终结果就是，形参和实参指向了两个不同的内存地址，因此在函数体内修改形参的值，实参的值并不会变化。这个过程的本质是：
+   <div class="highlight"><pre><span></span><code><span class="kt">void</span><span class="w"> </span><span class="nf">foo</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="o">&amp;</span><span class="n">arg</span><span class="p">)</span><span class="w"> </span>
+<span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="o">*</span><span class="n">param</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="kt">int</span><span class="p">;</span><span class="w">              </span><span class="c1">// 开辟一块新内存区域</span>
+<span class="w">    </span><span class="n">memcpy</span><span class="p">(</span><span class="n">param</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">arg</span><span class="p">,</span><span class="w"> </span><span class="k">sizeof</span><span class="p">(</span><span class="kt">int</span><span class="p">));</span><span class="w">  </span><span class="c1">// 将实参的值复制到新内存区域</span>
+<span class="w">    </span><span class="o">*</span><span class="n">param</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span><span class="w">                       </span><span class="c1">// 对形参进行其他操作</span>
+<span class="p">}</span><span class="w"></span>
 </code></pre></div>
-</li>
-<li>
-<p>强制续期</p>
-<div class="highlight"><pre><span></span><code>certbot renew --force-renewal
-</code></pre></div>
+   <pre class="mermaid"><code>graph TD
+
+  Param[形参] --&gt; ObjCpy[对象副本]
+  Arg[实参] --&gt; Obj[对象]
+  Obj --&gt;|memcpy| ObjCpy</code></pre>
+   （写起来有点像脱裤子放屁）</p>
 </li>
 </ul>
-<h2 id="_6">为证书续期（泛域名）<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h2>
-<p>泛域名证书不能通过 <code>certbot renew</code> 来续期，需要手动续期。否则会报错。</p>
-<p>原因很简单，就是你在申请泛域名证书的时候在 DNS 服务商那里添加的 <code>TXT</code> 记录，这是一个会变化的值。</p>
-<p>续期方法和申请方法一模一样，相当于重新申请一次。</p>
-<div class="highlight"><pre><span></span><code>certbot certonly -d <span class="s2">&quot;*.example.com&quot;</span> -d <span class="s2">&quot;example.com&quot;</span> --manual --preferred-challenges dns --server https://acme-v02.api.letsencrypt.org/directory
+<p>在大部分函数中，我们传入的实参都是不可变对象，即使我们传入了一个可变对象（例如字典或列表），绝大多数情况下，在函数体内我们都不会去尝试修改它的值。因此在函数体内修改形参的值时，位于函数体外部的实参看起来似乎永远不会改变，但实际上只是我们没有传入可变对象而已。</p>
+<div class="admonition warning">
+<p class="admonition-title">注意</p>
+<p>需要注意的是，对于第二种情况，如果我们没有尝试修改形参的值，那么系统并不会开辟一块新的内存空间用于保存形参的新值。我们可以通过下面的代码来验证：</p>
+<div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">foo</span><span class="p">(</span><span class="n">arg</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;形参 被修改前的地址是：&#39;</span><span class="p">,</span> <span class="nb">id</span><span class="p">(</span><span class="n">arg</span><span class="p">))</span>
+    <span class="n">arg</span> <span class="o">+=</span> <span class="s1">&#39;1&#39;</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;形参 被修改后的地址是：&#39;</span><span class="p">,</span> <span class="nb">id</span><span class="p">(</span><span class="n">arg</span><span class="p">))</span>
+
+<span class="n">a</span> <span class="o">=</span> <span class="s1">&#39;1&#39;</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;实参 在被定义的地址是：&#39;</span><span class="p">,</span> <span class="nb">id</span><span class="p">(</span><span class="n">a</span><span class="p">))</span>
+<span class="n">foo</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
 </code></pre></div>
-<p>中途同样需要修改 DNS 的 <code>TXT</code> 记录这样的操作。有人可能会觉得很麻烦，麻烦你就去写个脚本啊。</p>
-<p>事实上 certbot 的报错也说得很清楚了，他的意思就是要我们去写个脚本：</p>
-<blockquote>
-<p>An <strong>authentication script</strong> must be provided with --manual-auth-hook when using the manual plugin non-interactively.</p>
-</blockquote>
-<p>网上有各个版本的脚本，大概原理都是通过你 DNS 服务商提供的 Token，在服务器上直接修改 DNS 的 <code>TXT</code> 记录。一搜一大堆。</p>
-<h2 id="_7">吊销（撤销）证书<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h2>
-<p>这里直接引用 <a href="https://letsencrypt.org/zh-cn/docs/revoking/">Let's Encrypt 官网</a></p>
-<ul>
-<li>
-<p>用颁发证书的账户吊销证书</p>
-<div class="highlight"><pre><span></span><code>certbot revoke --cert-path /etc/letsencrypt/archive/<span class="si">${</span><span class="nv">YOUR_DOMAIN</span><span class="si">}</span>/cert1.pem
+<p>结果是：</p>
+<div class="highlight"><pre><span></span><code>实参 在被定义的地址是： 2266061167536
+形参 被修改前的地址是： 2266061167536
+形参 被修改后的地址是： 2266065025712
 </code></pre></div>
-</li>
-<li>
-<p>使用证书私钥吊销证书</p>
-<div class="highlight"><pre><span></span><code>certbot revoke --cert-path /PATH/TO/cert.pem --key-path /PATH/TO/key.pem
+<p>可见，当实参为不可变对象时，只有我们尝试修改形参，系统才会开辟一块新的内存空间用于保存形参的新值。</p>
+</div>
+<h3 id="24">2.4 默认参数如何惨遭修改<a class="headerlink" href="#24" title="Permanent link">&para;</a></h3>
+<p>从上一节我们已经知道，当传入的实参是可变对象时，在函数体内修改形参的值，实参的值也会随之改变。反之则不会改变。</p>
+<p>如果上面一节理解透彻了，就知道默认参数是如何被修改的了——<strong>将默认参数视为实参</strong>即可。</p>
+<p>当我们调用一个函数时，相当于执行函数 ”实例“ 的 <code>__call__</code> 方法。而在 <code>__call__</code> 方法中，我们将默认参数视为实参。因此在函数体内（即 <code>__call__</code> 方法）修改默认参数（即实参）的值，默认参数（即实参）的值也会随之改变。</p>
+<p>也可以这样理解：在函数定义时，所有的形参默认值会被初始化，然后存到 <code>__defaults__</code> 的元组中。然而，这样的初始化只在函数被<strong>定义</strong>时发生（即类的实例化），而不是在被<strong>调用</strong>时发生（即方法的调用）。因此，如果我们在函数体内修改了默认参数的值，那么下次再调用函数时，这个默认参数的值就会被修改了。</p>
+<h2 id="_3">三、默认参数可变带来的问题及其规避方法<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h2>
+<h3 id="31-digg">3.1 Digg 的问题<a class="headerlink" href="#31-digg" title="Permanent link">&para;</a></h3>
+<p>我们再次回到 Digg 引发这次事故的那一行最关键的代码：</p>
+<div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">get_user_by_ids</span><span class="p">(</span><span class="n">ids</span><span class="o">=</span><span class="p">[]):</span>
+    <span class="o">...</span>
 </code></pre></div>
-</li>
-<li>
-<p>使用其他授权帐户吊销证书</p>
-<p>先从 <a href="https://crt.sh/">crt.sh</a> 中下载证书，然后：</p>
-<div class="highlight"><pre><span></span><code>certbot revoke --cert-path /PATH/TO/downloaded-cert.pem
+<p>这里形参 <code>ids</code> 的默认值是一个空列表。在这种情况下，每次调用时，用户的 ID 和名字都被附加到默认列表中。几个小时后，这些列表开始在每次请求中检索数以万计的用户，甚至压垮了 memcache 集群，导致了页面崩掉。</p>
+<p>事实上，不仅是 <code>[]</code> 作为默认值，如果通过调用 <code class="highlight"><span class="nb">list</span><span class="p">()</span></code>、<code class="highlight"><span class="nb">dict</span><span class="p">()</span></code> 等函数来构建默认值，即</p>
+<div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">get_user_by_ids</span><span class="p">(</span><span class="n">ids</span><span class="o">=</span><span class="nb">list</span><span class="p">()):</span>
+    <span class="o">...</span>
 </code></pre></div>
-<h2 id="_8">删除证书<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h2>
-<div class="highlight"><pre><span></span><code>certbot delete 
+<p>也会带来同样的问题。</p>
+<p>这同样是因为<strong>函数默认值的初始化只在函数被定义时发生，而不是在被调用时发生</strong>。当我们使用 <code class="highlight"><span class="nb">list</span><span class="p">()</span></code> 内置函数作为默认值时，这个内置函数只会被调用一次，即在函数被定义时。因此这样的行为，在本质上和使用 <code>[]</code> 作为默认值是完全一样的。</p>
+<h3 id="32">3.2 如何规避<a class="headerlink" href="#32" title="Permanent link">&para;</a></h3>
+<p>显而易见，避免这个问题的核心，就是不要把默认参数设置为可变对象。最简单的做法是将其设为 <code class="highlight"><span class="kc">None</span></code>，然后在函数体内对其进行判断：</p>
+<div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">get_user_by_ids</span><span class="p">(</span><span class="n">ids</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">ids</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">ids</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="o">...</span>
 </code></pre></div>
-</li>
-</ul>
+<p>这样，当我们传入的实参为 <code class="highlight"><span class="kc">None</span></code> 时，执行到第 3 行，系统会开辟一块新的内存空间，并将其地址赋值给形参 <code>ids</code> 作为引用。当离开函数作用域时，这块内存空间会被释放，因此不会影响到下一次调用。</p>
+<p>事实上，PyCharm 等内置了 lint 工具的 IDE 也会提示我们这样做：</p>
+<p><img alt="mutable_default_arg" src="../images/2209202-python-mutable-defaults/mutable_default_arg.png" /></p>
+<p>自动修复后：</p>
+<p><img alt="immutable_default_arg_fixed" src="../images/2209202-python-mutable-defaults/immutable_default_arg.png" /></p>
 
     <!-- Last update of source file -->
     
@@ -1031,11 +1171,11 @@ sudo snap install --classic certbot
   <small>
     
       最后更新:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_datetime">2022-04-28 10:02:17</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_datetime">2022-09-05 16:42:45</span>
       
         <br>
         创建日期:
-        <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_datetime">2022-04-06 18:56:35</span>
+        <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_datetime">2022-09-05 16:42:45</span>
       
     
   </small>
@@ -1112,7 +1252,7 @@ sudo snap install --classic certbot
     <nav class="md-footer__inner md-grid" aria-label="页脚" >
       
         
-        <a href="../220406-venv-move-file/" class="md-footer__link md-footer__link--prev" aria-label="上一页: 移动 python 项目文件夹位置后如何解决 PyCharm 找不到解释器与无法正常使用终端的问题" rel="prev">
+        <a href="../220602-ipv6-bypass-billing-system/" class="md-footer__link md-footer__link--prev" aria-label="上一页: 架设双栈代理服务器通过 IPv6 绕过校园网计费系统的方法" rel="prev">
           <div class="md-footer__button md-icon">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
           </div>
@@ -1121,26 +1261,11 @@ sudo snap install --classic certbot
               <span class="md-footer__direction">
                 上一页
               </span>
-              移动 python 项目文件夹位置后如何解决 PyCharm 找不到解释器与无法正常使用终端的问题
+              架设双栈代理服务器通过 IPv6 绕过校园网计费系统的方法
             </div>
           </div>
         </a>
       
-      
-        
-        <a href="../220407-github-pages/" class="md-footer__link md-footer__link--next" aria-label="下一页: GitHub Pages 文档自动化部署 - MkDocs" rel="next">
-          <div class="md-footer__title">
-            <div class="md-ellipsis">
-              <span class="md-footer__direction">
-                下一页
-              </span>
-              GitHub Pages 文档自动化部署 - MkDocs
-            </div>
-          </div>
-          <div class="md-footer__button md-icon">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4Z"/></svg>
-          </div>
-        </a>
       
     </nav>
   
