@@ -1,10 +1,11 @@
 ---
 author: Akiba Arisa
 author_gh_user: zhanbao2000
-read_time: 8 min
+read_time: 12 min
 tags:
     - python
 title: Python 默认参数可变的危险性
+description: 这篇文章以 Digg 公司发生的内存泄漏悲剧为切入点，重点介绍与讨论 Python 默认参数可变的危险性。本文也将从这个角度来分析这个问题，以及探讨如何避免这个问题。
 ---
 
 !!! abstract "摘要"
