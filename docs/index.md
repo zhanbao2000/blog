@@ -30,3 +30,4 @@ hide:
  - [MBR's Blog](https://blog.mbrjun.cn/)
  - [InariAimu's Blog](https://blog.inariaimu.com/)
  - [Akula<>Blog](https://lolicon.akulak.icu/)
+ - [Atmosphere](https://blog.awa.moe/)
