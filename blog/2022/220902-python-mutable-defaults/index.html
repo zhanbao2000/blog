@@ -12,10 +12,10 @@
         <meta name="author" content="Akiba Arisa">
       
       
-        <link rel="canonical" href="https://blog.arisa.moe/blog/2022/2209202-python-mutable-defaults/">
+        <link rel="canonical" href="https://blog.arisa.moe/blog/2022/220902-python-mutable-defaults/">
       
       <link rel="icon" href="../../../assets/favicon.webp">
-      <meta name="generator" content="mkdocs-1.3.1, mkdocs-material-8.4.3">
+      <meta name="generator" content="mkdocs-1.3.1, mkdocs-material-8.5.1">
     
     
       
@@ -23,13 +23,14 @@
       
     
     
-      <link rel="stylesheet" href="../../../assets/stylesheets/main.6b80c2a2.min.css">
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.2e8b5541.min.css">
       
         
         <link rel="stylesheet" href="../../../assets/stylesheets/palette.cbb835fc.min.css">
         
       
       
+
     
     
     
@@ -48,6 +49,7 @@
     
       
 
+    
     
     
   </head>
@@ -150,7 +152,7 @@
       </label>
       <nav class="md-search__options" aria-label="查找">
         
-        <button type="reset" class="md-search__icon md-icon" aria-label="清空当前内容" tabindex="-1">
+        <button type="reset" class="md-search__icon md-icon" title="清空当前内容" aria-label="清空当前内容" tabindex="-1">
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
         </button>
       </nav>
@@ -803,6 +805,20 @@
 
             
           
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../220913-python-confusing-detail/" class="md-nav__link">
+        Python 中令人迷惑的细节
+      </a>
+    </li>
+  
+
+            
+          
         </ul>
       </nav>
     </li>
@@ -923,9 +939,10 @@
               </div>
             
           
-          <div class="md-content" data-md-component="content">
-            <article class="md-content__inner md-typeset">
-              
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
 
 <!--
 Hack: check whether the content contains a h1 headline. If it
@@ -1023,6 +1040,13 @@ as the main headline.
 </code></pre></div></p>
 </li>
 </ul>
+<p>推论：</p>
+<ul>
+<li>如果有多个对象的引用（即指针）指向同一个可变对象，那么使用其中任意一个引用对此对象进行修改，其他所有的引用都会产生相同的修改。
+   <img alt="mutable_change" src="../images/220902-python-mutable-defaults/mutable_change.png" /></li>
+<li>如果有多个对象的引用指向同一个不可变对象，当使用其中任意一个引用对此对象进行修改，系统将会开辟一块新的内存区域用来存储修改过后的值，其他所有的引用仍然指向原来那片内存空间。
+   <img alt="immutable_change" src="../images/220902-python-mutable-defaults/immutable_change.png" /></li>
+</ul>
 <p>由此可见，第一个例子中的列表，在修改过后，对象的地址并没有发生变化，而第二个例子中的字符串，在修改过后，对象被分配了一个新的地址。</p>
 <div class="admonition example">
 <p class="admonition-title">思考</p>
@@ -1090,10 +1114,7 @@ as the main headline.
 <span class="w">    </span><span class="o">*</span><span class="n">param</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span><span class="w">                       </span><span class="c1">// 对形参进行其他操作</span>
 <span class="p">}</span><span class="w"></span>
 </code></pre></div>
-   <pre class="mermaid"><code>graph TD
-
-  Param[形参] --&gt; Obj[对象]
-  Arg[实参] --&gt; Obj</code></pre></p>
+   <img alt="mutable_ptr" src="../images/220902-python-mutable-defaults/mutable_ptr.png" /></p>
 </li>
 <li>
 <p>而当实参是<strong>不可变对象</strong>时，形参和实参指向的仍然是同一个内存地址，但是<em>当我们尝试修改形参的值时，因为实参是不可变对象，不允许在原地址上进行修改，因此只能开辟一块新内存区域，保存形参被修改之后的值</em>。最终结果就是，形参和实参指向了两个不同的内存地址，因此在函数体内修改形参的值，实参的值并不会变化。这个过程的本质是：
@@ -1104,11 +1125,7 @@ as the main headline.
 <span class="w">    </span><span class="o">*</span><span class="n">param</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span><span class="w">                       </span><span class="c1">// 对形参进行其他操作</span>
 <span class="p">}</span><span class="w"></span>
 </code></pre></div>
-   <pre class="mermaid"><code>graph TD
-
-  Param[形参] --&gt; ObjCpy[对象副本]
-  Arg[实参] --&gt; Obj[对象]
-  Obj --&gt;|memcpy| ObjCpy</code></pre>
+   <img alt="immutable_ptr" src="../images/220902-python-mutable-defaults/immutable_ptr.png" />
    （写起来有点像脱裤子放屁）</p>
 </li>
 </ul>
@@ -1159,9 +1176,9 @@ as the main headline.
 </code></pre></div>
 <p>这样，当我们传入的实参为 <code class="highlight"><span class="kc">None</span></code> 时，执行到第 3 行，系统会开辟一块新的内存空间，并将其地址赋值给形参 <code>ids</code> 作为引用。当离开函数作用域时，这块内存空间会被释放，因此不会影响到下一次调用。</p>
 <p>事实上，PyCharm 等内置了 lint 工具的 IDE 也会提示我们这样做：</p>
-<p><img alt="mutable_default_arg" src="../images/2209202-python-mutable-defaults/mutable_default_arg.png" /></p>
+<p><img alt="mutable_default_arg" src="../images/220902-python-mutable-defaults/mutable_default_arg.png" /></p>
 <p>自动修复后：</p>
-<p><img alt="immutable_default_arg_fixed" src="../images/2209202-python-mutable-defaults/immutable_default_arg.png" /></p>
+<p><img alt="immutable_default_arg_fixed" src="../images/220902-python-mutable-defaults/immutable_default_arg.png" /></p>
 
     <!-- Last update of source file -->
     
@@ -1171,7 +1188,7 @@ as the main headline.
   <small>
     
       最后更新:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_datetime">2022-09-05 16:51:42</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_datetime">2022-09-18 06:34:51</span>
       
         <br>
         创建日期:
@@ -1234,9 +1251,10 @@ as the main headline.
     
 
 
-            </article>
-            
-          </div>
+              </article>
+            </div>
+          
+          
         </div>
         
           <a href="#" class="md-top md-icon" data-md-component="top" hidden>
@@ -1266,6 +1284,21 @@ as the main headline.
           </div>
         </a>
       
+      
+        
+        <a href="../220913-python-confusing-detail/" class="md-footer__link md-footer__link--next" aria-label="下一页: Python 中令人迷惑的细节" rel="next">
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                下一页
+              </span>
+              Python 中令人迷惑的细节
+            </div>
+          </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4Z"/></svg>
+          </div>
+        </a>
       
     </nav>
   
@@ -1313,7 +1346,13 @@ as the main headline.
     <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.tabs", "navigation.top", "navigation.tracking"], "search": "../../../assets/javascripts/workers/search.ecf98df9.min.js", "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.config.lang": "ja", "search.config.pipeline": "trimmer, stemmer", "search.config.separator": "[\\s\\-\uff0c\u3002]+", "search.placeholder": "\u641c\u7d22", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version.title": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}}</script>
     
     
-      <script src="../../../assets/javascripts/bundle.2ab50757.min.js"></script>
+      <script src="../../../assets/javascripts/bundle.d691e9de.min.js"></script>
+      
+        <script src="../../../javascripts/mathjax.js"></script>
+      
+        <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
       
     
   </body>
