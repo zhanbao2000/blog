@@ -85,7 +85,9 @@ def get_user_by_ids(ids=[]):
 推论：
 
  - 如果有多个对象的引用（即指针）指向同一个可变对象，那么使用其中任意一个引用对此对象进行修改，其他所有的引用都会产生相同的修改。
+   ![mutable_change](images/220902-python-mutable-defaults/mutable_change.png)
  - 如果有多个对象的引用指向同一个不可变对象，当使用其中任意一个引用对此对象进行修改，系统将会开辟一块新的内存区域用来存储修改过后的值，其他所有的引用仍然指向原来那片内存空间。
+   ![immutable_change](images/220902-python-mutable-defaults/immutable_change.png)
 
 由此可见，第一个例子中的列表，在修改过后，对象的地址并没有发生变化，而第二个例子中的字符串，在修改过后，对象被分配了一个新的地址。
 
@@ -169,12 +171,7 @@ foo()  # [1, 1]
        *param += 1;                       // 对形参进行其他操作
    }
    ```
-   ```mermaid
-   graph TD
-
-     Param[形参] --> Obj[对象]
-     Arg[实参] --> Obj
-   ```
+   ![mutable_ptr](images/220902-python-mutable-defaults/mutable_ptr.png)
 
  - 而当实参是**不可变对象**时，形参和实参指向的仍然是同一个内存地址，但是*当我们尝试修改形参的值时，因为实参是不可变对象，不允许在原地址上进行修改，因此只能开辟一块新内存区域，保存形参被修改之后的值*。最终结果就是，形参和实参指向了两个不同的内存地址，因此在函数体内修改形参的值，实参的值并不会变化。这个过程的本质是：
    ```C++
@@ -185,13 +182,7 @@ foo()  # [1, 1]
        *param += 1;                       // 对形参进行其他操作
    }
    ```
-   ```mermaid
-   graph TD
-
-     Param[形参] --> ObjCpy[对象副本]
-     Arg[实参] --> Obj[对象]
-     Obj -->|memcpy| ObjCpy
-   ```
+   ![immutable_ptr](images/220902-python-mutable-defaults/immutable_ptr.png)
    （写起来有点像脱裤子放屁）
 
 在大部分函数中，我们传入的实参都是不可变对象，即使我们传入了一个可变对象（例如字典或列表），绝大多数情况下，在函数体内我们都不会去尝试修改它的值。因此在函数体内修改形参的值时，位于函数体外部的实参看起来似乎永远不会改变，但实际上只是我们没有传入可变对象而已。
@@ -270,8 +261,8 @@ def get_user_by_ids(ids=None):
 
 事实上，PyCharm 等内置了 lint 工具的 IDE 也会提示我们这样做：
 
-![mutable_default_arg](images/2209202-python-mutable-defaults/mutable_default_arg.png)
+![mutable_default_arg](images/220902-python-mutable-defaults/mutable_default_arg.png)
 
 自动修复后：
 
-![immutable_default_arg_fixed](images/2209202-python-mutable-defaults/immutable_default_arg.png)
+![immutable_default_arg_fixed](images/220902-python-mutable-defaults/immutable_default_arg.png)
