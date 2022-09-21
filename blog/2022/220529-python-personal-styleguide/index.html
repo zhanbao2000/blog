@@ -15,7 +15,7 @@
         <link rel="canonical" href="https://blog.arisa.moe/blog/2022/220529-python-personal-styleguide/">
       
       <link rel="icon" href="../../../assets/favicon.webp">
-      <meta name="generator" content="mkdocs-1.3.1, mkdocs-material-8.5.1">
+      <meta name="generator" content="mkdocs-1.3.1, mkdocs-material-8.5.3">
     
     
       
@@ -23,7 +23,7 @@
       
     
     
-      <link rel="stylesheet" href="../../../assets/stylesheets/main.2e8b5541.min.css">
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.7a952b86.min.css">
       
         
         <link rel="stylesheet" href="../../../assets/stylesheets/palette.cbb835fc.min.css">
@@ -1246,7 +1246,7 @@ Namespaces are one honking great idea -- let&#39;s do more of those!
 <div class="admonition example">
 <p class="admonition-title">PEP-8 不适用的情形</p>
 <ul>
-<li>应用 PEP-8 会降低代码的可读性（虽然我从来没遇到过）</li>
+<li>应用 PEP-8 会降低代码的可读性（例如长的 URL 可以无需换行）</li>
 <li>为了使上下代码风格一致而不得不违背 PEP-8（尽管这也是一个清理别人的烂摊子的机会）</li>
 <li>代码写于 PEP-8 引入之前，并且确实没有修改该代码的必要（注：PEP-8 发布于 2001 年，它可能比你的年龄还大）</li>
 <li>代码需要与旧版本的 Python 保持兼容，但旧版本的 Python 不支持 PEP-8 中的某些做法（真没见过）</li>
@@ -2009,13 +2009,15 @@ Namespaces are one honking great idea -- let&#39;s do more of those!
 <li>序列操作符重载：例如使用 <code>__getitem__(self, key)</code> 方法重新定义 <code>[</code> 的行为，<code>__setitem__(self, key, value)</code> 等同理。</li>
 <li>...</li>
 </ul>
-<p>除了上面提到的运算符重载以外，你还可以：
- - 成员运算符重载：使用 <code>__contains__(self, item)</code> 方法重新定义成员运算符 <code>in</code> 的行为。
- - 可调用对象操作符重载：例如使用 <code>__call__(self, *args, **kwargs)</code> 方法重新定义该对象被调用时的行为。
- - 变身成为上下文管理器：定义 <code>__enter__(self)</code> 和 <code>__exit__(self, exception_type, exception_value, traceback)</code> 方法后，可对该对象使用 <code class="highlight"><span class="k">with</span></code> 语句。（异步时使用 <code>__aenter__</code> 和 <code>__aexit__</code>）
- - 变身成为协程：定义了 <code>__await__(self)</code> 方法的对象是可等待对象。
- - 创建描述符对象：例如使用 <code>__get__(self, instance, owner)</code> 定义当试图取出描述符（类属性或实例属性）的值时的行为。
- - ...</p>
+<p>除了上面提到的运算符重载以外，你还可以：</p>
+<ul>
+<li>成员运算符重载：使用 <code>__contains__(self, item)</code> 方法重新定义成员运算符 <code>in</code> 的行为。</li>
+<li>可调用对象操作符重载：例如使用 <code>__call__(self, *args, **kwargs)</code> 方法重新定义该对象被调用时的行为。</li>
+<li>变身成为上下文管理器：定义 <code>__enter__(self)</code> 和 <code>__exit__(self, exception_type, exception_value, traceback)</code> 方法后，可对该对象使用 <code class="highlight"><span class="k">with</span></code> 语句。（异步时使用 <code>__aenter__</code> 和 <code>__aexit__</code>）</li>
+<li>变身成为协程：定义了 <code>__await__(self)</code> 方法的对象是可等待对象。</li>
+<li>创建描述符对象：例如使用 <code>__get__(self, instance, owner)</code> 定义当试图取出描述符（类属性或实例属性）的值时的行为。</li>
+<li>...</li>
+</ul>
 <p>（上述提到的魔法方法仅仅是 Python 所有的魔法方法中的冰山一角，如果感兴趣可以参考官方 <a href="https://docs.python.org/zh-cn/3/reference/datamodel.html#special-method-names">文档</a>）</p>
 <p>和 <a href="#31">3.1 使用<strong>优美</strong>的现有方法取代<strong>丑陋</strong>的自行实现</a> 中提到的并无冲突，本节所述的内容是<strong>不要滥用</strong>魔法方法。如果你为了实现一个目标需要大量地使用魔法方法，或许你应该考虑一下 Python 标准库或者第三方库。</p>
 <p>例如你需要重载大量序列操作符和关系运算符以实现一个自定义的数据结构。可是你有没有想过一种可能——说不定你所需要实现的这个数据结构早就在 Python 标准库 <a href="https://docs.python.org/zh-cn/3/library/collections.html"><code>collections</code></a> 里帮你定义好了呢？</p>
@@ -2031,7 +2033,7 @@ Namespaces are one honking great idea -- let&#39;s do more of those!
   <small>
     
       最后更新:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_datetime">2022-09-03 10:15:05</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_datetime">2022-09-21 10:20:43</span>
       
         <br>
         创建日期:
@@ -2186,10 +2188,10 @@ Namespaces are one honking great idea -- let&#39;s do more of those!
       <div class="md-dialog__inner md-typeset"></div>
     </div>
     
-    <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.tabs", "navigation.top", "navigation.tracking"], "search": "../../../assets/javascripts/workers/search.ecf98df9.min.js", "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.config.lang": "ja", "search.config.pipeline": "trimmer, stemmer", "search.config.separator": "[\\s\\-\uff0c\u3002]+", "search.placeholder": "\u641c\u7d22", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version.title": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}}</script>
+    <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.tabs", "navigation.top", "navigation.tracking"], "search": "../../../assets/javascripts/workers/search.5bf1dace.min.js", "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.config.lang": "ja", "search.config.pipeline": "trimmer, stemmer", "search.config.separator": "[\\s\\-\uff0c\u3002]+", "search.placeholder": "\u641c\u7d22", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version.title": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}}</script>
     
     
-      <script src="../../../assets/javascripts/bundle.d691e9de.min.js"></script>
+      <script src="../../../assets/javascripts/bundle.37e9125f.min.js"></script>
       
         <script src="../../../javascripts/mathjax.js"></script>
       
