@@ -6,20 +6,20 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
-        <meta name="description" content="Arisa 的个人博客">
+        <meta name="description" content="在服务器上挂 H@H 时，总会遇到空间不足的情况，这篇指南介绍了使用 Rclone 挂载 SharePoint 作为 Hentai@Home 的缓存目录的方法，以极大地扩展我们 H@H 的缓存空间。">
       
       
         <meta name="author" content="Akiba Arisa">
       
       
-        <link rel="canonical" href="https://blog.arisa.moe/blog/2022/220407-github-pages/">
+        <link rel="canonical" href="https://blog.arisa.moe/blog/2022/221113-rclone-sharepoint-for-hentai-at-home/">
       
       <link rel="icon" href="../../../assets/favicon.webp">
       <meta name="generator" content="mkdocs-1.4.2, mkdocs-material-8.5.10">
     
     
       
-        <title>GitHub Pages 文档自动化部署 - MkDocs - Arisa | Blog</title>
+        <title>使用 Rclone 挂载 SharePoint 作为 Hentai@Home 的缓存目录 - Arisa | Blog</title>
       
     
     
@@ -107,7 +107,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              GitHub Pages 文档自动化部署 - MkDocs
+              使用 Rclone 挂载 SharePoint 作为 Hentai@Home 的缓存目录
             
           </span>
         </div>
@@ -468,96 +468,11 @@
               
   
   
-    
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
-      
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          GitHub Pages 文档自动化部署 - MkDocs
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../220407-github-pages/" class="md-nav__link">
         GitHub Pages 文档自动化部署 - MkDocs
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="目录">
-  
-  
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      目录
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#_1" class="md-nav__link">
-    本地部署测试
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#vcs-github" class="md-nav__link">
-    创建本地 VCS 并和 GitHub 关联
-  </a>
-  
-    <nav class="md-nav" aria-label="创建本地 VCS 并和 GitHub 关联">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#vcs" class="md-nav__link">
-    创建本地 VCS
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#github" class="md-nav__link">
-    和 GitHub 关联
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#github-actions" class="md-nav__link">
-    在 GitHub 上创建 Actions 任务
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#pages" class="md-nav__link">
-    设置 Pages
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_2" class="md-nav__link">
-    （可选）使用自定义域名
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -805,11 +720,204 @@
               
   
   
+    
   
-    <li class="md-nav__item">
-      <a href="../221113-rclone-sharepoint-for-hentai-at-home/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          使用 Rclone 挂载 SharePoint 作为 Hentai@Home 的缓存目录
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         使用 Rclone 挂载 SharePoint 作为 Hentai@Home 的缓存目录
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    一、前言
+  </a>
+  
+    <nav class="md-nav" aria-label="一、前言">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#11-hentaihome" class="md-nav__link">
+    1.1 什么是 Hentai@Home
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#12-sharepoint" class="md-nav__link">
+    1.2 什么是 SharePoint
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#13-rclone" class="md-nav__link">
+    1.3 什么是 Rclone
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    二、准备工作
+  </a>
+  
+    <nav class="md-nav" aria-label="二、准备工作">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#21-rclone" class="md-nav__link">
+    2.1 安装 Rclone
+  </a>
+  
+    <nav class="md-nav" aria-label="2.1 安装 Rclone">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    直接下载
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    使用包管理器
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#22-onedrive-client_id-client_secret" class="md-nav__link">
+    2.2 获取 OneDrive 的 client_id 和 client_secret
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    三、分水岭
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#oauth" class="md-nav__link">
+    四、OAuth 授权成功
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#remote" class="md-nav__link">
+    五、测试并挂载 remote
+  </a>
+  
+    <nav class="md-nav" aria-label="五、测试并挂载 remote">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#51-remote" class="md-nav__link">
+    5.1 测试 remote
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#52-remote" class="md-nav__link">
+    5.2 挂载 remote
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#53" class="md-nav__link">
+    5.3 测试挂载是否成功
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#hh" class="md-nav__link">
+    六、与 H@H 一同工作
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    七、注意事项
+  </a>
+  
+    <nav class="md-nav" aria-label="七、注意事项">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#71" class="md-nav__link">
+    7.1 文件总数量限制
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#72-hh-trust" class="md-nav__link">
+    7.2 H@H 仪表盘中 Trust 值骤降
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -868,29 +976,29 @@
       
         <li class="md-nav__item">
   <a href="#_1" class="md-nav__link">
-    本地部署测试
+    一、前言
   </a>
   
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#vcs-github" class="md-nav__link">
-    创建本地 VCS 并和 GitHub 关联
-  </a>
-  
-    <nav class="md-nav" aria-label="创建本地 VCS 并和 GitHub 关联">
+    <nav class="md-nav" aria-label="一、前言">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#vcs" class="md-nav__link">
-    创建本地 VCS
+  <a href="#11-hentaihome" class="md-nav__link">
+    1.1 什么是 Hentai@Home
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#github" class="md-nav__link">
-    和 GitHub 关联
+  <a href="#12-sharepoint" class="md-nav__link">
+    1.2 什么是 SharePoint
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#13-rclone" class="md-nav__link">
+    1.3 什么是 Rclone
   </a>
   
 </li>
@@ -901,23 +1009,131 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#github-actions" class="md-nav__link">
-    在 GitHub 上创建 Actions 任务
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#pages" class="md-nav__link">
-    设置 Pages
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#_2" class="md-nav__link">
-    （可选）使用自定义域名
+    二、准备工作
   </a>
+  
+    <nav class="md-nav" aria-label="二、准备工作">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#21-rclone" class="md-nav__link">
+    2.1 安装 Rclone
+  </a>
+  
+    <nav class="md-nav" aria-label="2.1 安装 Rclone">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    直接下载
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    使用包管理器
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#22-onedrive-client_id-client_secret" class="md-nav__link">
+    2.2 获取 OneDrive 的 client_id 和 client_secret
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    三、分水岭
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#oauth" class="md-nav__link">
+    四、OAuth 授权成功
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#remote" class="md-nav__link">
+    五、测试并挂载 remote
+  </a>
+  
+    <nav class="md-nav" aria-label="五、测试并挂载 remote">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#51-remote" class="md-nav__link">
+    5.1 测试 remote
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#52-remote" class="md-nav__link">
+    5.2 挂载 remote
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#53" class="md-nav__link">
+    5.3 测试挂载是否成功
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#hh" class="md-nav__link">
+    六、与 H@H 一同工作
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    七、注意事项
+  </a>
+  
+    <nav class="md-nav" aria-label="七、注意事项">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#71" class="md-nav__link">
+    7.1 文件总数量限制
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#72-hh-trust" class="md-nav__link">
+    7.2 H@H 仪表盘中 Trust 值骤降
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -940,7 +1156,7 @@ doesn't, the page title (or respectively site name) is used
 as the main headline.
 -->
 
-    <h1>GitHub Pages 文档自动化部署 - MkDocs</h1>
+    <h1>使用 Rclone 挂载 SharePoint 作为 Hentai@Home 的缓存目录</h1>
 
 
 <!-- Markdown content -->
@@ -959,7 +1175,7 @@ as the main headline.
                     <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" fill="currentColor" class="bi bi-clock" viewBox="0 0 16 16">
                         <path d="M8 3.5a.5.5 0 0 0-1 0V9a.5.5 0 0 0 .252.434l3.5 2a.5.5 0 0 0 .496-.868L8 8.71V3.5z"/>
                         <path d="M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16zm7-8A7 7 0 1 1 1 8a7 7 0 0 1 14 0z"/>
-                    </svg> 16 min read
+                    </svg> 30 min read
                 </span>
             </p>
         </aside>
@@ -969,218 +1185,250 @@ as the main headline.
     
         <div class="tags">
         
-            <a href="/tags/#github actions" class="tag"><code>#github actions</code></a>
+            <a href="/tags/#guide" class="tag"><code>#guide</code></a>
         
-            <a href="/tags/#github pages" class="tag"><code>#github pages</code></a>
+            <a href="/tags/#sharepoint" class="tag"><code>#sharepoint</code></a>
         
-            <a href="/tags/#mkdocs" class="tag"><code>#mkdocs</code></a>
+            <a href="/tags/#rclone" class="tag"><code>#rclone</code></a>
+        
+            <a href="/tags/#hentaiathome" class="tag"><code>#hentaiathome</code></a>
         
         </div>
     
 
-    <p>这篇文章讲述了如何使用 GitHub Actions / Pages 自动化部署文档，以及遇到的坑。</p>
-<p>如你所见，这个博客也是使用 GitHub Actions 自动部署在 GitHub Pages 上的。</p>
-<p>这篇文章将以 <a href="https://www.mkdocs.org/">MkDocs</a> 为例讲述。</p>
-<h2 id="_1">本地部署测试<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
-<p>首先你自己搭建的文档得在本地能用嘛，首先测试下本地是否能用：</p>
-<div class="highlight"><pre><span></span><code>mkdocs serve
-</code></pre></div>
-<div class="admonition 小提示">
-<p class="admonition-title">小提示</p>
-<p>使用以下参数可以使 mkdocs 运行在指定地址和端口上：
-<div class="highlight"><pre><span></span><code>mkdocs serve -a localhost:8001
-mkdocs serve --dev-addr localhost:8001
-</code></pre></div></p>
-</div>
-<h2 id="vcs-github">创建本地 VCS 并和 GitHub 关联<a class="headerlink" href="#vcs-github" title="Permanent link">&para;</a></h2>
-<p>这里以 PyCharm 为例：</p>
-<h3 id="vcs">创建本地 VCS<a class="headerlink" href="#vcs" title="Permanent link">&para;</a></h3>
-<pre class="mermaid"><code>graph LR
-  A[VCS] --&gt; B;
-  B[启用版本控制集成] --&gt; C;
-  C[选择 Git] --&gt; D[确定];</code></pre>
-<div class="admonition 注意有坑 attention">
-<p class="admonition-title">注意有坑</p>
-<p>记得在提交之前先创建好 <code>.gitignore</code> 文件，否则你提交之后还要继续提交一次 <code>.gitignore</code> 文件。</p>
-</div>
-<p>然后选择提交。</p>
-<h3 id="github">和 GitHub 关联<a class="headerlink" href="#github" title="Permanent link">&para;</a></h3>
-<p>这一步其实是在 GitHub 上自动创建一个同名仓库。如果仓库已经存在的话，可能需要 Merge 或者 Rebase。</p>
-<pre class="mermaid"><code>graph LR
-  A[Git] --&gt; B;
-  B[GitHub] --&gt; C;
-  C[在 GitHub 上共享项目] --&gt; D[确定];</code></pre>
-<h2 id="github-actions">在 GitHub 上创建 Actions 任务<a class="headerlink" href="#github-actions" title="Permanent link">&para;</a></h2>
-<p>这一步坑巨多。</p>
-<p>首先点击 <code>Actions</code> -&gt; <code>set up a workflow yourself</code></p>
-<p>按照任何一个你能找到的 Pages 部署文档来写这个 <code>yml</code> 文件，这里我们采用 <a href="https://squidfunk.github.io/mkdocs-material/publishing-your-site/#with-github-actions">Material for MkDocs</a> 的模板。</p>
-<div class="admonition 小提示">
-<p class="admonition-title">小提示</p>
-<p>用 MkDocs <a href="https://www.mkdocs.org/user-guide/deploying-your-docs/">官网</a> 的也行，只不过人家不会告诉你怎么写这个 <code>yml</code> 文件。</p>
-</div>
-<p>在 <code>2022年4月6日</code> 的时候我从这里找到的模板是这样的，随着时间的推移可能会有变更，建议从原文档去复制。</p>
-<div class="highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">main.yml（请勿直接使用）</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
-<span class="normal"> 2</span>
-<span class="normal"> 3</span>
-<span class="normal"> 4</span>
-<span class="normal"> 5</span>
-<span class="normal"> 6</span>
-<span class="normal"> 7</span>
-<span class="normal"> 8</span>
-<span class="normal"> 9</span>
-<span class="normal">10</span>
-<span class="normal">11</span>
-<span class="normal">12</span>
-<span class="normal">13</span>
-<span class="normal">14</span>
-<span class="normal">15</span>
-<span class="normal">16</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ci</span><span class="w"> </span>
-<span class="nt">on</span><span class="p">:</span><span class="w"></span>
-<span class="w">  </span><span class="nt">push</span><span class="p">:</span><span class="w"></span>
-<span class="w">    </span><span class="nt">branches</span><span class="p">:</span><span class="w"></span>
-<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">master</span><span class="w"> </span>
-<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">main</span><span class="w"></span>
-<span class="nt">jobs</span><span class="p">:</span><span class="w"></span>
-<span class="w">  </span><span class="nt">deploy</span><span class="p">:</span><span class="w"></span>
-<span class="w">    </span><span class="nt">runs-on</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ubuntu-latest</span><span class="w"></span>
-<span class="w">    </span><span class="nt">steps</span><span class="p">:</span><span class="w"></span>
-<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">uses</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">actions/checkout@v2</span><span class="w"></span>
-<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">uses</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">actions/setup-python@v2</span><span class="w"></span>
-<span class="w">        </span><span class="nt">with</span><span class="p">:</span><span class="w"></span>
-<span class="w">          </span><span class="nt">python-version</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">3.x</span><span class="w"></span>
-<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">run</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">pip install mkdocs-material</span><span class="w"> </span>
-<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">run</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">mkdocs gh-deploy --force</span><span class="w"></span>
-</code></pre></div></td></tr></table></div>
-<div class="admonition 注意有坑 attention">
-<p class="admonition-title">注意有坑</p>
-<p>首先他这个流程，很明显只用 <code>pip</code> 安装了 <code>mkdocs-material</code>，但是它并没有安装 <code>mkdocs</code>。其实这无所谓，因为 <code>mkdocs-material</code> 的 <code>requirements.txt</code> 中已经包含了 <code>mkdocs</code>，会一并安装。<br />
-重点的地方是，如果你在本地构建的时候依赖了其他的库（比如 <code>mkdocs-blogging-plugin</code>），那你得在 <code>run:</code> 中通过 <code>pip install</code> 安装这些库。</p>
-</div>
-<div class="admonition 注意有坑 attention">
-<p class="admonition-title">注意有坑</p>
-<p>坑还没完，如果你和我一样是 <code>mkdocs-blogging-plugin</code> 的使用者，你还会遇到网站的渲染问题，这里官网也给了解决方案。<br />
-<a href="https://liang2kl.codes/mkdocs-blogging-plugin/#publish-with-github-pages">https://liang2kl.codes/mkdocs-blogging-plugin/#publish-with-github-pages</a><br />
-注意，请不要跟随官网那篇文档里所说的设定 <code>locale: zh-CN</code> 这个键，后面会说到原因。</p>
-</div>
-<p>最终我的 <code>main.yml</code>（后来重命名成 <code>ci.yml</code> 了）长这样：</p>
-<div class="highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">main.yml</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
-<span class="normal"> 2</span>
-<span class="normal"> 3</span>
-<span class="normal"> 4</span>
-<span class="normal"> 5</span>
-<span class="normal"> 6</span>
-<span class="normal"> 7</span>
-<span class="normal"> 8</span>
-<span class="normal"> 9</span>
-<span class="normal">10</span>
-<span class="normal">11</span>
-<span class="normal">12</span>
-<span class="normal">13</span>
-<span class="normal">14</span>
-<span class="normal">15</span>
-<span class="normal">16</span>
-<span class="normal">17</span>
-<span class="normal">18</span>
-<span class="normal">19</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ci</span><span class="w"> </span>
-<span class="nt">on</span><span class="p">:</span><span class="w"></span>
-<span class="w">  </span><span class="nt">push</span><span class="p">:</span><span class="w"></span>
-<span class="w">    </span><span class="nt">branches</span><span class="p">:</span><span class="w"></span>
-<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">master</span><span class="w"> </span>
-<span class="nt">jobs</span><span class="p">:</span><span class="w"></span>
-<span class="w">  </span><span class="nt">deploy</span><span class="p">:</span><span class="w"></span>
-<span class="w">    </span><span class="nt">runs-on</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ubuntu-latest</span><span class="w"></span>
-<span class="w">    </span><span class="nt">steps</span><span class="p">:</span><span class="w"></span>
-<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">uses</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">actions/checkout@v2</span><span class="w"></span>
-<span class="hll"><span class="w">        </span><span class="nt">with</span><span class="p">:</span><span class="w">  </span><span class="c1"># mkdocs-blogging-plugin 给出的渲染问题解决方案</span><span class="w"></span>
-</span><span class="hll"><span class="w">          </span><span class="nt">fetch-depth</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0</span><span class="w"></span>
-</span><span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">uses</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">actions/setup-python@v2</span><span class="w"></span>
-<span class="w">        </span><span class="nt">with</span><span class="p">:</span><span class="w"></span>
-<span class="w">          </span><span class="nt">python-version</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">3.x</span><span class="w"></span>
-<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">run</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">pip install mkdocs</span><span class="w"></span>
-<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">run</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">pip install mkdocs-material</span><span class="w"></span>
-<span class="hll"><span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">run</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">pip install mkdocs-blogging-plugin</span><span class="w">  </span><span class="c1"># 记得安装其他依赖的库</span><span class="w"></span>
-</span><span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">run</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">mkdocs gh-deploy --force</span><span class="w"></span>
-</code></pre></div></td></tr></table></div>
-<p>这个时候你就可以在 Actions 页面点 <code>Start commit</code> 了。只要你的本地部署可以通过，在 Actions 上应该也是可以通过的。</p>
-<p>如果 Actions 的 <code>build</code> 或者 <code>deploy</code> 阶段出现了问题，说明可能是那几个 <code>run</code> 里出现了错误，那你应该在本地试一下：</p>
-<ul>
-<li>是不是有包忘了 <code>pip install</code> ？</li>
-<li>本地能正常 <code>mkdocs build</code> 嘛？</li>
+    <h2 id="_1">一、前言<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
+<h3 id="11-hentaihome">1.1 什么是 Hentai@Home<a class="headerlink" href="#11-hentaihome" title="Permanent link">&para;</a></h3>
+<p>不少人应该知道 <a href="https://e-hentai.org/">E-Hentai</a>，这是世界上最大的漫画网站之一。作为承担这个网站巨大负载的一部分，E-Hentai 提供了一个名为 <a href="https://e-hentai.org/hentaiathome.php">Hentai@Home</a> 的项目（以下简称 H@H），它的目的是利用用户的电脑协助 E-Hentai 服务器缓存图片，从而减轻服务器的负担。</p>
+<p>H@H 是一个可以比作 SETI@home 项目和 BitTorrent 之间交叉的项目。</p>
+<p>所有参与的用户都运行一个小型的基于 Java 的客户端，从 E-Hentai 的中心服务器下载画廊的图像并缓存到他们的电脑，并将这些缓存传递给其他浏览 E-Hentai 画廊的人。这使 E-Hentai 能够使用较少的中心服务器带宽提供更多的图像。</p>
+<h3 id="12-sharepoint">1.2 什么是 SharePoint<a class="headerlink" href="#12-sharepoint" title="Permanent link">&para;</a></h3>
+<p>虽然狭义上来说，SharePoint 只是大伙们用于白嫖微软来存储并分发文件的一个网盘，但是实际上，我们在此过程中用到的仅仅是 SharePoint 的 OneDrive 功能。</p>
+<p>SharePoint 实际上是一个企业级的协作平台，它可以帮助企业管理、存储、共享和保护信息，同时还可以帮助企业更好地与客户、供应商和合作伙伴进行沟通和协作。</p>
+<p>在此篇博客中，我们仅仅将 SharePoint 作为一个网盘来使用。</p>
+<h3 id="13-rclone">1.3 什么是 Rclone<a class="headerlink" href="#13-rclone" title="Permanent link">&para;</a></h3>
+<p><a href="https://rclone.org/">Rclone</a> 是一个开源的命令行工具，它可以用于在本地和各种云存储之间同步文件。它支持 50 多种云存储，包括 Dropbox、Google Drive、OneDrive、Amazon S3、Backblaze B2、OpenStack Swift、Hubic、Yandex Disk 等等。</p>
+<p>借助 Rclone 我们可以将 SharePoint 的 OneDrive 挂载到本地，从而实现将 H@H 的缓存目录放在 SharePoint 上。</p>
+<h2 id="_2">二、准备工作<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
+<p>在开始之前，为了节约时间，我假设你已经：</p>
+<ul class="task-list">
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> 具有扎实的 Linux 和 Windows 的命令行知识</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> 拥有具有大容量 SharePoint 的 Microsoft 账号</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> 了解 H@H 的工作原理，并且具有运行 H@H 的经验</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> 拥有云服务器，并且它同时与 H@H 和 SharePoint 连接状况良好</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> 拥有 <a href="http://cet.neea.edu.cn/cet/">CET4</a> 证书，并且笔试成绩至少为 425 分（或在其他测试中取得同等效力的成绩）</li>
 </ul>
-<p>之前遇到了一个典型的问题导致 build 失败：</p>
-<div class="admonition 注意有坑 attention">
-<p class="admonition-title">注意有坑</p>
-<p><code>mkdocs-blogging-plugin</code> 的官网 <a href="https://liang2kl.codes/mkdocs-blogging-plugin/#publish-with-github-pages">文档</a> 里说，要在 <code>blogging</code> 里建一个 <code>locale: zh-CN</code> 来设置时间格式，但是实际这样做会报错：<code>ValueError: expected only letters, got 'zh-cn'</code>，<br />
-解决方法：不要写 <code>locale: zh-CN</code>，要写 <code>locale: zh_CN</code> 或者干脆写 <code>locale: zh</code></p>
-<div class="highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">mkdocs.yml</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
-<span class="normal">2</span>
-<span class="normal">3</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="nt">plugins</span><span class="p">:</span><span class="w"></span>
-<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">blogging</span><span class="p">:</span><span class="w"></span>
-<span class="hll"><span class="w">      </span><span class="nt">locale</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">zh_CN</span><span class="w"></span>
-</span></code></pre></div></td></tr></table></div>
+<div class="admonition tip">
+<p class="admonition-title">提示</p>
+<p>如果你不具备以上条件中的任意一个，我建议你先去完成这些准备工作。这些工作不是本篇博客的讨论范围，且互联网上已经有充分多的其他文章来讲解这些内容。</p>
 </div>
-<p>坑还没结束，继续往下看</p>
-<h2 id="pages">设置 Pages<a class="headerlink" href="#pages" title="Permanent link">&para;</a></h2>
-<p>你以为这样就结束了？</p>
-<p>还没有！</p>
-<p>Actions 结束后会给你一个页面（当然也可以自己去找），你点开这个页面会直接告诉你 <code>404</code>。</p>
-<p>这是因为你还没有为 Pages 指定具体的页面。</p>
-<div class="admonition 小提示">
-<p class="admonition-title">小提示</p>
-<p>这里简单说一下，很多人认为 <code>Actions</code> 和 <code>Pages</code> 是一个东西，因为很多人经常用这俩一起来部署页面。但是其实这俩的功能是各有分工。<br />
- - <code>Actions</code> 的主要功能是编译，就是你指定一个环境，给出一些编译中要执行的命令行，然后给出你的源代码（这里的源代码 GitHub 会自动从你的 repo 里获取所以不用管），GitHub Actions 就会从源代码里编译出对应的静态文件，这些静态文件可能是各种文件，比如二进制文件，或者是网页。<br />
- - <code>Pages</code> 的主要功能是在 <code>&lt;user&gt;.github.io</code> 上部署网页。</p>
+<h3 id="21-rclone">2.1 安装 Rclone<a class="headerlink" href="#21-rclone" title="Permanent link">&para;</a></h3>
+<p>Rclone 提供了相当丰富的安装方式，包括但不限于：</p>
+<ul>
+<li>通过包管理器安装 </li>
+<li>通过二进制文件安装</li>
+<li>通过源码安装</li>
+<li>通过 docker 安装</li>
+<li>通过安装脚本安装</li>
+</ul>
+<p>你可以查看它的 <a href="https://rclone.org/install/">文档</a>，或是使用下面的步骤来安装：</p>
+<h4 id="_3">直接下载<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h4>
+<p><a href="https://rclone.org/downloads/">https://rclone.org/downloads/</a></p>
+<p>视你的系统，选择 <code>.deb</code> 或 <code>.rpm</code> 文件，下载后直接使用 <code>dpkg -i</code> 或 <code>rpm -i</code> 安装即可。</p>
+<h4 id="_4">使用包管理器<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h4>
+<div class="tabbed-set tabbed-alternate" data-tabs="1:2"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">Debian/Ubuntu</label><label for="__tabbed_1_2">CentOS</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code>sudo apt install rclone
+</code></pre></div>
 </div>
-<p>Actions 毕竟只是 Actions，他又不是和 Pages 联动的，所以你就算 Actions 编译出了网页也是不会给你自动部署到 Pages 上的。</p>
-<p>接下来手动设置 Pages：</p>
-<pre class="mermaid"><code>graph LR
-  A[打开你的项目仓库] --&gt; B;
-  B[Settings] --&gt; C;
-  C[Pages] --&gt; D[Source];</code></pre>
-<p>选择分支为 <code>gh-pages</code>，这是 Actions 自动构建的文件所存放的分支，目录选择 <code>/</code>。</p>
-<p>点 <code>save</code>，这下是真没问题了。</p>
-<h2 id="_2">（可选）使用自定义域名<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
-<p>使用自定义域名又会带来两个坑，无语。</p>
-<p>首先你在设置 <code>Source</code> 的时候，能看到下面一栏是 <code>Custom domain</code>，这个就是设置自定义域名的地方，比如我这个博客构建在了 <a href="https://zhanbao2000.github.io/blog">https://zhanbao2000.github.io/blog</a> ，但是我想让 <a href="https://blog.arisa.moe/">https://blog.arisa.moe/</a> 指向这个博客，就得修改这玩意。</p>
-<div class="admonition 小提示">
-<p class="admonition-title">小提示</p>
-<p>现在访问 <a href="https://zhanbao2000.github.io/blog">https://zhanbao2000.github.io/blog</a> 会被 <code>301</code> 重定向到 <a href="https://blog.arisa.moe/">https://blog.arisa.moe/</a></p>
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code>sudo yum install rclone
+</code></pre></div>
 </div>
-<p>直接在框框里写你的域名肯定是不行的，应该遵循以下步骤，以本站为例：</p>
+</div>
+</div>
+<h3 id="22-onedrive-client_id-client_secret">2.2 获取 OneDrive 的 <code>client_id</code> 和 <code>client_secret</code><a class="headerlink" href="#22-onedrive-client_id-client_secret" title="Permanent link">&para;</a></h3>
+<p>请参考这篇博客：<a href="https://333rd.net/posts/tech/%E5%88%9B%E5%BB%BA%E5%BE%AE%E8%BD%AFonedrive-api/">创建微软OneDrive API</a></p>
+<p>最终你将拿到你的 <code>client_id</code> 和 <code>client_secret</code>。</p>
+<div class="admonition warning">
+<p class="admonition-title">注意</p>
+<p>请及时记录你的 <code>client_secret</code>，它只会在生成的时候显示一次。</p>
+</div>
+<h2 id="_5">三、分水岭<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h2>
+<p>之所以称之为分水岭，是因为有些 Microsoft 账号无法取得 OAuth 授权。这将导致后面的步骤截然不同。</p>
+<p>请根据以下步骤，来得知你应该走分水岭的哪一侧：</p>
+<p>首先，在你的电脑上 <a href="https://rclone.org/downloads/">下载</a> Rclone（因为必须使用浏览器进行 OAuth），然后执行下面的命令，并按照你的实际 <code>client_id</code> 与 <code>client_secret</code> 填入：</p>
+<div class="highlight"><pre><span></span><code><span class="p">./</span><span class="n">rclone</span> <span class="n">authorize</span> <span class="s2">&quot;onedrive&quot;</span> <span class="p">--</span> <span class="s2">&quot;client_id&quot;</span> <span class="s2">&quot;client_secret&quot;</span>
+</code></pre></div>
+<p>此时，Rclone 会在浏览器中打开一个网页，要求你登录你的 Microsoft 账号。</p>
 <ol>
 <li>
-<p>找到你域名的 DNS 服务商，添加一个 CNAME 记录：
-    <div class="highlight"><pre><span></span><code>blog.arisa.moe. 1   IN  CNAME   zhanbao2000.github.io.
-</code></pre></div></p>
+<p>如果你能正常在控制台中看到你的 token：</p>
+<div class="highlight"><pre><span></span><code>token = {&quot;access_token&quot;:&quot;xxxxxxxxxxxxxxxxxx&quot;,&quot;expiry&quot;:&quot;yyyyyyyyyyyyyyyy&quot;}
+</code></pre></div>
+<p>记录该 token 备用。然后按照 <a href="#oauth">四、OAuth 授权成功</a> 继续。</p>
 </li>
 <li>
-<p>在刚刚那个框里输入 <code>blog.arisa.moe</code>，点 <code>save</code>。</p>
+<p>如果你在网页中看到如下错误：</p>
+<div class="highlight"><pre><span></span><code>Failure!
+Error: Auth Error
+Description: No code returned by remote server
+</code></pre></div>
+<p>请按照 <a href="../221113-rclone-sharepoint-oauth-failed/">通过 WebDAV 解决 Rclone 挂载 SharePoint 时遇到 Error: Auth Error</a> 的方法，来解决这个问题。</p>
 </li>
 </ol>
-<p>过一会就好了。</p>
-<p>你以为这样就完了？</p>
-<div class="admonition 注意有坑 attention">
-<p class="admonition-title">注意有坑</p>
-<p>如果你以为这样就完了，等你下次再通过 <code>git push</code> 提交文档/博客的时候，你就会发现你的自定义域名已经变成 <code>404</code> 了。<br />
-此时你打开 GitHub 对应仓库的 Settings 一看，好家伙，框框里什么都没有了。</p>
+<h2 id="oauth">四、OAuth 授权成功<a class="headerlink" href="#oauth" title="Permanent link">&para;</a></h2>
+<p>至此，你已经取得了三样东西：</p>
+<ul>
+<li>你的 <code>client_id</code></li>
+<li>你的 <code>client_secret</code></li>
+<li>你的 <code>access_token</code></li>
+</ul>
+<p>在你的云服务器上执行：</p>
+<div class="highlight"><pre><span></span><code>rclone config
+</code></pre></div>
+<p>会出现：</p>
+<div class="highlight"><pre><span></span><code>e) Edit existing remote
+n) New remote
+d) Delete remote
+r) Rename remote
+c) Copy remote
+s) Set configuration password
+q) Quit config
+e/n/d/r/c/s/q&gt;
+</code></pre></div>
+<p>选择 <code>n</code>，新建一个，并将该新 remote 命名，假设我们命名为 <code>od4hath</code>。</p>
+<p>之后会出现：</p>
+<div class="highlight"><pre><span></span><code>Type of storage to configure.
+Enter a string value. Press Enter for the default (&quot;&quot;).
+Choose a number from below, or type in your own value
+
+22 / Microsoft OneDrive
+   \ &quot;onedrive&quot;
+
+Storage&gt;
+</code></pre></div>
+<p>不同版本 Rclone 的数字可能不同，我这里的 Microsoft OneDrive 对应的是 22，所以输入 22。</p>
+<p>之后将要求输入你的 <code>client_id</code> 和 <code>client_secret</code>：</p>
+<div class="highlight"><pre><span></span><code>OAuth Client Id
+Leave blank normally.
+Enter a string value. Press Enter for the default (&quot;&quot;).
+client_id&gt;
+</code></pre></div>
+<p>复制你的 <code>client_id</code> 即可。</p>
+<div class="highlight"><pre><span></span><code>OAuth Client Secret
+Leave blank normally.
+Enter a string value. Press Enter for the default (&quot;&quot;).
+client_secret&gt;
+</code></pre></div>
+<p>复制你的 <code>client_secret</code> 即可。</p>
+<p>之后会出现：</p>
+<div class="highlight"><pre><span></span><code>Edit advanced config? (y/n)
+y) Yes
+n) No (default)
+</code></pre></div>
+<p>选择 <code>n</code>，不需要编辑高级配置。</p>
+<div class="highlight"><pre><span></span><code>Remote config
+Use auto config?
+ * Say Y if not sure
+ * Say N if you are working on a remote or headless machine
+y) Yes (default)
+n) No
+y/n&gt;
+</code></pre></div>
+<p>因为我们是在云服务器上配置，所以选择 <code>n</code>。此时 Rclone 会要求你输入你的 <code>access_token</code>：</p>
+<div class="highlight"><pre><span></span><code>For this to work, you will need rclone available on a machine that has
+a web browser available.
+
+For more help and alternate methods see: https://rclone.org/remote_setup/
+
+Execute the following on the machine with the web browser (same rclone
+version recommended):
+
+        rclone authorize &quot;onedrive&quot;
+
+Then paste the result below:
+result&gt;
+</code></pre></div>
+<p>复制你先前保存的 <code>access_token</code> 即可。</p>
+<p>之后会出现：</p>
+<div class="highlight"><pre><span></span><code>Choose a number from below, or type in an existing value
+ 1 / OneDrive Personal or Business
+   \ &quot;onedrive&quot;
+ 2 / Sharepoint site
+   \ &quot;sharepoint&quot;
+ 3 / Type in driveID
+   \ &quot;driveid&quot;
+ 4 / Type in SiteID
+   \ &quot;siteid&quot;
+ 5 / Search a Sharepoint site
+   \ &quot;search&quot;
+Your choice&gt;
+</code></pre></div>
+<p>视你自己情况而定。</p>
+<p>之后你将获得一个已经配置好的 remote。</p>
+<h2 id="remote">五、测试并挂载 remote<a class="headerlink" href="#remote" title="Permanent link">&para;</a></h2>
+<h3 id="51-remote">5.1 测试 remote<a class="headerlink" href="#51-remote" title="Permanent link">&para;</a></h3>
+<p>我们可以使用</p>
+<div class="highlight"><pre><span></span><code>rclone lsd od4hath:
+</code></pre></div>
+<p>来测试你的 remote 是否配置正确。</p>
+<p>上述命令的含义是列出 <code>od4hath</code> 这个 remote 的根目录下的所有文件夹。</p>
+<p>一般来说，如果这是一个全新的 OneDrive，那么你应该会看到一个名为 <code>Form</code> 的文件夹。这就代表你的 remote 已经配置成功了。</p>
+<h3 id="52-remote">5.2 挂载 remote<a class="headerlink" href="#52-remote" title="Permanent link">&para;</a></h3>
+<p>创建一个新文件夹用于挂载，具体路径完全取决于你个人：</p>
+<div class="highlight"><pre><span></span><code>mkdir /root/rclone
+mkdir /root/rclone/od4hath
+</code></pre></div>
+<p>然后再在你的 OneDrive 网页版中，于根目录下创建一个文件夹，命名为 <code>Hath</code>。</p>
+<p>使用以下命令挂载：</p>
+<div class="highlight"><pre><span></span><code>rclone mount od4hath:Hath /root/rclone/od4hath --allow-other --transfers <span class="m">4</span> --buffer-size 32M --vfs-read-chunk-size 128M --vfs-read-chunk-size-limit 0M --vfs-cache-max-size 8000M --vfs-cache-max-age 3360h --allow-non-empty --dir-cache-time 3360h --vfs-cache-mode full --umask <span class="m">000</span> --vfs-cache-mode full --no-modtime --vfs-cache-poll-interval 30m
+</code></pre></div>
+<p>其中，<code>od4hath:Hath /root/rclone/od4hath</code> 指的是将名为 <code>od4hath</code> 的 remote 中的 <code>Hath</code> 文件夹挂载到本地的 <code>/root/rclone/od4hath</code> 目录。</p>
+<p>如果你想挂载整个 remote 而不是其中某个文件夹，你可以使用：</p>
+<div class="highlight"><pre><span></span><code>rclone mount od4hath: /root/rclone/od4hath
+</code></pre></div>
+<p>这样 <code>/root/rclone/od4hath</code> 目录便指向了整个 remote。</p>
+<p>命令行参数的含义请参阅 rclone <a href="https://rclone.org/commands/rclone_mount/">文档</a></p>
+<h3 id="53">5.3 测试挂载是否成功<a class="headerlink" href="#53" title="Permanent link">&para;</a></h3>
+<p>现在，使用你的命令行，向该目录下随便写入一个文件：</p>
+<div class="highlight"><pre><span></span><code>touch /root/rclone/od4hath/test
+</code></pre></div>
+<p>在你的网页版 OneDrive 中查看 <code>Hath</code> 文件夹，你应该会看到一个名为 <code>test</code> 的文件。</p>
+<div class="admonition danger">
+<p class="admonition-title">危险</p>
+<p>在这之后，千万不要直接在网页版 OneDrive 中随便删除已经挂载的文件和文件夹，这可能会导致意料之外的错误。</p>
 </div>
-<p>先说解决方法再说原因。</p>
-<p>解决方法是，在 <code>docs</code> 文件夹里创建一个 <code>CNAME</code> 文件，内容写上你的自定义域名，下次 Actions 运行的时候，Pages 就会自动把这个域名设置成自定义域名了。</p>
-<p>参考以下：</p>
-<ul>
-<li><a href="https://github.com/tschaub/gh-pages/issues/213">Deploying seems to overwrite custom domain #213</a></li>
-<li><a href="https://github.com/tschaub/gh-pages/issues/127">gh-pages -d dist overwrites custom domain #127</a></li>
-<li><a href="https://www.mkdocs.org/user-guide/deploying-your-docs/#custom-domains">MkDocs - Custom Domains</a> 👉 其实 MkDocs 官网有写</li>
-</ul>
-<p>这些 issues 无一例外都提到了要创建一个 <code>CNAME</code> 文件来指示自己的自定义域名。但是距离 issue 提出好像已经过了5年了也没见到 GitHub 官方修复这个问题。</p>
-<p>我自己推测的原因是这样的：</p>
-<p>在 Pages 页面设置自定义域名的时候，实际上是在项目生成目录里自动创建了一个 <code>CNAME</code> 文件的，和我们手动创建的效果一样。但是在 Actions 运作的时候，会覆盖掉整个项目生成目录，包括这个 <code>CNAME</code> 文件。</p>
-<p>那么就有两个办法来解决：</p>
-<ul>
-<li>每次 Actions 结束之后，手动去 Pages 页面添加自定义域名。</li>
-<li>让 Actions 结束之后，项目生成目录里始终有这个 <code>CNAME</code> 文件。</li>
-</ul>
-<p>于是我们选择了后者。</p>
+<h2 id="hh">六、与 H@H 一同工作<a class="headerlink" href="#hh" title="Permanent link">&para;</a></h2>
+<p>现在停止你正在运行的 H@H 服务器，然后在网页版 H@H 控制台中选择 <code>Reset Static Ranges</code>。</p>
+<div class="admonition danger">
+<p class="admonition-title">危险</p>
+<p>如果你的 <code>Static Ranges</code> 数量并不少（例如数千个），那么你或许可以试试将旧的缓存文件夹移入挂载目录。</p>
+<p>我并没有进行尝试，因为在这篇博客写好之前我的 <code>Static Ranges</code> 只有 40 个。我<strong>不能确保</strong>这样做是否会导致意料之外的错误。</p>
+<p>如果你移动文件夹之后一切工作正常，且 H@H 仪表盘中 <code>Trust</code> 值并没有夸张地减小，那么你可以放心地继续使用这种方法。</p>
+</div>
+<p>在挂载目录中添加一个 <code>cache</code> 文件夹作为缓存文件夹：</p>
+<div class="highlight"><pre><span></span><code>mkdir /root/rclone/od4hath/cache
+</code></pre></div>
+<p>编辑你的 H@H 服务器启动参数，加上一条额外的 <code>--cache-dir</code>，例如：</p>
+<div class="highlight"><pre><span></span><code>java -jar HentaiAtHome.jar --cache-dir /root/rclone/od4hath/cache
+</code></pre></div>
+<p>然后运行即可。</p>
+<h2 id="_6">七、注意事项<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h2>
+<h3 id="71">7.1 文件总数量限制<a class="headerlink" href="#71" title="Permanent link">&para;</a></h3>
+<p>不少的云盘服务商都有文件总数量的限制，如果你在网上搜 <code>OneDrive 文件总数量限制</code>，你会发现搜索的结果是 <code>150000</code> 个。</p>
+<p><img alt="150000" src="../images/221113-rclone-sharepoint-for-hentai-at-home/150000.png" /></p>
+<p>因为这是 OneDrive 个人版的限制，而我们用的是 OneDrive for Business，它应该参考 SharePoint 的数量限制：</p>
+<p><img alt="30000000" src="../images/221113-rclone-sharepoint-for-hentai-at-home/30000000.png" /></p>
+<p>即 3000 万个。</p>
+<p>或者参考微软 <a href="https://learn.microsoft.com/zh-cn/office365/servicedescriptions/sharepoint-online-service-description/sharepoint-online-limits#items-in-lists-and-libraries">文档</a>。</p>
+<p>按照每个文件平均 350 KB 来计算，3000 万个文件大约占用 10 TB 的空间，这已经超过了大多数人的 SharePoint 容量。</p>
+<p>因此，我们可以可以在 H@H 控制台中分配尽可能多的空间，而不必担心文件数量的限制。</p>
+<h3 id="72-hh-trust">7.2 H@H 仪表盘中 <code>Trust</code> 值骤降<a class="headerlink" href="#72-hh-trust" title="Permanent link">&para;</a></h3>
+<p>正常，降到负数也是正常的。</p>
+<p>这是因为你重置了所有的 <code>Static Ranges</code>，尽管 E-Hentai 中心服务器已经通知整个 H@H 网络不再从你原有的 <code>Static Ranges</code> 获取任何资源，但总有部分缓存的客户端未收到该通知并继续连接到你的 H@H 程序，直到这些客户端被告知文件 404。</p>
+<p>这些 404 状态码是你的 <code>Trust</code> 骤降的原因。</p>
+<p>别担心，如果你的挂载文件夹配置正确，那么这个值会在很短的时间内恢复至正常水平。一般来说，一台日本的服务器，将在4小时内将 <code>Trust</code> 值上升至正数，在8小时内开始分配新的 <code>Static Ranges</code> 并分发文件，在 12 小时内 <code>Trust</code> 值将到达 800 以上。</p>
 
     <!-- Last update of source file -->
     
@@ -1190,11 +1438,11 @@ mkdocs serve --dev-addr localhost:8001
   <small>
     
       最后更新:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_datetime">2022-04-08 07:06:43</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_datetime">2022-11-13 07:06:48</span>
       
         <br>
         创建日期:
-        <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_datetime">2022-04-06 16:25:14</span>
+        <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_datetime">2022-11-13 07:06:48</span>
       
     
   </small>
@@ -1272,7 +1520,7 @@ mkdocs serve --dev-addr localhost:8001
     <nav class="md-footer__inner md-grid" aria-label="页脚" >
       
         
-        <a href="../220407-certbot/" class="md-footer__link md-footer__link--prev" aria-label="上一页: certbot 常用操作" rel="prev">
+        <a href="../220913-python-confusing-detail/" class="md-footer__link md-footer__link--prev" aria-label="上一页: Python 中令人迷惑的细节" rel="prev">
           <div class="md-footer__button md-icon">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
           </div>
@@ -1281,20 +1529,20 @@ mkdocs serve --dev-addr localhost:8001
               <span class="md-footer__direction">
                 上一页
               </span>
-              certbot 常用操作
+              Python 中令人迷惑的细节
             </div>
           </div>
         </a>
       
       
         
-        <a href="../220408-github-pages-2/" class="md-footer__link md-footer__link--next" aria-label="下一页: GitHub Pages 文档自动化部署 - VuePress" rel="next">
+        <a href="../221113-rclone-sharepoint-oauth-failed/" class="md-footer__link md-footer__link--next" aria-label="下一页: 221113 rclone sharepoint oauth failed" rel="next">
           <div class="md-footer__title">
             <div class="md-ellipsis">
               <span class="md-footer__direction">
                 下一页
               </span>
-              GitHub Pages 文档自动化部署 - VuePress
+              221113 rclone sharepoint oauth failed
             </div>
           </div>
           <div class="md-footer__button md-icon">
