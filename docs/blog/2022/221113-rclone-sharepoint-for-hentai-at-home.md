@@ -111,7 +111,7 @@ Rclone 提供了相当丰富的安装方式，包括但不限于：
     token = {"access_token":"xxxxxxxxxxxxxxxxxx","expiry":"yyyyyyyyyyyyyyyy"}
     ```
 
-    记录该 token 备用。然后按照 [四、OAuth 授权成功](#oauth) 继续。
+    记录该 token 备用。然后按照 [创建 Rclone remote](#rclone-remote) 继续。
 
 2. 如果你在网页中看到如下错误：
 
@@ -123,7 +123,7 @@ Rclone 提供了相当丰富的安装方式，包括但不限于：
 
     请按照 [通过 WebDAV 解决 Rclone 挂载 SharePoint 时遇到 Error: Auth Error](./221113-rclone-sharepoint-oauth-failed.md) 的方法，来解决这个问题。
 
-## 四、OAuth 授权成功
+## 四、创建 Rclone remote
 
 至此，你已经取得了三样东西：
 
