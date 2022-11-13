@@ -327,7 +327,7 @@ mkdir /root/rclone/od4hath/cache
 编辑你的 H@H 服务器启动参数，加上一条额外的 `--cache-dir`，例如：
 
 ```bash
-java -jar HentaiAtHome.jar --cache-dir /root/rclone/od4hath/cache
+java -jar HentaiAtHome.jar --cache-dir=/root/rclone/od4hath/cache
 ```
 
 然后运行即可。
