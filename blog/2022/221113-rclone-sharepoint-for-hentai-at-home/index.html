@@ -1404,6 +1404,7 @@ mkdir /root/rclone/od4hath
 </code></pre></div>
 <p>这样 <code>/root/rclone/od4hath</code> 目录便指向了整个 remote。</p>
 <p>命令行参数的含义请参阅 rclone <a href="https://rclone.org/commands/rclone_mount/">文档</a></p>
+<p>请注意 <code>--vfs-cache-max-size</code> 参数的值为本地磁盘缓存大小，请勿设置过大。<code>--transfers</code> 与 <code>--buffer-size</code> 参数的乘积为每次传输的最大数据量，请根据你主机上的内存大小酌情设置。</p>
 <h3 id="53">5.3 测试挂载是否成功<a class="headerlink" href="#53" title="Permanent link">&para;</a></h3>
 <p>现在，使用你的命令行，向该目录下随便写入一个文件：</p>
 <div class="highlight"><pre><span></span><code>touch /root/rclone/od4hath/test
@@ -1452,7 +1453,7 @@ mkdir /root/rclone/od4hath
   <small>
     
       最后更新:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_datetime">2022-11-14 07:14:27</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_datetime">2022-11-16 06:56:01</span>
       
         <br>
         创建日期:
