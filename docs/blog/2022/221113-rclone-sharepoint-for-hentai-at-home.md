@@ -292,6 +292,8 @@ rclone mount od4hath: /root/rclone/od4hath
 
 命令行参数的含义请参阅 rclone [文档](https://rclone.org/commands/rclone_mount/)
 
+请注意 `--vfs-cache-max-size` 参数的值为本地磁盘缓存大小，请勿设置过大。`--transfers` 与 `--buffer-size` 参数的乘积为每次传输的最大数据量，请根据你主机上的内存大小酌情设置。
+
 ### 5.3 测试挂载是否成功
 
 现在，使用你的命令行，向该目录下随便写入一个文件：
