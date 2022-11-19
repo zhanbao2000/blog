@@ -32,3 +32,4 @@ hide:
  - [Akula<>Blog](https://lolicon.akulak.icu/)
  - [Atmosphere](https://blog.awa.moe/)
  - [Awblogu](https://blog.awbugl.top)
+ - [BsBlog](https://sorabs.cc/links/)
