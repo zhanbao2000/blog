@@ -14,7 +14,7 @@ jobs:
         with:
           python-version: 3.x
       - run: pip install mkdocs
-      - run: pip install mkdocs-material
+      - run: pip install mkdocs-material==8.5.10
       - run: pip install mkdocs-blogging-plugin
       - run: pip install mkdocs-git-revision-date-localized-plugin
       - run: mkdocs gh-deploy --force
