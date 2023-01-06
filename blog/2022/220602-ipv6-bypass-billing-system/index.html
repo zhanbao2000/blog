@@ -1561,44 +1561,44 @@ as the main headline.
 <span class="normal">22</span>
 <span class="normal">23</span>
 <span class="normal">24</span>
-<span class="normal">25</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">worker_processes</span><span class="w">  </span><span class="mi">1</span><span class="p">;</span><span class="w"></span>
-<span class="hll"><span class="k">user</span><span class="w"> </span><span class="s">root</span><span class="p">;</span><span class="w"></span>
+<span class="normal">25</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">worker_processes</span><span class="w">  </span><span class="mi">1</span><span class="p">;</span>
+<span class="hll"><span class="k">user</span><span class="w"> </span><span class="s">root</span><span class="p">;</span>
 </span>
-<span class="k">events</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">    </span><span class="kn">worker_connections</span><span class="w">  </span><span class="mi">32768</span><span class="p">;</span><span class="w"></span>
-<span class="p">}</span><span class="w"></span>
+<span class="k">events</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kn">worker_connections</span><span class="w">  </span><span class="mi">32768</span><span class="p">;</span>
+<span class="p">}</span>
 
-<span class="k">http</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">    </span><span class="kn">include</span><span class="w">            </span><span class="s">mime.types</span><span class="p">;</span><span class="w"></span>
-<span class="w">    </span><span class="kn">default_type</span><span class="w">       </span><span class="s">application/octet-stream</span><span class="p">;</span><span class="w"></span>
-<span class="w">    </span><span class="kn">sendfile</span><span class="w">           </span><span class="no">on</span><span class="p">;</span><span class="w"></span>
-<span class="w">    </span><span class="kn">keepalive_timeout</span><span class="w">  </span><span class="mi">65</span><span class="p">;</span><span class="w"></span>
-<span class="w">    </span><span class="kn">access_log</span><span class="w">         </span><span class="no">off</span><span class="p">;</span><span class="w"></span>
+<span class="k">http</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kn">include</span><span class="w">            </span><span class="s">mime.types</span><span class="p">;</span>
+<span class="w">    </span><span class="kn">default_type</span><span class="w">       </span><span class="s">application/octet-stream</span><span class="p">;</span>
+<span class="w">    </span><span class="kn">sendfile</span><span class="w">           </span><span class="no">on</span><span class="p">;</span>
+<span class="w">    </span><span class="kn">keepalive_timeout</span><span class="w">  </span><span class="mi">65</span><span class="p">;</span>
+<span class="w">    </span><span class="kn">access_log</span><span class="w">         </span><span class="no">off</span><span class="p">;</span>
 
-<span class="w">    </span><span class="kn">server</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">        </span><span class="kn">listen</span><span class="w">         </span><span class="mi">80</span><span class="p">;</span><span class="w"></span>
-<span class="hll"><span class="w">        </span><span class="kn">listen</span><span class="w">         </span><span class="s">[::]:80</span><span class="p">;</span><span class="w"></span>
-</span><span class="w">        </span><span class="kn">server_name</span><span class="w">    </span><span class="s">localhost</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="kn">server</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="kn">listen</span><span class="w">         </span><span class="mi">80</span><span class="p">;</span>
+<span class="hll"><span class="w">        </span><span class="kn">listen</span><span class="w">         </span><span class="s">[::]:80</span><span class="p">;</span>
+</span><span class="w">        </span><span class="kn">server_name</span><span class="w">    </span><span class="s">localhost</span><span class="p">;</span>
 
-<span class="w">        </span><span class="kn">location</span><span class="w"> </span><span class="s">/</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="hll"><span class="w">            </span><span class="kn">root</span><span class="w">       </span><span class="s">/usr/share/nginx/html</span><span class="p">;</span><span class="w"></span>
-</span><span class="w">            </span><span class="kn">index</span><span class="w">      </span><span class="s">index.html</span><span class="p">;</span><span class="w"></span>
-<span class="w">        </span><span class="p">}</span><span class="w"></span>
-<span class="w">    </span><span class="p">}</span><span class="w"></span>
-<span class="p">}</span><span class="w"></span>
+<span class="w">        </span><span class="kn">location</span><span class="w"> </span><span class="s">/</span><span class="w"> </span><span class="p">{</span>
+<span class="hll"><span class="w">            </span><span class="kn">root</span><span class="w">       </span><span class="s">/usr/share/nginx/html</span><span class="p">;</span>
+</span><span class="w">            </span><span class="kn">index</span><span class="w">      </span><span class="s">index.html</span><span class="p">;</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
 </code></pre></div></td></tr></table></div>
 <p>请注意以下字段：</p>
 <ul>
-<li>第 2 行 - <code class="highlight"><span class="k">user</span><span class="w"> </span><span class="s">root</span><span class="w"></span></code>：说明启动 nginx 的用户为 root，对于 Windows 系统可以不要这一行</li>
-<li>第 17 行 - <code class="highlight"><span class="k">listen</span><span class="w"> </span><span class="s">[::]:80</span><span class="w"></span></code>：必须加入这个才会监听来自 80 端口的 IPv6 请求</li>
-<li>第 21 行 - <code class="highlight"><span class="k">root</span><span class="w"> </span><span class="s">/usr/share/nginx/html</span><span class="w"></span></code>：指向你自己的网站根目录</li>
+<li>第 2 行 - <code class="highlight"><span class="k">user</span><span class="w"> </span><span class="s">root</span></code>：说明启动 nginx 的用户为 root，对于 Windows 系统可以不要这一行</li>
+<li>第 17 行 - <code class="highlight"><span class="k">listen</span><span class="w"> </span><span class="s">[::]:80</span></code>：必须加入这个才会监听来自 80 端口的 IPv6 请求</li>
+<li>第 21 行 - <code class="highlight"><span class="k">root</span><span class="w"> </span><span class="s">/usr/share/nginx/html</span></code>：指向你自己的网站根目录</li>
 </ul>
 <h4 id="225">2.2.5 证书配置<a class="headerlink" href="#225" title="Permanent link">&para;</a></h4>
 <p>接下来我们去 <a href="https://certbot.eff.org/">Certbot</a> 获取网站证书。</p>
 <p>首先进入 <a href="https://certbot.eff.org/">Certbot 官网</a>，在 <code>My HTTP website is running</code> 这里选择 <code>Nginx</code>，然后<strong>选择你服务器对应的系统</strong>。一般来说，对于 Windows 系统一般是去 <a href="https://dl.eff.org/certbot-beta-installer-win32.exe">https://dl.eff.org/certbot-beta-installer-win32.exe</a> 下载安装。而 Linux 一般使用软件包管理器（例如 apt、snap 等）安装，<strong>具体请参考当页的说明</strong>。</p>
 <p><img alt="My-HTTP-website-is-running" src="../images/220602-ipv6-bypass-billing-system/My-HTTP-website-is-running.png" /></p>
 <p>现在根据当页的说明，下载 Certbot 到你的服务器。然后运行它：</p>
-<div class="highlight"><pre><span></span><code>certbot certonly
+<div class="highlight"><pre><span></span><code>certbot<span class="w"> </span>certonly
 </code></pre></div>
 <p>根据提示，输入 <code>nginx</code>（如果你已经完成了上述 nginx 配置）或者 <code>standalone</code>（如果你还没有完成 nginx 的配置，并且 80 端口没有被占用），然后按照提示引导输入你的邮箱、域名。</p>
 <p>例如你在 DNS 配置阶段添加了一个 <code>ipv6.cauc.sb</code> 的 <code>AAAA</code> 记录，还添加了一个 <code>www.cauc.sb</code> 的 <code>A</code> 记录，还添加了一个 <code>cauc.sb</code> 的 <code>A</code> 记录和 <code>AAAA</code> 记录，还添加了一个 <code>wdnmd.cauc.sb</code> 的 <code>A</code> 记录和 <code>AAAA</code> 记录，那么你在输入域名这一步应该输入（用空格分割）：</p>
@@ -1622,10 +1622,10 @@ as the main headline.
 </div>
 </div>
 <p>Certbot颁发的是 <a href="https://letsencrypt.org/">Let's Encrypt</a> 的证书，Let's Encrypt 是一个由非营利性组织互联网安全研究小组（ISRG）提供的免费、自动化和开放的证书颁发机构（CA），致力于为网站提供免费的 SSL/TLS 证书。Let's Encrypt 的 SSL/TLS 证书默认只有 90 天的有效期，到期了不用慌，只需要使用下面的命令：</p>
-<div class="highlight"><pre><span></span><code> certbot renew
+<div class="highlight"><pre><span></span><code><span class="w"> </span>certbot<span class="w"> </span>renew
 </code></pre></div>
 <p>即可自动更新证书。对于 Linux 系统而言，Certbot 会在系统自动设置计划任务以实现自动更新，你可以通过这个指令查看：</p>
-<div class="highlight"><pre><span></span><code>systemctl list-timers
+<div class="highlight"><pre><span></span><code>systemctl<span class="w"> </span>list-timers
 </code></pre></div>
 <p>对于Windows系统，你需要自己手动添加计划任务，这里不做过多介绍。</p>
 <p>如果这里对 Certbot 的使用仍然存在问题，请参考这篇博客：<a href="../220407-certbot/">certbot 常用操作</a></p>
@@ -1643,22 +1643,22 @@ as the main headline.
 <h4 id="321-trojan-go">3.2.1 安装 Trojan-Go<a class="headerlink" href="#321-trojan-go" title="Permanent link">&para;</a></h4>
 <p>根据你使用的系统获取服务端：<a href="https://github.com/p4gefau1t/trojan-go/releases">https://github.com/p4gefau1t/trojan-go/releases</a>。</p>
 <p>在 Trojan-Go 可执行文件的同文件夹下建立一个 <code>config.json</code>：</p>
-<div class="highlight"><span class="filename">config.json</span><pre><span></span><code><span class="p">{</span><span class="w"></span>
-<span class="w">    </span><span class="nt">&quot;run_type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;server&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">    </span><span class="nt">&quot;local_addr&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;0.0.0.0&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">    </span><span class="nt">&quot;local_port&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">443</span><span class="p">,</span><span class="w"></span>
-<span class="w">    </span><span class="nt">&quot;remote_addr&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;127.0.0.1&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">    </span><span class="nt">&quot;remote_port&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">80</span><span class="p">,</span><span class="w"></span>
-<span class="w">    </span><span class="nt">&quot;password&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"></span>
-<span class="w">        </span><span class="s2">&quot;sbDJKnmsl23333&quot;</span><span class="w"></span>
-<span class="w">    </span><span class="p">],</span><span class="w"></span>
-<span class="w">    </span><span class="nt">&quot;ssl&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">        </span><span class="nt">&quot;cert&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2.2.5 里 fullchain.pem 的路径&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">        </span><span class="nt">&quot;key&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2.2.5 里 privkey.pem 的路径&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">        </span><span class="nt">&quot;fallback_addr&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;127.0.0.1&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">        </span><span class="nt">&quot;fallback_port&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">3824</span><span class="w"></span>
-<span class="w">    </span><span class="p">}</span><span class="w"></span>
-<span class="p">}</span><span class="w"></span>
+<div class="highlight"><span class="filename">config.json</span><pre><span></span><code><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;run_type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;server&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;local_addr&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;0.0.0.0&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;local_port&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">443</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;remote_addr&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;127.0.0.1&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;remote_port&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">80</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;password&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">        </span><span class="s2">&quot;sbDJKnmsl23333&quot;</span>
+<span class="w">    </span><span class="p">],</span>
+<span class="w">    </span><span class="nt">&quot;ssl&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">&quot;cert&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2.2.5 里 fullchain.pem 的路径&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;key&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2.2.5 里 privkey.pem 的路径&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;fallback_addr&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;127.0.0.1&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;fallback_port&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">3824</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
 </code></pre></div>
 <p>你可以自由修改 <code>password</code> 字段，而如果你想修改其他内容的话，请最好<strong>参考原文档修改</strong>。</p>
 <p>根据 <code>Trojan-Go</code> 配置文档，我们需要设立一个 <code>fallback</code>，以在我们访问 <a href="http://ipv6.cauc.sb:443/">http://ipv6.cauc.sb:443/</a> 时返回 <code>400 Bad Request</code> 的状态码。至于为什么要这么做，请参考 <a href="https://p4gefau1t.github.io/trojan-go/basic/config/">正确配置Trojan-Go</a>。</p>
@@ -1701,49 +1701,49 @@ as the main headline.
 <span class="normal">34</span>
 <span class="normal">35</span>
 <span class="normal">36</span>
-<span class="normal">37</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">worker_processes</span><span class="w">  </span><span class="mi">1</span><span class="p">;</span><span class="w"></span>
-<span class="k">user</span><span class="w"> </span><span class="s">root</span><span class="p">;</span><span class="w"></span>
+<span class="normal">37</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">worker_processes</span><span class="w">  </span><span class="mi">1</span><span class="p">;</span>
+<span class="k">user</span><span class="w"> </span><span class="s">root</span><span class="p">;</span>
 
-<span class="k">events</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">    </span><span class="kn">worker_connections</span><span class="w">  </span><span class="mi">32768</span><span class="p">;</span><span class="w"></span>
-<span class="p">}</span><span class="w"></span>
+<span class="k">events</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kn">worker_connections</span><span class="w">  </span><span class="mi">32768</span><span class="p">;</span>
+<span class="p">}</span>
 
-<span class="k">http</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">    </span><span class="kn">include</span><span class="w">              </span><span class="s">mime.types</span><span class="p">;</span><span class="w"></span>
-<span class="w">    </span><span class="kn">default_type</span><span class="w">         </span><span class="s">application/octet-stream</span><span class="p">;</span><span class="w"></span>
-<span class="w">    </span><span class="kn">sendfile</span><span class="w">             </span><span class="no">on</span><span class="p">;</span><span class="w"></span>
-<span class="w">    </span><span class="kn">keepalive_timeout</span><span class="w">    </span><span class="mi">65</span><span class="p">;</span><span class="w"></span>
-<span class="w">    </span><span class="kn">access_log</span><span class="w">           </span><span class="no">off</span><span class="p">;</span><span class="w"></span>
+<span class="k">http</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kn">include</span><span class="w">              </span><span class="s">mime.types</span><span class="p">;</span>
+<span class="w">    </span><span class="kn">default_type</span><span class="w">         </span><span class="s">application/octet-stream</span><span class="p">;</span>
+<span class="w">    </span><span class="kn">sendfile</span><span class="w">             </span><span class="no">on</span><span class="p">;</span>
+<span class="w">    </span><span class="kn">keepalive_timeout</span><span class="w">    </span><span class="mi">65</span><span class="p">;</span>
+<span class="w">    </span><span class="kn">access_log</span><span class="w">           </span><span class="no">off</span><span class="p">;</span>
 
-<span class="w">    </span><span class="kn">server</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">        </span><span class="kn">listen</span><span class="w">           </span><span class="mi">80</span><span class="p">;</span><span class="w"></span>
-<span class="w">        </span><span class="kn">listen</span><span class="w">           </span><span class="s">[::]:80</span><span class="p">;</span><span class="w"></span>
-<span class="w">        </span><span class="kn">server_name</span><span class="w">      </span><span class="s">localhost</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="kn">server</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="kn">listen</span><span class="w">           </span><span class="mi">80</span><span class="p">;</span>
+<span class="w">        </span><span class="kn">listen</span><span class="w">           </span><span class="s">[::]:80</span><span class="p">;</span>
+<span class="w">        </span><span class="kn">server_name</span><span class="w">      </span><span class="s">localhost</span><span class="p">;</span>
 
-<span class="w">        </span><span class="kn">location</span><span class="w"> </span><span class="s">/</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">            </span><span class="kn">root</span><span class="w">         </span><span class="s">/usr/share/nginx/html</span><span class="p">;</span><span class="w"></span>
-<span class="w">            </span><span class="kn">index</span><span class="w">        </span><span class="s">index.html</span><span class="p">;</span><span class="w"></span>
-<span class="w">        </span><span class="p">}</span><span class="w"></span>
-<span class="w">    </span><span class="p">}</span><span class="w"></span>
+<span class="w">        </span><span class="kn">location</span><span class="w"> </span><span class="s">/</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="kn">root</span><span class="w">         </span><span class="s">/usr/share/nginx/html</span><span class="p">;</span>
+<span class="w">            </span><span class="kn">index</span><span class="w">        </span><span class="s">index.html</span><span class="p">;</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span>
 
-<span class="w">    </span><span class="kn">server</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="hll"><span class="w">        </span><span class="kn">listen</span><span class="w">               </span><span class="n">localhost</span><span class="p">:</span><span class="mi">3824</span><span class="w"> </span><span class="s">ssl</span><span class="p">;</span><span class="w"></span>
-</span><span class="hll"><span class="w">        </span><span class="kn">server_name</span><span class="w">          </span><span class="mi">127</span><span class="s">.0.0.1</span><span class="p">;</span><span class="w"></span>
-</span><span class="hll"><span class="w">        </span><span class="kn">ssl_certificate</span><span class="w">      </span><span class="mi">2</span><span class="s">.2.5</span><span class="w"> </span><span class="s">里</span><span class="w"> </span><span class="s">fullchain.pem</span><span class="w"> </span><span class="s">的路径</span><span class="p">;</span><span class="w"></span>
-</span><span class="hll"><span class="w">        </span><span class="kn">ssl_certificate_key</span><span class="w">  </span><span class="mi">2</span><span class="s">.2.5</span><span class="w"> </span><span class="s">里</span><span class="w"> </span><span class="s">privkey.pem</span><span class="w"> </span><span class="s">的路径</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="kn">server</span><span class="w"> </span><span class="p">{</span>
+<span class="hll"><span class="w">        </span><span class="kn">listen</span><span class="w">               </span><span class="n">localhost</span><span class="p">:</span><span class="mi">3824</span><span class="w"> </span><span class="s">ssl</span><span class="p">;</span>
+</span><span class="hll"><span class="w">        </span><span class="kn">server_name</span><span class="w">          </span><span class="mi">127</span><span class="s">.0.0.1</span><span class="p">;</span>
+</span><span class="hll"><span class="w">        </span><span class="kn">ssl_certificate</span><span class="w">      </span><span class="mi">2</span><span class="s">.2.5</span><span class="w"> </span><span class="s">里</span><span class="w"> </span><span class="s">fullchain.pem</span><span class="w"> </span><span class="s">的路径</span><span class="p">;</span>
+</span><span class="hll"><span class="w">        </span><span class="kn">ssl_certificate_key</span><span class="w">  </span><span class="mi">2</span><span class="s">.2.5</span><span class="w"> </span><span class="s">里</span><span class="w"> </span><span class="s">privkey.pem</span><span class="w"> </span><span class="s">的路径</span><span class="p">;</span>
 </span>
-<span class="w">        </span><span class="kn">location</span><span class="w"> </span><span class="s">/</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">            </span><span class="kn">root</span><span class="w">             </span><span class="s">html</span><span class="p">;</span><span class="w"></span>
-<span class="w">            </span><span class="kn">index</span><span class="w">            </span><span class="s">index.html</span><span class="w"> </span><span class="s">index.htm</span><span class="p">;</span><span class="w"></span>
-<span class="w">        </span><span class="p">}</span><span class="w"></span>
-<span class="w">    </span><span class="p">}</span><span class="w"></span>
-<span class="p">}</span><span class="w"></span>
+<span class="w">        </span><span class="kn">location</span><span class="w"> </span><span class="s">/</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="kn">root</span><span class="w">             </span><span class="s">html</span><span class="p">;</span>
+<span class="w">            </span><span class="kn">index</span><span class="w">            </span><span class="s">index.html</span><span class="w"> </span><span class="s">index.htm</span><span class="p">;</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
 </code></pre></div></td></tr></table></div>
 <p>请注意以下字段：</p>
 <ul>
-<li>第 27 行 - <code class="highlight"><span class="k">listen</span><span class="w"> </span><span class="n">localhost</span><span class="p">:</span><span class="mi">3824</span><span class="w"> </span><span class="s">ssl</span><span class="w"></span></code>：和你在 Trojan-Go 的 <code>config.json</code> 里设置的 <code>fallback_port</code> 保持一致</li>
-<li>第 28 行 - <code class="highlight"><span class="k">server_name</span><span class="w"> </span><span class="mi">127</span><span class="s">.0.0.1</span><span class="w"></span></code>：和 Trojan-Go 的 <code>config.json</code> 里设置的 <code>fallback_addr</code> 保持一致，<del>千万别写 <code>0.0.0.0</code> 哦，不然和裸奔一样</del></li>
-<li>第 29、30 行 - <code class="highlight"><span class="k">ssl_certificate</span><span class="w"></span></code> 和 <code class="highlight"><span class="k">ssl_certificate_key</span><span class="w"></span></code>：填 <a href="#225">2.2.5 证书配置</a> 中获取的路径就行</li>
+<li>第 27 行 - <code class="highlight"><span class="k">listen</span><span class="w"> </span><span class="n">localhost</span><span class="p">:</span><span class="mi">3824</span><span class="w"> </span><span class="s">ssl</span></code>：和你在 Trojan-Go 的 <code>config.json</code> 里设置的 <code>fallback_port</code> 保持一致</li>
+<li>第 28 行 - <code class="highlight"><span class="k">server_name</span><span class="w"> </span><span class="mi">127</span><span class="s">.0.0.1</span></code>：和 Trojan-Go 的 <code>config.json</code> 里设置的 <code>fallback_addr</code> 保持一致，<del>千万别写 <code>0.0.0.0</code> 哦，不然和裸奔一样</del></li>
+<li>第 29、30 行 - <code class="highlight"><span class="k">ssl_certificate</span></code> 和 <code class="highlight"><span class="k">ssl_certificate_key</span></code>：填 <a href="#225">2.2.5 证书配置</a> 中获取的路径就行</li>
 </ul>
 <p>之后启动 Trojan-Go 服务端并放入后台即可。</p>
 <h3 id="33-client">3.3 配置客户端（Client）<a class="headerlink" href="#33-client" title="Permanent link">&para;</a></h3>
@@ -1984,8 +1984,8 @@ as the main headline.
 <details class="question">
 <summary>使用过程中连接中断，检查服务端发现服务端已经崩溃，重启服务端可以正常使用，我使用了 Linux 作为服务端操作系统。</summary>
 <p>见 <a href="https://github.com/p4gefau1t/trojan-go/issues/286">#286 最近go是不是很不稳定啊。经常需要重启，才能连接。一堆报错。</a>。请先关闭 Trojan-Go 服务端，输入</p>
-<div class="highlight"><pre><span></span><code><span class="nb">echo</span> <span class="nb">ulimit</span> -n <span class="m">40000</span> &gt;&gt; /etc/profile
-<span class="nb">source</span> /etc/profile
+<div class="highlight"><pre><span></span><code><span class="nb">echo</span><span class="w"> </span><span class="nb">ulimit</span><span class="w"> </span>-n<span class="w"> </span><span class="m">40000</span><span class="w"> </span>&gt;&gt;<span class="w"> </span>/etc/profile
+<span class="nb">source</span><span class="w"> </span>/etc/profile
 </code></pre></div>
 <p>然后再次启动服务端。这样可以使 Trojan-Go 服务端使用高达 40000 个 fd（文件标识符）从而不再因资源耗尽而崩溃。</p>
 <p>（注：v0.9.0 已修复该 issue，见 <a href="https://github.com/p4gefau1t/trojan-go/pull/313">#313 Config: add LimitNOFILE to service files</a>）</p>
@@ -2183,7 +2183,7 @@ as the main headline.
       <div class="md-copyright">
   
     <div class="md-copyright__highlight">
-      Copyright &copy; 2023 Akiba Arisa
+      Copyright &copy; 2077 Akiba Arisa <a href="https://icp.gov.moe/?keyword=20232033" target="_blank">萌ICP备20232033号</a>
     </div>
   
   

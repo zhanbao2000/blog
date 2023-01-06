@@ -1190,85 +1190,85 @@ as the main headline.
 <span class="c1"># you cannot run it directly</span>
 
 
-<span class="k">if</span> <span class="o">[</span> <span class="s2">&quot;</span><span class="si">${</span><span class="nv">BASH_SOURCE</span><span class="p">-</span><span class="si">}</span><span class="s2">&quot;</span> <span class="o">=</span> <span class="s2">&quot;</span><span class="nv">$0</span><span class="s2">&quot;</span> <span class="o">]</span><span class="p">;</span> <span class="k">then</span>
-    <span class="nb">echo</span> <span class="s2">&quot;You must source this script: \$ source </span><span class="nv">$0</span><span class="s2">&quot;</span> &gt;<span class="p">&amp;</span><span class="m">2</span>
-    <span class="nb">exit</span> <span class="m">33</span>
+<span class="k">if</span><span class="w"> </span><span class="o">[</span><span class="w"> </span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">BASH_SOURCE</span><span class="p">-</span><span class="si">}</span><span class="s2">&quot;</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;</span><span class="nv">$0</span><span class="s2">&quot;</span><span class="w"> </span><span class="o">]</span><span class="p">;</span><span class="w"> </span><span class="k">then</span>
+<span class="w">    </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;You must source this script: \$ source </span><span class="nv">$0</span><span class="s2">&quot;</span><span class="w"> </span>&gt;<span class="p">&amp;</span><span class="m">2</span>
+<span class="w">    </span><span class="nb">exit</span><span class="w"> </span><span class="m">33</span>
 <span class="k">fi</span>
 
-deactivate <span class="o">()</span> <span class="o">{</span>
-    <span class="nb">unset</span> -f pydoc &gt;/dev/null <span class="m">2</span>&gt;<span class="p">&amp;</span><span class="m">1</span> <span class="o">||</span> <span class="nb">true</span>
+deactivate<span class="w"> </span><span class="o">()</span><span class="w"> </span><span class="o">{</span>
+<span class="w">    </span><span class="nb">unset</span><span class="w"> </span>-f<span class="w"> </span>pydoc<span class="w"> </span>&gt;/dev/null<span class="w"> </span><span class="m">2</span>&gt;<span class="p">&amp;</span><span class="m">1</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="nb">true</span>
 
-    <span class="c1"># reset old environment variables</span>
-    <span class="c1"># ! [ -z ${VAR+_} ] returns true if VAR is declared at all</span>
-    <span class="k">if</span> ! <span class="o">[</span> -z <span class="s2">&quot;</span><span class="si">${</span><span class="nv">_OLD_VIRTUAL_PATH</span><span class="p">:+_</span><span class="si">}</span><span class="s2">&quot;</span> <span class="o">]</span> <span class="p">;</span> <span class="k">then</span>
-        <span class="nv">PATH</span><span class="o">=</span><span class="s2">&quot;</span><span class="nv">$_OLD_VIRTUAL_PATH</span><span class="s2">&quot;</span>
-        <span class="nb">export</span> PATH
-        <span class="nb">unset</span> _OLD_VIRTUAL_PATH
-    <span class="k">fi</span>
-    <span class="k">if</span> ! <span class="o">[</span> -z <span class="s2">&quot;</span><span class="si">${</span><span class="nv">_OLD_VIRTUAL_PYTHONHOME</span><span class="p">+_</span><span class="si">}</span><span class="s2">&quot;</span> <span class="o">]</span> <span class="p">;</span> <span class="k">then</span>
-        <span class="nv">PYTHONHOME</span><span class="o">=</span><span class="s2">&quot;</span><span class="nv">$_OLD_VIRTUAL_PYTHONHOME</span><span class="s2">&quot;</span>
-        <span class="nb">export</span> PYTHONHOME
-        <span class="nb">unset</span> _OLD_VIRTUAL_PYTHONHOME
-    <span class="k">fi</span>
+<span class="w">    </span><span class="c1"># reset old environment variables</span>
+<span class="w">    </span><span class="c1"># ! [ -z ${VAR+_} ] returns true if VAR is declared at all</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span>!<span class="w"> </span><span class="o">[</span><span class="w"> </span>-z<span class="w"> </span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">_OLD_VIRTUAL_PATH</span><span class="p">:+_</span><span class="si">}</span><span class="s2">&quot;</span><span class="w"> </span><span class="o">]</span><span class="w"> </span><span class="p">;</span><span class="w"> </span><span class="k">then</span>
+<span class="w">        </span><span class="nv">PATH</span><span class="o">=</span><span class="s2">&quot;</span><span class="nv">$_OLD_VIRTUAL_PATH</span><span class="s2">&quot;</span>
+<span class="w">        </span><span class="nb">export</span><span class="w"> </span>PATH
+<span class="w">        </span><span class="nb">unset</span><span class="w"> </span>_OLD_VIRTUAL_PATH
+<span class="w">    </span><span class="k">fi</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span>!<span class="w"> </span><span class="o">[</span><span class="w"> </span>-z<span class="w"> </span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">_OLD_VIRTUAL_PYTHONHOME</span><span class="p">+_</span><span class="si">}</span><span class="s2">&quot;</span><span class="w"> </span><span class="o">]</span><span class="w"> </span><span class="p">;</span><span class="w"> </span><span class="k">then</span>
+<span class="w">        </span><span class="nv">PYTHONHOME</span><span class="o">=</span><span class="s2">&quot;</span><span class="nv">$_OLD_VIRTUAL_PYTHONHOME</span><span class="s2">&quot;</span>
+<span class="w">        </span><span class="nb">export</span><span class="w"> </span>PYTHONHOME
+<span class="w">        </span><span class="nb">unset</span><span class="w"> </span>_OLD_VIRTUAL_PYTHONHOME
+<span class="w">    </span><span class="k">fi</span>
 
-    <span class="c1"># The hash command must be called to get it to forget past</span>
-    <span class="c1"># commands. Without forgetting past commands the $PATH changes</span>
-    <span class="c1"># we made may not be respected</span>
-    <span class="nb">hash</span> -r <span class="m">2</span>&gt;/dev/null
+<span class="w">    </span><span class="c1"># The hash command must be called to get it to forget past</span>
+<span class="w">    </span><span class="c1"># commands. Without forgetting past commands the $PATH changes</span>
+<span class="w">    </span><span class="c1"># we made may not be respected</span>
+<span class="w">    </span><span class="nb">hash</span><span class="w"> </span>-r<span class="w"> </span><span class="m">2</span>&gt;/dev/null
 
-    <span class="k">if</span> ! <span class="o">[</span> -z <span class="s2">&quot;</span><span class="si">${</span><span class="nv">_OLD_VIRTUAL_PS1</span><span class="p">+_</span><span class="si">}</span><span class="s2">&quot;</span> <span class="o">]</span> <span class="p">;</span> <span class="k">then</span>
-        <span class="nv">PS1</span><span class="o">=</span><span class="s2">&quot;</span><span class="nv">$_OLD_VIRTUAL_PS1</span><span class="s2">&quot;</span>
-        <span class="nb">export</span> PS1
-        <span class="nb">unset</span> _OLD_VIRTUAL_PS1
-    <span class="k">fi</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span>!<span class="w"> </span><span class="o">[</span><span class="w"> </span>-z<span class="w"> </span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">_OLD_VIRTUAL_PS1</span><span class="p">+_</span><span class="si">}</span><span class="s2">&quot;</span><span class="w"> </span><span class="o">]</span><span class="w"> </span><span class="p">;</span><span class="w"> </span><span class="k">then</span>
+<span class="w">        </span><span class="nv">PS1</span><span class="o">=</span><span class="s2">&quot;</span><span class="nv">$_OLD_VIRTUAL_PS1</span><span class="s2">&quot;</span>
+<span class="w">        </span><span class="nb">export</span><span class="w"> </span>PS1
+<span class="w">        </span><span class="nb">unset</span><span class="w"> </span>_OLD_VIRTUAL_PS1
+<span class="w">    </span><span class="k">fi</span>
 
-    <span class="nb">unset</span> VIRTUAL_ENV
-    <span class="k">if</span> <span class="o">[</span> ! <span class="s2">&quot;</span><span class="si">${</span><span class="nv">1</span><span class="p">-</span><span class="si">}</span><span class="s2">&quot;</span> <span class="o">=</span> <span class="s2">&quot;nondestructive&quot;</span> <span class="o">]</span> <span class="p">;</span> <span class="k">then</span>
-    <span class="c1"># Self destruct!</span>
-        <span class="nb">unset</span> -f deactivate
-    <span class="k">fi</span>
+<span class="w">    </span><span class="nb">unset</span><span class="w"> </span>VIRTUAL_ENV
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="o">[</span><span class="w"> </span>!<span class="w"> </span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">1</span><span class="p">-</span><span class="si">}</span><span class="s2">&quot;</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;nondestructive&quot;</span><span class="w"> </span><span class="o">]</span><span class="w"> </span><span class="p">;</span><span class="w"> </span><span class="k">then</span>
+<span class="w">    </span><span class="c1"># Self destruct!</span>
+<span class="w">        </span><span class="nb">unset</span><span class="w"> </span>-f<span class="w"> </span>deactivate
+<span class="w">    </span><span class="k">fi</span>
 <span class="o">}</span>
 
 <span class="c1"># unset irrelevant variables</span>
-deactivate nondestructive
+deactivate<span class="w"> </span>nondestructive
 
 <span class="hll"><span class="nv">VIRTUAL_ENV</span><span class="o">=</span><span class="s1">&#39;I:\Developer\web\blog_mkdocs\venv&#39;</span>
-</span><span class="k">if</span> <span class="o">([</span> <span class="s2">&quot;</span><span class="nv">$OSTYPE</span><span class="s2">&quot;</span> <span class="o">=</span> <span class="s2">&quot;cygwin&quot;</span> <span class="o">]</span> <span class="o">||</span> <span class="o">[</span> <span class="s2">&quot;</span><span class="nv">$OSTYPE</span><span class="s2">&quot;</span> <span class="o">=</span> <span class="s2">&quot;msys&quot;</span> <span class="o">])</span> <span class="o">&amp;&amp;</span> <span class="k">$(</span><span class="nb">command</span> -v cygpath <span class="p">&amp;</span>&gt; /dev/null<span class="k">)</span> <span class="p">;</span> <span class="k">then</span>
-    <span class="nv">VIRTUAL_ENV</span><span class="o">=</span><span class="k">$(</span>cygpath -u <span class="s2">&quot;</span><span class="nv">$VIRTUAL_ENV</span><span class="s2">&quot;</span><span class="k">)</span>
+</span><span class="k">if</span><span class="w"> </span><span class="o">([</span><span class="w"> </span><span class="s2">&quot;</span><span class="nv">$OSTYPE</span><span class="s2">&quot;</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;cygwin&quot;</span><span class="w"> </span><span class="o">]</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="o">[</span><span class="w"> </span><span class="s2">&quot;</span><span class="nv">$OSTYPE</span><span class="s2">&quot;</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;msys&quot;</span><span class="w"> </span><span class="o">])</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="k">$(</span><span class="nb">command</span><span class="w"> </span>-v<span class="w"> </span>cygpath<span class="w"> </span><span class="p">&amp;</span>&gt;<span class="w"> </span>/dev/null<span class="k">)</span><span class="w"> </span><span class="p">;</span><span class="w"> </span><span class="k">then</span>
+<span class="w">    </span><span class="nv">VIRTUAL_ENV</span><span class="o">=</span><span class="k">$(</span>cygpath<span class="w"> </span>-u<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$VIRTUAL_ENV</span><span class="s2">&quot;</span><span class="k">)</span>
 <span class="k">fi</span>
-<span class="nb">export</span> VIRTUAL_ENV
+<span class="nb">export</span><span class="w"> </span>VIRTUAL_ENV
 
 <span class="nv">_OLD_VIRTUAL_PATH</span><span class="o">=</span><span class="s2">&quot;</span><span class="nv">$PATH</span><span class="s2">&quot;</span>
 <span class="nv">PATH</span><span class="o">=</span><span class="s2">&quot;</span><span class="nv">$VIRTUAL_ENV</span><span class="s2">/Scripts:</span><span class="nv">$PATH</span><span class="s2">&quot;</span>
-<span class="nb">export</span> PATH
+<span class="nb">export</span><span class="w"> </span>PATH
 
 <span class="c1"># unset PYTHONHOME if set</span>
-<span class="k">if</span> ! <span class="o">[</span> -z <span class="s2">&quot;</span><span class="si">${</span><span class="nv">PYTHONHOME</span><span class="p">+_</span><span class="si">}</span><span class="s2">&quot;</span> <span class="o">]</span> <span class="p">;</span> <span class="k">then</span>
-    <span class="nv">_OLD_VIRTUAL_PYTHONHOME</span><span class="o">=</span><span class="s2">&quot;</span><span class="nv">$PYTHONHOME</span><span class="s2">&quot;</span>
-    <span class="nb">unset</span> PYTHONHOME
+<span class="k">if</span><span class="w"> </span>!<span class="w"> </span><span class="o">[</span><span class="w"> </span>-z<span class="w"> </span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">PYTHONHOME</span><span class="p">+_</span><span class="si">}</span><span class="s2">&quot;</span><span class="w"> </span><span class="o">]</span><span class="w"> </span><span class="p">;</span><span class="w"> </span><span class="k">then</span>
+<span class="w">    </span><span class="nv">_OLD_VIRTUAL_PYTHONHOME</span><span class="o">=</span><span class="s2">&quot;</span><span class="nv">$PYTHONHOME</span><span class="s2">&quot;</span>
+<span class="w">    </span><span class="nb">unset</span><span class="w"> </span>PYTHONHOME
 <span class="k">fi</span>
 
-<span class="k">if</span> <span class="o">[</span> -z <span class="s2">&quot;</span><span class="si">${</span><span class="nv">VIRTUAL_ENV_DISABLE_PROMPT</span><span class="p">-</span><span class="si">}</span><span class="s2">&quot;</span> <span class="o">]</span> <span class="p">;</span> <span class="k">then</span>
-    <span class="nv">_OLD_VIRTUAL_PS1</span><span class="o">=</span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">PS1</span><span class="p">-</span><span class="si">}</span><span class="s2">&quot;</span>
-    <span class="k">if</span> <span class="o">[</span> <span class="s2">&quot;x&quot;</span> !<span class="o">=</span> x <span class="o">]</span> <span class="p">;</span> <span class="k">then</span>
-        <span class="nv">PS1</span><span class="o">=</span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">PS1</span><span class="p">-</span><span class="si">}</span><span class="s2">&quot;</span>
-    <span class="k">else</span>
-        <span class="nv">PS1</span><span class="o">=</span><span class="s2">&quot;(`basename \&quot;</span><span class="nv">$VIRTUAL_ENV</span><span class="s2">\&quot;`) </span><span class="si">${</span><span class="nv">PS1</span><span class="p">-</span><span class="si">}</span><span class="s2">&quot;</span>
-    <span class="k">fi</span>
-    <span class="nb">export</span> PS1
+<span class="k">if</span><span class="w"> </span><span class="o">[</span><span class="w"> </span>-z<span class="w"> </span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">VIRTUAL_ENV_DISABLE_PROMPT</span><span class="p">-</span><span class="si">}</span><span class="s2">&quot;</span><span class="w"> </span><span class="o">]</span><span class="w"> </span><span class="p">;</span><span class="w"> </span><span class="k">then</span>
+<span class="w">    </span><span class="nv">_OLD_VIRTUAL_PS1</span><span class="o">=</span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">PS1</span><span class="p">-</span><span class="si">}</span><span class="s2">&quot;</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="o">[</span><span class="w"> </span><span class="s2">&quot;x&quot;</span><span class="w"> </span>!<span class="o">=</span><span class="w"> </span>x<span class="w"> </span><span class="o">]</span><span class="w"> </span><span class="p">;</span><span class="w"> </span><span class="k">then</span>
+<span class="w">        </span><span class="nv">PS1</span><span class="o">=</span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">PS1</span><span class="p">-</span><span class="si">}</span><span class="s2">&quot;</span>
+<span class="w">    </span><span class="k">else</span>
+<span class="w">        </span><span class="nv">PS1</span><span class="o">=</span><span class="s2">&quot;(`basename \&quot;</span><span class="nv">$VIRTUAL_ENV</span><span class="s2">\&quot;`) </span><span class="si">${</span><span class="nv">PS1</span><span class="p">-</span><span class="si">}</span><span class="s2">&quot;</span>
+<span class="w">    </span><span class="k">fi</span>
+<span class="w">    </span><span class="nb">export</span><span class="w"> </span>PS1
 <span class="k">fi</span>
 
 <span class="c1"># Make sure to unalias pydoc if it&#39;s already there</span>
-<span class="nb">alias</span> pydoc <span class="m">2</span>&gt;/dev/null &gt;/dev/null <span class="o">&amp;&amp;</span> <span class="nb">unalias</span> pydoc <span class="o">||</span> <span class="nb">true</span>
+<span class="nb">alias</span><span class="w"> </span>pydoc<span class="w"> </span><span class="m">2</span>&gt;/dev/null<span class="w"> </span>&gt;/dev/null<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="nb">unalias</span><span class="w"> </span>pydoc<span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="nb">true</span>
 
-pydoc <span class="o">()</span> <span class="o">{</span>
-    python -m pydoc <span class="s2">&quot;</span><span class="nv">$@</span><span class="s2">&quot;</span>
+pydoc<span class="w"> </span><span class="o">()</span><span class="w"> </span><span class="o">{</span>
+<span class="w">    </span>python<span class="w"> </span>-m<span class="w"> </span>pydoc<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$@</span><span class="s2">&quot;</span>
 <span class="o">}</span>
 
 <span class="c1"># The hash command must be called to get it to forget past</span>
 <span class="c1"># commands. Without forgetting past commands the $PATH changes</span>
 <span class="c1"># we made may not be respected</span>
-<span class="nb">hash</span> -r <span class="m">2</span>&gt;/dev/null
+<span class="nb">hash</span><span class="w"> </span>-r<span class="w"> </span><span class="m">2</span>&gt;/dev/null
 </code></pre></div></td></tr></table></div>
 </div>
 <div class="tabbed-block">
@@ -1723,7 +1723,7 @@ aliases[&quot;pydoc&quot;] = [&quot;python&quot;, &quot;-m&quot;, &quot;pydoc&qu
       <div class="md-copyright">
   
     <div class="md-copyright__highlight">
-      Copyright &copy; 2023 Akiba Arisa
+      Copyright &copy; 2077 Akiba Arisa <a href="https://icp.gov.moe/?keyword=20232033" target="_blank">萌ICP备20232033号</a>
     </div>
   
   

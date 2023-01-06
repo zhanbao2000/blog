@@ -1007,7 +1007,7 @@ as the main headline.
     
 
     <h2 id="_1">起因<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
-<div class="highlight"><pre><span></span><code>cat /var/log/nginx/error.log
+<div class="highlight"><pre><span></span><code>cat<span class="w"> </span>/var/log/nginx/error.log
 </code></pre></div>
 <p>然后发现 nginx 日志里全是扫描器的 404，让我们放两个上来展示一下：</p>
 <div class="highlight"><pre><span></span><code>2022/04/21 06:45:30 [error] 3281302#3281302: *239 open() &quot;/usr/share/nginx/html/GponForm/diag_Form&quot; failed (2: No such file or directory), client: XXX.XXX.XXX.XXX, server: localhost, request: &quot;POST /GponForm/diag_Form?images/ HTTP/1.1&quot;, host: &quot;XXX.XXX.XXX.XXX&quot;
@@ -1043,26 +1043,26 @@ as the main headline.
 <span class="normal">12</span>
 <span class="normal">13</span>
 <span class="normal">14</span>
-<span class="normal">15</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">server</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">    </span><span class="kn">listen</span><span class="w"> </span><span class="mi">80</span><span class="w"> </span><span class="s">default_server</span><span class="p">;</span><span class="w"></span>
-<span class="w">    </span><span class="kn">listen</span><span class="w"> </span><span class="s">[::]:80</span><span class="w"> </span><span class="s">default_server</span><span class="p">;</span><span class="w"></span>
-<span class="hll"><span class="w">    </span><span class="kn">server_name</span><span class="w"> </span><span class="s">_</span><span class="p">;</span><span class="w"></span>
+<span class="normal">15</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">server</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kn">listen</span><span class="w"> </span><span class="mi">80</span><span class="w"> </span><span class="s">default_server</span><span class="p">;</span>
+<span class="w">    </span><span class="kn">listen</span><span class="w"> </span><span class="s">[::]:80</span><span class="w"> </span><span class="s">default_server</span><span class="p">;</span>
+<span class="hll"><span class="w">    </span><span class="kn">server_name</span><span class="w"> </span><span class="s">_</span><span class="p">;</span>
 </span>
-<span class="w">    </span><span class="kn">return</span><span class="w"> </span><span class="mi">403</span><span class="p">;</span><span class="w"></span>
-<span class="p">}</span><span class="w"></span>
+<span class="w">    </span><span class="kn">return</span><span class="w"> </span><span class="mi">403</span><span class="p">;</span>
+<span class="p">}</span>
 
-<span class="k">server</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">    </span><span class="kn">listen</span><span class="w"> </span><span class="mi">80</span><span class="p">;</span><span class="w"></span>
-<span class="w">    </span><span class="kn">listen</span><span class="w"> </span><span class="s">[::]:80</span><span class="p">;</span><span class="w"></span>
-<span class="hll"><span class="w">    </span><span class="kn">server_name</span><span class="w"> </span><span class="s">localhost</span><span class="w"> </span><span class="mi">127</span><span class="s">.0.0.1</span><span class="p">;</span><span class="w"></span>
+<span class="k">server</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kn">listen</span><span class="w"> </span><span class="mi">80</span><span class="p">;</span>
+<span class="w">    </span><span class="kn">listen</span><span class="w"> </span><span class="s">[::]:80</span><span class="p">;</span>
+<span class="hll"><span class="w">    </span><span class="kn">server_name</span><span class="w"> </span><span class="s">localhost</span><span class="w"> </span><span class="mi">127</span><span class="s">.0.0.1</span><span class="p">;</span>
 </span>
-<span class="w">    </span><span class="kn">...</span><span class="w"></span>
-<span class="err">}</span><span class="w"></span>
+<span class="w">    </span><span class="kn">...</span>
+<span class="err">}</span>
 </code></pre></div></td></tr></table></div>
 <p>nginx 的 <code>default_server</code> 指令可以定义默认的 <code>server</code> 去处理一些没有匹配到 <code>server_name</code> 的请求，如果没有显式定义，则会选取第一个定义的 <code>server</code> 作为 <code>default_server</code>。（见 <a href="https://segmentfault.com/a/1190000015681272">nginx 的 default_server 定义及匹配规则</a> ）</p>
 <p>这里我们显式定义一个 <code>default_server</code>，其 <code>server_name</code> 随便取，取什么值都没有关系，请注意不要和已定义的 <code>server_name</code> 重复，所以一般是采用 <code>_</code>。</p>
 <p>现在，所有未被 <code>server_name</code> 匹配到的请求（一般来说就是通过 IP 地址直接访问80端口的请求）都会被 <code>default_server</code> 处理，并且返回 <code>403 Forbidden</code>。</p>
-<p>然后我们再在原有的 <code class="highlight"><span class="k">server_name</span><span class="w"> </span><span class="s">localhost</span><span class="w"></span></code> 的基础上补充一个 <code>127.0.0.1</code>，否则我们在本地连接到 <code>127.0.0.1:80</code> 时会吃到自己设下的 403。</p>
+<p>然后我们再在原有的 <code class="highlight"><span class="k">server_name</span><span class="w"> </span><span class="s">localhost</span></code> 的基础上补充一个 <code>127.0.0.1</code>，否则我们在本地连接到 <code>127.0.0.1:80</code> 时会吃到自己设下的 403。</p>
 <div class="admonition 还有谁会吃到403 faq">
 <p class="admonition-title">还有谁会吃到403</p>
 <p>一般来说，这个方案是为了捕获通过我们服务器的公网 IP 地址直接访问80端口的请求，但是还有以下几种情况也会被 <code>default_server</code> 捕获：</p>
@@ -1090,7 +1090,7 @@ as the main headline.
 <p>这就是我们想要达到的效果——使用 gzip 压缩包炸弹反击恶意扫描器。</p>
 <h3 id="_5">制造并部署在本地<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h3>
 <p>为了测试，首先制造一个仅包含 <code>test</code> 为内容的压缩文件作为载荷：</p>
-<div class="highlight"><pre><span></span><code><span class="nb">echo</span> <span class="s2">&quot;test&quot;</span> <span class="p">|</span> gzip &gt; test.gzip
+<div class="highlight"><pre><span></span><code><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;test&quot;</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>gzip<span class="w"> </span>&gt;<span class="w"> </span>test.gzip
 </code></pre></div>
 <p>我们部署一个简易的 Flask 服务器，并让其将我们在上文制造的 <code>test.gzip</code> 作为压缩后的响应：</p>
 <div class="highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">app.py</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
@@ -1161,8 +1161,8 @@ as the main headline.
 <p><img alt="respond" src="../images/220421-use-gzip-bomb-against-spiders/respond_test.jpg" /></p>
 <p>可以看到，浏览器成功还原了 <code>test</code> 的文本内容。</p>
 <p>现在，我们制作一些高压缩率的载荷。</p>
-<div class="highlight"><pre><span></span><code>dd <span class="k">if</span><span class="o">=</span>/dev/zero <span class="nv">bs</span><span class="o">=</span>1M <span class="nv">count</span><span class="o">=</span><span class="m">1024</span> <span class="p">|</span> gzip &gt; 1G.gzip
-dd <span class="k">if</span><span class="o">=</span>/dev/zero <span class="nv">bs</span><span class="o">=</span>1M <span class="nv">count</span><span class="o">=</span><span class="m">10240</span> <span class="p">|</span> gzip &gt; 10G.gzip
+<div class="highlight"><pre><span></span><code>dd<span class="w"> </span><span class="k">if</span><span class="o">=</span>/dev/zero<span class="w"> </span><span class="nv">bs</span><span class="o">=</span>1M<span class="w"> </span><span class="nv">count</span><span class="o">=</span><span class="m">1024</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>gzip<span class="w"> </span>&gt;<span class="w"> </span>1G.gzip
+dd<span class="w"> </span><span class="k">if</span><span class="o">=</span>/dev/zero<span class="w"> </span><span class="nv">bs</span><span class="o">=</span>1M<span class="w"> </span><span class="nv">count</span><span class="o">=</span><span class="m">10240</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>gzip<span class="w"> </span>&gt;<span class="w"> </span>10G.gzip
 </code></pre></div>
 <p>受制于 DEFLATE 的极限压缩率，上述两个文件最多能被压缩到其原来大小的约 1/1000。即约 1 MB 的 <code>1G.gzip</code> 和 约 10 MB 的 <code>10G.gzip</code>。</p>
 <p>然后再访问一次 <a href="http://127.0.0.1:8082">http://127.0.0.1:8082</a>。</p>
@@ -1191,29 +1191,29 @@ dd <span class="k">if</span><span class="o">=</span>/dev/zero <span class="nv">b
 <span class="normal">18</span>
 <span class="normal">19</span>
 <span class="normal">20</span>
-<span class="normal">21</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">server</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">    </span><span class="kn">listen</span><span class="w"> </span><span class="mi">80</span><span class="w"> </span><span class="s">default_server</span><span class="p">;</span><span class="w"></span>
-<span class="w">    </span><span class="kn">listen</span><span class="w"> </span><span class="s">[::]:80</span><span class="w"> </span><span class="s">default_server</span><span class="p">;</span><span class="w"></span>
-<span class="w">    </span><span class="kn">server_name</span><span class="w"> </span><span class="s">_</span><span class="p">;</span><span class="w"></span>
+<span class="normal">21</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">server</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kn">listen</span><span class="w"> </span><span class="mi">80</span><span class="w"> </span><span class="s">default_server</span><span class="p">;</span>
+<span class="w">    </span><span class="kn">listen</span><span class="w"> </span><span class="s">[::]:80</span><span class="w"> </span><span class="s">default_server</span><span class="p">;</span>
+<span class="w">    </span><span class="kn">server_name</span><span class="w"> </span><span class="s">_</span><span class="p">;</span>
 
 <span class="w">    </span><span class="c1"># 使用 zipbomb_server 来用武力解决扫描器问题 </span>
-<span class="w">    </span><span class="kn">location</span><span class="w"> </span><span class="s">/</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">        </span><span class="kn">proxy_set_header</span><span class="w"> </span><span class="s">Host</span><span class="w"> </span><span class="nv">$host</span><span class="p">;</span><span class="w"></span>
-<span class="w">        </span><span class="kn">proxy_set_header</span><span class="w"> </span><span class="s">X-Real-IP</span><span class="w"> </span><span class="nv">$remote_addr</span><span class="p">;</span><span class="w"></span>
-<span class="hll"><span class="w">        </span><span class="kn">proxy_set_header</span><span class="w"> </span><span class="s">X-Forwarded-For</span><span class="w"> </span><span class="nv">$proxy_add_x_forwarded_for</span><span class="p">;</span><span class="w"></span>
-</span><span class="w">        </span><span class="kn">proxy_pass</span><span class="w"> </span><span class="s">http://127.0.0.1:8082</span><span class="p">;</span><span class="w"></span>
-<span class="w">    </span><span class="p">}</span><span class="w"></span>
-<span class="p">}</span><span class="w"></span>
+<span class="w">    </span><span class="kn">location</span><span class="w"> </span><span class="s">/</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="kn">proxy_set_header</span><span class="w"> </span><span class="s">Host</span><span class="w"> </span><span class="nv">$host</span><span class="p">;</span>
+<span class="w">        </span><span class="kn">proxy_set_header</span><span class="w"> </span><span class="s">X-Real-IP</span><span class="w"> </span><span class="nv">$remote_addr</span><span class="p">;</span>
+<span class="hll"><span class="w">        </span><span class="kn">proxy_set_header</span><span class="w"> </span><span class="s">X-Forwarded-For</span><span class="w"> </span><span class="nv">$proxy_add_x_forwarded_for</span><span class="p">;</span>
+</span><span class="w">        </span><span class="kn">proxy_pass</span><span class="w"> </span><span class="s">http://127.0.0.1:8082</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
 
-<span class="k">server</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">    </span><span class="kn">listen</span><span class="w"> </span><span class="mi">80</span><span class="p">;</span><span class="w"></span>
-<span class="w">    </span><span class="kn">listen</span><span class="w"> </span><span class="s">[::]:80</span><span class="p">;</span><span class="w"></span>
-<span class="w">    </span><span class="kn">server_name</span><span class="w"> </span><span class="s">localhost</span><span class="w"> </span><span class="mi">127</span><span class="s">.0.0.1</span><span class="p">;</span><span class="w"></span>
+<span class="k">server</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kn">listen</span><span class="w"> </span><span class="mi">80</span><span class="p">;</span>
+<span class="w">    </span><span class="kn">listen</span><span class="w"> </span><span class="s">[::]:80</span><span class="p">;</span>
+<span class="w">    </span><span class="kn">server_name</span><span class="w"> </span><span class="s">localhost</span><span class="w"> </span><span class="mi">127</span><span class="s">.0.0.1</span><span class="p">;</span>
 
-<span class="w">    </span><span class="kn">...</span><span class="w"></span>
-<span class="err">}</span><span class="w"></span>
+<span class="w">    </span><span class="kn">...</span>
+<span class="err">}</span>
 </code></pre></div></td></tr></table></div>
-<p>之前我们是 <code class="highlight"><span class="k">return</span><span class="w"> </span><span class="mi">403</span><span class="p">;</span><span class="w"></span></code>，现在我们把 <code>default_server</code> 所在的 <code>server</code> 添加一个 <code>/</code> 的 <code>location</code>，并将原来返回403改为反代到 <code>127.0.0.1:8082</code>。</p>
+<p>之前我们是 <code class="highlight"><span class="k">return</span><span class="w"> </span><span class="mi">403</span><span class="p">;</span></code>，现在我们把 <code>default_server</code> 所在的 <code>server</code> 添加一个 <code>/</code> 的 <code>location</code>，并将原来返回403改为反代到 <code>127.0.0.1:8082</code>。</p>
 <p>注意第10行，我们需要向反代的请求头中放上一个 <code>X-Forwarded-For</code>，以表示 nginx 帮助哪个客户端进行了反向代理。此时我们的 Flask 服务器才能知道访问了我们的服务器的客户端的 IP 地址。</p>
 <p>如此一来，所有通过我们服务器的公网 IP 地址访问服务器80端口的连接，无论 path 为如何，均会被反代到 Flask 服务器上，然后 Flask 服务器返回一个 10G 的 gzip 炸弹，是不是很炫酷？</p>
 <h2 id="_6">预防方法<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h2>
@@ -1363,7 +1363,7 @@ dd <span class="k">if</span><span class="o">=</span>/dev/zero <span class="nv">b
       <div class="md-copyright">
   
     <div class="md-copyright__highlight">
-      Copyright &copy; 2023 Akiba Arisa
+      Copyright &copy; 2077 Akiba Arisa <a href="https://icp.gov.moe/?keyword=20232033" target="_blank">萌ICP备20232033号</a>
     </div>
   
   

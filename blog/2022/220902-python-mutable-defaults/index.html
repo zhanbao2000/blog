@@ -1153,21 +1153,21 @@ as the main headline.
 <li>
 <p>当我们向函数内传递了一个对象的引用（即地址）时，形参立即成为了实参的指针。若实参是<strong>可变对象</strong>，形参和实参指向的是同一个内存地址，因此在函数体内修改形参的值，实参的值也会随之改变。这个过程的本质是：
    <div class="highlight"><pre><span></span><code><span class="kt">void</span><span class="w"> </span><span class="nf">foo</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="o">&amp;</span><span class="n">arg</span><span class="p">)</span><span class="w"> </span>
-<span class="p">{</span><span class="w"></span>
+<span class="p">{</span>
 <span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="o">*</span><span class="n">param</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">&amp;</span><span class="n">arg</span><span class="p">;</span><span class="w">                 </span><span class="c1">// 使形参成为实参的指针</span>
 <span class="w">    </span><span class="o">*</span><span class="n">param</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span><span class="w">                       </span><span class="c1">// 对形参进行其他操作</span>
-<span class="p">}</span><span class="w"></span>
+<span class="p">}</span>
 </code></pre></div>
    <img alt="mutable_ptr" src="../images/220902-python-mutable-defaults/mutable_ptr.png" /></p>
 </li>
 <li>
 <p>而当实参是<strong>不可变对象</strong>时，形参和实参指向的仍然是同一个内存地址，但是<em>当我们尝试修改形参的值时，因为实参是不可变对象，不允许在原地址上进行修改，因此只能开辟一块新内存区域，保存形参被修改之后的值</em>。最终结果就是，形参和实参指向了两个不同的内存地址，因此在函数体内修改形参的值，实参的值并不会变化。这个过程的本质是：
    <div class="highlight"><pre><span></span><code><span class="kt">void</span><span class="w"> </span><span class="nf">foo</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="o">&amp;</span><span class="n">arg</span><span class="p">)</span><span class="w"> </span>
-<span class="p">{</span><span class="w"></span>
+<span class="p">{</span>
 <span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="o">*</span><span class="n">param</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="kt">int</span><span class="p">;</span><span class="w">              </span><span class="c1">// 开辟一块新内存区域</span>
 <span class="w">    </span><span class="n">memcpy</span><span class="p">(</span><span class="n">param</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">arg</span><span class="p">,</span><span class="w"> </span><span class="k">sizeof</span><span class="p">(</span><span class="kt">int</span><span class="p">));</span><span class="w">  </span><span class="c1">// 将实参的值复制到新内存区域</span>
 <span class="w">    </span><span class="o">*</span><span class="n">param</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span><span class="w">                       </span><span class="c1">// 对形参进行其他操作</span>
-<span class="p">}</span><span class="w"></span>
+<span class="p">}</span>
 </code></pre></div>
    <img alt="immutable_ptr" src="../images/220902-python-mutable-defaults/immutable_ptr.png" />
    （写起来有点像脱裤子放屁）</p>
@@ -1351,7 +1351,7 @@ as the main headline.
       <div class="md-copyright">
   
     <div class="md-copyright__highlight">
-      Copyright &copy; 2023 Akiba Arisa
+      Copyright &copy; 2077 Akiba Arisa <a href="https://icp.gov.moe/?keyword=20232033" target="_blank">萌ICP备20232033号</a>
     </div>
   
   

@@ -996,9 +996,9 @@ as the main headline.
 
     <h2 id="_1">安装<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
 <p>官网建议用 <code>snap</code> 安装。👉 <a href="https://certbot.eff.org/instructions?ws=other&amp;os=ubuntufocal">https://certbot.eff.org/instructions?ws=other&amp;os=ubuntufocal</a></p>
-<div class="highlight"><pre><span></span><code>sudo snap install core
-sudo snap refresh core
-sudo snap install --classic certbot
+<div class="highlight"><pre><span></span><code>sudo<span class="w"> </span>snap<span class="w"> </span>install<span class="w"> </span>core
+sudo<span class="w"> </span>snap<span class="w"> </span>refresh<span class="w"> </span>core
+sudo<span class="w"> </span>snap<span class="w"> </span>install<span class="w"> </span>--classic<span class="w"> </span>certbot
 </code></pre></div>
 <h2 id="_2">申请多个域名证书<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
 <div class="admonition 警告 danger">
@@ -1012,39 +1012,39 @@ sudo snap install --classic certbot
 <ul>
 <li>
 <p>你的 <code>80</code> 端口已经被 <code>nginx</code>（或者其他服务）占用了：</p>
-<div class="highlight"><pre><span></span><code>certbot certonly --nginx -d example.com -d www.example.com -d another.example.com
+<div class="highlight"><pre><span></span><code>certbot<span class="w"> </span>certonly<span class="w"> </span>--nginx<span class="w"> </span>-d<span class="w"> </span>example.com<span class="w"> </span>-d<span class="w"> </span>www.example.com<span class="w"> </span>-d<span class="w"> </span>another.example.com
 </code></pre></div>
 </li>
 <li>
 <p>你的 <code>80</code> 端口没有被任何服务占用：</p>
-<div class="highlight"><pre><span></span><code>certbot certonly --standalone -d example.com -d www.example.com -d another.example.com
+<div class="highlight"><pre><span></span><code>certbot<span class="w"> </span>certonly<span class="w"> </span>--standalone<span class="w"> </span>-d<span class="w"> </span>example.com<span class="w"> </span>-d<span class="w"> </span>www.example.com<span class="w"> </span>-d<span class="w"> </span>another.example.com
 </code></pre></div>
 </li>
 </ul>
 <h2 id="_3">申请泛域名证书（也叫通配符证书）<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h2>
 <p>比较麻烦，需要在 DNS 服务提供商处设置 <code>TXT</code> 记录。并且<strong>只能</strong>通过这个方式来续期。</p>
-<div class="highlight"><pre><span></span><code>certbot certonly -d <span class="s2">&quot;*.example.com&quot;</span> -d <span class="s2">&quot;example.com&quot;</span> --manual --preferred-challenges dns --server https://acme-v02.api.letsencrypt.org/directory
+<div class="highlight"><pre><span></span><code>certbot<span class="w"> </span>certonly<span class="w"> </span>-d<span class="w"> </span><span class="s2">&quot;*.example.com&quot;</span><span class="w"> </span>-d<span class="w"> </span><span class="s2">&quot;example.com&quot;</span><span class="w"> </span>--manual<span class="w"> </span>--preferred-challenges<span class="w"> </span>dns<span class="w"> </span>--server<span class="w"> </span>https://acme-v02.api.letsencrypt.org/directory
 </code></pre></div>
 <p>其中 <code>--server</code> 参数所指向的 url 也许会变化，但是你总能在 Let's Encrypt 的 <a href="https://letsencrypt.org/docs/staging-environment/">文档</a> 上找到最新的。</p>
 <p>执行之后会交给你一个或两个设置 <code>TXT</code> 记录的任务。去你的 DNS 服务提供商处设置好即可。</p>
 <h2 id="_4">查看自动续期的计划任务<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h2>
-<div class="highlight"><pre><span></span><code>systemctl list-timers
+<div class="highlight"><pre><span></span><code>systemctl<span class="w"> </span>list-timers
 </code></pre></div>
 <h2 id="_5">手动为证书续期<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h2>
 <ul>
 <li>
 <p>不加任何参数，没有临近到期时间的话会停止执行</p>
-<div class="highlight"><pre><span></span><code>certbot renew
+<div class="highlight"><pre><span></span><code>certbot<span class="w"> </span>renew
 </code></pre></div>
 </li>
 <li>
 <p>测试续期，不会真的续期</p>
-<div class="highlight"><pre><span></span><code>certbot renew --dry-run
+<div class="highlight"><pre><span></span><code>certbot<span class="w"> </span>renew<span class="w"> </span>--dry-run
 </code></pre></div>
 </li>
 <li>
 <p>强制续期</p>
-<div class="highlight"><pre><span></span><code>certbot renew --force-renewal
+<div class="highlight"><pre><span></span><code>certbot<span class="w"> </span>renew<span class="w"> </span>--force-renewal
 </code></pre></div>
 </li>
 </ul>
@@ -1052,7 +1052,7 @@ sudo snap install --classic certbot
 <p>泛域名证书不能通过 <code>certbot renew</code> 来续期，需要手动续期。否则会报错。</p>
 <p>原因很简单，就是你在申请泛域名证书的时候在 DNS 服务商那里添加的 <code>TXT</code> 记录，这是一个会变化的值。</p>
 <p>续期方法和申请方法一模一样，相当于重新申请一次。</p>
-<div class="highlight"><pre><span></span><code>certbot certonly -d <span class="s2">&quot;*.example.com&quot;</span> -d <span class="s2">&quot;example.com&quot;</span> --manual --preferred-challenges dns --server https://acme-v02.api.letsencrypt.org/directory
+<div class="highlight"><pre><span></span><code>certbot<span class="w"> </span>certonly<span class="w"> </span>-d<span class="w"> </span><span class="s2">&quot;*.example.com&quot;</span><span class="w"> </span>-d<span class="w"> </span><span class="s2">&quot;example.com&quot;</span><span class="w"> </span>--manual<span class="w"> </span>--preferred-challenges<span class="w"> </span>dns<span class="w"> </span>--server<span class="w"> </span>https://acme-v02.api.letsencrypt.org/directory
 </code></pre></div>
 <p>中途同样需要修改 DNS 的 <code>TXT</code> 记录这样的操作。有人可能会觉得很麻烦，麻烦你就去写个脚本啊。</p>
 <p>事实上 certbot 的报错也说得很清楚了，他的意思就是要我们去写个脚本：</p>
@@ -1065,21 +1065,21 @@ sudo snap install --classic certbot
 <ul>
 <li>
 <p>用颁发证书的账户吊销证书</p>
-<div class="highlight"><pre><span></span><code>certbot revoke --cert-path /etc/letsencrypt/archive/<span class="si">${</span><span class="nv">YOUR_DOMAIN</span><span class="si">}</span>/cert1.pem
+<div class="highlight"><pre><span></span><code>certbot<span class="w"> </span>revoke<span class="w"> </span>--cert-path<span class="w"> </span>/etc/letsencrypt/archive/<span class="si">${</span><span class="nv">YOUR_DOMAIN</span><span class="si">}</span>/cert1.pem
 </code></pre></div>
 </li>
 <li>
 <p>使用证书私钥吊销证书</p>
-<div class="highlight"><pre><span></span><code>certbot revoke --cert-path /PATH/TO/cert.pem --key-path /PATH/TO/key.pem
+<div class="highlight"><pre><span></span><code>certbot<span class="w"> </span>revoke<span class="w"> </span>--cert-path<span class="w"> </span>/PATH/TO/cert.pem<span class="w"> </span>--key-path<span class="w"> </span>/PATH/TO/key.pem
 </code></pre></div>
 </li>
 <li>
 <p>使用其他授权帐户吊销证书</p>
 <p>先从 <a href="https://crt.sh/">crt.sh</a> 中下载证书，然后：</p>
-<div class="highlight"><pre><span></span><code>certbot revoke --cert-path /PATH/TO/downloaded-cert.pem
+<div class="highlight"><pre><span></span><code>certbot<span class="w"> </span>revoke<span class="w"> </span>--cert-path<span class="w"> </span>/PATH/TO/downloaded-cert.pem
 </code></pre></div>
 <h2 id="_8">删除证书<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h2>
-<div class="highlight"><pre><span></span><code>certbot delete 
+<div class="highlight"><pre><span></span><code>certbot<span class="w"> </span>delete<span class="w"> </span>
 </code></pre></div>
 </li>
 </ul>
@@ -1211,7 +1211,7 @@ sudo snap install --classic certbot
       <div class="md-copyright">
   
     <div class="md-copyright__highlight">
-      Copyright &copy; 2023 Akiba Arisa
+      Copyright &copy; 2077 Akiba Arisa <a href="https://icp.gov.moe/?keyword=20232033" target="_blank">萌ICP备20232033号</a>
     </div>
   
   

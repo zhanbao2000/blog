@@ -928,7 +928,7 @@ as the main headline.
 <div class="tabbed-set tabbed-alternate" data-tabs="1:2"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">Linux server</label><label for="__tabbed_1_2">Windows server</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code>socat -d TCP4-LISTEN:6161,reuseaddr,fork TCP4:arcapi-v2.lowiro.com:443
+<div class="highlight"><pre><span></span><code>socat<span class="w"> </span>-d<span class="w"> </span>TCP4-LISTEN:6161,reuseaddr,fork<span class="w"> </span>TCP4:arcapi-v2.lowiro.com:443
 </code></pre></div>
 </div>
 <div class="tabbed-block">
@@ -942,7 +942,7 @@ as the main headline.
 <p>了解到 <code>nginx</code> 从 <code>1.9.0</code> 开始，新增加了一个 stream 模块，用来实现四层协议的转发、代理或者负载均衡等。用法是直接在 <code>nginx.conf</code> 中配置 <code>stream</code> 字段。</p>
 <p>但是实际配置完成后发现，nginx 并不认识 stream 模块。使用 <code>nginx -t</code> 检查配置无法通过。报错提示 <code>unknown directive "stream" in /etc/nginx/nginx.conf</code>。</p>
 <p>后来了解到，如果需要使 nginx 内置支持 stream 模块，需要在编译时指定 <code>--with-stream</code> 选项。即</p>
-<div class="highlight"><pre><span></span><code>./configure --with-stream
+<div class="highlight"><pre><span></span><code>./configure<span class="w"> </span>--with-stream
 </code></pre></div>
 <p><a href="http://nginx.org/en/docs/stream/ngx_stream_core_module.html">官网的说法</a></p>
 <p>这个方法实属过于麻烦，还要重装 nginx。</p>
@@ -950,7 +950,7 @@ as the main headline.
 <p>从这篇文章了解到了不用重新编译也能支持 stream 模块的方法：</p>
 <p><a href="https://serverfault.com/questions/858067/unknown-directive-stream-in-etc-nginx-nginx-conf86">unknown directive "stream" in /etc/nginx/nginx.conf:86 - Server Fault</a></p>
 <p>简单来说就是，即使我们没有在编译时指定 <code>--with-stream</code> 选项，nginx 也会将 stream 模块编译进来，但是并没有让 nginx 默认支持，而是需要我们自行导入，即：</p>
-<div class="highlight"><pre><span></span><code><span class="k">load_module</span><span class="w"> </span><span class="s">/usr/lib/nginx/modules/ngx_stream_module.so</span><span class="p">;</span><span class="w"></span>
+<div class="highlight"><pre><span></span><code><span class="k">load_module</span><span class="w"> </span><span class="s">/usr/lib/nginx/modules/ngx_stream_module.so</span><span class="p">;</span>
 </code></pre></div>
 <p>如此一来便能正常使用 stream 模块。</p>
 
@@ -1081,7 +1081,7 @@ as the main headline.
       <div class="md-copyright">
   
     <div class="md-copyright__highlight">
-      Copyright &copy; 2023 Akiba Arisa
+      Copyright &copy; 2077 Akiba Arisa <a href="https://icp.gov.moe/?keyword=20232033" target="_blank">萌ICP备20232033号</a>
     </div>
   
   

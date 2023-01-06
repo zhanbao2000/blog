@@ -1252,11 +1252,11 @@ as the main headline.
 <div class="tabbed-set tabbed-alternate" data-tabs="1:2"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">Debian/Ubuntu</label><label for="__tabbed_1_2">CentOS</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code>sudo apt install rclone
+<div class="highlight"><pre><span></span><code>sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>rclone
 </code></pre></div>
 </div>
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code>sudo yum install rclone
+<div class="highlight"><pre><span></span><code>sudo<span class="w"> </span>yum<span class="w"> </span>install<span class="w"> </span>rclone
 </code></pre></div>
 </div>
 </div>
@@ -1299,7 +1299,7 @@ Description: No code returned by remote server
 <li>你的 <code>access_token</code></li>
 </ul>
 <p>在你的云服务器上执行：</p>
-<div class="highlight"><pre><span></span><code>rclone config
+<div class="highlight"><pre><span></span><code>rclone<span class="w"> </span>config
 </code></pre></div>
 <p>会出现：</p>
 <div class="highlight"><pre><span></span><code>e) Edit existing remote
@@ -1384,30 +1384,30 @@ Your choice&gt;
 <h2 id="remote">五、测试并挂载 remote<a class="headerlink" href="#remote" title="Permanent link">&para;</a></h2>
 <h3 id="51-remote">5.1 测试 remote<a class="headerlink" href="#51-remote" title="Permanent link">&para;</a></h3>
 <p>我们可以使用</p>
-<div class="highlight"><pre><span></span><code>rclone lsd od4hath:
+<div class="highlight"><pre><span></span><code>rclone<span class="w"> </span>lsd<span class="w"> </span>od4hath:
 </code></pre></div>
 <p>来测试你的 remote 是否配置正确。</p>
 <p>上述命令的含义是列出 <code>od4hath</code> 这个 remote 的根目录下的所有文件夹。</p>
 <p>一般来说，如果这是一个全新的 OneDrive，那么你应该会看到一个名为 <code>Form</code> 的文件夹。这就代表你的 remote 已经配置成功了。</p>
 <h3 id="52-remote">5.2 挂载 remote<a class="headerlink" href="#52-remote" title="Permanent link">&para;</a></h3>
 <p>创建一个新文件夹用于挂载，具体路径完全取决于你个人：</p>
-<div class="highlight"><pre><span></span><code>mkdir /root/rclone
-mkdir /root/rclone/od4hath
+<div class="highlight"><pre><span></span><code>mkdir<span class="w"> </span>/root/rclone
+mkdir<span class="w"> </span>/root/rclone/od4hath
 </code></pre></div>
 <p>然后再在你的 OneDrive 网页版中，于根目录下创建一个文件夹，命名为 <code>Hath</code>。</p>
 <p>使用以下命令挂载：</p>
-<div class="highlight"><pre><span></span><code>rclone mount od4hath:Hath /root/rclone/od4hath --allow-other --transfers <span class="m">4</span> --buffer-size 32M --vfs-read-chunk-size 128M --vfs-read-chunk-size-limit 0M --vfs-cache-max-size 8000M --vfs-cache-max-age 3360h --allow-non-empty --dir-cache-time 3360h --vfs-cache-mode full --umask <span class="m">000</span> --vfs-cache-mode full --no-modtime --vfs-cache-poll-interval 30m
+<div class="highlight"><pre><span></span><code>rclone<span class="w"> </span>mount<span class="w"> </span>od4hath:Hath<span class="w"> </span>/root/rclone/od4hath<span class="w"> </span>--allow-other<span class="w"> </span>--transfers<span class="w"> </span><span class="m">4</span><span class="w"> </span>--buffer-size<span class="w"> </span>32M<span class="w"> </span>--vfs-read-chunk-size<span class="w"> </span>128M<span class="w"> </span>--vfs-read-chunk-size-limit<span class="w"> </span>0M<span class="w"> </span>--vfs-cache-max-size<span class="w"> </span>8000M<span class="w"> </span>--vfs-cache-max-age<span class="w"> </span>3360h<span class="w"> </span>--allow-non-empty<span class="w"> </span>--dir-cache-time<span class="w"> </span>3360h<span class="w"> </span>--vfs-cache-mode<span class="w"> </span>full<span class="w"> </span>--umask<span class="w"> </span><span class="m">000</span><span class="w"> </span>--vfs-cache-mode<span class="w"> </span>full<span class="w"> </span>--no-modtime<span class="w"> </span>--vfs-cache-poll-interval<span class="w"> </span>30m
 </code></pre></div>
 <p>其中，<code>od4hath:Hath /root/rclone/od4hath</code> 指的是将名为 <code>od4hath</code> 的 remote 中的 <code>Hath</code> 文件夹挂载到本地的 <code>/root/rclone/od4hath</code> 目录。</p>
 <p>如果你想挂载整个 remote 而不是其中某个文件夹，你可以使用：</p>
-<div class="highlight"><pre><span></span><code>rclone mount od4hath: /root/rclone/od4hath
+<div class="highlight"><pre><span></span><code>rclone<span class="w"> </span>mount<span class="w"> </span>od4hath:<span class="w"> </span>/root/rclone/od4hath
 </code></pre></div>
 <p>这样 <code>/root/rclone/od4hath</code> 目录便指向了整个 remote。</p>
 <p>命令行参数的含义请参阅 rclone <a href="https://rclone.org/commands/rclone_mount/">文档</a></p>
 <p>请注意 <code>--vfs-cache-max-size</code> 参数的值为本地磁盘缓存大小，请勿设置过大。<code>--transfers</code> 与 <code>--buffer-size</code> 参数的乘积为每次传输的最大数据量，请根据你主机上的内存大小酌情设置。</p>
 <h3 id="53">5.3 测试挂载是否成功<a class="headerlink" href="#53" title="Permanent link">&para;</a></h3>
 <p>现在，使用你的命令行，向该目录下随便写入一个文件：</p>
-<div class="highlight"><pre><span></span><code>touch /root/rclone/od4hath/test
+<div class="highlight"><pre><span></span><code>touch<span class="w"> </span>/root/rclone/od4hath/test
 </code></pre></div>
 <p>在你的网页版 OneDrive 中查看 <code>Hath</code> 文件夹，你应该会看到一个名为 <code>test</code> 的文件。</p>
 <div class="admonition danger">
@@ -1423,10 +1423,10 @@ mkdir /root/rclone/od4hath
 <p>如果你移动文件夹之后一切工作正常，且 H@H 仪表盘中 <code>Trust</code> 值并没有夸张地减小，那么你可以放心地继续使用这种方法。</p>
 </div>
 <p>在挂载目录中添加一个 <code>cache</code> 文件夹作为缓存文件夹：</p>
-<div class="highlight"><pre><span></span><code>mkdir /root/rclone/od4hath/cache
+<div class="highlight"><pre><span></span><code>mkdir<span class="w"> </span>/root/rclone/od4hath/cache
 </code></pre></div>
 <p>编辑你的 H@H 服务器启动参数，加上一条额外的 <code>--cache-dir</code>，例如：</p>
-<div class="highlight"><pre><span></span><code>java -jar HentaiAtHome.jar --cache-dir<span class="o">=</span>/root/rclone/od4hath/cache
+<div class="highlight"><pre><span></span><code>java<span class="w"> </span>-jar<span class="w"> </span>HentaiAtHome.jar<span class="w"> </span>--cache-dir<span class="o">=</span>/root/rclone/od4hath/cache
 </code></pre></div>
 <p>然后运行即可。</p>
 <h2 id="_6">七、注意事项<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h2>
@@ -1572,7 +1572,7 @@ mkdir /root/rclone/od4hath
       <div class="md-copyright">
   
     <div class="md-copyright__highlight">
-      Copyright &copy; 2023 Akiba Arisa
+      Copyright &copy; 2077 Akiba Arisa <a href="https://icp.gov.moe/?keyword=20232033" target="_blank">萌ICP备20232033号</a>
     </div>
   
   

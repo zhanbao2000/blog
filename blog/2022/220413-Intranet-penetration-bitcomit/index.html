@@ -1040,13 +1040,13 @@ as the main headline.
 <span class="normal">4</span>
 <span class="normal">5</span>
 <span class="normal">6</span>
-<span class="normal">7</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">[common]</span><span class="w"></span>
-<span class="na">bind_port</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">7000</span><span class="w"></span>
-<span class="na">bind_udp_port</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">7000</span><span class="w"></span>
-<span class="na">bind_addr</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">0.0.0.0</span><span class="w"></span>
-<span class="na">allow_ports</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">1001-1500,10001-22500</span><span class="w"></span>
-<span class="na">token</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">你的密码</span><span class="w"></span>
-<span class="na">tls_only</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">true</span><span class="w"></span>
+<span class="normal">7</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">[common]</span>
+<span class="na">bind_port</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">7000</span>
+<span class="na">bind_udp_port</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">7000</span>
+<span class="na">bind_addr</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">0.0.0.0</span>
+<span class="na">allow_ports</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">1001-1500,10001-22500</span>
+<span class="na">token</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">你的密码</span>
+<span class="na">tls_only</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">true</span>
 </code></pre></div></td></tr></table></div>
 <p>注意以下配置项：</p>
 <ul>
@@ -1105,42 +1105,42 @@ as the main headline.
 <span class="normal">33</span>
 <span class="normal">34</span>
 <span class="normal">35</span>
-<span class="normal">36</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">[common]</span><span class="w"></span>
-<span class="na">server_addr</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">给定的IPv4地址/IPv6地址/域名</span><span class="w"></span>
-<span class="na">server_port</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">7000</span><span class="w"></span>
-<span class="na">protocol</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">websocket</span><span class="w"></span>
-<span class="na">token</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">你的密码</span><span class="w"></span>
-<span class="na">tls_enable</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">true</span><span class="w"></span>
+<span class="normal">36</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">[common]</span>
+<span class="na">server_addr</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">给定的IPv4地址/IPv6地址/域名</span>
+<span class="na">server_port</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">7000</span>
+<span class="na">protocol</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">websocket</span>
+<span class="na">token</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">你的密码</span>
+<span class="na">tls_enable</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">true</span>
 
-<span class="k">[Remote Download]</span><span class="w"></span>
-<span class="na">type</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">tcp</span><span class="w"></span>
-<span class="na">local_ip</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">127.0.0.1</span><span class="w"></span>
-<span class="na">local_port</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">2333</span><span class="w"></span>
-<span class="na">remote_port</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">2333</span><span class="w"></span>
+<span class="k">[Remote Download]</span>
+<span class="na">type</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">tcp</span>
+<span class="na">local_ip</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">127.0.0.1</span>
+<span class="na">local_port</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">2333</span>
+<span class="na">remote_port</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">2333</span>
 
-<span class="k">[BT Listen TCP]</span><span class="w"></span>
-<span class="na">type</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">tcp</span><span class="w"></span>
-<span class="na">local_ip</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">127.0.0.1</span><span class="w"></span>
-<span class="na">local_port</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">10400</span><span class="w"></span>
-<span class="na">remote_port</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">10400</span><span class="w"></span>
+<span class="k">[BT Listen TCP]</span>
+<span class="na">type</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">tcp</span>
+<span class="na">local_ip</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">127.0.0.1</span>
+<span class="na">local_port</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">10400</span>
+<span class="na">remote_port</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">10400</span>
 
-<span class="k">[BT Listen UDP]</span><span class="w"></span>
-<span class="na">type</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">udp</span><span class="w"></span>
-<span class="na">local_ip</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">127.0.0.1</span><span class="w"></span>
-<span class="na">local_port</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">10400</span><span class="w"></span>
-<span class="na">remote_port</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">10400</span><span class="w"></span>
+<span class="k">[BT Listen UDP]</span>
+<span class="na">type</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">udp</span>
+<span class="na">local_ip</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">127.0.0.1</span>
+<span class="na">local_port</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">10400</span>
+<span class="na">remote_port</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">10400</span>
 
-<span class="k">[eMule Listen TCP]</span><span class="w"></span>
-<span class="na">type</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">tcp</span><span class="w"></span>
-<span class="na">local_ip</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">127.0.0.1</span><span class="w"></span>
-<span class="na">local_port</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">22224</span><span class="w"></span>
-<span class="na">remote_port</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">22224</span><span class="w"></span>
+<span class="k">[eMule Listen TCP]</span>
+<span class="na">type</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">tcp</span>
+<span class="na">local_ip</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">127.0.0.1</span>
+<span class="na">local_port</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">22224</span>
+<span class="na">remote_port</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">22224</span>
 
-<span class="k">[eMule Listen UDP]</span><span class="w"></span>
-<span class="na">type</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">udp</span><span class="w"></span>
-<span class="na">local_ip</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">127.0.0.1</span><span class="w"></span>
-<span class="na">local_port</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">22224</span><span class="w"></span>
-<span class="na">remote_port</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">22224</span><span class="w"></span>
+<span class="k">[eMule Listen UDP]</span>
+<span class="na">type</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">udp</span>
+<span class="na">local_ip</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">127.0.0.1</span>
+<span class="na">local_port</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">22224</span>
+<span class="na">remote_port</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">22224</span>
 </code></pre></div></td></tr></table></div>
 <p>注意以下配置项：</p>
 <ul>
@@ -1336,7 +1336,7 @@ as the main headline.
       <div class="md-copyright">
   
     <div class="md-copyright__highlight">
-      Copyright &copy; 2023 Akiba Arisa
+      Copyright &copy; 2077 Akiba Arisa <a href="https://icp.gov.moe/?keyword=20232033" target="_blank">萌ICP备20232033号</a>
     </div>
   
   
