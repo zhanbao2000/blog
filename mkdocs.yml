@@ -23,9 +23,11 @@ theme:
         name: 进入日间模式
   language: 'zh'
   features:
+    - navigation.footer
     - navigation.tabs
     - navigation.top
     - navigation.tracking
+    - content.code.copy
 
 extra:
   social:

@@ -1,6 +1,7 @@
 ---
 hide:
     - navigation
+    - footer
 ---
 
 # 主页
