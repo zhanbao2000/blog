@@ -46,10 +46,10 @@ sudo snap install --classic certbot
 比较麻烦，需要在 DNS 服务提供商处设置 `TXT` 记录。并且**只能**通过这个方式来续期。
 
 ```bash
-certbot certonly -d "*.example.com" -d "example.com" --manual --preferred-challenges dns --server https://acme-v02.api.letsencrypt.org/directory
+certbot certonly -d "*.example.com" -d "example.com" --manual --preferred-challenges dns --server https://acme-staging-v02.api.letsencrypt.org/directory
 ```
 
-其中 `--server` 参数所指向的 url 也许会变化，但是你总能在 Let's Encrypt 的 [文档](https://letsencrypt.org/docs/staging-environment/) 上找到最新的。
+其中 `--server` 参数所指向的 url 也许会变化，但是你总能在 Let's Encrypt 的 [文档](https://letsencrypt.org/zh-cn/docs/staging-environment/) 上找到最新的。
 
 执行之后会交给你一个或两个设置 `TXT` 记录的任务。去你的 DNS 服务提供商处设置好即可。
 
@@ -88,7 +88,7 @@ systemctl list-timers
 续期方法和申请方法一模一样，相当于重新申请一次。
 
 ```bash
-certbot certonly -d "*.example.com" -d "example.com" --manual --preferred-challenges dns --server https://acme-v02.api.letsencrypt.org/directory
+certbot certonly -d "*.example.com" -d "example.com" --manual --preferred-challenges dns --server https://acme-staging-v02.api.letsencrypt.org/directory
 ```
 
 中途同样需要修改 DNS 的 `TXT` 记录这样的操作。有人可能会觉得很麻烦，麻烦你就去写个脚本啊。
