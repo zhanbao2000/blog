@@ -1026,9 +1026,9 @@ sudo<span class="w"> </span>snap<span class="w"> </span>install<span class="w"> 
 </ul>
 <h2 id="_3">申请泛域名证书（也叫通配符证书）<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h2>
 <p>比较麻烦，需要在 DNS 服务提供商处设置 <code>TXT</code> 记录。并且<strong>只能</strong>通过这个方式来续期。</p>
-<div class="highlight"><pre><span></span><code>certbot<span class="w"> </span>certonly<span class="w"> </span>-d<span class="w"> </span><span class="s2">&quot;*.example.com&quot;</span><span class="w"> </span>-d<span class="w"> </span><span class="s2">&quot;example.com&quot;</span><span class="w"> </span>--manual<span class="w"> </span>--preferred-challenges<span class="w"> </span>dns<span class="w"> </span>--server<span class="w"> </span>https://acme-v02.api.letsencrypt.org/directory
+<div class="highlight"><pre><span></span><code>certbot<span class="w"> </span>certonly<span class="w"> </span>-d<span class="w"> </span><span class="s2">&quot;*.example.com&quot;</span><span class="w"> </span>-d<span class="w"> </span><span class="s2">&quot;example.com&quot;</span><span class="w"> </span>--manual<span class="w"> </span>--preferred-challenges<span class="w"> </span>dns<span class="w"> </span>--server<span class="w"> </span>https://acme-staging-v02.api.letsencrypt.org/directory
 </code></pre></div>
-<p>其中 <code>--server</code> 参数所指向的 url 也许会变化，但是你总能在 Let's Encrypt 的 <a href="https://letsencrypt.org/docs/staging-environment/">文档</a> 上找到最新的。</p>
+<p>其中 <code>--server</code> 参数所指向的 url 也许会变化，但是你总能在 Let's Encrypt 的 <a href="https://letsencrypt.org/zh-cn/docs/staging-environment/">文档</a> 上找到最新的。</p>
 <p>执行之后会交给你一个或两个设置 <code>TXT</code> 记录的任务。去你的 DNS 服务提供商处设置好即可。</p>
 <h2 id="_4">查看自动续期的计划任务<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h2>
 <div class="highlight"><pre><span></span><code>systemctl<span class="w"> </span>list-timers
@@ -1055,7 +1055,7 @@ sudo<span class="w"> </span>snap<span class="w"> </span>install<span class="w"> 
 <p>泛域名证书不能通过 <code>certbot renew</code> 来续期，需要手动续期。否则会报错。</p>
 <p>原因很简单，就是你在申请泛域名证书的时候在 DNS 服务商那里添加的 <code>TXT</code> 记录，这是一个会变化的值。</p>
 <p>续期方法和申请方法一模一样，相当于重新申请一次。</p>
-<div class="highlight"><pre><span></span><code>certbot<span class="w"> </span>certonly<span class="w"> </span>-d<span class="w"> </span><span class="s2">&quot;*.example.com&quot;</span><span class="w"> </span>-d<span class="w"> </span><span class="s2">&quot;example.com&quot;</span><span class="w"> </span>--manual<span class="w"> </span>--preferred-challenges<span class="w"> </span>dns<span class="w"> </span>--server<span class="w"> </span>https://acme-v02.api.letsencrypt.org/directory
+<div class="highlight"><pre><span></span><code>certbot<span class="w"> </span>certonly<span class="w"> </span>-d<span class="w"> </span><span class="s2">&quot;*.example.com&quot;</span><span class="w"> </span>-d<span class="w"> </span><span class="s2">&quot;example.com&quot;</span><span class="w"> </span>--manual<span class="w"> </span>--preferred-challenges<span class="w"> </span>dns<span class="w"> </span>--server<span class="w"> </span>https://acme-staging-v02.api.letsencrypt.org/directory
 </code></pre></div>
 <p>中途同样需要修改 DNS 的 <code>TXT</code> 记录这样的操作。有人可能会觉得很麻烦，麻烦你就去写个脚本啊。</p>
 <p>事实上 certbot 的报错也说得很清楚了，他的意思就是要我们去写个脚本：</p>
@@ -1095,7 +1095,7 @@ sudo<span class="w"> </span>snap<span class="w"> </span>install<span class="w"> 
   <small>
     
       最后更新:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_datetime">2022-04-28 10:02:17</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_datetime">2023-01-10 15:49:00</span>
       
         <br>
         创建日期:
