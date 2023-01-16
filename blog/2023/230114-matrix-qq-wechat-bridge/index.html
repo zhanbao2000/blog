@@ -1,0 +1,1113 @@
+
+<!DOCTYPE html>
+
+<html class="no-js" lang="zh">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width,initial-scale=1" name="viewport"/>
+<meta content="QQ 与微信客户端在各个平台上均存在不同程度上的作恶行为，包括但不限于：后台常驻保活、占用大量存储空间、远程聊天记录管理不善等，与之形成强烈反差的是 Telegram 客户端。我们急切需要一个像 Telegram 一样友好的工具来代理接收和发送 QQ 和微信消息。" name="description"/>
+<meta content="Akiba Arisa" name="author"/>
+<link href="https://blog.arisa.moe/blog/2023/230114-matrix-qq-wechat-bridge/" rel="canonical"/>
+<link href="../230113-my-2022-website/" rel="prev"/>
+<link href="../../../assets/favicon.webp" rel="icon"/>
+<meta content="mkdocs-1.4.2, mkdocs-material-9.0.5" name="generator"/>
+<title>通过 Matrix 协议实现代理接收 QQ 和微信消息 —— 从入坑到入土 - Arisa | Blog</title>
+<link href="../../../assets/stylesheets/main.558e4712.min.css" rel="stylesheet"/>
+<link href="../../../assets/stylesheets/palette.2505c338.min.css" rel="stylesheet"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&amp;display=fallback" rel="stylesheet"/>
+<style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+<link href="../../../stylesheets/custom.css" rel="stylesheet"/>
+<script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+<link href="../../../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>
+            html.glightbox-open { overflow: initial; height: 100%; }
+            .gslide-title { margin-top: 0px; user-select: text; }
+            .gslide-desc { color: #666; user-select: text; }
+            .gslide-image img { background: white; }
+            
+                .gscrollbar-fixer { padding-right: 15px; }
+                .gdesc-inner { font-size: 0.75rem; }
+                body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color);}
+                body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color);}
+                body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color);}
+                </style><script src="../../../assets/javascripts/glightbox.min.js"></script></head>
+<body data-md-color-accent="" data-md-color-primary="" data-md-color-scheme="default" dir="ltr">
+<script>var palette=__md_get("__palette");if(palette&&"object"==typeof palette.color)for(var key of Object.keys(palette.color))document.body.setAttribute("data-md-color-"+key,palette.color[key])</script>
+<input autocomplete="off" class="md-toggle" data-md-toggle="drawer" id="__drawer" type="checkbox"/>
+<input autocomplete="off" class="md-toggle" data-md-toggle="search" id="__search" type="checkbox"/>
+<label class="md-overlay" for="__drawer"></label>
+<div data-md-component="skip">
+<a class="md-skip" href="#_1">
+          跳转至
+        </a>
+</div>
+<div data-md-component="announce">
+</div>
+<header class="md-header" data-md-component="header">
+<nav aria-label="页眉" class="md-header__inner md-grid">
+<a aria-label="Arisa | Blog" class="md-header__button md-logo" data-md-component="logo" href="../../.." title="Arisa | Blog">
+<svg viewbox="0 0 16 16" xmlns="http://www.w3.org/2000/svg"><path d="M1.75 1h12.5c.966 0 1.75.784 1.75 1.75v8.5A1.75 1.75 0 0 1 14.25 13H8.061l-2.574 2.573A1.458 1.458 0 0 1 3 14.543V13H1.75A1.75 1.75 0 0 1 0 11.25v-8.5C0 1.784.784 1 1.75 1ZM1.5 2.75v8.5c0 .138.112.25.25.25h2a.75.75 0 0 1 .75.75v2.19l2.72-2.72a.749.749 0 0 1 .53-.22h6.5a.25.25 0 0 0 .25-.25v-8.5a.25.25 0 0 0-.25-.25H1.75a.25.25 0 0 0-.25.25Zm5.28 1.72a.75.75 0 0 1 0 1.06L5.31 7l1.47 1.47a.751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018l-2-2a.75.75 0 0 1 0-1.06l2-2a.75.75 0 0 1 1.06 0Zm2.44 0a.75.75 0 0 1 1.06 0l2 2a.75.75 0 0 1 0 1.06l-2 2a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042L10.69 7 9.22 5.53a.75.75 0 0 1 0-1.06Z"></path></svg>
+</a>
+<label class="md-header__button md-icon" for="__drawer">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"></path></svg>
+</label>
+<div class="md-header__title" data-md-component="header-title">
+<div class="md-header__ellipsis">
+<div class="md-header__topic">
+<span class="md-ellipsis">
+            Arisa | Blog
+          </span>
+</div>
+<div class="md-header__topic" data-md-component="header-topic">
+<span class="md-ellipsis">
+            
+              通过 Matrix 协议实现代理接收 QQ 和微信消息 —— 从入坑到入土
+            
+          </span>
+</div>
+</div>
+</div>
+<form class="md-header__option" data-md-component="palette">
+<input aria-label="进入夜间模式" class="md-option" data-md-color-accent="" data-md-color-media="" data-md-color-primary="" data-md-color-scheme="default" id="__palette_1" name="__palette" type="radio"/>
+<label class="md-header__button md-icon" for="__palette_2" hidden="" title="进入夜间模式">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0-7 2.39 3.42C13.65 5.15 12.84 5 12 5c-.84 0-1.65.15-2.39.42L12 2M3.34 7l4.16-.35A7.2 7.2 0 0 0 5.94 8.5c-.44.74-.69 1.5-.83 2.29L3.34 7m.02 10 1.76-3.77a7.131 7.131 0 0 0 2.38 4.14L3.36 17M20.65 7l-1.77 3.79a7.023 7.023 0 0 0-2.38-4.15l4.15.36m-.01 10-4.14.36c.59-.51 1.12-1.14 1.54-1.86.42-.73.69-1.5.83-2.29L20.64 17M12 22l-2.41-3.44c.74.27 1.55.44 2.41.44.82 0 1.63-.17 2.37-.44L12 22Z"></path></svg>
+</label>
+<input aria-label="进入日间模式" class="md-option" data-md-color-accent="" data-md-color-media="" data-md-color-primary="" data-md-color-scheme="slate" id="__palette_2" name="__palette" type="radio"/>
+<label class="md-header__button md-icon" for="__palette_1" hidden="" title="进入日间模式">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="m17.75 4.09-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.06-3 1.06 3 3.19.09m3.5 6.91-1.64 1.25.59 1.98-1.7-1.17-1.7 1.17.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95 2.06.05m-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14.4-.4.82-.76 1.27-1.08.75-.53 1.93.36 1.85 1.19-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82-2.81 3.14-2.7 7.96.31 10.98 3.02 3.01 7.84 3.12 10.98.31Z"></path></svg>
+</label>
+</form>
+<label class="md-header__button md-icon" for="__search">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"></path></svg>
+</label>
+<div class="md-search" data-md-component="search" role="dialog">
+<label class="md-search__overlay" for="__search"></label>
+<div class="md-search__inner" role="search">
+<form class="md-search__form" name="search">
+<input aria-label="搜索" autocapitalize="off" autocomplete="off" autocorrect="off" class="md-search__input" data-md-component="search-query" name="query" placeholder="搜索" required="" spellcheck="false" type="text"/>
+<label class="md-search__icon md-icon" for="__search">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"></path></svg>
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"></path></svg>
+</label>
+<nav aria-label="查找" class="md-search__options">
+<button aria-label="清空当前内容" class="md-search__icon md-icon" tabindex="-1" title="清空当前内容" type="reset">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"></path></svg>
+</button>
+</nav>
+</form>
+<div class="md-search__output">
+<div class="md-search__scrollwrap" data-md-scrollfix="">
+<div class="md-search-result" data-md-component="search-result">
+<div class="md-search-result__meta">
+            正在初始化搜索引擎
+          </div>
+<ol class="md-search-result__list" role="presentation"></ol>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="md-header__source">
+<a class="md-source" data-md-component="source" href="https://github.com/zhanbao2000/blog" title="前往仓库">
+<div class="md-source__icon md-icon">
+<svg viewbox="0 0 448 512" xmlns="http://www.w3.org/2000/svg"><!--! Font Awesome Free 6.2.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"></path></svg>
+</div>
+<div class="md-source__repository">
+    zhanbao2000/blog
+  </div>
+</a>
+</div>
+</nav>
+</header>
+<div class="md-container" data-md-component="container">
+<nav aria-label="标签" class="md-tabs" data-md-component="tabs">
+<div class="md-tabs__inner md-grid">
+<ul class="md-tabs__list">
+<li class="md-tabs__item">
+<a class="md-tabs__link" href="../../..">
+      主页
+    </a>
+</li>
+<li class="md-tabs__item">
+<a class="md-tabs__link" href="../../../tags/">
+      标签
+    </a>
+</li>
+<li class="md-tabs__item">
+<a class="md-tabs__link" href="../../../toc/">
+      目录
+    </a>
+</li>
+<li class="md-tabs__item">
+<a class="md-tabs__link md-tabs__link--active" href="../../2022/220406-nginx-stream/">
+        Blog
+      </a>
+</li>
+</ul>
+</div>
+</nav>
+<main class="md-main" data-md-component="main">
+<div class="md-main__inner md-grid">
+<div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation">
+<div class="md-sidebar__scrollwrap">
+<div class="md-sidebar__inner">
+<nav aria-label="导航栏" class="md-nav md-nav--primary md-nav--lifted" data-md-level="0">
+<label class="md-nav__title" for="__drawer">
+<a aria-label="Arisa | Blog" class="md-nav__button md-logo" data-md-component="logo" href="../../.." title="Arisa | Blog">
+<svg viewbox="0 0 16 16" xmlns="http://www.w3.org/2000/svg"><path d="M1.75 1h12.5c.966 0 1.75.784 1.75 1.75v8.5A1.75 1.75 0 0 1 14.25 13H8.061l-2.574 2.573A1.458 1.458 0 0 1 3 14.543V13H1.75A1.75 1.75 0 0 1 0 11.25v-8.5C0 1.784.784 1 1.75 1ZM1.5 2.75v8.5c0 .138.112.25.25.25h2a.75.75 0 0 1 .75.75v2.19l2.72-2.72a.749.749 0 0 1 .53-.22h6.5a.25.25 0 0 0 .25-.25v-8.5a.25.25 0 0 0-.25-.25H1.75a.25.25 0 0 0-.25.25Zm5.28 1.72a.75.75 0 0 1 0 1.06L5.31 7l1.47 1.47a.751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018l-2-2a.75.75 0 0 1 0-1.06l2-2a.75.75 0 0 1 1.06 0Zm2.44 0a.75.75 0 0 1 1.06 0l2 2a.75.75 0 0 1 0 1.06l-2 2a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042L10.69 7 9.22 5.53a.75.75 0 0 1 0-1.06Z"></path></svg>
+</a>
+    Arisa | Blog
+  </label>
+<div class="md-nav__source">
+<a class="md-source" data-md-component="source" href="https://github.com/zhanbao2000/blog" title="前往仓库">
+<div class="md-source__icon md-icon">
+<svg viewbox="0 0 448 512" xmlns="http://www.w3.org/2000/svg"><!--! Font Awesome Free 6.2.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"></path></svg>
+</div>
+<div class="md-source__repository">
+    zhanbao2000/blog
+  </div>
+</a>
+</div>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../..">
+        主页
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../tags/">
+        标签
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../toc/">
+        目录
+      </a>
+</li>
+<li class="md-nav__item md-nav__item--active md-nav__item--nested">
+<input checked="" class="md-nav__toggle md-toggle" data-md-toggle="__nav_4" id="__nav_4" type="checkbox"/>
+<label aria-expanded="true" class="md-nav__link" for="__nav_4" tabindex="0">
+          Blog
+          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="Blog" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_4">
+<span class="md-nav__icon md-icon"></span>
+          Blog
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_1" id="__nav_4_1" type="checkbox"/>
+<label aria-expanded="false" class="md-nav__link" for="__nav_4_1" tabindex="0">
+          2022
+          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="2022" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_4_1">
+<span class="md-nav__icon md-icon"></span>
+          2022
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../2022/220406-nginx-stream/">
+        nginx 如何设置 stream 转发
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../2022/220406-set-http-proxy/">
+        解决使用代理后 pip 和 python 无法连接到网络的问题
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../2022/220406-venv-move-file/">
+        移动 python 项目文件夹位置后如何解决 PyCharm 找不到解释器与无法正常使用终端的问题
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../2022/220407-certbot/">
+        certbot 常用操作
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../2022/220407-github-pages/">
+        GitHub Pages 文档自动化部署 - MkDocs
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../2022/220408-github-pages-2/">
+        GitHub Pages 文档自动化部署 - VuePress
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../2022/220409-cloudflare-workers-arcaea-update/">
+        如何使用 Cloudflare Workers 来搭建 Arcaea 镜像下载服务器
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../2022/220412-ida-substitute-usage/">
+        IDA 替换二进制文件
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../2022/220413-Intranet-penetration-bitcomit/">
+        利用内网穿透和代理获取公网 IP 地址解决比特彗星黄灯
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../2022/220414-fk-arcaea-songlist-hash/">
+        解除 Arcaea 对 songlist 等文件的哈希校验
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../2022/220416-arcaea-fanmade-chart-problem/">
+        Arcaea 自制谱移植常见问题
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../2022/220417-linux-clean-up-disk-space/">
+        Linux 清理磁盘空间常见操作
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../2022/220421-use-gzip-bomb-against-scanner/">
+        如何使用 gzip 压缩包炸弹对恶意扫描器进行反击
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../2022/220428-how-to-ask-questions-like-a-retard/">
+        如何像一个弱智一样提问
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../2022/220429-dilb-ultimate-solution/">
+        基于 Anaconda 的 dlib（CUDA 版本）安装的终极解决方案
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../2022/220502-how-dogs-work-in-epic7/">
+        第七史诗升六星的正确理解
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../2022/220511-how-to-write-python-into-classical-chinese/">
+        如何将 Python 写成文言文
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../2022/220529-python-personal-styleguide/">
+        Python 个人代码风格指导
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../2022/220530-auto-sign-in-guide/">
+        自动签到使用指南
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../2022/220602-ipv6-bypass-billing-system/">
+        架设双栈代理服务器通过 IPv6 绕过校园网计费系统的方法
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../2022/220902-python-mutable-defaults/">
+        Python 默认参数可变的危险性
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../2022/220913-python-confusing-detail/">
+        Python 中令人迷惑的细节
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../2022/221113-rclone-sharepoint-for-hentai-at-home/">
+        使用 Rclone 挂载 SharePoint 作为 Hentai@Home 的缓存目录
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../2022/221113-rclone-sharepoint-oauth-failed/">
+        通过 WebDAV 解决 Rclone 挂载 SharePoint 时遇到 Error: Auth Error
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../2022/221115-issue-of-position-or-right-and-wrong/">
+        立场问题与是非问题
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--active md-nav__item--nested">
+<input checked="" class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_2" id="__nav_4_2" type="checkbox"/>
+<label aria-expanded="true" class="md-nav__link" for="__nav_4_2" tabindex="0">
+          2023
+          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="2023" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_4_2">
+<span class="md-nav__icon md-icon"></span>
+          2023
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../230113-my-2022-website/">
+        我的浏览器 2022 年度总结
+      </a>
+</li>
+<li class="md-nav__item md-nav__item--active">
+<input class="md-nav__toggle md-toggle" data-md-toggle="toc" id="__toc" type="checkbox"/>
+<label class="md-nav__link md-nav__link--active" for="__toc">
+          通过 Matrix 协议实现代理接收 QQ 和微信消息 —— 从入坑到入土
+          <span class="md-nav__icon md-icon"></span>
+</label>
+<a class="md-nav__link md-nav__link--active" href="./">
+        通过 Matrix 协议实现代理接收 QQ 和微信消息 —— 从入坑到入土
+      </a>
+<nav aria-label="目录" class="md-nav md-nav--secondary">
+<label class="md-nav__title" for="__toc">
+<span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+<ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#_1">
+    一、绪论
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#_2">
+    二、入坑
+  </a>
+<nav aria-label="二、入坑" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#21">
+    2.1 服务端与服务端的坑
+  </a>
+<nav aria-label="2.1 服务端与服务端的坑" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#80-nginx">
+    关于宿主 80 被 nginx 占用时的解决方法
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#cloudflare-cdn">
+    使用 Cloudflare CDN 时的情况
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#bot-qq-wechat">
+    使两个 bot 自动创建 QQ 和 WeChat 空间以区分不同来源的消息
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#_3">
+    自动清除服务端媒体文件以免服务器硬盘满
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#xxx-mb">
+    发送媒体文件大于 XXX MB 时发送失败
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#nginx-matrix-wechat-agent">
+    nginx 反代 matrix-wechat-agent
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#matrix-wechat-agent">
+    部署 matrix-wechat-agent
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#nginx-homeserver">
+    使用 nginx 时无法加入其他 homeserver 上的房间
+  </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#22">
+    2.2 客户端与客户端的坑
+  </a>
+<nav aria-label="2.2 客户端与客户端的坑" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#_4">
+    贴纸
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#_5">
+    贴纸的坑
+  </a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#_6">
+    三、入土
+  </a>
+<nav aria-label="三、入土" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#31">
+    3.1 服务器
+  </a>
+<nav aria-label="3.1 服务器" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#_7">
+    内存
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#_8">
+    存储空间
+  </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#32-homeserver">
+    3.2 homeserver
+  </a>
+<nav aria-label="3.2 homeserver" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#_9">
+    贴纸
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#_10">
+    查看图片
+  </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#33">
+    3.3 客户端
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#34-bridge">
+    3.4 bridge
+  </a>
+<nav aria-label="3.4 bridge" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#_11">
+    头像昵称同步
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#_12">
+    微信
+  </a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#_13">
+    四、尾声
+  </a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</div>
+</div>
+</div>
+<div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc">
+<div class="md-sidebar__scrollwrap">
+<div class="md-sidebar__inner">
+<nav aria-label="目录" class="md-nav md-nav--secondary">
+<label class="md-nav__title" for="__toc">
+<span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+<ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#_1">
+    一、绪论
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#_2">
+    二、入坑
+  </a>
+<nav aria-label="二、入坑" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#21">
+    2.1 服务端与服务端的坑
+  </a>
+<nav aria-label="2.1 服务端与服务端的坑" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#80-nginx">
+    关于宿主 80 被 nginx 占用时的解决方法
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#cloudflare-cdn">
+    使用 Cloudflare CDN 时的情况
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#bot-qq-wechat">
+    使两个 bot 自动创建 QQ 和 WeChat 空间以区分不同来源的消息
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#_3">
+    自动清除服务端媒体文件以免服务器硬盘满
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#xxx-mb">
+    发送媒体文件大于 XXX MB 时发送失败
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#nginx-matrix-wechat-agent">
+    nginx 反代 matrix-wechat-agent
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#matrix-wechat-agent">
+    部署 matrix-wechat-agent
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#nginx-homeserver">
+    使用 nginx 时无法加入其他 homeserver 上的房间
+  </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#22">
+    2.2 客户端与客户端的坑
+  </a>
+<nav aria-label="2.2 客户端与客户端的坑" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#_4">
+    贴纸
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#_5">
+    贴纸的坑
+  </a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#_6">
+    三、入土
+  </a>
+<nav aria-label="三、入土" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#31">
+    3.1 服务器
+  </a>
+<nav aria-label="3.1 服务器" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#_7">
+    内存
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#_8">
+    存储空间
+  </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#32-homeserver">
+    3.2 homeserver
+  </a>
+<nav aria-label="3.2 homeserver" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#_9">
+    贴纸
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#_10">
+    查看图片
+  </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#33">
+    3.3 客户端
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#34-bridge">
+    3.4 bridge
+  </a>
+<nav aria-label="3.4 bridge" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#_11">
+    头像昵称同步
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#_12">
+    微信
+  </a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#_13">
+    四、尾声
+  </a>
+</li>
+</ul>
+</nav>
+</div>
+</div>
+</div>
+<div class="md-content" data-md-component="content">
+<article class="md-content__inner md-typeset">
+<!--
+Hack: check whether the content contains a h1 headline. If it
+doesn't, the page title (or respectively site name) is used
+as the main headline.
+-->
+<h1>通过 Matrix 协议实现代理接收 QQ 和微信消息 —— 从入坑到入土</h1>
+<!-- Markdown content -->
+<aside class="mdx-author">
+<p>
+<img alt="@zhanbao2000" src="https://avatars.githubusercontent.com/zhanbao2000"/>
+</p>
+<p>
+<span>
+<b>Akiba Arisa</b> · <a href="https://github.com/zhanbao2000">@zhanbao2000</a>
+</span>
+<span>
+<svg class="bi bi-clock" fill="currentColor" height="12" viewbox="0 0 16 16" width="12" xmlns="http://www.w3.org/2000/svg">
+<path d="M8 3.5a.5.5 0 0 0-1 0V9a.5.5 0 0 0 .252.434l3.5 2a.5.5 0 0 0 .496-.868L8 8.71V3.5z"></path>
+<path d="M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16zm7-8A7 7 0 1 1 1 8a7 7 0 0 1 14 0z"></path>
+</svg> 60 min read
+                </span>
+</p>
+</aside>
+<div class="tags">
+<a class="tag" href="/tags/#matrix"><code>#matrix</code></a>
+<a class="tag" href="/tags/#qq"><code>#qq</code></a>
+<a class="tag" href="/tags/#wechat"><code>#wechat</code></a>
+<a class="tag" href="/tags/#cloudflare"><code>#cloudflare</code></a>
+<a class="tag" href="/tags/#cloudflare-workers"><code>#cloudflare-workers</code></a>
+<a class="tag" href="/tags/#nginx"><code>#nginx</code></a>
+</div>
+<h2 id="_1">一、绪论<a class="headerlink" href="#_1" title="Permanent link">¶</a></h2>
+<p>QQ 与微信客户端在各个平台上均存在不同程度上的作恶行为，包括但不限于：后台常驻保活、占用大量存储空间、远程聊天记录管理不善等，与之形成强烈反差的是 Telegram 客户端。我们急切需要一个像 Telegram 一样友好的工具来代理接收和发送 QQ 和微信消息。</p>
+<p>目前，QQ 和微信早就有了完善的 Bot 支持，例如 <a href="https://github.com/Mrs4s/go-cqhttp">go-cqhttp</a> 和 <a href="https://github.com/ljc545w/ComWeChatRobot">ComWeChatRobot</a>。那么有没有一种可能，我们寻找（甚至设计）一个客户-服务端，将服务端部署于 VPS 上运行 Bot 程序从而接收来自 QQ 和微信的消息，并在终端设备上运行更友好的客户端呢？</p>
+<p>事实上，我们无需设计，这个思路早就有前人实践过了。这个服务端就是 <a href="https://github.com/matrix-org/synapse/">Synapse</a>（又被称为 Matrix homeserver），这个客户端就是 <a href="https://github.com/vector-im">Element</a>（全平台支持），他们之间通过 <a href="https://matrix.org/">Matrix</a> 协议进行通信（以下将该方案简称为 <code>bridge 转发方案</code>）</p>
+<p>本文主要介绍了如何通过 bridge 转发方案实现代理接收 QQ 和微信消息，以及三个月后我为什么最终放弃了它。</p>
+<p>本文假定读者已经了解 Matrix 协议，如果不了解，可以参考 <a href="https://matrix.org/docs/guides/introduction">Matrix 协议简介</a>。</p>
+<h2 id="_2">二、入坑<a class="headerlink" href="#_2" title="Permanent link">¶</a></h2>
+<h3 id="21">2.1 服务端与服务端的坑<a class="headerlink" href="#21" title="Permanent link">¶</a></h3>
+<p>关于服务端的部署，可直接参阅 Duo 的这篇博客：<a href="https://duo.github.io/posts/matrix-qq-wechat/">Matrix, QQ and Wechat</a></p>
+<p>按照上述博客部署服务端时会遇到很多问题（例如采用 nginx 时很多地方均与教程有出入），现总结如下：</p>
+<h4 id="80-nginx">关于宿主 80 被 nginx 占用时的解决方法<a class="headerlink" href="#80-nginx" title="Permanent link">¶</a></h4>
+<p>我主机上的 443 端口被 trojan-go 占用，会自动将 443 的所有的 https 请求解密为 http 传递到 nginx，因此只需要改 80 端口即可。其他情况可类比参考。</p>
+<p>所作的事就是将所有来自 <code>matrix.example.com</code> 的消息转发到容器内的 <code>8008</code> 端口。</p>
+<p>不创建 Caddy 容器，而是在 <code>docker-compose.yml</code> 的 <code>synapse</code> 中加入端口映射：</p>
+<div class="highlight"><pre><span></span><code><span class="nt">ports</span><span class="p">:</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">127.0.0.1:8082:8008</span>
+</code></pre></div>
+<p>然后在宿主的 nginx 上加入 <code>80</code> 端口到 <code>8082</code> 的反代</p>
+<div class="highlight"><pre><span></span><code><span class="k">server</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kn">listen</span><span class="w"> </span><span class="mi">80</span><span class="p">;</span>
+<span class="w">    </span><span class="kn">listen</span><span class="w"> </span><span class="s">[::]:80</span><span class="p">;</span>
+<span class="w">    </span><span class="kn">server_name</span><span class="w"> </span><span class="s">matrix.example.com</span><span class="p">;</span>
+
+<span class="w">    </span><span class="c1"># 反代到 synapse</span>
+<span class="w">    </span><span class="kn">location</span><span class="w"> </span><span class="s">/</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="kn">proxy_set_header</span><span class="w"> </span><span class="s">Host</span><span class="w"> </span><span class="nv">$host</span><span class="p">;</span>
+<span class="w">        </span><span class="kn">proxy_set_header</span><span class="w"> </span><span class="s">X-Real-IP</span><span class="w"> </span><span class="nv">$remote_addr</span><span class="p">;</span>
+<span class="w">        </span><span class="kn">proxy_set_header</span><span class="w"> </span><span class="s">X-Forwarded-For</span><span class="w"> </span><span class="nv">$proxy_add_x_forwarded_for</span><span class="p">;</span>
+<span class="w">        </span><span class="kn">proxy_pass</span><span class="w"> </span><span class="s">http://127.0.0.1:8082</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<div class="admonition warning">
+<p class="admonition-title">注意</p>
+<p>如果你的 bridge 是微信，那么这还没完（见后面关于反代 agent 的补充）。</p>
+</div>
+<h4 id="cloudflare-cdn">使用 Cloudflare CDN 时的情况<a class="headerlink" href="#cloudflare-cdn" title="Permanent link">¶</a></h4>
+<p>透过 CDN 时，使用 <a href="https://federationtester.matrix.org/">Matrix Federation Tester</a> 会自然检测失败，因为它通过 DNS 查询之后尝试用 IP 连接，这显然是没法透过 CDN 的。</p>
+<p>此时可以访问 <a href="https://matrix.example.com/_matrix/federation/v1/version">https://matrix.example.com/_matrix/federation/v1/version</a> 或通过 <a href="https://app.element.io">https://app.element.io</a> 来测试可用性。</p>
+<h4 id="bot-qq-wechat">使两个 bot 自动创建 QQ 和 WeChat 空间以区分不同来源的消息<a class="headerlink" href="#bot-qq-wechat" title="Permanent link">¶</a></h4>
+<p>分别在 QQ 和 WeChat 的两个 <code>config.yaml</code> 中修改：</p>
+<div class="highlight"><pre><span></span><code><span class="nt">personal_filtering_spaces</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+</code></pre></div>
+<p>如果你已经来晚了（即：有些聊天房间已经处在 Space 外面），那么在 Bot 中执行 <code>sync space</code> 即可。</p>
+<h4 id="_3">自动清除服务端媒体文件以免服务器硬盘满<a class="headerlink" href="#_3" title="Permanent link">¶</a></h4>
+<p><code>homeserver.yaml</code> 中加入：</p>
+<div class="highlight"><pre><span></span><code><span class="nt">media_retention</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">local_media_lifetime</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">3d</span>
+<span class="w">    </span><span class="nt">remote_media_lifetime</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">14d</span>
+</code></pre></div>
+<p>最主要的容量占用来自 <code>local_xxxxx</code>，bridge 会自动下载 QQ/WeChat 上的所有媒体到这个文件夹里，我设置的是最多保留 3 天，具体各位结合自己实际情况改。</p>
+<h4 id="xxx-mb">发送媒体文件大于 XXX MB 时发送失败<a class="headerlink" href="#xxx-mb" title="Permanent link">¶</a></h4>
+<ol>
+<li>
+<p><code>max_upload_size</code> 值的问题</p>
+<p><code>homeserver.yaml</code> 中修改设置：</p>
+<div class="highlight"><pre><span></span><code><span class="nt">max_upload_size</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">50M</span>
+</code></pre></div>
+<p>这个值如果没有在配置文件中定义，那默认是 50M。</p>
+</li>
+<li>
+<p>反代的问题</p>
+<p>参考 <a href="https://matrix-org.github.io/synapse/latest/reverse_proxy.html#using-a-reverse-proxy-with-synapse">Using a reverse proxy with Synapse</a></p>
+<p>以 nginx 为例，将对应的 <code>location</code> 加入以下两句：</p>
+<div class="highlight"><pre><span></span><code><span class="k">client_max_body_size</span><span class="w"> </span><span class="s">50M</span><span class="p">;</span>
+<span class="k">proxy_http_version</span><span class="w"> </span><span class="mi">1</span><span class="s">.1</span><span class="p">;</span>
+</code></pre></div>
+<p>nginx 默认的 <code>client_max_body_size</code> 很小，不足以接收或发送大型媒体</p>
+</li>
+</ol>
+<h4 id="nginx-matrix-wechat-agent">nginx 反代 matrix-wechat-agent<a class="headerlink" href="#nginx-matrix-wechat-agent" title="Permanent link">¶</a></h4>
+<p>所作的事就是将所有来自 <code>matrix.example.com/_wechat</code> 的消息转发到容器内的 <code>20002</code> 端口。</p>
+<p>同上，在 <code>docker-compose.yml</code> 的 <code>synapse</code> 中加入端口映射：</p>
+<div class="highlight"><pre><span></span><code><span class="nt">ports</span><span class="p">:</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">127.0.0.1:8083:20002</span>
+</code></pre></div>
+<p>注意：<code>matrix-wechat-agent</code> 使用 WebSocket 进行工作，nginx 反代时和 http 反代配置稍有不同：</p>
+<div class="highlight"><pre><span></span><code><span class="k">location</span><span class="w"> </span><span class="s">/_wechat</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kn">proxy_http_version</span><span class="w"> </span><span class="mi">1</span><span class="s">.1</span><span class="p">;</span>
+<span class="w">    </span><span class="kn">proxy_set_header</span><span class="w"> </span><span class="s">Upgrade</span><span class="w"> </span><span class="nv">$http_upgrade</span><span class="p">;</span>
+<span class="w">    </span><span class="kn">proxy_set_header</span><span class="w"> </span><span class="s">Connection</span><span class="w"> </span><span class="s">"upgrade"</span><span class="p">;</span>
+<span class="w">    </span><span class="kn">proxy_set_header</span><span class="w"> </span><span class="s">Host</span><span class="w"> </span><span class="nv">$host</span><span class="p">;</span>
+<span class="w">    </span><span class="kn">proxy_set_header</span><span class="w"> </span><span class="s">X-Real-IP</span><span class="w"> </span><span class="nv">$remote_addr</span><span class="p">;</span>
+<span class="w">    </span><span class="kn">proxy_set_header</span><span class="w"> </span><span class="s">X-Forwarded-For</span><span class="w"> </span><span class="nv">$proxy_add_x_forwarded_for</span><span class="p">;</span>
+<span class="w">    </span><span class="kn">proxy_pass</span><span class="w"> </span><span class="s">http://127.0.0.1:8083</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+<h4 id="matrix-wechat-agent">部署 <code>matrix-wechat-agent</code><a class="headerlink" href="#matrix-wechat-agent" title="Permanent link">¶</a></h4>
+<p>首先，从 <code>matrix-wechat/config.yaml</code> 里找到 <code>listen_secret</code> 的值并记录。</p>
+<p>然后去 <a href="https://github.com/duo/matrix-wechat-agent/releases">duo/matrix-wechat-agent</a> 下载 <code>matrix-wechat-agent.exe</code>。</p>
+<p>接下来，从 <a href="https://github.com/ljc545w/ComWeChatRobot/releases">ljc545w/ComWeChatRobot</a> 处下载必要的 dll 文件，并放在 <code>matrix-wechat-agent.exe</code> 同目录下。</p>
+<p>运行：</p>
+<div class="highlight"><pre><span></span><code>matrix-wechat-agent.exe -h wss://matrix.example.com/_wechat -s %LISTEN_SECRET%
+</code></pre></div>
+<p>即可在 <code>matrix-wechat-agent</code> 与 <code>matrix-wechat-bridge</code> 之间建立 WebSocket 连接。</p>
+<p>最后在 Bot 内执行 <code>login</code>，并扫码登陆即可。</p>
+<p>出现问题最多的地方在于微信版本问题，你的微信版本号必须与 <code>ComWeChatRobot.dll</code> 的版本号一致，否则要么加载不出登录二维码，要么干脆连微信都调用不起来。</p>
+<p>当时的 <code>ComWeChatRobot.dll</code> 版本号是 <code>3.7.0.30</code>，但官网微信版本早就不是这个版本了。</p>
+<div class="admonition danger">
+<p class="admonition-title">危险</p>
+<p>我是从这里找到老版本微信的，但我无法保证链接安全性，请自信甄别，出现问题概不负责：</p>
+<ul>
+<li><a href="https://sszs.oss-cn-hangzhou.aliyuncs.com/WeChatSetup3.7.0.30.exe">https://sszs.oss-cn-hangzhou.aliyuncs.com/WeChatSetup3.7.0.30.exe</a></li>
+</ul>
+</div>
+<h4 id="nginx-homeserver">使用 nginx 时无法加入其他 homeserver 上的房间<a class="headerlink" href="#nginx-homeserver" title="Permanent link">¶</a></h4>
+<p>在使用 Caddy 部署时，有一个步骤是向 <code>Caddyfile</code> 中加入：</p>
+<div class="highlight"><pre><span></span><code>example.com {
+    header /.well-known/matrix/* Content-Type application/json
+    header /.well-known/matrix/* Access-Control-Allow-Origin *
+
+    respond /.well-known/matrix/server `{"m.server": "matrix.example.com:443"}`
+    respond /.well-known/matrix/client `{"m.homeserver":{"base_url":"https://matrix.example.com"}}`
+}
+</code></pre></div>
+<p>而我们在 nginx 部署时没有进行这个步骤，因此需要手动添加。</p>
+<div class="admonition warning">
+<p class="admonition-title">注意</p>
+<p>当初我自己尝试的是使用 nginx 语法重现上述功能，但是不知道是 Cloudflare 还是 nginx 自己的问题，这两个 headers 添加之后仍然会受到同源策略影响导致跨域问题，因此我最后使用了 Cloudflare Workers 来实现这个 Respond。</p>
+</div>
+<p>不就是个带 headers 的 Respond 嘛，直接 Workers 开写：</p>
+<div class="highlight"><pre><span></span><code><span class="nx">addEventListener</span><span class="p">(</span><span class="s1">'fetch'</span><span class="p">,</span><span class="w"> </span><span class="nx">event</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">respond</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="s2">"m.server"</span><span class="o">:</span><span class="w"> </span><span class="s2">"matrix.example.com:443"</span><span class="p">,</span>
+<span class="w">    </span><span class="s2">"m.homeserver"</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="s2">"base_url"</span><span class="o">:</span><span class="w"> </span><span class="s2">"https://matrix.example.com"</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">  </span><span class="p">};</span><span class="w">  </span><span class="c1">// 别忘了替换 example.com</span>
+
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">json</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">JSON</span><span class="p">.</span><span class="nx">stringify</span><span class="p">(</span><span class="nx">respond</span><span class="p">,</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w"> </span><span class="mf">2</span><span class="p">);</span>
+
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="nx">event</span><span class="p">.</span><span class="nx">respondWith</span><span class="p">(</span>
+<span class="w">    </span><span class="ow">new</span><span class="w"> </span><span class="nx">Response</span><span class="p">(</span><span class="nx">json</span><span class="p">,</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nx">headers</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span>
+<span class="w">        </span><span class="s2">"Content-Type"</span><span class="o">:</span><span class="w"> </span><span class="s2">"application/json"</span><span class="p">,</span>
+<span class="w">        </span><span class="s2">"Access-Control-Allow-Origin"</span><span class="o">:</span><span class="w"> </span><span class="s2">"*"</span>
+<span class="w">      </span><span class="p">},</span>
+<span class="w">    </span><span class="p">})</span>
+<span class="w">  </span><span class="p">);</span>
+<span class="p">});</span>
+</code></pre></div>
+<p>将其路由到 <code>example.com/.well-known/matrix/*</code> 即可。</p>
+<h3 id="22">2.2 客户端与客户端的坑<a class="headerlink" href="#22" title="Permanent link">¶</a></h3>
+<p>推荐使用 <a href="https://github.com/vector-im">Element</a> 作为 Matrix 协议的客户端，Element 的前身是 Riot.im，但是很显然它现在已经被 Element 代替。</p>
+<p>Element 客户端的使用基本处于上手即用的级别，但需要注意的是，Matrix 协议采用 “房间” 的形式进行管理，即多人房间则为群聊，两人房间即为私聊。</p>
+<h4 id="_4">贴纸<a class="headerlink" href="#_4" title="Permanent link">¶</a></h4>
+<p>习惯 Telegram 的朋友和用多了 QQ 的朋友看到这里都沉默了，没有贴纸 / 表情包这怎么活？</p>
+<p>事实上，Element（或者其他 Matrix 客户端）对贴纸（还包括挂件、Bot 等）的支持十分鸡肋，因为这些东西需要由管理集成服务器（例如 <a href="https://scalar.vector.im/">scalar.vector.im</a>）统一管理。单就贴纸而言，所有的贴纸均来自独立的管理集成服务器（服务器甚至可以与你的 homeserver 不同），发送贴纸的流程极其诡异，以至于我对这玩意都说不清楚。但目前可以确定的是，所有贴纸均<strong>不属于</strong>用户个人，用户只能在已经部署好的管理集成服务器中选择其中提供的贴纸，而不能自己上传，这就好像一个不能上传的图床。</p>
+<p>不过我们可以曲线救国，通过添加挂件的方式变相实现管理集成服务器的功能，具体操作可见竹林里有冰的博客：<a href="https://zhul.in/2022/08/10/add-sticker-support-for-element/">为Element 添加自己喜欢的贴纸</a>。</p>
+<h4 id="_5">贴纸的坑<a class="headerlink" href="#_5" title="Permanent link">¶</a></h4>
+<p>没错这里又有坑。</p>
+<p>简单来说，创建一个贴纸挂件需要将贴纸上传到任意一个 homeserver（那当然就是我们的这个 homeserver），但是 Synapse 对服务端上保留的所有媒体文件有时间限制，例如我们之前就将 <code>local_XXXX</code> 的保留时间限制为 3 天，也就意味着我们上传的贴纸将在 3 天后过期，后续再发送包含贴纸的消息 homeserver 只能响应给你 404。此时我们只能通过 <a href="https://matrix-org.github.io/synapse/latest/admin_api/media_admin_api.html#protecting-media-from-being-quarantined">Protect</a> API 来避免被删除。为此，我写了一个 Python 脚本来进行批量 Protect：</p>
+<p>（请先向 homeserver 上传完所有贴纸后再进行该 Protect 操作）</p>
+<div class="highlight"><span class="filename">protect.py</span><pre><span></span><code><span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">import</span> <span class="nn">json</span>
+
+<span class="kn">from</span> <span class="nn">aiohttp</span> <span class="kn">import</span> <span class="n">ClientSession</span>
+
+
+<span class="k">def</span> <span class="nf">get_media_id_list</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">:</span>
+    <span class="n">result</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">root</span><span class="p">,</span> <span class="n">dirs</span><span class="p">,</span> <span class="n">files</span> <span class="ow">in</span> <span class="n">os</span><span class="o">.</span><span class="n">walk</span><span class="p">(</span><span class="sa">r</span><span class="s1">'D:\path\to\web\packs'</span><span class="p">):</span>
+        <span class="k">for</span> <span class="n">file</span> <span class="ow">in</span> <span class="n">files</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">file</span> <span class="o">==</span> <span class="s1">'index.json'</span><span class="p">:</span>
+                <span class="k">continue</span>
+            <span class="k">if</span> <span class="n">file</span><span class="o">.</span><span class="n">endswith</span><span class="p">(</span><span class="s1">'.json'</span><span class="p">):</span>
+                <span class="c1"># load the json</span>
+                <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">root</span><span class="p">,</span> <span class="n">file</span><span class="p">),</span> <span class="s1">'r'</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+                    <span class="n">j</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
+                <span class="k">for</span> <span class="n">sticker</span> <span class="ow">in</span> <span class="n">j</span><span class="p">[</span><span class="s1">'stickers'</span><span class="p">]:</span>
+                    <span class="n">media_id</span> <span class="o">=</span> <span class="n">sticker</span><span class="p">[</span><span class="s1">'url'</span><span class="p">]</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">'/'</span><span class="p">)[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+                    <span class="n">result</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">media_id</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">result</span>
+
+
+<span class="k">async</span> <span class="k">def</span> <span class="nf">protect</span><span class="p">():</span>
+    <span class="n">headers</span> <span class="o">=</span> <span class="p">{</span><span class="s2">"Authorization"</span><span class="p">:</span> <span class="s2">"Bearer 111111111111111111111111111111111111111"</span><span class="p">}</span>
+    <span class="c1"># async with ClientSession() as sess, sess.post(url, data=data, headers=headers) as resp:</span>
+    <span class="c1">#     return (await resp.json())["content_uri"]</span>
+    <span class="k">async</span> <span class="k">with</span> <span class="n">ClientSession</span><span class="p">()</span> <span class="k">as</span> <span class="n">session</span><span class="p">:</span>
+        <span class="k">for</span> <span class="n">media_id</span> <span class="ow">in</span> <span class="n">get_media_id_list</span><span class="p">():</span>
+            <span class="n">url</span> <span class="o">=</span> <span class="sa">f</span><span class="s1">'https://matrix.example.com/_synapse/admin/v1/media/protect/</span><span class="si">{</span><span class="n">media_id</span><span class="si">}</span><span class="s1">'</span>
+            <span class="k">async</span> <span class="k">with</span> <span class="n">session</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">)</span> <span class="k">as</span> <span class="n">resp</span><span class="p">:</span>
+                <span class="nb">print</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
+                <span class="nb">print</span><span class="p">(</span><span class="k">await</span> <span class="n">resp</span><span class="o">.</span><span class="n">json</span><span class="p">())</span>
+
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">'__main__'</span><span class="p">:</span>
+    <span class="kn">import</span> <span class="nn">asyncio</span>
+    <span class="n">asyncio</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">protect</span><span class="p">())</span>
+</code></pre></div>
+<p>请注意修改其中的 <code>Bearer token</code> 和 <code>example.com</code> 以及 <code>os.walk()</code> 的路径。</p>
+<p>这样的话，所有我们上传到 homeserver 的贴纸都将永久保存而不被删除，从而实现贴纸的持久化。</p>
+<h2 id="_6">三、入土<a class="headerlink" href="#_6" title="Permanent link">¶</a></h2>
+<p>虽然我指望 bridge 转发方案能够取代臃肿的 QQ 和微信客户端，并以此永久删除电脑、手机和 iPad 上的客户端，但现实是残酷的，它并不能永久取代。</p>
+<p>并且由于服务器的负担不断加剧，使得我不得不最终放弃了 bridge 转发方案并决定将 homeserver 从服务器上删除。</p>
+<p>我最终放弃这个方案的原因是多样的，主要是组成 bridge 转发方案的各个方面都有着自己的局限性或者缺陷：</p>
+<h3 id="31">3.1 服务器<a class="headerlink" href="#31" title="Permanent link">¶</a></h3>
+<h4 id="_7">内存<a class="headerlink" href="#_7" title="Permanent link">¶</a></h4>
+<p>运行一个实时聊天服务端并不是一件很 “轻量” 的事情，于是首当其冲的就是内存的使用。</p>
+<figure>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="../images/230114-matrix-qq-wechat-bridge/mem.png"><img alt="mem" src="../images/230114-matrix-qq-wechat-bridge/mem.png"/></a>
+</p>
+<figcaption>12% 的数据库占用与 10% 的 homeserver 占用</figcaption>
+</figure>
+<p>我运行了两个 bridge，并加入了若干个公共房间。这还仅仅是在聊天消息低峰期的内存占用量，在高峰期时会更多。</p>
+<p>由此带来的问题是，每当聊天高峰期来临时（晚上 20 ~ 25 点），服务器上的其他进程便面临着 Killed 的风险。</p>
+<p>其次，在公共房间内解密历史消息时（尤其是图片等媒体），CPU 占用率也会立即达到 100%，甚至曾出现过 <code>50, 45, 40</code> 这样几十的负载，这不是一个单核 CPU 的服务器能承受的。</p>
+<h4 id="_8">存储空间<a class="headerlink" href="#_8" title="Permanent link">¶</a></h4>
+<p>众所周知，我们作为一个实时聊天服务端，需要存储大量聊天的数据和媒体，长期积累下来，这些数据和媒体会占用大量的存储空间。</p>
+<figure>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="../images/230114-matrix-qq-wechat-bridge/storage.png"><img alt="mem" src="../images/230114-matrix-qq-wechat-bridge/storage.png"/></a>
+</p>
+<figcaption>数据库占用和媒体占用</figcaption>
+</figure>
+<p>仅仅是两个 bridge 和若干个公共房间，并且我的设置是：</p>
+<div class="highlight"><pre><span></span><code><span class="nt">media_retention</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">local_media_lifetime</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">3d</span>
+<span class="w">    </span><span class="nt">remote_media_lifetime</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">7d</span>
+</code></pre></div>
+<p>这同样也是只有 25G 硬盘的 VPS 承受不了的。</p>
+<h3 id="32-homeserver">3.2 homeserver<a class="headerlink" href="#32-homeserver" title="Permanent link">¶</a></h3>
+<h4 id="_9">贴纸<a class="headerlink" href="#_9" title="Permanent link">¶</a></h4>
+<p>先前已经说过，如果我们想要在 Element 客户端里发送贴纸，必须借助其他的小挂件，而这些小挂件必须由我们亲自构建。这个构建过程是相当麻烦的，虽然有脚本支持，但并不是全自动的，我们仍然需要将生成的 <code>web</code> 文件夹手工上传到静态托管页面上。</p>
+<p>而在已经有现成小挂件的基础上添加新的贴纸，则需要先上传贴纸后将两个 <code>web</code> 文件夹及其 json 文件进行合并，html 文件的合并难度不多做说明，而它生成的 json 文件是极其复杂的，只能再写一个脚本来进行合并操作。</p>
+<p>相比之下，QQ 无论是添加新的表情还是收藏其他人的表情都比它方便更多，即使是稍微复杂一点的 Telegram 也比它方便。我们原本就是为了取代 QQ 客户端，但在这一点上 bridge 转发方案显然不如他，仍然坚持这种舍本逐末的行为是很愚蠢的。</p>
+<h4 id="_10">查看图片<a class="headerlink" href="#_10" title="Permanent link">¶</a></h4>
+<p>另一个十分致命的局限性是，Synapse 并不原生支持将多张图片发送在同一个消息内，也不支持文字和图片发送在同一个消息内，而这在 QQ 里显然是支持的。</p>
+<p>为了实现这个特性，<code>matrix-qq-bridge</code> 只能通过 markdown 的形式将多张图片以及文字发送在同一个消息内，这导致了一个相当影响体验的问题：无法点开这些图片从而查看大图，这导致有个时候我必须打开 QQ 客户端才能看其中感兴趣的图片。</p>
+<h3 id="33">3.3 客户端<a class="headerlink" href="#33" title="Permanent link">¶</a></h3>
+<p>Element 本身是一个好的客户端，但是对我们（只用到了 bridge 转发方案）来说，它的功能实在是太多了，甚至有点浪费，例如投票、发送位置等。</p>
+<div>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="../images/230114-matrix-qq-wechat-bridge/zoom.jpg"><img align="right" alt="zoom" src="../images/230114-matrix-qq-wechat-bridge/zoom.jpg" width="50%"/></a></p>
+<p>另一方面，Element 的 iOS、Android 和 Web 客户端对图片缩略图的尺寸处理不是很好，无论多大还是多小的图片，当他们在 Element 客户端上显示时，都将被等比缩放直到某一最大宽度或是最大高度（疑似）。对于大尺寸图片来说这无可厚非，但是对于小尺寸图片（尤其是表情包）来说，这样的处理方式看起来让人十分不爽。</p>
+<p>比如像这样，将一个小小的表情放大至页面接近三分之一的面积，对于常常使用或接收表情的用户来说是相当痛苦的。</p>
+<div style="clear:both"></div>
+</div>
+<p>此外，Element 客户端中还有一些细节令我十分不爽：</p>
+<ul>
+<li>@ 人时会自动添加一个冒号在后面</li>
+<li>点击聊天图片查看大图，返回时将直接返回到聊天记录最底部而不是原来图片的位置（新版本 Bug）</li>
+</ul>
+<h3 id="34-bridge">3.4 bridge<a class="headerlink" href="#34-bridge" title="Permanent link">¶</a></h3>
+<h4 id="_11">头像昵称同步<a class="headerlink" href="#_11" title="Permanent link">¶</a></h4>
+<p>我们能在 Element 中看到来自 QQ 和微信的头像，这是因为 bridge 会将这些头像下载下来。但是当用户更换头像（还包括昵称、群昵称）时，bridge 并不能及时更新这些信息，从而在显示上出现延迟。作为 Bot 开发者，我很清楚这是一个技术局限问题，只能通过定期或手动同步才能解决。</p>
+<p>bridge 本身是定期同步，我们也可以手动同步，向 Bot 发送以下消息即可（QQ 和微信的 bridge 都适用）：</p>
+<div class="highlight"><pre><span></span><code>sync contacts --contact-avatars
+sync groups
+</code></pre></div>
+<h4 id="_12">微信<a class="headerlink" href="#_12" title="Permanent link">¶</a></h4>
+<p>微信的 bridge 和 agent 都是很优秀的设计，但是仍然存在一些问题。</p>
+<p>长时间没有收到微信消息后，我猜想可能是 agent 和 bridge 之间存在连接问题或是登录失效，于是尝试 <code>ping</code> 指令，发现提示 <code>You're not logged into Wechat.</code>，尝试 <code>login</code> 登录，提示 <code>Get QR code timed out. Please restart the login.</code>。</p>
+<p>事实上这个时候已经重连成功了，再次输入 <code>login</code> 可能会提示 <code>You're already logged in</code>，或者输入 <code>ping</code> 会提示 <code>Logged in as wxid_xxxxxx, connection to Wechat OK (probably)</code>。</p>
+<p>另一种情形是，Bot 突然向我发送一条消息：<code>You're not logged into Wechat.</code>，于是尝试 <code>login</code> 指令，可是无论发送多少条 <code>login</code> 指令，Bot 都不会给我任何回应，尝试 <code>ping</code> 永远提示我 <code>You're not logged into Wechat.</code>。</p>
+<p>这种情况下，无论是操作 Bot 还是重启 agent 都无济于事，只能人工上 VPS 进行 <code>docker restart xxxx</code> 重启 bridge 才能修好这个问题。讽刺的是，重启 bridge 之后，等待 agent 自动重连，你甚至不需要再次输入 <code>login</code> 指令，它就已经在正常运作了。</p>
+<p>几乎每周都会发生两到三次这种问题，以至于我将 <code>docker restart xxxx</code> 这条命令写入了 crontab 中，每天凌晨 3 点自动重启 bridge。</p>
+<p>另外，受限于微信 agent 本身，你在其他微信客户端上向好友发送的消息，并不会被 agent 同步到 bridge 之中。</p>
+<p>甚至还遇到过从 Element 发送的消息，无法到达微信客户端的情况。</p>
+<p>以上所有问题，均检查过日志无异样，并且在 duo 的上述 <a href="https://duo.github.io/posts/matrix-qq-wechat/">博客</a> 中有其他用户提及过类似的问题。由于问题难以稳定复现（或者说复现周期过长），并且我已经决定不再使用 bridge 转发方案了，因此我没有去提 issue 的打算。</p>
+<h2 id="_13">四、尾声<a class="headerlink" href="#_13" title="Permanent link">¶</a></h2>
+<p>目前已经重新回归 QQ 和微信官方客户端，并删除服务器上的 homeserver，但贴纸挂件地址仍然保留着，以防万一。</p>
+<p>贴纸挂件：</p>
+<p><a href="https://matrix-sticker.pages.dev/">https://matrix-sticker.pages.dev/</a></p>
+<!-- Last update of source file -->
+<hr/>
+<div class="md-source-file">
+<small>
+    
+      最后更新:
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_datetime">2023-01-16 09:48:32</span>
+<br/>
+        创建日期:
+        <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_datetime">2023-01-16 09:48:32</span>
+</small>
+</div>
+<!-- Giscus -->
+<h2 id="__comments">评论</h2>
+<script async="" crossorigin="anonymous" data-category="Announcements" data-category-id="DIC_kwDOHIZK7M4COdSe" data-emit-metadata="0" data-input-position="top" data-lang="zh-CN" data-loading="lazy" data-mapping="pathname" data-reactions-enabled="1" data-repo="zhanbao2000/blog" data-repo-id="R_kgDOHIZK7A" data-theme="light" src="https://giscus.app/client.js">
+</script>
+<!-- Reload on palette change -->
+<script>
+            const palette = __md_get("__palette");
+            if (palette && typeof palette.color === "object")
+                if (palette.color.scheme === "slate") {
+                    const giscus = document.querySelector("script[src*=giscus]");
+                    giscus.setAttribute("data-theme", "dark")
+                }
+
+            /* Register event handlers after documented loaded */
+            document.addEventListener("DOMContentLoaded", function() {
+                const ref = document.querySelector("[data-md-component=palette]");
+                ref.addEventListener("change", function() {
+                    const palette = __md_get("__palette");
+                    if (palette && typeof palette.color === "object") {
+                        const theme = palette.color.scheme === "slate" ? "dark" : "light";
+
+                        /* Instruct Giscus to change theme */
+                        const frame = document.querySelector(".giscus-frame");
+                        frame.contentWindow.postMessage(
+                            { giscus: { setConfig: { theme } } },
+                            "https://giscus.app"
+                        )
+                    }
+                })
+            })
+        </script>
+</article>
+</div>
+</div>
+<a class="md-top md-icon" data-md-component="top" hidden="" href="#">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12Z"></path></svg>
+            回到页面顶部
+          </a>
+</main>
+<footer class="md-footer">
+<nav aria-label="页脚" class="md-footer__inner md-grid">
+<a aria-label="上一页: 我的浏览器 2022 年度总结" class="md-footer__link md-footer__link--prev" href="../230113-my-2022-website/" rel="prev">
+<div class="md-footer__button md-icon">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"></path></svg>
+</div>
+<div class="md-footer__title">
+<div class="md-ellipsis">
+<span class="md-footer__direction">
+                  上一页
+                </span>
+                我的浏览器 2022 年度总结
+              </div>
+</div>
+</a>
+</nav>
+<div class="md-footer-meta md-typeset">
+<div class="md-footer-meta__inner md-grid">
+<div class="md-copyright">
+<div class="md-copyright__highlight">
+      Copyright © 2077 Akiba Arisa <a href="https://icp.gov.moe/?keyword=20232033" target="_blank">萌ICP备20232033号</a>
+</div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" rel="noopener" target="_blank">
+      Material for MkDocs
+    </a>
+</div>
+<div class="md-social">
+<a class="md-social__link" href="https://github.com/zhanbao2000" rel="noopener" target="_blank" title="AkibaArisa on GitHub">
+<svg viewbox="0 0 496 512" xmlns="http://www.w3.org/2000/svg"><!--! Font Awesome Free 6.2.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"></path></svg>
+</a>
+<a class="md-social__link" href="https://steamcommunity.com/id/akibaarisa" rel="noopener" target="_blank" title="AkibaArisa on Steam">
+<svg viewbox="0 0 496 512" xmlns="http://www.w3.org/2000/svg"><!--! Font Awesome Free 6.2.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M496 256c0 137-111.2 248-248.4 248-113.8 0-209.6-76.3-239-180.4l95.2 39.3c6.4 32.1 34.9 56.4 68.9 56.4 39.2 0 71.9-32.4 70.2-73.5l84.5-60.2c52.1 1.3 95.8-40.9 95.8-93.5 0-51.6-42-93.5-93.7-93.5s-93.7 42-93.7 93.5v1.2L176.6 279c-15.5-.9-30.7 3.4-43.5 12.1L0 236.1C10.2 108.4 117.1 8 247.6 8 384.8 8 496 119 496 256zM155.7 384.3l-30.5-12.6a52.79 52.79 0 0 0 27.2 25.8c26.9 11.2 57.8-1.6 69-28.4 5.4-13 5.5-27.3.1-40.3-5.4-13-15.5-23.2-28.5-28.6-12.9-5.4-26.7-5.2-38.9-.6l31.5 13c19.8 8.2 29.2 30.9 20.9 50.7-8.3 19.9-31 29.2-50.8 21zm173.8-129.9c-34.4 0-62.4-28-62.4-62.3s28-62.3 62.4-62.3 62.4 28 62.4 62.3-27.9 62.3-62.4 62.3zm.1-15.6c25.9 0 46.9-21 46.9-46.8 0-25.9-21-46.8-46.9-46.8s-46.9 21-46.9 46.8c.1 25.8 21.1 46.8 46.9 46.8z"></path></svg>
+</a>
+</div>
+</div>
+</div>
+</footer>
+</div>
+<div class="md-dialog" data-md-component="dialog">
+<div class="md-dialog__inner md-typeset"></div>
+</div>
+<script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.footer", "navigation.tabs", "navigation.top", "navigation.tracking", "content.code.copy"], "search": "../../../assets/javascripts/workers/search.e5c33ebb.min.js", "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}}</script>
+<script src="../../../assets/javascripts/bundle.51d95adb.min.js"></script>
+<script src="../../../javascripts/mathjax.js"></script>
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+<script>document$.subscribe(() => {const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": false, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});})</script></body>
+</html>

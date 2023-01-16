@@ -1,1296 +1,688 @@
 
-<!doctype html>
-<html lang="zh" class="no-js">
-  <head>
-    
-      <meta charset="utf-8">
-      <meta name="viewport" content="width=device-width,initial-scale=1">
-      
-        <meta name="description" content="这篇文章介绍了一些 Python 中令人迷惑的细节。我相信平时注意这些细节的人少之又少，为了提醒自己避免犯这样的细节错误，也为了让 Python 程序更加健壮，我特地写了这篇文章。">
-      
-      
-        <meta name="author" content="Akiba Arisa">
-      
-      
-        <link rel="canonical" href="https://blog.arisa.moe/blog/2022/220913-python-confusing-detail/">
-      
-      
-        <link rel="prev" href="../220902-python-mutable-defaults/">
-      
-      
-        <link rel="next" href="../221113-rclone-sharepoint-for-hentai-at-home/">
-      
-      <link rel="icon" href="../../../assets/favicon.webp">
-      <meta name="generator" content="mkdocs-1.4.2, mkdocs-material-9.0.4">
-    
-    
-      
-        <title>Python 中令人迷惑的细节 - Arisa | Blog</title>
-      
-    
-    
-      <link rel="stylesheet" href="../../../assets/stylesheets/main.9c788c91.min.css">
-      
-        
-        <link rel="stylesheet" href="../../../assets/stylesheets/palette.2505c338.min.css">
-      
-      
+<!DOCTYPE html>
 
-    
-    
-    
-      
-        
-        
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
-        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
-      
-    
-    
-      <link rel="stylesheet" href="../../../stylesheets/custom.css">
-    
-    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
-    
-      
-
-    
-    
-    
-  </head>
-  
-  
-    
-    
-      
-    
-    
-    
-    
-    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="" data-md-color-accent="">
-  
-    
-    
-      <script>var palette=__md_get("__palette");if(palette&&"object"==typeof palette.color)for(var key of Object.keys(palette.color))document.body.setAttribute("data-md-color-"+key,palette.color[key])</script>
-    
-    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
-    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
-    <label class="md-overlay" for="__drawer"></label>
-    <div data-md-component="skip">
-      
-        
-        <a href="#_1" class="md-skip">
+<html class="no-js" lang="zh">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width,initial-scale=1" name="viewport"/>
+<meta content="这篇文章介绍了一些 Python 中令人迷惑的细节。我相信平时注意这些细节的人少之又少，为了提醒自己避免犯这样的细节错误，也为了让 Python 程序更加健壮，我特地写了这篇文章。" name="description"/>
+<meta content="Akiba Arisa" name="author"/>
+<link href="https://blog.arisa.moe/blog/2022/220913-python-confusing-detail/" rel="canonical"/>
+<link href="../220902-python-mutable-defaults/" rel="prev"/>
+<link href="../221113-rclone-sharepoint-for-hentai-at-home/" rel="next"/>
+<link href="../../../assets/favicon.webp" rel="icon"/>
+<meta content="mkdocs-1.4.2, mkdocs-material-9.0.5" name="generator"/>
+<title>Python 中令人迷惑的细节 - Arisa | Blog</title>
+<link href="../../../assets/stylesheets/main.558e4712.min.css" rel="stylesheet"/>
+<link href="../../../assets/stylesheets/palette.2505c338.min.css" rel="stylesheet"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&amp;display=fallback" rel="stylesheet"/>
+<style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+<link href="../../../stylesheets/custom.css" rel="stylesheet"/>
+<script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+<link href="../../../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>
+            html.glightbox-open { overflow: initial; height: 100%; }
+            .gslide-title { margin-top: 0px; user-select: text; }
+            .gslide-desc { color: #666; user-select: text; }
+            .gslide-image img { background: white; }
+            
+                .gscrollbar-fixer { padding-right: 15px; }
+                .gdesc-inner { font-size: 0.75rem; }
+                body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color);}
+                body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color);}
+                body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color);}
+                </style><script src="../../../assets/javascripts/glightbox.min.js"></script></head>
+<body data-md-color-accent="" data-md-color-primary="" data-md-color-scheme="default" dir="ltr">
+<script>var palette=__md_get("__palette");if(palette&&"object"==typeof palette.color)for(var key of Object.keys(palette.color))document.body.setAttribute("data-md-color-"+key,palette.color[key])</script>
+<input autocomplete="off" class="md-toggle" data-md-toggle="drawer" id="__drawer" type="checkbox"/>
+<input autocomplete="off" class="md-toggle" data-md-toggle="search" id="__search" type="checkbox"/>
+<label class="md-overlay" for="__drawer"></label>
+<div data-md-component="skip">
+<a class="md-skip" href="#_1">
           跳转至
         </a>
-      
-    </div>
-    <div data-md-component="announce">
-      
-    </div>
-    
-    
-      
-
+</div>
+<div data-md-component="announce">
+</div>
 <header class="md-header" data-md-component="header">
-  <nav class="md-header__inner md-grid" aria-label="页眉">
-    <a href="../../.." title="Arisa | Blog" class="md-header__button md-logo" aria-label="Arisa | Blog" data-md-component="logo">
-      
-  
-  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"><path d="M1.75 1h12.5c.966 0 1.75.784 1.75 1.75v8.5A1.75 1.75 0 0 1 14.25 13H8.061l-2.574 2.573A1.458 1.458 0 0 1 3 14.543V13H1.75A1.75 1.75 0 0 1 0 11.25v-8.5C0 1.784.784 1 1.75 1zM1.5 2.75v8.5c0 .138.112.25.25.25h2a.75.75 0 0 1 .75.75v2.19l2.72-2.72a.749.749 0 0 1 .53-.22h6.5a.25.25 0 0 0 .25-.25v-8.5a.25.25 0 0 0-.25-.25H1.75a.25.25 0 0 0-.25.25zm5.28 1.72a.75.75 0 0 1 0 1.06L5.31 7l1.47 1.47a.751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018l-2-2a.75.75 0 0 1 0-1.06l2-2a.75.75 0 0 1 1.06 0zm2.44 0a.75.75 0 0 1 1.06 0l2 2a.75.75 0 0 1 0 1.06l-2 2a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042L10.69 7 9.22 5.53a.75.75 0 0 1 0-1.06z"/></svg>
-
-    </a>
-    <label class="md-header__button md-icon" for="__drawer">
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
-    </label>
-    <div class="md-header__title" data-md-component="header-title">
-      <div class="md-header__ellipsis">
-        <div class="md-header__topic">
-          <span class="md-ellipsis">
+<nav aria-label="页眉" class="md-header__inner md-grid">
+<a aria-label="Arisa | Blog" class="md-header__button md-logo" data-md-component="logo" href="../../.." title="Arisa | Blog">
+<svg viewbox="0 0 16 16" xmlns="http://www.w3.org/2000/svg"><path d="M1.75 1h12.5c.966 0 1.75.784 1.75 1.75v8.5A1.75 1.75 0 0 1 14.25 13H8.061l-2.574 2.573A1.458 1.458 0 0 1 3 14.543V13H1.75A1.75 1.75 0 0 1 0 11.25v-8.5C0 1.784.784 1 1.75 1ZM1.5 2.75v8.5c0 .138.112.25.25.25h2a.75.75 0 0 1 .75.75v2.19l2.72-2.72a.749.749 0 0 1 .53-.22h6.5a.25.25 0 0 0 .25-.25v-8.5a.25.25 0 0 0-.25-.25H1.75a.25.25 0 0 0-.25.25Zm5.28 1.72a.75.75 0 0 1 0 1.06L5.31 7l1.47 1.47a.751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018l-2-2a.75.75 0 0 1 0-1.06l2-2a.75.75 0 0 1 1.06 0Zm2.44 0a.75.75 0 0 1 1.06 0l2 2a.75.75 0 0 1 0 1.06l-2 2a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042L10.69 7 9.22 5.53a.75.75 0 0 1 0-1.06Z"></path></svg>
+</a>
+<label class="md-header__button md-icon" for="__drawer">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"></path></svg>
+</label>
+<div class="md-header__title" data-md-component="header-title">
+<div class="md-header__ellipsis">
+<div class="md-header__topic">
+<span class="md-ellipsis">
             Arisa | Blog
           </span>
-        </div>
-        <div class="md-header__topic" data-md-component="header-topic">
-          <span class="md-ellipsis">
+</div>
+<div class="md-header__topic" data-md-component="header-topic">
+<span class="md-ellipsis">
             
               Python 中令人迷惑的细节
             
           </span>
-        </div>
-      </div>
-    </div>
-    
-      <form class="md-header__option" data-md-component="palette">
-        
-          
-          <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="" data-md-color-accent=""  aria-label="进入夜间模式"  type="radio" name="__palette" id="__palette_1">
-          
-            <label class="md-header__button md-icon" title="进入夜间模式" for="__palette_2" hidden>
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0-7 2.39 3.42C13.65 5.15 12.84 5 12 5c-.84 0-1.65.15-2.39.42L12 2M3.34 7l4.16-.35A7.2 7.2 0 0 0 5.94 8.5c-.44.74-.69 1.5-.83 2.29L3.34 7m.02 10 1.76-3.77a7.131 7.131 0 0 0 2.38 4.14L3.36 17M20.65 7l-1.77 3.79a7.023 7.023 0 0 0-2.38-4.15l4.15.36m-.01 10-4.14.36c.59-.51 1.12-1.14 1.54-1.86.42-.73.69-1.5.83-2.29L20.64 17M12 22l-2.41-3.44c.74.27 1.55.44 2.41.44.82 0 1.63-.17 2.37-.44L12 22Z"/></svg>
-            </label>
-          
-        
-          
-          <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="" data-md-color-accent=""  aria-label="进入日间模式"  type="radio" name="__palette" id="__palette_2">
-          
-            <label class="md-header__button md-icon" title="进入日间模式" for="__palette_1" hidden>
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m17.75 4.09-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.06-3 1.06 3 3.19.09m3.5 6.91-1.64 1.25.59 1.98-1.7-1.17-1.7 1.17.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95 2.06.05m-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14.4-.4.82-.76 1.27-1.08.75-.53 1.93.36 1.85 1.19-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82-2.81 3.14-2.7 7.96.31 10.98 3.02 3.01 7.84 3.12 10.98.31Z"/></svg>
-            </label>
-          
-        
-      </form>
-    
-    
-    
-      <label class="md-header__button md-icon" for="__search">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
-      </label>
-      <div class="md-search" data-md-component="search" role="dialog">
-  <label class="md-search__overlay" for="__search"></label>
-  <div class="md-search__inner" role="search">
-    <form class="md-search__form" name="search">
-      <input type="text" class="md-search__input" name="query" aria-label="搜索" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
-      <label class="md-search__icon md-icon" for="__search">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
-      </label>
-      <nav class="md-search__options" aria-label="查找">
-        
-        <button type="reset" class="md-search__icon md-icon" title="清空当前内容" aria-label="清空当前内容" tabindex="-1">
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
-        </button>
-      </nav>
-      
-    </form>
-    <div class="md-search__output">
-      <div class="md-search__scrollwrap" data-md-scrollfix>
-        <div class="md-search-result" data-md-component="search-result">
-          <div class="md-search-result__meta">
+</div>
+</div>
+</div>
+<form class="md-header__option" data-md-component="palette">
+<input aria-label="进入夜间模式" class="md-option" data-md-color-accent="" data-md-color-media="" data-md-color-primary="" data-md-color-scheme="default" id="__palette_1" name="__palette" type="radio"/>
+<label class="md-header__button md-icon" for="__palette_2" hidden="" title="进入夜间模式">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0-7 2.39 3.42C13.65 5.15 12.84 5 12 5c-.84 0-1.65.15-2.39.42L12 2M3.34 7l4.16-.35A7.2 7.2 0 0 0 5.94 8.5c-.44.74-.69 1.5-.83 2.29L3.34 7m.02 10 1.76-3.77a7.131 7.131 0 0 0 2.38 4.14L3.36 17M20.65 7l-1.77 3.79a7.023 7.023 0 0 0-2.38-4.15l4.15.36m-.01 10-4.14.36c.59-.51 1.12-1.14 1.54-1.86.42-.73.69-1.5.83-2.29L20.64 17M12 22l-2.41-3.44c.74.27 1.55.44 2.41.44.82 0 1.63-.17 2.37-.44L12 22Z"></path></svg>
+</label>
+<input aria-label="进入日间模式" class="md-option" data-md-color-accent="" data-md-color-media="" data-md-color-primary="" data-md-color-scheme="slate" id="__palette_2" name="__palette" type="radio"/>
+<label class="md-header__button md-icon" for="__palette_1" hidden="" title="进入日间模式">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="m17.75 4.09-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.06-3 1.06 3 3.19.09m3.5 6.91-1.64 1.25.59 1.98-1.7-1.17-1.7 1.17.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95 2.06.05m-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14.4-.4.82-.76 1.27-1.08.75-.53 1.93.36 1.85 1.19-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82-2.81 3.14-2.7 7.96.31 10.98 3.02 3.01 7.84 3.12 10.98.31Z"></path></svg>
+</label>
+</form>
+<label class="md-header__button md-icon" for="__search">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"></path></svg>
+</label>
+<div class="md-search" data-md-component="search" role="dialog">
+<label class="md-search__overlay" for="__search"></label>
+<div class="md-search__inner" role="search">
+<form class="md-search__form" name="search">
+<input aria-label="搜索" autocapitalize="off" autocomplete="off" autocorrect="off" class="md-search__input" data-md-component="search-query" name="query" placeholder="搜索" required="" spellcheck="false" type="text"/>
+<label class="md-search__icon md-icon" for="__search">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"></path></svg>
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"></path></svg>
+</label>
+<nav aria-label="查找" class="md-search__options">
+<button aria-label="清空当前内容" class="md-search__icon md-icon" tabindex="-1" title="清空当前内容" type="reset">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"></path></svg>
+</button>
+</nav>
+</form>
+<div class="md-search__output">
+<div class="md-search__scrollwrap" data-md-scrollfix="">
+<div class="md-search-result" data-md-component="search-result">
+<div class="md-search-result__meta">
             正在初始化搜索引擎
           </div>
-          <ol class="md-search-result__list"></ol>
-        </div>
-      </div>
-    </div>
-  </div>
+<ol class="md-search-result__list" role="presentation"></ol>
 </div>
-    
-    
-      <div class="md-header__source">
-        <a href="https://github.com/zhanbao2000/blog" title="前往仓库" class="md-source" data-md-component="source">
-  <div class="md-source__icon md-icon">
-    
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.2.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
-  </div>
-  <div class="md-source__repository">
+</div>
+</div>
+</div>
+</div>
+<div class="md-header__source">
+<a class="md-source" data-md-component="source" href="https://github.com/zhanbao2000/blog" title="前往仓库">
+<div class="md-source__icon md-icon">
+<svg viewbox="0 0 448 512" xmlns="http://www.w3.org/2000/svg"><!--! Font Awesome Free 6.2.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"></path></svg>
+</div>
+<div class="md-source__repository">
     zhanbao2000/blog
   </div>
 </a>
-      </div>
-    
-  </nav>
-  
+</div>
+</nav>
 </header>
-    
-    <div class="md-container" data-md-component="container">
-      
-      
-        
-          
-            
-<nav class="md-tabs" aria-label="标签" data-md-component="tabs">
-  <div class="md-tabs__inner md-grid">
-    <ul class="md-tabs__list">
-      
-        
-  
-  
-
-
-  <li class="md-tabs__item">
-    <a href="../../.." class="md-tabs__link">
+<div class="md-container" data-md-component="container">
+<nav aria-label="标签" class="md-tabs" data-md-component="tabs">
+<div class="md-tabs__inner md-grid">
+<ul class="md-tabs__list">
+<li class="md-tabs__item">
+<a class="md-tabs__link" href="../../..">
       主页
     </a>
-  </li>
-
-      
-        
-  
-  
-
-
-  <li class="md-tabs__item">
-    <a href="../../../tags/" class="md-tabs__link">
+</li>
+<li class="md-tabs__item">
+<a class="md-tabs__link" href="../../../tags/">
       标签
     </a>
-  </li>
-
-      
-        
-  
-  
-
-
-  <li class="md-tabs__item">
-    <a href="../../../toc/" class="md-tabs__link">
+</li>
+<li class="md-tabs__item">
+<a class="md-tabs__link" href="../../../toc/">
       目录
     </a>
-  </li>
-
-      
-        
-  
-  
-    
-  
-
-
-  
-  
-  
-    
-
-  
-  
-  
-    <li class="md-tabs__item">
-      <a href="../220406-nginx-stream/" class="md-tabs__link md-tabs__link--active">
+</li>
+<li class="md-tabs__item">
+<a class="md-tabs__link md-tabs__link--active" href="../220406-nginx-stream/">
         Blog
       </a>
-    </li>
-  
-
-  
-
-      
-    </ul>
-  </div>
+</li>
+</ul>
+</div>
 </nav>
-          
-        
-      
-      <main class="md-main" data-md-component="main">
-        <div class="md-main__inner md-grid">
-          
-            
-              
-              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
-                <div class="md-sidebar__scrollwrap">
-                  <div class="md-sidebar__inner">
-                    
-
-  
-
-
-<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="导航栏" data-md-level="0">
-  <label class="md-nav__title" for="__drawer">
-    <a href="../../.." title="Arisa | Blog" class="md-nav__button md-logo" aria-label="Arisa | Blog" data-md-component="logo">
-      
-  
-  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"><path d="M1.75 1h12.5c.966 0 1.75.784 1.75 1.75v8.5A1.75 1.75 0 0 1 14.25 13H8.061l-2.574 2.573A1.458 1.458 0 0 1 3 14.543V13H1.75A1.75 1.75 0 0 1 0 11.25v-8.5C0 1.784.784 1 1.75 1zM1.5 2.75v8.5c0 .138.112.25.25.25h2a.75.75 0 0 1 .75.75v2.19l2.72-2.72a.749.749 0 0 1 .53-.22h6.5a.25.25 0 0 0 .25-.25v-8.5a.25.25 0 0 0-.25-.25H1.75a.25.25 0 0 0-.25.25zm5.28 1.72a.75.75 0 0 1 0 1.06L5.31 7l1.47 1.47a.751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018l-2-2a.75.75 0 0 1 0-1.06l2-2a.75.75 0 0 1 1.06 0zm2.44 0a.75.75 0 0 1 1.06 0l2 2a.75.75 0 0 1 0 1.06l-2 2a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042L10.69 7 9.22 5.53a.75.75 0 0 1 0-1.06z"/></svg>
-
-    </a>
+<main class="md-main" data-md-component="main">
+<div class="md-main__inner md-grid">
+<div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation">
+<div class="md-sidebar__scrollwrap">
+<div class="md-sidebar__inner">
+<nav aria-label="导航栏" class="md-nav md-nav--primary md-nav--lifted" data-md-level="0">
+<label class="md-nav__title" for="__drawer">
+<a aria-label="Arisa | Blog" class="md-nav__button md-logo" data-md-component="logo" href="../../.." title="Arisa | Blog">
+<svg viewbox="0 0 16 16" xmlns="http://www.w3.org/2000/svg"><path d="M1.75 1h12.5c.966 0 1.75.784 1.75 1.75v8.5A1.75 1.75 0 0 1 14.25 13H8.061l-2.574 2.573A1.458 1.458 0 0 1 3 14.543V13H1.75A1.75 1.75 0 0 1 0 11.25v-8.5C0 1.784.784 1 1.75 1ZM1.5 2.75v8.5c0 .138.112.25.25.25h2a.75.75 0 0 1 .75.75v2.19l2.72-2.72a.749.749 0 0 1 .53-.22h6.5a.25.25 0 0 0 .25-.25v-8.5a.25.25 0 0 0-.25-.25H1.75a.25.25 0 0 0-.25.25Zm5.28 1.72a.75.75 0 0 1 0 1.06L5.31 7l1.47 1.47a.751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018l-2-2a.75.75 0 0 1 0-1.06l2-2a.75.75 0 0 1 1.06 0Zm2.44 0a.75.75 0 0 1 1.06 0l2 2a.75.75 0 0 1 0 1.06l-2 2a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042L10.69 7 9.22 5.53a.75.75 0 0 1 0-1.06Z"></path></svg>
+</a>
     Arisa | Blog
   </label>
-  
-    <div class="md-nav__source">
-      <a href="https://github.com/zhanbao2000/blog" title="前往仓库" class="md-source" data-md-component="source">
-  <div class="md-source__icon md-icon">
-    
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.2.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
-  </div>
-  <div class="md-source__repository">
+<div class="md-nav__source">
+<a class="md-source" data-md-component="source" href="https://github.com/zhanbao2000/blog" title="前往仓库">
+<div class="md-source__icon md-icon">
+<svg viewbox="0 0 448 512" xmlns="http://www.w3.org/2000/svg"><!--! Font Awesome Free 6.2.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"></path></svg>
+</div>
+<div class="md-source__repository">
     zhanbao2000/blog
   </div>
 </a>
-    </div>
-  
-  <ul class="md-nav__list" data-md-scrollfix>
-    
-      
-      
-      
-
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../.." class="md-nav__link">
+</div>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../..">
         主页
       </a>
-    </li>
-  
-
-    
-      
-      
-      
-
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../tags/" class="md-nav__link">
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../tags/">
         标签
       </a>
-    </li>
-  
-
-    
-      
-      
-      
-
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../toc/" class="md-nav__link">
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../toc/">
         目录
       </a>
-    </li>
-  
-
-    
-      
-      
-      
-
-  
-  
-    
-  
-  
-    
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
-      
-      
-      
-      
-      <input class="md-nav__toggle md-toggle " data-md-toggle="__nav_4" type="checkbox" id="__nav_4" checked>
-      
-      
-      
-        <label class="md-nav__link" for="__nav_4" tabindex="0" aria-expanded="true">
+</li>
+<li class="md-nav__item md-nav__item--active md-nav__item--nested">
+<input checked="" class="md-nav__toggle md-toggle" data-md-toggle="__nav_4" id="__nav_4" type="checkbox"/>
+<label aria-expanded="true" class="md-nav__link" for="__nav_4" tabindex="0">
           Blog
           <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <nav class="md-nav" aria-label="Blog" data-md-level="1">
-        <label class="md-nav__title" for="__nav_4">
-          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="Blog" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_4">
+<span class="md-nav__icon md-icon"></span>
           Blog
         </label>
-        <ul class="md-nav__list" data-md-scrollfix>
-          
-            
-              
-  
-  
-    
-  
-  
-    
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
-      
-      
-      
-      
-      <input class="md-nav__toggle md-toggle " data-md-toggle="__nav_4_1" type="checkbox" id="__nav_4_1" checked>
-      
-      
-      
-        <label class="md-nav__link" for="__nav_4_1" tabindex="0" aria-expanded="true">
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item md-nav__item--active md-nav__item--nested">
+<input checked="" class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_1" id="__nav_4_1" type="checkbox"/>
+<label aria-expanded="true" class="md-nav__link" for="__nav_4_1" tabindex="0">
           2022
           <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <nav class="md-nav" aria-label="2022" data-md-level="2">
-        <label class="md-nav__title" for="__nav_4_1">
-          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="2022" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_4_1">
+<span class="md-nav__icon md-icon"></span>
           2022
         </label>
-        <ul class="md-nav__list" data-md-scrollfix>
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../220406-nginx-stream/" class="md-nav__link">
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../220406-nginx-stream/">
         nginx 如何设置 stream 转发
       </a>
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../220406-set-http-proxy/" class="md-nav__link">
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../220406-set-http-proxy/">
         解决使用代理后 pip 和 python 无法连接到网络的问题
       </a>
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../220406-venv-move-file/" class="md-nav__link">
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../220406-venv-move-file/">
         移动 python 项目文件夹位置后如何解决 PyCharm 找不到解释器与无法正常使用终端的问题
       </a>
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../220407-certbot/" class="md-nav__link">
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../220407-certbot/">
         certbot 常用操作
       </a>
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../220407-github-pages/" class="md-nav__link">
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../220407-github-pages/">
         GitHub Pages 文档自动化部署 - MkDocs
       </a>
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../220408-github-pages-2/" class="md-nav__link">
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../220408-github-pages-2/">
         GitHub Pages 文档自动化部署 - VuePress
       </a>
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../220409-cloudflare-workers-arcaea-update/" class="md-nav__link">
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../220409-cloudflare-workers-arcaea-update/">
         如何使用 Cloudflare Workers 来搭建 Arcaea 镜像下载服务器
       </a>
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../220412-ida-substitute-usage/" class="md-nav__link">
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../220412-ida-substitute-usage/">
         IDA 替换二进制文件
       </a>
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../220413-Intranet-penetration-bitcomit/" class="md-nav__link">
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../220413-Intranet-penetration-bitcomit/">
         利用内网穿透和代理获取公网 IP 地址解决比特彗星黄灯
       </a>
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../220414-fk-arcaea-songlist-hash/" class="md-nav__link">
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../220414-fk-arcaea-songlist-hash/">
         解除 Arcaea 对 songlist 等文件的哈希校验
       </a>
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../220416-arcaea-fanmade-chart-problem/" class="md-nav__link">
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../220416-arcaea-fanmade-chart-problem/">
         Arcaea 自制谱移植常见问题
       </a>
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../220417-linux-clean-up-disk-space/" class="md-nav__link">
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../220417-linux-clean-up-disk-space/">
         Linux 清理磁盘空间常见操作
       </a>
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../220421-use-gzip-bomb-against-scanner/" class="md-nav__link">
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../220421-use-gzip-bomb-against-scanner/">
         如何使用 gzip 压缩包炸弹对恶意扫描器进行反击
       </a>
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../220428-how-to-ask-questions-like-a-retard/" class="md-nav__link">
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../220428-how-to-ask-questions-like-a-retard/">
         如何像一个弱智一样提问
       </a>
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../220429-dilb-ultimate-solution/" class="md-nav__link">
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../220429-dilb-ultimate-solution/">
         基于 Anaconda 的 dlib（CUDA 版本）安装的终极解决方案
       </a>
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../220502-how-dogs-work-in-epic7/" class="md-nav__link">
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../220502-how-dogs-work-in-epic7/">
         第七史诗升六星的正确理解
       </a>
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../220511-how-to-write-python-into-classical-chinese/" class="md-nav__link">
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../220511-how-to-write-python-into-classical-chinese/">
         如何将 Python 写成文言文
       </a>
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../220529-python-personal-styleguide/" class="md-nav__link">
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../220529-python-personal-styleguide/">
         Python 个人代码风格指导
       </a>
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../220530-auto-sign-in-guide/" class="md-nav__link">
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../220530-auto-sign-in-guide/">
         自动签到使用指南
       </a>
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../220602-ipv6-bypass-billing-system/" class="md-nav__link">
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../220602-ipv6-bypass-billing-system/">
         架设双栈代理服务器通过 IPv6 绕过校园网计费系统的方法
       </a>
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../220902-python-mutable-defaults/" class="md-nav__link">
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../220902-python-mutable-defaults/">
         Python 默认参数可变的危险性
       </a>
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-    
-  
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
-      
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
+</li>
+<li class="md-nav__item md-nav__item--active">
+<input class="md-nav__toggle md-toggle" data-md-toggle="toc" id="__toc" type="checkbox"/>
+<label class="md-nav__link md-nav__link--active" for="__toc">
           Python 中令人迷惑的细节
           <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+</label>
+<a class="md-nav__link md-nav__link--active" href="./">
         Python 中令人迷惑的细节
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="目录">
-  
-  
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
+<nav aria-label="目录" class="md-nav md-nav--secondary">
+<label class="md-nav__title" for="__toc">
+<span class="md-nav__icon md-icon"></span>
       目录
     </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#_1" class="md-nav__link">
+<ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#_1">
     一、语句块的稀有用法
   </a>
-  
-    <nav class="md-nav" aria-label="一、语句块的稀有用法">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#11-try-return-finally" class="md-nav__link">
+<nav aria-label="一、语句块的稀有用法" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#11-try-return-finally">
     1.1 try 语句块中 return 和 finally 的执行顺序
   </a>
-  
 </li>
-        
-          <li class="md-nav__item">
-  <a href="#12-for-else" class="md-nav__link">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#12-for-else">
     1.2 for 语句块中，else 语句块的作用
   </a>
-  
 </li>
-        
-          <li class="md-nav__item">
-  <a href="#13-while-else" class="md-nav__link">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#13-while-else">
     1.3 while 语句块中，else 语句块的作用
   </a>
-  
 </li>
-        
-          <li class="md-nav__item">
-  <a href="#14-for-break" class="md-nav__link">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#14-for-break">
     1.4 嵌套 for 语句块中，break 如何跳出全部循环
   </a>
-  
 </li>
-        
-      </ul>
-    </nav>
-  
+</ul>
+</nav>
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#_2" class="md-nav__link">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#_2">
     二、可变对象
   </a>
-  
-    <nav class="md-nav" aria-label="二、可变对象">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#21" class="md-nav__link">
+<nav aria-label="二、可变对象" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#21">
     2.1 默认参数可变的危险性
   </a>
-  
 </li>
-        
-          <li class="md-nav__item">
-  <a href="#22" class="md-nav__link">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#22">
     2.2 可变对象的拷贝
   </a>
-  
 </li>
-        
-          <li class="md-nav__item">
-  <a href="#23" class="md-nav__link">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#23">
     2.3 浅拷贝与深拷贝
   </a>
-  
 </li>
-        
-          <li class="md-nav__item">
-  <a href="#24" class="md-nav__link">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#24">
     2.4 在一行中同时定义和赋值多个变量
   </a>
-  
 </li>
-        
-      </ul>
-    </nav>
-  
+</ul>
+</nav>
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#python" class="md-nav__link">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#python">
     三、Python 内存管理
   </a>
-  
-    <nav class="md-nav" aria-label="三、Python 内存管理">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#31" class="md-nav__link">
+<nav aria-label="三、Python 内存管理" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#31">
     3.1 整数缓冲区带来的整数变量地址问题
   </a>
-  
 </li>
-        
-          <li class="md-nav__item">
-  <a href="#32" class="md-nav__link">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#32">
     3.2 字符串内存重用
   </a>
-  
 </li>
-        
-          <li class="md-nav__item">
-  <a href="#33" class="md-nav__link">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#33">
     3.3 内存泄露与引用计数
   </a>
-  
 </li>
-        
-      </ul>
-    </nav>
-  
+</ul>
+</nav>
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#_3" class="md-nav__link">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#_3">
     四、代码细节
   </a>
-  
-    <nav class="md-nav" aria-label="四、代码细节">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#41" class="md-nav__link">
+<nav aria-label="四、代码细节" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#41">
     4.1 空括号里的逗号
   </a>
-  
 </li>
-        
-          <li class="md-nav__item">
-  <a href="#42-return" class="md-nav__link">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#42-return">
     4.2 return 语句的算术优先级
   </a>
-  
 </li>
-        
-          <li class="md-nav__item">
-  <a href="#43-yield-from-return" class="md-nav__link">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#43-yield-from-return">
     4.3 yield from 和 return 共存
   </a>
-  
 </li>
-        
-      </ul>
-    </nav>
-  
+</ul>
+</nav>
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#_4" class="md-nav__link">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#_4">
     五、运算符
   </a>
-  
-    <nav class="md-nav" aria-label="五、运算符">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#51" class="md-nav__link">
+<nav aria-label="五、运算符" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#51">
     5.1 正负数在整数除法中求商的不同及其余数的值
   </a>
-  
 </li>
-        
-          <li class="md-nav__item">
-  <a href="#52-is" class="md-nav__link">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#52-is">
     5.2 is 和 == 运算符的区别
   </a>
-  
 </li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-    </ul>
-  
+</ul>
 </nav>
-      
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../221113-rclone-sharepoint-for-hentai-at-home/" class="md-nav__link">
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../221113-rclone-sharepoint-for-hentai-at-home/">
         使用 Rclone 挂载 SharePoint 作为 Hentai@Home 的缓存目录
       </a>
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../221113-rclone-sharepoint-oauth-failed/" class="md-nav__link">
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../221113-rclone-sharepoint-oauth-failed/">
         通过 WebDAV 解决 Rclone 挂载 SharePoint 时遇到 Error: Auth Error
       </a>
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../221115-issue-of-position-or-right-and-wrong/" class="md-nav__link">
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../221115-issue-of-position-or-right-and-wrong/">
         立场问题与是非问题
       </a>
-    </li>
-  
-
-            
-          
-        </ul>
-      </nav>
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
-    
-    <li class="md-nav__item md-nav__item--nested">
-      
-      
-      
-      
-      <input class="md-nav__toggle md-toggle " data-md-toggle="__nav_4_2" type="checkbox" id="__nav_4_2" >
-      
-      
-      
-        <label class="md-nav__link" for="__nav_4_2" tabindex="0" aria-expanded="false">
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_2" id="__nav_4_2" type="checkbox"/>
+<label aria-expanded="false" class="md-nav__link" for="__nav_4_2" tabindex="0">
           2023
           <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <nav class="md-nav" aria-label="2023" data-md-level="2">
-        <label class="md-nav__title" for="__nav_4_2">
-          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="2023" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_4_2">
+<span class="md-nav__icon md-icon"></span>
           2023
         </label>
-        <ul class="md-nav__list" data-md-scrollfix>
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../2023/230113-my-2022-website/" class="md-nav__link">
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../2023/230113-my-2022-website/">
         我的浏览器 2022 年度总结
       </a>
-    </li>
-  
-
-            
-          
-        </ul>
-      </nav>
-    </li>
-  
-
-            
-          
-        </ul>
-      </nav>
-    </li>
-  
-
-    
-  </ul>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../2023/230114-matrix-qq-wechat-bridge/">
+        通过 Matrix 协议实现代理接收 QQ 和微信消息 —— 从入坑到入土
+      </a>
+</li>
+</ul>
 </nav>
-                  </div>
-                </div>
-              </div>
-            
-            
-              
-              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
-                <div class="md-sidebar__scrollwrap">
-                  <div class="md-sidebar__inner">
-                    
-
-<nav class="md-nav md-nav--secondary" aria-label="目录">
-  
-  
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</div>
+</div>
+</div>
+<div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc">
+<div class="md-sidebar__scrollwrap">
+<div class="md-sidebar__inner">
+<nav aria-label="目录" class="md-nav md-nav--secondary">
+<label class="md-nav__title" for="__toc">
+<span class="md-nav__icon md-icon"></span>
       目录
     </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#_1" class="md-nav__link">
+<ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#_1">
     一、语句块的稀有用法
   </a>
-  
-    <nav class="md-nav" aria-label="一、语句块的稀有用法">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#11-try-return-finally" class="md-nav__link">
+<nav aria-label="一、语句块的稀有用法" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#11-try-return-finally">
     1.1 try 语句块中 return 和 finally 的执行顺序
   </a>
-  
 </li>
-        
-          <li class="md-nav__item">
-  <a href="#12-for-else" class="md-nav__link">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#12-for-else">
     1.2 for 语句块中，else 语句块的作用
   </a>
-  
 </li>
-        
-          <li class="md-nav__item">
-  <a href="#13-while-else" class="md-nav__link">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#13-while-else">
     1.3 while 语句块中，else 语句块的作用
   </a>
-  
 </li>
-        
-          <li class="md-nav__item">
-  <a href="#14-for-break" class="md-nav__link">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#14-for-break">
     1.4 嵌套 for 语句块中，break 如何跳出全部循环
   </a>
-  
 </li>
-        
-      </ul>
-    </nav>
-  
+</ul>
+</nav>
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#_2" class="md-nav__link">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#_2">
     二、可变对象
   </a>
-  
-    <nav class="md-nav" aria-label="二、可变对象">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#21" class="md-nav__link">
+<nav aria-label="二、可变对象" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#21">
     2.1 默认参数可变的危险性
   </a>
-  
 </li>
-        
-          <li class="md-nav__item">
-  <a href="#22" class="md-nav__link">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#22">
     2.2 可变对象的拷贝
   </a>
-  
 </li>
-        
-          <li class="md-nav__item">
-  <a href="#23" class="md-nav__link">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#23">
     2.3 浅拷贝与深拷贝
   </a>
-  
 </li>
-        
-          <li class="md-nav__item">
-  <a href="#24" class="md-nav__link">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#24">
     2.4 在一行中同时定义和赋值多个变量
   </a>
-  
 </li>
-        
-      </ul>
-    </nav>
-  
+</ul>
+</nav>
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#python" class="md-nav__link">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#python">
     三、Python 内存管理
   </a>
-  
-    <nav class="md-nav" aria-label="三、Python 内存管理">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#31" class="md-nav__link">
+<nav aria-label="三、Python 内存管理" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#31">
     3.1 整数缓冲区带来的整数变量地址问题
   </a>
-  
 </li>
-        
-          <li class="md-nav__item">
-  <a href="#32" class="md-nav__link">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#32">
     3.2 字符串内存重用
   </a>
-  
 </li>
-        
-          <li class="md-nav__item">
-  <a href="#33" class="md-nav__link">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#33">
     3.3 内存泄露与引用计数
   </a>
-  
 </li>
-        
-      </ul>
-    </nav>
-  
+</ul>
+</nav>
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#_3" class="md-nav__link">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#_3">
     四、代码细节
   </a>
-  
-    <nav class="md-nav" aria-label="四、代码细节">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#41" class="md-nav__link">
+<nav aria-label="四、代码细节" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#41">
     4.1 空括号里的逗号
   </a>
-  
 </li>
-        
-          <li class="md-nav__item">
-  <a href="#42-return" class="md-nav__link">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#42-return">
     4.2 return 语句的算术优先级
   </a>
-  
 </li>
-        
-          <li class="md-nav__item">
-  <a href="#43-yield-from-return" class="md-nav__link">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#43-yield-from-return">
     4.3 yield from 和 return 共存
   </a>
-  
 </li>
-        
-      </ul>
-    </nav>
-  
+</ul>
+</nav>
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#_4" class="md-nav__link">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#_4">
     五、运算符
   </a>
-  
-    <nav class="md-nav" aria-label="五、运算符">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#51" class="md-nav__link">
+<nav aria-label="五、运算符" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#51">
     5.1 正负数在整数除法中求商的不同及其余数的值
   </a>
-  
 </li>
-        
-          <li class="md-nav__item">
-  <a href="#52-is" class="md-nav__link">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#52-is">
     5.2 is 和 == 运算符的区别
   </a>
-  
 </li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-    </ul>
-  
+</ul>
 </nav>
-                  </div>
-                </div>
-              </div>
-            
-          
-          
-            <div class="md-content" data-md-component="content">
-              <article class="md-content__inner md-typeset">
-                
-
+</li>
+</ul>
+</nav>
+</div>
+</div>
+</div>
+<div class="md-content" data-md-component="content">
+<article class="md-content__inner md-typeset">
 <!--
 Hack: check whether the content contains a h1 headline. If it
 doesn't, the page title (or respectively site name) is used
 as the main headline.
 -->
-
-    <h1>Python 中令人迷惑的细节</h1>
-
-
+<h1>Python 中令人迷惑的细节</h1>
 <!-- Markdown content -->
-
-    
-
-        <aside class="mdx-author">
-            <p>
-                <img src="https://avatars.githubusercontent.com/zhanbao2000" alt="@zhanbao2000">
-            </p>
-            <p>
-                <span>
-                    <b>Akiba Arisa</b> · <a href="https://github.com/zhanbao2000">@zhanbao2000</a>
+<aside class="mdx-author">
+<p>
+<img alt="@zhanbao2000" src="https://avatars.githubusercontent.com/zhanbao2000"/>
+</p>
+<p>
+<span>
+<b>Akiba Arisa</b> · <a href="https://github.com/zhanbao2000">@zhanbao2000</a>
+</span>
+<span>
+<svg class="bi bi-clock" fill="currentColor" height="12" viewbox="0 0 16 16" width="12" xmlns="http://www.w3.org/2000/svg">
+<path d="M8 3.5a.5.5 0 0 0-1 0V9a.5.5 0 0 0 .252.434l3.5 2a.5.5 0 0 0 .496-.868L8 8.71V3.5z"></path>
+<path d="M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16zm7-8A7 7 0 1 1 1 8a7 7 0 0 1 14 0z"></path>
+</svg> 15 min read
                 </span>
-                <span>
-                    <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" fill="currentColor" class="bi bi-clock" viewBox="0 0 16 16">
-                        <path d="M8 3.5a.5.5 0 0 0-1 0V9a.5.5 0 0 0 .252.434l3.5 2a.5.5 0 0 0 .496-.868L8 8.71V3.5z"/>
-                        <path d="M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16zm7-8A7 7 0 1 1 1 8a7 7 0 0 1 14 0z"/>
-                    </svg> 15 min read
-                </span>
-            </p>
-        </aside>
-
-    
-
-    
-        <div class="tags">
-        
-            <a href="/tags/#python" class="tag"><code>#python</code></a>
-        
-        </div>
-    
-
-    <h2 id="_1">一、语句块的稀有用法<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
-<h3 id="11-try-return-finally">1.1 <code class="highlight"><span class="k">try</span></code> 语句块中 <code class="highlight"><span class="k">return</span></code> 和 <code class="highlight"><span class="k">finally</span></code> 的执行顺序<a class="headerlink" href="#11-try-return-finally" title="Permanent link">&para;</a></h3>
+</p>
+</aside>
+<div class="tags">
+<a class="tag" href="/tags/#python"><code>#python</code></a>
+</div>
+<h2 id="_1">一、语句块的稀有用法<a class="headerlink" href="#_1" title="Permanent link">¶</a></h2>
+<h3 id="11-try-return-finally">1.1 <code class="highlight"><span class="k">try</span></code> 语句块中 <code class="highlight"><span class="k">return</span></code> 和 <code class="highlight"><span class="k">finally</span></code> 的执行顺序<a class="headerlink" href="#11-try-return-finally" title="Permanent link">¶</a></h3>
 <p>考虑下面这种情形，思考执行 <code>test()</code> 函数时会发生什么？</p>
 <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">test</span><span class="p">():</span>
     <span class="k">try</span><span class="p">:</span>
         <span class="k">return</span> <span class="mi">1</span>
     <span class="k">finally</span><span class="p">:</span>
-        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;finish&#39;</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">'finish'</span><span class="p">)</span>
 </code></pre></div>
 <p>有经验的 Python 开发者对此应该很熟练，<code class="highlight"><span class="k">finally</span></code> 语句块在函数执行 <code class="highlight"><span class="k">return</span></code> 语句之后仍然会执行。对此，一种答案是函数返回 <code>1</code>，并在控制台输出 <code>finish</code>。</p>
 <p>这种说法没有问题，但不是完全精确的，请先别着急寻找原因，让我们先看一下其他情形。</p>
@@ -1318,17 +710,17 @@ as the main headline.
     <span class="k">try</span><span class="p">:</span>
         <span class="k">return</span> <span class="mi">1</span>
     <span class="k">finally</span><span class="p">:</span>
-        <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="s1">&#39;error&#39;</span><span class="p">)</span>
+        <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="s1">'error'</span><span class="p">)</span>
 </code></pre></div>
 <div class="highlight"><span class="filename">【2】test2() 究竟会不会被执行</span><pre><span></span><code><span class="k">def</span> <span class="nf">test2</span><span class="p">():</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;test2!&#39;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">'test2!'</span><span class="p">)</span>
     <span class="k">return</span> <span class="mi">2</span>
 
 <span class="k">def</span> <span class="nf">test</span><span class="p">():</span>
     <span class="k">try</span><span class="p">:</span>
         <span class="k">return</span> <span class="n">test2</span><span class="p">()</span>
     <span class="k">finally</span><span class="p">:</span>
-        <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="s1">&#39;error&#39;</span><span class="p">)</span>
+        <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="s1">'error'</span><span class="p">)</span>
 </code></pre></div>
 <div class="highlight"><span class="filename">【3】在 except 中包含 return</span><pre><span></span><code><span class="k">def</span> <span class="nf">test</span><span class="p">():</span>
     <span class="k">try</span><span class="p">:</span>
@@ -1345,20 +737,20 @@ as the main headline.
 <p>这意味着解释器会先将 <code class="highlight"><span class="k">return</span></code> 语句块中的结果（即 <code>test2()</code> 函数）计算并入栈，然后将 <code class="highlight"><span class="k">return</span></code> 语句块入栈，然后再将 <code class="highlight"><span class="k">finally</span></code> 语句块入栈。这就是为什么 <code>test2()</code> 函数会被执行的原因。</p>
 <p>【3】中的函数最终会返回 <code>3</code>，这在 Python 文档中并没有提及（属于是一个文档盲区），这同样可以用【2】的调用栈的思路来解释。</p>
 </details>
-<h3 id="12-for-else">1.2 <code class="highlight"><span class="k">for</span></code> 语句块中，<code class="highlight"><span class="k">else</span></code> 语句块的作用<a class="headerlink" href="#12-for-else" title="Permanent link">&para;</a></h3>
+<h3 id="12-for-else">1.2 <code class="highlight"><span class="k">for</span></code> 语句块中，<code class="highlight"><span class="k">else</span></code> 语句块的作用<a class="headerlink" href="#12-for-else" title="Permanent link">¶</a></h3>
 <p>考虑以下情形，推测控制台的打印结果：</p>
 <div class="highlight"><pre><span></span><code><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">):</span>
     <span class="nb">print</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
     <span class="k">if</span> <span class="n">i</span> <span class="o">==</span> <span class="mi">5</span><span class="p">:</span>
         <span class="k">break</span>
 <span class="k">else</span><span class="p">:</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;finish&#39;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">'finish'</span><span class="p">)</span>
 </code></pre></div>
 <p>这个本来是一件很简单的事情，即控制台会逐行打印 <code>0</code> 到 <code>5</code>，然后结束，并且<strong>不会</strong>向控制台打印 <code>finish</code>。</p>
 <p>令人遗憾的是，很多中文的 Python 教学书籍中往往忘记将 <code class="highlight"><span class="k">else</span></code> 子句的作用提及，这就导致了很多人对 <code class="highlight"><span class="k">for</span></code> 语句块中的 <code class="highlight"><span class="k">else</span></code> 子句的作用一知半解。</p>
 <p><code class="highlight"><span class="k">for</span></code> 语句块中的 <code class="highlight"><span class="k">else</span></code> 子句的作用是，当 <code class="highlight"><span class="k">for</span></code> 语句块中的 <code class="highlight"><span class="k">break</span></code> 语句没有被执行时，执行 <code class="highlight"><span class="k">else</span></code> 子句块中的语句。</p>
 <p>部分网站上于该 <code class="highlight"><span class="k">else</span></code> 子句的用法也存在错误描述，例如 <del>“当 <code class="highlight"><span class="k">for</span></code> 语句的迭代行为没有正常结束时，执行 <code class="highlight"><span class="k">else</span></code> 子句块中的语句”</del>，这是不正确的，因为你可以通过 <code class="highlight"><span class="k">return</span></code> 甚至是 <code class="highlight"><span class="k">raise</span></code> 语句来提前结束 <code class="highlight"><span class="k">for</span></code> 语句块的迭代行为，而这并不会导致 <code class="highlight"><span class="k">else</span></code> 子句块中的语句被执行。</p>
-<h3 id="13-while-else">1.3 <code class="highlight"><span class="k">while</span></code> 语句块中，<code class="highlight"><span class="k">else</span></code> 语句块的作用<a class="headerlink" href="#13-while-else" title="Permanent link">&para;</a></h3>
+<h3 id="13-while-else">1.3 <code class="highlight"><span class="k">while</span></code> 语句块中，<code class="highlight"><span class="k">else</span></code> 语句块的作用<a class="headerlink" href="#13-while-else" title="Permanent link">¶</a></h3>
 <p>同上，这次就不赘述了，直接说结论：当 <code class="highlight"><span class="k">while</span></code> 语句的循环条件为 <code class="highlight"><span class="kc">False</span></code> 时，执行 <code class="highlight"><span class="k">else</span></code> 子句块中的语句。同理，<code class="highlight"><span class="k">return</span></code> 和 <code class="highlight"><span class="k">raise</span></code> 语句也不会导致 <code class="highlight"><span class="k">else</span></code> 子句块中的语句被执行。</p>
 <p>例如：</p>
 <div class="highlight"><pre><span></span><code><span class="n">i</span> <span class="o">=</span> <span class="mi">0</span>
@@ -1366,10 +758,10 @@ as the main headline.
     <span class="nb">print</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
     <span class="n">i</span> <span class="o">+=</span> <span class="mi">1</span>
 <span class="k">else</span><span class="p">:</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;finish&#39;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">'finish'</span><span class="p">)</span>
 </code></pre></div>
 <p>控制台会逐行打印 <code>0</code> 到 <code>9</code> 后，再打印 <code>finish</code>。</p>
-<h3 id="14-for-break">1.4 嵌套 <code class="highlight"><span class="k">for</span></code> 语句块中，<code class="highlight"><span class="k">break</span></code> 如何跳出全部循环<a class="headerlink" href="#14-for-break" title="Permanent link">&para;</a></h3>
+<h3 id="14-for-break">1.4 嵌套 <code class="highlight"><span class="k">for</span></code> 语句块中，<code class="highlight"><span class="k">break</span></code> 如何跳出全部循环<a class="headerlink" href="#14-for-break" title="Permanent link">¶</a></h3>
 <p>我们都知道，在 Python 中，如果在嵌套的 <code class="highlight"><span class="k">for</span></code> 循环中使用 <code class="highlight"><span class="k">break</span></code> 语句，只会跳出最近的一层循环，而不会跳出所有的循环。</p>
 <p>这是一件很头大的事情，在某些情形下，我们希望该 <code class="highlight"><span class="k">break</span></code> 语句能够跳出所有的循环（例如在嵌套循环中寻找特定答案）。</p>
 <p>于是我们可以利用先前提到的 <code class="highlight"><span class="k">for</span></code> 语句块中的 <code class="highlight"><span class="k">else</span></code> 语句块来实现这一目标。例如，我希望 <code>i</code> 和 <code>j</code> 都为 <code>5</code> 时跳出两层循环：</p>
@@ -1391,8 +783,8 @@ as the main headline.
     <span class="k">break</span>
 </code></pre></div>
 <p>这样，控制台最后一行的输出结果将会是 <code>5 5</code>。</p>
-<h2 id="_2">二、可变对象<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
-<h3 id="21">2.1 默认参数可变的危险性<a class="headerlink" href="#21" title="Permanent link">&para;</a></h3>
+<h2 id="_2">二、可变对象<a class="headerlink" href="#_2" title="Permanent link">¶</a></h2>
+<h3 id="21">2.1 默认参数可变的危险性<a class="headerlink" href="#21" title="Permanent link">¶</a></h3>
 <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">test</span><span class="p">(</span><span class="n">a</span><span class="o">=</span><span class="p">[]):</span>
     <span class="n">a</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
     <span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
@@ -1408,7 +800,7 @@ as the main headline.
 </code></pre></div>
 <p>这是因为，函数定义时，所有的形参默认值会被初始化，然后存到 <code>__defaults__</code> 元组中。</p>
 <p>然而，这样的初始化只在函数<strong>被定义</strong>时发生，而不是在<strong>被调用</strong>时发生。故每次被 <code>append(1)</code> 的本质上还是同一个列表。 </p>
-<h3 id="22">2.2 可变对象的拷贝<a class="headerlink" href="#22" title="Permanent link">&para;</a></h3>
+<h3 id="22">2.2 可变对象的拷贝<a class="headerlink" href="#22" title="Permanent link">¶</a></h3>
 <p>这是一个面试中经常被问到的问题，你的面试官闲的没事就会来考察你这个知识点。这个问题的关键在于你对 Python 可变对象的内存实现的理解。</p>
 <p>考虑以下两个例子：</p>
 <div class="highlight"><pre><span></span><code><span class="n">a</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span>
@@ -1426,13 +818,13 @@ as the main headline.
 <div class="highlight"><pre><span></span><code><span class="kt">int</span><span class="w"> </span><span class="n">a</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">};</span>
 <span class="kt">int</span><span class="w"> </span><span class="o">*</span><span class="n">b</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">a</span><span class="p">;</span>
 <span class="n">b</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
-<span class="n">printf</span><span class="p">(</span><span class="s">&quot;%d %d %d</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">a</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span><span class="w"> </span><span class="n">a</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span><span class="w"> </span><span class="n">a</span><span class="p">[</span><span class="mi">2</span><span class="p">]);</span><span class="w">  </span><span class="c1">// 0 2 3</span>
+<span class="n">printf</span><span class="p">(</span><span class="s">"%d %d %d</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span><span class="w"> </span><span class="n">a</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span><span class="w"> </span><span class="n">a</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span><span class="w"> </span><span class="n">a</span><span class="p">[</span><span class="mi">2</span><span class="p">]);</span><span class="w">  </span><span class="c1">// 0 2 3</span>
 </code></pre></div>
 <div class="highlight"><pre><span></span><code><span class="kt">int</span><span class="w"> </span><span class="n">a</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">};</span>
 <span class="kt">int</span><span class="w"> </span><span class="n">b</span><span class="p">[</span><span class="mi">3</span><span class="p">];</span>
 <span class="n">memcpy</span><span class="p">(</span><span class="n">b</span><span class="p">,</span><span class="w"> </span><span class="n">a</span><span class="p">,</span><span class="w"> </span><span class="k">sizeof</span><span class="p">(</span><span class="n">a</span><span class="p">));</span>
 <span class="n">b</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
-<span class="n">printf</span><span class="p">(</span><span class="s">&quot;%d %d %d</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">a</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span><span class="w"> </span><span class="n">a</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span><span class="w"> </span><span class="n">a</span><span class="p">[</span><span class="mi">2</span><span class="p">]);</span><span class="w">  </span><span class="c1">// 1 2 3</span>
+<span class="n">printf</span><span class="p">(</span><span class="s">"%d %d %d</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span><span class="w"> </span><span class="n">a</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span><span class="w"> </span><span class="n">a</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span><span class="w"> </span><span class="n">a</span><span class="p">[</span><span class="mi">2</span><span class="p">]);</span><span class="w">  </span><span class="c1">// 1 2 3</span>
 </code></pre></div>
 <p>后者这样的行为被称为对象的（浅）拷贝，除了使用 <code>a.copy()</code> 外，你还可以使用以下的方式实现对象的浅拷贝：</p>
 <div class="highlight"><pre><span></span><code><span class="n">b</span> <span class="o">=</span> <span class="n">a</span><span class="p">[:]</span>
@@ -1445,14 +837,14 @@ as the main headline.
 <p class="admonition-title">（Python 文档）copy --- 浅层 (shallow) 和深层 (deep) 复制操作</p>
 <p>Python 的赋值语句不复制对象，而是创建目标和对象的绑定关系。对于自身可变，或包含可变项的集合，有时要生成副本用于改变操作，而不必改变原始对象。</p>
 </div>
-<h3 id="23">2.3 浅拷贝与深拷贝<a class="headerlink" href="#23" title="Permanent link">&para;</a></h3>
+<h3 id="23">2.3 浅拷贝与深拷贝<a class="headerlink" href="#23" title="Permanent link">¶</a></h3>
 <p>在前面已经简单介绍了拷贝的概念，既然提到了拷贝，就不得不提到浅拷贝与深拷贝。</p>
 <p>在 <a href="../220902-python-mutable-defaults/#21">Python 默认参数可变的危险性</a> 中我们已经知道：</p>
 <ul>
 <li>如果有多个对象的引用（即指针）指向同一个可变对象，那么使用其中任意一个引用对此对象进行修改，其他所有的引用都会产生相同的修改。
-   <img alt="mutable_change" src="../images/220902-python-mutable-defaults/mutable_change.png" /></li>
+   <a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="../images/220902-python-mutable-defaults/mutable_change.png"><img alt="mutable_change" src="../images/220902-python-mutable-defaults/mutable_change.png"/></a></li>
 <li>如果有多个对象的引用指向同一个不可变对象，当使用其中任意一个引用对此对象进行修改，系统将会开辟一块新的内存区域用来存储修改过后的值，其他所有的引用仍然指向原来那片内存空间。
-   <img alt="immutable_change" src="../images/220902-python-mutable-defaults/immutable_change.png" /></li>
+   <a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="../images/220902-python-mutable-defaults/immutable_change.png"><img alt="immutable_change" src="../images/220902-python-mutable-defaults/immutable_change.png"/></a></li>
 </ul>
 <p>浅拷贝与深拷贝的相同点在于，它们都会创建并返回一个新的对象。它们的区别在于对可变对象的处理上。</p>
 <p>若原对象中有一个元素是可变对象，浅拷贝会将该可变对象的引用直接存储在新对象中，而深拷贝会先将该可变对象拷贝一份到新的内存区域，再将该可变对象的副本的引用存储在新对象中。</p>
@@ -1483,10 +875,10 @@ as the main headline.
 </code></pre></div>
 <p><code class="highlight"><span class="n">b</span> <span class="o">=</span> <span class="n">a</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span></code> 和 <code class="highlight"><span class="n">c</span> <span class="o">=</span> <span class="n">copy</span><span class="o">.</span><span class="n">copy</span><span class="p">(</span><span class="n">a</span><span class="p">)</span></code> 是等价的，他们都是浅拷贝，而 <code class="highlight"><span class="n">d</span> <span class="o">=</span> <span class="n">copy</span><span class="o">.</span><span class="n">deepcopy</span><span class="p">(</span><span class="n">a</span><span class="p">)</span></code> 是深拷贝。</p>
 <p>列表 <code>a</code> 中包含了 4 个元素，前三个元素 <code>1</code>, <code>2</code>, <code>3</code> 是不可变对象，第四个元素 <code>[4, 5]</code> 是可变对象。</p>
-<p><img alt="deepcopy" src="../images/220913-python-confusing-detail/deepcopy.png" /></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="../images/220913-python-confusing-detail/deepcopy.png"><img alt="deepcopy" src="../images/220913-python-confusing-detail/deepcopy.png"/></a></p>
 <p>上图，同一个颜色表示同一个地址。在浅拷贝中，原始对象 <code>a</code> 和副本 <code>b</code> 和 <code>c</code> 中第四个元素 <code>[4, 5]</code>（记为 <code>inner_list</code>）的地址是相同的，而在深拷贝中，原始对象 <code>a</code> 和副本 <code>d</code> 中第四个元素 <code>[4, 5]</code>（记为 <code>inner_list2</code>）的地址是不同的。</p>
 <p>可以看到，当我们修改原始列表中一个不可变对象元素时，浅拷贝和深拷贝的结果都不会随之改变，而当修改的是一个可变对象时，浅拷贝的结果会随之改变，而深拷贝的结果不会随之改变。</p>
-<h3 id="24">2.4 在一行中同时定义和赋值多个变量<a class="headerlink" href="#24" title="Permanent link">&para;</a></h3>
+<h3 id="24">2.4 在一行中同时定义和赋值多个变量<a class="headerlink" href="#24" title="Permanent link">¶</a></h3>
 <p>有一种看起来很酷的写法是：</p>
 <div class="highlight"><pre><span></span><code><span class="n">a</span> <span class="o">=</span> <span class="n">b</span> <span class="o">=</span> <span class="n">c</span> <span class="o">=</span> <span class="mi">0</span>
 </code></pre></div>
@@ -1502,8 +894,8 @@ as the main headline.
 <p>如果我们确实想定义三个空列表，那么可以这样写：</p>
 <div class="highlight"><pre><span></span><code><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">c</span> <span class="o">=</span> <span class="p">[],</span> <span class="p">[],</span> <span class="p">[]</span>
 </code></pre></div>
-<h2 id="python">三、Python 内存管理<a class="headerlink" href="#python" title="Permanent link">&para;</a></h2>
-<h3 id="31">3.1 整数缓冲区带来的整数变量地址问题<a class="headerlink" href="#31" title="Permanent link">&para;</a></h3>
+<h2 id="python">三、Python 内存管理<a class="headerlink" href="#python" title="Permanent link">¶</a></h2>
+<h3 id="31">3.1 整数缓冲区带来的整数变量地址问题<a class="headerlink" href="#31" title="Permanent link">¶</a></h3>
 <p>使用你的<strong>交互式 Python 解释器</strong>（不要使用 PyCharm 那个 Python 控制台），复制进以下代码：</p>
 <div class="highlight"><pre><span></span><code><span class="n">a</span> <span class="o">=</span> <span class="mi">1</span>
 <span class="n">b</span> <span class="o">=</span> <span class="mi">1</span>
@@ -1521,30 +913,30 @@ as the main headline.
 <p class="admonition-title">注意</p>
 <p>如果你将上面的代码存到 <code>.py</code> 文件里，再使用 <code>python</code> 命令运行，则可能不会产生预期的结果——即期望两个大数的 <code>id</code> 不同。这是因为 Python 解释器在运行时，会将代码编译成字节码，然后再执行字节码。而在编译过程中，Python 会自动对代码进行优化。</p>
 </div>
-<h3 id="32">3.2 字符串内存重用<a class="headerlink" href="#32" title="Permanent link">&para;</a></h3>
+<h3 id="32">3.2 字符串内存重用<a class="headerlink" href="#32" title="Permanent link">¶</a></h3>
 <p>和上一小节一样，请使用你的交互式 Python 解释器运行：</p>
-<div class="highlight"><pre><span></span><code><span class="n">a</span> <span class="o">=</span> <span class="s1">&#39;hello&#39;</span>
-<span class="n">b</span> <span class="o">=</span> <span class="s1">&#39;hello&#39;</span>
+<div class="highlight"><pre><span></span><code><span class="n">a</span> <span class="o">=</span> <span class="s1">'hello'</span>
+<span class="n">b</span> <span class="o">=</span> <span class="s1">'hello'</span>
 <span class="nb">print</span><span class="p">(</span><span class="nb">id</span><span class="p">(</span><span class="n">a</span><span class="p">))</span>  <span class="c1"># 2110320773168</span>
 <span class="nb">print</span><span class="p">(</span><span class="nb">id</span><span class="p">(</span><span class="n">b</span><span class="p">))</span>  <span class="c1"># 2110320773168</span>
 </code></pre></div>
-<div class="highlight"><pre><span></span><code><span class="n">a</span> <span class="o">=</span> <span class="s1">&#39;hello!&#39;</span>
-<span class="n">b</span> <span class="o">=</span> <span class="s1">&#39;hello!&#39;</span>
+<div class="highlight"><pre><span></span><code><span class="n">a</span> <span class="o">=</span> <span class="s1">'hello!'</span>
+<span class="n">b</span> <span class="o">=</span> <span class="s1">'hello!'</span>
 <span class="nb">print</span><span class="p">(</span><span class="nb">id</span><span class="p">(</span><span class="n">a</span><span class="p">))</span>  <span class="c1"># 2119149796272</span>
 <span class="nb">print</span><span class="p">(</span><span class="nb">id</span><span class="p">(</span><span class="n">b</span><span class="p">))</span>  <span class="c1"># 2119149796336</span>
 </code></pre></div>
 <p>它的具体实现可以看 <a href="https://hg.python.org/cpython/file/3.5/Objects/codeobject.c#l49">Intern selected string constants</a>，可以看到，它使用了 <a href="https://hg.python.org/cpython/file/3.5/Objects/codeobject.c#l11"><code>all_name_chars()</code></a> 来检查字符串的每一个字符，后者实际上将会对所有 <a href="https://hg.python.org/cpython/file/3.5/Objects/codeobject.c#l6">能构成标识符的字符</a>（字母、数字和下划线）返回 <code>true</code>。</p>
 <p>个人推测这是为了优化 <code>__getattr__()</code>、<code>__setattr__()</code> 这两个魔法方法的调用，因为这些方法的参数都是字符串，并且这些字符串绝对都是标识符，如果不做这个优化，那么每次调用这些方法时，都会创建一个新的字符串对象，这样会造成大量的内存浪费。</p>
-<h3 id="33">3.3 内存泄露与引用计数<a class="headerlink" href="#33" title="Permanent link">&para;</a></h3>
+<h3 id="33">3.3 内存泄露与引用计数<a class="headerlink" href="#33" title="Permanent link">¶</a></h3>
 <p>TODO</p>
-<h2 id="_3">四、代码细节<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h2>
-<h3 id="41">4.1 空括号里的逗号<a class="headerlink" href="#41" title="Permanent link">&para;</a></h3>
+<h2 id="_3">四、代码细节<a class="headerlink" href="#_3" title="Permanent link">¶</a></h2>
+<h3 id="41">4.1 空括号里的逗号<a class="headerlink" href="#41" title="Permanent link">¶</a></h3>
 <p>考虑以下两段代码：</p>
 <div class="highlight"><pre><span></span><code><span class="n">a</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span><span class="p">,)</span>
-<span class="nb">print</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">a</span><span class="p">))</span>  <span class="c1"># &lt;class &#39;tuple&#39;&gt;</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">a</span><span class="p">))</span>  <span class="c1"># &lt;class 'tuple'&gt;</span>
 </code></pre></div>
 <div class="highlight"><pre><span></span><code><span class="n">a</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">a</span><span class="p">))</span>  <span class="c1"># &lt;class &#39;int&#39;&gt;</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">a</span><span class="p">))</span>  <span class="c1"># &lt;class 'int'&gt;</span>
 </code></pre></div>
 <p>对于前者，<code>a</code> 对象的类型是 <code>tuple</code>，而对于后者，它的类型是 <code>int</code>。区别就在于那个逗号。</p>
 <p>废话不多说直接看 <a href="https://docs.python.org/zh-cn/3/tutorial/datastructures.html#tuples-and-sequences">文档</a>：</p>
@@ -1552,19 +944,19 @@ as the main headline.
 <p class="admonition-title">元组和序列</p>
 <p>构造 0 个或 1 个元素的元组比较特殊：为了适应这种情况，对句法有一些额外的改变。用一对空圆括号就可以创建空元组；<strong>只有一个元素的元组可以通过在这个元素后添加逗号来构建</strong>（圆括号里只有一个值的话不够明确）。丑陋，但是有效。</p>
 </div>
-<h3 id="42-return">4.2 <code class="highlight"><span class="k">return</span></code> 语句的算术优先级<a class="headerlink" href="#42-return" title="Permanent link">&para;</a></h3>
+<h3 id="42-return">4.2 <code class="highlight"><span class="k">return</span></code> 语句的算术优先级<a class="headerlink" href="#42-return" title="Permanent link">¶</a></h3>
 <p>考虑以下两个方法可能返回的结果：</p>
 <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">foo</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">tuple</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="nb">int</span><span class="p">]:</span>
-    <span class="k">return</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span> <span class="k">if</span> <span class="s1">&#39;noinput&#39;</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">type_list</span> <span class="k">else</span> <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">foo</span><span class="p">()</span>
+    <span class="k">return</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span> <span class="k">if</span> <span class="s1">'noinput'</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">type_list</span> <span class="k">else</span> <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">foo</span><span class="p">()</span>
 </code></pre></div>
 <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">foo</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">tuple</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="nb">int</span><span class="p">]:</span>
-    <span class="k">return</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span> <span class="k">if</span> <span class="s1">&#39;noinput&#39;</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">type_list</span> <span class="k">else</span> <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">foo</span><span class="p">()</span>
+    <span class="k">return</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span> <span class="k">if</span> <span class="s1">'noinput'</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">type_list</span> <span class="k">else</span> <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">foo</span><span class="p">()</span>
 </code></pre></div>
 <p>这是我曾经制造的 <a href="https://github.com/Arcaea-Infinity/ArcaeaChartRender/commit/bbd56446a3ddedacd11cbceab30472dc8eadf6fa">巨大 bug</a> 之一。这两个例子都使用了一个三目运算符，并且返回结果都是一个元组。他们重写了父类的 <code>foo()</code> 方法，而显然父类的 <code>foo()</code> 方法将会返回一个 <code class="highlight"><span class="nb">tuple</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="nb">int</span><span class="p">]</span></code> 类型。</p>
-<p>然而不幸的是，<code class="highlight"><span class="k">return</span></code> 语句的优先级比 <code class="highlight"><span class="k">if</span></code> 语句的优先级要低，这就导致第二个例子会优先计算逗号之后的 <code class="highlight"><span class="mi">0</span> <span class="k">if</span> <span class="s1">&#39;noinput&#39;</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">type_list</span> <span class="k">else</span> <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">foo</span><span class="p">()</span></code>，我们假设这个结果是 <code>XXXX</code>，然后解释器再执行 <code class="highlight"><span class="k">return</span> <span class="mi">0</span><span class="p">,</span> <span class="n">XXXX</span></code>。</p>
+<p>然而不幸的是，<code class="highlight"><span class="k">return</span></code> 语句的优先级比 <code class="highlight"><span class="k">if</span></code> 语句的优先级要低，这就导致第二个例子会优先计算逗号之后的 <code class="highlight"><span class="mi">0</span> <span class="k">if</span> <span class="s1">'noinput'</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">type_list</span> <span class="k">else</span> <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">foo</span><span class="p">()</span></code>，我们假设这个结果是 <code>XXXX</code>，然后解释器再执行 <code class="highlight"><span class="k">return</span> <span class="mi">0</span><span class="p">,</span> <span class="n">XXXX</span></code>。</p>
 <p>而显然这个 <code>XXXX</code> 要么是 <code>0</code>，要么是从父类的 <code>foo()</code> 方法返回的 <code class="highlight"><span class="nb">tuple</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="nb">int</span><span class="p">]</span></code> 类型的对象。如果是 <code>0</code> 还好，子类的返回结果将仍然会是 <code>(0, 0)</code>。但是如果这个 <code>XXXX</code> 是从父类返回的 <code class="highlight"><span class="nb">tuple</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="nb">int</span><span class="p">]</span></code> 类型的对象，那么子类的返回结果就会是 <code class="highlight"><span class="nb">tuple</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="nb">tuple</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="nb">int</span><span class="p">]]</span></code>，这显然是不符合预期的。</p>
 <p>解决办法就是在 <code class="highlight"><span class="k">return</span></code> 语句里为那个元组加上括号。</p>
-<h3 id="43-yield-from-return">4.3 <code class="highlight"><span class="k">yield from</span></code> 和 <code class="highlight"><span class="k">return</span></code> 共存<a class="headerlink" href="#43-yield-from-return" title="Permanent link">&para;</a></h3>
+<h3 id="43-yield-from-return">4.3 <code class="highlight"><span class="k">yield from</span></code> 和 <code class="highlight"><span class="k">return</span></code> 共存<a class="headerlink" href="#43-yield-from-return" title="Permanent link">¶</a></h3>
 <p>考虑以下两段代码，</p>
 <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">my_range</span><span class="p">(</span><span class="n">a</span><span class="p">):</span>
     <span class="k">if</span> <span class="n">a</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">:</span>
@@ -1604,7 +996,7 @@ as the main headline.
 <div class="highlight"><pre><span></span><code><span class="k">try</span><span class="p">:</span>
     <span class="nb">next</span><span class="p">(</span><span class="n">my_range</span><span class="p">(</span><span class="o">-</span><span class="mi">5</span><span class="p">))</span>
 <span class="k">except</span> <span class="ne">StopIteration</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
-    <span class="nb">print</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">e</span><span class="o">.</span><span class="n">value</span><span class="p">))</span>  <span class="c1"># &lt;class &#39;generator&#39;&gt;</span>
+    <span class="nb">print</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">e</span><span class="o">.</span><span class="n">value</span><span class="p">))</span>  <span class="c1"># &lt;class 'generator'&gt;</span>
     <span class="nb">print</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">e</span><span class="o">.</span><span class="n">value</span><span class="p">))</span>  <span class="c1"># [0, -1, -2, -3, -4]</span>
 </code></pre></div>
 <p>我们发现，<code class="highlight"><span class="k">return</span> <span class="p">(</span><span class="n">x</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">a</span><span class="p">))</span></code> 返回的生成器被送到了 <code class="highlight"><span class="ne">StopIteration</span></code> 异常的 <code>value</code> 属性中。</p>
@@ -1615,7 +1007,7 @@ as the main headline.
     <span class="k">else</span><span class="p">:</span>
         <span class="k">yield from</span> <span class="p">()</span>
 
-<span class="nb">print</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">foo</span><span class="p">()))</span>  <span class="c1"># &lt;class &#39;generator&#39;&gt;</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">foo</span><span class="p">()))</span>  <span class="c1"># &lt;class 'generator'&gt;</span>
 </code></pre></div>
 <p>这里的 <code class="highlight"><span class="k">yield from</span> <span class="p">()</span></code> 语句永远不会被执行，甚至看上去这个函数的返回类型应该是 <code class="highlight"><span class="nb">int</span></code>，但是 <code class="highlight"><span class="n">foo</span><span class="p">()</span></code> 的返回值仍然是生成器。</p>
 <p>既然返回的是一个生成器，那么该生成器必须指定一个迭代结束标志，即在迭代结束时抛出 <code class="highlight"><span class="ne">StopIteration</span></code> 异常，意为不能产生下一项。任何一个规范的迭代器（生成器）在迭代结束时都将抛出 <code class="highlight"><span class="ne">StopIteration</span></code> 异常，并由调用者处理，例如我们的 <code class="highlight"><span class="p">(</span><span class="n">x</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">a</span><span class="p">))</span></code> 生成器表达式。</p>
@@ -1631,9 +1023,9 @@ as the main headline.
 <p>同时，对调用者而言，它获取的迭代结果是在 <code class="highlight"><span class="k">return</span> <span class="n">XXXX</span></code> 语句之前所有通过 <code class="highlight"><span class="k">yield</span></code> 产生的结果。在我们的第二个 <code>my_range()</code> 函数中，我们没有通过 <code class="highlight"><span class="k">yield</span></code> 产生任何值就直接 <code class="highlight"><span class="k">return</span></code> 了，因此调用者获得的就是一个空的生成器。</p>
 <p>这个 <code class="highlight"><span class="k">return</span> <span class="n">XXXX</span></code> 语句就像一个小丑🤡一样，它想让 <code>XXXX</code> 作为它所在函数的返回值，可未曾想到解释器只是将这个可怜的值分配给了一个异常实例的一个属性。而同处一个屋檐下的 <code class="highlight"><span class="k">yield</span></code> 制造的每一个值，都会被函数的调用者全盘接纳。甚至当 <code class="highlight"><span class="k">yield</span></code> 无法被执行以至于它无法制造任何值时，解释器宁可为调用者返回一个空的生成器，也不愿意将 <code class="highlight"><span class="k">return</span></code> 的值交给调用者。而造成这一切的，仅仅是这个函数中存在一个 <code class="highlight"><span class="k">yield</span></code> 关键字💔。</p>
 <p>这同样也是我曾经制造的 <a href="https://github.com/Arcaea-Infinity/ArcaeaChartRender/commit/9f40ec1a519197a3f8193207edf5a2cd7e96d2ff">巨大 bug</a> 中的一个。</p>
-<p><img alt="ruizhi" src="../images/220913-python-confusing-detail/ruizhi.jpg" /></p>
-<h2 id="_4">五、运算符<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h2>
-<h3 id="51">5.1 正负数在整数除法中求商的不同及其余数的值<a class="headerlink" href="#51" title="Permanent link">&para;</a></h3>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="../images/220913-python-confusing-detail/ruizhi.jpg"><img alt="ruizhi" src="../images/220913-python-confusing-detail/ruizhi.jpg"/></a></p>
+<h2 id="_4">五、运算符<a class="headerlink" href="#_4" title="Permanent link">¶</a></h2>
+<h3 id="51">5.1 正负数在整数除法中求商的不同及其余数的值<a class="headerlink" href="#51" title="Permanent link">¶</a></h3>
 <p>先说结论：<a href="https://docs.python.org/zh-cn/3/library/stdtypes.html#numeric-types-int-float-complex">运算结果总是向负无穷的方向舍入</a>。</p>
 <div class="highlight"><pre><span></span><code><span class="nb">print</span><span class="p">(</span><span class="mi">7</span> <span class="o">/</span> <span class="mi">3</span><span class="p">)</span>  <span class="c1"># 2.3333333333333335</span>
 <span class="nb">print</span><span class="p">(</span><span class="mi">7</span> <span class="o">//</span> <span class="mi">3</span><span class="p">)</span>  <span class="c1"># 2</span>
@@ -1645,7 +1037,7 @@ as the main headline.
 </code></pre></div>
 <p>何为舍入规则？舍入规则是指在整数除法中，当商（暂时视为浮点数）为负数时，对于商的取整的不同做法。在 Python 中采用<strong>向下取整</strong>。</p>
 <div>
-<p><img align="right" alt="divmod" src="../images/220913-python-confusing-detail/divmod.png" width="40%" /></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="../images/220913-python-confusing-detail/divmod.png"><img align="right" alt="divmod" src="../images/220913-python-confusing-detail/divmod.png" width="40%"/></a></p>
 <p>几乎所有的计算系统中，<span class="arithmatex">\(a\)</span> 除以 <span class="arithmatex">\(n\)</span> 得到商 <span class="arithmatex">\(q\)</span> 和余数 <span class="arithmatex">\(r\)</span> 均满足以下式子：</p>
 <div class="arithmatex">\[
 q\in Z, a = n q + r, |r| &lt; |n|
@@ -1657,7 +1049,7 @@ q\in Z, a = n q + r, |r| &lt; |n|
 </div>
 <p>每个语言的设计者都可以自由地选择自己的舍入规则，从而使计算结果五花八门。在整数除法中由于舍入规则的不同而导致的这种奇葩现象，也可以等价地看作另一个问题，即——<em>不同编程语言下整数取模运算的符号是跟随被除数还是除数</em>。<a href="https://zh.wikipedia.org/wiki/%E6%A8%A1%E9%99%A4">约四成的编程语言取模结果与除数符号一致</a>，<del>基本可以认为是五五开，因此请不要将某一特定编程语言的结果当作教条</del>。</p>
 <p>Python 之父 Guido van Rossum 在 <a href="http://python-history.blogspot.com/2010/08/why-pythons-integer-division-floors.html">The History of Python</a> 表达了自己的看法，即为什么 Python 采用了这种舍入规则。他的观点是：</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="1:2"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">原文 🇬🇧</label><label for="__tabbed_1_2">翻译 🇨🇳</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="1:2"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio"><input id="__tabbed_1_2" name="__tabbed_1" type="radio"><div class="tabbed-labels"><label for="__tabbed_1_1">原文 🇬🇧</label><label for="__tabbed_1_2">翻译 🇨🇳</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <p>In mathematical number theory, mathematicians always prefer the latter choice (see e.g. <a href="http://en.wikipedia.org/wiki/Modulo_operation">Wikipedia</a>). For Python, I made the same choice because there are some interesting applications of the modulo operation where the sign of a is uninteresting. Consider taking a POSIX timestamp (seconds since the start of 1970) and turning it into the time of day. Since there are 24*3600 = 86400 seconds in a day, this calculation is simply t % 86400. But if we were to express times before 1970 using negative numbers, the "truncate towards zero" rule would give a meaningless result! Using the floor rule it all works out fine.</p>
@@ -1668,8 +1060,8 @@ q\in Z, a = n q + r, |r| &lt; |n|
 <p>我想到的其他应用是计算机图形中像素位置的计算。我相信还有更多这样的例子。</p>
 </div>
 </div>
-</div>
-<h3 id="52-is">5.2 <code class="highlight"><span class="ow">is</span></code> 和 <code class="highlight"><span class="o">==</span></code> 运算符的区别<a class="headerlink" href="#52-is" title="Permanent link">&para;</a></h3>
+</input></input></div>
+<h3 id="52-is">5.2 <code class="highlight"><span class="ow">is</span></code> 和 <code class="highlight"><span class="o">==</span></code> 运算符的区别<a class="headerlink" href="#52-is" title="Permanent link">¶</a></h3>
 <p>直接说结论：<code class="highlight"><span class="ow">is</span></code> 运算符用于判断两个对象是否是同一个对象，<code class="highlight"><span class="o">==</span></code> 运算符用于判断两个对象是否相等。</p>
 <p>你可以在任意对象中重载 <code class="highlight"><span class="fm">__eq__</span></code> 魔法方法，从而使这个对象支持 <code>==</code> 运算。</p>
 <div class="highlight"><pre><span></span><code><span class="n">a</span> <span class="o">=</span> <span class="mi">1</span>
@@ -1689,49 +1081,24 @@ q\in Z, a = n q + r, |r| &lt; |n|
 <span class="nb">print</span><span class="p">(</span><span class="n">a</span> <span class="o">==</span> <span class="n">b</span><span class="p">)</span>  <span class="c1"># True</span>
 </code></pre></div>
 <p>这里 <code class="highlight"><span class="n">a</span> <span class="ow">is</span> <span class="n">b</span></code> 结果是 <code class="highlight"><span class="kc">False</span></code> 的原因更简单，列表不是整数也不是字符串，系统不会为他们采用缓存机制，因此 <code>a</code> 和 <code>b</code> 的地址肯定是不同的。或者说，Python 中绝大部分对象的地址都是不同的，除非你明确赋值 <code>a = b</code>。</p>
-
-    <!-- Last update of source file -->
-    
-        
-            <hr>
+<!-- Last update of source file -->
+<hr/>
 <div class="md-source-file">
-  <small>
+<small>
     
       最后更新:
       <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_datetime">2022-09-18 06:47:12</span>
-      
-        <br>
+<br/>
         创建日期:
         <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_datetime">2022-09-18 06:47:12</span>
-      
-    
-  </small>
+</small>
 </div>
-        
-    
-
-    
-
-        <!-- Giscus -->
-        <h2 id="__comments">评论</h2>
-        <script src="https://giscus.app/client.js"
-                data-repo="zhanbao2000/blog"
-                data-repo-id="R_kgDOHIZK7A"
-                data-category="Announcements"
-                data-category-id="DIC_kwDOHIZK7M4COdSe"
-                data-mapping="pathname"
-                data-reactions-enabled="1"
-                data-emit-metadata="0"
-                data-input-position="top"
-                data-theme="light"
-                data-lang="zh-CN"
-                data-loading="lazy"
-                crossorigin="anonymous"
-                async>
-        </script>
-
-        <!-- Reload on palette change -->
-        <script>
+<!-- Giscus -->
+<h2 id="__comments">评论</h2>
+<script async="" crossorigin="anonymous" data-category="Announcements" data-category-id="DIC_kwDOHIZK7M4COdSe" data-emit-metadata="0" data-input-position="top" data-lang="zh-CN" data-loading="lazy" data-mapping="pathname" data-reactions-enabled="1" data-repo="zhanbao2000/blog" data-repo-id="R_kgDOHIZK7A" data-theme="light" src="https://giscus.app/client.js">
+</script>
+<!-- Reload on palette change -->
+<script>
             const palette = __md_get("__palette");
             if (palette && typeof palette.color === "object")
                 if (palette.color.scheme === "slate") {
@@ -1757,115 +1124,75 @@ q\in Z, a = n q + r, |r| &lt; |n|
                 })
             })
         </script>
-
-    
-
-
-              </article>
-            </div>
-          
-          
-        </div>
-        
-          <a href="#" class="md-top md-icon" data-md-component="top" hidden>
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12Z"/></svg>
+</article>
+</div>
+</div>
+<a class="md-top md-icon" data-md-component="top" hidden="" href="#">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12Z"></path></svg>
             回到页面顶部
           </a>
-        
-      </main>
-      
-        <footer class="md-footer">
-  
-    
-      
-      <nav class="md-footer__inner md-grid" aria-label="页脚" >
-        
-          
-          <a href="../220902-python-mutable-defaults/" class="md-footer__link md-footer__link--prev" aria-label="上一页: Python 默认参数可变的危险性" rel="prev">
-            <div class="md-footer__button md-icon">
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
-            </div>
-            <div class="md-footer__title">
-              <div class="md-ellipsis">
-                <span class="md-footer__direction">
+</main>
+<footer class="md-footer">
+<nav aria-label="页脚" class="md-footer__inner md-grid">
+<a aria-label="上一页: Python 默认参数可变的危险性" class="md-footer__link md-footer__link--prev" href="../220902-python-mutable-defaults/" rel="prev">
+<div class="md-footer__button md-icon">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"></path></svg>
+</div>
+<div class="md-footer__title">
+<div class="md-ellipsis">
+<span class="md-footer__direction">
                   上一页
                 </span>
                 Python 默认参数可变的危险性
               </div>
-            </div>
-          </a>
-        
-        
-          
-          <a href="../221113-rclone-sharepoint-for-hentai-at-home/" class="md-footer__link md-footer__link--next" aria-label="下一页: 使用 Rclone 挂载 SharePoint 作为 Hentai@Home 的缓存目录" rel="next">
-            <div class="md-footer__title">
-              <div class="md-ellipsis">
-                <span class="md-footer__direction">
+</div>
+</a>
+<a aria-label="下一页: 使用 Rclone 挂载 SharePoint 作为 Hentai@Home 的缓存目录" class="md-footer__link md-footer__link--next" href="../221113-rclone-sharepoint-for-hentai-at-home/" rel="next">
+<div class="md-footer__title">
+<div class="md-ellipsis">
+<span class="md-footer__direction">
                   下一页
                 </span>
                 使用 Rclone 挂载 SharePoint 作为 Hentai@Home 的缓存目录
               </div>
-            </div>
-            <div class="md-footer__button md-icon">
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4Z"/></svg>
-            </div>
-          </a>
-        
-      </nav>
-    
-  
-  <div class="md-footer-meta md-typeset">
-    <div class="md-footer-meta__inner md-grid">
-      <div class="md-copyright">
-  
-    <div class="md-copyright__highlight">
-      Copyright &copy; 2077 Akiba Arisa <a href="https://icp.gov.moe/?keyword=20232033" target="_blank">萌ICP备20232033号</a>
-    </div>
+</div>
+<div class="md-footer__button md-icon">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4Z"></path></svg>
+</div>
+</a>
+</nav>
+<div class="md-footer-meta md-typeset">
+<div class="md-footer-meta__inner md-grid">
+<div class="md-copyright">
+<div class="md-copyright__highlight">
+      Copyright © 2077 Akiba Arisa <a href="https://icp.gov.moe/?keyword=20232033" target="_blank">萌ICP备20232033号</a>
+</div>
   
   
     Made with
-    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+    <a href="https://squidfunk.github.io/mkdocs-material/" rel="noopener" target="_blank">
       Material for MkDocs
     </a>
-  
 </div>
-      
-        <div class="md-social">
-  
-    
-    
-    <a href="https://github.com/zhanbao2000" target="_blank" rel="noopener" title="AkibaArisa on GitHub" class="md-social__link">
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.2.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
-    </a>
-  
-    
-    
-    <a href="https://steamcommunity.com/id/akibaarisa" target="_blank" rel="noopener" title="AkibaArisa on Steam" class="md-social__link">
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.2.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M496 256c0 137-111.2 248-248.4 248-113.8 0-209.6-76.3-239-180.4l95.2 39.3c6.4 32.1 34.9 56.4 68.9 56.4 39.2 0 71.9-32.4 70.2-73.5l84.5-60.2c52.1 1.3 95.8-40.9 95.8-93.5 0-51.6-42-93.5-93.7-93.5s-93.7 42-93.7 93.5v1.2L176.6 279c-15.5-.9-30.7 3.4-43.5 12.1L0 236.1C10.2 108.4 117.1 8 247.6 8 384.8 8 496 119 496 256zM155.7 384.3l-30.5-12.6a52.79 52.79 0 0 0 27.2 25.8c26.9 11.2 57.8-1.6 69-28.4 5.4-13 5.5-27.3.1-40.3-5.4-13-15.5-23.2-28.5-28.6-12.9-5.4-26.7-5.2-38.9-.6l31.5 13c19.8 8.2 29.2 30.9 20.9 50.7-8.3 19.9-31 29.2-50.8 21zm173.8-129.9c-34.4 0-62.4-28-62.4-62.3s28-62.3 62.4-62.3 62.4 28 62.4 62.3-27.9 62.3-62.4 62.3zm.1-15.6c25.9 0 46.9-21 46.9-46.8 0-25.9-21-46.8-46.9-46.8s-46.9 21-46.9 46.8c.1 25.8 21.1 46.8 46.9 46.8z"/></svg>
-    </a>
-  
+<div class="md-social">
+<a class="md-social__link" href="https://github.com/zhanbao2000" rel="noopener" target="_blank" title="AkibaArisa on GitHub">
+<svg viewbox="0 0 496 512" xmlns="http://www.w3.org/2000/svg"><!--! Font Awesome Free 6.2.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"></path></svg>
+</a>
+<a class="md-social__link" href="https://steamcommunity.com/id/akibaarisa" rel="noopener" target="_blank" title="AkibaArisa on Steam">
+<svg viewbox="0 0 496 512" xmlns="http://www.w3.org/2000/svg"><!--! Font Awesome Free 6.2.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M496 256c0 137-111.2 248-248.4 248-113.8 0-209.6-76.3-239-180.4l95.2 39.3c6.4 32.1 34.9 56.4 68.9 56.4 39.2 0 71.9-32.4 70.2-73.5l84.5-60.2c52.1 1.3 95.8-40.9 95.8-93.5 0-51.6-42-93.5-93.7-93.5s-93.7 42-93.7 93.5v1.2L176.6 279c-15.5-.9-30.7 3.4-43.5 12.1L0 236.1C10.2 108.4 117.1 8 247.6 8 384.8 8 496 119 496 256zM155.7 384.3l-30.5-12.6a52.79 52.79 0 0 0 27.2 25.8c26.9 11.2 57.8-1.6 69-28.4 5.4-13 5.5-27.3.1-40.3-5.4-13-15.5-23.2-28.5-28.6-12.9-5.4-26.7-5.2-38.9-.6l31.5 13c19.8 8.2 29.2 30.9 20.9 50.7-8.3 19.9-31 29.2-50.8 21zm173.8-129.9c-34.4 0-62.4-28-62.4-62.3s28-62.3 62.4-62.3 62.4 28 62.4 62.3-27.9 62.3-62.4 62.3zm.1-15.6c25.9 0 46.9-21 46.9-46.8 0-25.9-21-46.8-46.9-46.8s-46.9 21-46.9 46.8c.1 25.8 21.1 46.8 46.9 46.8z"></path></svg>
+</a>
 </div>
-      
-    </div>
-  </div>
+</div>
+</div>
 </footer>
-      
-    </div>
-    <div class="md-dialog" data-md-component="dialog">
-      <div class="md-dialog__inner md-typeset"></div>
-    </div>
-    
-    <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.footer", "navigation.tabs", "navigation.top", "navigation.tracking", "content.code.copy"], "search": "../../../assets/javascripts/workers/search.e5c33ebb.min.js", "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}}</script>
-    
-    
-      <script src="../../../assets/javascripts/bundle.ba449ae6.min.js"></script>
-      
-        <script src="../../../javascripts/mathjax.js"></script>
-      
-        <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
-      
-        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-      
-    
-  </body>
+</div>
+<div class="md-dialog" data-md-component="dialog">
+<div class="md-dialog__inner md-typeset"></div>
+</div>
+<script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.footer", "navigation.tabs", "navigation.top", "navigation.tracking", "content.code.copy"], "search": "../../../assets/javascripts/workers/search.e5c33ebb.min.js", "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}}</script>
+<script src="../../../assets/javascripts/bundle.51d95adb.min.js"></script>
+<script src="../../../javascripts/mathjax.js"></script>
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+<script>document$.subscribe(() => {const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": false, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});})</script></body>
 </html>
