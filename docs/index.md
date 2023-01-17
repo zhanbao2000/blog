@@ -28,7 +28,7 @@ hide:
 ## 友情链接
 
  - [HEAVENLYHEAVEN - NUIK BLOG](http://blog.nijikuu.com/)
- - [MBR's Blog](https://blog.mbrjun.cn/)
+ - [MBR's Blog](https://www.mbrjun.cn/)
  - [InariAimu's Blog](https://blog.inariaimu.com/)
  - [Akula<>Blog](https://lolicon.akulak.icu/)
  - [Atmosphere](https://blog.awa.moe/)
