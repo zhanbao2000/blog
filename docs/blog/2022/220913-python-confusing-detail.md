@@ -624,7 +624,7 @@ print(a == b)  # True
 
 ### 6.1 `#!python os.listdir()` 在不同系统上的排序
 
-直接说结论，如果在 Windows 上执行 `#!python os.listdir()`，那么得到的结果是**按照文件名的字母顺序排序*的，而在 Linux 上执行 `#!python os.listdir()`，得到的结果是**乱序**的。
+直接说结论，如果在 Windows 上执行 `#!python os.listdir()`，那么得到的结果是**按照文件名的字母顺序排序**的，而在 Linux 上执行 `#!python os.listdir()`，得到的结果是**乱序**的。
 
 === ":simple-windows: Windows"
 
