@@ -619,3 +619,62 @@ print(a == b)  # True
 ```
 
 这里 `#!python a is b` 结果是 `#!python False` 的原因更简单，列表不是整数也不是字符串，系统不会为他们采用缓存机制，因此 `a` 和 `b` 的地址肯定是不同的。或者说，Python 中绝大部分对象的地址都是不同的，除非你明确赋值 `a = b`。
+
+## 六、系统
+
+### 6.1 `#!python os.listdir()` 在不同系统上的排序
+
+直接说结论，如果在 Windows 上执行 `#!python os.listdir()`，那么得到的结果是**按照文件名的字母顺序排序*的，而在 Linux 上执行 `#!python os.listdir()`，得到的结果是**乱序**的。
+
+=== ":simple-windows: Windows"
+
+    ```powershell
+    PS D:\> mkdir test | cd test
+    PS D:\test> ni 2 | ni 1 | ni 9 | ni 5
+    PS D:\test> python
+    Python 3.10.2 (tags/v3.10.2:a58ebcc, Jan 17 2022, 14:12:15) [MSC v.1929 64 bit (AMD64)] on win32
+    Type "help", "copyright", "credits" or "license" for more information.
+    >>> import os
+    >>> os.listdir('.')
+    ['1', '2', '5', '9']
+    >>>
+    ```
+
+=== ":simple-linux: Linux"
+
+    ```bash
+    pi@raspberrypi:~ $ mkdir test && cd test
+    pi@raspberrypi:~/test $ touch 2 && touch 1 && touch 9 && touch 5
+    pi@raspberrypi:~/test $ python3
+    Python 3.7.3 (default, Jan 22 2021, 20:04:44) 
+    [GCC 8.3.0] on linux
+    Type "help", "copyright", "credits" or "license" for more information.
+    >>> import os
+    >>> os.listdir('.')
+    ['1', '2', '9', '5']
+    >>> 
+    ```
+
+在 Linux 下的排序方式很奇怪，既不是按照文件名的字母顺序排序，也不是按照创建或修改时间排序。总之你可以将其视为乱序。
+
+如果你使用了 `#!python os.listdir()` 的程序强烈依赖于文件名的字母顺序排序，那么你需要在 Linux 上执行 `#!python os.listdir()` 之后先使用 `#!python sorted()` 对结果进行排序。
+
+### 6.2 `#!python os.path.join()` 采用不同的分隔符
+
+在 Windows 上，`#!python os.path.join()` 采用的是两个反斜杠 `\\` 作为分隔符，而在 Linux 上，`#!python os.path.join()` 采用的是正斜杠 `/` 作为分隔符。
+
+=== ":simple-windows: Windows"
+
+    ```python
+    os.path.join('a', 'b')
+    # 'a\\b'
+    ```
+
+=== ":simple-linux: Linux"
+
+    ```python
+    os.path.join('a', 'b')
+    # 'a/b'
+    ```
+
+这个问题通常不会对程序造成太大影响，因为我们使用 `#!python os.path.join()` 传入需要以路径作为参数的函数时，一定是在同一个操作系统内进行的。
