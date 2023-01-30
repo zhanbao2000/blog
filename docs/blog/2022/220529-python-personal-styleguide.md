@@ -402,7 +402,7 @@ Python 中的括号有个 [特性](https://docs.python.org/2/reference/lexical_a
 
 `textwrap` 是 Python 标准库之一，其中的 [`dedent()`](https://docs.python.org/zh-cn/3/library/textwrap.html#textwrap.dedent) 函数可以移除 `text` 中每一行的任何相同前缀空白符。这可以用来清除三重引号字符串行左侧空格，并在源码中仍然显示为缩进格式。
 
-### 3.4 使用 Python 习语取代某些自行实现
+### 3.3 使用 Python 习语取代某些自行实现
 
 !!! cite "引用"
 
@@ -557,6 +557,73 @@ Python 中的括号有个 [特性](https://docs.python.org/2/reference/lexical_a
 
      - 可以自动关闭文件句柄，不需要在结束读写之后手动关闭文件句柄。
      - 即使在文件处理过程中发生其他的错误，也能保证文件句柄被正确关闭。
+
+8. 使用[海象运算符](https://docs.python.org/zh-cn/3/whatsnew/3.8.html#assignment-expressions)（`:=`）在任何表达式内部为变量赋值
+
+    !!! Example
+
+        Normal:
+    
+        ```python
+        url = f'https://example.com/?name={name}'
+        print(url)
+        ```
+
+        Pythonic:
+    
+        ```python
+        print(url := f'https://example.com/?name={name}')
+        ```
+
+    !!! Example
+
+        Normal:
+    
+        ```python
+        n = len(a)
+        if n > 10:
+            print('太长了')
+        ```
+
+        Pythonic:
+    
+        ```python
+        if n := len(a) > 10:
+            print('太长了')
+        ```
+
+    !!! Example
+
+        Normal:
+    
+        ```python
+        with open('test.png', 'r') as f:
+            while True:
+                block = f.read(256)
+                if not block:
+                    break
+                process(block)
+        ```
+
+        Pythonic:
+    
+        ```python
+        with open('test.png', 'r') as f:
+            while block := f.read(256):
+            process(block)
+        ```
+
+    !!! Example
+
+        若在列表推导式中，需要在筛选条件中计算一个值，而同一个值又在表达式中需要被使用：
+    
+        ```python
+        [y for x in data if (y := f(x)) > 0]
+        ```
+
+        注意此处若不使用海象运算符，则无法使用列表推导式实现，只能通过 `#!python for` 循环实现。
+
+    请尽量将海象运算符的使用限制在清晰的场合中，以降低复杂性并提升可读性。
 
 ## 四、该避免什么
 
