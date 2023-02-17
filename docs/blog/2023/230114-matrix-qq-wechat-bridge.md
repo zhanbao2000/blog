@@ -170,7 +170,7 @@ matrix-wechat-agent.exe -h wss://matrix.example.com/_wechat -s %LISTEN_SECRET%
 
 !!! danger "危险"
 
-    我是从这里找到老版本微信的，但我无法保证链接安全性，请自信甄别，出现问题概不负责：
+    我是从这里找到老版本微信的，但我无法保证链接安全性，请自行甄别，出现问题概不负责：
 
      - https://sszs.oss-cn-hangzhou.aliyuncs.com/WeChatSetup3.7.0.30.exe
 
