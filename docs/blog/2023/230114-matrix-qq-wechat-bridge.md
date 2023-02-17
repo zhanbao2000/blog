@@ -403,8 +403,4 @@ sync groups
 
 ## 四、尾声
 
-目前已经重新回归 QQ 和微信官方客户端，并删除服务器上的 homeserver，但贴纸挂件地址仍然保留着，以防万一。
-
-贴纸挂件：
-
-https://matrix-sticker.pages.dev/
+目前已经重新回归 QQ 和微信官方客户端，并删除服务器上的 homeserver。
