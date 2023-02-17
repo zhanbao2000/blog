@@ -10,7 +10,7 @@
 <link href="https://blog.arisa.moe/blog/2023/230114-matrix-qq-wechat-bridge/" rel="canonical"/>
 <link href="../230113-my-2022-website/" rel="prev"/>
 <link href="../../../assets/favicon.webp" rel="icon"/>
-<meta content="mkdocs-1.4.2, mkdocs-material-9.0.9" name="generator"/>
+<meta content="mkdocs-1.4.2, mkdocs-material-9.0.12" name="generator"/>
 <title>通过 Matrix 协议实现代理接收 QQ 和微信消息 —— 从入坑到入土 - Arisa | Blog</title>
 <link href="../../../assets/stylesheets/main.0d440cfe.min.css" rel="stylesheet"/>
 <link href="../../../assets/stylesheets/palette.2505c338.min.css" rel="stylesheet"/>
@@ -845,7 +845,7 @@ as the main headline.
 <p>当时的 <code>ComWeChatRobot.dll</code> 版本号是 <code>3.7.0.30</code>，但官网微信版本早就不是这个版本了。</p>
 <div class="admonition danger">
 <p class="admonition-title">危险</p>
-<p>我是从这里找到老版本微信的，但我无法保证链接安全性，请自信甄别，出现问题概不负责：</p>
+<p>我是从这里找到老版本微信的，但我无法保证链接安全性，请自行甄别，出现问题概不负责：</p>
 <ul>
 <li><a href="https://sszs.oss-cn-hangzhou.aliyuncs.com/WeChatSetup3.7.0.30.exe">https://sszs.oss-cn-hangzhou.aliyuncs.com/WeChatSetup3.7.0.30.exe</a></li>
 </ul>
@@ -1006,16 +1006,14 @@ sync groups
 <p>甚至还遇到过从 Element 发送的消息，无法到达微信客户端的情况。</p>
 <p>以上所有问题，均检查过日志无异样，并且在 duo 的上述 <a href="https://duo.github.io/posts/matrix-qq-wechat/">博客</a> 中有其他用户提及过类似的问题。由于问题难以稳定复现（或者说复现周期过长），并且我已经决定不再使用 bridge 转发方案了，因此我没有去提 issue 的打算。</p>
 <h2 id="_13">四、尾声<a class="headerlink" href="#_13" title="Permanent link">¶</a></h2>
-<p>目前已经重新回归 QQ 和微信官方客户端，并删除服务器上的 homeserver，但贴纸挂件地址仍然保留着，以防万一。</p>
-<p>贴纸挂件：</p>
-<p><a href="https://matrix-sticker.pages.dev/">https://matrix-sticker.pages.dev/</a></p>
+<p>目前已经重新回归 QQ 和微信官方客户端，并删除服务器上的 homeserver。</p>
 <!-- Last update of source file -->
 <hr/>
 <div class="md-source-file">
 <small>
     
       最后更新:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_datetime">2023-01-16 09:48:32</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_datetime">2023-02-17 04:59:14</span>
 <br/>
         创建日期:
         <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_datetime">2023-01-16 09:48:32</span>
@@ -1105,7 +1103,7 @@ sync groups
 <div class="md-dialog__inner md-typeset"></div>
 </div>
 <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.footer", "navigation.tabs", "navigation.top", "navigation.tracking", "content.code.copy"], "search": "../../../assets/javascripts/workers/search.db81ec45.min.js", "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}}</script>
-<script src="../../../assets/javascripts/bundle.a00a7c5e.min.js"></script>
+<script src="../../../assets/javascripts/bundle.4b2c34cd.min.js"></script>
 <script src="../../../javascripts/mathjax.js"></script>
 <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
 <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
