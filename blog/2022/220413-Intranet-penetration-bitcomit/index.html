@@ -305,7 +305,7 @@
 </li>
 <li class="md-nav__item">
 <a class="md-nav__link" href="#_5">
-    关闭防吸血
+    是否要关闭反吸血
   </a>
 </li>
 <li class="md-nav__item">
@@ -482,7 +482,7 @@
 </li>
 <li class="md-nav__item">
 <a class="md-nav__link" href="#_5">
-    关闭防吸血
+    是否要关闭反吸血
   </a>
 </li>
 <li class="md-nav__item">
@@ -707,9 +707,14 @@ as the main headline.
 <p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="../images/220413-Intranet-penetration-bitcomit/green.png"><img alt="green" src="../images/220413-Intranet-penetration-bitcomit/green.png"/></a></p>
 <p>如果你的比特彗星客户端内有电驴插件，那么你应当同时为电驴插件也打开代理。如图：</p>
 <p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="../images/220413-Intranet-penetration-bitcomit/emule-proxy.jpg"><img alt="emule-proxy" src="../images/220413-Intranet-penetration-bitcomit/emule-proxy.jpg"/></a></p>
-<h2 id="_5">关闭防吸血<a class="headerlink" href="#_5" title="Permanent link">¶</a></h2>
-<p>因为比特彗星接收到的数据包都是 <code>frpc.exe</code> 发来的，因此所有的 peers 的外网 IP 都是 <code>127.0.0.1</code>，大量相同 IP 可能会触发比特彗星的防吸血机制，因此把他关掉。</p>
-<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="../images/220413-Intranet-penetration-bitcomit/anti-leech.png"><img alt="anti leech" src="../images/220413-Intranet-penetration-bitcomit/anti-leech.png"/></a></p>
+<h2 id="_5">是否要关闭反吸血<a class="headerlink" href="#_5" title="Permanent link">¶</a></h2>
+<p>在先前的版本中，我写道：</p>
+<blockquote>
+<p>因为比特彗星接收到的数据包都是 <code>frpc.exe</code> 发来的，因此所有的 peers 的外网 IP 都是 <code>127.0.0.1</code>，大量相同 IP 可能会触发比特彗星的反吸血机制，因此把他关掉。</p>
+</blockquote>
+<p>但实际上经过我的测试，将反吸血选项设置为 <code>自动</code> 时，并不会 ban 掉所有来自 <code>127.0.0.1</code> 的 IP，并且比特彗星同时依然 ban 掉了很多真正在吸血的 peers，其中不乏来自 <code>127.0.0.1</code> 的 IP 地址。</p>
+<p>显然，将反吸血设置为 <code>自动</code> 时，比特彗星的反吸血机制并不是完全靠 IP 地址来判断的（可能是通过用户 ID 判断的），因此自然也不会影响我们使用内网穿透。</p>
+<p>我的建议是将反吸血设置为 <code>自动</code> 即可。</p>
 <h2 id="_6">测试效果<a class="headerlink" href="#_6" title="Permanent link">¶</a></h2>
 <p>现在去下载任意一个 BT 种子，如果点开 <code>用户</code> 选项卡，发现很多来自 <code>127.0.0.1</code> 的连接，并且来源是 <code>被动</code>，发起是 <code>远程</code>，此时就说明你已经设置正确了。</p>
 <p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="../images/220413-Intranet-penetration-bitcomit/peers.png"><img alt="peers" src="../images/220413-Intranet-penetration-bitcomit/peers.png"/></a></p>
@@ -719,7 +724,7 @@ as the main headline.
 <small>
     
       最后更新:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_datetime">2022-04-18 07:11:53</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_datetime">2023-03-08 06:17:42</span>
 <br/>
         创建日期:
         <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_datetime">2022-04-13 03:45:30</span>
