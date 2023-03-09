@@ -5,14 +5,13 @@
 <head>
 <meta charset="utf-8"/>
 <meta content="width=device-width,initial-scale=1" name="viewport"/>
-<meta content="Arisa 的个人博客" name="description"/>
+<meta content="本文主要介绍如何在 PyCharm 中使用 Git Submodule。进一步地，你可以参考此方法在 JetBrains 全家桶中使用 Git Submodule。" name="description"/>
 <meta content="Akiba Arisa" name="author"/>
-<link href="https://blog.arisa.moe/blog/2022/220417-linux-clean-up-disk-space/" rel="canonical"/>
-<link href="../220416-arcaea-fanmade-chart-problem/" rel="prev"/>
-<link href="../220421-use-gzip-bomb-against-scanner/" rel="next"/>
+<link href="https://blog.arisa.moe/blog/2023/230309-pycharm-git-submodule/" rel="canonical"/>
+<link href="../230114-matrix-qq-wechat-bridge/" rel="prev"/>
 <link href="../../../assets/favicon.webp" rel="icon"/>
 <meta content="mkdocs-1.4.2, mkdocs-material-9.1.1" name="generator"/>
-<title>Linux 清理磁盘空间常见操作 - Arisa | Blog</title>
+<title>如何在 PyCharm 中使用 Git Submodule - Arisa | Blog</title>
 <link href="../../../assets/stylesheets/main.402914a4.min.css" rel="stylesheet"/>
 <link href="../../../assets/stylesheets/palette.a0c5b2b5.min.css" rel="stylesheet"/>
 <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
@@ -38,7 +37,7 @@
 <input autocomplete="off" class="md-toggle" data-md-toggle="search" id="__search" type="checkbox"/>
 <label class="md-overlay" for="__drawer"></label>
 <div data-md-component="skip">
-<a class="md-skip" href="#journal">
+<a class="md-skip" href="#_1">
           跳转至
         </a>
 </div>
@@ -62,7 +61,7 @@
 <div class="md-header__topic" data-md-component="header-topic">
 <span class="md-ellipsis">
             
-              Linux 清理磁盘空间常见操作
+              如何在 PyCharm 中使用 Git Submodule
             
           </span>
 </div>
@@ -140,7 +139,7 @@
     </a>
 </li>
 <li class="md-tabs__item">
-<a class="md-tabs__link md-tabs__link--active" href="../220406-nginx-stream/">
+<a class="md-tabs__link md-tabs__link--active" href="../../2022/220406-nginx-stream/">
         Blog
       </a>
 </li>
@@ -197,81 +196,176 @@
           Blog
         </label>
 <ul class="md-nav__list" data-md-scrollfix="">
-<li class="md-nav__item md-nav__item--active md-nav__item--nested">
-<input checked="" class="md-nav__toggle md-toggle" id="__nav_4_1" type="checkbox"/>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_4_1" type="checkbox"/>
 <label class="md-nav__link" for="__nav_4_1" id="__nav_4_1_label" tabindex="0">
           2022
           <span class="md-nav__icon md-icon"></span>
 </label>
-<nav aria-expanded="true" aria-labelledby="__nav_4_1_label" class="md-nav" data-md-level="2">
+<nav aria-expanded="false" aria-labelledby="__nav_4_1_label" class="md-nav" data-md-level="2">
 <label class="md-nav__title" for="__nav_4_1">
 <span class="md-nav__icon md-icon"></span>
           2022
         </label>
 <ul class="md-nav__list" data-md-scrollfix="">
 <li class="md-nav__item">
-<a class="md-nav__link" href="../220406-nginx-stream/">
+<a class="md-nav__link" href="../../2022/220406-nginx-stream/">
         nginx 如何设置 stream 转发
       </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../220406-set-http-proxy/">
+<a class="md-nav__link" href="../../2022/220406-set-http-proxy/">
         解决使用代理后 pip 和 python 无法连接到网络的问题
       </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../220406-venv-move-file/">
+<a class="md-nav__link" href="../../2022/220406-venv-move-file/">
         移动 python 项目文件夹位置后如何解决 PyCharm 找不到解释器与无法正常使用终端的问题
       </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../220407-certbot/">
+<a class="md-nav__link" href="../../2022/220407-certbot/">
         certbot 常用操作
       </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../220407-github-pages/">
+<a class="md-nav__link" href="../../2022/220407-github-pages/">
         GitHub Pages 文档自动化部署 - MkDocs
       </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../220408-github-pages-2/">
+<a class="md-nav__link" href="../../2022/220408-github-pages-2/">
         GitHub Pages 文档自动化部署 - VuePress
       </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../220409-cloudflare-workers-arcaea-update/">
+<a class="md-nav__link" href="../../2022/220409-cloudflare-workers-arcaea-update/">
         如何使用 Cloudflare Workers 来搭建 Arcaea 镜像下载服务器
       </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../220412-ida-substitute-usage/">
+<a class="md-nav__link" href="../../2022/220412-ida-substitute-usage/">
         IDA 替换二进制文件
       </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../220413-Intranet-penetration-bitcomit/">
+<a class="md-nav__link" href="../../2022/220413-Intranet-penetration-bitcomit/">
         利用内网穿透和代理获取公网 IP 地址解决比特彗星黄灯
       </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../220414-fk-arcaea-songlist-hash/">
+<a class="md-nav__link" href="../../2022/220414-fk-arcaea-songlist-hash/">
         解除 Arcaea 对 songlist 等文件的哈希校验
       </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../220416-arcaea-fanmade-chart-problem/">
+<a class="md-nav__link" href="../../2022/220416-arcaea-fanmade-chart-problem/">
         Arcaea 自制谱移植常见问题
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../2022/220417-linux-clean-up-disk-space/">
+        Linux 清理磁盘空间常见操作
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../2022/220421-use-gzip-bomb-against-scanner/">
+        如何使用 gzip 压缩包炸弹对恶意扫描器进行反击
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../2022/220428-how-to-ask-questions-like-a-retard/">
+        如何像一个弱智一样提问
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../2022/220429-dilb-ultimate-solution/">
+        基于 Anaconda 的 dlib（CUDA 版本）安装的终极解决方案
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../2022/220502-how-dogs-work-in-epic7/">
+        第七史诗升六星的正确理解
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../2022/220511-how-to-write-python-into-classical-chinese/">
+        如何将 Python 写成文言文
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../2022/220529-python-personal-styleguide/">
+        Python 个人代码风格指导
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../2022/220530-auto-sign-in-guide/">
+        自动签到使用指南
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../2022/220602-ipv6-bypass-billing-system/">
+        架设双栈代理服务器通过 IPv6 绕过校园网计费系统的方法
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../2022/220902-python-mutable-defaults/">
+        Python 默认参数可变的危险性
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../2022/220913-python-confusing-detail/">
+        Python 中令人迷惑的细节
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../2022/221113-rclone-sharepoint-for-hentai-at-home/">
+        使用 Rclone 挂载 SharePoint 作为 Hentai@Home 的缓存目录
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../2022/221113-rclone-sharepoint-oauth-failed/">
+        通过 WebDAV 解决 Rclone 挂载 SharePoint 时遇到 Error: Auth Error
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../2022/221115-issue-of-position-or-right-and-wrong/">
+        立场问题与是非问题
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--active md-nav__item--nested">
+<input checked="" class="md-nav__toggle md-toggle" id="__nav_4_2" type="checkbox"/>
+<label class="md-nav__link" for="__nav_4_2" id="__nav_4_2_label" tabindex="0">
+          2023
+          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="true" aria-labelledby="__nav_4_2_label" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_4_2">
+<span class="md-nav__icon md-icon"></span>
+          2023
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../230113-my-2022-website/">
+        我的浏览器 2022 年度总结
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../230114-matrix-qq-wechat-bridge/">
+        通过 Matrix 协议实现代理接收 QQ 和微信消息 —— 从入坑到入土
       </a>
 </li>
 <li class="md-nav__item md-nav__item--active">
 <input class="md-nav__toggle md-toggle" id="__toc" type="checkbox"/>
 <label class="md-nav__link md-nav__link--active" for="__toc">
-          Linux 清理磁盘空间常见操作
+          如何在 PyCharm 中使用 Git Submodule
           <span class="md-nav__icon md-icon"></span>
 </label>
 <a class="md-nav__link md-nav__link--active" href="./">
-        Linux 清理磁盘空间常见操作
+        如何在 PyCharm 中使用 Git Submodule
       </a>
 <nav aria-label="目录" class="md-nav md-nav--secondary">
 <label class="md-nav__title" for="__toc">
@@ -280,127 +374,56 @@
     </label>
 <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
 <li class="md-nav__item">
-<a class="md-nav__link" href="#journal">
-    清理 journal 日志
-  </a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="#apt-get">
-    清理 apt-get 缓存
-  </a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="#pip">
-    清理 pip 缓存
-  </a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="#snap">
-    清理旧版本 snap 包
-  </a>
-</li>
-<li class="md-nav__item">
 <a class="md-nav__link" href="#_1">
-    清理登录日志
+    现状
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#_2">
+    步骤
+  </a>
+<nav aria-label="步骤" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#1-github">
+    1. 在 GitHub 上新建一个仓库
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#2">
+    2. 将远程仓库以子模块形式添加到目标目录
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#3-pycharm-git">
+    3. 在 PyCharm 中导入该 Git 仓库
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#4">
+    4. 检查远程仓库映射是否成功
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#5">
+    5. 将子模块的变更提交到本地
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#6">
+    6. 将子模块的变更推送到远程仓库
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#7">
+    7. 将子模块的变更推送到主项目的远程仓库
   </a>
 </li>
 </ul>
 </nav>
 </li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="../220421-use-gzip-bomb-against-scanner/">
-        如何使用 gzip 压缩包炸弹对恶意扫描器进行反击
-      </a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="../220428-how-to-ask-questions-like-a-retard/">
-        如何像一个弱智一样提问
-      </a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="../220429-dilb-ultimate-solution/">
-        基于 Anaconda 的 dlib（CUDA 版本）安装的终极解决方案
-      </a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="../220502-how-dogs-work-in-epic7/">
-        第七史诗升六星的正确理解
-      </a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="../220511-how-to-write-python-into-classical-chinese/">
-        如何将 Python 写成文言文
-      </a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="../220529-python-personal-styleguide/">
-        Python 个人代码风格指导
-      </a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="../220530-auto-sign-in-guide/">
-        自动签到使用指南
-      </a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="../220602-ipv6-bypass-billing-system/">
-        架设双栈代理服务器通过 IPv6 绕过校园网计费系统的方法
-      </a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="../220902-python-mutable-defaults/">
-        Python 默认参数可变的危险性
-      </a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="../220913-python-confusing-detail/">
-        Python 中令人迷惑的细节
-      </a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="../221113-rclone-sharepoint-for-hentai-at-home/">
-        使用 Rclone 挂载 SharePoint 作为 Hentai@Home 的缓存目录
-      </a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="../221113-rclone-sharepoint-oauth-failed/">
-        通过 WebDAV 解决 Rclone 挂载 SharePoint 时遇到 Error: Auth Error
-      </a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="../221115-issue-of-position-or-right-and-wrong/">
-        立场问题与是非问题
-      </a>
-</li>
 </ul>
 </nav>
-</li>
-<li class="md-nav__item md-nav__item--nested">
-<input class="md-nav__toggle md-toggle" id="__nav_4_2" type="checkbox"/>
-<label class="md-nav__link" for="__nav_4_2" id="__nav_4_2_label" tabindex="0">
-          2023
-          <span class="md-nav__icon md-icon"></span>
-</label>
-<nav aria-expanded="false" aria-labelledby="__nav_4_2_label" class="md-nav" data-md-level="2">
-<label class="md-nav__title" for="__nav_4_2">
-<span class="md-nav__icon md-icon"></span>
-          2023
-        </label>
-<ul class="md-nav__list" data-md-scrollfix="">
-<li class="md-nav__item">
-<a class="md-nav__link" href="../../2023/230113-my-2022-website/">
-        我的浏览器 2022 年度总结
-      </a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="../../2023/230114-matrix-qq-wechat-bridge/">
-        通过 Matrix 协议实现代理接收 QQ 和微信消息 —— 从入坑到入土
-      </a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="../../2023/230309-pycharm-git-submodule/">
-        如何在 PyCharm 中使用 Git Submodule
-      </a>
 </li>
 </ul>
 </nav>
@@ -423,29 +446,53 @@
     </label>
 <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
 <li class="md-nav__item">
-<a class="md-nav__link" href="#journal">
-    清理 journal 日志
-  </a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="#apt-get">
-    清理 apt-get 缓存
-  </a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="#pip">
-    清理 pip 缓存
-  </a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="#snap">
-    清理旧版本 snap 包
-  </a>
-</li>
-<li class="md-nav__item">
 <a class="md-nav__link" href="#_1">
-    清理登录日志
+    现状
   </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#_2">
+    步骤
+  </a>
+<nav aria-label="步骤" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#1-github">
+    1. 在 GitHub 上新建一个仓库
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#2">
+    2. 将远程仓库以子模块形式添加到目标目录
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#3-pycharm-git">
+    3. 在 PyCharm 中导入该 Git 仓库
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#4">
+    4. 检查远程仓库映射是否成功
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#5">
+    5. 将子模块的变更提交到本地
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#6">
+    6. 将子模块的变更推送到远程仓库
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#7">
+    7. 将子模块的变更推送到主项目的远程仓库
+  </a>
+</li>
+</ul>
+</nav>
 </li>
 </ul>
 </nav>
@@ -459,7 +506,7 @@ Hack: check whether the content contains a h1 headline. If it
 doesn't, the page title (or respectively site name) is used
 as the main headline.
 -->
-<h1>Linux 清理磁盘空间常见操作</h1>
+<h1>如何在 PyCharm 中使用 Git Submodule</h1>
 <!-- Markdown content -->
 <aside class="mdx-author">
 <p>
@@ -473,116 +520,83 @@ as the main headline.
 <svg class="bi bi-clock" fill="currentColor" height="12" viewbox="0 0 16 16" width="12" xmlns="http://www.w3.org/2000/svg">
 <path d="M8 3.5a.5.5 0 0 0-1 0V9a.5.5 0 0 0 .252.434l3.5 2a.5.5 0 0 0 .496-.868L8 8.71V3.5z"></path>
 <path d="M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16zm7-8A7 7 0 1 1 1 8a7 7 0 0 1 14 0z"></path>
-</svg> 6 min read
+</svg> 5 min read
                 </span>
 </p>
 </aside>
 <div class="tags">
-<a class="tag" href="/tags/#linux"><code>#linux</code></a>
+<a class="tag" href="/tags/#python"><code>#python</code></a>
+<a class="tag" href="/tags/#pycharm"><code>#pycharm</code></a>
+<a class="tag" href="/tags/#git"><code>#git</code></a>
+<a class="tag" href="/tags/#github"><code>#github</code></a>
 </div>
-<p>使用如下方式可以清理 Linux 的绝大部分垃圾。</p>
-<h2 id="journal">清理 journal 日志<a class="headerlink" href="#journal" title="Permanent link">¶</a></h2>
-<p>一般可以清理 2~3 GB。</p>
-<ul>
-<li>
-<p>查看 journal 日志占用的硬盘空间：</p>
-<div class="highlight"><pre><span></span><code>journalctl<span class="w"> </span>-x<span class="w"> </span>--disk-usage
+<h2 id="_1">现状<a class="headerlink" href="#_1" title="Permanent link">¶</a></h2>
+<p>截至 2023 年 3 月，JetBrains 全家桶仅对 Git Submodule 功能提供很有限的支持。在 PyCharm 中甚至根本看不到 Git Submodule 的身影。</p>
+<p>本文通过 <code>git</code> 命令行和 PyCharm 新建 Git 仓库的方法，来曲线救国地解决这个问题。</p>
+<h2 id="_2">步骤<a class="headerlink" href="#_2" title="Permanent link">¶</a></h2>
+<h3 id="1-github">1. 在 GitHub 上新建一个仓库<a class="headerlink" href="#1-github" title="Permanent link">¶</a></h3>
+<p>由于 <code>git submodule</code> 命令只能接远程仓库作为参数，因此此步骤需要我们在 GitHub 上新建一个仓库，用于存放我们的子模块。</p>
+<p>如果你需要导入的子模块已经存在于 GitHub 上，那么你可以直接跳过这一步。</p>
+<h3 id="2">2. 将远程仓库以子模块形式添加到目标目录<a class="headerlink" href="#2" title="Permanent link">¶</a></h3>
+<p><strong>进入目标目录中</strong>，然后使用 <code>git submodule add</code> 命令将远程仓库以子模块形式添加到主项目的目标目录。</p>
+<p><code>git submodule add</code> 命令的语法为：</p>
+<div class="highlight"><pre><span></span><code>git<span class="w"> </span>submodule<span class="w"> </span>add<span class="w"> </span>&lt;远程仓库地址&gt;<span class="w"> </span>&lt;子模块目录&gt;
 </code></pre></div>
-</li>
-<li>
-<p>一次性清理 journal 日志：</p>
-<div class="highlight"><pre><span></span><code>journalctl<span class="w"> </span>--vacuum-size<span class="o">=</span>10M<span class="w">  </span><span class="c1"># 清理日志到只剩下 10M</span>
-journalctl<span class="w"> </span>--vacuum-time<span class="o">=</span>1d<span class="w">   </span><span class="c1"># 清理一天前的日志</span>
+<p>因此我们执行：</p>
+<div class="highlight"><pre><span></span><code><span class="nb">cd</span><span class="w"> </span>src/plugins/mokabot_bandori
+git<span class="w"> </span>submodule<span class="w"> </span>add<span class="w"> </span>https://github.com/zhanbao2000/bestdori.git<span class="w"> </span>bestdori
 </code></pre></div>
-</li>
-</ul>
-<div class="admonition 注意 attention">
-<p class="admonition-title">注意</p>
-<p>这两个操作只是一次性清除日志，<strong>并不能限制以后的日志文件不会超过这个大小</strong>。很多博客里说这两个操作可以限制日志文件的大小，属实是误导人。</p>
-<p>如果需要永久限制日志文件的大小，需要修改 <code>/etc/systemd/journald.conf</code> 文件。</p>
+<p>此时 <code>src/plugins/mokabot_bandori</code> 目录下会多出一个 <code>bestdori</code> 目录，这就是我们的子模块。</p>
+<h3 id="3-pycharm-git">3. 在 PyCharm 中导入该 Git 仓库<a class="headerlink" href="#3-pycharm-git" title="Permanent link">¶</a></h3>
+<p>目前为止，<code>git</code> 命令行已经知道这是一个子模块了，但是目前 PyCharm 还不知道这是一个子模块，甚至不知道这是一个 Git 仓库。</p>
+<p>双击 <span class="keys"><kbd class="key-shift">Shift</kbd></span>，输入 <code>create</code>，找到 <code>创建 Git 仓库</code>。</p>
+<p>（由于主项目已经建立过本地的 Git 仓库，PyCharm 的 Git 工具栏将不再出现这个选项，因此只能在搜索里找到）</p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="../images/230309-pycharm-git-submodule/create.png"><img alt="create" src="../images/230309-pycharm-git-submodule/create.png"/></a></p>
+<p>仓库目录选择我们的子模块目录 <code>bestdori</code>。</p>
+<p>这里会提示是否要创建新的 VCS 根，选择 <code>是</code>。</p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="../images/230309-pycharm-git-submodule/git_init.png"><img alt="git_init" src="../images/230309-pycharm-git-submodule/git_init.png"/></a></p>
+<h3 id="4">4. 检查远程仓库映射是否成功<a class="headerlink" href="#4" title="Permanent link">¶</a></h3>
+<p>此时打开 Git 工具栏中的 <code>管理远程..</code> 选项</p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="../images/230309-pycharm-git-submodule/git_remote.png"><img alt="git_remote" src="../images/230309-pycharm-git-submodule/git_remote.png"/></a></p>
+<p>可以看到刚刚的子模块 <code>bestdori</code> 已经成功映射到远程的 <code>origin</code> 了，那么说明操作成功。</p>
+<h3 id="5">5. 将子模块的变更提交到本地<a class="headerlink" href="#5" title="Permanent link">¶</a></h3>
+<p>随意进行一些变更，例如，在 PyCharm 中，在 <code>bestdori</code> 目录下新建一个文件。</p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="../images/230309-pycharm-git-submodule/__init__.png"><img alt="init" src="../images/230309-pycharm-git-submodule/__init__.png"/></a></p>
+<p>PyCharm 会提示你是否要添加至 <code>git</code>，这里选 <code>是</code>，当然你也可以稍后自行添加。</p>
+<p>添加一些内容后，进行提交。</p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="../images/230309-pycharm-git-submodule/git_commit.png"><img alt="git_commit" src="../images/230309-pycharm-git-submodule/git_commit.png"/></a></p>
+<p>可以看到一共有两个文件的变更，一个是我们刚刚在子模块中创立的 <code>__init__.py</code>，另一个是主项目的 <code>.gitmodules</code>，直接提交即可。</p>
+<p>这两个文件将会<strong>分别提交到独立的本地 Git 仓库中</strong>。</p>
+<p>之所以会有 <code>.gitmodules</code>，那当然是因为我们刚刚添加了新的子模块，这个文件只会在子模块被添加时更新一次。</p>
+<h3 id="6">6. 将子模块的变更推送到远程仓库<a class="headerlink" href="#6" title="Permanent link">¶</a></h3>
+<p>在 Git 工具栏中，点击 <code>推送..</code>。</p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="../images/230309-pycharm-git-submodule/git_push.png"><img alt="git_push" src="../images/230309-pycharm-git-submodule/git_push.png"/></a></p>
+<p>可以看到共有两个仓库各一处变更，一处是子模块的 <code>__init__.py</code>，另一处是主项目的 <code>.gitmodules</code>，没有问题，直接推送即可。</p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="../images/230309-pycharm-git-submodule/remote_bestdori.png"><img alt="remote_bestdori" src="../images/230309-pycharm-git-submodule/remote_bestdori.png"/></a></p>
+<p>推送后去 GitHub 上看，可以看到子模块 <code>bestdori</code> 的远程仓库已经成功推送了。</p>
+<h3 id="7">7. 将子模块的变更推送到主项目的远程仓库<a class="headerlink" href="#7" title="Permanent link">¶</a></h3>
+<p>再次进入提交页面，可以看到 <code>bestdori</code> 整个文件夹被列了出来。</p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="../images/230309-pycharm-git-submodule/git_commit_bestdori.png"><img alt="git_commit_bestdori" src="../images/230309-pycharm-git-submodule/git_commit_bestdori.png"/></a></p>
+<p>勾选他，提交，然后推送。</p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="../images/230309-pycharm-git-submodule/git_push_bestdori.png"><img alt="git_push_bestdori" src="../images/230309-pycharm-git-submodule/git_push_bestdori.png"/></a></p>
+<p>可以看到刚刚的这次提交是属于主项目的，这一步的意义在于，通知主项目的 Git 远程仓库，子模块的远程仓库已经更新了。</p>
+<p>推送后查看主项目的远程仓库：</p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="../images/230309-pycharm-git-submodule/remote_mokabot.png"><img alt="remote_mokabot" src="../images/230309-pycharm-git-submodule/remote_mokabot.png"/></a></p>
+<p>可以看到主项目的远程仓库中已经正确识别了这是一个子模块，并且子模块的推送版本也是最新的。</p>
+<div class="admonition tips">
+<p class="admonition-title">提示</p>
+<p>之后每次想要对子模块进行一些更改，并使主项目同步变更，只需重复步骤 5 ~ 9 即可。</p>
 </div>
-<ul>
-<li>
-<p>永久限制 journal 日志的大小：</p>
-<div class="highlight"><span class="filename">journald.conf</span><pre><span></span><code>[Journal]
-SystemMaxUse=10M   # 硬盘中只保留最近 10M 的日志
-RuntimeMaxUse=10M  # 内存中只保留最近 10M 的日志
-</code></pre></div>
-</li>
-<li>
-<p>不保留日志</p>
-<div class="highlight"><span class="filename">journald.conf</span><pre><span></span><code>[Journal]
-Storage=none       # 丢弃所有的日志，不保存到内存或磁盘
-</code></pre></div>
-</li>
-</ul>
-<div class="admonition 危险 danger">
-<p class="admonition-title">危险</p>
-<p>不要使用 <code>rm</code> 命令来删除 journal 日志。参考 <a href="https://www.cnblogs.com/pennychen/p/8681119.html">删除日志释放空间最好不要用rm</a></p>
-</div>
-<h2 id="apt-get">清理 apt-get 缓存<a class="headerlink" href="#apt-get" title="Permanent link">¶</a></h2>
-<p>一般可以清理数百 MB。</p>
-<div class="highlight"><pre><span></span><code>apt-get<span class="w"> </span>clean
-</code></pre></div>
-<h2 id="pip">清理 pip 缓存<a class="headerlink" href="#pip" title="Permanent link">¶</a></h2>
-<p>一般可以清理两三百 MB。</p>
-<div class="highlight"><pre><span></span><code>rm<span class="w"> </span>-r<span class="w"> </span>~/.cache/pip
-</code></pre></div>
-<h2 id="snap">清理旧版本 snap 包<a class="headerlink" href="#snap" title="Permanent link">¶</a></h2>
-<p>一般每个旧的 snap 包可以清理 100 MB。</p>
-<ul>
-<li>
-<p>列出所有的 snap 包：</p>
-<div class="highlight"><pre><span></span><code>snap<span class="w"> </span>list<span class="w"> </span>--all
-</code></pre></div>
-<p>可以见到很多标记为 <code>disabled</code> 的 snap 包，这些包是可以直接卸载的。</p>
-<div class="highlight"><pre><span></span><code>Name     Version    Rev    Tracking       Publisher     Notes
-certbot  1.26.0     1952   latest/stable  certbot-eff✓  classic
-<span class="hll">cmake    3.23.0     1070   latest/stable  crascit✓      disabled,classic
-</span>cmake    3.23.1     1082   latest/stable  crascit✓      classic
-<span class="hll">core     16-2.55.2  12941  latest/stable  canonical✓    core,disabled
-</span>core     16-2.54.4  12834  latest/stable  canonical✓    core
-core18   20220309   2344   latest/stable  canonical✓    base
-core20   20220318   1405   latest/stable  canonical✓    base
-</code></pre></div>
-</li>
-<li>
-<p>删除这些重复的 snap 包：</p>
-<div class="highlight"><pre><span></span><code>snap<span class="w"> </span>remove<span class="w"> </span>XXXX<span class="w"> </span>--revision<span class="w"> </span>YYYY<span class="w">   </span><span class="c1"># XXXX 是软件的 name，YYYY 是软件的 Rev</span>
-</code></pre></div>
-</li>
-<li>
-<p>也可以使用这个脚本清除：</p>
-<p>来自 <a href="https://itsfoss.com/clean-snap-packages/">How to Clean Up Snap Package Versions in Linux</a></p>
-<div class="highlight"><pre><span></span><code><span class="ch">#!/bin/bash</span>
-<span class="c1"># Removes old revisions of snaps</span>
-<span class="c1"># CLOSE ALL SNAPS BEFORE RUNNING THIS</span>
-<span class="nb">set</span><span class="w"> </span>-eu
-snap<span class="w"> </span>list<span class="w"> </span>--all<span class="w"> </span><span class="p">|</span><span class="w"> </span>awk<span class="w"> </span><span class="s1">'/disabled/{print $1, $3}'</span><span class="w"> </span><span class="p">|</span>
-<span class="w">    </span><span class="k">while</span><span class="w"> </span><span class="nb">read</span><span class="w"> </span>snapname<span class="w"> </span>revision<span class="p">;</span><span class="w"> </span><span class="k">do</span>
-<span class="w">        </span>snap<span class="w"> </span>remove<span class="w"> </span><span class="s2">"</span><span class="nv">$snapname</span><span class="s2">"</span><span class="w"> </span>--revision<span class="o">=</span><span class="s2">"</span><span class="nv">$revision</span><span class="s2">"</span>
-<span class="w">    </span><span class="k">done</span>
-</code></pre></div>
-</li>
-</ul>
-<h2 id="_1">清理登录日志<a class="headerlink" href="#_1" title="Permanent link">¶</a></h2>
-<p>这个文件是记录错误登录的日志，如果有人每天试你的密码来暴力破解你的 ssh，那你的这个文件就会很大。</p>
-<div class="highlight"><pre><span></span><code><span class="nb">echo</span><span class="w"> </span><span class="s2">""</span><span class="w"> </span>&gt;<span class="w"> </span>/var/log/btmp
-</code></pre></div>
-<p>该文件同理</p>
-<div class="highlight"><pre><span></span><code><span class="nb">echo</span><span class="w"> </span><span class="s2">""</span><span class="w"> </span>&gt;<span class="w"> </span>/var/log/auth.log
-</code></pre></div>
-<p>同理，不应当使用 <code>rm</code> 而是使用 <code>echo</code> 来清空这两个日志。</p>
 <!-- Last update of source file -->
 <hr/>
 <div class="md-source-file">
 <small>
     
       最后更新:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_datetime">2022-04-20 19:04:16</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_datetime">2023-03-09 16:13:23</span>
 <br/>
         创建日期:
-        <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_datetime">2022-04-17 13:21:51</span>
+        <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_datetime">2023-03-09 16:13:23</span>
 </small>
 </div>
 <!-- Giscus -->
@@ -626,7 +640,7 @@ snap<span class="w"> </span>list<span class="w"> </span>--all<span class="w"> </
 </main>
 <footer class="md-footer">
 <nav aria-label="页脚" class="md-footer__inner md-grid">
-<a aria-label="上一页: Arcaea 自制谱移植常见问题" class="md-footer__link md-footer__link--prev" href="../220416-arcaea-fanmade-chart-problem/" rel="prev">
+<a aria-label="上一页: 通过 Matrix 协议实现代理接收 QQ 和微信消息 —— 从入坑到入土" class="md-footer__link md-footer__link--prev" href="../230114-matrix-qq-wechat-bridge/" rel="prev">
 <div class="md-footer__button md-icon">
 <svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"></path></svg>
 </div>
@@ -635,21 +649,8 @@ snap<span class="w"> </span>list<span class="w"> </span>--all<span class="w"> </
 <span class="md-footer__direction">
                   上一页
                 </span>
-                Arcaea 自制谱移植常见问题
+                通过 Matrix 协议实现代理接收 QQ 和微信消息 —— 从入坑到入土
               </div>
-</div>
-</a>
-<a aria-label="下一页: 如何使用 gzip 压缩包炸弹对恶意扫描器进行反击" class="md-footer__link md-footer__link--next" href="../220421-use-gzip-bomb-against-scanner/" rel="next">
-<div class="md-footer__title">
-<div class="md-ellipsis">
-<span class="md-footer__direction">
-                  下一页
-                </span>
-                如何使用 gzip 压缩包炸弹对恶意扫描器进行反击
-              </div>
-</div>
-<div class="md-footer__button md-icon">
-<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4Z"></path></svg>
 </div>
 </a>
 </nav>
