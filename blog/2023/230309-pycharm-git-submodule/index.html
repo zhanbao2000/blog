@@ -10,9 +10,9 @@
 <link href="https://blog.arisa.moe/blog/2023/230309-pycharm-git-submodule/" rel="canonical"/>
 <link href="../230114-matrix-qq-wechat-bridge/" rel="prev"/>
 <link href="../../../assets/favicon.webp" rel="icon"/>
-<meta content="mkdocs-1.4.2, mkdocs-material-9.1.1" name="generator"/>
+<meta content="mkdocs-1.4.2, mkdocs-material-9.1.2" name="generator"/>
 <title>如何在 PyCharm 中使用 Git Submodule - Arisa | Blog</title>
-<link href="../../../assets/stylesheets/main.402914a4.min.css" rel="stylesheet"/>
+<link href="../../../assets/stylesheets/main.7bf56d0a.min.css" rel="stylesheet"/>
 <link href="../../../assets/stylesheets/palette.a0c5b2b5.min.css" rel="stylesheet"/>
 <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
 <link href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&amp;display=fallback" rel="stylesheet"/>
@@ -582,10 +582,11 @@ git<span class="w"> </span>submodule<span class="w"> </span>add<span class="w"> 
 <p>可以看到刚刚的这次提交是属于主项目的，这一步的意义在于，通知主项目的 Git 远程仓库，子模块的远程仓库已经更新了。</p>
 <p>推送后查看主项目的远程仓库：</p>
 <p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="../images/230309-pycharm-git-submodule/remote_mokabot.png"><img alt="remote_mokabot" src="../images/230309-pycharm-git-submodule/remote_mokabot.png"/></a></p>
-<p>可以看到主项目的远程仓库中已经正确识别了这是一个子模块，并且子模块的推送版本也是最新的。</p>
+<p>可以看到主项目的远程仓库中已经正确识别了这是一个子模块。</p>
+<p>（因为我第一次推送的截图没截上，所以我进行了第二次提交 + 推送，因此第 6 步和第 7 步截图中的提交消息、commit 版本是不一样的）</p>
 <div class="admonition tips">
 <p class="admonition-title">提示</p>
-<p>之后每次想要对子模块进行一些更改，并使主项目同步变更，只需重复步骤 5 ~ 9 即可。</p>
+<p>之后每次想要对子模块进行一些更改，并使主项目同步变更，只需重复步骤 5 ~ 7 即可。</p>
 </div>
 <!-- Last update of source file -->
 <hr/>
@@ -593,7 +594,7 @@ git<span class="w"> </span>submodule<span class="w"> </span>add<span class="w"> 
 <small>
     
       最后更新:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_datetime">2023-03-09 16:13:23</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_datetime">2023-03-10 03:45:39</span>
 <br/>
         创建日期:
         <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_datetime">2023-03-09 16:13:23</span>
@@ -683,7 +684,7 @@ git<span class="w"> </span>submodule<span class="w"> </span>add<span class="w"> 
 <div class="md-dialog__inner md-typeset"></div>
 </div>
 <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.footer", "navigation.tabs", "navigation.top", "navigation.tracking", "content.code.copy"], "search": "../../../assets/javascripts/workers/search.208ed371.min.js", "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}}</script>
-<script src="../../../assets/javascripts/bundle.b78d2936.min.js"></script>
+<script src="../../../assets/javascripts/bundle.fc8c2696.min.js"></script>
 <script src="../../../javascripts/mathjax.js"></script>
 <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
 <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
