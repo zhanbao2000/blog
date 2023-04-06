@@ -9,10 +9,11 @@
 <meta content="Akiba Arisa" name="author"/>
 <link href="https://blog.arisa.moe/blog/2023/230309-pycharm-git-submodule/" rel="canonical"/>
 <link href="../230114-matrix-qq-wechat-bridge/" rel="prev"/>
+<link href="../230406-pillow-affine-args/" rel="next"/>
 <link href="../../../assets/favicon.webp" rel="icon"/>
-<meta content="mkdocs-1.4.2, mkdocs-material-9.1.2" name="generator"/>
+<meta content="mkdocs-1.4.2, mkdocs-material-9.1.5" name="generator"/>
 <title>如何在 PyCharm 中使用 Git Submodule - Arisa | Blog</title>
-<link href="../../../assets/stylesheets/main.7bf56d0a.min.css" rel="stylesheet"/>
+<link href="../../../assets/stylesheets/main.7a7fce14.min.css" rel="stylesheet"/>
 <link href="../../../assets/stylesheets/palette.a0c5b2b5.min.css" rel="stylesheet"/>
 <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
 <link href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&amp;display=fallback" rel="stylesheet"/>
@@ -425,6 +426,11 @@
 </ul>
 </nav>
 </li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../230406-pillow-affine-args/">
+        （Pillow）Affine 图形变换的矩阵参数详解
+      </a>
+</li>
 </ul>
 </nav>
 </li>
@@ -551,37 +557,37 @@ git<span class="w"> </span>submodule<span class="w"> </span>add<span class="w"> 
 <p>目前为止，<code>git</code> 命令行已经知道这是一个子模块了，但是目前 PyCharm 还不知道这是一个子模块，甚至不知道这是一个 Git 仓库。</p>
 <p>双击 <span class="keys"><kbd class="key-shift">Shift</kbd></span>，输入 <code>create</code>，找到 <code>创建 Git 仓库</code>。</p>
 <p>（由于主项目已经建立过本地的 Git 仓库，PyCharm 的 Git 工具栏将不再出现这个选项，因此只能在搜索里找到）</p>
-<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="../images/230309-pycharm-git-submodule/create.png"><img alt="create" src="../images/230309-pycharm-git-submodule/create.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="../images/230309-pycharm-git-submodule/create.png"><img alt="create" src="../images/230309-pycharm-git-submodule/create.png"/></a></p>
 <p>仓库目录选择我们的子模块目录 <code>bestdori</code>。</p>
 <p>这里会提示是否要创建新的 VCS 根，选择 <code>是</code>。</p>
-<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="../images/230309-pycharm-git-submodule/git_init.png"><img alt="git_init" src="../images/230309-pycharm-git-submodule/git_init.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="../images/230309-pycharm-git-submodule/git_init.png"><img alt="git_init" src="../images/230309-pycharm-git-submodule/git_init.png"/></a></p>
 <h3 id="4">4. 检查远程仓库映射是否成功<a class="headerlink" href="#4" title="Permanent link">¶</a></h3>
 <p>此时打开 Git 工具栏中的 <code>管理远程..</code> 选项</p>
-<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="../images/230309-pycharm-git-submodule/git_remote.png"><img alt="git_remote" src="../images/230309-pycharm-git-submodule/git_remote.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="../images/230309-pycharm-git-submodule/git_remote.png"><img alt="git_remote" src="../images/230309-pycharm-git-submodule/git_remote.png"/></a></p>
 <p>可以看到刚刚的子模块 <code>bestdori</code> 已经成功映射到远程的 <code>origin</code> 了，那么说明操作成功。</p>
 <h3 id="5">5. 将子模块的变更提交到本地<a class="headerlink" href="#5" title="Permanent link">¶</a></h3>
 <p>随意进行一些变更，例如，在 PyCharm 中，在 <code>bestdori</code> 目录下新建一个文件。</p>
-<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="../images/230309-pycharm-git-submodule/__init__.png"><img alt="init" src="../images/230309-pycharm-git-submodule/__init__.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="../images/230309-pycharm-git-submodule/__init__.png"><img alt="init" src="../images/230309-pycharm-git-submodule/__init__.png"/></a></p>
 <p>PyCharm 会提示你是否要添加至 <code>git</code>，这里选 <code>是</code>，当然你也可以稍后自行添加。</p>
 <p>添加一些内容后，进行提交。</p>
-<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="../images/230309-pycharm-git-submodule/git_commit.png"><img alt="git_commit" src="../images/230309-pycharm-git-submodule/git_commit.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="../images/230309-pycharm-git-submodule/git_commit.png"><img alt="git_commit" src="../images/230309-pycharm-git-submodule/git_commit.png"/></a></p>
 <p>可以看到一共有两个文件的变更，一个是我们刚刚在子模块中创立的 <code>__init__.py</code>，另一个是主项目的 <code>.gitmodules</code>，直接提交即可。</p>
 <p>这两个文件将会<strong>分别提交到独立的本地 Git 仓库中</strong>。</p>
 <p>之所以会有 <code>.gitmodules</code>，那当然是因为我们刚刚添加了新的子模块，这个文件只会在子模块被添加时更新一次。</p>
 <h3 id="6">6. 将子模块的变更推送到远程仓库<a class="headerlink" href="#6" title="Permanent link">¶</a></h3>
 <p>在 Git 工具栏中，点击 <code>推送..</code>。</p>
-<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="../images/230309-pycharm-git-submodule/git_push.png"><img alt="git_push" src="../images/230309-pycharm-git-submodule/git_push.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="../images/230309-pycharm-git-submodule/git_push.png"><img alt="git_push" src="../images/230309-pycharm-git-submodule/git_push.png"/></a></p>
 <p>可以看到共有两个仓库各一处变更，一处是子模块的 <code>__init__.py</code>，另一处是主项目的 <code>.gitmodules</code>，没有问题，直接推送即可。</p>
-<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="../images/230309-pycharm-git-submodule/remote_bestdori.png"><img alt="remote_bestdori" src="../images/230309-pycharm-git-submodule/remote_bestdori.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="../images/230309-pycharm-git-submodule/remote_bestdori.png"><img alt="remote_bestdori" src="../images/230309-pycharm-git-submodule/remote_bestdori.png"/></a></p>
 <p>推送后去 GitHub 上看，可以看到子模块 <code>bestdori</code> 的远程仓库已经成功推送了。</p>
 <h3 id="7">7. 将子模块的变更推送到主项目的远程仓库<a class="headerlink" href="#7" title="Permanent link">¶</a></h3>
 <p>再次进入提交页面，可以看到 <code>bestdori</code> 整个文件夹被列了出来。</p>
-<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="../images/230309-pycharm-git-submodule/git_commit_bestdori.png"><img alt="git_commit_bestdori" src="../images/230309-pycharm-git-submodule/git_commit_bestdori.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="../images/230309-pycharm-git-submodule/git_commit_bestdori.png"><img alt="git_commit_bestdori" src="../images/230309-pycharm-git-submodule/git_commit_bestdori.png"/></a></p>
 <p>勾选他，提交，然后推送。</p>
-<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="../images/230309-pycharm-git-submodule/git_push_bestdori.png"><img alt="git_push_bestdori" src="../images/230309-pycharm-git-submodule/git_push_bestdori.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="../images/230309-pycharm-git-submodule/git_push_bestdori.png"><img alt="git_push_bestdori" src="../images/230309-pycharm-git-submodule/git_push_bestdori.png"/></a></p>
 <p>可以看到刚刚的这次提交是属于主项目的，这一步的意义在于，通知主项目的 Git 远程仓库，子模块的远程仓库已经更新了。</p>
 <p>推送后查看主项目的远程仓库：</p>
-<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="../images/230309-pycharm-git-submodule/remote_mokabot.png"><img alt="remote_mokabot" src="../images/230309-pycharm-git-submodule/remote_mokabot.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="../images/230309-pycharm-git-submodule/remote_mokabot.png"><img alt="remote_mokabot" src="../images/230309-pycharm-git-submodule/remote_mokabot.png"/></a></p>
 <p>可以看到主项目的远程仓库中已经正确识别了这是一个子模块。</p>
 <p>（因为我第一次推送的截图没截上，所以我进行了第二次提交 + 推送，因此第 6 步和第 7 步截图中的提交消息、commit 版本是不一样的）</p>
 <div class="admonition tips">
@@ -634,10 +640,10 @@ git<span class="w"> </span>submodule<span class="w"> </span>add<span class="w"> 
 </article>
 </div>
 </div>
-<a class="md-top md-icon" data-md-component="top" hidden="" href="#">
+<button class="md-top md-icon" data-md-component="top" hidden="" type="button">
 <svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12Z"></path></svg>
             回到页面顶部
-          </a>
+          </button>
 </main>
 <footer class="md-footer">
 <nav aria-label="页脚" class="md-footer__inner md-grid">
@@ -646,12 +652,25 @@ git<span class="w"> </span>submodule<span class="w"> </span>add<span class="w"> 
 <svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"></path></svg>
 </div>
 <div class="md-footer__title">
-<div class="md-ellipsis">
 <span class="md-footer__direction">
-                  上一页
-                </span>
+                上一页
+              </span>
+<div class="md-ellipsis">
                 通过 Matrix 协议实现代理接收 QQ 和微信消息 —— 从入坑到入土
               </div>
+</div>
+</a>
+<a aria-label="下一页: （Pillow）Affine 图形变换的矩阵参数详解" class="md-footer__link md-footer__link--next" href="../230406-pillow-affine-args/" rel="next">
+<div class="md-footer__title">
+<span class="md-footer__direction">
+                下一页
+              </span>
+<div class="md-ellipsis">
+                （Pillow）Affine 图形变换的矩阵参数详解
+              </div>
+</div>
+<div class="md-footer__button md-icon">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4Z"></path></svg>
 </div>
 </a>
 </nav>
@@ -684,7 +703,7 @@ git<span class="w"> </span>submodule<span class="w"> </span>add<span class="w"> 
 <div class="md-dialog__inner md-typeset"></div>
 </div>
 <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.footer", "navigation.tabs", "navigation.top", "navigation.tracking", "content.code.copy"], "search": "../../../assets/javascripts/workers/search.208ed371.min.js", "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}}</script>
-<script src="../../../assets/javascripts/bundle.fc8c2696.min.js"></script>
+<script src="../../../assets/javascripts/bundle.407015b8.min.js"></script>
 <script src="../../../javascripts/mathjax.js"></script>
 <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
 <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>

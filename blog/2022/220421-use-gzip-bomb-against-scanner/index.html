@@ -11,9 +11,9 @@
 <link href="../220417-linux-clean-up-disk-space/" rel="prev"/>
 <link href="../220428-how-to-ask-questions-like-a-retard/" rel="next"/>
 <link href="../../../assets/favicon.webp" rel="icon"/>
-<meta content="mkdocs-1.4.2, mkdocs-material-9.1.2" name="generator"/>
+<meta content="mkdocs-1.4.2, mkdocs-material-9.1.5" name="generator"/>
 <title>如何使用 gzip 压缩包炸弹对恶意扫描器进行反击 - Arisa | Blog</title>
-<link href="../../../assets/stylesheets/main.7bf56d0a.min.css" rel="stylesheet"/>
+<link href="../../../assets/stylesheets/main.7a7fce14.min.css" rel="stylesheet"/>
 <link href="../../../assets/stylesheets/palette.a0c5b2b5.min.css" rel="stylesheet"/>
 <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
 <link href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&amp;display=fallback" rel="stylesheet"/>
@@ -421,6 +421,11 @@
         如何在 PyCharm 中使用 Git Submodule
       </a>
 </li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../2023/230406-pillow-affine-args/">
+        （Pillow）Affine 图形变换的矩阵参数详解
+      </a>
+</li>
 </ul>
 </nav>
 </li>
@@ -672,7 +677,7 @@ as the main headline.
 <li>第22行 - <code class="highlight"><span class="n">filename</span><span class="o">=</span><span class="s1">'flask.log'</span></code>：将 Flask 的日志输出重定向到文件，方便我们记录是谁恶意访问了我们的服务器</li>
 </ul>
 <p>现在，运行这个 Flask 服务器，并访问 <a href="http://127.0.0.1:8082">http://127.0.0.1:8082</a>。</p>
-<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="../images/220421-use-gzip-bomb-against-spiders/respond_test.jpg"><img alt="respond" src="../images/220421-use-gzip-bomb-against-spiders/respond_test.jpg"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="../images/220421-use-gzip-bomb-against-spiders/respond_test.jpg"><img alt="respond" src="../images/220421-use-gzip-bomb-against-spiders/respond_test.jpg"/></a></p>
 <p>可以看到，浏览器成功还原了 <code>test</code> 的文本内容。</p>
 <p>现在，我们制作一些高压缩率的载荷。</p>
 <div class="highlight"><pre><span></span><code>dd<span class="w"> </span><span class="k">if</span><span class="o">=</span>/dev/zero<span class="w"> </span><span class="nv">bs</span><span class="o">=</span>1M<span class="w"> </span><span class="nv">count</span><span class="o">=</span><span class="m">1024</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>gzip<span class="w"> </span>&gt;<span class="w"> </span>1G.gzip
@@ -680,7 +685,7 @@ dd<span class="w"> </span><span class="k">if</span><span class="o">=</span>/dev/
 </code></pre></div>
 <p>受制于 DEFLATE 的极限压缩率，上述两个文件最多能被压缩到其原来大小的约 1/1000。即约 1 MB 的 <code>1G.gzip</code> 和 约 10 MB 的 <code>10G.gzip</code>。</p>
 <p>然后再访问一次 <a href="http://127.0.0.1:8082">http://127.0.0.1:8082</a>。</p>
-<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="../images/220421-use-gzip-bomb-against-spiders/respond_10G.jpg"><img alt="respond_10G" src="../images/220421-use-gzip-bomb-against-spiders/respond_10G.jpg"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="../images/220421-use-gzip-bomb-against-spiders/respond_10G.jpg"><img alt="respond_10G" src="../images/220421-use-gzip-bomb-against-spiders/respond_10G.jpg"/></a></p>
 <p>可以见到内存占用正在不断上涨，因为我怕我电脑 OOM 所以就没有继续测试下去了。</p>
 <h3 id="nginx">部署于 nginx<a class="headerlink" href="#nginx" title="Permanent link">¶</a></h3>
 <p>现在，我们需要将其部署到我们的服务器上，这样才能将其作为反击工具使用。</p>
@@ -795,10 +800,10 @@ dd<span class="w"> </span><span class="k">if</span><span class="o">=</span>/dev/
 </article>
 </div>
 </div>
-<a class="md-top md-icon" data-md-component="top" hidden="" href="#">
+<button class="md-top md-icon" data-md-component="top" hidden="" type="button">
 <svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12Z"></path></svg>
             回到页面顶部
-          </a>
+          </button>
 </main>
 <footer class="md-footer">
 <nav aria-label="页脚" class="md-footer__inner md-grid">
@@ -807,20 +812,20 @@ dd<span class="w"> </span><span class="k">if</span><span class="o">=</span>/dev/
 <svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"></path></svg>
 </div>
 <div class="md-footer__title">
-<div class="md-ellipsis">
 <span class="md-footer__direction">
-                  上一页
-                </span>
+                上一页
+              </span>
+<div class="md-ellipsis">
                 Linux 清理磁盘空间常见操作
               </div>
 </div>
 </a>
 <a aria-label="下一页: 如何像一个弱智一样提问" class="md-footer__link md-footer__link--next" href="../220428-how-to-ask-questions-like-a-retard/" rel="next">
 <div class="md-footer__title">
-<div class="md-ellipsis">
 <span class="md-footer__direction">
-                  下一页
-                </span>
+                下一页
+              </span>
+<div class="md-ellipsis">
                 如何像一个弱智一样提问
               </div>
 </div>
@@ -858,7 +863,7 @@ dd<span class="w"> </span><span class="k">if</span><span class="o">=</span>/dev/
 <div class="md-dialog__inner md-typeset"></div>
 </div>
 <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.footer", "navigation.tabs", "navigation.top", "navigation.tracking", "content.code.copy"], "search": "../../../assets/javascripts/workers/search.208ed371.min.js", "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}}</script>
-<script src="../../../assets/javascripts/bundle.fc8c2696.min.js"></script>
+<script src="../../../assets/javascripts/bundle.407015b8.min.js"></script>
 <script src="../../../javascripts/mathjax.js"></script>
 <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
 <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>

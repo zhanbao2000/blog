@@ -11,9 +11,9 @@
 <link href="../220902-python-mutable-defaults/" rel="prev"/>
 <link href="../221113-rclone-sharepoint-for-hentai-at-home/" rel="next"/>
 <link href="../../../assets/favicon.webp" rel="icon"/>
-<meta content="mkdocs-1.4.2, mkdocs-material-9.1.2" name="generator"/>
+<meta content="mkdocs-1.4.2, mkdocs-material-9.1.5" name="generator"/>
 <title>Python 中令人迷惑的细节 - Arisa | Blog</title>
-<link href="../../../assets/stylesheets/main.7bf56d0a.min.css" rel="stylesheet"/>
+<link href="../../../assets/stylesheets/main.7a7fce14.min.css" rel="stylesheet"/>
 <link href="../../../assets/stylesheets/palette.a0c5b2b5.min.css" rel="stylesheet"/>
 <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
 <link href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&amp;display=fallback" rel="stylesheet"/>
@@ -521,6 +521,11 @@
         如何在 PyCharm 中使用 Git Submodule
       </a>
 </li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../2023/230406-pillow-affine-args/">
+        （Pillow）Affine 图形变换的矩阵参数详解
+      </a>
+</li>
 </ul>
 </nav>
 </li>
@@ -885,9 +890,9 @@ as the main headline.
 <p>在 <a href="../220902-python-mutable-defaults/#21">Python 默认参数可变的危险性</a> 中我们已经知道：</p>
 <ul>
 <li>如果有多个对象的引用（即指针）指向同一个可变对象，那么使用其中任意一个引用对此对象进行修改，其他所有的引用都会产生相同的修改。
-   <a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="../images/220902-python-mutable-defaults/mutable_change.png"><img alt="mutable_change" src="../images/220902-python-mutable-defaults/mutable_change.png"/></a></li>
+   <a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="../images/220902-python-mutable-defaults/mutable_change.png"><img alt="mutable_change" src="../images/220902-python-mutable-defaults/mutable_change.png"/></a></li>
 <li>如果有多个对象的引用指向同一个不可变对象，当使用其中任意一个引用对此对象进行修改，系统将会开辟一块新的内存区域用来存储修改过后的值，其他所有的引用仍然指向原来那片内存空间。
-   <a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="../images/220902-python-mutable-defaults/immutable_change.png"><img alt="immutable_change" src="../images/220902-python-mutable-defaults/immutable_change.png"/></a></li>
+   <a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="../images/220902-python-mutable-defaults/immutable_change.png"><img alt="immutable_change" src="../images/220902-python-mutable-defaults/immutable_change.png"/></a></li>
 </ul>
 <p>浅拷贝与深拷贝的相同点在于，它们都会创建并返回一个新的对象。它们的区别在于对可变对象的处理上。</p>
 <p>若原对象中有一个元素是可变对象，浅拷贝会将该可变对象的引用直接存储在新对象中，而深拷贝会先将该可变对象拷贝一份到新的内存区域，再将该可变对象的副本的引用存储在新对象中。</p>
@@ -918,7 +923,7 @@ as the main headline.
 </code></pre></div>
 <p><code class="highlight"><span class="n">b</span> <span class="o">=</span> <span class="n">a</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span></code> 和 <code class="highlight"><span class="n">c</span> <span class="o">=</span> <span class="n">copy</span><span class="o">.</span><span class="n">copy</span><span class="p">(</span><span class="n">a</span><span class="p">)</span></code> 是等价的，他们都是浅拷贝，而 <code class="highlight"><span class="n">d</span> <span class="o">=</span> <span class="n">copy</span><span class="o">.</span><span class="n">deepcopy</span><span class="p">(</span><span class="n">a</span><span class="p">)</span></code> 是深拷贝。</p>
 <p>列表 <code>a</code> 中包含了 4 个元素，前三个元素 <code>1</code>, <code>2</code>, <code>3</code> 是不可变对象，第四个元素 <code>[4, 5]</code> 是可变对象。</p>
-<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="../images/220913-python-confusing-detail/deepcopy.png"><img alt="deepcopy" src="../images/220913-python-confusing-detail/deepcopy.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="../images/220913-python-confusing-detail/deepcopy.png"><img alt="deepcopy" src="../images/220913-python-confusing-detail/deepcopy.png"/></a></p>
 <p>上图，同一个颜色表示同一个地址。在浅拷贝中，原始对象 <code>a</code> 和副本 <code>b</code> 和 <code>c</code> 中第四个元素 <code>[4, 5]</code>（记为 <code>inner_list</code>）的地址是相同的，而在深拷贝中，原始对象 <code>a</code> 和副本 <code>d</code> 中第四个元素 <code>[4, 5]</code>（记为 <code>inner_list2</code>）的地址是不同的。</p>
 <p>可以看到，当我们修改原始列表中一个不可变对象元素时，浅拷贝和深拷贝的结果都不会随之改变，而当修改的是一个可变对象时，浅拷贝的结果会随之改变，而深拷贝的结果不会随之改变。</p>
 <h3 id="24">2.4 在一行中同时定义和赋值多个变量<a class="headerlink" href="#24" title="Permanent link">¶</a></h3>
@@ -1066,7 +1071,7 @@ as the main headline.
 <p>同时，对调用者而言，它获取的迭代结果是在 <code class="highlight"><span class="k">return</span> <span class="n">XXXX</span></code> 语句之前所有通过 <code class="highlight"><span class="k">yield</span></code> 产生的结果。在我们的第二个 <code>my_range()</code> 函数中，我们没有通过 <code class="highlight"><span class="k">yield</span></code> 产生任何值就直接 <code class="highlight"><span class="k">return</span></code> 了，因此调用者获得的就是一个空的生成器。</p>
 <p>这个 <code class="highlight"><span class="k">return</span> <span class="n">XXXX</span></code> 语句就像一个小丑🤡一样，它想让 <code>XXXX</code> 作为它所在函数的返回值，可未曾想到解释器只是将这个可怜的值分配给了一个异常实例的一个属性。而同处一个屋檐下的 <code class="highlight"><span class="k">yield</span></code> 制造的每一个值，都会被函数的调用者全盘接纳。甚至当 <code class="highlight"><span class="k">yield</span></code> 无法被执行以至于它无法制造任何值时，解释器宁可为调用者返回一个空的生成器，也不愿意将 <code class="highlight"><span class="k">return</span></code> 的值交给调用者。而造成这一切的，仅仅是这个函数中存在一个 <code class="highlight"><span class="k">yield</span></code> 关键字💔。</p>
 <p>这同样也是我曾经制造的 <a href="https://github.com/Arcaea-Infinity/ArcaeaChartRender/commit/9f40ec1a519197a3f8193207edf5a2cd7e96d2ff">巨大 bug</a> 中的一个。</p>
-<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="../images/220913-python-confusing-detail/ruizhi.jpg"><img alt="ruizhi" src="../images/220913-python-confusing-detail/ruizhi.jpg"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="../images/220913-python-confusing-detail/ruizhi.jpg"><img alt="ruizhi" src="../images/220913-python-confusing-detail/ruizhi.jpg"/></a></p>
 <h2 id="_4">五、运算符<a class="headerlink" href="#_4" title="Permanent link">¶</a></h2>
 <h3 id="51">5.1 正负数在整数除法中求商的不同及其余数的值<a class="headerlink" href="#51" title="Permanent link">¶</a></h3>
 <p>先说结论：<a href="https://docs.python.org/zh-cn/3/library/stdtypes.html#numeric-types-int-float-complex">运算结果总是向负无穷的方向舍入</a>。</p>
@@ -1080,7 +1085,7 @@ as the main headline.
 </code></pre></div>
 <p>何为舍入规则？舍入规则是指在整数除法中，当商（暂时视为浮点数）为负数时，对于商的取整的不同做法。在 Python 中采用<strong>向下取整</strong>。</p>
 <div>
-<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="../images/220913-python-confusing-detail/divmod.png"><img align="right" alt="divmod" src="../images/220913-python-confusing-detail/divmod.png" width="40%"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="../images/220913-python-confusing-detail/divmod.png"><img align="right" alt="divmod" src="../images/220913-python-confusing-detail/divmod.png" width="40%"/></a></p>
 <p>几乎所有的计算系统中，<span class="arithmatex">\(a\)</span> 除以 <span class="arithmatex">\(n\)</span> 得到商 <span class="arithmatex">\(q\)</span> 和余数 <span class="arithmatex">\(r\)</span> 均满足以下式子：</p>
 <div class="arithmatex">\[
 q\in Z, a = n q + r, |r| &lt; |n|
@@ -1221,10 +1226,10 @@ Type<span class="w"> </span><span class="s2">"help"</span>,<span class="w"> </sp
 </article>
 </div>
 </div>
-<a class="md-top md-icon" data-md-component="top" hidden="" href="#">
+<button class="md-top md-icon" data-md-component="top" hidden="" type="button">
 <svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12Z"></path></svg>
             回到页面顶部
-          </a>
+          </button>
 </main>
 <footer class="md-footer">
 <nav aria-label="页脚" class="md-footer__inner md-grid">
@@ -1233,20 +1238,20 @@ Type<span class="w"> </span><span class="s2">"help"</span>,<span class="w"> </sp
 <svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"></path></svg>
 </div>
 <div class="md-footer__title">
-<div class="md-ellipsis">
 <span class="md-footer__direction">
-                  上一页
-                </span>
+                上一页
+              </span>
+<div class="md-ellipsis">
                 Python 默认参数可变的危险性
               </div>
 </div>
 </a>
 <a aria-label="下一页: 使用 Rclone 挂载 SharePoint 作为 Hentai@Home 的缓存目录" class="md-footer__link md-footer__link--next" href="../221113-rclone-sharepoint-for-hentai-at-home/" rel="next">
 <div class="md-footer__title">
-<div class="md-ellipsis">
 <span class="md-footer__direction">
-                  下一页
-                </span>
+                下一页
+              </span>
+<div class="md-ellipsis">
                 使用 Rclone 挂载 SharePoint 作为 Hentai@Home 的缓存目录
               </div>
 </div>
@@ -1284,7 +1289,7 @@ Type<span class="w"> </span><span class="s2">"help"</span>,<span class="w"> </sp
 <div class="md-dialog__inner md-typeset"></div>
 </div>
 <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.footer", "navigation.tabs", "navigation.top", "navigation.tracking", "content.code.copy"], "search": "../../../assets/javascripts/workers/search.208ed371.min.js", "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}}</script>
-<script src="../../../assets/javascripts/bundle.fc8c2696.min.js"></script>
+<script src="../../../assets/javascripts/bundle.407015b8.min.js"></script>
 <script src="../../../javascripts/mathjax.js"></script>
 <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
 <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>

@@ -5,14 +5,13 @@
 <head>
 <meta charset="utf-8"/>
 <meta content="width=device-width,initial-scale=1" name="viewport"/>
-<meta content="我的服务器上搭建了一个自动签到服务，有群友说不会用，我就写了个指南。" name="description"/>
+<meta content="如题" name="description"/>
 <meta content="Akiba Arisa" name="author"/>
-<link href="https://blog.arisa.moe/blog/2022/220530-auto-sign-in-guide/" rel="canonical"/>
-<link href="../220529-python-personal-styleguide/" rel="prev"/>
-<link href="../220602-ipv6-bypass-billing-system/" rel="next"/>
+<link href="https://blog.arisa.moe/blog/2023/230406-pillow-affine-args/" rel="canonical"/>
+<link href="../230309-pycharm-git-submodule/" rel="prev"/>
 <link href="../../../assets/favicon.webp" rel="icon"/>
 <meta content="mkdocs-1.4.2, mkdocs-material-9.1.5" name="generator"/>
-<title>自动签到使用指南 - Arisa | Blog</title>
+<title>（Pillow）Affine 图形变换的矩阵参数详解 - Arisa | Blog</title>
 <link href="../../../assets/stylesheets/main.7a7fce14.min.css" rel="stylesheet"/>
 <link href="../../../assets/stylesheets/palette.a0c5b2b5.min.css" rel="stylesheet"/>
 <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
@@ -62,7 +61,7 @@
 <div class="md-header__topic" data-md-component="header-topic">
 <span class="md-ellipsis">
             
-              自动签到使用指南
+              （Pillow）Affine 图形变换的矩阵参数详解
             
           </span>
 </div>
@@ -140,7 +139,7 @@
     </a>
 </li>
 <li class="md-tabs__item">
-<a class="md-tabs__link md-tabs__link--active" href="../220406-nginx-stream/">
+<a class="md-tabs__link md-tabs__link--active" href="../../2022/220406-nginx-stream/">
         Blog
       </a>
 </li>
@@ -197,116 +196,181 @@
           Blog
         </label>
 <ul class="md-nav__list" data-md-scrollfix="">
-<li class="md-nav__item md-nav__item--active md-nav__item--nested">
-<input checked="" class="md-nav__toggle md-toggle" id="__nav_4_1" type="checkbox"/>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_4_1" type="checkbox"/>
 <label class="md-nav__link" for="__nav_4_1" id="__nav_4_1_label" tabindex="0">
           2022
           <span class="md-nav__icon md-icon"></span>
 </label>
-<nav aria-expanded="true" aria-labelledby="__nav_4_1_label" class="md-nav" data-md-level="2">
+<nav aria-expanded="false" aria-labelledby="__nav_4_1_label" class="md-nav" data-md-level="2">
 <label class="md-nav__title" for="__nav_4_1">
 <span class="md-nav__icon md-icon"></span>
           2022
         </label>
 <ul class="md-nav__list" data-md-scrollfix="">
 <li class="md-nav__item">
-<a class="md-nav__link" href="../220406-nginx-stream/">
+<a class="md-nav__link" href="../../2022/220406-nginx-stream/">
         nginx 如何设置 stream 转发
       </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../220406-set-http-proxy/">
+<a class="md-nav__link" href="../../2022/220406-set-http-proxy/">
         解决使用代理后 pip 和 python 无法连接到网络的问题
       </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../220406-venv-move-file/">
+<a class="md-nav__link" href="../../2022/220406-venv-move-file/">
         移动 python 项目文件夹位置后如何解决 PyCharm 找不到解释器与无法正常使用终端的问题
       </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../220407-certbot/">
+<a class="md-nav__link" href="../../2022/220407-certbot/">
         certbot 常用操作
       </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../220407-github-pages/">
+<a class="md-nav__link" href="../../2022/220407-github-pages/">
         GitHub Pages 文档自动化部署 - MkDocs
       </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../220408-github-pages-2/">
+<a class="md-nav__link" href="../../2022/220408-github-pages-2/">
         GitHub Pages 文档自动化部署 - VuePress
       </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../220409-cloudflare-workers-arcaea-update/">
+<a class="md-nav__link" href="../../2022/220409-cloudflare-workers-arcaea-update/">
         如何使用 Cloudflare Workers 来搭建 Arcaea 镜像下载服务器
       </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../220412-ida-substitute-usage/">
+<a class="md-nav__link" href="../../2022/220412-ida-substitute-usage/">
         IDA 替换二进制文件
       </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../220413-Intranet-penetration-bitcomit/">
+<a class="md-nav__link" href="../../2022/220413-Intranet-penetration-bitcomit/">
         利用内网穿透和代理获取公网 IP 地址解决比特彗星黄灯
       </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../220414-fk-arcaea-songlist-hash/">
+<a class="md-nav__link" href="../../2022/220414-fk-arcaea-songlist-hash/">
         解除 Arcaea 对 songlist 等文件的哈希校验
       </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../220416-arcaea-fanmade-chart-problem/">
+<a class="md-nav__link" href="../../2022/220416-arcaea-fanmade-chart-problem/">
         Arcaea 自制谱移植常见问题
       </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../220417-linux-clean-up-disk-space/">
+<a class="md-nav__link" href="../../2022/220417-linux-clean-up-disk-space/">
         Linux 清理磁盘空间常见操作
       </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../220421-use-gzip-bomb-against-scanner/">
+<a class="md-nav__link" href="../../2022/220421-use-gzip-bomb-against-scanner/">
         如何使用 gzip 压缩包炸弹对恶意扫描器进行反击
       </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../220428-how-to-ask-questions-like-a-retard/">
+<a class="md-nav__link" href="../../2022/220428-how-to-ask-questions-like-a-retard/">
         如何像一个弱智一样提问
       </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../220429-dilb-ultimate-solution/">
+<a class="md-nav__link" href="../../2022/220429-dilb-ultimate-solution/">
         基于 Anaconda 的 dlib（CUDA 版本）安装的终极解决方案
       </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../220502-how-dogs-work-in-epic7/">
+<a class="md-nav__link" href="../../2022/220502-how-dogs-work-in-epic7/">
         第七史诗升六星的正确理解
       </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../220511-how-to-write-python-into-classical-chinese/">
+<a class="md-nav__link" href="../../2022/220511-how-to-write-python-into-classical-chinese/">
         如何将 Python 写成文言文
       </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../220529-python-personal-styleguide/">
+<a class="md-nav__link" href="../../2022/220529-python-personal-styleguide/">
         Python 个人代码风格指导
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../2022/220530-auto-sign-in-guide/">
+        自动签到使用指南
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../2022/220602-ipv6-bypass-billing-system/">
+        架设双栈代理服务器通过 IPv6 绕过校园网计费系统的方法
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../2022/220902-python-mutable-defaults/">
+        Python 默认参数可变的危险性
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../2022/220913-python-confusing-detail/">
+        Python 中令人迷惑的细节
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../2022/221113-rclone-sharepoint-for-hentai-at-home/">
+        使用 Rclone 挂载 SharePoint 作为 Hentai@Home 的缓存目录
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../2022/221113-rclone-sharepoint-oauth-failed/">
+        通过 WebDAV 解决 Rclone 挂载 SharePoint 时遇到 Error: Auth Error
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../2022/221115-issue-of-position-or-right-and-wrong/">
+        立场问题与是非问题
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--active md-nav__item--nested">
+<input checked="" class="md-nav__toggle md-toggle" id="__nav_4_2" type="checkbox"/>
+<label class="md-nav__link" for="__nav_4_2" id="__nav_4_2_label" tabindex="0">
+          2023
+          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="true" aria-labelledby="__nav_4_2_label" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_4_2">
+<span class="md-nav__icon md-icon"></span>
+          2023
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../230113-my-2022-website/">
+        我的浏览器 2022 年度总结
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../230114-matrix-qq-wechat-bridge/">
+        通过 Matrix 协议实现代理接收 QQ 和微信消息 —— 从入坑到入土
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../230309-pycharm-git-submodule/">
+        如何在 PyCharm 中使用 Git Submodule
       </a>
 </li>
 <li class="md-nav__item md-nav__item--active">
 <input class="md-nav__toggle md-toggle" id="__toc" type="checkbox"/>
 <label class="md-nav__link md-nav__link--active" for="__toc">
-          自动签到使用指南
+          （Pillow）Affine 图形变换的矩阵参数详解
           <span class="md-nav__icon md-icon"></span>
 </label>
 <a class="md-nav__link md-nav__link--active" href="./">
-        自动签到使用指南
+        （Pillow）Affine 图形变换的矩阵参数详解
       </a>
 <nav aria-label="目录" class="md-nav md-nav--secondary">
 <label class="md-nav__title" for="__toc">
@@ -316,120 +380,60 @@
 <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
 <li class="md-nav__item">
 <a class="md-nav__link" href="#_1">
-    一、绪论
+    一、背景
   </a>
-<nav aria-label="一、绪论" class="md-nav">
-<ul class="md-nav__list">
-<li class="md-nav__item">
-<a class="md-nav__link" href="#11">
-    1.1 这是什么
-  </a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="#12">
-    1.2 入口
-  </a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="#13">
-    1.3 许可证
-  </a>
-</li>
-</ul>
-</nav>
 </li>
 <li class="md-nav__item">
 <a class="md-nav__link" href="#_2">
-    二、注册
+    二、渲染方法
   </a>
 </li>
 <li class="md-nav__item">
 <a class="md-nav__link" href="#_3">
-    三、添加模板
+    三、变换矩阵
   </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="#_4">
-    四、添加任务
+<a class="md-nav__link" href="#pillow">
+    四、矩阵各值对 Pillow 实际图像的影响
+  </a>
+<nav aria-label="四、矩阵各值对 Pillow 实际图像的影响" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#41-x-xscale">
+    4.1 x 轴缩放系数 xScale
   </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="#_5">
-    五、修改任务定时
+<a class="md-nav__link" href="#42-x-xskew">
+    4.2 x 轴旋转系数 xSkew
   </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="#cookies">
-    六、如何创建以 Cookies 作为登陆方式的签到任务
+<a class="md-nav__link" href="#43-x-xtranslate">
+    4.3 x 轴平移系数 xTranslate
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#44-y-yskew">
+    4.4 y 轴旋转系数 ySkew
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#45-y-yscale">
+    4.5 y 轴缩放系数 yScale
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#46-y-ytranslate">
+    4.6 y 轴平移系数 yTranslate
   </a>
 </li>
 </ul>
 </nav>
 </li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="../220602-ipv6-bypass-billing-system/">
-        架设双栈代理服务器通过 IPv6 绕过校园网计费系统的方法
-      </a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="../220902-python-mutable-defaults/">
-        Python 默认参数可变的危险性
-      </a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="../220913-python-confusing-detail/">
-        Python 中令人迷惑的细节
-      </a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="../221113-rclone-sharepoint-for-hentai-at-home/">
-        使用 Rclone 挂载 SharePoint 作为 Hentai@Home 的缓存目录
-      </a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="../221113-rclone-sharepoint-oauth-failed/">
-        通过 WebDAV 解决 Rclone 挂载 SharePoint 时遇到 Error: Auth Error
-      </a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="../221115-issue-of-position-or-right-and-wrong/">
-        立场问题与是非问题
-      </a>
-</li>
 </ul>
 </nav>
-</li>
-<li class="md-nav__item md-nav__item--nested">
-<input class="md-nav__toggle md-toggle" id="__nav_4_2" type="checkbox"/>
-<label class="md-nav__link" for="__nav_4_2" id="__nav_4_2_label" tabindex="0">
-          2023
-          <span class="md-nav__icon md-icon"></span>
-</label>
-<nav aria-expanded="false" aria-labelledby="__nav_4_2_label" class="md-nav" data-md-level="2">
-<label class="md-nav__title" for="__nav_4_2">
-<span class="md-nav__icon md-icon"></span>
-          2023
-        </label>
-<ul class="md-nav__list" data-md-scrollfix="">
-<li class="md-nav__item">
-<a class="md-nav__link" href="../../2023/230113-my-2022-website/">
-        我的浏览器 2022 年度总结
-      </a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="../../2023/230114-matrix-qq-wechat-bridge/">
-        通过 Matrix 协议实现代理接收 QQ 和微信消息 —— 从入坑到入土
-      </a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="../../2023/230309-pycharm-git-submodule/">
-        如何在 PyCharm 中使用 Git Submodule
-      </a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="../../2023/230406-pillow-affine-args/">
-        （Pillow）Affine 图形变换的矩阵参数详解
-      </a>
 </li>
 </ul>
 </nav>
@@ -453,52 +457,57 @@
 <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
 <li class="md-nav__item">
 <a class="md-nav__link" href="#_1">
-    一、绪论
+    一、背景
   </a>
-<nav aria-label="一、绪论" class="md-nav">
-<ul class="md-nav__list">
-<li class="md-nav__item">
-<a class="md-nav__link" href="#11">
-    1.1 这是什么
-  </a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="#12">
-    1.2 入口
-  </a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="#13">
-    1.3 许可证
-  </a>
-</li>
-</ul>
-</nav>
 </li>
 <li class="md-nav__item">
 <a class="md-nav__link" href="#_2">
-    二、注册
+    二、渲染方法
   </a>
 </li>
 <li class="md-nav__item">
 <a class="md-nav__link" href="#_3">
-    三、添加模板
+    三、变换矩阵
   </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="#_4">
-    四、添加任务
+<a class="md-nav__link" href="#pillow">
+    四、矩阵各值对 Pillow 实际图像的影响
+  </a>
+<nav aria-label="四、矩阵各值对 Pillow 实际图像的影响" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#41-x-xscale">
+    4.1 x 轴缩放系数 xScale
   </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="#_5">
-    五、修改任务定时
+<a class="md-nav__link" href="#42-x-xskew">
+    4.2 x 轴旋转系数 xSkew
   </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="#cookies">
-    六、如何创建以 Cookies 作为登陆方式的签到任务
+<a class="md-nav__link" href="#43-x-xtranslate">
+    4.3 x 轴平移系数 xTranslate
   </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#44-y-yskew">
+    4.4 y 轴旋转系数 ySkew
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#45-y-yscale">
+    4.5 y 轴缩放系数 yScale
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#46-y-ytranslate">
+    4.6 y 轴平移系数 yTranslate
+  </a>
+</li>
+</ul>
+</nav>
 </li>
 </ul>
 </nav>
@@ -512,7 +521,7 @@ Hack: check whether the content contains a h1 headline. If it
 doesn't, the page title (or respectively site name) is used
 as the main headline.
 -->
-<h1>自动签到使用指南</h1>
+<h1>（Pillow）Affine 图形变换的矩阵参数详解</h1>
 <!-- Markdown content -->
 <aside class="mdx-author">
 <p>
@@ -526,104 +535,123 @@ as the main headline.
 <svg class="bi bi-clock" fill="currentColor" height="12" viewbox="0 0 16 16" width="12" xmlns="http://www.w3.org/2000/svg">
 <path d="M8 3.5a.5.5 0 0 0-1 0V9a.5.5 0 0 0 .252.434l3.5 2a.5.5 0 0 0 .496-.868L8 8.71V3.5z"></path>
 <path d="M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16zm7-8A7 7 0 1 1 1 8a7 7 0 0 1 14 0z"></path>
-</svg> 8 min read
+</svg> 10 min read
                 </span>
 </p>
 </aside>
 <div class="tags">
-<a class="tag" href="/tags/#guide"><code>#guide</code></a>
+<a class="tag" href="/tags/#python"><code>#python</code></a>
+<a class="tag" href="/tags/#pillow"><code>#pillow</code></a>
 </div>
-<div class="admonition abstract">
-<p class="admonition-title">摘要</p>
-<p>我的服务器上搭建了一个 <a href="https://qiandao.arisa.moe/">自动签到服务</a>，有群友说不会用，我就写了个指南。</p>
-<p><del>多图警告</del></p>
-</div>
-<h2 id="_1">一、绪论<a class="headerlink" href="#_1" title="Permanent link">¶</a></h2>
-<h3 id="11">1.1 这是什么<a class="headerlink" href="#11" title="Permanent link">¶</a></h3>
-<p>现今很多网站或论坛都有签到功能，通过每日签到可以获取少量积分、金币等道具，某些网站或论坛连续签到可以获得更丰富的奖励。</p>
-<p>那么问题来了，每次都要手动去网页上签到岂不是很浪费时间？这么多个网站，每次都去一个一个签岂不是很麻烦？万一断签了怎么办？于是就有了 <code>自动签到服务</code> 这个东西。</p>
-<p><code>自动签到服务</code> 的用途和他的名字一模一样，那就是通过我的服务器通过模拟登录、签到等操作，自动替你完成每日签到。</p>
-<h3 id="12">1.2 入口<a class="headerlink" href="#12" title="Permanent link">¶</a></h3>
-<p>本服务被搭建在 <a href="https://qiandao.arisa.moe/">https://qiandao.arisa.moe/</a> 上。</p>
-<h3 id="13">1.3 许可证<a class="headerlink" href="#13" title="Permanent link">¶</a></h3>
-<p>本服务基于 <a href="https://github.com/qiandao-today/qiandao/">qiandao-today/qiandao</a> 项目，该项目采用 MIT 许可证开源。</p>
-<p>本服务所使用的模板均基于 <a href="https://github.com/qiandao-today/templates">qiandao-today/templates</a>。</p>
-<h2 id="_2">二、注册<a class="headerlink" href="#_2" title="Permanent link">¶</a></h2>
-<p>在使用该服务前，需要先花5秒钟的时间在我的网站上注册一个账号。</p>
-<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="../images/220530-auto-sign-in-guide/register.jpg"><img alt="register" src="../images/220530-auto-sign-in-guide/register.jpg"/></a></p>
-<p>右上角选择 <code>登录</code> 按钮，然后输入你自己的邮箱（无须验证邮箱）和密码，点击 <code>注册</code> 即可。</p>
-<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="../images/220530-auto-sign-in-guide/register2.jpg"><img alt="register2" src="../images/220530-auto-sign-in-guide/register2.jpg"/></a></p>
-<h2 id="_3">三、添加模板<a class="headerlink" href="#_3" title="Permanent link">¶</a></h2>
-<p>注册完之后，你可以看到你的仪表盘。如下图：</p>
-<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="../images/220530-auto-sign-in-guide/blank_home.jpg"><img alt="blank_home" src="../images/220530-auto-sign-in-guide/blank_home.jpg"/></a></p>
-<p>但是现在你的仪表盘完全是<strong>空的</strong>，这是因为你还没有添加任何模板和签到任务。</p>
-<p>那么现在来添加一些模板，如图点击 <code>公共模板</code>。</p>
-<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="../images/220530-auto-sign-in-guide/click_template.jpg"><img alt="click_template" src="../images/220530-auto-sign-in-guide/click_template.jpg"/></a></p>
-<p>你可以看到很多公共模板，这些都是从 <a href="https://github.com/qiandao-today/templates">qiandao-today/templates</a> 项目获取的。选中一个你想要添加的模板，点击左边的 <code>订阅</code>。</p>
-<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="../images/220530-auto-sign-in-guide/template_list.jpg"><img alt="template_list" src="../images/220530-auto-sign-in-guide/template_list.jpg"/></a></p>
-<p>订阅之后你会看到一个用于编辑模板的界面，此时无须管他，直接保存即可。</p>
-<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="../images/220530-auto-sign-in-guide/edit_template.jpg"><img alt="edit_template" src="../images/220530-auto-sign-in-guide/edit_template.jpg"/></a></p>
-<p>随后会出现一个 <code>保存HAR</code> 的界面，这里也是直接点 <code>保存</code> 即可，不需要你改任何东西（想改也行）。</p>
-<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="../images/220530-auto-sign-in-guide/save_har.jpg"><img alt="save_har" src="../images/220530-auto-sign-in-guide/save_har.jpg"/></a></p>
-<p>此时回到你的仪表盘，你会发现你的模板已经添加到了 <code>我的模板</code> 列表中。</p>
-<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="../images/220530-auto-sign-in-guide/home2.jpg"><img alt="home2" src="../images/220530-auto-sign-in-guide/home2.jpg"/></a></p>
-<h2 id="_4">四、添加任务<a class="headerlink" href="#_4" title="Permanent link">¶</a></h2>
-<p>刚刚我们做的只是将一个模板从<strong>公共模板库</strong>中复制到你自己的<strong>我的模板</strong>中（这样便于后期自己自定义模板）。现在要做的就是基于这个模板创建一个签到任务。</p>
-<p>点击模板末尾的 <code>新建</code> 按钮。</p>
-<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="../images/220530-auto-sign-in-guide/click_new_task.jpg"><img alt="click_new_task" src="../images/220530-auto-sign-in-guide/click_new_task.jpg"/></a></p>
-<p>在这个界面里输入你在对应论坛上的用户名和密码（红框）。如果这里要求的是首页 Cookies，那么请参考 <a href="#cookies">这里</a> 获取。</p>
-<p>备注里随便填写一点东西（蓝框），用来在你自己的仪表盘上做备注，我自己填的是对应论坛上的用户名，因为我在同一个论坛上有好几个号，创建任务的时候需要用用户名区分。当然这里你留空也行。</p>
-<p>如果你当天已经签到过一次了，为了避免重复签到，你可以把下面的 <code>我今天已经签过到了</code> 给勾上，这样点击提交之后就不会自动进行一次签到。</p>
-<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="../images/220530-auto-sign-in-guide/new_task.jpg"><img alt="new_task" src="../images/220530-auto-sign-in-guide/new_task.jpg"/></a></p>
-<p>其他的东西都不需要管，最后点击 <code>提交</code>。提交之后，自动签到服务会立即尝试一次签到。</p>
-<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="../images/220530-auto-sign-in-guide/home3.jpg"><img alt="home3" src="../images/220530-auto-sign-in-guide/home3.jpg"/></a></p>
-<h2 id="_5">五、修改任务定时<a class="headerlink" href="#_5" title="Permanent link">¶</a></h2>
-<p>默认情况下，下一次的签到时间会是上一次签到成功的时间加上24个小时。</p>
-<p>如果你比较在意这个，或者是跟我一样有强迫倾向（例如想要统一在早上签到），那么你可以通过编辑任务的定时来实现。</p>
-<p>以下是一个示例，我将会把刚刚添加的那个任务的定时修改成在 <code>每天早上 6:00 ~ 9:00</code> 进行，你可以根据自己的需求来修改。</p>
-<p>首先点击任务末尾的 <code>定时</code> 按钮。</p>
-<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="../images/220530-auto-sign-in-guide/click_timer.jpg"><img alt="click_timer" src="../images/220530-auto-sign-in-guide/click_timer.jpg"/></a></p>
-<p>此时会出现一个定时界面修改框。</p>
-<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="../images/220530-auto-sign-in-guide/timer.jpg"><img alt="timer" src="../images/220530-auto-sign-in-guide/timer.jpg"/></a></p>
-<p>然后我们把 <code>定时开关</code> 和 <code>当天随机延时区间</code> 这两个勾给勾上，因为我们需要在每天早上的 6:00 ~ 9:00 之间的一个随机时间进行签到，而不是每次向后顺延24小时。</p>
+<h2 id="_1">一、背景<a class="headerlink" href="#_1" title="Permanent link">¶</a></h2>
+<p>在渲染邦邦谱面时，需要渲染绿条。绿条不一定是个矩形，在起点和终点不一致时，是个变换过后的平行四边形，而素材文件只有一个矩形。这就需要我们用 Pillow 将素材文件进行变换，使其变成一个平行四边形。</p>
+<figure>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="../images/230406-pillow-affine-args/longNoteLine.png"><img alt="longNoteLine" src="../images/230406-pillow-affine-args/longNoteLine.png"/></a>
+</p>
+<figcaption>longNoteLine.png</figcaption>
+</figure>
+<h2 id="_2">二、渲染方法<a class="headerlink" href="#_2" title="Permanent link">¶</a></h2>
+<p>可以使用 <a href="https://pillow.readthedocs.io/en/stable/reference/Image.html#PIL.Image.Image.transform"><code class="highlight"><span class="n">img</span><span class="o">.</span><span class="n">transform</span></code></a> 和 <a href="https://pillow.readthedocs.io/en/stable/reference/Image.html#PIL.Image.Image.transform"><code class="highlight"><span class="n">Image</span><span class="o">.</span><span class="n">AFFINE</span></code></a> 来实现。</p>
+<p>即：</p>
+<div class="highlight"><pre><span></span><code><span class="n">img2</span> <span class="o">=</span> <span class="n">img</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">bg</span><span class="o">.</span><span class="n">size</span><span class="p">,</span> <span class="n">Image</span><span class="o">.</span><span class="n">AFFINE</span><span class="p">,</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.5</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">))</span>
+</code></pre></div>
+<p>其中：</p>
 <ul>
-<li>定时开关：<ul>
-<li><strong>开：每天固定时间签到</strong></li>
-<li>关：上一次签到成功的时间顺延24个小时</li>
+<li><code class="highlight"><span class="n">bg</span><span class="o">.</span><span class="n">size</span></code> 是最终图像的裁剪大小，在变换完成后，Pillow 会将图片裁剪至该大小。</li>
+<li><code class="highlight"><span class="n">Image</span><span class="o">.</span><span class="n">AFFINE</span></code> 是变换类型，这里是仿射变换。</li>
+<li><code class="highlight"><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.5</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span></code> 是变换矩阵，用于描述仿射变换的参数。</li>
 </ul>
-</li>
-<li>当天随机延时区间：<ul>
-<li><strong>开：每次随机向后延时</strong></li>
-<li>关：不随机延时，真正的固定时间</li>
-</ul>
-</li>
-</ul>
-<p>我做演示的时候，当天是 <code>2022年6月5日</code>，所以这里默认显示的日期也是 <code>2022年6月5日</code>。因为我们今天已经签到过一次了，希望他从明天开始，所以把这个日期改成 <code>2022年6月6日</code>。</p>
-<p>因为我们需要在每天早上的 6:00 ~ 9:00 之间的一个随机时间进行签到，所以把后面的时间改为 <code>06:00:00</code>，延时区间改为 <code>0~10800</code>（也就是3个小时）。</p>
-<p>最后我们改完是这样的：</p>
-<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="../images/220530-auto-sign-in-guide/timer2.jpg"><img alt="timer2" src="../images/220530-auto-sign-in-guide/timer2.jpg"/></a></p>
-<p>点击 <code>提交</code> 即可。</p>
-<p>刷新一下页面，可以看到这个任务的时间已经变成了早上6点到9点中间的一个随机值。</p>
-<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="../images/220530-auto-sign-in-guide/next_task.jpg"><img alt="next_task" src="../images/220530-auto-sign-in-guide/next_task.jpg"/></a></p>
-<h2 id="cookies">六、如何创建以 Cookies 作为登陆方式的签到任务<a class="headerlink" href="#cookies" title="Permanent link">¶</a></h2>
-<p>有很多类似于这样子的模板，它要求提供 Cookies，而不是用户名和密码。</p>
-<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="../images/220530-auto-sign-in-guide/click_cookies.jpg"><img alt="click_cookies" src="../images/220530-auto-sign-in-guide/click_cookies.jpg"/></a></p>
-<p>下面将以 <a href="https://www.bilibili.com/">https://www.bilibili.com/</a> 为例，展示如何获取首页 Cookies。</p>
-<p>首先进入 B 站首页，按下 <span class="keys"><kbd class="key-f12">F12</kbd></span> 开启浏览器的开发者控制台。切换到 <code>网络</code> 选项卡（或者 <code>Network</code> 选项卡）。</p>
-<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="../images/220530-auto-sign-in-guide/F12.jpg"><img alt="F12" src="../images/220530-auto-sign-in-guide/F12.jpg"/></a></p>
-<p>按下 <span class="keys"><kbd class="key-f5">F5</kbd></span> 刷新页面，此时这里应该会出现很多请求。选择第一个，查看它的请求头，找到 Cookies。</p>
-<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="../images/220530-auto-sign-in-guide/cookies.jpg"><img alt="cookies" src="../images/220530-auto-sign-in-guide/cookies.jpg"/></a></p>
-<p>复制 Cookies 即可（注意是复制 Cookies 的内容，不要把 <code>Cookie</code> 这几个字母也复制过去了）</p>
+<h2 id="_3">三、变换矩阵<a class="headerlink" href="#_3" title="Permanent link">¶</a></h2>
+<div class="arithmatex">\[
+\begin{bmatrix}
+xScale &amp; xSkew &amp; xTranslate \\
+ySkew &amp; yScale &amp; yTranslate \\
+0 &amp; 0 &amp; 1 \\
+\end{bmatrix}
+\]</div>
+<p>对应的 Python 代码为：</p>
+<div class="highlight"><pre><span></span><code><span class="n">matrix</span> <span class="o">=</span> <span class="p">(</span><span class="n">xScale</span><span class="p">,</span> <span class="n">xSkew</span><span class="p">,</span> <span class="n">xTranslate</span><span class="p">,</span> <span class="n">ySkew</span><span class="p">,</span> <span class="n">yScale</span><span class="p">,</span> <span class="n">yTranslate</span><span class="p">)</span>
+</code></pre></div>
+<p>即直接将矩阵的各值按行展开，然后按顺序放入一个元组中。</p>
+<h2 id="pillow">四、矩阵各值对 Pillow 实际图像的影响<a class="headerlink" href="#pillow" title="Permanent link">¶</a></h2>
+<p>这里使用了以下脚本来展示矩阵各值的几何含义：</p>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">PIL</span> <span class="kn">import</span> <span class="n">Image</span><span class="p">,</span> <span class="n">ImageDraw</span>
+
+<span class="n">bg</span> <span class="o">=</span> <span class="n">Image</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="s1">'RGBA'</span><span class="p">,</span> <span class="p">(</span><span class="mi">500</span><span class="p">,</span> <span class="mi">500</span><span class="p">),</span> <span class="p">(</span><span class="mi">255</span><span class="p">,</span> <span class="mi">255</span><span class="p">,</span> <span class="mi">255</span><span class="p">,</span> <span class="mi">0</span><span class="p">))</span>
+<span class="n">img</span> <span class="o">=</span> <span class="n">Image</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="s1">'longNoteLine2.png'</span><span class="p">)</span><span class="o">.</span><span class="n">convert</span><span class="p">(</span><span class="s1">'RGBA'</span><span class="p">)</span>
+
+<span class="c1"># 绘制原图轮廓，以便观察变换</span>
+<span class="n">outline</span> <span class="o">=</span> <span class="n">Image</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="s1">'RGBA'</span><span class="p">,</span> <span class="n">bg</span><span class="o">.</span><span class="n">size</span><span class="p">,</span> <span class="p">(</span><span class="mi">255</span><span class="p">,</span> <span class="mi">255</span><span class="p">,</span> <span class="mi">255</span><span class="p">,</span> <span class="mi">0</span><span class="p">))</span>
+<span class="n">draw</span> <span class="o">=</span> <span class="n">ImageDraw</span><span class="o">.</span><span class="n">Draw</span><span class="p">(</span><span class="n">outline</span><span class="p">)</span>
+<span class="n">draw</span><span class="o">.</span><span class="n">rectangle</span><span class="p">((</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span> <span class="o">+</span> <span class="n">img</span><span class="o">.</span><span class="n">size</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="mi">0</span> <span class="o">+</span> <span class="n">img</span><span class="o">.</span><span class="n">size</span><span class="p">[</span><span class="mi">1</span><span class="p">]),</span> <span class="n">fill</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="n">width</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">outline</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">255</span><span class="p">))</span>
+<span class="n">bg</span><span class="o">.</span><span class="n">alpha_composite</span><span class="p">(</span><span class="n">outline</span><span class="p">,</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">))</span>
+
+<span class="c1"># 进行变换</span>
+<span class="hll"><span class="n">img2</span> <span class="o">=</span> <span class="n">img</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">bg</span><span class="o">.</span><span class="n">size</span><span class="p">,</span> <span class="n">Image</span><span class="o">.</span><span class="n">AFFINE</span><span class="p">,</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">))</span>
+</span>
+<span class="n">bg</span><span class="o">.</span><span class="n">alpha_composite</span><span class="p">(</span><span class="n">img2</span><span class="p">,</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">))</span>
+<span class="n">bg</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</code></pre></div>
+<p>我将不断调整矩阵的值，并展示变换后的图像。</p>
+<div class="admonition warning">
+<p class="admonition-title">注意</p>
+<p>在 Pillow 中，采用的是左上角为原点的坐标系，而不是数学中的左下角为原点的坐标系。</p>
+</div>
+<h3 id="41-x-xscale">4.1 x 轴缩放系数 <code>xScale</code><a class="headerlink" href="#41-x-xscale" title="Permanent link">¶</a></h3>
+<p><code class="highlight"><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span></code>：</p>
+<p>什么都不修改时，图像不变：</p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="../images/230406-pillow-affine-args/origin.png"><img alt="origin" src="../images/230406-pillow-affine-args/origin.png"/></a></p>
+<p><code class="highlight"><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span></code>：</p>
+<p><code>xScale == 2</code>，将图像在 x 轴方向上缩小至原来的 1/2。</p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="../images/230406-pillow-affine-args/xScale2.png"><img alt="xScale2" src="../images/230406-pillow-affine-args/xScale2.png"/></a></p>
+<p><code class="highlight"><span class="p">(</span><span class="mf">0.5</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span></code>：</p>
+<p><code>xScale == 0.5</code>，将图像在 x 轴方向上放大至原来的 2 倍。</p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="../images/230406-pillow-affine-args/xScale0.5.png"><img alt="xScale0.5" src="../images/230406-pillow-affine-args/xScale0.5.png"/></a></p>
+<h3 id="42-x-xskew">4.2 x 轴旋转系数 <code>xSkew</code><a class="headerlink" href="#42-x-xskew" title="Permanent link">¶</a></h3>
+<p><code class="highlight"><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span></code>：</p>
+<p><code>xSkew == tan(45°) == 1</code>，保持<strong>上底边</strong>位置不变，将平行四边形<strong>下底边</strong>在 x 轴<strong>负</strong>方向倾斜至 45°。</p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="../images/230406-pillow-affine-args/xSkew1.png"><img alt="xSkew1" src="../images/230406-pillow-affine-args/xSkew1.png"/></a></p>
+<p><code class="highlight"><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span></code>：</p>
+<p><code>xSkew == tan(-45°) == -1</code>，保持<strong>上底边</strong>位置不变，将平行四边形<strong>下底边</strong>在 x 轴<strong>正</strong>方向倾斜至 45°。</p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="../images/230406-pillow-affine-args/xSkew-1.png"><img alt="xSkew-1" src="../images/230406-pillow-affine-args/xSkew-1.png"/></a></p>
+<h3 id="43-x-xtranslate">4.3 x 轴平移系数 <code>xTranslate</code><a class="headerlink" href="#43-x-xtranslate" title="Permanent link">¶</a></h3>
+<p><code class="highlight"><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span></code>：</p>
+<p><code>xTranslate == 100</code>，将图像在 x 轴<strong>负</strong>方向上平移 100 像素。</p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="../images/230406-pillow-affine-args/xTranslate100.png"><img alt="xTranslate100" src="../images/230406-pillow-affine-args/xTranslate100.png"/></a></p>
+<p><code class="highlight"><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">100</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span></code>：</p>
+<p><code>xTranslate == -100</code>，将图像在 x 轴<strong>正</strong>方向上平移 100 像素。</p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="../images/230406-pillow-affine-args/xTranslate-100.png"><img alt="xTranslate-100" src="../images/230406-pillow-affine-args/xTranslate-100.png"/></a></p>
+<h3 id="44-y-yskew">4.4 y 轴旋转系数 <code>ySkew</code><a class="headerlink" href="#44-y-yskew" title="Permanent link">¶</a></h3>
+<p><code class="highlight"><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span></code>：</p>
+<p><code>ySkew == tan(45°) == 1</code>，保持<strong>左底边</strong>位置不变，将平行四边形<strong>右底边</strong>在 y 轴<strong>负</strong>方向斜切至 45°。</p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="../images/230406-pillow-affine-args/ySkew1.png"><img alt="ySkew1" src="../images/230406-pillow-affine-args/ySkew1.png"/></a></p>
+<p><code class="highlight"><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span></code>：</p>
+<p><code>ySkew == tan(-45°) == -1</code>，保持<strong>左底边</strong>位置不变，将平行四边形<strong>右底边</strong>在 y 轴<strong>正</strong>方向斜切至 45°。</p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="../images/230406-pillow-affine-args/ySkew-1.png"><img alt="ySkew-1" src="../images/230406-pillow-affine-args/ySkew-1.png"/></a></p>
+<h3 id="45-y-yscale">4.5 y 轴缩放系数 <code>yScale</code><a class="headerlink" href="#45-y-yscale" title="Permanent link">¶</a></h3>
+<p><code class="highlight"><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span></code>：</p>
+<p><code>yScale == 2</code>，将图像在 y 轴方向上缩小至原来的 1/2。</p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="../images/230406-pillow-affine-args/yScale2.png"><img alt="yScale2" src="../images/230406-pillow-affine-args/yScale2.png"/></a></p>
+<p><code class="highlight"><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span></code>：</p>
+<p><code>yScale == 0.5</code>，将图像在 y 轴方向上放大至原来的 2 倍。</p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="../images/230406-pillow-affine-args/yScale0.5.png"><img alt="yScale0.5" src="../images/230406-pillow-affine-args/yScale0.5.png"/></a></p>
+<h3 id="46-y-ytranslate">4.6 y 轴平移系数 <code>yTranslate</code><a class="headerlink" href="#46-y-ytranslate" title="Permanent link">¶</a></h3>
+<p><code class="highlight"><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span></code>：</p>
+<p><code>yTranslate == 100</code>，将图像在 y 轴<strong>负</strong>方向上平移 100 像素。</p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="../images/230406-pillow-affine-args/yTranslate100.png"><img alt="yTranslate100" src="../images/230406-pillow-affine-args/yTranslate100.png"/></a></p>
+<p><code class="highlight"><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">100</span><span class="p">)</span></code>：</p>
+<p><code>yTranslate == -100</code>，将图像在 y 轴<strong>正</strong>方向上平移 100 像素。</p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="../images/230406-pillow-affine-args/yTranslate-100.png"><img alt="yTranslate-100" src="../images/230406-pillow-affine-args/yTranslate-100.png"/></a></p>
 <!-- Last update of source file -->
 <hr/>
 <div class="md-source-file">
 <small>
     
       最后更新:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_datetime">2022-06-05 15:14:41</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_datetime">2023-04-06 13:42:50</span>
 <br/>
         创建日期:
-        <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_datetime">2022-06-05 15:14:41</span>
+        <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_datetime">2023-04-06 13:42:50</span>
 </small>
 </div>
 <!-- Giscus -->
@@ -667,7 +695,7 @@ as the main headline.
 </main>
 <footer class="md-footer">
 <nav aria-label="页脚" class="md-footer__inner md-grid">
-<a aria-label="上一页: Python 个人代码风格指导" class="md-footer__link md-footer__link--prev" href="../220529-python-personal-styleguide/" rel="prev">
+<a aria-label="上一页: 如何在 PyCharm 中使用 Git Submodule" class="md-footer__link md-footer__link--prev" href="../230309-pycharm-git-submodule/" rel="prev">
 <div class="md-footer__button md-icon">
 <svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"></path></svg>
 </div>
@@ -676,21 +704,8 @@ as the main headline.
                 上一页
               </span>
 <div class="md-ellipsis">
-                Python 个人代码风格指导
+                如何在 PyCharm 中使用 Git Submodule
               </div>
-</div>
-</a>
-<a aria-label="下一页: 架设双栈代理服务器通过 IPv6 绕过校园网计费系统的方法" class="md-footer__link md-footer__link--next" href="../220602-ipv6-bypass-billing-system/" rel="next">
-<div class="md-footer__title">
-<span class="md-footer__direction">
-                下一页
-              </span>
-<div class="md-ellipsis">
-                架设双栈代理服务器通过 IPv6 绕过校园网计费系统的方法
-              </div>
-</div>
-<div class="md-footer__button md-icon">
-<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4Z"></path></svg>
 </div>
 </a>
 </nav>

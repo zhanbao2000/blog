@@ -11,9 +11,9 @@
 <link href="../220412-ida-substitute-usage/" rel="prev"/>
 <link href="../220414-fk-arcaea-songlist-hash/" rel="next"/>
 <link href="../../../assets/favicon.webp" rel="icon"/>
-<meta content="mkdocs-1.4.2, mkdocs-material-9.1.2" name="generator"/>
+<meta content="mkdocs-1.4.2, mkdocs-material-9.1.5" name="generator"/>
 <title>利用内网穿透和代理获取公网 IP 地址解决比特彗星黄灯 - Arisa | Blog</title>
-<link href="../../../assets/stylesheets/main.7bf56d0a.min.css" rel="stylesheet"/>
+<link href="../../../assets/stylesheets/main.7a7fce14.min.css" rel="stylesheet"/>
 <link href="../../../assets/stylesheets/palette.a0c5b2b5.min.css" rel="stylesheet"/>
 <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
 <link href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&amp;display=fallback" rel="stylesheet"/>
@@ -426,6 +426,11 @@
         如何在 PyCharm 中使用 Git Submodule
       </a>
 </li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../2023/230406-pillow-affine-args/">
+        （Pillow）Affine 图形变换的矩阵参数详解
+      </a>
+</li>
 </ul>
 </nav>
 </li>
@@ -659,12 +664,12 @@ as the main headline.
 <li><code>token</code> 和 <code>tls_enable</code> 均与 <code>frps.ini</code> 保持一致。</li>
 </ul>
 <p><code>Remote Download</code> 指的是比特彗星的远程下载服务，如果你比特彗星需要开这个功能，你可以把他打开，端口号和比特彗星上的设置保持一致，比如 <code>2333</code>。</p>
-<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="../images/220413-Intranet-penetration-bitcomit/Remote-Download.png"><img alt="Remote Download" src="../images/220413-Intranet-penetration-bitcomit/Remote-Download.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="../images/220413-Intranet-penetration-bitcomit/Remote-Download.png"><img alt="Remote Download" src="../images/220413-Intranet-penetration-bitcomit/Remote-Download.png"/></a></p>
 <p><code>BT Listen TCP/UDP</code> 就是 peer 的通信端口，均设置成 <code>127.0.0.1</code> 上的 <code>10400</code>，和比特彗星保持一致。</p>
-<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="../images/220413-Intranet-penetration-bitcomit/listen-port.png"><img alt="listen port" src="../images/220413-Intranet-penetration-bitcomit/listen-port.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="../images/220413-Intranet-penetration-bitcomit/listen-port.png"><img alt="listen port" src="../images/220413-Intranet-penetration-bitcomit/listen-port.png"/></a></p>
 <p><code>eMule Listen TCP/UDP</code> 是比特彗星电驴插件的通信端口，均设置成 <code>127.0.0.1</code> 上的 <code>22224</code>，和比特彗星与电驴插件内的设置保持一致。如果你的比特彗星版本没有电驴插件，那么你可以忽略该项。</p>
-<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="../images/220413-Intranet-penetration-bitcomit/emule.jpg"><img alt="listen emule" src="../images/220413-Intranet-penetration-bitcomit/emule.jpg"/></a></p>
-<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="../images/220413-Intranet-penetration-bitcomit/emule2.jpg"><img alt="listen emule2" src="../images/220413-Intranet-penetration-bitcomit/emule2.jpg"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="../images/220413-Intranet-penetration-bitcomit/emule.jpg"><img alt="listen emule" src="../images/220413-Intranet-penetration-bitcomit/emule.jpg"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="../images/220413-Intranet-penetration-bitcomit/emule2.jpg"><img alt="listen emule2" src="../images/220413-Intranet-penetration-bitcomit/emule2.jpg"/></a></p>
 <h2 id="frp">测试 frp 连接<a class="headerlink" href="#frp" title="Permanent link">¶</a></h2>
 <p>现在在你的客户端上执行：</p>
 <div class="highlight"><pre><span></span><code>frpc.exe -c frpc.ini
@@ -706,12 +711,12 @@ as the main headline.
 <p>你需要在那台具有公网 IP 地址的机器上搭建一个代理服务，从而让你的比特彗星能通过代理连接到 peers。</p>
 <p>具体搭建方法这里不做介绍，网上有很多教程。假设我们已经搭建好了这个代理，并且映射在了 <code>socks5://localhost:1089</code> 上。</p>
 <p>然后我们在比特彗星设置里做好代理设置。</p>
-<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="../images/220413-Intranet-penetration-bitcomit/proxy.png"><img alt="proxy" src="../images/220413-Intranet-penetration-bitcomit/proxy.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="../images/220413-Intranet-penetration-bitcomit/proxy.png"><img alt="proxy" src="../images/220413-Intranet-penetration-bitcomit/proxy.png"/></a></p>
 <p>除了 <code>使用代理服务器进行 DNS 查询</code> 以外，其他都不勾选。这相当于使比特彗星进入全局代理模式。</p>
 <p>此时我们已经等价于具有了公网 IP，并且可以以公网 IP 身份与互联网进行双向通信。不出意外的话，这个时候比特彗星的灯已经🟢了</p>
-<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="../images/220413-Intranet-penetration-bitcomit/green.png"><img alt="green" src="../images/220413-Intranet-penetration-bitcomit/green.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="../images/220413-Intranet-penetration-bitcomit/green.png"><img alt="green" src="../images/220413-Intranet-penetration-bitcomit/green.png"/></a></p>
 <p>如果你的比特彗星客户端内有电驴插件，那么你应当同时为电驴插件也打开代理。如图：</p>
-<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="../images/220413-Intranet-penetration-bitcomit/emule-proxy.jpg"><img alt="emule-proxy" src="../images/220413-Intranet-penetration-bitcomit/emule-proxy.jpg"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="../images/220413-Intranet-penetration-bitcomit/emule-proxy.jpg"><img alt="emule-proxy" src="../images/220413-Intranet-penetration-bitcomit/emule-proxy.jpg"/></a></p>
 <h2 id="_5">是否要关闭反吸血<a class="headerlink" href="#_5" title="Permanent link">¶</a></h2>
 <p>在先前的版本中，我写道：</p>
 <blockquote>
@@ -722,7 +727,7 @@ as the main headline.
 <p>我的建议是将反吸血设置为 <code>自动</code> 即可。</p>
 <h2 id="_6">测试效果<a class="headerlink" href="#_6" title="Permanent link">¶</a></h2>
 <p>现在去下载任意一个 BT 种子，如果点开 <code>用户</code> 选项卡，发现很多来自 <code>127.0.0.1</code> 的连接，并且来源是 <code>被动</code>，发起是 <code>远程</code>，此时就说明你已经设置正确了。</p>
-<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="../images/220413-Intranet-penetration-bitcomit/peers.png"><img alt="peers" src="../images/220413-Intranet-penetration-bitcomit/peers.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="../images/220413-Intranet-penetration-bitcomit/peers.png"><img alt="peers" src="../images/220413-Intranet-penetration-bitcomit/peers.png"/></a></p>
 <!-- Last update of source file -->
 <hr/>
 <div class="md-source-file">
@@ -769,10 +774,10 @@ as the main headline.
 </article>
 </div>
 </div>
-<a class="md-top md-icon" data-md-component="top" hidden="" href="#">
+<button class="md-top md-icon" data-md-component="top" hidden="" type="button">
 <svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12Z"></path></svg>
             回到页面顶部
-          </a>
+          </button>
 </main>
 <footer class="md-footer">
 <nav aria-label="页脚" class="md-footer__inner md-grid">
@@ -781,20 +786,20 @@ as the main headline.
 <svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"></path></svg>
 </div>
 <div class="md-footer__title">
-<div class="md-ellipsis">
 <span class="md-footer__direction">
-                  上一页
-                </span>
+                上一页
+              </span>
+<div class="md-ellipsis">
                 IDA 替换二进制文件
               </div>
 </div>
 </a>
 <a aria-label="下一页: 解除 Arcaea 对 songlist 等文件的哈希校验" class="md-footer__link md-footer__link--next" href="../220414-fk-arcaea-songlist-hash/" rel="next">
 <div class="md-footer__title">
-<div class="md-ellipsis">
 <span class="md-footer__direction">
-                  下一页
-                </span>
+                下一页
+              </span>
+<div class="md-ellipsis">
                 解除 Arcaea 对 songlist 等文件的哈希校验
               </div>
 </div>
@@ -832,7 +837,7 @@ as the main headline.
 <div class="md-dialog__inner md-typeset"></div>
 </div>
 <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.footer", "navigation.tabs", "navigation.top", "navigation.tracking", "content.code.copy"], "search": "../../../assets/javascripts/workers/search.208ed371.min.js", "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}}</script>
-<script src="../../../assets/javascripts/bundle.fc8c2696.min.js"></script>
+<script src="../../../assets/javascripts/bundle.407015b8.min.js"></script>
 <script src="../../../javascripts/mathjax.js"></script>
 <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
 <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>

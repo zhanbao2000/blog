@@ -11,9 +11,9 @@
 <link href="../220530-auto-sign-in-guide/" rel="prev"/>
 <link href="../220902-python-mutable-defaults/" rel="next"/>
 <link href="../../../assets/favicon.webp" rel="icon"/>
-<meta content="mkdocs-1.4.2, mkdocs-material-9.1.2" name="generator"/>
+<meta content="mkdocs-1.4.2, mkdocs-material-9.1.5" name="generator"/>
 <title>架设双栈代理服务器通过 IPv6 绕过校园网计费系统的方法 - Arisa | Blog</title>
-<link href="../../../assets/stylesheets/main.7bf56d0a.min.css" rel="stylesheet"/>
+<link href="../../../assets/stylesheets/main.7a7fce14.min.css" rel="stylesheet"/>
 <link href="../../../assets/stylesheets/palette.a0c5b2b5.min.css" rel="stylesheet"/>
 <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
 <link href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&amp;display=fallback" rel="stylesheet"/>
@@ -549,6 +549,11 @@
         如何在 PyCharm 中使用 Git Submodule
       </a>
 </li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../2023/230406-pillow-affine-args/">
+        （Pillow）Affine 图形变换的矩阵参数详解
+      </a>
+</li>
 </ul>
 </nav>
 </li>
@@ -854,7 +859,7 @@ as the main headline.
 <h3 id="13-ipv6">1.3 IPv6 环境<a class="headerlink" href="#13-ipv6" title="Permanent link">¶</a></h3>
 <p>你首先需要一个完全的公网 IPv6 访问权限。对于中国民航大学校内学生而言，请<strong>先登录校园网</strong>后再继续下一步。</p>
 <p>请访问 <a href="https://www.test-ipv6.com/">https://www.test-ipv6.com/</a> ，并检查 <code>你的公网IPv6地址是</code> 这一项是否有 IPv6 地址。</p>
-<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="../images/220602-ipv6-bypass-billing-system/test-ipv6.png"><img alt="test-ipv6" src="../images/220602-ipv6-bypass-billing-system/test-ipv6.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="../images/220602-ipv6-bypass-billing-system/test-ipv6.png"><img alt="test-ipv6" src="../images/220602-ipv6-bypass-billing-system/test-ipv6.png"/></a></p>
 <p>如果有，那就可以直接进入 <a href="#2">第 2 章</a>。</p>
 <p>如果没有，请先尝试多次刷新，如果不行，那就换一个连接校园网的方法，<strong>尤其是在宿舍使用路由器的情况</strong>。对于一些落后的无线路由器，其 NAT（网络地址转换）并不提供对 IPv6 的支持，你需要自己了解自己的路由器是否支持。</p>
 <p>即便是对于这种已过时的路由器，我们也是有一个通用办法可以解决的，那就是将路由器以接入点模式运行。</p>
@@ -863,15 +868,15 @@ as the main headline.
 <ul>
 <li>将插入路由器 WAN 接口的网线拔出，然后插入任意一个 LAN 接口。</li>
 </ul>
-<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="../images/220602-ipv6-bypass-billing-system/WAN-LAN.jpeg"><img alt="WAN-LAN" src="../images/220602-ipv6-bypass-billing-system/WAN-LAN.jpeg"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="../images/220602-ipv6-bypass-billing-system/WAN-LAN.jpeg"><img alt="WAN-LAN" src="../images/220602-ipv6-bypass-billing-system/WAN-LAN.jpeg"/></a></p>
 <ul>
 <li>关闭路由器的 DHCP 功能。（必须关闭，否则你的路由器会对客户端分配错误的 IP 地址）</li>
 </ul>
-<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="../images/220602-ipv6-bypass-billing-system/disable-DHCP.png"><img alt="disable-dhcp" src="../images/220602-ipv6-bypass-billing-system/disable-DHCP.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="../images/220602-ipv6-bypass-billing-system/disable-DHCP.png"><img alt="disable-dhcp" src="../images/220602-ipv6-bypass-billing-system/disable-DHCP.png"/></a></p>
 <ul>
 <li>将路由器 LAN 口地址改为和上一级网络设备在同一网段但不冲突。（可选，如果你看不懂这句话什么意思可以跳过）</li>
 </ul>
-<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="../images/220602-ipv6-bypass-billing-system/change-LAN.png"><img alt="change-LAN" src="../images/220602-ipv6-bypass-billing-system/change-LAN.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="../images/220602-ipv6-bypass-billing-system/change-LAN.png"><img alt="change-LAN" src="../images/220602-ipv6-bypass-billing-system/change-LAN.png"/></a></p>
 <ul>
 <li>重启路由器。</li>
 </ul>
@@ -910,7 +915,7 @@ as the main headline.
 <ul>
 <li>
 <p>对你的域名添加 <code>AAAA</code> 记录，记录值（域名）为你服务器的 IPv6 地址，记录字段我们输入 <code>ipv6</code>。</p>
-<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="../images/220602-ipv6-bypass-billing-system/dns.png"><img alt="dns" src="../images/220602-ipv6-bypass-billing-system/dns.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="../images/220602-ipv6-bypass-billing-system/dns.png"><img alt="dns" src="../images/220602-ipv6-bypass-billing-system/dns.png"/></a></p>
 </li>
 <li>
 <p>然后再添加一个 <code>A</code> 记录，记录值（域名）为你服务器的 IPv4 地址，记录字段我们输入 <code>www</code>。（图就不放了）</p>
@@ -1001,7 +1006,7 @@ as the main headline.
 <h4 id="225">2.2.5 证书配置<a class="headerlink" href="#225" title="Permanent link">¶</a></h4>
 <p>接下来我们去 <a href="https://certbot.eff.org/">Certbot</a> 获取网站证书。</p>
 <p>首先进入 <a href="https://certbot.eff.org/">Certbot 官网</a>，在 <code>My HTTP website is running</code> 这里选择 <code>Nginx</code>，然后<strong>选择你服务器对应的系统</strong>。一般来说，对于 Windows 系统一般是去 <a href="https://dl.eff.org/certbot-beta-installer-win32.exe">https://dl.eff.org/certbot-beta-installer-win32.exe</a> 下载安装。而 Linux 一般使用软件包管理器（例如 apt、snap 等）安装，<strong>具体请参考当页的说明</strong>。</p>
-<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="../images/220602-ipv6-bypass-billing-system/My-HTTP-website-is-running.png"><img alt="My-HTTP-website-is-running" src="../images/220602-ipv6-bypass-billing-system/My-HTTP-website-is-running.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="../images/220602-ipv6-bypass-billing-system/My-HTTP-website-is-running.png"><img alt="My-HTTP-website-is-running" src="../images/220602-ipv6-bypass-billing-system/My-HTTP-website-is-running.png"/></a></p>
 <p>现在根据当页的说明，下载 Certbot 到你的服务器。然后运行它：</p>
 <div class="highlight"><pre><span></span><code>certbot<span class="w"> </span>certonly
 </code></pre></div>
@@ -1172,25 +1177,25 @@ as the main headline.
 </div>
 <p>将 <code>Qv2ray</code>、<code>V2Ray 核心</code>、<code>Trojan-Go 核心</code> 分别安装或解压到三个文件夹。</p>
 <p>打开 Qv2ray，进入 <code>首选项</code>，进入 <code>内核设置</code>，将 <code>V2Ray资源目录</code> 设置为 <code>V2Ray 核心</code> 解压到的文件夹。然后将 <code>V2Ray核心可执行文件路径</code> 设置为这个文件夹下的 <code>v2ray.exe</code>，可以点击 <code>检查V2Ray核心设置</code> 以检查是否填写正确。</p>
-<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="../images/220602-ipv6-bypass-billing-system/v2ray-path.png"><img alt="v2ray-path" src="../images/220602-ipv6-bypass-billing-system/v2ray-path.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="../images/220602-ipv6-bypass-billing-system/v2ray-path.png"><img alt="v2ray-path" src="../images/220602-ipv6-bypass-billing-system/v2ray-path.png"/></a></p>
 <div>
-<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="../images/220602-ipv6-bypass-billing-system/bypass-domestic.png"><img align="right" alt="bypass-domestic" src="../images/220602-ipv6-bypass-billing-system/bypass-domestic.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="../images/220602-ipv6-bypass-billing-system/bypass-domestic.png"><img align="right" alt="bypass-domestic" src="../images/220602-ipv6-bypass-billing-system/bypass-domestic.png"/></a></p>
 <p>然后在连接设置中<strong>取消勾选</strong> <code>绕过中国大陆</code>，否则只对境外域名/IP 免流。</p>
 <div style="clear:both"></div>
 </div>
 <div>
-<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="../images/220602-ipv6-bypass-billing-system/plugin-folder.png"><img align="right" alt="plugin-folder" src="../images/220602-ipv6-bypass-billing-system/plugin-folder.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="../images/220602-ipv6-bypass-billing-system/plugin-folder.png"><img align="right" alt="plugin-folder" src="../images/220602-ipv6-bypass-billing-system/plugin-folder.png"/></a></p>
 <p>回到 Qv2ray，进入插件，选择 <code>打开本地插件目录</code> ，然后将 <code>Qv2ray 的 Trojan-Go 插件</code>（dll 文件）复制进去。</p>
 <div style="clear:both"></div>
 </div>
 <p><strong>重启</strong> Qv2ray，再次进入插件，勾选 <code>Trojan-Go Plugin</code>，进入其设定，将 <code>Kernel</code> 设置为 <code>Trojan-Go 核心</code> 解压目录下 <code>trojan-go.exe</code> 的路径。可以点击 <code>Test Run...</code> 以检查是否设置正确。</p>
-<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="../images/220602-ipv6-bypass-billing-system/trojan-go-test.png"><img alt="trojan-go-test" src="../images/220602-ipv6-bypass-billing-system/trojan-go-test.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="../images/220602-ipv6-bypass-billing-system/trojan-go-test.png"><img alt="trojan-go-test" src="../images/220602-ipv6-bypass-billing-system/trojan-go-test.png"/></a></p>
 <p>添加节点：主界面下方 <code>新建</code>：</p>
-<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="../images/220602-ipv6-bypass-billing-system/config-qv2ray.png"><img alt="config-qv2ray" src="../images/220602-ipv6-bypass-billing-system/config-qv2ray.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="../images/220602-ipv6-bypass-billing-system/config-qv2ray.png"><img alt="config-qv2ray" src="../images/220602-ipv6-bypass-billing-system/config-qv2ray.png"/></a></p>
 <p>如图设置，红色框是需要更改的地方。其他的选项啥都不需要改就行。当然了，你可以把 Mux（多路复用）的 Enable 勾上，Mux 并发一般选择 8 个即可，关于 Mux 可以参阅：<a href="https://p4gefau1t.github.io/trojan-go/advance/mux/">https://p4gefau1t.github.io/trojan-go/advance/mux/</a>。</p>
 <p>点 <code>OK</code> 保存，然后在列表里双击这个节点即可连接到服务器。</p>
 <div>
-<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="../images/220602-ipv6-bypass-billing-system/real-latency.png"><img align="right" alt="real-latency" src="../images/220602-ipv6-bypass-billing-system/real-latency.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="../images/220602-ipv6-bypass-billing-system/real-latency.png"><img align="right" alt="real-latency" src="../images/220602-ipv6-bypass-billing-system/real-latency.png"/></a></p>
 <p>你可以右键这个节点，然后选择 <code>测量真实延迟</code>，若测量结果不为 <code>错误</code> 即可正常使用。</p>
 <div style="clear:both"></div>
 </div>
@@ -1211,7 +1216,7 @@ as the main headline.
 <p>服务器 IP 填写 localhost，端口填写 1089（即 Qv2ray 默认的本地入站端口，你可以在 Qv2ray 首选项的入站设置中找到），其他的无需变更，然后保存即可。</p>
 </li>
 </ul>
-<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="../images/220602-ipv6-bypass-billing-system/sstap.png"><img alt="sstap" src="../images/220602-ipv6-bypass-billing-system/sstap.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="../images/220602-ipv6-bypass-billing-system/sstap.png"><img alt="sstap" src="../images/220602-ipv6-bypass-billing-system/sstap.png"/></a></p>
 <ul>
 <li>点击 <code>连接</code> 即可享受全局代理。</li>
 </ul>
@@ -1226,7 +1231,7 @@ as the main headline.
 <p>或者在 <a href="https://sagernet.org/download/">SagerNet 文档</a> 处下载以上两个 APK。</p>
 <p>点击右上角 <span class="twemoji"><svg viewbox="0 0 16 16" xmlns="http://www.w3.org/2000/svg"><path d="M2 1.75C2 .784 2.784 0 3.75 0h6.586c.464 0 .909.184 1.237.513l2.914 2.914c.329.328.513.773.513 1.237v9.586A1.75 1.75 0 0 1 13.25 16h-9.5A1.75 1.75 0 0 1 2 14.25Zm1.75-.25a.25.25 0 0 0-.25.25v12.5c0 .138.112.25.25.25h9.5a.25.25 0 0 0 .25-.25V4.664a.25.25 0 0 0-.073-.177l-2.914-2.914a.25.25 0 0 0-.177-.073Zm4.48 3.758a.75.75 0 0 1 .755.745l.01 1.497h1.497a.75.75 0 0 1 0 1.5H9v1.507a.75.75 0 0 1-1.5 0V9.005l-1.502.01a.75.75 0 0 1-.01-1.5l1.507-.01-.01-1.492a.75.75 0 0 1 .745-.755Z"></path></svg></span> 图标，选择 <code>手动输入</code>，然后选择 <code>Trojan Go</code>。按照下图进行配置。</p>
 <div>
-<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="../images/220602-ipv6-bypass-billing-system/config-sagernet.png"><img align="right" alt="config-sagernet" src="../images/220602-ipv6-bypass-billing-system/config-sagernet.png" width="40%"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="../images/220602-ipv6-bypass-billing-system/config-sagernet.png"><img align="right" alt="config-sagernet" src="../images/220602-ipv6-bypass-billing-system/config-sagernet.png" width="40%"/></a></p>
 <ul>
 <li>配置名称：随意，你自己能看明白就行</li>
 <li>服务器：<code>ipv6.cauc.sb</code>（需要改成你自己的）</li>
@@ -1252,7 +1257,7 @@ as the main headline.
 <p>登录后搜索并下载 <code>Shadowrocket</code>。</p>
 <p>打开 Shadowrocket，点右上角加号。</p>
 <div>
-<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="../images/220602-ipv6-bypass-billing-system/config-shadowrocket.png"><img align="right" alt="config-shadowrocket" src="../images/220602-ipv6-bypass-billing-system/config-shadowrocket.png" width="40%"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="../images/220602-ipv6-bypass-billing-system/config-shadowrocket.png"><img align="right" alt="config-shadowrocket" src="../images/220602-ipv6-bypass-billing-system/config-shadowrocket.png" width="40%"/></a></p>
 <ul>
 <li>类型：<code>Trojan</code></li>
 <li>地址：<code>ipv6.cauc.sb</code>（需要改成你自己的）</li>
@@ -1264,7 +1269,7 @@ as the main headline.
 </div>
 <p>和 Qv2ray 一样，你可以把 Mux（多路复用）打开，关于 Mux 可以参阅 <a href="https://p4gefau1t.github.io/trojan-go/advance/mux/">Trojan-Go 文档</a>。</p>
 <p>在使用之前，请将 <code>全局路由</code> 选项改为 <code>代理</code>。</p>
-<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="../images/220602-ipv6-bypass-billing-system/config-route.png"><img alt="config-route" src="../images/220602-ipv6-bypass-billing-system/config-route.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="../images/220602-ipv6-bypass-billing-system/config-route.png"><img alt="config-route" src="../images/220602-ipv6-bypass-billing-system/config-route.png"/></a></p>
 <p>你可以点击 <code>连通性测试</code> 以测量所有节点的延迟和可用性，点击之后若可用，则会在节点旁边显示具体延迟，如果不可用则会显示超时。</p>
 <h2 id="4">第 4 章 其他<a class="headerlink" href="#4" title="Permanent link">¶</a></h2>
 <h3 id="41">4.1 总结<a class="headerlink" href="#41" title="Permanent link">¶</a></h3>
@@ -1506,10 +1511,10 @@ as the main headline.
 </article>
 </div>
 </div>
-<a class="md-top md-icon" data-md-component="top" hidden="" href="#">
+<button class="md-top md-icon" data-md-component="top" hidden="" type="button">
 <svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12Z"></path></svg>
             回到页面顶部
-          </a>
+          </button>
 </main>
 <footer class="md-footer">
 <nav aria-label="页脚" class="md-footer__inner md-grid">
@@ -1518,20 +1523,20 @@ as the main headline.
 <svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"></path></svg>
 </div>
 <div class="md-footer__title">
-<div class="md-ellipsis">
 <span class="md-footer__direction">
-                  上一页
-                </span>
+                上一页
+              </span>
+<div class="md-ellipsis">
                 自动签到使用指南
               </div>
 </div>
 </a>
 <a aria-label="下一页: Python 默认参数可变的危险性" class="md-footer__link md-footer__link--next" href="../220902-python-mutable-defaults/" rel="next">
 <div class="md-footer__title">
-<div class="md-ellipsis">
 <span class="md-footer__direction">
-                  下一页
-                </span>
+                下一页
+              </span>
+<div class="md-ellipsis">
                 Python 默认参数可变的危险性
               </div>
 </div>
@@ -1569,7 +1574,7 @@ as the main headline.
 <div class="md-dialog__inner md-typeset"></div>
 </div>
 <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.footer", "navigation.tabs", "navigation.top", "navigation.tracking", "content.code.copy"], "search": "../../../assets/javascripts/workers/search.208ed371.min.js", "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}}</script>
-<script src="../../../assets/javascripts/bundle.fc8c2696.min.js"></script>
+<script src="../../../assets/javascripts/bundle.407015b8.min.js"></script>
 <script src="../../../javascripts/mathjax.js"></script>
 <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
 <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
