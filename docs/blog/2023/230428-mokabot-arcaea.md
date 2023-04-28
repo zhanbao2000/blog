@@ -38,7 +38,7 @@ description: mokabot 自诞生之初就已经实装了 Arcaea 查分功能，直
 
 ## 前言
 
-2023 年 4 月 27。Arcaea Online 正式发布，为订阅制，价格为每月 200 记忆源点。
+2023 年 4 月 27 日。Arcaea Online 正式发布，为订阅制，价格为每月 200 记忆源点。
 
 当天下午，大量玩家反馈使用 QQ bot 查询 Best 30 成绩时发现自己被 shadowbanned（又称 “世界排行榜封禁”，体现为其好友无法获取其任何指定单曲成绩）。同时，ArcaeaUnlimitedAPI（以下简称 AUA）开发组发现所用的查分用账号被限制好友单曲查询功能，同时发现 Lowiro 修改了账号注册逻辑。
 
