@@ -292,7 +292,12 @@ rclone mount od4hath: /root/rclone/od4hath
 
 命令行参数的含义请参阅 rclone [文档](https://rclone.org/commands/rclone_mount/)
 
-请注意 `--vfs-cache-max-size` 参数的值为本地磁盘缓存大小，请勿设置过大。`--transfers` 与 `--buffer-size` 参数的乘积为每次传输的最大数据量，请根据你主机上的内存大小酌情设置。
+请注意 `--vfs-cache-max-size` 参数的值为本地磁盘缓存大小，请勿设置过大。`--transfers` 与 `--buffer-size` 参数的乘积为每次传输的最大数据量，请根据你主机上的内存大小酌情设置。其中 `--buffer-size` 指示每个打开的文件描述符将使用这么多内存进行缓冲，`--transfers` 指示并行运行的文件传输数量。
+
+如果你的 rclone 程序经常被 Killed，除了尝试减小 `--transfers` 和 `--buffer-size` 参数的值之外，你还可以：
+
+ - 设置 `--use-mmap` 参数
+ - 通过 `systemd` 的 `MemoryHigh` 和 `MemoryMax` 选项，在不触发 OOM Killer 的情况下限制 rclone 的内存使用量。（见 [How to set a memory limit?](https://forum.rclone.org/t/how-to-set-a-memory-limit/10230/12)）
 
 ### 5.3 测试挂载是否成功
 
