@@ -126,3 +126,49 @@ echo "" > /var/log/auth.log
 ```
 
 同理，不应当使用 `rm` 而是使用 `echo` 来清空这两个日志。
+
+## 清理 docker
+
+ - 查看空间占用情况
+
+    ```bash
+    docker system df
+    ```
+    
+    ```
+    TYPE            TOTAL     ACTIVE    SIZE      RECLAIMABLE
+    Images          5         1         645.4MB   611.9MB (94%)
+    Containers      1         1         0B        0B
+    Local Volumes   1         1         69.54kB   0B (0%)
+    Build Cache     0         0         0B        0B
+    ```
+
+ - 清理 Build Cache
+
+    ```bash
+    docker system prune --volumes
+    ```
+   
+    这会清除所有：
+
+     - 停止的 Container
+     - 未被任何 Container 所使用的 Network
+     - 未被任何 Container 所使用的 Volume
+     - 无实例的 Image
+     - 无实例的 Build Cache
+
+ - 清理 Images
+
+    上一步中可能不会清理 Images，从而在 `#!bash docker system df` 中仍然能看到 Images 的空间占用。这一步可以清理这些 Images。
+
+    查看所有的 Image
+
+    ```bash
+    docker images -a
+    ```
+
+    清理指定的 Image
+
+    ```bash
+    docker rmi <IMAGE ID>
+    ```
