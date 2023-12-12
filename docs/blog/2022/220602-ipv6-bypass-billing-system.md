@@ -414,6 +414,14 @@ http {
 
     如果你有 macOS，并且想要完善这篇博客，你可以在评论区评论或者发 Pull Request。
 
+!!! warning "（2023 年 12 月 12 日更新）关于在 Windows 下的更好的客户端"
+
+    若你按照旧的教程（即 Qv2ray）在 Windows 上配置客户端，你需要再额外使用 SSTap，借由它的 TAP 虚拟网卡来实现接管系统全局流量。
+
+    而现在，你可以使用 [nekoray](https://github.com/MatsuriDayo/nekoray)，它自带了 TUN 功能，能和 TAP 一样起到接管系统全局流量。它相较于 Clash For Windows（即 CFW，一个同样提供 TUN 的代理客户端），对需要自定义的用户（例如我们）更加友好，因此笔者更推荐使用 nekoray 作为 Windows 上的代理客户端。
+
+    关于 nekoray 的教程将在不久之后添加至此篇博文，原先关于 Qv2ray 的旧的教程将不会删除。
+
 #### 3.3.1 Qv2ray
 
 以 Windows 10 为例，首先获取对应系统的必要组件：
