@@ -532,7 +532,7 @@ print(type(foo()))  # <class 'generator'>
 ![ruizhi](images/220913-python-confusing-detail/ruizhi.jpg)
 
 
-### 1.5 仅限位置形参
+### 4.4 仅限位置形参
 
 ```python
 def foo(a, b, /, c, d):
