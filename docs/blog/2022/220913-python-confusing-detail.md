@@ -531,6 +531,34 @@ print(type(foo()))  # <class 'generator'>
 
 ![ruizhi](images/220913-python-confusing-detail/ruizhi.jpg)
 
+
+### 1.5 仅限位置形参
+
+```python
+def foo(a, b, /, c, d):
+    print(a, b, c, d)
+```
+
+这是 Python 3.8 新增的一个 [特性](https://docs.python.org/zh-cn/3.8/whatsnew/3.8.html#positional-only-parameters)，即仅限位置形参。
+
+在 Python 中，`/` 符号在函数定义中的作用是指定位置参数。在 `/` 之前的参数必须作为位置参数传递，不能作为关键字参数传递。这意味着，这些参数只能按照它们在函数定义中的顺序提供，而不能通过参数名来指定。
+
+例如，对于上述函数，`a` 和 `b` 必须作为位置参数，而 `c` 和 `d` 可以作为位置参数或关键字参数。
+
+因此以下调用方式是正确的：
+
+```python
+foo(1, 2, 3, 4)
+foo(1, 2, c=3, d=4)
+```
+
+而以下调用方式是错误的：
+
+```python
+foo(a=1, b=2, c=3, d=4)  
+# TypeError: foo() got some positional-only arguments passed as keyword arguments: 'a, b'
+```
+
 ## 五、运算符
 
 ### 5.1 正负数在整数除法中求商的不同及其余数的值
