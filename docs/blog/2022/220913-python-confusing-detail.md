@@ -405,27 +405,40 @@ print(type(a))  # <class 'int'>
 
     构造 0 个或 1 个元素的元组比较特殊：为了适应这种情况，对句法有一些额外的改变。用一对空圆括号就可以创建空元组；**只有一个元素的元组可以通过在这个元素后添加逗号来构建**（圆括号里只有一个值的话不够明确）。丑陋，但是有效。
 
-### 4.2 `#!python return` 语句的算术优先级
+### 4.2 元组定义时的优先级问题
 
-考虑以下两个方法可能返回的结果：
-
-```python
-def foo(self) -> tuple[int, int]:
-    return (0, 0) if 'noinput' in self.type_list else super().foo()
-```
+考虑这个函数：
 
 ```python
 def foo(self) -> tuple[int, int]:
     return 0, 0 if 'noinput' in self.type_list else super().foo()
 ```
 
-这是我曾经制造的 [巨大 bug](https://github.com/Arcaea-Infinity/ArcaeaChartRender/commit/bbd56446a3ddedacd11cbceab30472dc8eadf6fa) 之一。这两个例子都使用了一个三目运算符，并且返回结果都是一个元组。他们重写了父类的 `foo()` 方法，而显然父类的 `foo()` 方法将会返回一个 `#!python tuple[int, int]` 类型。
+这个函数的原始意图在于，它重写了父类的 `foo()` 方法，如果 `#!python self.type_list` 中没有 `'noinput'`，则直接调用父类的 `foo()` 方法进行返回，否则返回 `#!python (0, 0)`。无论如何，这个函数的返回值都应该是一个 `#!python tuple[int, int]` 类型。
 
-然而不幸的是，`#!python return` 语句的优先级比 `#!python if` 语句的优先级要低，这就导致第二个例子会优先计算逗号之后的 `#!python 0 if 'noinput' in self.type_list else super().foo()`，我们假设这个结果是 `XXXX`，然后解释器再执行 `#!python return 0, XXXX`。
+然而这个函数是错误的，如果想让它按照期望工作，则必须得先在 `#!python 0, 0` 外面加一对圆括号。看下面两个例子：
 
-而显然这个 `XXXX` 要么是 `0`，要么是从父类的 `foo()` 方法返回的 `#!python tuple[int, int]` 类型的对象。如果是 `0` 还好，子类的返回结果将仍然会是 `(0, 0)`。但是如果这个 `XXXX` 是从父类返回的 `#!python tuple[int, int]` 类型的对象，那么子类的返回结果就会是 `#!python tuple[int, tuple[int, int]]`，这显然是不符合预期的。
+```pycon
+>>> a = 0, 0 if False else (1, 1)
+>>> a
+(0, (1, 1))
+>>> b = (0, 0) if False else (1, 1)
+>>> b
+(1, 1)
+>>>
+```
 
-解决办法就是在 `#!python return` 语句里为那个元组加上括号。
+我们可以看到，如果不加圆括号，那么会先计算 `#!python 0 if False else (1, 1)`，然后再构造元组，这就导致了 `a` 的值是 `#!python (0, (1, 1))`，而不是 `#!python (1, 1)`。
+
+Python [文档](https://docs.python.org/zh-cn/3/tutorial/datastructures.html#tuples-and-sequences) 中指出，元组在被输入（或者说，被定义）时的圆括号可有可无，但如果元组是更大的表达式的一部分，那么圆括号是必须的。
+
+这是我曾经制造的 [巨大 bug](https://github.com/Arcaea-Infinity/ArcaeaChartRender/commit/bbd56446a3ddedacd11cbceab30472dc8eadf6fa) 之一。
+
+!!! failure ""
+
+    在原来的 blog 的内容中，我认为这是 `#!python return` 语句与 `#!python if` 语句的优先级问题，但实际上这与 `#!python return` 语句无关，而是与元组的定义有关。
+
+    感谢 [赵遂志 ZHAO Suizhi](https://github.com/zhaosuizhi) 在 [#12](https://github.com/zhanbao2000/blog/issues/12) 中及时指出了本小节中存在错误。
 
 ### 4.3 `#!python yield from` 和 `#!python return` 共存
 
