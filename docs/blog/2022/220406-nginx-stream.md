@@ -57,3 +57,17 @@ load_module /usr/lib/nginx/modules/ngx_stream_module.so;
 ```
 
 如此一来便能正常使用 stream 模块。
+
+然后可以使用以下语法进行 stream 转发：
+
+```nginx
+stream {
+    server {
+        listen 6161 reuseport;
+        listen [::]:6161 reuseport;
+        proxy_pass arcapi-v2.lowiro.com:443;
+    }
+}
+```
+
+这段配置的意思是，监听本机的 6161 端口（IPv4 和 IPv6），然后将所有请求转发到 `arcapi-v2.lowiro.com:443`。
