@@ -13,14 +13,20 @@ theme:
   icon:
     logo: octicons/code-review-16
   palette:
-    - scheme: default
+    - media: "(prefers-color-scheme)"
       toggle:
-        icon: material/weather-sunny
-        name: 进入夜间模式
-    - scheme: slate
+        icon: material/brightness-auto
+        name: 跟随系统
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
       toggle:
-        icon: material/weather-night
-        name: 进入日间模式
+        icon: material/brightness-7
+        name: 亮色模式
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      toggle:
+        icon: material/brightness-4
+        name: 暗色模式
   language: 'zh'
   features:
     - navigation.footer
