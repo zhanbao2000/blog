@@ -1657,11 +1657,11 @@ sudo<span class="w"> </span>snap<span class="w"> </span>install<span class="w"> 
 
         <!-- Reload on palette change -->
         <script>
-            const palette = __md_get("__palette");
+            var palette = __md_get("__palette");
             if (palette && typeof palette.color === "object")
                 if (palette.color.scheme === "slate") {
                     const giscus = document.querySelector("script[src*=giscus]");
-                    giscus.setAttribute("data-theme", "dark")
+                    giscus.setAttribute("data-theme", "transparent_dark")
                 }
 
             /* Register event handlers after documented loaded */
@@ -1670,7 +1670,7 @@ sudo<span class="w"> </span>snap<span class="w"> </span>install<span class="w"> 
                 ref.addEventListener("change", function() {
                     const palette = __md_get("__palette");
                     if (palette && typeof palette.color === "object") {
-                        const theme = palette.color.scheme === "slate" ? "dark" : "light";
+                        const theme = palette.color.scheme === "slate" ? "transparent_dark" : "light";
 
                         /* Instruct Giscus to change theme */
                         const frame = document.querySelector(".giscus-frame");
