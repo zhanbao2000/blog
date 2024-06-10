@@ -108,10 +108,12 @@ Rclone 提供了相当丰富的安装方式，包括但不限于：
 1. 如果你能正常在控制台中看到你的 token：
 
     ```
-    token = {"access_token":"xxxxxxxxxxxxxxxxxx","expiry":"yyyyyyyyyyyyyyyy"}
+    Paste the following into your remote machine --->
+    {"access_token":"xxxxxxxxxxxxxxxxxx","token_type":"Bearer","refresh_token":"xxxxxxxxxxxxxxxxxx","expiry":"xxxxxxxxxxxxxxxxxx"}
+    <---End paste
     ```
 
-    记录该 token 备用。然后按照 [四、创建 Rclone remote](#rclone-remote) 继续。
+    从 `--->` 到 `<---` 复制整个字符串。然后按照 [四、创建 Rclone remote](#rclone-remote) 继续。
 
 2. 如果你在网页中看到如下错误：
 
@@ -224,7 +226,7 @@ Then paste the result below:
 result>
 ```
 
-复制你先前保存的 `access_token` 即可。
+复制你先前保存的包含 `access_token` 的字符串即可。
 
 之后会出现：
 
@@ -243,7 +245,13 @@ Choose a number from below, or type in an existing value
 Your choice>
 ```
 
-视你自己情况而定。
+选择 `1 / OneDrive Personal or Business` 为挂载 OneDrive，相当于私有网盘。（推荐）
+
+对应 URL 为 `https://____domain____-my.sharepoint.com/personal/____email____/_layouts/15/onedrive.aspx`
+
+选择 `2 / Sharepoint site` 为挂载 SharePoint，相当于文件共享站。
+
+对应 URL 为 `https://____domain____.sharepoint.com/Shared%20Documents/Forms/AllItems.aspx`
 
 之后你将获得一个已经配置好的 remote。
 
