@@ -83,7 +83,7 @@ Rclone 提供了相当丰富的安装方式，包括但不限于：
 
 ### 2.2 获取 OneDrive 的 `client_id` 和 `client_secret`
 
-请参考这篇博客：[创建微软OneDrive API](https://333rd.net/posts/tech/%E5%88%9B%E5%BB%BA%E5%BE%AE%E8%BD%AFonedrive-api/)
+请参考这篇博客：[创建微软OneDrive API](https://333rd.net/zh/posts/tech/%E5%88%9B%E5%BB%BA%E5%BE%AE%E8%BD%AFonedrive-api/)
 
 最终你将拿到你的 `client_id` 和 `client_secret`。
 
