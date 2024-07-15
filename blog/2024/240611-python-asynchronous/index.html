@@ -20,7 +20,7 @@
       
       
       <link rel="icon" href="../../../assets/favicon.webp">
-      <meta name="generator" content="mkdocs-1.6.0, mkdocs-material-9.5.26">
+      <meta name="generator" content="mkdocs-1.6.0, mkdocs-material-9.5.29">
     
     
       
@@ -28,7 +28,7 @@
       
     
     
-      <link rel="stylesheet" href="../../../assets/stylesheets/main.6543a935.min.css">
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.76a95c52.min.css">
       
         
         <link rel="stylesheet" href="../../../assets/stylesheets/palette.06af60db.min.css">
@@ -1370,7 +1370,7 @@
           <li class="md-nav__item">
   <a href="#22" class="md-nav__link">
     <span class="md-ellipsis">
-      2.2 协程的调度执行
+      2.2 协程的调度与执行
     </span>
   </a>
   
@@ -1604,7 +1604,7 @@
           <li class="md-nav__item">
   <a href="#22" class="md-nav__link">
     <span class="md-ellipsis">
-      2.2 协程的调度执行
+      2.2 协程的调度与执行
     </span>
   </a>
   
@@ -1803,11 +1803,11 @@ as the main headline.
 <li>Future</li>
 </ul>
 <p>可等待对象的调度是由事件循环（Event Loop）来完成的。事件循环会按照一定的规则调度可等待对象的执行，其调度的基本单位是任务（Task）。</p>
-<p>所谓调度，就是将可等待对象的执行交给事件循环，由事件循环来决定何时执行、何时挂起、何时恢复。当一个可等待对象被调度时，并不总是意味着它可以立即执行。</p>
+<p>所谓调度，就是将可等待对象的执行交给事件循环，由事件循环来决定何时执行、何时挂起、何时恢复。值得注意的是，<strong>调度</strong>和<strong>执行</strong>是不一样的，尽管一个可等待对象被调度时，大部分情况下它会被立即执行，但也存在部分情况导致它稍后才会执行。</p>
 <p>请带着以下三个问题来阅读下面的章节：</p>
 <ul>
 <li>同样是异步 I/O 编程，为什么有的写法会像同步编程一样阻塞，为什么有的写法却可以并发？</li>
-<li>在等待一个可等待对象时，发生了什么？</li>
+<li>在等待不同类型的可等待对象时，分别会发生什么？</li>
 <li>等待和调度的区别是什么？</li>
 </ul>
 <h2 id="_2">二、协程<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
@@ -1826,11 +1826,11 @@ as the main headline.
 <div class="highlight"><pre><span></span><code><span class="k">async</span> <span class="k">def</span> <span class="nf">coro</span><span class="p">():</span>
     <span class="o">...</span>
 
-<span class="nb">type</span><span class="p">(</span><span class="n">coro</span><span class="p">)</span>  <span class="c1"># &lt;class &#39;function&#39;&gt;  本身是函数</span>
+<span class="nb">type</span><span class="p">(</span><span class="n">coro</span><span class="p">)</span>  <span class="c1"># &lt;class &#39;function&#39;&gt;  本身是函数对象</span>
 <span class="nb">type</span><span class="p">(</span><span class="n">coro</span><span class="p">())</span>  <span class="c1"># &lt;class &#39;coroutine&#39;&gt;  返回值是协程对象</span>
 </code></pre></div>
 <p>在大多数场合，协程通常是指协程对象，因为协程对象可以直接被调度。不过，说调度一个协程函数，也并不会产生歧义，这意味着这个协程函数返回一个了协程对象，然后调度该协程对象。</p>
-<h3 id="22">2.2 协程的调度执行<a class="headerlink" href="#22" title="Permanent link">&para;</a></h3>
+<h3 id="22">2.2 协程的调度与执行<a class="headerlink" href="#22" title="Permanent link">&para;</a></h3>
 <p>直接调用协程函数会返回一个协程对象，而并不会使这个协程函数被调度执行。要想实际调度协程函数，你有以下几种方式：</p>
 <ul>
 <li>
@@ -1935,7 +1935,7 @@ as the main headline.
 </code></pre></div></td></tr></table></div>
 <p>像这样只使用协程，不使用任务的写法就是异步阻塞，这和同步编程中的函数调用是类似的。</p>
 <p>尽管事件循环可以挂起当前任务从而使主线程去处理另外的任务，但在这种写法下，事件循环中的所有任务都存在依赖关系，因为这些任务全部是由存在调用关系的协程包装而来的（见 <a href="#31">3.1 任务和其他可等待对象的关系</a>）。</p>
-<p>因此事件循环无法切换至其他任何任务，只能当前任务执行完毕，并按照调用关系逐个完成任务（见 <a href="#33">3.3 任务的并发执行</a>）。</p>
+<p>因此事件循环无法切换至其他任何任务，只能等待当前任务执行完毕，并按照调用关系逐个完成任务（见 <a href="#33">3.3 任务的并发执行</a>）。</p>
 <p>上面这段代码一共需要等待 3 秒钟才能执行完毕。</p>
 <h3 id="24">2.4 协程的返回值<a class="headerlink" href="#24" title="Permanent link">&para;</a></h3>
 <p>三种调度方式，除了 <code class="highlight"><span class="n">asyncio</span><span class="o">.</span><span class="n">create_task</span><span class="p">()</span></code> 函数较为复杂外，获取返回值的写法都很简单：</p>
@@ -2069,7 +2069,7 @@ as the main headline.
 </code></pre></div></td></tr></table></div>
 <p><code class="highlight"><span class="n">asyncio</span><span class="o">.</span><span class="n">gather</span><span class="p">()</span></code> 函数返回了一个 Future 对象（见 <a href="#41">4.1 Future 表示异步操作的最终结果</a>），这个对象表示了所有任务的结果。</p>
 <p>在使用 <code class="highlight"><span class="k">await</span></code> 语句等待该 Future 后，Future 对象会等待所有任务执行完毕，并将结果作为一个 <code class="highlight"><span class="nb">list</span></code> 返回。</p>
-<p><code class="highlight"><span class="n">asyncio</span><span class="o">.</span><span class="n">gather</span><span class="p">()</span></code> 函数也可以直接接收协程对象作为参数：</p>
+<p><code class="highlight"><span class="n">asyncio</span><span class="o">.</span><span class="n">gather</span><span class="p">()</span></code> 函数也可以直接接收协程对象作为实参：</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
@@ -2135,12 +2135,14 @@ waiting 2s ...
 Hello
 </code></pre></div>
 <p>任务什么时候开始执行，是由事件循环决定的，而不是由它在哪一行被等待决定的（它甚至可能没有被等待！）。当一个任务被创建时，它就处于被调度的状态，随时可以被事件循环执行。</p>
-<p>上面这段代码，虽然只等待了 <code class="highlight"><span class="n">task1</span></code>，但是控制台依然同时打印出了 <code>waiting 1s ...</code> 和 <code>waiting 2s ...</code>。这意味着 <code class="highlight"><span class="n">task2</span></code> 有被实际执行，且执行时机与 <code class="highlight"><span class="n">task1</span></code> 一致。</p>
+<p>我们在 <code class="highlight"><span class="n">say_after</span><span class="p">()</span></code> 函数的入口设置了一个 <code class="highlight"><span class="nb">print</span><span class="p">()</span></code> 语句，以便于观察任务的执行时机。</p>
+<p>上面这段代码，虽然只等待了 <code class="highlight"><span class="n">task1</span></code>，但是控制台依然同时打印出了 <code>waiting 1s ...</code> 和 <code>waiting 2s ...</code>。这意味着 <code class="highlight"><span class="n">task1</span></code> 与 <code class="highlight"><span class="n">task2</span></code> 都有被实际执行，且它们的执行时机相同。</p>
 <p>第二，若不等待任务，任务可能会被取消。</p>
-<p>还是刚刚上面那段代码，控制台虽然打印出了 <code>waiting 2s ...</code>，但却没有打印出后续理应出现的 <code>World</code>。这说明 <code class="highlight"><span class="n">task2</span></code> 没被执行完。</p>
-<p>这是因为事件循环可以知道你想要获取哪些任务的结果（取决于你等待了哪些任务），若你等待的任务全部执行完毕，那么事件循环会关闭。</p>
-<p><code class="highlight"><span class="n">task2</span></code> 需要 2 秒才能执行完毕，而此时只过了 1 秒钟事件循环便关闭了，此时 <code class="highlight"><span class="n">task2</span></code> 会被取消（执行 <code class="highlight"><span class="n">Task</span><span class="o">.</span><span class="n">cancel</span><span class="p">()</span></code> 方法）。如果你熟悉任务相关操作，你可以尝试为 <code class="highlight"><span class="n">task2</span></code> 添加回调函数从而证实它被取消。</p>
-<p>如果我们将代码改成这样：</p>
+<p>还是刚刚上面那段代码，我们在 <code class="highlight"><span class="n">say_after</span><span class="p">()</span></code> 函数的出口也设置了一个 <code class="highlight"><span class="nb">print</span><span class="p">()</span></code> 语句，以便于观察任务什么时候执行完。</p>
+<p>控制台虽然打印出了 <code>waiting 2s ...</code>，但却没有打印出后续理应出现的 <code>World</code>。这说明 <code class="highlight"><span class="n">task2</span></code> 没被执行完。</p>
+<p>这是因为事件循环知道你期望获取哪些任务的结果（取决于你等待了哪些任务），若你等待的任务全部执行完毕，那么事件循环会关闭。对于那些没有被等待的任务，事件循环认为它们的结果无关紧要，因此那些任务会被取消（执行 <code class="highlight"><span class="n">Task</span><span class="o">.</span><span class="n">cancel</span><span class="p">()</span></code> 方法）。</p>
+<p><code class="highlight"><span class="n">task2</span></code> 需要 2 秒才能执行完毕，而此时只过了 1 秒钟事件循环便关闭了，此时 <code class="highlight"><span class="n">task2</span></code> 会被取消。如果你熟悉任务相关操作，你可以尝试为 <code class="highlight"><span class="n">task2</span></code> 添加回调函数从而证实它被取消。</p>
+<p>如果把 <code>World</code> 的打印等待时间从 2 秒改成 0.5 秒：</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
@@ -2420,7 +2422,7 @@ Hello
     <span class="md-icon" title="最后更新">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1-2.1-2M12.5 7v5.2l4 2.4-1 1L11 13V7h1.5M11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2v1.8Z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_datetime">2024-06-12 04:22:37</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_datetime">2024-07-15 07:18:52</span>
   </span>
 
     
@@ -2582,7 +2584,7 @@ Hello
     <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.footer", "navigation.tabs", "navigation.top", "navigation.tracking", "content.code.copy"], "search": "../../../assets/javascripts/workers/search.b8dbb3d2.min.js", "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}}</script>
     
     
-      <script src="../../../assets/javascripts/bundle.ad660dcc.min.js"></script>
+      <script src="../../../assets/javascripts/bundle.fe8b6f2b.min.js"></script>
       
         <script src="../../../javascripts/mathjax.js"></script>
       
