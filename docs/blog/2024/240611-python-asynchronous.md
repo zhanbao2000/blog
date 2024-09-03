@@ -292,7 +292,7 @@ async def main():
 asyncio.run(main())
 ```
 
-`#!python asyncio.gather()` 函数返回了一个 Future 对象（见 [4.1 Future 表示异步操作的最终结果](#41)），这个对象表示了所有任务的结果。
+`#!python asyncio.gather()` 函数返回了一个 Future 对象（见 [4.1 Future 表示异步操作的最终结果](#41-future)），这个对象表示了所有任务的结果。
 
 在使用 `#!python await` 语句等待该 Future 后，Future 对象会等待所有任务执行完毕，并将结果作为一个 `#!python list` 返回。
 
