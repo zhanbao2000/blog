@@ -302,6 +302,14 @@ rclone mount od4hath: /root/rclone/od4hath
 
 请注意 `--vfs-cache-max-size` 参数的值为本地磁盘缓存大小，请勿设置过大。`--transfers` 与 `--buffer-size` 参数的乘积为每次传输的最大数据量，请根据你主机上的内存大小酌情设置。其中 `--buffer-size` 指示每个打开的文件描述符将使用这么多内存进行缓冲，`--transfers` 指示并行运行的文件传输数量。
 
+如果你想为 rclone 启用 web GUI，你需要添加额外的参数：
+
+```bash
+rclone mount ... --rc --rc-web-gui --rc-addr 127.0.0.1:1080 --rc-user username --rc-pass password
+```
+
+其中 `--rc-addr` 指示 rclone 的 web GUI 监听的地址和端口，`--rc-user` 与 `--rc-pass` 分别指示 web GUI 的用户名和密码。
+
 如果你的 rclone 程序经常被 Killed，除了尝试减小 `--transfers` 和 `--buffer-size` 参数的值之外，你还可以：
 
  - 设置 `--use-mmap` 参数
