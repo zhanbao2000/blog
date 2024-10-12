@@ -6,19 +6,17 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
-        <meta name="description" content="本文主要介绍如何在 PyCharm 中使用 Git Submodule。进一步地，你可以参考此方法在 JetBrains 全家桶中使用 Git Submodule。">
+        <meta name="description" content="本文介绍了如何对 VMware 的多台 Ubuntu 24.04 虚拟机进行组网">
       
       
         <meta name="author" content="Akiba Arisa">
       
       
-        <link rel="canonical" href="https://blog.arisa.moe/blog/2023/230309-pycharm-git-submodule/">
+        <link rel="canonical" href="https://blog.arisa.moe/blog/2024/241012-ubuntu-2404-multi-vm-networking/">
       
       
-        <link rel="prev" href="../230114-matrix-qq-wechat-bridge/">
+        <link rel="prev" href="../240611-python-asynchronous/">
       
-      
-        <link rel="next" href="../230406-pillow-affine-args/">
       
       
       <link rel="icon" href="../../../assets/favicon.webp">
@@ -26,7 +24,7 @@
     
     
       
-        <title>如何在 PyCharm 中使用 Git Submodule - Arisa | Blog</title>
+        <title>Ubuntu 24.04 多虚拟机组网 - Arisa | Blog</title>
       
     
     
@@ -123,7 +121,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              如何在 PyCharm 中使用 Git Submodule
+              Ubuntu 24.04 多虚拟机组网
             
           </span>
         </div>
@@ -1040,8 +1038,6 @@
                 
   
   
-    
-  
   
   
     
@@ -1051,11 +1047,11 @@
       
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_2" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_2" >
         
           
           <label class="md-nav__link" for="__nav_4_2" id="__nav_4_2_label" tabindex="0">
@@ -1069,7 +1065,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_2_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_2_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_4_2">
             <span class="md-nav__icon md-icon"></span>
             2023
@@ -1083,7 +1079,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../230113-my-2022-website/" class="md-nav__link">
+      <a href="../../2023/230113-my-2022-website/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1104,11 +1100,185 @@
   
   
     <li class="md-nav__item">
-      <a href="../230114-matrix-qq-wechat-bridge/" class="md-nav__link">
+      <a href="../../2023/230114-matrix-qq-wechat-bridge/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
     通过 Matrix 协议实现代理接收 QQ 和微信消息 —— 从入坑到入土
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../2023/230309-pycharm-git-submodule/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    如何在 PyCharm 中使用 Git Submodule
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../2023/230406-pillow-affine-args/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    （Pillow）Affine 图形变换的矩阵参数详解
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../2023/230428-mokabot-arcaea/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    mokabot 的 Arcaea 模块发展史
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../2023/230504-chart-analysis-425ex/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    《SWITCH ON NOW》 AP 解析
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../2023/230512-arcaea-webapi-archive/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    （存档）什么是 webapi 查分方案
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_3" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_4_3" id="__nav_4_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    2024
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_3_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_4_3">
+            <span class="md-nav__icon md-icon"></span>
+            2024
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../240611-python-asynchronous/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    从协程、任务和 Future 入门 Python 异步 I/O
   </span>
   
 
@@ -1136,7 +1306,7 @@
           
   
   <span class="md-ellipsis">
-    如何在 PyCharm 中使用 Git Submodule
+    Ubuntu 24.04 多虚拟机组网
   </span>
   
 
@@ -1147,7 +1317,7 @@
         
   
   <span class="md-ellipsis">
-    如何在 PyCharm 中使用 Git Submodule
+    Ubuntu 24.04 多虚拟机组网
   </span>
   
 
@@ -1169,7 +1339,7 @@
         <li class="md-nav__item">
   <a href="#_1" class="md-nav__link">
     <span class="md-ellipsis">
-      现状
+      所用软件版本
     </span>
   </a>
   
@@ -1186,9 +1356,9 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#1-github" class="md-nav__link">
+  <a href="#1" class="md-nav__link">
     <span class="md-ellipsis">
-      1. 在 GitHub 上新建一个仓库
+      1. 修改虚拟网络编辑器
     </span>
   </a>
   
@@ -1197,54 +1367,117 @@
           <li class="md-nav__item">
   <a href="#2" class="md-nav__link">
     <span class="md-ellipsis">
-      2. 将远程仓库以子模块形式添加到目标目录
+      2. 为每个虚拟机启用该网络
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#3-pycharm-git" class="md-nav__link">
+  <a href="#3" class="md-nav__link">
     <span class="md-ellipsis">
-      3. 在 PyCharm 中导入该 Git 仓库
+      3. 虚拟机配置网络
     </span>
   </a>
+  
+    <nav class="md-nav" aria-label="3. 虚拟机配置网络">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#31-dhcp" class="md-nav__link">
+    <span class="md-ellipsis">
+      3.1 DHCP
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#32-ip" class="md-nav__link">
+    <span class="md-ellipsis">
+      3.2 静态 IP
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
         
           <li class="md-nav__item">
   <a href="#4" class="md-nav__link">
     <span class="md-ellipsis">
-      4. 检查远程仓库映射是否成功
+      4. 测试连接
     </span>
   </a>
+  
+    <nav class="md-nav" aria-label="4. 测试连接">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#41" class="md-nav__link">
+    <span class="md-ellipsis">
+      4.1 虚拟机与宿主机通信
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#42" class="md-nav__link">
+    <span class="md-ellipsis">
+      4.2 虚拟机与虚拟机通信
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
         
           <li class="md-nav__item">
   <a href="#5" class="md-nav__link">
     <span class="md-ellipsis">
-      5. 将子模块的变更提交到本地
+      5. 使用主机名互联
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5. 使用主机名互联">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#51" class="md-nav__link">
+    <span class="md-ellipsis">
+      5.1 修改主机名
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#6" class="md-nav__link">
+  <a href="#52-hosts" class="md-nav__link">
     <span class="md-ellipsis">
-      6. 将子模块的变更推送到远程仓库
+      5.2 修改 hosts 文件
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#7" class="md-nav__link">
+  <a href="#53" class="md-nav__link">
     <span class="md-ellipsis">
-      7. 将子模块的变更推送到主项目的远程仓库
+      5.3 测试
     </span>
   </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
         
@@ -1257,178 +1490,6 @@
   
 </nav>
       
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../230406-pillow-affine-args/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    （Pillow）Affine 图形变换的矩阵参数详解
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../230428-mokabot-arcaea/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    mokabot 的 Arcaea 模块发展史
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../230504-chart-analysis-425ex/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    《SWITCH ON NOW》 AP 解析
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../230512-arcaea-webapi-archive/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    （存档）什么是 webapi 查分方案
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-          </ul>
-        </nav>
-      
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    
-    
-    
-      
-      
-    
-    
-    <li class="md-nav__item md-nav__item--nested">
-      
-        
-        
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_3" >
-        
-          
-          <label class="md-nav__link" for="__nav_4_3" id="__nav_4_3_label" tabindex="0">
-            
-  
-  <span class="md-ellipsis">
-    2024
-  </span>
-  
-
-            <span class="md-nav__icon md-icon"></span>
-          </label>
-        
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_3_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_4_3">
-            <span class="md-nav__icon md-icon"></span>
-            2024
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix>
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../2024/240611-python-asynchronous/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    从协程、任务和 Future 入门 Python 异步 I/O
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../2024/241012-ubuntu-2404-multi-vm-networking/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Ubuntu 24.04 多虚拟机组网
-  </span>
-  
-
-      </a>
     </li>
   
 
@@ -1476,7 +1537,7 @@
         <li class="md-nav__item">
   <a href="#_1" class="md-nav__link">
     <span class="md-ellipsis">
-      现状
+      所用软件版本
     </span>
   </a>
   
@@ -1493,9 +1554,9 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#1-github" class="md-nav__link">
+  <a href="#1" class="md-nav__link">
     <span class="md-ellipsis">
-      1. 在 GitHub 上新建一个仓库
+      1. 修改虚拟网络编辑器
     </span>
   </a>
   
@@ -1504,54 +1565,117 @@
           <li class="md-nav__item">
   <a href="#2" class="md-nav__link">
     <span class="md-ellipsis">
-      2. 将远程仓库以子模块形式添加到目标目录
+      2. 为每个虚拟机启用该网络
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#3-pycharm-git" class="md-nav__link">
+  <a href="#3" class="md-nav__link">
     <span class="md-ellipsis">
-      3. 在 PyCharm 中导入该 Git 仓库
+      3. 虚拟机配置网络
     </span>
   </a>
+  
+    <nav class="md-nav" aria-label="3. 虚拟机配置网络">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#31-dhcp" class="md-nav__link">
+    <span class="md-ellipsis">
+      3.1 DHCP
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#32-ip" class="md-nav__link">
+    <span class="md-ellipsis">
+      3.2 静态 IP
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
         
           <li class="md-nav__item">
   <a href="#4" class="md-nav__link">
     <span class="md-ellipsis">
-      4. 检查远程仓库映射是否成功
+      4. 测试连接
     </span>
   </a>
+  
+    <nav class="md-nav" aria-label="4. 测试连接">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#41" class="md-nav__link">
+    <span class="md-ellipsis">
+      4.1 虚拟机与宿主机通信
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#42" class="md-nav__link">
+    <span class="md-ellipsis">
+      4.2 虚拟机与虚拟机通信
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
         
           <li class="md-nav__item">
   <a href="#5" class="md-nav__link">
     <span class="md-ellipsis">
-      5. 将子模块的变更提交到本地
+      5. 使用主机名互联
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5. 使用主机名互联">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#51" class="md-nav__link">
+    <span class="md-ellipsis">
+      5.1 修改主机名
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#6" class="md-nav__link">
+  <a href="#52-hosts" class="md-nav__link">
     <span class="md-ellipsis">
-      6. 将子模块的变更推送到远程仓库
+      5.2 修改 hosts 文件
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#7" class="md-nav__link">
+  <a href="#53" class="md-nav__link">
     <span class="md-ellipsis">
-      7. 将子模块的变更推送到主项目的远程仓库
+      5.3 测试
     </span>
   </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
         
@@ -1579,7 +1703,7 @@ doesn't, the page title (or respectively site name) is used
 as the main headline.
 -->
 
-    <h1>如何在 PyCharm 中使用 Git Submodule</h1>
+    <h1>Ubuntu 24.04 多虚拟机组网</h1>
 
 
 <!-- Markdown content -->
@@ -1598,7 +1722,7 @@ as the main headline.
                     <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" fill="currentColor" class="bi bi-clock" viewBox="0 0 16 16">
                         <path d="M8 3.5a.5.5 0 0 0-1 0V9a.5.5 0 0 0 .252.434l3.5 2a.5.5 0 0 0 .496-.868L8 8.71V3.5z"/>
                         <path d="M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16zm7-8A7 7 0 1 1 1 8a7 7 0 0 1 14 0z"/>
-                    </svg> 5 min read
+                    </svg> 10 min read
                 </span>
             </p>
         </aside>
@@ -1606,77 +1730,120 @@ as the main headline.
     
 
     
-        <div class="tags">
-        
-            <a href="/tags/#python" class="tag"><code>#python</code></a>
-        
-            <a href="/tags/#pycharm" class="tag"><code>#pycharm</code></a>
-        
-            <a href="/tags/#git" class="tag"><code>#git</code></a>
-        
-            <a href="/tags/#github" class="tag"><code>#github</code></a>
-        
-        </div>
-    
 
-    <h2 id="_1">现状<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
-<p>截至 2023 年 3 月，JetBrains 全家桶仅对 Git Submodule 功能提供很有限的支持。在 PyCharm 中甚至根本看不到 Git Submodule 的身影。</p>
-<p>本文通过 <code>git</code> 命令行和 PyCharm 新建 Git 仓库的方法，来曲线救国地解决这个问题。</p>
+    <h2 id="_1">所用软件版本<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
+<ul>
+<li>VMware® Workstation 17 Pro 17.6.1 build-24319023</li>
+<li>Ubuntu Server 24.04.1 AMD64</li>
+</ul>
 <h2 id="_2">步骤<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
-<h3 id="1-github">1. 在 GitHub 上新建一个仓库<a class="headerlink" href="#1-github" title="Permanent link">&para;</a></h3>
-<p>由于 <code>git submodule</code> 命令只能接远程仓库作为参数，因此此步骤需要我们在 GitHub 上新建一个仓库，用于存放我们的子模块。</p>
-<p>如果你需要导入的子模块已经存在于 GitHub 上，那么你可以直接跳过这一步。</p>
-<h3 id="2">2. 将远程仓库以子模块形式添加到目标目录<a class="headerlink" href="#2" title="Permanent link">&para;</a></h3>
-<p><strong>进入目标目录中</strong>，然后使用 <code>git submodule add</code> 命令将远程仓库以子模块形式添加到主项目的目标目录。</p>
-<p><code>git submodule add</code> 命令的语法为：</p>
-<div class="highlight"><pre><span></span><code>git<span class="w"> </span>submodule<span class="w"> </span>add<span class="w"> </span>&lt;远程仓库地址&gt;<span class="w"> </span>&lt;子模块目录&gt;
+<h3 id="1">1. 修改虚拟网络编辑器<a class="headerlink" href="#1" title="Permanent link">&para;</a></h3>
+<p>打开 <code>编辑-虚拟网络编辑器</code>，添加一个新的虚拟网络：</p>
+<p><a class="glightbox" href="../images/241012-ubuntu-2404-multi-vm-networking/vnet_manager_create_vnet.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="vnet_manager_create_vnet" src="../images/241012-ubuntu-2404-multi-vm-networking/vnet_manager_create_vnet.png" /></a></p>
+<p>选择 <code>NAT 模式</code> 或者 <code>仅主机模式</code> 均可。我所使用的虚拟机无需联网，因此在这里选择的是 <code>仅主机模式</code>。</p>
+<p>如果你需要 DHCP 分配虚拟机 IP，则在你刚刚添加的虚拟网络中，将 <code>使用本地 DHCP 服务将 IP 地址分配给虚拟机</code> 勾选。如果你的虚拟机使用静态 IP，那么勾不勾选都可以。</p>
+<p>检查你的 Windows 网络适配器：</p>
+<p><a class="glightbox" href="../images/241012-ubuntu-2404-multi-vm-networking/vnet_manager_windows.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="vnet_manager_windows" src="../images/241012-ubuntu-2404-multi-vm-networking/vnet_manager_windows.png" /></a></p>
+<p>属性中显示的 <code>192.168.152.1</code> 即是此虚拟网络的网关地址。</p>
+<h3 id="2">2. 为每个虚拟机启用该网络<a class="headerlink" href="#2" title="Permanent link">&para;</a></h3>
+<p>右键虚拟机，点击 <code>设置-网络适配器</code>，将网络连接设置为刚刚你创建的虚拟网络：</p>
+<p><a class="glightbox" href="../images/241012-ubuntu-2404-multi-vm-networking/vm_networking_setting.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="vm_networking_setting" src="../images/241012-ubuntu-2404-multi-vm-networking/vm_networking_setting.png" /></a></p>
+<p>然后为每个你需要组网的虚拟机都如此设置。</p>
+<h3 id="3">3. 虚拟机配置网络<a class="headerlink" href="#3" title="Permanent link">&para;</a></h3>
+<p>启动虚拟机，编辑 <code>/etc/netplan/50-cloud-init.yaml</code></p>
+<div class="highlight"><pre><span></span><code>sudo<span class="w"> </span>nano<span class="w"> </span>/etc/netplan/50-cloud-init.yaml
 </code></pre></div>
-<p>因此我们执行：</p>
-<div class="highlight"><pre><span></span><code><span class="nb">cd</span><span class="w"> </span>src/plugins/mokabot_bandori
-git<span class="w"> </span>submodule<span class="w"> </span>add<span class="w"> </span>https://github.com/zhanbao2000/bestdori.git<span class="w"> </span>bestdori
+<p>此时你的配置文件应该是这样的（全新系统离线安装）：</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># This file is generated from information provided by the datasource.  Changes</span>
+<span class="c1"># to it will not persist across an instance reboot.  To disable cloud-init&#39;s</span>
+<span class="c1"># network configuration capabilities, write a file</span>
+<span class="c1"># /etc/cloud/cloud.cfg.d/99-disable-network-config.cfg with the following:</span>
+<span class="c1"># network: {config: disabled}</span>
+<span class="nt">network</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">ethernets</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{}</span>
+<span class="w">    </span><span class="nt">version</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">2</span>
 </code></pre></div>
-<p>此时 <code>src/plugins/mokabot_bandori</code> 目录下会多出一个 <code>bestdori</code> 目录，这就是我们的子模块。</p>
-<h3 id="3-pycharm-git">3. 在 PyCharm 中导入该 Git 仓库<a class="headerlink" href="#3-pycharm-git" title="Permanent link">&para;</a></h3>
-<p>目前为止，<code>git</code> 命令行已经知道这是一个子模块了，但是目前 PyCharm 还不知道这是一个子模块，甚至不知道这是一个 Git 仓库。</p>
-<p>双击 <span class="keys"><kbd class="key-shift">Shift</kbd></span>，输入 <code>create</code>，找到 <code>创建 Git 仓库</code>。</p>
-<p>（由于主项目已经建立过本地的 Git 仓库，PyCharm 的 Git 工具栏将不再出现这个选项，因此只能在搜索里找到）</p>
-<p><a class="glightbox" href="../images/230309-pycharm-git-submodule/create.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="create" src="../images/230309-pycharm-git-submodule/create.png" /></a></p>
-<p>仓库目录选择我们的子模块目录 <code>bestdori</code>。</p>
-<p>这里会提示是否要创建新的 VCS 根，选择 <code>是</code>。</p>
-<p><a class="glightbox" href="../images/230309-pycharm-git-submodule/git_init.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="git_init" src="../images/230309-pycharm-git-submodule/git_init.png" /></a></p>
-<h3 id="4">4. 检查远程仓库映射是否成功<a class="headerlink" href="#4" title="Permanent link">&para;</a></h3>
-<p>此时打开 Git 工具栏中的 <code>管理远程..</code> 选项</p>
-<p><a class="glightbox" href="../images/230309-pycharm-git-submodule/git_remote.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="git_remote" src="../images/230309-pycharm-git-submodule/git_remote.png" /></a></p>
-<p>可以看到刚刚的子模块 <code>bestdori</code> 已经成功映射到远程的 <code>origin</code> 了，那么说明操作成功。</p>
-<h3 id="5">5. 将子模块的变更提交到本地<a class="headerlink" href="#5" title="Permanent link">&para;</a></h3>
-<p>随意进行一些变更，例如，在 PyCharm 中，在 <code>bestdori</code> 目录下新建一个文件。</p>
-<p><a class="glightbox" href="../images/230309-pycharm-git-submodule/__init__.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="init" src="../images/230309-pycharm-git-submodule/__init__.png" /></a></p>
-<p>PyCharm 会提示你是否要添加至 <code>git</code>，这里选 <code>是</code>，当然你也可以稍后自行添加。</p>
-<p>添加一些内容后，进行提交。</p>
-<p><a class="glightbox" href="../images/230309-pycharm-git-submodule/git_commit.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="git_commit" src="../images/230309-pycharm-git-submodule/git_commit.png" /></a></p>
-<p>可以看到一共有两个文件的变更，一个是我们刚刚在子模块中创立的 <code>__init__.py</code>，另一个是主项目的 <code>.gitmodules</code>，直接提交即可。</p>
-<p>这两个文件将会<strong>分别提交到独立的本地 Git 仓库中</strong>。</p>
-<p>之所以会有 <code>.gitmodules</code>，那当然是因为我们刚刚添加了新的子模块，这个文件只会在子模块被添加时更新一次。</p>
-<h3 id="6">6. 将子模块的变更推送到远程仓库<a class="headerlink" href="#6" title="Permanent link">&para;</a></h3>
-<p>在 Git 工具栏中，点击 <code>推送..</code>。</p>
-<p><a class="glightbox" href="../images/230309-pycharm-git-submodule/git_push.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="git_push" src="../images/230309-pycharm-git-submodule/git_push.png" /></a></p>
-<p>可以看到共有两个仓库各一处变更，一处是子模块的 <code>__init__.py</code>，另一处是主项目的 <code>.gitmodules</code>，没有问题，直接推送即可。</p>
-<p><a class="glightbox" href="../images/230309-pycharm-git-submodule/remote_bestdori.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="remote_bestdori" src="../images/230309-pycharm-git-submodule/remote_bestdori.png" /></a></p>
-<p>推送后去 GitHub 上看，可以看到子模块 <code>bestdori</code> 的远程仓库已经成功推送了。</p>
-<h3 id="7">7. 将子模块的变更推送到主项目的远程仓库<a class="headerlink" href="#7" title="Permanent link">&para;</a></h3>
-<p>再次进入提交页面，可以看到 <code>bestdori</code> 整个文件夹被列了出来。</p>
-<p><a class="glightbox" href="../images/230309-pycharm-git-submodule/git_commit_bestdori.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="git_commit_bestdori" src="../images/230309-pycharm-git-submodule/git_commit_bestdori.png" /></a></p>
-<p>勾选他，提交，然后推送。</p>
-<p><a class="glightbox" href="../images/230309-pycharm-git-submodule/git_push_bestdori.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="git_push_bestdori" src="../images/230309-pycharm-git-submodule/git_push_bestdori.png" /></a></p>
-<p>可以看到刚刚的这次提交是属于主项目的，这一步的意义在于，通知主项目的 Git 远程仓库，子模块的远程仓库已经更新了。</p>
-<p>推送后查看主项目的远程仓库：</p>
-<p><a class="glightbox" href="../images/230309-pycharm-git-submodule/remote_mokabot.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="remote_mokabot" src="../images/230309-pycharm-git-submodule/remote_mokabot.png" /></a></p>
-<p>可以看到主项目的远程仓库中已经正确识别了这是一个子模块。</p>
-<p>（因为我第一次推送的截图没截上，所以我进行了第二次提交 + 推送，因此第 6 步和第 7 步截图中的提交消息、commit 版本是不一样的）</p>
-<div class="admonition tips">
-<p class="admonition-title">提示</p>
-<p>之后每次想要对子模块进行一些更改，并使主项目同步变更，只需重复步骤 5 ~ 7 即可。</p>
-</div>
+<p>选择以下步骤中的其中一个，这取决于你启用了 DHCP 还是静态地址：</p>
+<h4 id="31-dhcp">3.1 DHCP<a class="headerlink" href="#31-dhcp" title="Permanent link">&para;</a></h4>
+<p>修改 <code>ethernets</code> 项：</p>
+<div class="highlight"><pre><span></span><code><span class="nt">network</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">ethernets</span><span class="p">:</span>
+<span class="w">        </span><span class="nt">ens33</span><span class="p">:</span>
+<span class="w">            </span><span class="nt">dhcp4</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="w">    </span><span class="nt">version</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">2</span>
+</code></pre></div>
+<p>重启 <code>netplan</code>：</p>
+<div class="highlight"><pre><span></span><code>sudo<span class="w"> </span>netplan<span class="w"> </span>apply
+</code></pre></div>
+<p>你现在可以看到你虚拟机的 IP 地址：</p>
+<div class="highlight"><pre><span></span><code>ip<span class="w"> </span>addr
+<span class="c1"># 或者 ip route</span>
+</code></pre></div>
+<p><a class="glightbox" href="../images/241012-ubuntu-2404-multi-vm-networking/vm_ip_addr_dhcp.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="vm_ip_addr_dhcp" src="../images/241012-ubuntu-2404-multi-vm-networking/vm_ip_addr_dhcp.png" /></a></p>
+<p>这里的 <code>192.168.152.128</code> 即是这台虚拟机分配的 IP 地址。</p>
+<h4 id="32-ip">3.2 静态 IP<a class="headerlink" href="#32-ip" title="Permanent link">&para;</a></h4>
+<p>修改 <code>ethernets</code> 项：</p>
+<div class="highlight"><pre><span></span><code><span class="nt">network</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">ethernets</span><span class="p">:</span>
+<span class="w">        </span><span class="nt">ens33</span><span class="p">:</span>
+<span class="w">            </span><span class="nt">dhcp4</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">no</span>
+<span class="w">            </span><span class="nt">addresses</span><span class="p">:</span>
+<span class="hll"><span class="w">              </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">192.168.152.200/24</span>
+</span><span class="w">            </span><span class="nt">optional</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="w">            </span><span class="nt">routes</span><span class="p">:</span>
+<span class="w">              </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">to</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">default</span>
+<span class="hll"><span class="w">                </span><span class="nt">via</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">192.168.152.1</span>
+</span><span class="w">            </span><span class="nt">nameservers</span><span class="p">:</span>
+<span class="hll"><span class="w">              </span><span class="nt">addresses</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">192.168.152.1</span><span class="p p-Indicator">]</span>
+</span><span class="w">    </span><span class="nt">version</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">2</span>
+</code></pre></div>
+<p>将 <code>192.168.152.200/24</code> 改成你想静态分配的 IP 地址，将 <code>192.168.152.1</code> 改为你的虚拟网络的网关。</p>
+<p>重启 <code>netplan</code>：</p>
+<div class="highlight"><pre><span></span><code>sudo<span class="w"> </span>netplan<span class="w"> </span>apply
+</code></pre></div>
+<p>你现在可以看到你虚拟机的 IP 地址：</p>
+<div class="highlight"><pre><span></span><code>ip<span class="w"> </span>addr
+<span class="c1"># 或者 ip route</span>
+</code></pre></div>
+<p><a class="glightbox" href="../images/241012-ubuntu-2404-multi-vm-networking/vm_ip_addr_static_ip.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="vm_ip_addr_static_ip" src="../images/241012-ubuntu-2404-multi-vm-networking/vm_ip_addr_static_ip.png" /></a></p>
+<p>这里的 <code>192.168.152.200</code> 是你静态分配的 IP 地址。</p>
+<h3 id="4">4. 测试连接<a class="headerlink" href="#4" title="Permanent link">&para;</a></h3>
+<h4 id="41">4.1 虚拟机与宿主机通信<a class="headerlink" href="#41" title="Permanent link">&para;</a></h4>
+<p>在宿主机上 Ping 你的虚拟机：</p>
+<div class="highlight"><pre><span></span><code>ping 192.168.152.200
+</code></pre></div>
+<p><a class="glightbox" href="../images/241012-ubuntu-2404-multi-vm-networking/windows_ping_vm.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="windows_ping_vm" src="../images/241012-ubuntu-2404-multi-vm-networking/windows_ping_vm.png" /></a></p>
+<h4 id="42">4.2 虚拟机与虚拟机通信<a class="headerlink" href="#42" title="Permanent link">&para;</a></h4>
+<p>在虚拟机上 Ping 另外一台虚拟机：</p>
+<div class="highlight"><pre><span></span><code>ping<span class="w"> </span><span class="m">192</span>.168.152.201
+</code></pre></div>
+<p><a class="glightbox" href="../images/241012-ubuntu-2404-multi-vm-networking/vm_ping_vm.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="vm_ping_vm" src="../images/241012-ubuntu-2404-multi-vm-networking/vm_ping_vm.png" /></a></p>
+<h3 id="5">5. 使用主机名互联<a class="headerlink" href="#5" title="Permanent link">&para;</a></h3>
+<p>通过为每个虚拟机分配其唯一的主机名，并将其记录到 <code>hosts</code> 文件中，我们可以不用每次都记录他们的 IP 地址。</p>
+<h4 id="51">5.1 修改主机名<a class="headerlink" href="#51" title="Permanent link">&para;</a></h4>
+<p>首先查看主机名：</p>
+<div class="highlight"><pre><span></span><code>hostnamectl
+<span class="c1"># 或 hostname</span>
+</code></pre></div>
+<p><a class="glightbox" href="../images/241012-ubuntu-2404-multi-vm-networking/vm_hostnamectl.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="vm_hostnamectl" src="../images/241012-ubuntu-2404-multi-vm-networking/vm_hostnamectl.png" /></a></p>
+<p>可以发现我这里的主机名已经是 <code>master</code> 了，这是因为我在安装系统时指定过主机名。如果你也是这么做的，那么你可以直接跳到 <a href="#52-hosts">5.2 修改 hosts 文件</a>。</p>
+<p>使用如下命令修改主机名，并重启：</p>
+<div class="highlight"><pre><span></span><code>sudo<span class="w"> </span>hostnamectl<span class="w"> </span>set-hostname<span class="w"> </span>master<span class="w"> </span>--static<span class="w">  </span><span class="c1"># master 改为你要改的主机名</span>
+sudo<span class="w"> </span>reboot
+</code></pre></div>
+<h4 id="52-hosts">5.2 修改 hosts 文件<a class="headerlink" href="#52-hosts" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code>sudo<span class="w"> </span>nano<span class="w"> </span>/etc/hosts
+</code></pre></div>
+<p>根据你其他虚拟机的主机名，将其编辑后追加到 hosts 文件：</p>
+<div class="highlight"><pre><span></span><code>192.168.152.200 master
+192.168.152.201 worker1
+192.168.152.201 worker2
+</code></pre></div>
+<p>不要把虚拟机自己的主机名加进去了。</p>
+<h4 id="53">5.3 测试<a class="headerlink" href="#53" title="Permanent link">&para;</a></h4>
+<p>同 <a href="#4">4. 测试连接</a></p>
+<p>将 IP 地址改为主机名，能互相 Ping 通即可。</p>
+<p><a class="glightbox" href="../images/241012-ubuntu-2404-multi-vm-networking/vm_ping_vm_hostname.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="vm_ping_vm_hostname" src="../images/241012-ubuntu-2404-multi-vm-networking/vm_ping_vm_hostname.png" /></a></p>
 
     <!-- Last update of source file -->
     
@@ -1703,7 +1870,7 @@ git<span class="w"> </span>submodule<span class="w"> </span>add<span class="w"> 
     <span class="md-icon" title="最后更新">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_datetime">2023-03-10 03:45:39</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_datetime">2024-10-12 14:45:24</span>
   </span>
 
     
@@ -1713,7 +1880,7 @@ git<span class="w"> </span>submodule<span class="w"> </span>add<span class="w"> 
     <span class="md-icon" title="创建日期">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M14.47 15.08 11 13V7h1.5v5.25l3.08 1.83c-.41.28-.79.62-1.11 1m-1.39 4.84c-.36.05-.71.08-1.08.08-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8c0 .37-.03.72-.08 1.08.69.1 1.33.32 1.92.64.1-.56.16-1.13.16-1.72 0-5.5-4.5-10-10-10S2 6.5 2 12s4.47 10 10 10c.59 0 1.16-.06 1.72-.16-.32-.59-.54-1.23-.64-1.92M18 15v3h-3v2h3v3h2v-3h3v-2h-3v-3z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_datetime">2023-03-09 16:13:23</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_datetime">2024-10-12 14:45:24</span>
   </span>
 
     
@@ -1797,7 +1964,7 @@ git<span class="w"> </span>submodule<span class="w"> </span>add<span class="w"> 
       <nav class="md-footer__inner md-grid" aria-label="页脚" >
         
           
-          <a href="../230114-matrix-qq-wechat-bridge/" class="md-footer__link md-footer__link--prev" aria-label="上一页: 通过 Matrix 协议实现代理接收 QQ 和微信消息 —— 从入坑到入土">
+          <a href="../240611-python-asynchronous/" class="md-footer__link md-footer__link--prev" aria-label="上一页: 从协程、任务和 Future 入门 Python 异步 I/O">
             <div class="md-footer__button md-icon">
               
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
@@ -1807,27 +1974,11 @@ git<span class="w"> </span>submodule<span class="w"> </span>add<span class="w"> 
                 上一页
               </span>
               <div class="md-ellipsis">
-                通过 Matrix 协议实现代理接收 QQ 和微信消息 —— 从入坑到入土
+                从协程、任务和 Future 入门 Python 异步 I/O
               </div>
             </div>
           </a>
         
-        
-          
-          <a href="../230406-pillow-affine-args/" class="md-footer__link md-footer__link--next" aria-label="下一页: （Pillow）Affine 图形变换的矩阵参数详解">
-            <div class="md-footer__title">
-              <span class="md-footer__direction">
-                下一页
-              </span>
-              <div class="md-ellipsis">
-                （Pillow）Affine 图形变换的矩阵参数详解
-              </div>
-            </div>
-            <div class="md-footer__button md-icon">
-              
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
-            </div>
-          </a>
         
       </nav>
     
