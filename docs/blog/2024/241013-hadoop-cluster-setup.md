@@ -2,6 +2,10 @@
 author: Akiba Arisa
 author_gh_user: zhanbao2000
 read_time: 60 min
+tags:
+    - hadoop
+    - cluster
+    - ubuntu
 title: Hadoop 3.4.0 集群搭建教程
 description: 本文介绍了如何在 Ubuntu 24.04 上搭建 Hadoop 3.4.0 集群
 ---

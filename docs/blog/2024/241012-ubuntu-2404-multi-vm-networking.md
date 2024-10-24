@@ -2,6 +2,11 @@
 author: Akiba Arisa
 author_gh_user: zhanbao2000
 read_time: 10 min
+tags:
+    - ubuntu
+    - vmware
+    - networking
+
 title: Ubuntu 24.04 多虚拟机组网
 description: 本文介绍了如何对 VMware 的多台 Ubuntu 24.04 虚拟机进行组网
 ---

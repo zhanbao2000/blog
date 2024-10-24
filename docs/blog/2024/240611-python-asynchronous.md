@@ -2,6 +2,10 @@
 author: Akiba Arisa
 author_gh_user: zhanbao2000
 read_time: 15 min
+tags:
+    - python
+    - asyncio
+
 title: 从协程、任务和 Future 入门 Python 异步 I/O
 description: 本文将从协程、任务、Future 三个角度来介绍 Python 异步 I/O 的基本概念和使用方法，帮助你更好地理解 Python 异步 I/O 的工作原理。
 ---
