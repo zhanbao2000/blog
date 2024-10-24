@@ -22,7 +22,7 @@
       
       
       <link rel="icon" href="../../../assets/favicon.webp">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.40">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.42">
     
     
       
@@ -30,7 +30,7 @@
       
     
     
-      <link rel="stylesheet" href="../../../assets/stylesheets/main.8c3ca2c6.min.css">
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.0253249f.min.css">
       
         
         <link rel="stylesheet" href="../../../assets/stylesheets/palette.06af60db.min.css">
@@ -1773,7 +1773,15 @@ as the main headline.
 <p><a class="glightbox" href="../images/241012-ubuntu-2404-multi-vm-networking/vm_networking_setting.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="vm_networking_setting" src="../images/241012-ubuntu-2404-multi-vm-networking/vm_networking_setting.png" /></a></p>
 <p>然后为每个你需要组网的虚拟机都如此设置。</p>
 <h3 id="3">3. 虚拟机配置网络<a class="headerlink" href="#3" title="Permanent link">&para;</a></h3>
-<p>启动虚拟机，编辑 <code>/etc/netplan/50-cloud-init.yaml</code></p>
+<p>首先确认你的网卡名：</p>
+<div class="highlight"><pre><span></span><code>ip<span class="w"> </span>addr
+</code></pre></div>
+<p>这里会列出你的所有网卡，例如我这里显示的是：</p>
+<div class="highlight"><pre><span></span><code>1: lo: &lt;LOOPBACK,UP,LOWER_UP&gt; mtu 65536 qdisc noqueue state UNKNOWN group default qlen 1000
+2: ens33: &lt;BROADCAST,MULTICAST,UP,LOWER_UP&gt; mtu 1500 qdisc pfifo_fast state UP group default qlen 1000
+</code></pre></div>
+<p>那么我的网卡名就是 <code>ens33</code>。可能有的人的网卡名是 <code>eth0</code>、<code>ens36</code> 等，在后面编辑时需要全部对应注意。</p>
+<p>现在编辑 <code>/etc/netplan/50-cloud-init.yaml</code></p>
 <div class="highlight"><pre><span></span><code>sudo<span class="w"> </span>nano<span class="w"> </span>/etc/netplan/50-cloud-init.yaml
 </code></pre></div>
 <p>此时你的配置文件应该是这样的（全新系统离线安装）：</p>
@@ -1791,12 +1799,14 @@ as the main headline.
 <p>修改 <code>ethernets</code> 项：</p>
 <div class="highlight"><pre><span></span><code><span class="nt">network</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">ethernets</span><span class="p">:</span>
-<span class="w">        </span><span class="nt">ens33</span><span class="p">:</span>
-<span class="w">            </span><span class="nt">dhcp4</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="hll"><span class="w">        </span><span class="nt">ens33</span><span class="p">:</span>
+</span><span class="w">            </span><span class="nt">dhcp4</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
 <span class="w">    </span><span class="nt">version</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">2</span>
 </code></pre></div>
-<p>重启 <code>netplan</code>：</p>
+<p>重启 <code>netplan</code> 并重启网卡：</p>
 <div class="highlight"><pre><span></span><code>sudo<span class="w"> </span>netplan<span class="w"> </span>apply
+sudo<span class="w"> </span>ip<span class="w"> </span>link<span class="w"> </span><span class="nb">set</span><span class="w"> </span>ens33<span class="w"> </span>down
+sudo<span class="w"> </span>ip<span class="w"> </span>link<span class="w"> </span><span class="nb">set</span><span class="w"> </span>ens33<span class="w"> </span>up
 </code></pre></div>
 <p>你现在可以看到你虚拟机的 IP 地址：</p>
 <div class="highlight"><pre><span></span><code>ip<span class="w"> </span>addr
@@ -1808,8 +1818,8 @@ as the main headline.
 <p>修改 <code>ethernets</code> 项：</p>
 <div class="highlight"><pre><span></span><code><span class="nt">network</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">ethernets</span><span class="p">:</span>
-<span class="w">        </span><span class="nt">ens33</span><span class="p">:</span>
-<span class="w">            </span><span class="nt">dhcp4</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">no</span>
+<span class="hll"><span class="w">        </span><span class="nt">ens33</span><span class="p">:</span>
+</span><span class="w">            </span><span class="nt">dhcp4</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">no</span>
 <span class="w">            </span><span class="nt">addresses</span><span class="p">:</span>
 <span class="hll"><span class="w">              </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">192.168.152.200/24</span>
 </span><span class="w">            </span><span class="nt">optional</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
@@ -1821,8 +1831,10 @@ as the main headline.
 </span><span class="w">    </span><span class="nt">version</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">2</span>
 </code></pre></div>
 <p>将 <code>192.168.152.200/24</code> 改成你想静态分配的 IP 地址，将 <code>192.168.152.1</code> 改为你的虚拟网络的网关。</p>
-<p>重启 <code>netplan</code>：</p>
+<p>重启 <code>netplan</code> 并重启网卡：</p>
 <div class="highlight"><pre><span></span><code>sudo<span class="w"> </span>netplan<span class="w"> </span>apply
+sudo<span class="w"> </span>ip<span class="w"> </span>link<span class="w"> </span><span class="nb">set</span><span class="w"> </span>ens33<span class="w"> </span>down
+sudo<span class="w"> </span>ip<span class="w"> </span>link<span class="w"> </span><span class="nb">set</span><span class="w"> </span>ens33<span class="w"> </span>up
 </code></pre></div>
 <p>你现在可以看到你虚拟机的 IP 地址：</p>
 <div class="highlight"><pre><span></span><code>ip<span class="w"> </span>addr
@@ -1892,7 +1904,7 @@ sudo<span class="w"> </span>reboot
     <span class="md-icon" title="最后更新">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_datetime">2024-10-13 08:36:56</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_datetime">2024-10-24 06:54:19</span>
   </span>
 
     
@@ -2070,7 +2082,7 @@ sudo<span class="w"> </span>reboot
     <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.footer", "navigation.tabs", "navigation.top", "navigation.tracking", "content.code.copy"], "search": "../../../assets/javascripts/workers/search.6ce7567c.min.js", "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}}</script>
     
     
-      <script src="../../../assets/javascripts/bundle.525ec568.min.js"></script>
+      <script src="../../../assets/javascripts/bundle.83f73b43.min.js"></script>
       
         <script src="../../../javascripts/mathjax.js"></script>
       
