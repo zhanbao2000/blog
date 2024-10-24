@@ -39,7 +39,22 @@ description: 本文介绍了如何对 VMware 的多台 Ubuntu 24.04 虚拟机进
 
 ### 3. 虚拟机配置网络
 
-启动虚拟机，编辑 `/etc/netplan/50-cloud-init.yaml`
+首先确认你的网卡名：
+
+```bash
+ip addr
+```
+
+这里会列出你的所有网卡，例如我这里显示的是：
+
+```
+1: lo: <LOOPBACK,UP,LOWER_UP> mtu 65536 qdisc noqueue state UNKNOWN group default qlen 1000
+2: ens33: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc pfifo_fast state UP group default qlen 1000
+```
+
+那么我的网卡名就是 `ens33`。可能有的人的网卡名是 `eth0`、`ens36` 等，在后面编辑时需要全部对应注意。
+
+现在编辑 `/etc/netplan/50-cloud-init.yaml`
 
 ```bash
 sudo nano /etc/netplan/50-cloud-init.yaml
@@ -64,7 +79,7 @@ network:
 
 修改 `ethernets` 项：
 
-```yaml
+```yaml hl_lines="3"
 network:
     ethernets:
         ens33:
@@ -72,10 +87,12 @@ network:
     version: 2
 ```
 
-重启 `netplan`：
+重启 `netplan` 并重启网卡：
 
 ```bash
 sudo netplan apply
+sudo ip link set ens33 down
+sudo ip link set ens33 up
 ```
 
 你现在可以看到你虚拟机的 IP 地址：
@@ -93,7 +110,7 @@ ip addr
 
 修改 `ethernets` 项：
 
-```yaml hl_lines="6 10 12"
+```yaml hl_lines="3 6 10 12"
 network:
     ethernets:
         ens33:
@@ -111,10 +128,12 @@ network:
 
 将 `192.168.152.200/24` 改成你想静态分配的 IP 地址，将 `192.168.152.1` 改为你的虚拟网络的网关。
 
-重启 `netplan`：
+重启 `netplan` 并重启网卡：
 
 ```bash
 sudo netplan apply
+sudo ip link set ens33 down
+sudo ip link set ens33 up
 ```
 
 你现在可以看到你虚拟机的 IP 地址：
