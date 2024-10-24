@@ -246,7 +246,7 @@ Hadoop 共有 4 个配置文件和 1 个环境脚本需要修改：
  - 配置文件 [`core-site.xml`](#81-core-sitexml)
  - 配置文件 [`hdfs-site.xml`](#82-hdfs-sitexml)
  - 配置文件 [`mapred-site.xml`](#83-mapred-sitexml)
- - 配置文件 [`yarn-site.xml`](/#84-yarn-sitexml)
+ - 配置文件 [`yarn-site.xml`](#84-yarn-sitexml)
  - 环境脚本 [`hadoop-env.sh`](#85-hadoop-envsh)
 
 他们都位于 `./hadoop/etc/hadoop` 目录下。
