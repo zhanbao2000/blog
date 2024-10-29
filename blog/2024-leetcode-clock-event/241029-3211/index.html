@@ -6,28 +6,32 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
-        <meta name="description" content="Arisa 的个人博客">
+        <meta name="description" content="3211. 生成不含相邻零的二进制字符串">
       
       
         <meta name="author" content="Akiba Arisa">
       
       
+        <link rel="canonical" href="https://blog.arisa.moe/blog/2024-leetcode-clock-event/241029-3211/">
+      
+      
+        <link rel="prev" href="../241028-685/">
       
       
       
-      <link rel="icon" href="/assets/favicon.webp">
+      <link rel="icon" href="../../../assets/favicon.webp">
       <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.42">
     
     
       
-        <title>Arisa | Blog</title>
+        <title>3211. 生成不含相邻零的二进制字符串 - Arisa | Blog</title>
       
     
     
-      <link rel="stylesheet" href="/assets/stylesheets/main.0253249f.min.css">
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.0253249f.min.css">
       
         
-        <link rel="stylesheet" href="/assets/stylesheets/palette.06af60db.min.css">
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.06af60db.min.css">
       
       
 
@@ -46,16 +50,25 @@
       
     
     
-      <link rel="stylesheet" href="/stylesheets/custom.css">
+      <link rel="stylesheet" href="../../../stylesheets/custom.css">
     
-    <script>__md_scope=new URL("/",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
 
     
     
     
-  </head>
+   <link href="../../../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>
+    html.glightbox-open { overflow: initial; height: 100%; }
+    .gslide-title { margin-top: 0px; user-select: text; }
+    .gslide-desc { color: #666; user-select: text; }
+    .gslide-image img { background: white; }
+    .gscrollbar-fixer { padding-right: 15px; }
+    .gdesc-inner { font-size: 0.75rem; }
+    body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color);}
+    body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color);}
+    body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color);}</style> <script src="../../../assets/javascripts/glightbox.min.js"></script></head>
   
   
     
@@ -73,6 +86,11 @@
     <label class="md-overlay" for="__drawer"></label>
     <div data-md-component="skip">
       
+        
+        <a href="#_1" class="md-skip">
+          跳转至
+        </a>
+      
     </div>
     <div data-md-component="announce">
       
@@ -83,7 +101,7 @@
 
 <header class="md-header" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="页眉">
-    <a href="/." title="Arisa | Blog" class="md-header__button md-logo" aria-label="Arisa | Blog" data-md-component="logo">
+    <a href="../../.." title="Arisa | Blog" class="md-header__button md-logo" aria-label="Arisa | Blog" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"><path d="M1.75 1h12.5c.966 0 1.75.784 1.75 1.75v8.5A1.75 1.75 0 0 1 14.25 13H8.061l-2.574 2.573A1.458 1.458 0 0 1 3 14.543V13H1.75A1.75 1.75 0 0 1 0 11.25v-8.5C0 1.784.784 1 1.75 1M1.5 2.75v8.5c0 .138.112.25.25.25h2a.75.75 0 0 1 .75.75v2.19l2.72-2.72a.75.75 0 0 1 .53-.22h6.5a.25.25 0 0 0 .25-.25v-8.5a.25.25 0 0 0-.25-.25H1.75a.25.25 0 0 0-.25.25m5.28 1.72a.75.75 0 0 1 0 1.06L5.31 7l1.47 1.47a.75.75 0 0 1-.018 1.042.75.75 0 0 1-1.042.018l-2-2a.75.75 0 0 1 0-1.06l2-2a.75.75 0 0 1 1.06 0m2.44 0a.75.75 0 0 1 1.06 0l2 2a.75.75 0 0 1 0 1.06l-2 2a.75.75 0 0 1-1.042-.018.75.75 0 0 1-.018-1.042L10.69 7 9.22 5.53a.75.75 0 0 1 0-1.06"/></svg>
@@ -103,7 +121,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              
+              3211. 生成不含相邻零的二进制字符串
             
           </span>
         </div>
@@ -220,7 +238,7 @@
   
   
     <li class="md-tabs__item">
-      <a href="/." class="md-tabs__link">
+      <a href="../../.." class="md-tabs__link">
         
   
     
@@ -237,7 +255,7 @@
   
   
     <li class="md-tabs__item">
-      <a href="/tags/" class="md-tabs__link">
+      <a href="../../../tags/" class="md-tabs__link">
         
   
     
@@ -254,7 +272,7 @@
   
   
     <li class="md-tabs__item">
-      <a href="/toc/" class="md-tabs__link">
+      <a href="../../../toc/" class="md-tabs__link">
         
   
     
@@ -269,17 +287,21 @@
         
   
   
+    
+  
   
     
     
       
   
   
+    
+  
   
     
     
-      <li class="md-tabs__item">
-        <a href="/blog/2022/220406-nginx-stream/" class="md-tabs__link">
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../../2022/220406-nginx-stream/" class="md-tabs__link">
           
   
   Blog
@@ -315,7 +337,7 @@
 
 <nav class="md-nav md-nav--primary md-nav--lifted" aria-label="导航栏" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="/." title="Arisa | Blog" class="md-nav__button md-logo" aria-label="Arisa | Blog" data-md-component="logo">
+    <a href="../../.." title="Arisa | Blog" class="md-nav__button md-logo" aria-label="Arisa | Blog" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"><path d="M1.75 1h12.5c.966 0 1.75.784 1.75 1.75v8.5A1.75 1.75 0 0 1 14.25 13H8.061l-2.574 2.573A1.458 1.458 0 0 1 3 14.543V13H1.75A1.75 1.75 0 0 1 0 11.25v-8.5C0 1.784.784 1 1.75 1M1.5 2.75v8.5c0 .138.112.25.25.25h2a.75.75 0 0 1 .75.75v2.19l2.72-2.72a.75.75 0 0 1 .53-.22h6.5a.25.25 0 0 0 .25-.25v-8.5a.25.25 0 0 0-.25-.25H1.75a.25.25 0 0 0-.25.25m5.28 1.72a.75.75 0 0 1 0 1.06L5.31 7l1.47 1.47a.75.75 0 0 1-.018 1.042.75.75 0 0 1-1.042.018l-2-2a.75.75 0 0 1 0-1.06l2-2a.75.75 0 0 1 1.06 0m2.44 0a.75.75 0 0 1 1.06 0l2 2a.75.75 0 0 1 0 1.06l-2 2a.75.75 0 0 1-1.042-.018.75.75 0 0 1-.018-1.042L10.69 7 9.22 5.53a.75.75 0 0 1 0-1.06"/></svg>
@@ -345,7 +367,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/." class="md-nav__link">
+      <a href="../../.." class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -365,7 +387,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/tags/" class="md-nav__link">
+      <a href="../../../tags/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -385,7 +407,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/toc/" class="md-nav__link">
+      <a href="../../../toc/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -402,23 +424,28 @@
       
   
   
+    
   
   
+  
     
     
     
-      
-      
-    
-    
-    <li class="md-nav__item md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" checked>
         
           
-          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="">
             
   
   <span class="md-ellipsis">
@@ -429,7 +456,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_4">
             <span class="md-nav__icon md-icon"></span>
             Blog
@@ -481,7 +508,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/blog/2022/220406-nginx-stream/" class="md-nav__link">
+      <a href="../../2022/220406-nginx-stream/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -502,7 +529,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/blog/2022/220406-set-http-proxy/" class="md-nav__link">
+      <a href="../../2022/220406-set-http-proxy/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -523,7 +550,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/blog/2022/220406-venv-move-file/" class="md-nav__link">
+      <a href="../../2022/220406-venv-move-file/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -544,7 +571,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/blog/2022/220407-certbot/" class="md-nav__link">
+      <a href="../../2022/220407-certbot/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -565,7 +592,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/blog/2022/220407-github-pages/" class="md-nav__link">
+      <a href="../../2022/220407-github-pages/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -586,7 +613,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/blog/2022/220408-github-pages-2/" class="md-nav__link">
+      <a href="../../2022/220408-github-pages-2/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -607,7 +634,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/blog/2022/220409-cloudflare-workers-arcaea-update/" class="md-nav__link">
+      <a href="../../2022/220409-cloudflare-workers-arcaea-update/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -628,7 +655,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/blog/2022/220412-ida-substitute-usage/" class="md-nav__link">
+      <a href="../../2022/220412-ida-substitute-usage/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -649,7 +676,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/blog/2022/220413-Intranet-penetration-bitcomit/" class="md-nav__link">
+      <a href="../../2022/220413-Intranet-penetration-bitcomit/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -670,7 +697,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/blog/2022/220414-fk-arcaea-songlist-hash/" class="md-nav__link">
+      <a href="../../2022/220414-fk-arcaea-songlist-hash/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -691,7 +718,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/blog/2022/220416-arcaea-fanmade-chart-problem/" class="md-nav__link">
+      <a href="../../2022/220416-arcaea-fanmade-chart-problem/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -712,7 +739,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/blog/2022/220417-linux-clean-up-disk-space/" class="md-nav__link">
+      <a href="../../2022/220417-linux-clean-up-disk-space/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -733,7 +760,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/blog/2022/220421-use-gzip-bomb-against-scanner/" class="md-nav__link">
+      <a href="../../2022/220421-use-gzip-bomb-against-scanner/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -754,7 +781,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/blog/2022/220428-how-to-ask-questions-like-a-retard/" class="md-nav__link">
+      <a href="../../2022/220428-how-to-ask-questions-like-a-retard/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -775,7 +802,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/blog/2022/220429-dilb-ultimate-solution/" class="md-nav__link">
+      <a href="../../2022/220429-dilb-ultimate-solution/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -796,7 +823,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/blog/2022/220502-how-dogs-work-in-epic7/" class="md-nav__link">
+      <a href="../../2022/220502-how-dogs-work-in-epic7/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -817,7 +844,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/blog/2022/220511-how-to-write-python-into-classical-chinese/" class="md-nav__link">
+      <a href="../../2022/220511-how-to-write-python-into-classical-chinese/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -838,7 +865,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/blog/2022/220529-python-personal-styleguide/" class="md-nav__link">
+      <a href="../../2022/220529-python-personal-styleguide/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -859,7 +886,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/blog/2022/220530-auto-sign-in-guide/" class="md-nav__link">
+      <a href="../../2022/220530-auto-sign-in-guide/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -880,7 +907,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/blog/2022/220602-ipv6-bypass-billing-system/" class="md-nav__link">
+      <a href="../../2022/220602-ipv6-bypass-billing-system/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -901,7 +928,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/blog/2022/220902-python-mutable-defaults/" class="md-nav__link">
+      <a href="../../2022/220902-python-mutable-defaults/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -922,7 +949,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/blog/2022/220913-python-confusing-detail/" class="md-nav__link">
+      <a href="../../2022/220913-python-confusing-detail/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -943,7 +970,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/blog/2022/221113-rclone-sharepoint-for-hentai-at-home/" class="md-nav__link">
+      <a href="../../2022/221113-rclone-sharepoint-for-hentai-at-home/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -964,7 +991,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/blog/2022/221113-rclone-sharepoint-oauth-failed/" class="md-nav__link">
+      <a href="../../2022/221113-rclone-sharepoint-oauth-failed/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -985,7 +1012,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/blog/2022/221115-issue-of-position-or-right-and-wrong/" class="md-nav__link">
+      <a href="../../2022/221115-issue-of-position-or-right-and-wrong/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1052,7 +1079,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/blog/2023/230113-my-2022-website/" class="md-nav__link">
+      <a href="../../2023/230113-my-2022-website/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1073,7 +1100,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/blog/2023/230114-matrix-qq-wechat-bridge/" class="md-nav__link">
+      <a href="../../2023/230114-matrix-qq-wechat-bridge/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1094,7 +1121,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/blog/2023/230309-pycharm-git-submodule/" class="md-nav__link">
+      <a href="../../2023/230309-pycharm-git-submodule/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1115,7 +1142,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/blog/2023/230406-pillow-affine-args/" class="md-nav__link">
+      <a href="../../2023/230406-pillow-affine-args/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1136,7 +1163,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/blog/2023/230428-mokabot-arcaea/" class="md-nav__link">
+      <a href="../../2023/230428-mokabot-arcaea/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1157,7 +1184,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/blog/2023/230504-chart-analysis-425ex/" class="md-nav__link">
+      <a href="../../2023/230504-chart-analysis-425ex/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1178,7 +1205,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/blog/2023/230512-arcaea-webapi-archive/" class="md-nav__link">
+      <a href="../../2023/230512-arcaea-webapi-archive/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1245,7 +1272,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/blog/2024/240611-python-asynchronous/" class="md-nav__link">
+      <a href="../../2024/240611-python-asynchronous/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1266,7 +1293,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/blog/2024/241012-ubuntu-2404-multi-vm-networking/" class="md-nav__link">
+      <a href="../../2024/241012-ubuntu-2404-multi-vm-networking/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1287,7 +1314,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/blog/2024/241013-hadoop-cluster-setup/" class="md-nav__link">
+      <a href="../../2024/241013-hadoop-cluster-setup/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1313,6 +1340,8 @@
                 
   
   
+    
+  
   
   
     
@@ -1322,11 +1351,11 @@
       
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_4" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_4" checked>
         
           
           <label class="md-nav__link" for="__nav_4_4" id="__nav_4_4_label" tabindex="0">
@@ -1340,7 +1369,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_4_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_4_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_4_4">
             <span class="md-nav__icon md-icon"></span>
             2024 leetcode clock event
@@ -1354,7 +1383,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/blog/2024-leetcode-clock-event/241024-3175/" class="md-nav__link">
+      <a href="../241024-3175/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1375,7 +1404,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/blog/2024-leetcode-clock-event/241025-3180/" class="md-nav__link">
+      <a href="../241025-3180/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1396,7 +1425,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/blog/2024-leetcode-clock-event/241026-3181/" class="md-nav__link">
+      <a href="../241026-3181/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1417,7 +1446,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/blog/2024-leetcode-clock-event/241027-684/" class="md-nav__link">
+      <a href="../241027-684/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1438,7 +1467,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/blog/2024-leetcode-clock-event/241028-685/" class="md-nav__link">
+      <a href="../241028-685/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1456,10 +1485,28 @@
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="/blog/2024-leetcode-clock-event/241029-3211/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    3211. 生成不含相邻零的二进制字符串
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   <span class="md-ellipsis">
@@ -1468,6 +1515,75 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      题目描述
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      解题思路
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="解题思路">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      递归
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      回溯
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      优化
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -1506,6 +1622,65 @@
   
   
   
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      题目描述
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      解题思路
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="解题思路">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      递归
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      回溯
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      优化
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
 </nav>
                   </div>
                 </div>
@@ -1516,7 +1691,251 @@
             <div class="md-content" data-md-component="content">
               <article class="md-content__inner md-typeset">
                 
-  <h1>404 - Not found</h1>
+
+<!--
+Hack: check whether the content contains a h1 headline. If it
+doesn't, the page title (or respectively site name) is used
+as the main headline.
+-->
+
+    <h1>3211. 生成不含相邻零的二进制字符串</h1>
+
+
+<!-- Markdown content -->
+
+    
+
+        <aside class="mdx-author">
+            <p>
+                <img src="https://avatars.githubusercontent.com/zhanbao2000" alt="@zhanbao2000">
+            </p>
+            <p>
+                <span>
+                    <b>Akiba Arisa</b> · <a href="https://github.com/zhanbao2000">@zhanbao2000</a>
+                </span>
+                <span>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" fill="currentColor" class="bi bi-clock" viewBox="0 0 16 16">
+                        <path d="M8 3.5a.5.5 0 0 0-1 0V9a.5.5 0 0 0 .252.434l3.5 2a.5.5 0 0 0 .496-.868L8 8.71V3.5z"/>
+                        <path d="M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16zm7-8A7 7 0 1 1 1 8a7 7 0 0 1 14 0z"/>
+                    </svg> 5 min read
+                </span>
+            </p>
+        </aside>
+
+    
+
+    
+        <div class="tags">
+        
+            <a href="/tags/#python" class="tag"><code>#python</code></a>
+        
+            <a href="/tags/#leetcode" class="tag"><code>#leetcode</code></a>
+        
+            <a href="/tags/#recursive" class="tag"><code>#recursive</code></a>
+        
+            <a href="/tags/#backtracking" class="tag"><code>#backtracking</code></a>
+        
+            <a href="/tags/#bit-manipulation" class="tag"><code>#bit-manipulation</code></a>
+        
+        </div>
+    
+
+    <h2 id="_1">题目描述<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
+<p>关联：<a href="https://leetcode.cn/problems/generate-binary-strings-without-adjacent-zeros/description/">https://leetcode.cn/problems/generate-binary-strings-without-adjacent-zeros/description/</a></p>
+<div class="admonition question">
+<p class="admonition-title">题目描述</p>
+<p>给你一个正整数 <code>n</code>。</p>
+<p>如果一个二进制字符串 <code>x</code> 的所有长度为 2 的子字符串中包含至少一个 <code>"1"</code>，则称 <code>x</code> 是一个有效字符串。</p>
+<p>返回所有长度为 <code>n</code> 的有效字符串，可以以任意顺序排列。</p>
+</div>
+<p>本题的范围是 <span class="arithmatex">\(1 \leq n \leq 18\)</span>。</p>
+<h2 id="_2">解题思路<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
+<p>本题可以用递归或者回溯的方法来解决。</p>
+<h3 id="_3">递归<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
+<p>递归的思路是：对于长度为 <code>n</code> 的字符串，我们可以在其前面添加 <code>0</code> 或者 <code>1</code>，然后递归生成长度为 <code>n - 1</code> 的字符串。</p>
+<p>递归的出口是 <code>n == 1</code> 或者 <code>n == 2</code>。</p>
+<ul>
+<li>当 <code>n == 1</code> 时，结果只有可能是 <code>['0', '1']</code>。</li>
+<li>当 <code>n == 2</code> 时，结果只有可能是 <code>['01', '10', '11']</code>。</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">valid_strings</span><span class="p">(</span><span class="n">n</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]:</span>
+    <span class="k">if</span> <span class="n">n</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+        <span class="k">return</span> <span class="p">[</span><span class="s1">&#39;0&#39;</span><span class="p">,</span> <span class="s1">&#39;1&#39;</span><span class="p">]</span>
+    <span class="k">elif</span> <span class="n">n</span> <span class="o">==</span> <span class="mi">2</span><span class="p">:</span>
+        <span class="k">return</span> <span class="p">[</span><span class="s1">&#39;01&#39;</span><span class="p">,</span> <span class="s1">&#39;10&#39;</span><span class="p">,</span> <span class="s1">&#39;11&#39;</span><span class="p">]</span>
+
+    <span class="n">previous_strings</span> <span class="o">=</span> <span class="n">valid_strings</span><span class="p">(</span><span class="n">n</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span>
+    <span class="n">result</span> <span class="o">=</span> <span class="p">[]</span>
+
+    <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">previous_strings</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">s</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;1&#39;</span><span class="p">:</span>
+            <span class="n">result</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">s</span> <span class="o">+</span> <span class="s1">&#39;0&#39;</span><span class="p">)</span>
+        <span class="n">result</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">s</span> <span class="o">+</span> <span class="s1">&#39;1&#39;</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">result</span>
+</code></pre></div>
+<h3 id="_4">回溯<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h3>
+<p>回溯的思路是：我们从一个空字符串开始，每次尝试在字符串末尾添加 <code>0</code> 或 <code>1</code>，并确保添加后的字符串仍然是有效的。如果添加 <code>0</code> 会导致出现相邻的两个 <code>0</code>，则跳过这个选择。通过递归地尝试所有可能的选择，我们可以生成所有长度为 <code>n</code> 的有效字符串。</p>
+<div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">valid_strings</span><span class="p">(</span><span class="n">n</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]:</span>
+    <span class="k">def</span> <span class="nf">backtrack</span><span class="p">(</span><span class="n">s</span><span class="p">:</span> <span class="nb">str</span><span class="p">):</span>
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">s</span><span class="p">)</span> <span class="o">==</span> <span class="n">n</span><span class="p">:</span>
+            <span class="n">result</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">s</span><span class="p">)</span>
+            <span class="k">return</span>
+
+        <span class="k">if</span> <span class="n">s</span> <span class="ow">and</span> <span class="n">s</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;0&#39;</span><span class="p">:</span>
+            <span class="n">backtrack</span><span class="p">(</span><span class="n">s</span> <span class="o">+</span> <span class="s1">&#39;1&#39;</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">backtrack</span><span class="p">(</span><span class="n">s</span> <span class="o">+</span> <span class="s1">&#39;0&#39;</span><span class="p">)</span>
+            <span class="n">backtrack</span><span class="p">(</span><span class="n">s</span> <span class="o">+</span> <span class="s1">&#39;1&#39;</span><span class="p">)</span>
+
+    <span class="n">result</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">backtrack</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">result</span>
+</code></pre></div>
+<h2 id="_5">优化<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h2>
+<p>这两种方式应该是最直观的解法了，但是这两种方式都有一个问题，就是时间复杂度太高了，以至于执行时间也会过长。虽然没超时，但是 <code>击败了 5.56% 的用户</code> 的字样看起来还是很抽象。</p>
+<p><a class="glightbox" href="../images/241029-3211/time.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="time" src="../images/241029-3211/time.png" /></a></p>
+<p>回溯和递归的时间复杂度都是 <span class="arithmatex">\(O(2^n)\)</span>，这是因为我们每次都有两种选择，而且我们的选择是不断地递归下去的，所以时间复杂度是指数级别的。</p>
+<p>我是在想不出来了，最后看了 <a href="https://leetcode.cn/problems/generate-binary-strings-without-adjacent-zeros/solutions/2833805/wei-yun-suan-zuo-fa-pythonjavacgo-by-end-6lbt/">灵茶山艾府的题解</a>，发现了一个很巧妙的方法。</p>
+<div class="highlight"><pre><span></span><code><span class="k">class</span> <span class="nc">Solution</span><span class="p">:</span>
+    <span class="k">def</span> <span class="nf">validStrings</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">n</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]:</span>
+        <span class="n">ans</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="n">mask</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span> <span class="o">&lt;&lt;</span> <span class="n">n</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span>
+        <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span> <span class="o">&lt;&lt;</span> <span class="n">n</span><span class="p">):</span>
+            <span class="k">if</span> <span class="p">(</span><span class="n">x</span> <span class="o">&gt;&gt;</span> <span class="mi">1</span><span class="p">)</span> <span class="o">&amp;</span> <span class="n">x</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+                <span class="c1"># 0{n}b 表示长为 n 的有前导零的二进制</span>
+                <span class="n">ans</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">x</span><span class="w"> </span><span class="o">^</span><span class="w"> </span><span class="n">mask</span><span class="si">:</span><span class="s2">0</span><span class="si">{</span><span class="n">n</span><span class="si">}</span><span class="s2">b</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">ans</span>
+</code></pre></div>
+<p>这个方法的时间复杂度是 <span class="arithmatex">\(O(2^n)\)</span>，但是执行时间却很短，这是因为它使用了位运算，可以快速地生成所有的有效字符串。</p>
+<p>同时使用 <code class="highlight"><span class="p">(</span><span class="n">x</span> <span class="o">&gt;&gt;</span> <span class="mi">1</span><span class="p">)</span> <span class="o">&amp;</span> <span class="n">x</span> <span class="o">==</span> <span class="mi">0</span></code> 来检查是否有相邻的 <code>1</code> 的方法很巧妙，但是这个方法需要稍微转一下思维，因为这个表达式实际上检测的是<strong>有没有相邻的 <code>1</code></strong>：</p>
+<div class="admonition hint">
+<p class="admonition-title">如何检测相邻的 <code>0</code></p>
+<p>一个二进制数 <code>x</code> 中，如果有相邻的 <code>1</code>，那么右移一位后和原数进行按位与运算，结果一定不为 <code>0</code>。</p>
+<div class="arithmatex">\[
+(x \gg 1) \wedge x = 
+\begin{cases}
+1, &amp; x \text{ 有相邻的1} \\
+0, &amp; x \text{ 没有相邻的1} 
+\end{cases}
+\]</div>
+<p>参考这个原理，首先检测相邻的 <code>1</code>，再通过<strong>按位取反</strong>，即可检测相邻的 <code>0</code>。</p>
+</div>
+<p>很多人检测相邻的 <code>0</code> 会使用字符串的方法 <code class="highlight"><span class="s1">&#39;00&#39;</span> <span class="ow">in</span> <span class="nb">bin</span><span class="p">(</span><span class="n">i</span><span class="p">)</span></code>，但是这样会很慢，而位运算的时间复杂度是 <span class="arithmatex">\(O(1)\)</span>，所以这个方法非常快。</p>
+<p>在输出时，使用了 <code class="highlight"><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">x</span><span class="w"> </span><span class="o">^</span><span class="w"> </span><span class="n">mask</span><span class="si">:</span><span class="s2">0</span><span class="si">{</span><span class="n">n</span><span class="si">}</span><span class="s2">b</span><span class="si">}</span><span class="s2">&quot;</span></code> 来输出二进制字符串，这个方法可以输出指定长度的二进制字符串：</p>
+<ul>
+<li><code>x</code> 是当前的整数</li>
+<li><code>mask</code> 是一个全为 <code>1</code> 的二进制数，长度为 <code>n</code></li>
+<li><code>x ^ mask</code> 将 <code>x</code> 的每一位与 <code>mask</code> 的对应位进行异或操作，结果是 <code>x</code> 的每一位取反</li>
+<li><code>:0{n}b</code> 表示输出的二进制字符串长度为 <code>n</code>，不足的地方用 <code>0</code> 补齐</li>
+</ul>
+<p>最后这个补齐操作是为了防止第 <code>n</code> 位的 <code>1</code> 取反之后是 <code>0</code>，从而长度少了 1，此时应该在前面补 1 个 <code>0</code>：</p>
+<div class="highlight"><pre><span></span><code><span class="gp">&gt;&gt;&gt; </span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="mb">0b10001</span><span class="w"> </span><span class="o">^</span><span class="w"> </span><span class="mb">0b11111</span><span class="si">:</span><span class="s1">0b</span><span class="si">}</span><span class="s1">&#39;</span>
+<span class="go">&#39;1110&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="mb">0b10001</span><span class="w"> </span><span class="o">^</span><span class="w"> </span><span class="mb">0b11111</span><span class="si">:</span><span class="s1">05b</span><span class="si">}</span><span class="s1">&#39;</span>
+<span class="go">&#39;01110&#39;</span>
+</code></pre></div>
+<p>值得注意的是，不能使用 <code>~</code> 来进行按位取反。因为在二进制中，负数是以补码形式表示的。<code>~x</code> 相当于 <code>-(x + 1)</code>，不仅输出的长度不正确，还会为结果添加一个负号。</p>
+<div class="highlight"><pre><span></span><code><span class="gp">&gt;&gt;&gt; </span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="o">~</span><span class="mb">0b10001</span><span class="si">:</span><span class="s1">05b</span><span class="si">}</span><span class="s1">&#39;</span>
+<span class="go">&#39;-10010&#39;</span>
+</code></pre></div>
+
+    <!-- Last update of source file -->
+    
+        
+            
+
+
+
+
+
+
+  
+    
+  
+  
+    
+  
+
+
+  <aside class="md-source-file">
+    
+      
+  <span class="md-source-file__fact">
+    <span class="md-icon" title="最后更新">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
+    </span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_datetime">2024-10-29 10:54:43</span>
+  </span>
+
+    
+    
+      
+  <span class="md-source-file__fact">
+    <span class="md-icon" title="创建日期">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M14.47 15.08 11 13V7h1.5v5.25l3.08 1.83c-.41.28-.79.62-1.11 1m-1.39 4.84c-.36.05-.71.08-1.08.08-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8c0 .37-.03.72-.08 1.08.69.1 1.33.32 1.92.64.1-.56.16-1.13.16-1.72 0-5.5-4.5-10-10-10S2 6.5 2 12s4.47 10 10 10c.59 0 1.16-.06 1.72-.16-.32-.59-.54-1.23-.64-1.92M18 15v3h-3v2h3v3h2v-3h3v-2h-3v-3z"/></svg>
+    </span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_datetime">2024-10-29 10:54:43</span>
+  </span>
+
+    
+    
+    
+  </aside>
+
+        
+    
+
+    
+
+        <!-- Giscus -->
+        <h2 id="__comments">评论</h2>
+        <script src="https://giscus.app/client.js"
+                data-repo="zhanbao2000/blog"
+                data-repo-id="R_kgDOHIZK7A"
+                data-category="Announcements"
+                data-category-id="DIC_kwDOHIZK7M4COdSe"
+                data-mapping="pathname"
+                data-reactions-enabled="1"
+                data-emit-metadata="0"
+                data-input-position="top"
+                data-theme="light"
+                data-lang="zh-CN"
+                data-loading="lazy"
+                crossorigin="anonymous"
+                async>
+        </script>
+
+        <!-- Reload on palette change -->
+        <script>
+            var palette = __md_get("__palette");
+            if (palette && typeof palette.color === "object")
+                if (palette.color.scheme === "slate") {
+                    const giscus = document.querySelector("script[src*=giscus]");
+                    giscus.setAttribute("data-theme", "transparent_dark")
+                }
+
+            /* Register event handlers after documented loaded */
+            document.addEventListener("DOMContentLoaded", function() {
+                const ref = document.querySelector("[data-md-component=palette]");
+                ref.addEventListener("change", function() {
+                    const palette = __md_get("__palette");
+                    if (palette && typeof palette.color === "object") {
+                        const theme = palette.color.scheme === "slate" ? "transparent_dark" : "light";
+
+                        /* Instruct Giscus to change theme */
+                        const frame = document.querySelector(".giscus-frame");
+                        frame.contentWindow.postMessage(
+                            { giscus: { setConfig: { theme } } },
+                            "https://giscus.app"
+                        )
+                    }
+                })
+            })
+        </script>
+
+    
+
 
               </article>
             </div>
@@ -1535,6 +1954,28 @@
       
         <footer class="md-footer">
   
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="页脚" >
+        
+          
+          <a href="../241028-685/" class="md-footer__link md-footer__link--prev" aria-label="上一页: 685. 冗余连接 II">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                上一页
+              </span>
+              <div class="md-ellipsis">
+                685. 冗余连接 II
+              </div>
+            </div>
+          </a>
+        
+        
+      </nav>
     
   
   <div class="md-footer-meta md-typeset">
@@ -1583,19 +2024,21 @@
     </div>
     
     
-    <script id="__config" type="application/json">{"base": "/", "features": ["navigation.footer", "navigation.tabs", "navigation.top", "navigation.tracking", "content.code.copy"], "search": "/assets/javascripts/workers/search.6ce7567c.min.js", "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}}</script>
+    <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.footer", "navigation.tabs", "navigation.top", "navigation.tracking", "content.code.copy"], "search": "../../../assets/javascripts/workers/search.6ce7567c.min.js", "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}}</script>
     
     
-      <script src="/assets/javascripts/bundle.83f73b43.min.js"></script>
+      <script src="../../../assets/javascripts/bundle.83f73b43.min.js"></script>
       
-        <script src="/javascripts/mathjax.js"></script>
+        <script src="../../../javascripts/mathjax.js"></script>
       
         <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
       
         <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
       
-        <script src="/javascripts/waifu/autoload.js"></script>
+        <script src="../../../javascripts/waifu/autoload.js"></script>
       
     
-  </body>
+  <script id="init-glightbox">const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": false, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});
+document$.subscribe(() => { lightbox.reload() });
+</script></body>
 </html>
