@@ -633,6 +633,15 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      无法新建解释器
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#venv" class="md-nav__link">
     <span class="md-ellipsis">
       终端只能够使用全局包与无法进入 venv 环境
@@ -1677,6 +1686,15 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      无法新建解释器
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#venv" class="md-nav__link">
     <span class="md-ellipsis">
       终端只能够使用全局包与无法进入 venv 环境
@@ -1769,20 +1787,23 @@ as the main headline.
 <li>无法使用 pip</li>
 </ul>
 <h2 id="_3">解决<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h2>
-<ul>
-<li>
 <h3 id="_4">找不到解释器<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h3>
-</li>
-</ul>
 <p>这个问题好解决，PyCharm 会自动检测当前目录下的 venv 文件夹，如果存在，则会将 <code>venv/Scripts/python</code> 设置为解释器。问题直接解决。</p>
 <p>需要注意的是，因为我们是移动了 python 项目文件夹的，因此原来的解释器路径还保留在 PyCharm 内，所以需要手动将其删除。可以按照以下步骤进行操作：</p>
 <p>找到 <code>文件</code> -&gt; <code>设置</code> -&gt; <code>项目</code> -&gt; <code>Python 解释器</code></p>
 <p>选择当前解释器右边的齿轮图标，点击 <code>全部显示</code>，找到红色标记的解释器，点击删除即可。</p>
+<h3 id="_5">无法新建解释器<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h3>
+<p>在你移动了项目文件夹（甚至重装了 venv 对应的 Python 基本解释器）的情况下，可能会导致 PyCharm 无法新建同名解释器，具体体现为：</p>
 <ul>
-<li>
-<h3 id="venv">终端只能够使用全局包与无法进入 venv 环境<a class="headerlink" href="#venv" title="Permanent link">&para;</a></h3>
-</li>
+<li>使用原解释器名称和基本解释器版本新建解释器，PyCharm 只会在目标文件夹创建 <code>venv</code> 文件夹，但并未在解释器列表里添加这个新增的解释器。而且无论如何用什么添加方法都无法添加。</li>
+<li>为项目设置成 <code>无解释器</code>，此时 PyCharm 会自动检测到项目文件夹下的 <code>venv</code> 文件夹，会询问你是否要将这个 <code>venv</code> 设置为解释器。</li>
+<li>上述操作可以将 <code>venv</code> 设置为解释器，但是解释器名称会变成 <code>f'{原解释器名称}(2)'</code>，看起来是和原解释器冲突了。</li>
+<li>删除 <code>venv</code> 文件夹，使用不同的解释器名称（或者解释器版本）新建解释器，PyCharm 会正常添加。</li>
 </ul>
+<p>总结一句话就是，不能和原来的解释器名称以及解释器版本冲突，两者不能同时都和旧解释器一样。</p>
+<p>解决方法也很简单：</p>
+<p>找到 <code>C:\Users\AkibaArisa\AppData\Roaming\JetBrains\PyCharm2024.2\options\jdk.table.xml</code> 文件，删除里面的旧解释器即可。</p>
+<h3 id="venv">终端只能够使用全局包与无法进入 venv 环境<a class="headerlink" href="#venv" title="Permanent link">&para;</a></h3>
 <p>具体有以下几个表现：</p>
 <ol>
 <li>
@@ -2347,11 +2368,7 @@ aliases[&quot;pydoc&quot;] = [&quot;python&quot;, &quot;-m&quot;, &quot;pydoc&qu
 </div>
 </div>
 </div>
-<ul>
-<li>
 <h3 id="pip">无法使用 pip<a class="headerlink" href="#pip" title="Permanent link">&para;</a></h3>
-</li>
-</ul>
 <p>通过修改 <code>activate.bat</code> 使得能正常进入 venv 环境后，会迎来第三个问题，就是无法使用 pip 安装包。</p>
 <p>具体表现为，使用 <code>pip</code> 命令后，终端会报错：<code>Fatal error in launcher: unable to create process using: 'XXXXXXX/python.exe' 'XXXXXXXXX/pip.exe'</code>。</p>
 <p>我一看，这个所谓的 <code>'XXXXXXX/python.exe'</code> 正是我们在移动项目文件之前的 venv 的 python 路径，可是我们已经修改了 <code>activate.bat</code> 中的路径，怎么还是会出现这个问题呢。</p>
@@ -2399,7 +2416,7 @@ aliases[&quot;pydoc&quot;] = [&quot;python&quot;, &quot;-m&quot;, &quot;pydoc&qu
     <span class="md-icon" title="最后更新">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_datetime">2022-04-07 10:44:59</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_datetime">2024-10-29 15:07:32</span>
   </span>
 
     
