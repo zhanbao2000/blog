@@ -1801,12 +1801,12 @@ as the main headline.
 <p>但是 Python 中无法实现字符串的字符交换，因为 Python 中的字符串是不可变对象。</p>
 <p>有两个方法可以取代这个问题：</p>
 <ul>
-<li>使用 slice，比如确定了 <code>index</code> 之后可以直接 <code class="highlight"><span class="k">return</span> <span class="n">s</span><span class="p">[:</span><span class="n">index</span><span class="p">]</span> <span class="o">+</span> <span class="n">s</span><span class="p">[</span><span class="n">index</span> <span class="o">+</span> <span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="n">s</span><span class="p">[</span><span class="n">index</span><span class="p">]</span> <span class="o">+</span> <span class="n">s</span><span class="p">[</span><span class="n">index</span> <span class="o">+</span> <span class="mi">2</span><span class="p">:]</span></code></li>
-<li>把 <code class="highlight"><span class="nb">str</span></code> 转换成 <code class="highlight"><span class="nb">list</span></code>，然后 `#!python s[index], s[index + 1] = s[index + 1], s[index]</li>
+<li>使用 <code class="highlight"><span class="nb">slice</span></code>，比如确定了 <code>index</code> 之后可以直接 <code class="highlight"><span class="k">return</span> <span class="n">s</span><span class="p">[:</span><span class="n">index</span><span class="p">]</span> <span class="o">+</span> <span class="n">s</span><span class="p">[</span><span class="n">index</span> <span class="o">+</span> <span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="n">s</span><span class="p">[</span><span class="n">index</span><span class="p">]</span> <span class="o">+</span> <span class="n">s</span><span class="p">[</span><span class="n">index</span> <span class="o">+</span> <span class="mi">2</span><span class="p">:]</span></code></li>
+<li>把 <code class="highlight"><span class="nb">str</span></code> 转换成 <code class="highlight"><span class="nb">list</span></code>，然后 <code class="highlight"><span class="n">s</span><span class="p">[</span><span class="n">index</span><span class="p">],</span> <span class="n">s</span><span class="p">[</span><span class="n">index</span> <span class="o">+</span> <span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">s</span><span class="p">[</span><span class="n">index</span> <span class="o">+</span> <span class="mi">1</span><span class="p">],</span> <span class="n">s</span><span class="p">[</span><span class="n">index</span><span class="p">]</span></code></li>
 </ul>
 <p>两种方法的时间复杂度都是 <span class="arithmatex">\(O(n)\)</span>。</p>
 <h2 id="_3">完整题解<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h2>
-<h3 id="slice">使用 slice<a class="headerlink" href="#slice" title="Permanent link">&para;</a></h3>
+<h3 id="slice">使用 <code class="highlight"><span class="nb">slice</span></code><a class="headerlink" href="#slice" title="Permanent link">&para;</a></h3>
 <div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">itertools</span> <span class="kn">import</span> <span class="n">pairwise</span>
 
 <span class="k">class</span> <span class="nc">Solution</span><span class="p">:</span>
@@ -1818,7 +1818,7 @@ as the main headline.
 
         <span class="k">return</span> <span class="n">s</span>
 </code></pre></div>
-<h3 id="list">使用 list<a class="headerlink" href="#list" title="Permanent link">&para;</a></h3>
+<h3 id="list">使用 <code class="highlight"><span class="nb">list</span></code><a class="headerlink" href="#list" title="Permanent link">&para;</a></h3>
 <div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">itertools</span> <span class="kn">import</span> <span class="n">pairwise</span>
 
 <span class="k">class</span> <span class="nc">Solution</span><span class="p">:</span>
@@ -1861,7 +1861,7 @@ as the main headline.
     <span class="md-icon" title="最后更新">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_datetime">2024-10-30 02:03:09</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_datetime">2024-10-30 02:31:47</span>
   </span>
 
     
