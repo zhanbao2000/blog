@@ -485,6 +485,12 @@ sudo lsof -i -P -n | grep LISTEN
  - SecondaryNameNode：http://192.168.152.200:9868
  - ResourceManager：http://192.168.152.200:18088
 
+!!! note "提示"
+
+    将 `192.168.152.200` 替换成 `master` 也可以打开对应网页。
+
+    如果使用 `master` 无法打开，请参考 [四、配置网络](#_4) 中的说明，看看有没有踩坑。
+
 ### 9.3 测试 HDFS
 
 进入 [HDFS 文件系统浏览器](http://192.168.152.200:9870/explorer.html#/)，尝试创建一个 `testdir` 文件夹：
