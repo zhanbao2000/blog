@@ -6,19 +6,17 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
-        <meta name="description" content="3180. 执行操作可获得的最大总奖励 I">
+        <meta name="description" content="3226. 使两个整数相等的位更改次数">
       
       
         <meta name="author" content="Akiba Arisa">
       
       
-        <link rel="canonical" href="https://blog.arisa.moe/blog/2024-leetcode-clock-event/241025-3180/">
+        <link rel="canonical" href="https://blog.arisa.moe/blog/2024-leetcode-clock-event/241102-3226/">
       
       
-        <link rel="prev" href="../241024-3175/">
+        <link rel="prev" href="../241101-3259/">
       
-      
-        <link rel="next" href="../241026-3181/">
       
       
       <link rel="icon" href="../../../assets/favicon.webp">
@@ -26,7 +24,7 @@
     
     
       
-        <title>3180. 执行操作可获得的最大总奖励 I - Arisa | Blog</title>
+        <title>3226. 使两个整数相等的位更改次数 - Arisa | Blog</title>
       
     
     
@@ -123,7 +121,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              3180. 执行操作可获得的最大总奖励 I
+              3226. 使两个整数相等的位更改次数
             
           </span>
         </div>
@@ -1403,28 +1401,10 @@
                 
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  <span class="md-ellipsis">
-    3180. 执行操作可获得的最大总奖励 I
-  </span>
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../241025-3180/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1433,60 +1413,6 @@
   
 
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="目录">
-  
-  
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      目录
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#_1" class="md-nav__link">
-    <span class="md-ellipsis">
-      题目描述
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_2" class="md-nav__link">
-    <span class="md-ellipsis">
-      解题思路
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_3" class="md-nav__link">
-    <span class="md-ellipsis">
-      完整题解
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_4" class="md-nav__link">
-    <span class="md-ellipsis">
-      复杂度分析
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -1622,10 +1548,28 @@
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="../241102-3226/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    3226. 使两个整数相等的位更改次数
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   <span class="md-ellipsis">
@@ -1634,6 +1578,93 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      题目描述
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      解题思路
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="解题思路">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      朴素解法
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      位运算解法
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      继续优化
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      完整题解
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      复杂度分析
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -1694,10 +1725,43 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="解题思路">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      朴素解法
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      位运算解法
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      继续优化
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
         <li class="md-nav__item">
-  <a href="#_3" class="md-nav__link">
+  <a href="#_6" class="md-nav__link">
     <span class="md-ellipsis">
       完整题解
     </span>
@@ -1706,7 +1770,7 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#_4" class="md-nav__link">
+  <a href="#_7" class="md-nav__link">
     <span class="md-ellipsis">
       复杂度分析
     </span>
@@ -1733,7 +1797,7 @@ doesn't, the page title (or respectively site name) is used
 as the main headline.
 -->
 
-    <h1>3180. 执行操作可获得的最大总奖励 I</h1>
+    <h1>3226. 使两个整数相等的位更改次数</h1>
 
 
 <!-- Markdown content -->
@@ -1766,83 +1830,103 @@ as the main headline.
         
             <a href="/tags/#leetcode" class="tag"><code>#leetcode</code></a>
         
-            <a href="/tags/#dp" class="tag"><code>#dp</code></a>
+            <a href="/tags/#bit-manipulation" class="tag"><code>#bit-manipulation</code></a>
         
         </div>
     
 
     <h2 id="_1">题目描述<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
-<p>关联：<a href="https://leetcode.cn/problems/maximum-total-reward-using-operations-i/description/">https://leetcode.cn/problems/maximum-total-reward-using-operations-i/description/</a></p>
-<p>本题的考点是动态规划。</p>
+<p>关联：<a href="https://leetcode.cn/problems/number-of-bit-changes-to-make-two-integers-equal/description/">https://leetcode.cn/problems/number-of-bit-changes-to-make-two-integers-equal/description/</a></p>
 <div class="admonition question">
 <p class="admonition-title">题目描述</p>
-<p>给你一个整数数组 <code>rewardValues</code>，长度为 <code>n</code>，代表奖励的值。</p>
-<p>最初，你的总奖励 <code>x</code> 为 <code>0</code>，所有下标都是 <strong>未标记</strong> 的。你可以执行以下操作 <strong>任意次</strong>：</p>
-<ul>
-<li>从区间 <code>[0, n - 1]</code> 中选择一个 <strong>未标记</strong> 的下标 <code>i</code>。</li>
-<li>如果 <code>rewardValues[i]</code> 大于 你当前的总奖励 <code>x</code>，则将 <code>rewardValues[i]</code> 加到 <code>x</code> 上（即 <code>x = x + rewardValues[i]</code>），并 <strong>标记</strong> 下标 <code>i</code>。</li>
-</ul>
-<p>以整数形式返回执行最优操作能够获得的 <strong>最大</strong> 总奖励。</p>
+<p>给你两个正整数 <code>n</code> 和 <code>k</code>。</p>
+<p>你可以选择 <code>n</code> 的二进制表示中任意一个值为 <code>1</code> 的位，并将其改为 <code>0</code>。</p>
+<p>返回使得 <code>n</code> 等于 <code>k</code> 所需要的更改次数。如果无法实现，返回 <code>-1</code>。</p>
 </div>
-<p>这道题的输入范围设置得很小：</p>
-<p><span class="arithmatex">\(1 \leq \text{len}(rewardValues) \leq 2000\)</span></p>
-<p><span class="arithmatex">\(1 \leq rewardValues[i] \leq 2000\)</span></p>
+<p>本题的范围是 <span class="arithmatex">\(1 \leq n, k \leq 10^6\)</span>。</p>
 <h2 id="_2">解题思路<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
-<p>这个题看起来是用贪心算法，即先按从小到大排序，再依次加入到总奖励中。</p>
-<p>但是贪心算法是错误的，请看这个示例：</p>
-<div class="highlight"><pre><span></span><code>[1, 6, 4, 3, 2]
+<h3 id="_3">朴素解法<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
+<p>本题直接考虑朴素的解法，就是直接比较 <code>n</code> 和 <code>k</code> 的二进制表示中不同的位数。这对于 Python 来说很简单。</p>
+<p>返回 <code>-1</code> 即无法实现的情况有三种可能：</p>
+<ul>
+<li><code>k</code> 的二进制表示中有 <code>1</code> 但 <code>n</code> 的对应位是 <code>0</code>（你只能将 <code>n</code> 的 <code>1</code> 改为 <code>0</code>）。</li>
+<li><code>k</code> 大于 <code>n</code>（相当于 <code>k</code> 的高位上有 <code>1</code>，而 <code>n</code> 的对应位上是 <code>0</code>）。</li>
+<li><code>k</code> 的二进制表示长度大于 <code>n</code>（同上）</li>
+</ul>
+<p>更改时只需要按 <code>k</code> 的二进制表示从低位到高位逐位比较即可。</p>
+<div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">min_changes</span><span class="p">(</span><span class="n">n</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">k</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+    <span class="c1"># 如果 k 大于 n 或者 k 的二进制表示长度大于 n 的二进制表示长度</span>
+    <span class="k">if</span> <span class="n">k</span> <span class="o">&gt;</span> <span class="n">n</span> <span class="ow">or</span> <span class="n">k</span><span class="o">.</span><span class="n">bit_length</span><span class="p">()</span> <span class="o">&gt;</span> <span class="n">n</span><span class="o">.</span><span class="n">bit_length</span><span class="p">():</span>
+        <span class="k">return</span> <span class="o">-</span><span class="mi">1</span>
+
+    <span class="c1"># 计算 n 和 k 的二进制表示</span>
+    <span class="n">bin_n</span> <span class="o">=</span> <span class="nb">bin</span><span class="p">(</span><span class="n">n</span><span class="p">)[</span><span class="mi">2</span><span class="p">:]</span>
+    <span class="n">bin_k</span> <span class="o">=</span> <span class="nb">bin</span><span class="p">(</span><span class="n">k</span><span class="p">)[</span><span class="mi">2</span><span class="p">:]</span>
+
+    <span class="c1"># 计算需要更改的次数</span>
+    <span class="n">changes</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">bin_k</span><span class="p">)):</span>
+        <span class="k">if</span> <span class="n">bin_k</span><span class="p">[</span><span class="o">-</span><span class="p">(</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">)]</span> <span class="o">==</span> <span class="s1">&#39;1&#39;</span> <span class="ow">and</span> <span class="n">bin_n</span><span class="p">[</span><span class="o">-</span><span class="p">(</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">)]</span> <span class="o">==</span> <span class="s1">&#39;0&#39;</span><span class="p">:</span>
+            <span class="k">return</span> <span class="o">-</span><span class="mi">1</span>
+        <span class="k">elif</span> <span class="n">bin_k</span><span class="p">[</span><span class="o">-</span><span class="p">(</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">)]</span> <span class="o">==</span> <span class="s1">&#39;0&#39;</span> <span class="ow">and</span> <span class="n">bin_n</span><span class="p">[</span><span class="o">-</span><span class="p">(</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">)]</span> <span class="o">==</span> <span class="s1">&#39;1&#39;</span><span class="p">:</span>
+            <span class="n">changes</span> <span class="o">+=</span> <span class="mi">1</span>
+
+    <span class="c1"># 计算剩余的 1 的个数</span>
+    <span class="n">remaining_ones</span> <span class="o">=</span> <span class="n">bin_n</span><span class="p">[:</span><span class="o">-</span><span class="nb">len</span><span class="p">(</span><span class="n">bin_k</span><span class="p">)]</span><span class="o">.</span><span class="n">count</span><span class="p">(</span><span class="s1">&#39;1&#39;</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">changes</span> <span class="o">+</span> <span class="n">remaining_ones</span>
 </code></pre></div>
-<p>它排序后是 <code>[1, 2, 3, 4, 6]</code>，如果按照贪心算法，那么选取的元素分别是：</p>
-<ul>
-<li>选取 <code>1</code>，总奖励 <code>1</code></li>
-<li><code>2 &gt; 1</code>，选取 <code>2</code>，总奖励 <code>3</code></li>
-<li><code>3 == 3</code>，跳过</li>
-<li><code>4 &gt; 3</code>，选取 <code>4</code>，总奖励 <code>7</code></li>
-<li><code>6 &lt; 7</code>，跳过</li>
-</ul>
-<p>由此总奖励是 <code>7</code>，但是实际上应该这么取：</p>
-<ul>
-<li>选取 <code>1</code>，总奖励 <code>1</code></li>
-<li>选取 <code>4</code>，总奖励 <code>5</code></li>
-<li>选取 <code>6</code>，总奖励 <code>11</code></li>
-</ul>
-<p>显然贪心算法在这里不能求出全局最优解，看来必须使用动态规划（无需考虑递归，这种题递归必超时）。</p>
-<p>说到动态规划就不得不提到我们学过的 <code>0-1</code> 背包问题：</p>
-<div class="admonition info">
-<p class="admonition-title">0-1 背包问题</p>
-<p>有 <code>n</code> 个物品，每个物品的重量为 <code>weight[i]</code>，价值为 <code>value[i]</code>，背包的容量为 <code>C</code>，求在不超过背包容量的情况下，如何使得背包中的物品价值最大。</p>
-</div>
-<p>解决 <code>0-1</code> 背包问题的状态转移方程的关键就在于一个物品该不该选，而这个题目也是一样的。</p>
-<p>我们使用一个二维数组 <code>dp</code> 来记录状态，<code>dp[i][j]</code> 表示在考虑前 <code>i</code> 个奖励时，总价值为 <code>j</code> 的情况是否能够达到。</p>
-<p>这个数组的 <code>j</code> 的最大值只会达到 <code class="highlight"><span class="nb">max</span><span class="p">(</span><span class="n">rewardValues</span><span class="p">)</span> <span class="o">*</span> <span class="mi">2</span> <span class="o">-</span> <span class="mi">1</span></code> 而不是 <code class="highlight"><span class="nb">sum</span><span class="p">(</span><span class="n">rewardValues</span><span class="p">)</span></code>，因为在执行最后一次选取时，先前已选奖励的总价值不会超过 <code class="highlight"><span class="nb">max</span><span class="p">(</span><span class="n">rewardValues</span><span class="p">)</span></code>。</p>
-<p>对于一个奖励 <code>rewardValues[i]</code>，我们有两种选择：</p>
-<ul>
-<li>不选取这个奖励，那么 <code>dp[i][j] = dp[i - 1][j]</code></li>
-<li>选取这个奖励，那么 <code>dp[i][j] |= dp[i - 1][j - rewardValues[i]]</code></li>
-</ul>
-<p>最后需要返回的是在考虑所有奖励的情况下，最大的奖励值。</p>
-<p>值得注意的是，题目里并没有说每个奖励各不相同，但是你根本不可能选取同样的奖励两次，因此我们必须先去重才能确定 <code>i</code> 的范围。否则在动态规划中可能会直接导致计算错误。</p>
-<h2 id="_3">完整题解<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h2>
-<div class="highlight"><pre><span></span><code><span class="k">class</span> <span class="nc">Solution</span><span class="p">:</span>
-    <span class="k">def</span> <span class="nf">maxTotalReward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">rewardValues</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">int</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
-        <span class="n">rewardValues</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">(</span><span class="nb">set</span><span class="p">(</span><span class="n">rewardValues</span><span class="p">))</span>
-        <span class="n">n</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">rewardValues</span><span class="p">)</span>
-        <span class="n">m</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="n">rewardValues</span><span class="p">)</span> <span class="o">*</span> <span class="mi">2</span> <span class="o">-</span> <span class="mi">1</span>
+<p>这个算法的时间复杂度是 <span class="arithmatex">\(O(\log n + \log k)\)</span>。</p>
+<p>主要时间消耗在 <code class="highlight"><span class="n">bin_n</span> <span class="o">=</span> <span class="nb">bin</span><span class="p">(</span><span class="n">n</span><span class="p">)[</span><span class="mi">2</span><span class="p">:]</span></code>、 <code class="highlight"><span class="n">bin_k</span> <span class="o">=</span> <span class="nb">bin</span><span class="p">(</span><span class="n">k</span><span class="p">)[</span><span class="mi">2</span><span class="p">:]</span></code>、<code class="highlight"><span class="n">k</span><span class="o">.</span><span class="n">bit_length</span><span class="p">()</span></code> 和 <code class="highlight"><span class="n">n</span><span class="o">.</span><span class="n">bit_length</span><span class="p">()</span></code> 这四个地方。</p>
+<h3 id="_4">位运算解法<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h3>
+<p>我们可以通过位运算来优化上面的解法。</p>
+<p>我们可以通过异或运算 <code>^</code> 来找到 <code>n</code> 和 <code>k</code> 的不同位。</p>
+<p>值得注意的是，这个结果中包括 <code>k</code> 的二进制表示中有 <code>1</code> 但 <code>n</code> 的对应位是 <code>0</code> 的情况。</p>
+<p>因此还需要将这个结果与 <code>k</code> 进行与运算 <code>&amp;</code>，这样就可以收集到这种情况，并对这种情况返回 <code>-1</code>。</p>
+<div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">min_changes</span><span class="p">(</span><span class="n">n</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">k</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">k</span> <span class="o">&gt;</span> <span class="n">n</span> <span class="ow">or</span> <span class="n">k</span><span class="o">.</span><span class="n">bit_length</span><span class="p">()</span> <span class="o">&gt;</span> <span class="n">n</span><span class="o">.</span><span class="n">bit_length</span><span class="p">():</span>
+        <span class="k">return</span> <span class="o">-</span><span class="mi">1</span>
 
-        <span class="n">dp</span> <span class="o">=</span> <span class="p">[[</span><span class="mi">0</span><span class="p">]</span> <span class="o">*</span> <span class="p">(</span><span class="n">m</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)]</span>
-        <span class="n">dp</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
+    <span class="n">n_xor_k</span> <span class="o">=</span> <span class="n">n</span> <span class="o">^</span> <span class="n">k</span>
 
-        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">n</span> <span class="o">+</span> <span class="mi">1</span><span class="p">):</span>
-            <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">rewardValues</span><span class="p">[</span><span class="n">i</span> <span class="o">-</span> <span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">):</span>
-                <span class="n">dp</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="n">dp</span><span class="p">[</span><span class="n">i</span> <span class="o">-</span> <span class="mi">1</span><span class="p">][</span><span class="n">j</span><span class="p">]</span>
-                <span class="k">if</span> <span class="n">j</span> <span class="o">&gt;=</span> <span class="n">rewardValues</span><span class="p">[</span><span class="n">i</span> <span class="o">-</span> <span class="mi">1</span><span class="p">]:</span>
-                    <span class="n">dp</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">]</span> <span class="o">|=</span> <span class="n">dp</span><span class="p">[</span><span class="n">i</span> <span class="o">-</span> <span class="mi">1</span><span class="p">][</span><span class="n">j</span> <span class="o">-</span> <span class="n">rewardValues</span><span class="p">[</span><span class="n">i</span> <span class="o">-</span> <span class="mi">1</span><span class="p">]]</span>
+    <span class="k">if</span> <span class="n">n_xor_k</span> <span class="o">&amp;</span> <span class="n">k</span><span class="p">:</span>
+        <span class="k">return</span> <span class="o">-</span><span class="mi">1</span>
 
-        <span class="k">return</span> <span class="nb">max</span><span class="p">(</span><span class="n">j</span> <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">m</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="k">if</span> <span class="n">dp</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">][</span><span class="n">j</span><span class="p">])</span>
+    <span class="k">return</span> <span class="nb">bin</span><span class="p">(</span><span class="n">n_xor_k</span><span class="p">)</span><span class="o">.</span><span class="n">count</span><span class="p">(</span><span class="s1">&#39;1&#39;</span><span class="p">)</span>
 </code></pre></div>
-<h2 id="_4">复杂度分析<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h2>
-<p>时间复杂度：<span class="arithmatex">\(O(n \cdot m)\)</span>，其中 <code>n</code> 是 <code>rewardValues</code> 的长度，<code>m</code> 是 <code>rewardValues</code> 的最大值。</p>
-<p>空间复杂度：<span class="arithmatex">\(O(n \cdot m)\)</span>。</p>
+<p>这个算法的时间复杂度是仍然是 <span class="arithmatex">\(O(\log n + \log k)\)</span>。但是这个算法的常数项更小，因为只有一次异或运算和一次计算二进制表示中 <code>1</code> 的个数。</p>
+<h3 id="_5">继续优化<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h3>
+<p>实际上 <code class="highlight"><span class="n">k</span><span class="o">.</span><span class="n">bit_length</span><span class="p">()</span> <span class="o">&gt;</span> <span class="n">n</span><span class="o">.</span><span class="n">bit_length</span><span class="p">()</span></code> 这个判断是不必要的，因为 <code class="highlight"><span class="n">n_xor_k</span> <span class="o">&amp;</span> <span class="n">k</span></code> 这个判断已经包含了这种情况。因此又可以省去一个 <span class="arithmatex">\(O(\log n + \log k)\)</span> 的大头。 </p>
+<p>接下来只剩 <code class="highlight"><span class="nb">bin</span><span class="p">(</span><span class="n">n_xor_k</span><span class="p">)</span><span class="o">.</span><span class="n">count</span><span class="p">(</span><span class="s1">&#39;1&#39;</span><span class="p">)</span></code> 了。这个操作主要的问题是需要把整数转换成字符串。这个操作的时间复杂度是 <span class="arithmatex">\(O(\log n)\)</span>，但是数据量较小的时候，Python <strong>再创建一个字符串对象</strong>的实际时间开销可能会比这个还大，然后你还要遍历整个字符串。</p>
+<p>考虑到力扣用的 Python 版本是 <code>3.10+</code>（我至少在 <a href="../241030-3216/">前面的题目</a>中尝试过 <a href="https://docs.python.org/zh-cn/3/library/itertools.html#itertools.pairwise"><code>itertools.pairwise()</code></a> 可用，这个函数至少需要 Python 3.10）。我们还可以继续用 Python 3.10 中提供的 <a href="https://docs.python.org/zh-cn/3.13/library/stdtypes.html#int.bit_count"><code class="highlight"><span class="nb">int</span><span class="o">.</span><span class="n">bit_count</span><span class="p">()</span></code></a> 方法。</p>
+<p>要知道 Python 为内置类型提供的方法都是 C 语言实现的，因此速度会比纯 Python 实现的快很多。</p>
+<div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">min_changes</span><span class="p">(</span><span class="n">n</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">k</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">k</span> <span class="o">&gt;</span> <span class="n">n</span> <span class="ow">or</span> <span class="n">k</span><span class="o">.</span><span class="n">bit_length</span><span class="p">()</span> <span class="o">&gt;</span> <span class="n">n</span><span class="o">.</span><span class="n">bit_length</span><span class="p">():</span>
+        <span class="k">return</span> <span class="o">-</span><span class="mi">1</span>
+
+    <span class="n">n_xor_k</span> <span class="o">=</span> <span class="n">n</span> <span class="o">^</span> <span class="n">k</span>
+
+    <span class="k">if</span> <span class="n">n_xor_k</span> <span class="o">&amp;</span> <span class="n">k</span><span class="p">:</span>
+        <span class="k">return</span> <span class="o">-</span><span class="mi">1</span>
+
+    <span class="k">return</span> <span class="n">n_xor_k</span><span class="o">.</span><span class="n">bit_count</span><span class="p">()</span>
+</code></pre></div>
+<p><a class="glightbox" href="./images/241102-3226/time.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="time" src="./images/241102-3226/time.png" /></a></p>
+<h2 id="_6">完整题解<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h2>
+<div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">min_changes</span><span class="p">(</span><span class="n">n</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">k</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">k</span> <span class="o">&gt;</span> <span class="n">n</span> <span class="ow">or</span> <span class="n">k</span><span class="o">.</span><span class="n">bit_length</span><span class="p">()</span> <span class="o">&gt;</span> <span class="n">n</span><span class="o">.</span><span class="n">bit_length</span><span class="p">():</span>
+        <span class="k">return</span> <span class="o">-</span><span class="mi">1</span>
+
+    <span class="n">n_xor_k</span> <span class="o">=</span> <span class="n">n</span> <span class="o">^</span> <span class="n">k</span>
+
+    <span class="k">if</span> <span class="n">n_xor_k</span> <span class="o">&amp;</span> <span class="n">k</span><span class="p">:</span>
+        <span class="k">return</span> <span class="o">-</span><span class="mi">1</span>
+
+    <span class="k">return</span> <span class="n">n_xor_k</span><span class="o">.</span><span class="n">bit_count</span><span class="p">()</span>
+</code></pre></div>
+<h2 id="_7">复杂度分析<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h2>
+<p>时间复杂度：<span class="arithmatex">\(O(\log n)\)</span></p>
+<p>空间复杂度：<span class="arithmatex">\(O(1)\)</span></p>
 
     <!-- Last update of source file -->
     
@@ -1869,7 +1953,7 @@ as the main headline.
     <span class="md-icon" title="最后更新">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_datetime">2024-10-25 09:48:10</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_datetime">2024-11-02 10:44:56</span>
   </span>
 
     
@@ -1879,7 +1963,7 @@ as the main headline.
     <span class="md-icon" title="创建日期">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M14.47 15.08 11 13V7h1.5v5.25l3.08 1.83c-.41.28-.79.62-1.11 1m-1.39 4.84c-.36.05-.71.08-1.08.08-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8c0 .37-.03.72-.08 1.08.69.1 1.33.32 1.92.64.1-.56.16-1.13.16-1.72 0-5.5-4.5-10-10-10S2 6.5 2 12s4.47 10 10 10c.59 0 1.16-.06 1.72-.16-.32-.59-.54-1.23-.64-1.92M18 15v3h-3v2h3v3h2v-3h3v-2h-3v-3z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_datetime">2024-10-25 09:48:10</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_datetime">2024-11-02 10:44:56</span>
   </span>
 
     
@@ -1963,7 +2047,7 @@ as the main headline.
       <nav class="md-footer__inner md-grid" aria-label="页脚" >
         
           
-          <a href="../241024-3175/" class="md-footer__link md-footer__link--prev" aria-label="上一页: 3175. 找到连续赢 K 场比赛的第一位玩家">
+          <a href="../241101-3259/" class="md-footer__link md-footer__link--prev" aria-label="上一页: 3259. 超级饮料的最大强化能量">
             <div class="md-footer__button md-icon">
               
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
@@ -1973,27 +2057,11 @@ as the main headline.
                 上一页
               </span>
               <div class="md-ellipsis">
-                3175. 找到连续赢 K 场比赛的第一位玩家
+                3259. 超级饮料的最大强化能量
               </div>
             </div>
           </a>
         
-        
-          
-          <a href="../241026-3181/" class="md-footer__link md-footer__link--next" aria-label="下一页: 3181. 执行操作可获得的最大总奖励 II">
-            <div class="md-footer__title">
-              <span class="md-footer__direction">
-                下一页
-              </span>
-              <div class="md-ellipsis">
-                3181. 执行操作可获得的最大总奖励 II
-              </div>
-            </div>
-            <div class="md-footer__button md-icon">
-              
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
-            </div>
-          </a>
         
       </nav>
     
