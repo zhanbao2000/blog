@@ -2268,7 +2268,7 @@ as the main headline.
 </ul>
 </div>
 <p>现在，我们已经掌握了关于 <code class="highlight"><span class="k">try</span></code> 语句块中 <code class="highlight"><span class="k">return</span></code> 和 <code class="highlight"><span class="k">finally</span></code> 的执行顺序的所有知识，来开始欢乐地做题吧：</p>
-<p>请分析以下三个 <code>test()</code> 函数，并说明函数执行的最终结果（返回值？抛出异常？控制台输出？）</p>
+<p>请分析以下三个 <code>test()</code> 函数，并说明函数执行的最终结果（返回值？引发异常？控制台输出？）</p>
 <div class="highlight"><span class="filename">【1】raise 在返回之前还是之后执行</span><pre><span></span><code><span class="k">def</span> <span class="nf">test</span><span class="p">():</span>
     <span class="k">try</span><span class="p">:</span>
         <span class="k">return</span> <span class="mi">1</span>
@@ -2295,8 +2295,8 @@ as the main headline.
 </code></pre></div>
 <details class="success">
 <summary>答案</summary>
-<p>【1】中的函数最终以 <code class="highlight"><span class="k">raise</span> <span class="ne">Exception</span></code> 告终并且不会对外返回任何值。也就是说，抛出异常发生于返回结果之前，这是非常容易就能看出来的。</p>
-<p>【2】的结果可能会出乎很多人的意料，函数会先向控制台打印 <code>test2!</code>，然后接下来和【1】中的函数一样，抛出异常并且不会对外返回任何值。</p>
+<p>【1】中的函数最终以 <code class="highlight"><span class="k">raise</span> <span class="ne">Exception</span></code> 告终并且不会对外返回任何值。也就是说，引发异常发生于返回结果之前，这是非常容易就能看出来的。</p>
+<p>【2】的结果可能会出乎很多人的意料，函数会先向控制台打印 <code>test2!</code>，然后接下来和【1】中的函数一样，引发异常并且不会对外返回任何值。</p>
 <p>这意味着解释器会先将 <code class="highlight"><span class="k">return</span></code> 语句块中的结果（即 <code>test2()</code> 函数）计算并入栈，然后将 <code class="highlight"><span class="k">return</span></code> 语句块入栈，然后再将 <code class="highlight"><span class="k">finally</span></code> 语句块入栈。这就是为什么 <code>test2()</code> 函数会被执行的原因。</p>
 <p>【3】中的函数最终会返回 <code>3</code>，这在 Python 文档中并没有提及（属于是一个文档盲区），这同样可以用【2】的调用栈的思路来解释。</p>
 </details>
@@ -2583,16 +2583,16 @@ as the main headline.
 <span class="nb">print</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">foo</span><span class="p">()))</span>  <span class="c1"># &lt;class &#39;generator&#39;&gt;</span>
 </code></pre></div>
 <p>这里的 <code class="highlight"><span class="k">yield from</span> <span class="p">()</span></code> 语句永远不会被执行，甚至看上去这个函数的返回类型应该是 <code class="highlight"><span class="nb">int</span></code>，但是 <code class="highlight"><span class="n">foo</span><span class="p">()</span></code> 的返回值仍然是生成器。</p>
-<p>既然返回的是一个生成器，那么该生成器必须指定一个迭代结束标志，即在迭代结束时抛出 <code class="highlight"><span class="ne">StopIteration</span></code> 异常，意为不能产生下一项。任何一个规范的迭代器（生成器）在迭代结束时都将抛出 <code class="highlight"><span class="ne">StopIteration</span></code> 异常，并由调用者处理，例如我们的 <code class="highlight"><span class="p">(</span><span class="n">x</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">a</span><span class="p">))</span></code> 生成器表达式。</p>
+<p>既然返回的是一个生成器，那么该生成器必须指定一个迭代结束标志，即在迭代结束时引发 <code class="highlight"><span class="ne">StopIteration</span></code> 异常，意为不能产生下一项。任何一个规范的迭代器（生成器）在迭代结束时都将引发 <code class="highlight"><span class="ne">StopIteration</span></code> 异常，并由调用者处理，例如我们的 <code class="highlight"><span class="p">(</span><span class="n">x</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">a</span><span class="p">))</span></code> 生成器表达式。</p>
 <p>而如果在生成器函数中强行 <code class="highlight"><span class="k">return</span></code>，这意味着迭代过程将被提前结束，于是我们本轮迭代成为了最后一轮迭代，由于此处使用了 <code class="highlight"><span class="k">return</span></code> 取代 <code class="highlight"><span class="k">yield</span></code>，故调用者无法获取最后一轮迭代的结果（调用者只能从 <code class="highlight"><span class="k">yield</span></code> 获知迭代结果）。</p>
 <p>（请注意：函数中执行到 <code class="highlight"><span class="k">return</span></code> 意味着函数必须立即结束或执行 <code class="highlight"><span class="k">finally</span></code> 语句块（如果有的话），即便这是一个生成器函数）</p>
-<p>原则上此时应该抛出 <code class="highlight"><span class="ne">StopIteration</span></code> 异常通知生成器的调用者该迭代过程已经结束。雪上加霜的是，<code class="highlight"><span class="k">return</span></code> 之后没有任何可能来抛出一个 <code class="highlight"><span class="ne">StopIteration</span></code> 异常。因此在这种复杂情况下，解释器会替我们抛出一个 <code class="highlight"><span class="ne">StopIteration</span></code> 异常，函数返回的值将被用作异常构造器的 <code>value</code> 形参。</p>
+<p>原则上此时应该引发 <code class="highlight"><span class="ne">StopIteration</span></code> 异常通知生成器的调用者该迭代过程已经结束。雪上加霜的是，<code class="highlight"><span class="k">return</span></code> 之后没有任何可能来引发一个 <code class="highlight"><span class="ne">StopIteration</span></code> 异常。因此在这种复杂情况下，解释器会替我们引发一个 <code class="highlight"><span class="ne">StopIteration</span></code> 异常，函数返回的值将被用作异常构造器的 <code>value</code> 形参。</p>
 <p>见 <a href="https://docs.python.org/zh-cn/3.10/library/exceptions.html#StopIteration">文档</a>：</p>
 <div class="admonition quote">
 <p class="admonition-title">exception StopIteration</p>
 <p>当一个 <code>generator</code> 或 <code>coroutine</code> 函数返回时，将引发一个新的 <code class="highlight"><span class="ne">StopIteration</span></code> 实例，函数返回的值将被用作异常构造器的 <code>value</code> 形参。</p>
 </div>
-<p>现在我们可以解释 <code class="highlight"><span class="k">return</span></code> 时发生了什么了：由于函数中包含 <code class="highlight"><span class="k">yield</span></code> 关键字，故解释器认为该函数永远返回的是一个生成器。当我们直接使用 <code class="highlight"><span class="k">return</span> <span class="n">XXXX</span></code> 试图以 <code>XXXX</code> 作为返回结果时（无论 <code>XXXX</code> 是何种类型），解释器会认为该生成器提前结束，并替我们抛出一个 <code class="highlight"><span class="ne">StopIteration</span></code> 异常，将 <code>XXXX</code> 的值保存在异常实例的 <code>value</code> 属性中。</p>
+<p>现在我们可以解释 <code class="highlight"><span class="k">return</span></code> 时发生了什么了：由于函数中包含 <code class="highlight"><span class="k">yield</span></code> 关键字，故解释器认为该函数永远返回的是一个生成器。当我们直接使用 <code class="highlight"><span class="k">return</span> <span class="n">XXXX</span></code> 试图以 <code>XXXX</code> 作为返回结果时（无论 <code>XXXX</code> 是何种类型），解释器会认为该生成器提前结束，并替我们引发一个 <code class="highlight"><span class="ne">StopIteration</span></code> 异常，将 <code>XXXX</code> 的值保存在异常实例的 <code>value</code> 属性中。</p>
 <p>同时，对调用者而言，它获取的迭代结果是在 <code class="highlight"><span class="k">return</span> <span class="n">XXXX</span></code> 语句之前所有通过 <code class="highlight"><span class="k">yield</span></code> 产生的结果。在我们的第二个 <code>my_range()</code> 函数中，我们没有通过 <code class="highlight"><span class="k">yield</span></code> 产生任何值就直接 <code class="highlight"><span class="k">return</span></code> 了，因此调用者获得的就是一个空的生成器。</p>
 <p>这个 <code class="highlight"><span class="k">return</span> <span class="n">XXXX</span></code> 语句就像一个小丑🤡一样，它想让 <code>XXXX</code> 作为它所在函数的返回值，可未曾想到解释器只是将这个可怜的值分配给了一个异常实例的一个属性。而同处一个屋檐下的 <code class="highlight"><span class="k">yield</span></code> 制造的每一个值，都会被函数的调用者全盘接纳。甚至当 <code class="highlight"><span class="k">yield</span></code> 无法被执行以至于它无法制造任何值时，解释器宁可为调用者返回一个空的生成器，也不愿意将 <code class="highlight"><span class="k">return</span></code> 的值交给调用者。而造成这一切的，仅仅是这个函数中存在一个 <code class="highlight"><span class="k">yield</span></code> 关键字💔。</p>
 <p>这同样也是我曾经制造的 <a href="https://github.com/Arcaea-Infinity/ArcaeaChartRender/commit/9f40ec1a519197a3f8193207edf5a2cd7e96d2ff">巨大 bug</a> 中的一个。</p>
@@ -2746,7 +2746,7 @@ Type<span class="w"> </span><span class="s2">&quot;help&quot;</span>,<span class
     <span class="md-icon" title="最后更新">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_datetime">2024-04-19 10:48:33</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_datetime">2024-11-03 08:08:51</span>
   </span>
 
     

@@ -2017,7 +2017,7 @@ as the main headline.
 </code></pre></div>
 <p>首先，这两段代码的效果是一模一样的。</p>
 <p>那么，<code class="highlight"><span class="o">...</span></code> 到底是个什么东西呢？可以试一试 <code class="highlight"><span class="nb">type</span><span class="p">(</span><span class="o">...</span><span class="p">)</span></code>，你会发现它返回的是 <code>&lt;class 'ellipsis'&gt;</code>。这个东西的具体用途可以见 <a href="https://docs.python.org/dev/library/constants.html#Ellipsis">Built-in Constants - Ellipsis</a> 或 <a href="https://stackoverflow.com/a/773472">What does the Ellipsis object do?</a></p>
-<p>虽然看上去没有什么用，但其实 <code>...</code> 相当于一个语气词，也是某键盘手的著名名言。你可以将其放到某些特定的 <code class="highlight"><span class="k">except</span></code> 语句块中，表示你对抛出的这个异常十分无语。例如：</p>
+<p>虽然看上去没有什么用，但其实 <code>...</code> 相当于一个语气词，也是某键盘手的著名名言。你可以将其放到某些特定的 <code class="highlight"><span class="k">except</span></code> 语句块中，表示你对引发的这个异常十分无语。例如：</p>
 <div class="highlight"><pre><span></span><code><span class="k">try</span><span class="p">:</span>
     <span class="n">result</span> <span class="o">=</span> <span class="k">await</span> <span class="n">get_user_best35</span><span class="p">(</span><span class="n">user_id</span><span class="p">)</span>
 <span class="k">except</span> <span class="p">(</span>
@@ -2133,7 +2133,7 @@ as the main headline.
     <span class="md-icon" title="最后更新">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_datetime">2022-05-18 13:26:07</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_datetime">2024-11-03 08:08:51</span>
   </span>
 
     
