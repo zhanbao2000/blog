@@ -175,7 +175,7 @@ except ZeroDivisionError:
 
 那么，`#!python ...` 到底是个什么东西呢？可以试一试 `#!python type(...)`，你会发现它返回的是 `<class 'ellipsis'>`。这个东西的具体用途可以见 [Built-in Constants - Ellipsis](https://docs.python.org/dev/library/constants.html#Ellipsis) 或 [What does the Ellipsis object do?](https://stackoverflow.com/a/773472)
 
-虽然看上去没有什么用，但其实 `...` 相当于一个语气词，也是某键盘手的著名名言。你可以将其放到某些特定的 `#!python except` 语句块中，表示你对抛出的这个异常十分无语。例如：
+虽然看上去没有什么用，但其实 `...` 相当于一个语气词，也是某键盘手的著名名言。你可以将其放到某些特定的 `#!python except` 语句块中，表示你对引发的这个异常十分无语。例如：
 
 ```python
 try:

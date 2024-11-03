@@ -816,7 +816,7 @@ def sell(item: str, quantity: int, operator: str):
 
 不要懒惰到让 `#!python try except` 语句来帮你找到错误！
 
-`#!python try except` 语句通常是用于处理错误和异常的，但这不意味着所有的错误和异常都必须经过它的手处理。如果是一些显而易见的错误，则应当避免使用 `#!python try except` 语句，而是直接消化这个可能抛出的异常。
+`#!python try except` 语句通常是用于处理错误和异常的，但这不意味着所有的错误和异常都必须经过它的手处理。如果是一些显而易见的错误，则应当避免使用 `#!python try except` 语句，而是直接消化这个可能引发的异常。
 
 !!! Example
 
@@ -865,7 +865,7 @@ def sell(item: str, quantity: int, operator: str):
 
     不可能在 `#!python json.load()` 函数中触发该异常，因为它并不直接读取文件，而是只使用传递到参数的文件指针，即它的第一个形参：`#!python fp: SupportsRead[str | bytes]`。
 
-    而抛出 `#!python FileNotFoundError` 异常的函数通常是构造文件指针的函数，即 `#!python open()` 函数。
+    而引发 `#!python FileNotFoundError` 异常的函数通常是构造文件指针的函数，即 `#!python open()` 函数。
 
  - `如果文件内容不是一个 json 字符串，函数怎么办？`
 

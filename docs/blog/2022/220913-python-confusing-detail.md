@@ -51,7 +51,7 @@ def test():
 
 现在，我们已经掌握了关于 `#!python try` 语句块中 `#!python return` 和 `#!python finally` 的执行顺序的所有知识，来开始欢乐地做题吧：
 
-请分析以下三个 `test()` 函数，并说明函数执行的最终结果（返回值？抛出异常？控制台输出？）
+请分析以下三个 `test()` 函数，并说明函数执行的最终结果（返回值？引发异常？控制台输出？）
 
 ```python title="【1】raise 在返回之前还是之后执行"
 def test():
@@ -85,9 +85,9 @@ def test():
  
 ??? success "答案"
 
-    【1】中的函数最终以 `#!python raise Exception` 告终并且不会对外返回任何值。也就是说，抛出异常发生于返回结果之前，这是非常容易就能看出来的。
+    【1】中的函数最终以 `#!python raise Exception` 告终并且不会对外返回任何值。也就是说，引发异常发生于返回结果之前，这是非常容易就能看出来的。
 
-    【2】的结果可能会出乎很多人的意料，函数会先向控制台打印 `test2!`，然后接下来和【1】中的函数一样，抛出异常并且不会对外返回任何值。
+    【2】的结果可能会出乎很多人的意料，函数会先向控制台打印 `test2!`，然后接下来和【1】中的函数一样，引发异常并且不会对外返回任何值。
 
     这意味着解释器会先将 `#!python return` 语句块中的结果（即 `test2()` 函数）计算并入栈，然后将 `#!python return` 语句块入栈，然后再将 `#!python finally` 语句块入栈。这就是为什么 `test2()` 函数会被执行的原因。
 
@@ -520,13 +520,13 @@ print(type(foo()))  # <class 'generator'>
 
 这里的 `#!python yield from ()` 语句永远不会被执行，甚至看上去这个函数的返回类型应该是 `#!python int`，但是 `#!python foo()` 的返回值仍然是生成器。
 
-既然返回的是一个生成器，那么该生成器必须指定一个迭代结束标志，即在迭代结束时抛出 `#!python StopIteration` 异常，意为不能产生下一项。任何一个规范的迭代器（生成器）在迭代结束时都将抛出 `#!python StopIteration` 异常，并由调用者处理，例如我们的 `#!python (x for x in range(a))` 生成器表达式。
+既然返回的是一个生成器，那么该生成器必须指定一个迭代结束标志，即在迭代结束时引发 `#!python StopIteration` 异常，意为不能产生下一项。任何一个规范的迭代器（生成器）在迭代结束时都将引发 `#!python StopIteration` 异常，并由调用者处理，例如我们的 `#!python (x for x in range(a))` 生成器表达式。
 
 而如果在生成器函数中强行 `#!python return`，这意味着迭代过程将被提前结束，于是我们本轮迭代成为了最后一轮迭代，由于此处使用了 `#!python return` 取代 `#!python yield`，故调用者无法获取最后一轮迭代的结果（调用者只能从 `#!python yield` 获知迭代结果）。
 
 （请注意：函数中执行到 `#!python return` 意味着函数必须立即结束或执行 `#!python finally` 语句块（如果有的话），即便这是一个生成器函数）
 
-原则上此时应该抛出 `#!python StopIteration` 异常通知生成器的调用者该迭代过程已经结束。雪上加霜的是，`#!python return` 之后没有任何可能来抛出一个 `#!python StopIteration` 异常。因此在这种复杂情况下，解释器会替我们抛出一个 `#!python StopIteration` 异常，函数返回的值将被用作异常构造器的 `value` 形参。
+原则上此时应该引发 `#!python StopIteration` 异常通知生成器的调用者该迭代过程已经结束。雪上加霜的是，`#!python return` 之后没有任何可能来引发一个 `#!python StopIteration` 异常。因此在这种复杂情况下，解释器会替我们引发一个 `#!python StopIteration` 异常，函数返回的值将被用作异常构造器的 `value` 形参。
 
 见 [文档](https://docs.python.org/zh-cn/3.10/library/exceptions.html#StopIteration)：
 
@@ -534,7 +534,7 @@ print(type(foo()))  # <class 'generator'>
 
     当一个 `generator` 或 `coroutine` 函数返回时，将引发一个新的 `#!python StopIteration` 实例，函数返回的值将被用作异常构造器的 `value` 形参。
 
-现在我们可以解释 `#!python return` 时发生了什么了：由于函数中包含 `#!python yield` 关键字，故解释器认为该函数永远返回的是一个生成器。当我们直接使用 `#!python return XXXX` 试图以 `XXXX` 作为返回结果时（无论 `XXXX` 是何种类型），解释器会认为该生成器提前结束，并替我们抛出一个 `#!python StopIteration` 异常，将 `XXXX` 的值保存在异常实例的 `value` 属性中。
+现在我们可以解释 `#!python return` 时发生了什么了：由于函数中包含 `#!python yield` 关键字，故解释器认为该函数永远返回的是一个生成器。当我们直接使用 `#!python return XXXX` 试图以 `XXXX` 作为返回结果时（无论 `XXXX` 是何种类型），解释器会认为该生成器提前结束，并替我们引发一个 `#!python StopIteration` 异常，将 `XXXX` 的值保存在异常实例的 `value` 属性中。
 
 同时，对调用者而言，它获取的迭代结果是在 `#!python return XXXX` 语句之前所有通过 `#!python yield` 产生的结果。在我们的第二个 `my_range()` 函数中，我们没有通过 `#!python yield` 产生任何值就直接 `#!python return` 了，因此调用者获得的就是一个空的生成器。
 
