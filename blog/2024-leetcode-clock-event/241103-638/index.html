@@ -6,19 +6,17 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
-        <meta name="description" content="684. 冗余连接">
+        <meta name="description" content="638. 大礼包">
       
       
         <meta name="author" content="Akiba Arisa">
       
       
-        <link rel="canonical" href="https://blog.arisa.moe/blog/2024-leetcode-clock-event/241027-684/">
+        <link rel="canonical" href="https://blog.arisa.moe/blog/2024-leetcode-clock-event/241103-638/">
       
       
-        <link rel="prev" href="../241026-3181/">
+        <link rel="prev" href="../241102-3226/">
       
-      
-        <link rel="next" href="../241028-685/">
       
       
       <link rel="icon" href="../../../assets/favicon.webp">
@@ -26,7 +24,7 @@
     
     
       
-        <title>684. 冗余连接 - Arisa | Blog</title>
+        <title>638. 大礼包 - Arisa | Blog</title>
       
     
     
@@ -123,7 +121,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              684. 冗余连接
+              638. 大礼包
             
           </span>
         </div>
@@ -1445,28 +1443,10 @@
                 
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  <span class="md-ellipsis">
-    684. 冗余连接
-  </span>
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../241027-684/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1475,60 +1455,6 @@
   
 
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="目录">
-  
-  
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      目录
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#_1" class="md-nav__link">
-    <span class="md-ellipsis">
-      题目描述
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_2" class="md-nav__link">
-    <span class="md-ellipsis">
-      解题思路
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_3" class="md-nav__link">
-    <span class="md-ellipsis">
-      完整题解
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_4" class="md-nav__link">
-    <span class="md-ellipsis">
-      复杂度分析
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -1643,10 +1569,28 @@
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="../241103-638/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    638. 大礼包
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   <span class="md-ellipsis">
@@ -1655,6 +1599,66 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      题目描述
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      解题思路
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="解题思路">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      完整题解
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      复杂度分析
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -1715,14 +1719,20 @@
     </span>
   </a>
   
-</li>
-      
-        <li class="md-nav__item">
+    <nav class="md-nav" aria-label="解题思路">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
   <a href="#_3" class="md-nav__link">
     <span class="md-ellipsis">
       完整题解
     </span>
   </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -1754,7 +1764,7 @@ doesn't, the page title (or respectively site name) is used
 as the main headline.
 -->
 
-    <h1>684. 冗余连接</h1>
+    <h1>638. 大礼包</h1>
 
 
 <!-- Markdown content -->
@@ -1787,103 +1797,93 @@ as the main headline.
         
             <a href="/tags/#leetcode" class="tag"><code>#leetcode</code></a>
         
-            <a href="/tags/#union-find" class="tag"><code>#union-find</code></a>
-        
-            <a href="/tags/#acyclic-undirected-graph" class="tag"><code>#acyclic-undirected-graph</code></a>
+            <a href="/tags/#dfs" class="tag"><code>#dfs</code></a>
         
         </div>
     
 
     <h2 id="_1">题目描述<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
-<p>关联：<a href="https://leetcode.cn/problems/redundant-connection/description">https://leetcode.cn/problems/redundant-connection/description</a></p>
+<p>关联：<a href="https://leetcode.cn/problems/shopping-offers/description/">https://leetcode.cn/problems/shopping-offers/description/</a></p>
 <div class="admonition question">
 <p class="admonition-title">题目描述</p>
-<p>树可以看成是一个连通且 <strong>无环</strong> 的 <strong>无向</strong> 图。</p>
-<p>给定往一棵 <code>n</code> 个节点 (节点值 <code>1</code>～<code>n</code>) 的树中添加一条边后的图。添加的边的两个顶点包含在 <code>1</code> 到 <code>n</code> 中间，且这条附加的边不属于树中已存在的边。图的信息记录于长度为 <code>n</code> 的二维数组 <code>edges</code> ，<code>edges[i] = [a_i, b_i]</code> 表示图中在 <code>a_i</code> 和 <code>b_i</code> 之间存在一条边。</p>
-<p>请找出一条可以删去的边，删除后可使得剩余部分是一个有着 <code>n</code> 个节点的树。如果有多个答案，则返回数组 <code>edges</code> 中最后出现的那个。</p>
+<p>在 LeetCode 商店中，有 <code>n</code> 件在售的物品。每件物品都有对应的价格。然而，也有一些大礼包，每个大礼包以优惠的价格捆绑销售一组物品。</p>
+<p>给你一个整数数组 <code>price</code> 表示物品价格，其中 <code>price[i]</code> 是第 i 件物品的价格。另有一个整数数组 <code>needs</code> 表示购物清单，其中 <code>needs[i]</code> 是需要购买第 <code>i</code> 件物品的数量。</p>
+<p>还有一个数组 <code>special</code> 表示大礼包，<code>special[i]</code> 的长度为 <code>n + 1</code>，其中 <code>special[i][j]</code> 表示第 <code>i</code> 个大礼包中内含第 <code>j</code> 件物品的数量，且 <code>special[i][n]</code>（也就是数组中的最后一个整数）为第 <code>i</code> 个大礼包的价格。</p>
+<p>返回 <strong>确切</strong> 满足购物清单所需花费的最低价格，你可以充分利用大礼包的优惠活动。你不能购买超出购物清单指定数量的物品，即使那样会降低整体价格。任意大礼包可无限次购买。</p>
 </div>
-<p>范围：</p>
+<p>本题的范围：</p>
 <ul>
-<li><span class="arithmatex">\(n == \text{edges.length}\)</span></li>
-<li><span class="arithmatex">\(3 \leq n \leq 1000\)</span></li>
-<li><span class="arithmatex">\(\text{edges}[i].\text{length} == 2\)</span></li>
-<li><span class="arithmatex">\(1 \leq a_i &lt; b_i \leq \text{edges.length}\)</span></li>
-<li><span class="arithmatex">\(a_i \neq b_i\)</span></li>
-<li><span class="arithmatex">\(\text{edges}\)</span> 中无重复元素</li>
-<li>给定的图是连通的</li>
+<li><span class="arithmatex">\(n = \text{price.length} = \text{needs.length}\)</span></li>
+<li><span class="arithmatex">\(1 \leq n \leq 6\)</span></li>
+<li><span class="arithmatex">\(0 \leq \text{price}[i], \text{needs}[i] \leq 10\)</span></li>
+<li><span class="arithmatex">\(1 \leq \text{special.length} \leq 100\)</span></li>
+<li><span class="arithmatex">\(\text{special}[i].\text{length} == n + 1\)</span></li>
+<li><span class="arithmatex">\(0 \leq \text{special}[i][j] \leq 50\)</span></li>
+<li>生成的输入对于 <span class="arithmatex">\(0 \leq j \leq n - 1\)</span> 至少有一个 <span class="arithmatex">\(\text{special}[i][j]\)</span> 非零。</li>
 </ul>
+<p>本题的描述有点绕，建议看原题的样例 I/O 和描述。</p>
 <h2 id="_2">解题思路<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
-<p>并查集秒了。</p>
-<p>可以使用并查集（Union-Find）数据结构来解决在图中找到冗余连接的问题。并查集可以高效地管理和合并不相交的集合，并且可以用来检测无向图中的环。</p>
-<p>步骤：</p>
-<ol>
-<li>
-<p>初始化并查集：创建一个父节点数组来跟踪每个节点的父节点，并创建一个秩数组来优化树的高度。</p>
-</li>
-<li>
-<p>处理每条边：对于每条边，使用并查集检查这条边的两个节点是否已经连接。</p>
-<ul>
-<li>
-<p>如果已经连接，说明添加这条边会形成环，因此这条边就是冗余边。</p>
-</li>
-<li>
-<p>如果没有连接，则将这两个节点合并。</p>
-</li>
-</ul>
-</li>
-<li>
-<p>返回冗余边：第一个形成环的边就是冗余边。</p>
-</li>
-</ol>
-<h2 id="_3">完整题解<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h2>
-<p><code>UnionFind</code> 类：管理并查集的合并和查找操作，使用路径压缩和按秩合并来提高效率。</p>
-<p><code>findRedundantConnection</code> 方法：遍历每条边，使用并查集检测第一个形成环的边。</p>
-<div class="highlight"><pre><span></span><code><span class="k">class</span> <span class="nc">UnionFind</span><span class="p">:</span>
-    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">size</span><span class="p">):</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">parent</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="n">size</span><span class="p">))</span>  <span class="c1"># 父节点</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">rank</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">*</span> <span class="n">size</span>  <span class="c1"># 秩</span>
+<p>此题数据量太少了，可以直接暴力枚举。</p>
+<p>首先可以不考虑大礼包，即计算不使用任何礼包的成本（单独购买物品）。</p>
+<p>接下来考虑大礼包，逐个考虑每个大礼包是否可以使用。如果一个大礼包可以使用，那么就递归计算使用这个大礼包和不使用这个大礼包的成本，取最小值。使用大礼包时，需要减少相应的需求。</p>
+<p>这种递归的解法本质上是一个深度优先搜索（DFS）。</p>
+<div class="admonition hint">
+<p class="admonition-title">提示</p>
+<p>可以使用记忆化搜索来优化递归过程。</p>
+</div>
+<h3 id="_3">完整题解<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="k">class</span> <span class="nc">Solution</span><span class="p">:</span>
+    <span class="k">def</span> <span class="nf">shoppingOffers</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">price</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">int</span><span class="p">],</span> <span class="n">special</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">list</span><span class="p">[</span><span class="nb">int</span><span class="p">]],</span> <span class="n">needs</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">int</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+        <span class="n">memo</span> <span class="o">=</span> <span class="p">{}</span>
 
-    <span class="k">def</span> <span class="nf">find</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">):</span>
-        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">parent</span><span class="p">[</span><span class="n">x</span><span class="p">]</span> <span class="o">!=</span> <span class="n">x</span><span class="p">:</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">parent</span><span class="p">[</span><span class="n">x</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">parent</span><span class="p">[</span><span class="n">x</span><span class="p">])</span>  <span class="c1"># 路径压缩</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">parent</span><span class="p">[</span><span class="n">x</span><span class="p">]</span>
+        <span class="k">def</span> <span class="nf">dfs</span><span class="p">(</span><span class="n">current_needs</span><span class="p">):</span>
+            <span class="k">if</span> <span class="nb">tuple</span><span class="p">(</span><span class="n">current_needs</span><span class="p">)</span> <span class="ow">in</span> <span class="n">memo</span><span class="p">:</span>
+                <span class="k">return</span> <span class="n">memo</span><span class="p">[</span><span class="nb">tuple</span><span class="p">(</span><span class="n">current_needs</span><span class="p">)]</span>
 
-    <span class="k">def</span> <span class="nf">union</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
-        <span class="n">rootX</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
-        <span class="n">rootY</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>
-        <span class="k">if</span> <span class="n">rootX</span> <span class="o">!=</span> <span class="n">rootY</span><span class="p">:</span>
-            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">rank</span><span class="p">[</span><span class="n">rootX</span><span class="p">]</span> <span class="o">&gt;</span> <span class="bp">self</span><span class="o">.</span><span class="n">rank</span><span class="p">[</span><span class="n">rootY</span><span class="p">]:</span>
-                <span class="bp">self</span><span class="o">.</span><span class="n">parent</span><span class="p">[</span><span class="n">rootY</span><span class="p">]</span> <span class="o">=</span> <span class="n">rootX</span>
-            <span class="k">elif</span> <span class="bp">self</span><span class="o">.</span><span class="n">rank</span><span class="p">[</span><span class="n">rootX</span><span class="p">]</span> <span class="o">&lt;</span> <span class="bp">self</span><span class="o">.</span><span class="n">rank</span><span class="p">[</span><span class="n">rootY</span><span class="p">]:</span>
-                <span class="bp">self</span><span class="o">.</span><span class="n">parent</span><span class="p">[</span><span class="n">rootX</span><span class="p">]</span> <span class="o">=</span> <span class="n">rootY</span>
-            <span class="k">else</span><span class="p">:</span>
-                <span class="bp">self</span><span class="o">.</span><span class="n">parent</span><span class="p">[</span><span class="n">rootY</span><span class="p">]</span> <span class="o">=</span> <span class="n">rootX</span>
-                <span class="bp">self</span><span class="o">.</span><span class="n">rank</span><span class="p">[</span><span class="n">rootX</span><span class="p">]</span> <span class="o">+=</span> <span class="mi">1</span>
-            <span class="k">return</span> <span class="kc">True</span>
-        <span class="k">return</span> <span class="kc">False</span>
+            <span class="c1"># 不使用任何特价优惠的成本</span>
+            <span class="n">min_cost</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">(</span><span class="n">current_needs</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">*</span> <span class="n">price</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">needs</span><span class="p">)))</span>
 
-<span class="k">class</span> <span class="nc">Solution</span><span class="p">:</span>
-    <span class="k">def</span> <span class="nf">findRedundantConnection</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">edges</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">list</span><span class="p">[</span><span class="nb">int</span><span class="p">]])</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="nb">int</span><span class="p">]:</span>
-        <span class="n">n</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">edges</span><span class="p">)</span>
-        <span class="n">uf</span> <span class="o">=</span> <span class="n">UnionFind</span><span class="p">(</span><span class="n">n</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>  <span class="c1"># 初始化并查集，节点编号从1到n</span>
-        <span class="k">for</span> <span class="n">edge</span> <span class="ow">in</span> <span class="n">edges</span><span class="p">:</span>
-            <span class="k">if</span> <span class="ow">not</span> <span class="n">uf</span><span class="o">.</span><span class="n">union</span><span class="p">(</span><span class="n">edge</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">edge</span><span class="p">[</span><span class="mi">1</span><span class="p">]):</span>
-                <span class="k">return</span> <span class="n">edge</span>
+            <span class="c1"># 尝试每个特价优惠</span>
+            <span class="k">for</span> <span class="n">offer</span> <span class="ow">in</span> <span class="n">special</span><span class="p">:</span>
+                <span class="n">new_needs</span> <span class="o">=</span> <span class="p">[]</span>
+                <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">needs</span><span class="p">)):</span>
+                    <span class="k">if</span> <span class="n">current_needs</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">&lt;</span> <span class="n">offer</span><span class="p">[</span><span class="n">i</span><span class="p">]:</span>
+                        <span class="k">break</span>
+                    <span class="n">new_needs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">current_needs</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">-</span> <span class="n">offer</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="n">min_cost</span> <span class="o">=</span> <span class="nb">min</span><span class="p">(</span><span class="n">min_cost</span><span class="p">,</span> <span class="n">offer</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="n">dfs</span><span class="p">(</span><span class="n">new_needs</span><span class="p">))</span>
+
+            <span class="n">memo</span><span class="p">[</span><span class="nb">tuple</span><span class="p">(</span><span class="n">current_needs</span><span class="p">)]</span> <span class="o">=</span> <span class="n">min_cost</span>
+            <span class="k">return</span> <span class="n">min_cost</span>
+
+        <span class="k">return</span> <span class="n">dfs</span><span class="p">(</span><span class="n">needs</span><span class="p">)</span>
 </code></pre></div>
-<h2 id="_4">复杂度分析<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h2>
-<ul>
-<li>
-<p>时间复杂度：<span class="arithmatex">\(O(E \cdot \alpha(E))\)</span>，其中 <span class="arithmatex">\(E\)</span> 是边的数量，<span class="arithmatex">\(\alpha\)</span> 是 <a href="https://zh.wikipedia.org/wiki/%E9%98%BF%E5%85%8B%E6%9B%BC%E5%87%BD%E6%95%B8#%E5%8F%8D%E5%87%BD%E6%95%B8">Ackermann 函数的反函数</a>，可以看作是一个很小的常数。在并查集的操作中，<code>find</code> 和 <code>union</code> 的时间复杂度均为 <span class="arithmatex">\(O(\alpha(E))\)</span>。</p>
-</li>
-<li>
-<p>空间复杂度：<span class="arithmatex">\(O(E)\)</span>。因为创建的父节点数组和秩数组的长度都为 <span class="arithmatex">\(E\)</span>。</p>
-</li>
-</ul>
 <figure>
-<p><a class="glightbox" href="../images/241027-684/completely.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="completely" src="../images/241027-684/completely.png" /></a>
+<p><a class="glightbox" href="../images/241103-638/time.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="time" src="../images/241103-638/time.png" /></a>
   </p>
-<figcaption>有点 6</figcaption>
+<figcaption>暴力都这么快，那我还优化什么？</figcaption>
 </figure>
+<h2 id="_4">复杂度分析<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h2>
+<div class="admonition hint">
+<p class="admonition-title">注</p>
+<ul>
+<li><code class="highlight"><span class="n">m</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="n">needs</span><span class="p">)</span></code>，表示 <code>needs</code> 列表中的最大需求。</li>
+<li><code class="highlight"><span class="n">s</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">special</span><span class="p">)</span></code>，表示特价优惠的数量。</li>
+</ul>
+</div>
+<p>这个解法的时间复杂度较难分析：</p>
+<ul>
+<li>递归调用（状态总数）：递归调用的次数由 <code>needs</code> 的唯一状态数决定。每个 <code>needs</code> 状态可以表示为长度为 <code>n</code>（物品数量）的元组，其中每个元素的取值范围是从 <code>0</code> 到该物品的最大需求。因此，唯一状态数最多为 <span class="arithmatex">\(O((m + 1)^n)\)</span>。</li>
+<li>成本计算：对于每个状态，我们计算不使用任何特价优惠的成本，这需要 <span class="arithmatex">\(O(n)\)</span> 时间。</li>
+<li>特价优惠：对于每个状态，我们尝试每个特价优惠，这需要 <span class="arithmatex">\(O(s \cdot n)\)</span> 时间。</li>
+</ul>
+<p>因此，总时间复杂度是 <span class="arithmatex">\(O((m + 1)^n \cdot s \cdot n)\)</span>。</p>
+<p>本解法的空间复杂度即递归深度和字典 <code>memo</code> 的空间：</p>
+<ul>
+<li>递归深度：递归深度最多为 <span class="arithmatex">\(n\)</span>。</li>
+<li>字典 <code>memo</code>：最多有 <span class="arithmatex">\(O((m + 1)^n)\)</span> 个状态。</li>
+</ul>
+<p>取较大的数量级，总空间复杂度是 <span class="arithmatex">\(O((m + 1)^n)\)</span>。</p>
 
     <!-- Last update of source file -->
     
@@ -1910,7 +1910,7 @@ as the main headline.
     <span class="md-icon" title="最后更新">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_datetime">2024-10-28 02:23:28</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_datetime">2024-11-03 06:32:04</span>
   </span>
 
     
@@ -1920,7 +1920,7 @@ as the main headline.
     <span class="md-icon" title="创建日期">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M14.47 15.08 11 13V7h1.5v5.25l3.08 1.83c-.41.28-.79.62-1.11 1m-1.39 4.84c-.36.05-.71.08-1.08.08-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8c0 .37-.03.72-.08 1.08.69.1 1.33.32 1.92.64.1-.56.16-1.13.16-1.72 0-5.5-4.5-10-10-10S2 6.5 2 12s4.47 10 10 10c.59 0 1.16-.06 1.72-.16-.32-.59-.54-1.23-.64-1.92M18 15v3h-3v2h3v3h2v-3h3v-2h-3v-3z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_datetime">2024-10-27 08:51:27</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_datetime">2024-11-03 06:32:04</span>
   </span>
 
     
@@ -2004,7 +2004,7 @@ as the main headline.
       <nav class="md-footer__inner md-grid" aria-label="页脚" >
         
           
-          <a href="../241026-3181/" class="md-footer__link md-footer__link--prev" aria-label="上一页: 3181. 执行操作可获得的最大总奖励 II">
+          <a href="../241102-3226/" class="md-footer__link md-footer__link--prev" aria-label="上一页: 3226. 使两个整数相等的位更改次数">
             <div class="md-footer__button md-icon">
               
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
@@ -2014,27 +2014,11 @@ as the main headline.
                 上一页
               </span>
               <div class="md-ellipsis">
-                3181. 执行操作可获得的最大总奖励 II
+                3226. 使两个整数相等的位更改次数
               </div>
             </div>
           </a>
         
-        
-          
-          <a href="../241028-685/" class="md-footer__link md-footer__link--next" aria-label="下一页: 685. 冗余连接 II">
-            <div class="md-footer__title">
-              <span class="md-footer__direction">
-                下一页
-              </span>
-              <div class="md-ellipsis">
-                685. 冗余连接 II
-              </div>
-            </div>
-            <div class="md-footer__button md-icon">
-              
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
-            </div>
-          </a>
         
       </nav>
     
