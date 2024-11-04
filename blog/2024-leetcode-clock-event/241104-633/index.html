@@ -6,19 +6,17 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
-        <meta name="description" content="如题">
+        <meta name="description" content="633. 平方数之和">
       
       
         <meta name="author" content="Akiba Arisa">
       
       
-        <link rel="canonical" href="https://blog.arisa.moe/blog/2023/230406-pillow-affine-args/">
+        <link rel="canonical" href="https://blog.arisa.moe/blog/2024-leetcode-clock-event/241104-633/">
       
       
-        <link rel="prev" href="../230309-pycharm-git-submodule/">
+        <link rel="prev" href="../241103-638/">
       
-      
-        <link rel="next" href="../230428-mokabot-arcaea/">
       
       
       <link rel="icon" href="../../../assets/favicon.webp">
@@ -26,7 +24,7 @@
     
     
       
-        <title>（Pillow）Affine 图形变换的矩阵参数详解 - Arisa | Blog</title>
+        <title>633. 平方数之和 - Arisa | Blog</title>
       
     
     
@@ -123,7 +121,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              （Pillow）Affine 图形变换的矩阵参数详解
+              633. 平方数之和
             
           </span>
         </div>
@@ -1040,8 +1038,6 @@
                 
   
   
-    
-  
   
   
     
@@ -1051,11 +1047,11 @@
       
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_2" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_2" >
         
           
           <label class="md-nav__link" for="__nav_4_2" id="__nav_4_2_label" tabindex="0">
@@ -1069,7 +1065,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_2_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_2_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_4_2">
             <span class="md-nav__icon md-icon"></span>
             2023
@@ -1083,7 +1079,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../230113-my-2022-website/" class="md-nav__link">
+      <a href="../../2023/230113-my-2022-website/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1104,7 +1100,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../230114-matrix-qq-wechat-bridge/" class="md-nav__link">
+      <a href="../../2023/230114-matrix-qq-wechat-bridge/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1125,7 +1121,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../230309-pycharm-git-submodule/" class="md-nav__link">
+      <a href="../../2023/230309-pycharm-git-submodule/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1143,28 +1139,10 @@
                 
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  <span class="md-ellipsis">
-    （Pillow）Affine 图形变换的矩阵参数详解
-  </span>
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../../2023/230406-pillow-affine-args/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1173,120 +1151,6 @@
   
 
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="目录">
-  
-  
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      目录
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#_1" class="md-nav__link">
-    <span class="md-ellipsis">
-      一、背景
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_2" class="md-nav__link">
-    <span class="md-ellipsis">
-      二、渲染方法
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_3" class="md-nav__link">
-    <span class="md-ellipsis">
-      三、变换矩阵
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#pillow" class="md-nav__link">
-    <span class="md-ellipsis">
-      四、矩阵各值对 Pillow 实际图像的影响
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="四、矩阵各值对 Pillow 实际图像的影响">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#41-x-xscale" class="md-nav__link">
-    <span class="md-ellipsis">
-      4.1 x 轴缩放系数 xScale
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#42-x-xskew" class="md-nav__link">
-    <span class="md-ellipsis">
-      4.2 x 轴旋转系数 xSkew
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#43-x-xtranslate" class="md-nav__link">
-    <span class="md-ellipsis">
-      4.3 x 轴平移系数 xTranslate
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#44-y-yskew" class="md-nav__link">
-    <span class="md-ellipsis">
-      4.4 y 轴旋转系数 ySkew
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#45-y-yscale" class="md-nav__link">
-    <span class="md-ellipsis">
-      4.5 y 轴缩放系数 yScale
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#46-y-ytranslate" class="md-nav__link">
-    <span class="md-ellipsis">
-      4.6 y 轴平移系数 yTranslate
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -1299,7 +1163,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../230428-mokabot-arcaea/" class="md-nav__link">
+      <a href="../../2023/230428-mokabot-arcaea/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1320,7 +1184,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../230504-chart-analysis-425ex/" class="md-nav__link">
+      <a href="../../2023/230504-chart-analysis-425ex/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1341,7 +1205,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../230512-arcaea-webapi-archive/" class="md-nav__link">
+      <a href="../../2023/230512-arcaea-webapi-archive/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1476,6 +1340,8 @@
                 
   
   
+    
+  
   
   
     
@@ -1485,11 +1351,11 @@
       
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_4" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_4" checked>
         
           
           <label class="md-nav__link" for="__nav_4_4" id="__nav_4_4_label" tabindex="0">
@@ -1503,7 +1369,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_4_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_4_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_4_4">
             <span class="md-nav__icon md-icon"></span>
             2024 leetcode clock event
@@ -1517,7 +1383,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../2024-leetcode-clock-event/241024-3175/" class="md-nav__link">
+      <a href="../241024-3175/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1538,7 +1404,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../2024-leetcode-clock-event/241025-3180/" class="md-nav__link">
+      <a href="../241025-3180/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1559,7 +1425,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../2024-leetcode-clock-event/241026-3181/" class="md-nav__link">
+      <a href="../241026-3181/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1580,7 +1446,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../2024-leetcode-clock-event/241027-684/" class="md-nav__link">
+      <a href="../241027-684/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1601,7 +1467,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../2024-leetcode-clock-event/241028-685/" class="md-nav__link">
+      <a href="../241028-685/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1622,7 +1488,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../2024-leetcode-clock-event/241029-3211/" class="md-nav__link">
+      <a href="../241029-3211/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1643,7 +1509,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../2024-leetcode-clock-event/241030-3216/" class="md-nav__link">
+      <a href="../241030-3216/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1664,7 +1530,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../2024-leetcode-clock-event/241101-3259/" class="md-nav__link">
+      <a href="../241101-3259/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1685,7 +1551,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../2024-leetcode-clock-event/241102-3226/" class="md-nav__link">
+      <a href="../241102-3226/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1706,7 +1572,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../2024-leetcode-clock-event/241103-638/" class="md-nav__link">
+      <a href="../241103-638/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1724,10 +1590,28 @@
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="../../2024-leetcode-clock-event/241104-633/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    633. 平方数之和
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   <span class="md-ellipsis">
@@ -1736,6 +1620,102 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      题目描述
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      解题思路
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="解题思路">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      先验判断
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      相关定理介绍
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      逐个分析素因子
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      总结
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      完整题解
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    <span class="md-ellipsis">
+      复杂度分析
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -1783,7 +1763,7 @@
         <li class="md-nav__item">
   <a href="#_1" class="md-nav__link">
     <span class="md-ellipsis">
-      一、背景
+      题目描述
     </span>
   </a>
   
@@ -1792,80 +1772,44 @@
         <li class="md-nav__item">
   <a href="#_2" class="md-nav__link">
     <span class="md-ellipsis">
-      二、渲染方法
+      解题思路
     </span>
   </a>
   
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_3" class="md-nav__link">
-    <span class="md-ellipsis">
-      三、变换矩阵
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#pillow" class="md-nav__link">
-    <span class="md-ellipsis">
-      四、矩阵各值对 Pillow 实际图像的影响
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="四、矩阵各值对 Pillow 实际图像的影响">
+    <nav class="md-nav" aria-label="解题思路">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#41-x-xscale" class="md-nav__link">
+  <a href="#_3" class="md-nav__link">
     <span class="md-ellipsis">
-      4.1 x 轴缩放系数 xScale
+      先验判断
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#42-x-xskew" class="md-nav__link">
+  <a href="#_4" class="md-nav__link">
     <span class="md-ellipsis">
-      4.2 x 轴旋转系数 xSkew
+      相关定理介绍
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#43-x-xtranslate" class="md-nav__link">
+  <a href="#_5" class="md-nav__link">
     <span class="md-ellipsis">
-      4.3 x 轴平移系数 xTranslate
+      逐个分析素因子
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#44-y-yskew" class="md-nav__link">
+  <a href="#_6" class="md-nav__link">
     <span class="md-ellipsis">
-      4.4 y 轴旋转系数 ySkew
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#45-y-yscale" class="md-nav__link">
-    <span class="md-ellipsis">
-      4.5 y 轴缩放系数 yScale
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#46-y-ytranslate" class="md-nav__link">
-    <span class="md-ellipsis">
-      4.6 y 轴平移系数 yTranslate
+      总结
     </span>
   </a>
   
@@ -1873,6 +1817,24 @@
         
       </ul>
     </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      完整题解
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    <span class="md-ellipsis">
+      复杂度分析
+    </span>
+  </a>
   
 </li>
       
@@ -1895,7 +1857,7 @@ doesn't, the page title (or respectively site name) is used
 as the main headline.
 -->
 
-    <h1>（Pillow）Affine 图形变换的矩阵参数详解</h1>
+    <h1>633. 平方数之和</h1>
 
 
 <!-- Markdown content -->
@@ -1914,7 +1876,7 @@ as the main headline.
                     <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" fill="currentColor" class="bi bi-clock" viewBox="0 0 16 16">
                         <path d="M8 3.5a.5.5 0 0 0-1 0V9a.5.5 0 0 0 .252.434l3.5 2a.5.5 0 0 0 .496-.868L8 8.71V3.5z"/>
                         <path d="M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16zm7-8A7 7 0 1 1 1 8a7 7 0 0 1 14 0z"/>
-                    </svg> 10 min read
+                    </svg> 5 min read
                 </span>
             </p>
         </aside>
@@ -1926,110 +1888,143 @@ as the main headline.
         
             <a href="/tags/#python" class="tag"><code>#python</code></a>
         
-            <a href="/tags/#pillow" class="tag"><code>#pillow</code></a>
+            <a href="/tags/#leetcode" class="tag"><code>#leetcode</code></a>
+        
+            <a href="/tags/#dfs" class="tag"><code>#dfs</code></a>
         
         </div>
     
 
-    <h2 id="_1">一、背景<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
-<p>在渲染邦邦谱面时，需要渲染绿条。绿条不一定是个矩形，在起点和终点不一致时，是个变换过后的平行四边形，而素材文件只有一个矩形。这就需要我们用 Pillow 将素材文件进行变换，使其变成一个平行四边形。</p>
-<figure>
-<p><a class="glightbox" href="../images/230406-pillow-affine-args/longNoteLine.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="longNoteLine" src="../images/230406-pillow-affine-args/longNoteLine.png" /></a>
-  </p>
-<figcaption>longNoteLine.png</figcaption>
-</figure>
-<h2 id="_2">二、渲染方法<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
-<p>可以使用 <a href="https://pillow.readthedocs.io/en/stable/reference/Image.html#PIL.Image.Image.transform"><code class="highlight"><span class="n">img</span><span class="o">.</span><span class="n">transform</span></code></a> 和 <a href="https://pillow.readthedocs.io/en/stable/reference/Image.html#PIL.Image.Image.transform"><code class="highlight"><span class="n">Image</span><span class="o">.</span><span class="n">AFFINE</span></code></a> 来实现。</p>
-<p>即：</p>
-<div class="highlight"><pre><span></span><code><span class="n">img2</span> <span class="o">=</span> <span class="n">img</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">bg</span><span class="o">.</span><span class="n">size</span><span class="p">,</span> <span class="n">Image</span><span class="o">.</span><span class="n">AFFINE</span><span class="p">,</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.5</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">))</span>
-</code></pre></div>
-<p>其中：</p>
-<ul>
-<li><code class="highlight"><span class="n">bg</span><span class="o">.</span><span class="n">size</span></code> 是最终图像的裁剪大小，在变换完成后，Pillow 会将图片裁剪至该大小。</li>
-<li><code class="highlight"><span class="n">Image</span><span class="o">.</span><span class="n">AFFINE</span></code> 是变换类型，这里是仿射变换。</li>
-<li><code class="highlight"><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.5</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span></code> 是变换矩阵，用于描述仿射变换的参数。</li>
-</ul>
-<h2 id="_3">三、变换矩阵<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h2>
-<div class="arithmatex">\[
-\begin{bmatrix}
-xScale &amp; xSkew &amp; xTranslate \\
-ySkew &amp; yScale &amp; yTranslate \\
-0 &amp; 0 &amp; 1 \\
-\end{bmatrix}
-\]</div>
-<p>对应的 Python 代码为：</p>
-<div class="highlight"><pre><span></span><code><span class="n">matrix</span> <span class="o">=</span> <span class="p">(</span><span class="n">xScale</span><span class="p">,</span> <span class="n">xSkew</span><span class="p">,</span> <span class="n">xTranslate</span><span class="p">,</span> <span class="n">ySkew</span><span class="p">,</span> <span class="n">yScale</span><span class="p">,</span> <span class="n">yTranslate</span><span class="p">)</span>
-</code></pre></div>
-<p>即直接将矩阵的各值按行展开，然后按顺序放入一个元组中。</p>
-<h2 id="pillow">四、矩阵各值对 Pillow 实际图像的影响<a class="headerlink" href="#pillow" title="Permanent link">&para;</a></h2>
-<p>这里使用了以下脚本来展示矩阵各值的几何含义：</p>
-<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">PIL</span> <span class="kn">import</span> <span class="n">Image</span><span class="p">,</span> <span class="n">ImageDraw</span>
-
-<span class="n">bg</span> <span class="o">=</span> <span class="n">Image</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="s1">&#39;RGBA&#39;</span><span class="p">,</span> <span class="p">(</span><span class="mi">500</span><span class="p">,</span> <span class="mi">500</span><span class="p">),</span> <span class="p">(</span><span class="mi">255</span><span class="p">,</span> <span class="mi">255</span><span class="p">,</span> <span class="mi">255</span><span class="p">,</span> <span class="mi">0</span><span class="p">))</span>
-<span class="n">img</span> <span class="o">=</span> <span class="n">Image</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="s1">&#39;longNoteLine2.png&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">convert</span><span class="p">(</span><span class="s1">&#39;RGBA&#39;</span><span class="p">)</span>
-
-<span class="c1"># 绘制原图轮廓，以便观察变换</span>
-<span class="n">outline</span> <span class="o">=</span> <span class="n">Image</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="s1">&#39;RGBA&#39;</span><span class="p">,</span> <span class="n">bg</span><span class="o">.</span><span class="n">size</span><span class="p">,</span> <span class="p">(</span><span class="mi">255</span><span class="p">,</span> <span class="mi">255</span><span class="p">,</span> <span class="mi">255</span><span class="p">,</span> <span class="mi">0</span><span class="p">))</span>
-<span class="n">draw</span> <span class="o">=</span> <span class="n">ImageDraw</span><span class="o">.</span><span class="n">Draw</span><span class="p">(</span><span class="n">outline</span><span class="p">)</span>
-<span class="n">draw</span><span class="o">.</span><span class="n">rectangle</span><span class="p">((</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span> <span class="o">+</span> <span class="n">img</span><span class="o">.</span><span class="n">size</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="mi">0</span> <span class="o">+</span> <span class="n">img</span><span class="o">.</span><span class="n">size</span><span class="p">[</span><span class="mi">1</span><span class="p">]),</span> <span class="n">fill</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="n">width</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">outline</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">255</span><span class="p">))</span>
-<span class="n">bg</span><span class="o">.</span><span class="n">alpha_composite</span><span class="p">(</span><span class="n">outline</span><span class="p">,</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">))</span>
-
-<span class="c1"># 进行变换</span>
-<span class="hll"><span class="n">img2</span> <span class="o">=</span> <span class="n">img</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">bg</span><span class="o">.</span><span class="n">size</span><span class="p">,</span> <span class="n">Image</span><span class="o">.</span><span class="n">AFFINE</span><span class="p">,</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">))</span>
-</span>
-<span class="n">bg</span><span class="o">.</span><span class="n">alpha_composite</span><span class="p">(</span><span class="n">img2</span><span class="p">,</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">))</span>
-<span class="n">bg</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
-</code></pre></div>
-<p>我将不断调整矩阵的值，并展示变换后的图像。</p>
-<div class="admonition warning">
-<p class="admonition-title">注意</p>
-<p>在 Pillow 中，采用的是左上角为原点的坐标系，而不是数学中的左下角为原点的坐标系。</p>
+    <h2 id="_1">题目描述<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
+<p>关联：<a href="https://leetcode.cn/problems/sum-of-square-numbers/description/">https://leetcode.cn/problems/sum-of-square-numbers/description/</a></p>
+<div class="admonition question">
+<p class="admonition-title">题目描述</p>
+<p>给定一个非负整数 <span class="arithmatex">\(c\)</span> ，判断是否存在两个整数 <span class="arithmatex">\(a\)</span> 和 <span class="arithmatex">\(b\)</span>，使得 <span class="arithmatex">\(a^2 + b^2 = c\)</span>。</p>
+<p>其中 <span class="arithmatex">\(0 \leq c \leq 2^{31} - 1\)</span></p>
 </div>
-<h3 id="41-x-xscale">4.1 x 轴缩放系数 <code>xScale</code><a class="headerlink" href="#41-x-xscale" title="Permanent link">&para;</a></h3>
-<p><code class="highlight"><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span></code>：</p>
-<p>什么都不修改时，图像不变：</p>
-<p><a class="glightbox" href="../images/230406-pillow-affine-args/origin.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="origin" src="../images/230406-pillow-affine-args/origin.png" /></a></p>
-<p><code class="highlight"><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span></code>：</p>
-<p><code>xScale == 2</code>，将图像在 x 轴方向上缩小至原来的 1/2。</p>
-<p><a class="glightbox" href="../images/230406-pillow-affine-args/xScale2.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="xScale2" src="../images/230406-pillow-affine-args/xScale2.png" /></a></p>
-<p><code class="highlight"><span class="p">(</span><span class="mf">0.5</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span></code>：</p>
-<p><code>xScale == 0.5</code>，将图像在 x 轴方向上放大至原来的 2 倍。</p>
-<p><a class="glightbox" href="../images/230406-pillow-affine-args/xScale0.5.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="xScale0.5" src="../images/230406-pillow-affine-args/xScale0.5.png" /></a></p>
-<h3 id="42-x-xskew">4.2 x 轴旋转系数 <code>xSkew</code><a class="headerlink" href="#42-x-xskew" title="Permanent link">&para;</a></h3>
-<p><code class="highlight"><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span></code>：</p>
-<p><code>xSkew == tan(45°) == 1</code>，保持<strong>上底边</strong>位置不变，将平行四边形<strong>下底边</strong>在 x 轴<strong>负</strong>方向倾斜至 45°。</p>
-<p><a class="glightbox" href="../images/230406-pillow-affine-args/xSkew1.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="xSkew1" src="../images/230406-pillow-affine-args/xSkew1.png" /></a></p>
-<p><code class="highlight"><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span></code>：</p>
-<p><code>xSkew == tan(-45°) == -1</code>，保持<strong>上底边</strong>位置不变，将平行四边形<strong>下底边</strong>在 x 轴<strong>正</strong>方向倾斜至 45°。</p>
-<p><a class="glightbox" href="../images/230406-pillow-affine-args/xSkew-1.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="xSkew-1" src="../images/230406-pillow-affine-args/xSkew-1.png" /></a></p>
-<h3 id="43-x-xtranslate">4.3 x 轴平移系数 <code>xTranslate</code><a class="headerlink" href="#43-x-xtranslate" title="Permanent link">&para;</a></h3>
-<p><code class="highlight"><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span></code>：</p>
-<p><code>xTranslate == 100</code>，将图像在 x 轴<strong>负</strong>方向上平移 100 像素。</p>
-<p><a class="glightbox" href="../images/230406-pillow-affine-args/xTranslate100.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="xTranslate100" src="../images/230406-pillow-affine-args/xTranslate100.png" /></a></p>
-<p><code class="highlight"><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">100</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span></code>：</p>
-<p><code>xTranslate == -100</code>，将图像在 x 轴<strong>正</strong>方向上平移 100 像素。</p>
-<p><a class="glightbox" href="../images/230406-pillow-affine-args/xTranslate-100.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="xTranslate-100" src="../images/230406-pillow-affine-args/xTranslate-100.png" /></a></p>
-<h3 id="44-y-yskew">4.4 y 轴旋转系数 <code>ySkew</code><a class="headerlink" href="#44-y-yskew" title="Permanent link">&para;</a></h3>
-<p><code class="highlight"><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span></code>：</p>
-<p><code>ySkew == tan(45°) == 1</code>，保持<strong>左底边</strong>位置不变，将平行四边形<strong>右底边</strong>在 y 轴<strong>负</strong>方向斜切至 45°。</p>
-<p><a class="glightbox" href="../images/230406-pillow-affine-args/ySkew1.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="ySkew1" src="../images/230406-pillow-affine-args/ySkew1.png" /></a></p>
-<p><code class="highlight"><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span></code>：</p>
-<p><code>ySkew == tan(-45°) == -1</code>，保持<strong>左底边</strong>位置不变，将平行四边形<strong>右底边</strong>在 y 轴<strong>正</strong>方向斜切至 45°。</p>
-<p><a class="glightbox" href="../images/230406-pillow-affine-args/ySkew-1.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="ySkew-1" src="../images/230406-pillow-affine-args/ySkew-1.png" /></a></p>
-<h3 id="45-y-yscale">4.5 y 轴缩放系数 <code>yScale</code><a class="headerlink" href="#45-y-yscale" title="Permanent link">&para;</a></h3>
-<p><code class="highlight"><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span></code>：</p>
-<p><code>yScale == 2</code>，将图像在 y 轴方向上缩小至原来的 1/2。</p>
-<p><a class="glightbox" href="../images/230406-pillow-affine-args/yScale2.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="yScale2" src="../images/230406-pillow-affine-args/yScale2.png" /></a></p>
-<p><code class="highlight"><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span></code>：</p>
-<p><code>yScale == 0.5</code>，将图像在 y 轴方向上放大至原来的 2 倍。</p>
-<p><a class="glightbox" href="../images/230406-pillow-affine-args/yScale0.5.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="yScale0.5" src="../images/230406-pillow-affine-args/yScale0.5.png" /></a></p>
-<h3 id="46-y-ytranslate">4.6 y 轴平移系数 <code>yTranslate</code><a class="headerlink" href="#46-y-ytranslate" title="Permanent link">&para;</a></h3>
-<p><code class="highlight"><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span></code>：</p>
-<p><code>yTranslate == 100</code>，将图像在 y 轴<strong>负</strong>方向上平移 100 像素。</p>
-<p><a class="glightbox" href="../images/230406-pillow-affine-args/yTranslate100.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="yTranslate100" src="../images/230406-pillow-affine-args/yTranslate100.png" /></a></p>
-<p><code class="highlight"><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">100</span><span class="p">)</span></code>：</p>
-<p><code>yTranslate == -100</code>，将图像在 y 轴<strong>正</strong>方向上平移 100 像素。</p>
-<p><a class="glightbox" href="../images/230406-pillow-affine-args/yTranslate-100.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="yTranslate-100" src="../images/230406-pillow-affine-args/yTranslate-100.png" /></a></p>
+<h2 id="_2">解题思路<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
+<p>好多题解都是用双指针做的，我们这里采用一个和主流不同的做法，即数论方法.</p>
+<h3 id="_3">先验判断<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
+<p>首先可以对 <span class="arithmatex">\(c\)</span> 进行先验判断，如果 <span class="arithmatex">\(c \equiv 3 \pmod{4}\)</span>，那么 <span class="arithmatex">\(c\)</span> 一定不能表示为两个整数的平方和.</p>
+<div class="admonition info">
+<p class="admonition-title">证明</p>
+<p>对于任意整数 <span class="arithmatex">\(k \in \mathbb{Z}\)</span>：</p>
+<div class="arithmatex">\[
+\begin{aligned}
+(2k)^2 &amp;= 4k^2 \\
+(2k + 1)^2 &amp;= 4k^2 + 4k + 1 = 4(k^2 + k) + 1
+\end{aligned}
+\]</div>
+<p>即：</p>
+<ul>
+<li>对于任意偶数 <span class="arithmatex">\(a\)</span> 其平方 <span class="arithmatex">\(a^2 \equiv 0 \pmod{4}\)</span>.</li>
+<li>对于任意奇数 <span class="arithmatex">\(a\)</span> 其平方 <span class="arithmatex">\(a^2 \equiv 1 \pmod{4}\)</span>.</li>
+</ul>
+<p>将其相加，不难看出：</p>
+<ul>
+<li>对于任意偶数 <span class="arithmatex">\(a\)</span> <span class="arithmatex">\(b\)</span>，其平方和 <span class="arithmatex">\(a^2 + b^2 \equiv 0 \pmod{4}\)</span>.</li>
+<li>对于任意偶数 <span class="arithmatex">\(a\)</span> 奇数 <span class="arithmatex">\(b\)</span>，其平方和 <span class="arithmatex">\(a^2 + b^2 \equiv 1 \pmod{4}\)</span>.</li>
+<li>对于任意奇数 <span class="arithmatex">\(a\)</span> <span class="arithmatex">\(b\)</span>，其平方和 <span class="arithmatex">\(a^2 + b^2 \equiv 2 \pmod{4}\)</span>.</li>
+</ul>
+<p>因此，如果 <span class="arithmatex">\(c \equiv 3 \pmod{4}\)</span>，那么 <span class="arithmatex">\(c\)</span> 一定不能表示为两个整数的平方和.</p>
+</div>
+<p>由于力扣喜欢出随机数据，因此这个判断能快速过滤 25% 的数据.</p>
+<h3 id="_4">相关定理介绍<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h3>
+<p>在本方法中，我们需要用到 <a href="https://zh.wikipedia.org/wiki/%E5%A9%86%E7%BD%97%E6%91%A9%E7%AC%88%E5%A4%9A-%E6%96%90%E6%B3%A2%E9%82%A3%E5%A5%91%E6%81%92%E7%AD%89%E5%BC%8F">丢番图恒等式（也被称为 婆罗摩笈多-斐波那契恒等式）</a> 和 <a href="https://math.fandom.com/zh/wiki/%E4%BA%8C%E5%B9%B3%E6%96%B9%E5%92%8C%E9%97%AE%E9%A2%98?variant=zh">二平方和定理</a>.</p>
+<div class="admonition info">
+<p class="admonition-title">丢番图恒等式</p>
+<p>证明：若 <span class="arithmatex">\(a\)</span> 和 <span class="arithmatex">\(b\)</span> 可以表示为两个整数的平方和，那么 <span class="arithmatex">\(a \cdot b\)</span> 也可以表示为两个整数的平方和.</p>
+<p>设 <span class="arithmatex">\(a = w^2 + x^2\)</span>，<span class="arithmatex">\(b = y^2 + z^2\)</span>，那么：</p>
+<div class="arithmatex">\[
+\begin{aligned}
+a &amp;= w^2 + x^2 = (w + ix)(w - ix) \\
+b &amp;= y^2 + z^2 = (y + iz)(y - iz)
+\end{aligned}
+\]</div>
+<div class="arithmatex">\[
+\begin{aligned}
+a \cdot b &amp;= (w + ix)(w - ix)(y + iz)(y - iz) \\
+          &amp;= [(w + ix)(y + iz)][(w − ix)(y − iz)] \\
+          &amp;= [(wy − xz) + i(wz + xy)][(wy − xz) − i(wz + xy)] \\
+          &amp;= (wy - xz)^2 + (wz + xy)^2 \\
+\end{aligned}
+\]</div>
+<p>即 <span class="arithmatex">\(a \cdot b\)</span> 也可以表示为二平方和.</p>
+</div>
+<div class="admonition info">
+<p class="admonition-title">二平方和定理</p>
+<p>设 <span class="arithmatex">\(n \in \mathbb{N}_+\)</span>，那么不定方程</p>
+<div class="arithmatex">\[ x^2 + y^2 = n \]</div>
+<p>当且仅当 <span class="arithmatex">\(n\)</span> 满足以下条件之一时有解：</p>
+<ol>
+<li><span class="arithmatex">\(n = d^2 \cdot m\)</span>，这里 <span class="arithmatex">\(m\)</span> 没有平方因子且无形如 <span class="arithmatex">\(4k + 3\)</span> 的素因子.</li>
+<li>对每个 <span class="arithmatex">\(n\)</span> 的素因子 <span class="arithmatex">\(p\)</span>，<span class="arithmatex">\(p \equiv 1 \pmod{4}\)</span>.</li>
+</ol>
+<p>特别的，满足 <span class="arithmatex">\(p \equiv 1 \pmod{4}\)</span> 的素数 <span class="arithmatex">\(p\)</span> 总可表示为二平方和（即 <a href="https://zh.wikipedia.org/wiki/%E8%B4%B9%E9%A9%AC%E5%B9%B3%E6%96%B9%E5%92%8C%E5%AE%9A%E7%90%86">费马平方和定理</a>）.</p>
+</div>
+<p>费马平方和定理是二平方和定理的特殊形式，借助丢番图恒等式，我们可以将费马平方和定理推广到二平方和定理的条件 II.</p>
+<p>不过条件 I 的证明则稍微困难，需要用到 <a href="https://zh.wikipedia.org/wiki/%E4%BA%8C%E6%AC%A1%E5%89%A9%E4%BD%99">二次剩余</a> 的相关知识. </p>
+<p>二平方和定理的具体证明不在本博客讨论范围内，本博客也不是专门搞数论的，因此不再展开.</p>
+<h3 id="_5">逐个分析素因子<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h3>
+<p>我们的思路便是利用二平方和定理判断 <span class="arithmatex">\(c\)</span> 是否可以表示为两个整数的平方和. 我们需要找到 <span class="arithmatex">\(c\)</span> 的所有素因子，并逐个分析其是否满足该定理的任何一个条件.</p>
+<p>假设 <span class="arithmatex">\(c\)</span> 的素因子中包含若干个 <span class="arithmatex">\(2\)</span>，由于 <span class="arithmatex">\(2\)</span> 可以用 <span class="arithmatex">\(1^2 + 1^2\)</span> 表示，借助丢番图恒等式，我们可以将 <span class="arithmatex">\(c\)</span> 的所有偶素因子 <span class="arithmatex">\(2\)</span> 约去，只需要考虑 <span class="arithmatex">\(c\)</span> 的所有奇素因子.</p>
+<p>显然 <span class="arithmatex">\(c\)</span> 的所有奇素因子 <span class="arithmatex">\(p\)</span> 都满足 <span class="arithmatex">\(p \not \equiv 2 \pmod{4}\)</span>，因此这些奇素因子都只能是 <span class="arithmatex">\(4k + 1\)</span> 或 <span class="arithmatex">\(4k + 3\)</span> 的形式.</p>
+<ol>
+<li>若 <span class="arithmatex">\(p_i \equiv 1 \pmod{4}\)</span>，那么它符合条件 II，只需要继续考虑 <span class="arithmatex">\(p_{i+1}\)</span>.</li>
+<li>
+<p>若 <span class="arithmatex">\(p_i \equiv 3 \pmod{4}\)</span>，那么它需要结合条件 I 进行额外判断:</p>
+<p>考虑到条件 I 中的 <span class="arithmatex">\(m\)</span> 没有 <span class="arithmatex">\(4k + 3\)</span> 形式的素因子，因此 <span class="arithmatex">\(p_i\)</span> 只能在前面的平方项 <span class="arithmatex">\(d^2\)</span> 中，即 <span class="arithmatex">\(p_i\)</span> 在 <span class="arithmatex">\(c\)</span> 因式分解中的幂次一定是偶数.</p>
+<p>其逆否命题为，在 <span class="arithmatex">\(p_i \equiv 3 \pmod{4}\)</span> 的情况下，若 <span class="arithmatex">\(p_i\)</span> 在 <span class="arithmatex">\(c\)</span> 因式分解中的幂次为奇数，那么 <span class="arithmatex">\(c\)</span> 一定不能表示为两个整数的平方和.</p>
+</li>
+</ol>
+<h3 id="_6">总结<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h3>
+<p>至此，我们得到了三条结论：</p>
+<ul>
+<li>如果 <span class="arithmatex">\(c \equiv 3 \pmod{4}\)</span>，那么 <span class="arithmatex">\(c\)</span> 一定不能表示为两个整数的平方和.</li>
+<li>如果 <span class="arithmatex">\(c\)</span> 的所有素因子 <span class="arithmatex">\(p\)</span> 满足 <span class="arithmatex">\(p \equiv 1 \pmod{4}\)</span>，那么 <span class="arithmatex">\(c\)</span> 一定可以表示为两个整数的平方和.</li>
+<li>如果 <span class="arithmatex">\(c\)</span> 的素因数中存在一个素数 <span class="arithmatex">\(p_i\)</span> 满足 <span class="arithmatex">\(p_i \equiv 3 \pmod{4}\)</span> 且 <span class="arithmatex">\(p_i\)</span> 在 <span class="arithmatex">\(c\)</span> 因式分解中的幂次为奇数，那么 <span class="arithmatex">\(c\)</span> 一定不能表示为两个整数的平方和.</li>
+</ul>
+<p>你会发现距离完成还差最后一块拼图，即 <span class="arithmatex">\(p_i\)</span> 在 <span class="arithmatex">\(c\)</span> 因式分解中的幂次为偶数时怎么办。</p>
+<p>在这种情况下，根据丢番图恒等式，我们可以将 <span class="arithmatex">\(p_i^{2k}\)</span> 约去（因为 <span class="arithmatex">\(p_i^{2k} = (p_i^k)^2 + 0^2\)</span>）. 若遍历完所有 <span class="arithmatex">\(p_i \equiv 3 \pmod{4}\)</span> 的素因子，发现它们的幂次都是偶数，那么 <span class="arithmatex">\(c\)</span> 一定可以表示为两个整数的平方和，这便是条件 I 中 <span class="arithmatex">\(m = 1\)</span> 的情况. 由此得到了我们的第四条结论.</p>
+<p>接下来开始遍历 <span class="arithmatex">\(c\)</span> 的所有素因子.</p>
+<p>对 <span class="arithmatex">\(c\)</span> 的素因子的枚举，只需要枚举到 <span class="arithmatex">\(\sqrt{c}\)</span> 即可.</p>
+<div class="admonition question">
+<p class="admonition-title">为什么</p>
+<p>如果 <span class="arithmatex">\(a\)</span> 是 <span class="arithmatex">\(n\)</span> 的因子，那么 <span class="arithmatex">\(b = \dfrac{n}{x}\)</span> 也是 <span class="arithmatex">\(n\)</span> 的因子. </p>
+<p>又因为 <span class="arithmatex">\(1 &lt; a b\)</span>，</p>
+<p>因此 <span class="arithmatex">\(n\)</span> 的所有因子 <span class="arithmatex">\(x\)</span> 满足 <span class="arithmatex">\(x \leq \sqrt{n}\)</span>.</p>
+</div>
+<h2 id="_7">完整题解<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h2>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">math</span>
+
+<span class="k">class</span> <span class="nc">Solution</span><span class="p">:</span>
+    <span class="k">def</span> <span class="nf">judgeSquareSum</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">c</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+        <span class="c1"># 先验判断</span>
+        <span class="k">if</span> <span class="n">c</span> <span class="o">%</span> <span class="mi">4</span> <span class="o">==</span> <span class="mi">3</span><span class="p">:</span>
+            <span class="k">return</span> <span class="kc">False</span>
+
+        <span class="c1"># 枚举 c 的所有素因子</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="nb">int</span><span class="p">(</span><span class="n">math</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">c</span><span class="p">))</span> <span class="o">+</span> <span class="mi">1</span><span class="p">):</span>
+            <span class="k">if</span> <span class="n">c</span> <span class="o">%</span> <span class="n">i</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+                <span class="n">count</span> <span class="o">=</span> <span class="mi">0</span>
+                <span class="k">while</span> <span class="n">c</span> <span class="o">%</span> <span class="n">i</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+                    <span class="n">c</span> <span class="o">//=</span> <span class="n">i</span>
+                    <span class="n">count</span> <span class="o">+=</span> <span class="mi">1</span>
+
+                <span class="c1"># 不符合条件 II，也不符合条件 I 的逆否命题</span>
+                <span class="k">if</span> <span class="n">i</span> <span class="o">%</span> <span class="mi">4</span> <span class="o">==</span> <span class="mi">3</span> <span class="ow">and</span> <span class="n">count</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">:</span>
+                    <span class="k">return</span> <span class="kc">False</span>
+
+        <span class="k">return</span> <span class="n">c</span> <span class="o">%</span> <span class="mi">4</span> <span class="o">!=</span> <span class="mi">3</span>  <span class="c1"># 判断最后一个素因子是否仍然满足条件 II</span>
+</code></pre></div>
+<h2 id="_8">复杂度分析<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h2>
+<p>我们只需要遍历 <span class="arithmatex">\([2, \sqrt{c}]\)</span> 的数，故时间复杂度为 <span class="arithmatex">\(O(\sqrt{c})\)</span>，</p>
+<p>空间复杂度为 <span class="arithmatex">\(O(1)\)</span>。</p>
+<figure>
+<p><a class="glightbox" href="../images/241104-633/time.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="time" src="../images/241104-633/time.png" /></a>
+  </p>
+<figcaption>还是比双指针快的</figcaption>
+</figure>
 
     <!-- Last update of source file -->
     
@@ -2056,7 +2051,7 @@ ySkew &amp; yScale &amp; yTranslate \\
     <span class="md-icon" title="最后更新">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_datetime">2023-04-06 13:42:50</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_datetime">2024-11-04 07:37:59</span>
   </span>
 
     
@@ -2066,7 +2061,7 @@ ySkew &amp; yScale &amp; yTranslate \\
     <span class="md-icon" title="创建日期">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M14.47 15.08 11 13V7h1.5v5.25l3.08 1.83c-.41.28-.79.62-1.11 1m-1.39 4.84c-.36.05-.71.08-1.08.08-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8c0 .37-.03.72-.08 1.08.69.1 1.33.32 1.92.64.1-.56.16-1.13.16-1.72 0-5.5-4.5-10-10-10S2 6.5 2 12s4.47 10 10 10c.59 0 1.16-.06 1.72-.16-.32-.59-.54-1.23-.64-1.92M18 15v3h-3v2h3v3h2v-3h3v-2h-3v-3z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_datetime">2023-04-06 13:42:50</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_datetime">2024-11-04 07:37:59</span>
   </span>
 
     
@@ -2150,7 +2145,7 @@ ySkew &amp; yScale &amp; yTranslate \\
       <nav class="md-footer__inner md-grid" aria-label="页脚" >
         
           
-          <a href="../230309-pycharm-git-submodule/" class="md-footer__link md-footer__link--prev" aria-label="上一页: 如何在 PyCharm 中使用 Git Submodule">
+          <a href="../241103-638/" class="md-footer__link md-footer__link--prev" aria-label="上一页: 638. 大礼包">
             <div class="md-footer__button md-icon">
               
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
@@ -2160,27 +2155,11 @@ ySkew &amp; yScale &amp; yTranslate \\
                 上一页
               </span>
               <div class="md-ellipsis">
-                如何在 PyCharm 中使用 Git Submodule
+                638. 大礼包
               </div>
             </div>
           </a>
         
-        
-          
-          <a href="../230428-mokabot-arcaea/" class="md-footer__link md-footer__link--next" aria-label="下一页: mokabot 的 Arcaea 模块发展史">
-            <div class="md-footer__title">
-              <span class="md-footer__direction">
-                下一页
-              </span>
-              <div class="md-ellipsis">
-                mokabot 的 Arcaea 模块发展史
-              </div>
-            </div>
-            <div class="md-footer__button md-icon">
-              
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
-            </div>
-          </a>
         
       </nav>
     
