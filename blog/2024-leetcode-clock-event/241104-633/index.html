@@ -1990,9 +1990,7 @@ a \cdot b &amp;= (w + ix)(w - ix)(y + iz)(y - iz) \\
 <p>对 <span class="arithmatex">\(c\)</span> 的素因子的枚举，只需要枚举到 <span class="arithmatex">\(\sqrt{c}\)</span> 即可.</p>
 <div class="admonition question">
 <p class="admonition-title">为什么</p>
-<p>如果 <span class="arithmatex">\(a\)</span> 是 <span class="arithmatex">\(n\)</span> 的因子，那么 <span class="arithmatex">\(b = \dfrac{n}{x}\)</span> 也是 <span class="arithmatex">\(n\)</span> 的因子. </p>
-<p>又因为 <span class="arithmatex">\(1 &lt; a b\)</span>，</p>
-<p>因此 <span class="arithmatex">\(n\)</span> 的所有因子 <span class="arithmatex">\(x\)</span> 满足 <span class="arithmatex">\(x \leq \sqrt{n}\)</span>.</p>
+<p>如果 <span class="arithmatex">\(a\)</span> 是 <span class="arithmatex">\(n\)</span> 的因子，那么 <span class="arithmatex">\(b = \dfrac{n}{x}\)</span> 也是 <span class="arithmatex">\(n\)</span> 的因子. 故 <span class="arithmatex">\(n\)</span> 的所有因子 <span class="arithmatex">\(x\)</span> 都满足 <span class="arithmatex">\(x \leq \sqrt{n}\)</span>.</p>
 </div>
 <h2 id="_7">完整题解<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h2>
 <div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">math</span>
@@ -2004,16 +2002,19 @@ a \cdot b &amp;= (w + ix)(w - ix)(y + iz)(y - iz) \\
             <span class="k">return</span> <span class="kc">False</span>
 
         <span class="c1"># 枚举 c 的所有素因子</span>
-        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="nb">int</span><span class="p">(</span><span class="n">math</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">c</span><span class="p">))</span> <span class="o">+</span> <span class="mi">1</span><span class="p">):</span>
-            <span class="k">if</span> <span class="n">c</span> <span class="o">%</span> <span class="n">i</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
-                <span class="n">count</span> <span class="o">=</span> <span class="mi">0</span>
-                <span class="k">while</span> <span class="n">c</span> <span class="o">%</span> <span class="n">i</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
-                    <span class="n">c</span> <span class="o">//=</span> <span class="n">i</span>
-                    <span class="n">count</span> <span class="o">+=</span> <span class="mi">1</span>
+        <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="nb">int</span><span class="p">(</span><span class="n">math</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">c</span><span class="p">))</span> <span class="o">+</span> <span class="mi">1</span><span class="p">):</span>
+            <span class="k">if</span> <span class="n">c</span> <span class="o">%</span> <span class="n">p</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+                <span class="n">exp</span> <span class="o">=</span> <span class="mi">0</span>
+                <span class="c1"># exp = p[i] 的幂次</span>
+                <span class="k">while</span> <span class="n">c</span> <span class="o">%</span> <span class="n">p</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+                    <span class="n">c</span> <span class="o">//=</span> <span class="n">p</span>
+                    <span class="n">exp</span> <span class="o">+=</span> <span class="mi">1</span>
 
-                <span class="c1"># 不符合条件 II，也不符合条件 I 的逆否命题</span>
-                <span class="k">if</span> <span class="n">i</span> <span class="o">%</span> <span class="mi">4</span> <span class="o">==</span> <span class="mi">3</span> <span class="ow">and</span> <span class="n">count</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">:</span>
+                <span class="c1"># 不符合条件 II，也不符合条件 I</span>
+                <span class="k">if</span> <span class="n">p</span> <span class="o">%</span> <span class="mi">4</span> <span class="o">==</span> <span class="mi">3</span> <span class="ow">and</span> <span class="n">exp</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">:</span>
                     <span class="k">return</span> <span class="kc">False</span>
+
+                <span class="c1"># 除此以外的其他情况均继续验证 p[i+1]</span>
 
         <span class="k">return</span> <span class="n">c</span> <span class="o">%</span> <span class="mi">4</span> <span class="o">!=</span> <span class="mi">3</span>  <span class="c1"># 判断最后一个素因子是否仍然满足条件 II</span>
 </code></pre></div>
@@ -2051,7 +2052,7 @@ a \cdot b &amp;= (w + ix)(w - ix)(y + iz)(y - iz) \\
     <span class="md-icon" title="最后更新">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_datetime">2024-11-04 07:37:59</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_datetime">2024-11-04 09:00:44</span>
   </span>
 
     
