@@ -1680,22 +1680,13 @@
   
 </li>
         
-          <li class="md-nav__item">
-  <a href="#_6" class="md-nav__link">
-    <span class="md-ellipsis">
-      总结
-    </span>
-  </a>
-  
-</li>
-        
       </ul>
     </nav>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#_7" class="md-nav__link">
+  <a href="#_6" class="md-nav__link">
     <span class="md-ellipsis">
       完整题解
     </span>
@@ -1704,7 +1695,7 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#_8" class="md-nav__link">
+  <a href="#_7" class="md-nav__link">
     <span class="md-ellipsis">
       复杂度分析
     </span>
@@ -1806,22 +1797,13 @@
   
 </li>
         
-          <li class="md-nav__item">
-  <a href="#_6" class="md-nav__link">
-    <span class="md-ellipsis">
-      总结
-    </span>
-  </a>
-  
-</li>
-        
       </ul>
     </nav>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#_7" class="md-nav__link">
+  <a href="#_6" class="md-nav__link">
     <span class="md-ellipsis">
       完整题解
     </span>
@@ -1830,7 +1812,7 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#_8" class="md-nav__link">
+  <a href="#_7" class="md-nav__link">
     <span class="md-ellipsis">
       复杂度分析
     </span>
@@ -1930,7 +1912,7 @@ as the main headline.
 </div>
 <p>由于力扣喜欢出随机数据，因此这个判断能快速过滤 25% 的数据.</p>
 <h3 id="_4">相关定理介绍<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h3>
-<p>在本方法中，我们需要用到 <a href="https://zh.wikipedia.org/wiki/%E5%A9%86%E7%BD%97%E6%91%A9%E7%AC%88%E5%A4%9A-%E6%96%90%E6%B3%A2%E9%82%A3%E5%A5%91%E6%81%92%E7%AD%89%E5%BC%8F">丢番图恒等式（也被称为 婆罗摩笈多-斐波那契恒等式）</a> 和 <a href="https://math.fandom.com/zh/wiki/%E4%BA%8C%E5%B9%B3%E6%96%B9%E5%92%8C%E9%97%AE%E9%A2%98?variant=zh">二平方和定理</a>.</p>
+<p>在本方法中，我们需要用到 <a href="https://zh.wikipedia.org/wiki/%E5%A9%86%E7%BD%97%E6%91%A9%E7%AC%88%E5%A4%9A-%E6%96%90%E6%B3%A2%E9%82%A3%E5%A5%91%E6%81%92%E7%AD%89%E5%BC%8F">丢番图恒等式（也被称为 婆罗摩笈多-斐波那契恒等式）</a> 和 <a href="https://zh.wikipedia.org/wiki/%E8%B4%B9%E9%A9%AC%E5%B9%B3%E6%96%B9%E5%92%8C%E5%AE%9A%E7%90%86">费马平方和定理</a>.</p>
 <div class="admonition info">
 <p class="admonition-title">丢番图恒等式</p>
 <p>证明：若 <span class="arithmatex">\(a\)</span> 和 <span class="arithmatex">\(b\)</span> 可以表示为两个整数的平方和，那么 <span class="arithmatex">\(a \cdot b\)</span> 也可以表示为两个整数的平方和.</p>
@@ -1952,47 +1934,49 @@ a \cdot b &amp;= (w + ix)(w - ix)(y + iz)(y - iz) \\
 <p>即 <span class="arithmatex">\(a \cdot b\)</span> 也可以表示为二平方和.</p>
 </div>
 <div class="admonition info">
-<p class="admonition-title">二平方和定理</p>
-<p>设 <span class="arithmatex">\(n \in \mathbb{N}_+\)</span>，那么不定方程</p>
-<div class="arithmatex">\[ x^2 + y^2 = n \]</div>
-<p>当且仅当 <span class="arithmatex">\(n\)</span> 满足以下条件之一时有解：</p>
-<ol>
-<li><span class="arithmatex">\(n = d^2 \cdot m\)</span>，这里 <span class="arithmatex">\(m\)</span> 没有平方因子且无形如 <span class="arithmatex">\(4k + 3\)</span> 的素因子.</li>
-<li>对每个 <span class="arithmatex">\(n\)</span> 的素因子 <span class="arithmatex">\(p\)</span>，<span class="arithmatex">\(p \equiv 1 \pmod{4}\)</span>.</li>
-</ol>
-<p>特别的，满足 <span class="arithmatex">\(p \equiv 1 \pmod{4}\)</span> 的素数 <span class="arithmatex">\(p\)</span> 总可表示为二平方和（即 <a href="https://zh.wikipedia.org/wiki/%E8%B4%B9%E9%A9%AC%E5%B9%B3%E6%96%B9%E5%92%8C%E5%AE%9A%E7%90%86">费马平方和定理</a>）.</p>
+<p class="admonition-title">费马平方和定理</p>
+<p>奇素数 <span class="arithmatex">\(p\)</span> 能表示为两个平方数之和的充分必要条件是 <span class="arithmatex">\(p \equiv 1 \pmod{4}\)</span>.</p>
 </div>
-<p>费马平方和定理是二平方和定理的特殊形式，借助丢番图恒等式，我们可以将费马平方和定理推广到二平方和定理的条件 II.</p>
-<p>不过条件 I 的证明则稍微困难，需要用到 <a href="https://zh.wikipedia.org/wiki/%E4%BA%8C%E6%AC%A1%E5%89%A9%E4%BD%99">二次剩余</a> 的相关知识. </p>
-<p>二平方和定理的具体证明不在本博客讨论范围内，本博客也不是专门搞数论的，因此不再展开.</p>
+<p>根据丢番图恒等式，当我们发现 <span class="arithmatex">\(c\)</span> 的一个素因子可以被表示为两个整数的平方和时，我们可以将其约去，继续分析剩下的部分，即：</p>
+<div class="admonition info">
+<p class="admonition-title">丢番图恒等式的推论</p>
+<p>若存在 <span class="arithmatex">\(c\)</span> 的一个素因子 <span class="arithmatex">\(p_i\)</span> 可以表示为两个整数的平方和，那么 <span class="arithmatex">\(c\)</span> 和 <span class="arithmatex">\(c^* = \dfrac{c}{p_i}\)</span> 在是否可以表示为两个整数的平方和上具有相同的性质.</p>
+<p>本结论的具体证明详见 <a href="https://zh.wikipedia.org/wiki/%E8%B4%B9%E9%A9%AC%E5%B9%B3%E6%96%B9%E5%92%8C%E5%AE%9A%E7%90%86#%E6%AD%90%E6%8B%89%E7%9A%84%E8%AF%81%E6%98%8E">欧拉的证明</a>.</p>
+</div>
 <h3 id="_5">逐个分析素因子<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h3>
-<p>我们的思路便是利用二平方和定理判断 <span class="arithmatex">\(c\)</span> 是否可以表示为两个整数的平方和. 我们需要找到 <span class="arithmatex">\(c\)</span> 的所有素因子，并逐个分析其是否满足该定理的任何一个条件.</p>
-<p>假设 <span class="arithmatex">\(c\)</span> 的素因子中包含若干个 <span class="arithmatex">\(2\)</span>，由于 <span class="arithmatex">\(2\)</span> 可以用 <span class="arithmatex">\(1^2 + 1^2\)</span> 表示，借助丢番图恒等式，我们可以将 <span class="arithmatex">\(c\)</span> 的所有偶素因子 <span class="arithmatex">\(2\)</span> 约去，只需要考虑 <span class="arithmatex">\(c\)</span> 的所有奇素因子.</p>
+<p>我们的思路便是利用丢番图恒等式，不断约去 <span class="arithmatex">\(c\)</span> 的能被表示为两个整数的平方和的素因子.</p>
+<p>若 <span class="arithmatex">\(c\)</span> 的素因子中包含若干个 <span class="arithmatex">\(2\)</span>，由于 <span class="arithmatex">\(2 = 1^2 + 1^2\)</span>，我们可以将 <span class="arithmatex">\(c\)</span> 的所有偶素因子 <span class="arithmatex">\(2\)</span> 约去，接下来只需要考虑 <span class="arithmatex">\(c\)</span> 的所有奇素因子.</p>
 <p>显然 <span class="arithmatex">\(c\)</span> 的所有奇素因子 <span class="arithmatex">\(p\)</span> 都满足 <span class="arithmatex">\(p \not \equiv 2 \pmod{4}\)</span>，因此这些奇素因子都只能是 <span class="arithmatex">\(4k + 1\)</span> 或 <span class="arithmatex">\(4k + 3\)</span> 的形式.</p>
 <ol>
-<li>若 <span class="arithmatex">\(p_i \equiv 1 \pmod{4}\)</span>，那么它符合条件 II，只需要继续考虑 <span class="arithmatex">\(p_{i+1}\)</span>.</li>
+<li>若 <span class="arithmatex">\(p_i \equiv 1 \pmod{4}\)</span>，根据费马平方和定理，<span class="arithmatex">\(p_i\)</span> 可以被表示为两个整数的平方和，故可以将 <span class="arithmatex">\(p_i\)</span> 约去.</li>
 <li>
-<p>若 <span class="arithmatex">\(p_i \equiv 3 \pmod{4}\)</span>，那么它需要结合条件 I 进行额外判断:</p>
-<p>考虑到条件 I 中的 <span class="arithmatex">\(m\)</span> 没有 <span class="arithmatex">\(4k + 3\)</span> 形式的素因子，因此 <span class="arithmatex">\(p_i\)</span> 只能在前面的平方项 <span class="arithmatex">\(d^2\)</span> 中，即 <span class="arithmatex">\(p_i\)</span> 在 <span class="arithmatex">\(c\)</span> 因式分解中的幂次一定是偶数.</p>
-<p>其逆否命题为，在 <span class="arithmatex">\(p_i \equiv 3 \pmod{4}\)</span> 的情况下，若 <span class="arithmatex">\(p_i\)</span> 在 <span class="arithmatex">\(c\)</span> 因式分解中的幂次为奇数，那么 <span class="arithmatex">\(c\)</span> 一定不能表示为两个整数的平方和.</p>
+<p>若 <span class="arithmatex">\(p_i \equiv 3 \pmod{4}\)</span>，那么需要判断 <span class="arithmatex">\(p_i\)</span> 在 <span class="arithmatex">\(c\)</span> 因式分解中的幂次.</p>
+<ul>
+<li>若 <span class="arithmatex">\(p_i\)</span> 在 <span class="arithmatex">\(c\)</span> 因式分解中的幂次为偶数，由于 <span class="arithmatex">\(p_i^{2k} = (p_i^k)^2 + 0^2\)</span>，故可以将 <span class="arithmatex">\(p_i^{2k}\)</span> 约去.</li>
+<li>若 <span class="arithmatex">\(p_i\)</span> 在 <span class="arithmatex">\(c\)</span> 因式分解中的幂次为奇数，那么 <span class="arithmatex">\(c\)</span> 一定不能表示为两个整数的平方和.</li>
+</ul>
 </li>
 </ol>
-<h3 id="_6">总结<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h3>
-<p>至此，我们得到了三条结论：</p>
+<p>如此一直约去，直到 <span class="arithmatex">\(c^*\)</span> 满足费马平方和定理或 <span class="arithmatex">\(c^*\)</span> 是素数的偶数次方.</p>
+<p>综上所述，得到结论如下：</p>
+<div class="admonition info">
+<p class="admonition-title">结论</p>
+<p>如果 <span class="arithmatex">\(c\)</span> 所有的素因子 <span class="arithmatex">\(p\)</span> 均满足下列条件之一，那么 <span class="arithmatex">\(c\)</span> 一定可以表示为两个整数的平方和：</p>
 <ul>
-<li>如果 <span class="arithmatex">\(c \equiv 3 \pmod{4}\)</span>，那么 <span class="arithmatex">\(c\)</span> 一定不能表示为两个整数的平方和.</li>
-<li>如果 <span class="arithmatex">\(c\)</span> 的所有素因子 <span class="arithmatex">\(p\)</span> 满足 <span class="arithmatex">\(p \equiv 1 \pmod{4}\)</span>，那么 <span class="arithmatex">\(c\)</span> 一定可以表示为两个整数的平方和.</li>
-<li>如果 <span class="arithmatex">\(c\)</span> 的素因数中存在一个素数 <span class="arithmatex">\(p_i\)</span> 满足 <span class="arithmatex">\(p_i \equiv 3 \pmod{4}\)</span> 且 <span class="arithmatex">\(p_i\)</span> 在 <span class="arithmatex">\(c\)</span> 因式分解中的幂次为奇数，那么 <span class="arithmatex">\(c\)</span> 一定不能表示为两个整数的平方和.</li>
+<li><span class="arithmatex">\(p = 2\)</span>.</li>
+<li><span class="arithmatex">\(p \equiv 1 \pmod{4}\)</span>.</li>
+<li><span class="arithmatex">\(p \equiv 3 \pmod{4}\)</span> 且 <span class="arithmatex">\(p\)</span> 在 <span class="arithmatex">\(c\)</span> 因式分解中的幂次为偶数.</li>
 </ul>
-<p>你会发现距离完成还差最后一块拼图，即 <span class="arithmatex">\(p_i\)</span> 在 <span class="arithmatex">\(c\)</span> 因式分解中的幂次为偶数时怎么办。</p>
-<p>在这种情况下，根据丢番图恒等式，我们可以将 <span class="arithmatex">\(p_i^{2k}\)</span> 约去（因为 <span class="arithmatex">\(p_i^{2k} = (p_i^k)^2 + 0^2\)</span>）. 若遍历完所有 <span class="arithmatex">\(p_i \equiv 3 \pmod{4}\)</span> 的素因子，发现它们的幂次都是偶数，那么 <span class="arithmatex">\(c\)</span> 一定可以表示为两个整数的平方和，这便是条件 I 中 <span class="arithmatex">\(m = 1\)</span> 的情况. 由此得到了我们的第四条结论.</p>
+<p>若存在一个素因子 <span class="arithmatex">\(p\)</span> 不满足上述任一条件，那么 <span class="arithmatex">\(c\)</span> 一定不能表示为两个整数的平方和.</p>
+<p>这个结论其实就是 <a href="https://math.fandom.com/zh/wiki/%E4%BA%8C%E5%B9%B3%E6%96%B9%E5%92%8C%E9%97%AE%E9%A2%98?variant=zh-hans">二平方和定理</a></p>
+</div>
 <p>接下来开始遍历 <span class="arithmatex">\(c\)</span> 的所有素因子.</p>
 <p>对 <span class="arithmatex">\(c\)</span> 的素因子的枚举，只需要枚举到 <span class="arithmatex">\(\sqrt{c}\)</span> 即可.</p>
 <div class="admonition question">
 <p class="admonition-title">为什么</p>
 <p>如果 <span class="arithmatex">\(a\)</span> 是 <span class="arithmatex">\(n\)</span> 的因子，那么 <span class="arithmatex">\(b = \dfrac{n}{x}\)</span> 也是 <span class="arithmatex">\(n\)</span> 的因子. 故 <span class="arithmatex">\(n\)</span> 的所有因子 <span class="arithmatex">\(x\)</span> 都满足 <span class="arithmatex">\(x \leq \sqrt{n}\)</span>.</p>
 </div>
-<h2 id="_7">完整题解<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h2>
+<h2 id="_6">完整题解<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h2>
 <div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">math</span>
 
 <span class="k">class</span> <span class="nc">Solution</span><span class="p">:</span>
@@ -2010,15 +1994,16 @@ a \cdot b &amp;= (w + ix)(w - ix)(y + iz)(y - iz) \\
                     <span class="n">c</span> <span class="o">//=</span> <span class="n">p</span>
                     <span class="n">exp</span> <span class="o">+=</span> <span class="mi">1</span>
 
-                <span class="c1"># 不符合条件 II，也不符合条件 I</span>
+                <span class="c1"># 素因子不满足上述条件</span>
                 <span class="k">if</span> <span class="n">p</span> <span class="o">%</span> <span class="mi">4</span> <span class="o">==</span> <span class="mi">3</span> <span class="ow">and</span> <span class="n">exp</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">:</span>
                     <span class="k">return</span> <span class="kc">False</span>
 
                 <span class="c1"># 除此以外的其他情况均继续验证 p[i+1]</span>
+                <span class="c1"># 即 else: continue</span>
 
-        <span class="k">return</span> <span class="n">c</span> <span class="o">%</span> <span class="mi">4</span> <span class="o">!=</span> <span class="mi">3</span>  <span class="c1"># 判断最后一个素因子是否仍然满足条件 II</span>
+        <span class="k">return</span> <span class="n">c</span> <span class="o">%</span> <span class="mi">4</span> <span class="o">!=</span> <span class="mi">3</span>  <span class="c1"># 判断最后一个素因子是否仍然满足条件</span>
 </code></pre></div>
-<h2 id="_8">复杂度分析<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h2>
+<h2 id="_7">复杂度分析<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h2>
 <p>我们只需要遍历 <span class="arithmatex">\([2, \sqrt{c}]\)</span> 的数，故时间复杂度为 <span class="arithmatex">\(O(\sqrt{c})\)</span>，</p>
 <p>空间复杂度为 <span class="arithmatex">\(O(1)\)</span>。</p>
 <figure>
@@ -2052,7 +2037,7 @@ a \cdot b &amp;= (w + ix)(w - ix)(y + iz)(y - iz) \\
     <span class="md-icon" title="最后更新">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_datetime">2024-11-04 09:56:59</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_datetime">2024-11-04 12:23:17</span>
   </span>
 
     
