@@ -6,19 +6,17 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
-        <meta name="description" content="Arisa 的个人博客">
+        <meta name="description" content="3254. 长度为 K 的子数组的能量值 I">
       
       
         <meta name="author" content="Akiba Arisa">
       
       
-        <link rel="canonical" href="https://blog.arisa.moe/blog/2022/220409-cloudflare-workers-arcaea-update/">
+        <link rel="canonical" href="https://blog.arisa.moe/blog/2024-leetcode-clock-event/241106-3254/">
       
       
-        <link rel="prev" href="../220408-github-pages-2/">
+        <link rel="prev" href="../241105-3222/">
       
-      
-        <link rel="next" href="../220412-ida-substitute-usage/">
       
       
       <link rel="icon" href="../../../assets/favicon.webp">
@@ -26,7 +24,7 @@
     
     
       
-        <title>如何使用 Cloudflare Workers 来搭建 Arcaea 镜像下载服务器 - Arisa | Blog</title>
+        <title>3254. 长度为 K 的子数组的能量值 I - Arisa | Blog</title>
       
     
     
@@ -123,7 +121,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              如何使用 Cloudflare Workers 来搭建 Arcaea 镜像下载服务器
+              3254. 长度为 K 的子数组的能量值 I
             
           </span>
         </div>
@@ -303,7 +301,7 @@
     
     
       <li class="md-tabs__item md-tabs__item--active">
-        <a href="../220406-nginx-stream/" class="md-tabs__link">
+        <a href="../../2022/220406-nginx-stream/" class="md-tabs__link">
           
   
   Blog
@@ -469,8 +467,6 @@
                 
   
   
-    
-  
   
   
     
@@ -480,11 +476,11 @@
       
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_1" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_1" >
         
           
           <label class="md-nav__link" for="__nav_4_1" id="__nav_4_1_label" tabindex="0">
@@ -498,7 +494,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_1_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_1_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_4_1">
             <span class="md-nav__icon md-icon"></span>
             2022
@@ -512,7 +508,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../220406-nginx-stream/" class="md-nav__link">
+      <a href="../../2022/220406-nginx-stream/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -533,7 +529,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../220406-set-http-proxy/" class="md-nav__link">
+      <a href="../../2022/220406-set-http-proxy/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -554,7 +550,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../220406-venv-move-file/" class="md-nav__link">
+      <a href="../../2022/220406-venv-move-file/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -575,7 +571,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../220407-certbot/" class="md-nav__link">
+      <a href="../../2022/220407-certbot/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -596,7 +592,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../220407-github-pages/" class="md-nav__link">
+      <a href="../../2022/220407-github-pages/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -617,7 +613,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../220408-github-pages-2/" class="md-nav__link">
+      <a href="../../2022/220408-github-pages-2/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -635,28 +631,10 @@
                 
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  <span class="md-ellipsis">
-    如何使用 Cloudflare Workers 来搭建 Arcaea 镜像下载服务器
-  </span>
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../../2022/220409-cloudflare-workers-arcaea-update/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -665,111 +643,6 @@
   
 
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="目录">
-  
-  
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      目录
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#_1" class="md-nav__link">
-    <span class="md-ellipsis">
-      简介
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_2" class="md-nav__link">
-    <span class="md-ellipsis">
-      部署
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="部署">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#1-cloudflare-workers" class="md-nav__link">
-    <span class="md-ellipsis">
-      1. 创建一个 Cloudflare Workers 实例
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#2" class="md-nav__link">
-    <span class="md-ellipsis">
-      2. 设置该服务
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#3" class="md-nav__link">
-    <span class="md-ellipsis">
-      3. 测试服务可用性
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#4-dns" class="md-nav__link">
-    <span class="md-ellipsis">
-      4. 设置自定义域名的 DNS 记录
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#5" class="md-nav__link">
-    <span class="md-ellipsis">
-      5. 将你的自定义域名的子域设置为该服务的路由:
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#6" class="md-nav__link">
-    <span class="md-ellipsis">
-      6. 测试的你的子域
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_3" class="md-nav__link">
-    <span class="md-ellipsis">
-      许可证
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -782,7 +655,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../220412-ida-substitute-usage/" class="md-nav__link">
+      <a href="../../2022/220412-ida-substitute-usage/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -803,7 +676,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../220413-Intranet-penetration-bitcomit/" class="md-nav__link">
+      <a href="../../2022/220413-Intranet-penetration-bitcomit/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -824,7 +697,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../220414-fk-arcaea-songlist-hash/" class="md-nav__link">
+      <a href="../../2022/220414-fk-arcaea-songlist-hash/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -845,7 +718,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../220416-arcaea-fanmade-chart-problem/" class="md-nav__link">
+      <a href="../../2022/220416-arcaea-fanmade-chart-problem/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -866,7 +739,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../220417-linux-clean-up-disk-space/" class="md-nav__link">
+      <a href="../../2022/220417-linux-clean-up-disk-space/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -887,7 +760,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../220421-use-gzip-bomb-against-scanner/" class="md-nav__link">
+      <a href="../../2022/220421-use-gzip-bomb-against-scanner/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -908,7 +781,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../220428-how-to-ask-questions-like-a-retard/" class="md-nav__link">
+      <a href="../../2022/220428-how-to-ask-questions-like-a-retard/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -929,7 +802,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../220429-dilb-ultimate-solution/" class="md-nav__link">
+      <a href="../../2022/220429-dilb-ultimate-solution/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -950,7 +823,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../220502-how-dogs-work-in-epic7/" class="md-nav__link">
+      <a href="../../2022/220502-how-dogs-work-in-epic7/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -971,7 +844,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../220511-how-to-write-python-into-classical-chinese/" class="md-nav__link">
+      <a href="../../2022/220511-how-to-write-python-into-classical-chinese/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -992,7 +865,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../220529-python-personal-styleguide/" class="md-nav__link">
+      <a href="../../2022/220529-python-personal-styleguide/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1013,7 +886,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../220530-auto-sign-in-guide/" class="md-nav__link">
+      <a href="../../2022/220530-auto-sign-in-guide/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1034,7 +907,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../220602-ipv6-bypass-billing-system/" class="md-nav__link">
+      <a href="../../2022/220602-ipv6-bypass-billing-system/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1055,7 +928,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../220902-python-mutable-defaults/" class="md-nav__link">
+      <a href="../../2022/220902-python-mutable-defaults/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1076,7 +949,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../220913-python-confusing-detail/" class="md-nav__link">
+      <a href="../../2022/220913-python-confusing-detail/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1097,7 +970,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../221113-rclone-sharepoint-for-hentai-at-home/" class="md-nav__link">
+      <a href="../../2022/221113-rclone-sharepoint-for-hentai-at-home/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1118,7 +991,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../221113-rclone-sharepoint-oauth-failed/" class="md-nav__link">
+      <a href="../../2022/221113-rclone-sharepoint-oauth-failed/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1139,7 +1012,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../221115-issue-of-position-or-right-and-wrong/" class="md-nav__link">
+      <a href="../../2022/221115-issue-of-position-or-right-and-wrong/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1467,6 +1340,8 @@
                 
   
   
+    
+  
   
   
     
@@ -1476,11 +1351,11 @@
       
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_4" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_4" checked>
         
           
           <label class="md-nav__link" for="__nav_4_4" id="__nav_4_4_label" tabindex="0">
@@ -1494,7 +1369,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_4_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_4_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_4_4">
             <span class="md-nav__icon md-icon"></span>
             2024 leetcode clock event
@@ -1508,7 +1383,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../2024-leetcode-clock-event/241024-3175/" class="md-nav__link">
+      <a href="../241024-3175/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1529,7 +1404,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../2024-leetcode-clock-event/241025-3180/" class="md-nav__link">
+      <a href="../241025-3180/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1550,7 +1425,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../2024-leetcode-clock-event/241026-3181/" class="md-nav__link">
+      <a href="../241026-3181/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1571,7 +1446,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../2024-leetcode-clock-event/241027-684/" class="md-nav__link">
+      <a href="../241027-684/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1592,7 +1467,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../2024-leetcode-clock-event/241028-685/" class="md-nav__link">
+      <a href="../241028-685/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1613,7 +1488,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../2024-leetcode-clock-event/241029-3211/" class="md-nav__link">
+      <a href="../241029-3211/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1634,7 +1509,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../2024-leetcode-clock-event/241030-3216/" class="md-nav__link">
+      <a href="../241030-3216/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1655,7 +1530,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../2024-leetcode-clock-event/241101-3259/" class="md-nav__link">
+      <a href="../241101-3259/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1676,7 +1551,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../2024-leetcode-clock-event/241102-3226/" class="md-nav__link">
+      <a href="../241102-3226/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1697,7 +1572,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../2024-leetcode-clock-event/241103-638/" class="md-nav__link">
+      <a href="../241103-638/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1718,7 +1593,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../2024-leetcode-clock-event/241104-633/" class="md-nav__link">
+      <a href="../241104-633/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1739,7 +1614,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../2024-leetcode-clock-event/241105-3222/" class="md-nav__link">
+      <a href="../241105-3222/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1757,10 +1632,28 @@
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="../../2024-leetcode-clock-event/241106-3254/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    3254. 长度为 K 的子数组的能量值 I
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   <span class="md-ellipsis">
@@ -1769,6 +1662,84 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      题目描述
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      解题思路
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="解题思路">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      直接模拟
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      优化
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      完整题解
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      复杂度分析
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -1816,7 +1787,7 @@
         <li class="md-nav__item">
   <a href="#_1" class="md-nav__link">
     <span class="md-ellipsis">
-      简介
+      题目描述
     </span>
   </a>
   
@@ -1825,62 +1796,44 @@
         <li class="md-nav__item">
   <a href="#_2" class="md-nav__link">
     <span class="md-ellipsis">
-      部署
+      解题思路
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="部署">
+    <nav class="md-nav" aria-label="解题思路">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#1-cloudflare-workers" class="md-nav__link">
+  <a href="#_3" class="md-nav__link">
     <span class="md-ellipsis">
-      1. 创建一个 Cloudflare Workers 实例
+      直接模拟
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#2" class="md-nav__link">
+  <a href="#_4" class="md-nav__link">
     <span class="md-ellipsis">
-      2. 设置该服务
+      优化
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#3" class="md-nav__link">
+  <a href="#_5" class="md-nav__link">
     <span class="md-ellipsis">
-      3. 测试服务可用性
+      完整题解
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#4-dns" class="md-nav__link">
+  <a href="#_6" class="md-nav__link">
     <span class="md-ellipsis">
-      4. 设置自定义域名的 DNS 记录
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#5" class="md-nav__link">
-    <span class="md-ellipsis">
-      5. 将你的自定义域名的子域设置为该服务的路由:
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#6" class="md-nav__link">
-    <span class="md-ellipsis">
-      6. 测试的你的子域
+      复杂度分析
     </span>
   </a>
   
@@ -1888,15 +1841,6 @@
         
       </ul>
     </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_3" class="md-nav__link">
-    <span class="md-ellipsis">
-      许可证
-    </span>
-  </a>
   
 </li>
       
@@ -1919,7 +1863,7 @@ doesn't, the page title (or respectively site name) is used
 as the main headline.
 -->
 
-    <h1>如何使用 Cloudflare Workers 来搭建 Arcaea 镜像下载服务器</h1>
+    <h1>3254. 长度为 K 的子数组的能量值 I</h1>
 
 
 <!-- Markdown content -->
@@ -1948,120 +1892,134 @@ as the main headline.
     
         <div class="tags">
         
-            <a href="/tags/#cloudflare" class="tag"><code>#cloudflare</code></a>
+            <a href="/tags/#python" class="tag"><code>#python</code></a>
         
-            <a href="/tags/#cloudflare-workers" class="tag"><code>#cloudflare-workers</code></a>
+            <a href="/tags/#leetcode" class="tag"><code>#leetcode</code></a>
         
-            <a href="/tags/#arcaea" class="tag"><code>#arcaea</code></a>
+            <a href="/tags/#sliding-window" class="tag"><code>#sliding-window</code></a>
         
         </div>
     
 
-    <blockquote>
-<p>转载自 <a href="https://github.com/Arcaea-Infinity/dl.arcaea.moe/blob/main/usage.md">Arcaea-Infinity/dl.arcaea.moe</a> <br>（部署文档部分是本人写的，而 js 脚本由 <a href="https://github.com/TheSnowfield">TheSnowfield</a> 提供）</p>
-</blockquote>
-<h2 id="_1">简介<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
-<p>这是一个 Arcaea 镜像下载服务，该服务通过 Cloudflare Workers 反向代理实现，本质上是通过 <a href="https://webapi.lowiro.com/webapi/serve/static/bin/arcaea/apk">Lowiro webapi</a> 获取最新的 APK 文件 URL，然后通过该 URL 下载文件。</p>
-<p>目前该服务已经搭建在了：</p>
+    <h2 id="_1">题目描述<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
+<p>关联：<a href="https://leetcode.cn/problems/find-the-power-of-k-size-subarrays-i/description/">https://leetcode.cn/problems/find-the-power-of-k-size-subarrays-i/description/</a></p>
+<div class="admonition question">
+<p class="admonition-title">题目描述</p>
+<p>给你一个长度为 <code>n</code> 的整数数组 <code>nums</code> 和一个正整数 <code>k</code>。</p>
+<p>一个数组的 <strong>能量值</strong> 定义为：</p>
 <ul>
-<li><a href="https://dl.arcaea.moe">https://dl.arcaea.moe</a></li>
-<li><a href="https://dl.lcwiro.com">https://dl.lcwiro.com</a></li>
+<li>如果 <strong>所有</strong> 元素都是依次 <strong>连续</strong> 且 <strong>上升</strong> 的，那么能量值为 <strong>最大</strong> 的元素。</li>
+<li>否则为 <code>-1</code>。</li>
 </ul>
-<p>你可以使用这些网址随时下载最新的 <code>arcaea_X.X.Xc.apk</code> 文件。</p>
-<h2 id="_2">部署<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
-<h3 id="1-cloudflare-workers">1. 创建一个 Cloudflare Workers 实例<a class="headerlink" href="#1-cloudflare-workers" title="Permanent link">&para;</a></h3>
-<p>进入 Cloudflare 控制台，点击 <code>Workers</code> 标签页，然后点击 <code>Create a Service</code> 按钮。</p>
-<p><a class="glightbox" href="../images/220409-cloudflare-workers-arcaea-update/Create-a-Service.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Create a Service" src="../images/220409-cloudflare-workers-arcaea-update/Create-a-Service.png" /></a></p>
-<p>选择 <code>HTTP handler</code>，然后点击 <code>Create service</code> 按钮。</p>
-<p><a class="glightbox" href="../images/220409-cloudflare-workers-arcaea-update/HTTP-handler.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="HTTP handler" src="../images/220409-cloudflare-workers-arcaea-update/HTTP-handler.png" /></a></p>
-<p>此时你的服务已经搭建好了，你应该可以得到一个类似于 <code>aaaaabbbbb.ccccc.workers.dev</code> 的 URL，这就是你的 <code>Workers</code> 实例的 URL。</p>
-<div class="admonition 提示">
-<p class="admonition-title">提示</p>
-<p>一个 <code>Workers</code> 实例也叫 <code>服务</code>，下文一律简称 <code>服务</code>。</p>
+<p>你需要求出 <code>nums</code> 中所有长度为 <code>k</code> 的 <strong>子数组</strong> 的能量值。</p>
+<p>请你返回一个长度为 <code>n - k + 1</code> 的整数数组 <code>results</code>，其中 <code>results[i]</code> 是子数组 <code>nums[i..(i + k - 1)]</code> 的能量值。</p>
 </div>
-<h3 id="2">2. 设置该服务<a class="headerlink" href="#2" title="Permanent link">&para;</a></h3>
-<p>在上一步操作的同一个页面内，选择 <code>Resources</code> 标签，然后点击 <code>Quick edit</code> 按钮。</p>
-<p><a class="glightbox" href="../images/220409-cloudflare-workers-arcaea-update/Quick-edit.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Quick edit" src="../images/220409-cloudflare-workers-arcaea-update/Quick-edit.png" /></a></p>
-<p>从我们的 <a href="https://github.com/Arcaea-Infinity/dl.arcaea.moe">Repo</a> 下载到 <a href="https://github.com/Arcaea-Infinity/dl.arcaea.moe/blob/main/index.js">index.js 的代码</a> ，直接复制全文，然后粘贴到如下区域，记得是全文覆盖。</p>
-<p><a class="glightbox" href="../images/220409-cloudflare-workers-arcaea-update/paste.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="paste code" src="../images/220409-cloudflare-workers-arcaea-update/paste.png" /></a></p>
-<p>然后点击 <code>Save and Deploy</code> 按钮。</p>
-<p>此时你的服务已经可以投入使用了。</p>
-<h3 id="3">3. 测试服务可用性<a class="headerlink" href="#3" title="Permanent link">&para;</a></h3>
-<p>打开你的浏览器，输入你的服务的 URL，如 <code>https://aaaaabbbbb.ccccc.workers.dev</code>，你的浏览器此时应该正确开始下载最新版本的 Arcaea。</p>
-<div class="admonition 注意 attention">
-<p class="admonition-title">注意</p>
-<p>如果你只是想部署到 Cloudflare Workers，此时你需要做的事情已经做完了。如果你想继续将其部署到你的自定义域名，你需要继续看下去。</p>
-</div>
-<h3 id="4-dns">4. 设置自定义域名的 DNS 记录<a class="headerlink" href="#4-dns" title="Permanent link">&para;</a></h3>
-<p>打开你的 DNS 控制台，添加一个 <code>CNAME</code> 记录。</p>
-<p><a class="glightbox" href="../images/220409-cloudflare-workers-arcaea-update/CNAME.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="CNAME" src="../images/220409-cloudflare-workers-arcaea-update/CNAME.png" /></a></p>
-<p>注意以下值的填写：</p>
-<table>
-<thead>
-<tr>
-<th>字段</th>
-<th>值</th>
-<th>备注</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Type</td>
-<td><code>CNAME</code></td>
-<td></td>
-</tr>
-<tr>
-<td>Name</td>
-<td><code>dl</code></td>
-<td>你想部署到哪个子域就使用哪个值</td>
-</tr>
-<tr>
-<td>Target</td>
-<td><code>aaaaabbbbb.ccccc.workers.dev</code></td>
-<td>使用你服务所在的 URL</td>
-</tr>
-<tr>
-<td>Proxy status</td>
-<td><code>Proxied</code></td>
-<td>必须是 <code>Proxied</code></td>
-</tr>
-</tbody>
-</table>
-<p>然后点击 <code>Save</code> 按钮。</p>
-<h3 id="5">5. 将你的自定义域名的子域设置为该服务的路由:<a class="headerlink" href="#5" title="Permanent link">&para;</a></h3>
-<p>在控制台中进入 <code>Workers</code> 标签页然后点击 <code>Add route</code> 按钮。</p>
-<div class="admonition 注意 attention">
-<p class="admonition-title">注意</p>
-<p>这里的 <code>Workers</code> 标签页不是 Cloudflare 主页的那个标签页，而是你点击你的域名之后出现的 <code>Workers</code> 标签页。</p>
-</div>
-<p><a class="glightbox" href="../images/220409-cloudflare-workers-arcaea-update/Add-route.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Add route" src="../images/220409-cloudflare-workers-arcaea-update/Add-route.png" /></a></p>
-<p>注意以下值的填写：</p>
-<table>
-<thead>
-<tr>
-<th>字段</th>
-<th>值</th>
-<th>备注</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Route</td>
-<td><code>dl.example.com/*</code></td>
-<td>必须是 <code>你的子域</code> + <code>/*</code></td>
-</tr>
-<tr>
-<td>Service</td>
-<td><code>aaaaabbbbb</code></td>
-<td>使用你的服务的名字</td>
-</tr>
-</tbody>
-</table>
-<p>然后点击 <code>Save</code> 按钮。</p>
-<h3 id="6">6. 测试的你的子域<a class="headerlink" href="#6" title="Permanent link">&para;</a></h3>
-<p>现在打开你的浏览器，输入你的子域，如 <code>https://dl.example.com/</code> ，你的浏览器此时应该正确开始下载最新版本的 Arcaea。，</p>
-<h2 id="_3">许可证<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h2>
-<p>本文档遵循以下许可证：<a href="https://github.com/Arcaea-Infinity/616SBLicense"><code>616 SB License</code></a></p>
+<p>本题的描述比较复杂，建议看原题的样例 I/O 和描述。</p>
+<p>其次就是他所谓的这个 <strong>连续</strong> 且 <strong>上升</strong> 的意思就是 <span class="arithmatex">\(\text{nums}_{i+1} = \text{nums}_{i} + 1\)</span>。</p>
+<h2 id="_2">解题思路<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
+<h3 id="_3">直接模拟<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
+<p>本题的标题中有个 <code>I</code>。在力扣中出现这个标记，通常意味着这道题的数据量较小，而 <code>II</code>（一般就是下一题）的数据量会更大。</p>
+<p>在数据量较小的情况下，可以考虑直接模拟。直接给出代码：</p>
+<div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">results_array</span><span class="p">(</span><span class="n">nums</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">int</span><span class="p">],</span> <span class="n">k</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="nb">int</span><span class="p">]:</span>
+    <span class="n">n</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">nums</span><span class="p">)</span>
+    <span class="n">results</span> <span class="o">=</span> <span class="p">[]</span>
+
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span> <span class="o">-</span> <span class="n">k</span> <span class="o">+</span> <span class="mi">1</span><span class="p">):</span>
+        <span class="n">subarray</span> <span class="o">=</span> <span class="n">nums</span><span class="p">[</span><span class="n">i</span><span class="p">:</span><span class="n">i</span> <span class="o">+</span> <span class="n">k</span><span class="p">]</span>
+        <span class="k">if</span> <span class="nb">all</span><span class="p">(</span><span class="n">subarray</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="o">+</span> <span class="mi">1</span> <span class="o">==</span> <span class="n">subarray</span><span class="p">[</span><span class="n">j</span> <span class="o">+</span> <span class="mi">1</span><span class="p">]</span> <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">k</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)):</span>
+            <span class="n">results</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">subarray</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span>  <span class="c1"># 子数组是升序的</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">results</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">results</span>
+</code></pre></div>
+<p>这个解法的时间复杂度是 <span class="arithmatex">\(O(n \cdot k)\)</span>。其结果不言而喻，花费时间属于是最久的那一档，击败了 6.67% 的提交。</p>
+<figure>
+<p><a class="glightbox" href="../images/241106-3254/time1.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="time" src="../images/241106-3254/time1.png" /></a>
+  </p>
+<figcaption>太丑了</figcaption>
+</figure>
+<h3 id="_4">优化<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h3>
+<p>首先，当 <code>k == 1</code> 时，所有的子数组都是长度为 <code>1</code> 的数组，其能量值就是它本身。</p>
+<div class="highlight"><pre><span></span><code><span class="k">if</span> <span class="n">k</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+    <span class="k">return</span> <span class="n">nums</span>
+</code></pre></div>
+<p>此外，考虑到 <code>nums</code> 数组中，如果出现 <code class="highlight"><span class="n">nums</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">+</span> <span class="mi">1</span> <span class="o">!=</span> <span class="n">nums</span><span class="p">[</span><span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">]</span></code>，那么所有包含 <code class="highlight"><span class="n">nums</span><span class="p">[</span><span class="n">i</span><span class="p">]</span></code> 和 <code class="highlight"><span class="n">nums</span><span class="p">[</span><span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">]</span></code> 的子数组的能量值都是 <code>-1</code>。</p>
+<p>因此我们可以先花 <span class="arithmatex">\(O(n)\)</span> 的时间预处理出所有满足该条件的元素，将元素下标保存（只保存 <code>i</code>）到一个 <code>invalid</code> 列表，然后再进行滑动窗口。</p>
+<p>如果我们在滑动窗口的过程中，发现子数组的下标包含 <code>invalid</code> 数组中的一个值，那么应当直接跳过这个子数组，并以该值作为下一次滑动窗口的起点。</p>
+<p>这个思路有点像 KMP 算法（一种字符串匹配算法）的思想，但是不完全相同。</p>
+<div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">results_array</span><span class="p">(</span><span class="n">nums</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">int</span><span class="p">],</span> <span class="n">k</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="nb">int</span><span class="p">]:</span>
+    <span class="n">n</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">nums</span><span class="p">)</span>
+    <span class="n">results</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">invalid</span> <span class="o">=</span> <span class="p">[]</span>
+
+    <span class="k">if</span> <span class="n">k</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">nums</span>
+
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span> <span class="o">-</span> <span class="mi">1</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">nums</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">+</span> <span class="mi">1</span> <span class="o">!=</span> <span class="n">nums</span><span class="p">[</span><span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">]:</span>
+            <span class="n">invalid</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+
+    <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="k">while</span> <span class="n">i</span> <span class="o">&lt;=</span> <span class="n">n</span> <span class="o">-</span> <span class="n">k</span><span class="p">:</span>  <span class="c1"># [0..k] ~ [n-k..n]</span>
+        <span class="o">...</span>
+
+    <span class="k">return</span> <span class="n">results</span>
+</code></pre></div>
+<p>由于滑动窗口是从左到右进行，<code>invalid</code> 数组也是递增的，因此我们只需要对比子数组的<strong>右边界下标</strong>是否大于 <code>invalid</code> 数组中的第一个值，即可知道子数组中是否包含 <code>invalid</code> 中记录的下标。</p>
+<p>具体判断逻辑如下：</p>
+<ul>
+<li><code>invalid</code> 为空：说明子数组总是合法的，能量值取子数组的最后一个元素，<code>i</code> 自增。</li>
+<li><code>i + k - 1 &lt;= invalid[0]</code>：说明子数组是合法的，操作同上。</li>
+<li><code>i + k - 1 &gt; invalid[0]</code>：说明子数组是非法的，能量值取 <code>-1</code>，同时将 <code>invalid</code> 数组中的第一个值弹出，加 <code>1</code> 后作为下一个子数组的起点。</li>
+</ul>
+<p><code>invalid</code> 可能一开始就是空的，也有可能是 <code>pop</code> 了好几次之后就变成了空的。</p>
+<p>边界逻辑：（没有草稿纸，折腾了我一个多小时）</p>
+<ul>
+<li>如果一次性跳过了多个值，那么跳过了几个值就要重复添加几个 <code>-1</code>。</li>
+<li>如果将 <code>invalid.popleft() + 1</code> 作为下一次滑动窗口的起点会导致数组越界（相当于 <code>i &gt; n - k</code>），那么直接返回。</li>
+</ul>
+<p><code>popleft</code> 的话要把 <code>list</code> 换成双端队列，因为 <code class="highlight"><span class="nb">list</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span></code> 的时间复杂度是 <span class="arithmatex">\(O(n)\)</span>。</p>
+<h3 id="_5">完整题解<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">collections</span> <span class="kn">import</span> <span class="n">deque</span>
+
+<span class="k">class</span> <span class="nc">Solution</span><span class="p">:</span>
+    <span class="k">def</span> <span class="nf">resultsArray</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">nums</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">int</span><span class="p">],</span> <span class="n">k</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="nb">int</span><span class="p">]:</span>
+        <span class="n">n</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">nums</span><span class="p">)</span>
+        <span class="n">results</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="n">invalid</span> <span class="o">=</span> <span class="n">deque</span><span class="p">()</span>
+
+        <span class="k">if</span> <span class="n">k</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">nums</span>
+
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span> <span class="o">-</span> <span class="mi">1</span><span class="p">):</span>
+            <span class="k">if</span> <span class="n">nums</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">+</span> <span class="mi">1</span> <span class="o">!=</span> <span class="n">nums</span><span class="p">[</span><span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">]:</span>
+                <span class="n">invalid</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+
+        <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="k">while</span> <span class="n">i</span> <span class="o">&lt;=</span> <span class="n">n</span> <span class="o">-</span> <span class="n">k</span><span class="p">:</span>  <span class="c1"># [0..k] ~ [n-k..n]</span>
+
+            <span class="k">if</span> <span class="ow">not</span> <span class="n">invalid</span> <span class="ow">or</span> <span class="n">i</span> <span class="o">+</span> <span class="n">k</span> <span class="o">-</span> <span class="mi">1</span> <span class="o">&lt;=</span> <span class="n">invalid</span><span class="p">[</span><span class="mi">0</span><span class="p">]:</span>
+                <span class="n">results</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">nums</span><span class="p">[</span><span class="n">i</span> <span class="o">+</span> <span class="n">k</span> <span class="o">-</span> <span class="mi">1</span><span class="p">])</span>
+                <span class="n">i</span> <span class="o">+=</span> <span class="mi">1</span>
+
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">next_start</span> <span class="o">=</span> <span class="n">invalid</span><span class="o">.</span><span class="n">popleft</span><span class="p">()</span> <span class="o">+</span> <span class="mi">1</span>
+                <span class="c1"># 跳过了几个值，就添加几个 -1，跳过的时候要随时检查右边界 i + k 不能超过 n</span>
+                <span class="k">while</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">next_start</span> <span class="ow">and</span> <span class="n">i</span> <span class="o">&lt;=</span> <span class="n">n</span> <span class="o">-</span> <span class="n">k</span><span class="p">:</span>  
+                    <span class="n">results</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+                    <span class="n">i</span> <span class="o">+=</span> <span class="mi">1</span>
+                <span class="n">i</span> <span class="o">=</span> <span class="n">next_start</span>
+
+        <span class="k">return</span> <span class="n">results</span>
+</code></pre></div>
+<h3 id="_6">复杂度分析<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h3>
+<p>时间复杂度 <span class="arithmatex">\(O(n)\)</span>，空间复杂度 <span class="arithmatex">\(O(n)\)</span>。</p>
+<figure>
+<p><a class="glightbox" href="../images/241106-3254/time2.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="time" src="../images/241106-3254/time2.png" /></a>
+  </p>
+<figcaption>直接实现阶级跳跃了</figcaption>
+</figure>
 
     <!-- Last update of source file -->
     
@@ -2088,7 +2046,7 @@ as the main headline.
     <span class="md-icon" title="最后更新">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_datetime">2022-04-09 09:06:50</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_datetime">2024-11-06 09:02:15</span>
   </span>
 
     
@@ -2098,7 +2056,7 @@ as the main headline.
     <span class="md-icon" title="创建日期">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M14.47 15.08 11 13V7h1.5v5.25l3.08 1.83c-.41.28-.79.62-1.11 1m-1.39 4.84c-.36.05-.71.08-1.08.08-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8c0 .37-.03.72-.08 1.08.69.1 1.33.32 1.92.64.1-.56.16-1.13.16-1.72 0-5.5-4.5-10-10-10S2 6.5 2 12s4.47 10 10 10c.59 0 1.16-.06 1.72-.16-.32-.59-.54-1.23-.64-1.92M18 15v3h-3v2h3v3h2v-3h3v-2h-3v-3z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_datetime">2022-04-09 08:52:30</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_datetime">2024-11-06 09:02:15</span>
   </span>
 
     
@@ -2182,7 +2140,7 @@ as the main headline.
       <nav class="md-footer__inner md-grid" aria-label="页脚" >
         
           
-          <a href="../220408-github-pages-2/" class="md-footer__link md-footer__link--prev" aria-label="上一页: GitHub Pages 文档自动化部署 - VuePress">
+          <a href="../241105-3222/" class="md-footer__link md-footer__link--prev" aria-label="上一页: 3222. 求出硬币游戏的赢家">
             <div class="md-footer__button md-icon">
               
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
@@ -2192,27 +2150,11 @@ as the main headline.
                 上一页
               </span>
               <div class="md-ellipsis">
-                GitHub Pages 文档自动化部署 - VuePress
+                3222. 求出硬币游戏的赢家
               </div>
             </div>
           </a>
         
-        
-          
-          <a href="../220412-ida-substitute-usage/" class="md-footer__link md-footer__link--next" aria-label="下一页: IDA 替换二进制文件">
-            <div class="md-footer__title">
-              <span class="md-footer__direction">
-                下一页
-              </span>
-              <div class="md-ellipsis">
-                IDA 替换二进制文件
-              </div>
-            </div>
-            <div class="md-footer__button md-icon">
-              
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
-            </div>
-          </a>
         
       </nav>
     
