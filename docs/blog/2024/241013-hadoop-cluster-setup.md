@@ -438,7 +438,6 @@ scp core-site.xml hdfs-site.xml mapred-site.xml yarn-site.xml hadoop-env.sh aris
 
 主节点的角色 HadoopMaster 已在配置 HDFS 分布式文件系统的入口地址时进行了配置说明，从节点的角色也需要配置，此时，`workers` 文件就是用来配置 Hadoop 集群中各个从节点角色的。
 
-
 编辑 HadoopMaster 的 `./hadoop/etc/hadoop/workers` 文件，将：
 
 ```
@@ -450,6 +449,14 @@ localhost
 ```
 worker1
 worker2
+```
+
+### 8.8 格式化 HDFS 文件系统
+
+在第一次启动 Hadoop 集群之前，需要格式化 HDFS 文件系统。
+
+```bash
+./hadoop/bin/hdfs namenode -format
 ```
 
 ## 九、启动并测试 Hadoop
