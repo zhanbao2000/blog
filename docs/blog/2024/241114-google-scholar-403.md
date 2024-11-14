@@ -45,7 +45,11 @@ outbounds:
 acl:
   inline:
     - warp(geosite:google-scholar)
+    - warp(142.250.68.100)
+    - direct(all)
 ```
+
+需要额外对 `142.250.68.100` 这个 IP 进行 ACL，因为某些客户端的 TUN 会先解析域名为 IP 再对该 IP 进行访问，这会导致服务端的 ACL 抓不到。
 
 相关说明：
 
