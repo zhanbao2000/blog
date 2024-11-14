@@ -451,6 +451,12 @@ worker1
 worker2
 ```
 
+!!! warning "警告"
+
+    请只在 HadoopMaster 节点上修改 `workers` 文件，不要在从节点上修改。确保其他节点的 `workers` 文件内容仅为 `localhost`。
+
+    如果你通过虚拟机克隆的方式创建了 HadoopWorker1 和 HadoopWorker2，那么请将这两台虚拟机的 `workers` 文件内容复原为 `localhost`。
+
 ### 8.8 格式化 HDFS 文件系统
 
 在第一次启动 Hadoop 集群之前，需要格式化 HDFS 文件系统。
