@@ -7,7 +7,7 @@ tags:
     - google-drive
     - webdav
 title: 使用 rclone 为 Google Drive 提供 WebDAV 访问方式
-description: todo
+description: Google Drive 是一个好东西，但是它缺少 WebDAV 的访问方式。截止 2024 年 11 月，全网仍然缺少 WebDAV 访问方式的教程，因此我决定写一个以填补这个领域的空白。
 ---
 
 ## 一、问题背景
