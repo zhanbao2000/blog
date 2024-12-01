@@ -32,9 +32,10 @@ graph LR
 
     1. 
       ```bash
+      rclone mkdir gdrive:webdav
       rclone serve webdav gdrive:/webdav --addr 127.0.0.1:8080 --user USERNAME --pass PASSWD --buffer-size 32M --vfs-cache-mode minimal
       ```
-    2. `--vfs-cache-mode` 参数说明：[rclone 文档](https://rclone.org/commands/rclone_serve_webdav/#vfs-cache-mode-minimal)
+    2. `--vfs-cache-mode` 参数说明：[rclone 文档](https://rclone.org/commands/rclone_serve_webdav/#vfs-cache-mode-off)
     3. nginx 配置时注意设置 `client_max_body_size`
 
 ## 二、前提需求
