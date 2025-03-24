@@ -26,6 +26,10 @@ hide:
  - 在其他朋友的带领下，现在迷上了 Bot 开发、服务器运维以及逆向工程。
  - ~~长期接邦邦代打。~~
 
+## 半重复访问者计数
+
+[![arisa:blog](https://blog-counter.arisa.moe/arisa:blog?theme=gelbooru&add=0)](https://blog-counter.arisa.moe/)
+
 ## 友情链接
 
  - [HEAVENLYHEAVEN - NUIK BLOG](http://blog.nijikuu.com/)
