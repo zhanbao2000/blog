@@ -42,3 +42,4 @@ hide:
  - [InariAimu's Blog](https://blog.amu.moe/)
  - [Atmosphere](https://blog.awa.moe/)
  - [Awblogu](https://blog.awbugl.top)
+ - [北落石门](https://blog.caqtz.moe/)
