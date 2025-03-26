@@ -54,6 +54,9 @@ extra_javascript:
   - path: javascripts/waifu/autoload.js
     async: true
 
+hooks:
+  - hooks/auto_read_time.py
+
 plugins:
   - search
   - blogging:
