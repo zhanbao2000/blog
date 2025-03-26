@@ -34,7 +34,7 @@ hide:
 
 ## 半重复访问者计数
 
-[![arisa:blog](https://blog-counter.arisa.moe/arisa:blog?theme=gelbooru&add=0)](https://blog-counter.arisa.moe/)
+[![arisa:blog](https://blog-counter.arisa.moe/arisa:blog?theme=gelbooru)](https://blog-counter.arisa.moe/)
 
 ## 友情链接
 
