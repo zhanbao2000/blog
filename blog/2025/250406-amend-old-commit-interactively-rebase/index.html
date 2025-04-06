@@ -6,19 +6,17 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
-        <meta name="description" content="很多事情其实是根本无法评论对错的，这类问题绝大多数和立场有关，叫做“立场问题”。什么是立场问题？你站在哪边为谁说话，就是坚持谁的立场，你就会认为谁是对的。这类问题实际上和谁对谁错没关系，更重要的是你为谁说话。如果不需要为任何一个人说话，仍然能判断对错或者得到一个二元的判断，那叫做“是非问题”。">
+        <meta name="description" content="探索如何利用 PyCharm 的 Git 插件进行交互式变基操作，修正 Git 历史中的旧提交，而不是创建新的 fix 提交，保持提交历史的整洁性。">
       
       
         <meta name="author" content="Akiba Arisa">
       
       
-        <link rel="canonical" href="https://blog.arisa.moe/blog/2022/221115-issue-of-position-or-right-and-wrong/">
+        <link rel="canonical" href="https://blog.arisa.moe/blog/2025/250406-amend-old-commit-interactively-rebase/">
       
       
-        <link rel="prev" href="../221113-rclone-sharepoint-oauth-failed/">
+        <link rel="prev" href="../250217-fix-steamdeck-visual-novel-video/">
       
-      
-        <link rel="next" href="../../2023/230113-my-2022-website/">
       
       
       <link rel="icon" href="../../../assets/favicon.webp">
@@ -26,7 +24,7 @@
     
     
       
-        <title>立场问题与是非问题 - Arisa | Blog</title>
+        <title>使用交互式变基修正旧的提交 - 基于 PyCharm Git 插件 - Arisa | Blog</title>
       
     
     
@@ -123,7 +121,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              立场问题与是非问题
+              使用交互式变基修正旧的提交 - 基于 PyCharm Git 插件
             
           </span>
         </div>
@@ -314,7 +312,7 @@
     
     
       <li class="md-tabs__item md-tabs__item--active">
-        <a href="../220406-nginx-stream/" class="md-tabs__link">
+        <a href="../../2022/220406-nginx-stream/" class="md-tabs__link">
           
   
   
@@ -490,8 +488,6 @@
                 
   
   
-    
-  
   
   
     
@@ -502,11 +498,11 @@
       
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_1" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_1" >
         
           
           <label class="md-nav__link" for="__nav_4_1" id="__nav_4_1_label" tabindex="0">
@@ -522,7 +518,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_1_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_1_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_4_1">
             <span class="md-nav__icon md-icon"></span>
             2022
@@ -536,7 +532,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../220406-nginx-stream/" class="md-nav__link">
+      <a href="../../2022/220406-nginx-stream/" class="md-nav__link">
         
   
   
@@ -559,7 +555,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../220406-set-http-proxy/" class="md-nav__link">
+      <a href="../../2022/220406-set-http-proxy/" class="md-nav__link">
         
   
   
@@ -582,7 +578,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../220406-venv-move-file/" class="md-nav__link">
+      <a href="../../2022/220406-venv-move-file/" class="md-nav__link">
         
   
   
@@ -605,7 +601,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../220407-certbot/" class="md-nav__link">
+      <a href="../../2022/220407-certbot/" class="md-nav__link">
         
   
   
@@ -628,7 +624,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../220407-github-pages/" class="md-nav__link">
+      <a href="../../2022/220407-github-pages/" class="md-nav__link">
         
   
   
@@ -651,7 +647,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../220408-github-pages-2/" class="md-nav__link">
+      <a href="../../2022/220408-github-pages-2/" class="md-nav__link">
         
   
   
@@ -674,7 +670,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../220409-cloudflare-workers-arcaea-update/" class="md-nav__link">
+      <a href="../../2022/220409-cloudflare-workers-arcaea-update/" class="md-nav__link">
         
   
   
@@ -697,7 +693,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../220412-ida-substitute-usage/" class="md-nav__link">
+      <a href="../../2022/220412-ida-substitute-usage/" class="md-nav__link">
         
   
   
@@ -720,7 +716,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../220413-Intranet-penetration-bitcomit/" class="md-nav__link">
+      <a href="../../2022/220413-Intranet-penetration-bitcomit/" class="md-nav__link">
         
   
   
@@ -743,7 +739,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../220414-fk-arcaea-songlist-hash/" class="md-nav__link">
+      <a href="../../2022/220414-fk-arcaea-songlist-hash/" class="md-nav__link">
         
   
   
@@ -766,7 +762,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../220416-arcaea-fanmade-chart-problem/" class="md-nav__link">
+      <a href="../../2022/220416-arcaea-fanmade-chart-problem/" class="md-nav__link">
         
   
   
@@ -789,7 +785,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../220417-linux-clean-up-disk-space/" class="md-nav__link">
+      <a href="../../2022/220417-linux-clean-up-disk-space/" class="md-nav__link">
         
   
   
@@ -812,7 +808,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../220421-use-gzip-bomb-against-scanner/" class="md-nav__link">
+      <a href="../../2022/220421-use-gzip-bomb-against-scanner/" class="md-nav__link">
         
   
   
@@ -835,7 +831,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../220428-how-to-ask-questions-like-a-retard/" class="md-nav__link">
+      <a href="../../2022/220428-how-to-ask-questions-like-a-retard/" class="md-nav__link">
         
   
   
@@ -858,7 +854,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../220429-dilb-ultimate-solution/" class="md-nav__link">
+      <a href="../../2022/220429-dilb-ultimate-solution/" class="md-nav__link">
         
   
   
@@ -881,7 +877,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../220502-how-dogs-work-in-epic7/" class="md-nav__link">
+      <a href="../../2022/220502-how-dogs-work-in-epic7/" class="md-nav__link">
         
   
   
@@ -904,7 +900,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../220511-how-to-write-python-into-classical-chinese/" class="md-nav__link">
+      <a href="../../2022/220511-how-to-write-python-into-classical-chinese/" class="md-nav__link">
         
   
   
@@ -927,7 +923,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../220529-python-personal-styleguide/" class="md-nav__link">
+      <a href="../../2022/220529-python-personal-styleguide/" class="md-nav__link">
         
   
   
@@ -950,7 +946,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../220530-auto-sign-in-guide/" class="md-nav__link">
+      <a href="../../2022/220530-auto-sign-in-guide/" class="md-nav__link">
         
   
   
@@ -973,7 +969,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../220602-ipv6-bypass-billing-system/" class="md-nav__link">
+      <a href="../../2022/220602-ipv6-bypass-billing-system/" class="md-nav__link">
         
   
   
@@ -996,7 +992,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../220902-python-mutable-defaults/" class="md-nav__link">
+      <a href="../../2022/220902-python-mutable-defaults/" class="md-nav__link">
         
   
   
@@ -1019,7 +1015,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../220913-python-confusing-detail/" class="md-nav__link">
+      <a href="../../2022/220913-python-confusing-detail/" class="md-nav__link">
         
   
   
@@ -1042,7 +1038,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../221113-rclone-sharepoint-for-hentai-at-home/" class="md-nav__link">
+      <a href="../../2022/221113-rclone-sharepoint-for-hentai-at-home/" class="md-nav__link">
         
   
   
@@ -1065,7 +1061,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../221113-rclone-sharepoint-oauth-failed/" class="md-nav__link">
+      <a href="../../2022/221113-rclone-sharepoint-oauth-failed/" class="md-nav__link">
         
   
   
@@ -1085,30 +1081,10 @@
                 
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  
-  <span class="md-ellipsis">
-    立场问题与是非问题
-    
-  </span>
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../../2022/221115-issue-of-position-or-right-and-wrong/" class="md-nav__link">
         
   
   
@@ -1119,51 +1095,6 @@
   
 
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="目录">
-  
-  
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      目录
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#_1" class="md-nav__link">
-    <span class="md-ellipsis">
-      一
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_2" class="md-nav__link">
-    <span class="md-ellipsis">
-      二
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_3" class="md-nav__link">
-    <span class="md-ellipsis">
-      三
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -2018,6 +1949,8 @@
                 
   
   
+    
+  
   
   
     
@@ -2028,11 +1961,11 @@
       
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_5" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_5" checked>
         
           
           <label class="md-nav__link" for="__nav_4_5" id="__nav_4_5_label" tabindex="0">
@@ -2048,7 +1981,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_5_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_5_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_4_5">
             <span class="md-nav__icon md-icon"></span>
             2025
@@ -2062,7 +1995,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../2025/250217-fix-steamdeck-visual-novel-video/" class="md-nav__link">
+      <a href="../250217-fix-steamdeck-visual-novel-video/" class="md-nav__link">
         
   
   
@@ -2082,10 +2015,30 @@
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="../../2025/250406-amend-old-commit-interactively-rebase/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    使用交互式变基修正旧的提交 - 基于 PyCharm Git 插件
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   
@@ -2096,6 +2049,60 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      背景
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      何为交互式变基
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#pycharm" class="md-nav__link">
+    <span class="md-ellipsis">
+      如何使用 PyCharm 进行交互式变基
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      对应的命令行实现
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -2143,7 +2150,7 @@
         <li class="md-nav__item">
   <a href="#_1" class="md-nav__link">
     <span class="md-ellipsis">
-      一
+      背景
     </span>
   </a>
   
@@ -2152,7 +2159,16 @@
         <li class="md-nav__item">
   <a href="#_2" class="md-nav__link">
     <span class="md-ellipsis">
-      二
+      何为交互式变基
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#pycharm" class="md-nav__link">
+    <span class="md-ellipsis">
+      如何使用 PyCharm 进行交互式变基
     </span>
   </a>
   
@@ -2161,7 +2177,7 @@
         <li class="md-nav__item">
   <a href="#_3" class="md-nav__link">
     <span class="md-ellipsis">
-      三
+      对应的命令行实现
     </span>
   </a>
   
@@ -2186,7 +2202,7 @@ doesn't, the page title (or respectively site name) is used
 as the main headline.
 -->
 
-    <h1>立场问题与是非问题</h1>
+    <h1>使用交互式变基修正旧的提交 - 基于 PyCharm Git 插件</h1>
 
 
 <!-- Markdown content -->
@@ -2205,7 +2221,7 @@ as the main headline.
                     <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" fill="currentColor" class="bi bi-clock" viewBox="0 0 16 16">
                         <path d="M8 3.5a.5.5 0 0 0-1 0V9a.5.5 0 0 0 .252.434l3.5 2a.5.5 0 0 0 .496-.868L8 8.71V3.5z"/>
                         <path d="M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16zm7-8A7 7 0 1 1 1 8a7 7 0 0 1 14 0z"/>
-                    </svg> 9 min read
+                    </svg> 8 min read
                 </span>
             </p>
         </aside>
@@ -2215,57 +2231,87 @@ as the main headline.
     
         <div class="tags">
         
-            <a href="/tags/#gossip" class="tag"><code>#gossip</code></a>
+            <a href="/tags/#pycharm" class="tag"><code>#pycharm</code></a>
+        
+            <a href="/tags/#git" class="tag"><code>#git</code></a>
         
         </div>
     
 
-    <h3 id="_1">一<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h3>
-<p>很多事情其实是根本无法评论对错的，这类问题绝大多数和立场有关，叫做<strong>立场问题</strong>。什么是立场问题？你站在哪边为谁说话，就是坚持谁的立场，你就会认为谁是对的。这类问题实际上和谁对谁错没关系，更重要的是你为谁说话。如果不需要为任何一个人说话，仍然能判断对错或者得到一个二元的判断，那叫做<strong>是非问题</strong>。</p>
-<p>举个例子，假设我爸妈吵架，我妈问我：</p>
-<blockquote>
-<p><em>你觉得你爸做得对不对？</em></p>
-</blockquote>
-<p>这其实就是一个立场问题。 <strong>在立场问题前面，没有绝对的对错，任何一个旁观者也没有资格评价它的对错，只有参与者本身才有资格。</strong> 因此我会回答我妈：</p>
-<blockquote>
-<p><em>没有绝对的对错，如果我是你，那我认为你是对的，如果我是我爸，我会认为我爸是对的。</em></p>
-</blockquote>
-<p>即使是一个简单的吵架事件，不能简单地非黑即白地认为谁是对的谁是错的，这是有依据的。唯物辩证法告诉我们， <strong>整个世界是在运动着的，物质之间通过运动相互联系、相互作用，形成了你中有我，我中有你的关系。如果脱离了运动谈物质，认为物质之间相互割裂，则会陷入形而上学的错误。</strong> 因此，不能简单地说谁对谁错，实际上的情形或许是其中一方有些方面做得对，有些方面做得错，也有些方面无法评价，这与我们在社会中遇到的绝大多数矛盾类似。</p>
-<p>这个时候，我妈一定会追问我：</p>
-<blockquote>
-<p><em>那你作为子女，你认为谁更对呢？</em></p>
-</blockquote>
-<p>这个问题实际上仍然在询问我的立场，而跟谁对谁错没有任何关系。这类问题通常也是无法回答的。当你<strong>必须</strong>基于其中一个人的立场（而不是事件本身）才能够得出是非判断的时候，你得到的所谓是非判断是<strong>本质上是</strong>你的立场。</p>
-<p>然而就这件事情而言，作为子女，你是没有办法在父母其中一方选择立场的（除非你真的对一方有偏见，或者被迫）。这个问题与：</p>
-<blockquote>
-<p><em>配偶和母亲掉水里先救谁？</em>（构成义务冲突，只能基于立场）</p>
-<p><em>小朋友你更喜欢爸爸还是妈妈啊？</em></p>
-</blockquote>
-<p>此类问题类似。</p>
-<p>有个时候你也许会自己安慰自己 <em>“我回答的意思是‘更加’，不是说另一方就不好”</em>，<strong>但在他人看来，这就是你的立场，没啥好说的，他们想看的其实就是你的立场，仅此而已</strong>。</p>
-<h3 id="_2">二<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h3>
-<p>立场问题几乎完全脱离了评价是非的范畴，因此在基于立场的情况下得到的判断不是彻底可靠的。当然，这并不意味着立场问题就很坏或者脱离了立场就能得到可靠的判断。唯物辩证法告诉我们，事物是普遍联系的，任何事物都不能孤立存在。这两类问题的关系也是如此。实际上，<strong>不存在绝对的是非问题或者立场问题</strong>，比如下面这个例子：</p>
-<blockquote>
-<p>在判断一个二元函数在某一点的极限是否存在的问题上，非数学专业的同学会认为，如果通过邻域内所有“走得通”路径算出来的极限都一致，那么极限存在。这自然排除了邻域内的那些无定义点。<br>而数学专业的同学会认为，首先函数在去心邻域内要有定义，再考虑通过所有路径算出来的极限是否一致。如果函数在一些路径上没有定义当然视为极限不存在。</p>
-</blockquote>
-<p>按照这两种定义，你会得到：</p>
-<div class="arithmatex">\[
-\lim \limits_{(x, y) \to (0, 0)} (x^2 + y^2) \sin{\frac{1}{x+y}} = 
-\begin{cases}
-0,  &amp; \text{第一种定义} \\
-不存在, &amp; \text{第二种定义}
-\end{cases}
-\]</div>
-<p>实际上，考研中判断极限是否存在采用的是第一种定义，你可以理解为命题组<em>站在了非数学专业同学的立场</em>，但同样你也可以理解为<em>第一种定义是正确的</em>。对于这种矛盾，你很难判断这是一个是非问题或者是立场问题。</p>
-<p>显然，基于<em>站在了非数学专业同学的立场</em>下的判断是不可靠的，因为数学专业的同学同样也考研，在数学方面的研究也确实需要第二种定义。</p>
-<p>另外，从这个例子也可以看出，基于立场下判断，某些情况下并不是因为你乐意，而是因为有其他客观存在，要求你必须在两者之间做出一个选择。</p>
-<h3 id="_3">三<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
-<p>当你知道很多看起来像是非问题的矛盾实际上也是立场问题的时候，可以解决你很多不利的精神状态：</p>
-<p>如果没有任何客观存在逼你说出你的立场，那就别说，将这个问题抛之脑后，享受更美好的人生，何乐而不为呢。这世上没有那么多是非对错，非得让你站边，让那些乐意的人自己站边去吧。</p>
-<p>如果一个问题本质上属于是非问题，那就不要把它变成立场问题。例如她和你妈真的都掉水里了，并且你俩<strong>还没领证</strong>，<a href="https://www.bilibili.com/video/BV1e7411m7aG">此时救女朋友属于道德义务，而救母亲属于法定义务</a>。这本质上属于是非问题而不属于立场问题，并且请注意<strong>拒绝履行法定义务导致你母亲死亡可能构成不作为犯罪</strong>。</p>
-<p>如果真的有谁逼你非得二选一，那就大胆地去站你更倾向的一个立场吧，但是你要知道，<strong>立场不等于是非，不存在绝对的对错，当有人指出你的错误的时候请你虚心接受</strong>。</p>
-<p>如果你既想站这边，又想站那边，那你是理中客，但无论你的出发点如何，都请你记住， <strong>真正的唯物辩证法会分析问题内部逻辑，明白事物发展与其存在的历史环境，全面、联系地看待问题，如果做不到，只会把问题整体割裂成一个个的原子分而治之，那么你说的一切都是形而上的空谈。</strong></p>
-<p>（注：未针对任何事件，仅仅是第二轮复习徐涛马哲视频课时有感而发，请勿对号入座）</p>
+    <div class="admonition warning">
+<p class="admonition-title">警告</p>
+<p>如果你已经 push 了，并且你还做不到 <code class="highlight">git<span class="w"> </span>push<span class="w"> </span>-f</code>，就不要看本文了，神仙难救。</p>
+</div>
+<h2 id="_1">背景<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
+<p>在开发过程中，我们可能会对历史中的某次提交记录不满意，例如当时功能差了那么一点点（但又不足以再提交一个 fix），或是有什么一两行的风格有问题（但是为此特地提交一个 refactor 又显得很多余），甚至可能仅仅是当时有个 typo 没发现。为了我们的 Git 提交记录的整洁性和可读性，我们可能会想要修正这些提交记录，而不是弄一个新的 commit。</p>
+<p>对于最新的提交，我们自然而然地会想到直接使用 “修正提交” 的功能，它可以无损地将你对代码未提交的修改合并到最新的提交中。</p>
+<p><a class="glightbox" href="../images/250406-amend-old-commit-interactively-rebase/amend.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="amend" src="../images/250406-amend-old-commit-interactively-rebase/amend.png" /></a></p>
+<p>这一操作同等于 Git 命令行的：</p>
+<div class="highlight"><pre><span></span><code>git<span class="w"> </span>commit<span class="w"> </span>--amend
+</code></pre></div>
+<p>但是对于旧的提交，我们就需要使用交互式变基来实现了。</p>
+<h2 id="_2">何为交互式变基<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
+<p>交互式变基（Interactive Rebase）是 Git 的一个强大功能，它允许你以交互方式修改 Git 提交历史。与普通变基不同，交互式变基给你提供了一个编辑界面，让你能够对选定的提交序列执行多种操作：</p>
+<ul>
+<li>编辑（Edit）：暂停变基过程，让你修改提交内容或提交信息</li>
+<li>重写（Reword）：仅修改提交信息</li>
+<li>压缩（Squash）：将多个提交合并为一个</li>
+<li>丢弃（Drop）：删除某个提交</li>
+<li>重新排序：改变提交的顺序</li>
+</ul>
+<p>在命令行中，交互式变基通过以下命令启动：</p>
+<div class="highlight"><pre><span></span><code>git<span class="w"> </span>rebase<span class="w"> </span>-i<span class="w"> </span>&lt;基准点&gt;
+git<span class="w"> </span>rebase<span class="w"> </span>-i<span class="w"> </span>HEAD~&lt;N&gt;
+</code></pre></div>
+<p>其中 <code>&lt;基准点&gt;</code> 是你想要变基的起始提交；或者使用 <code>HEAD~&lt;N&gt;</code> 以指定从当前提交开始的 N 个提交。</p>
+<p>交互式变基非常适合于：</p>
+<ul>
+<li>修复旧提交中的错误或遗漏</li>
+<li>整理提交历史，使其更加清晰</li>
+<li>在推送到远程仓库前整理本地提交</li>
+</ul>
+<p>在 PyCharm 中，交互式变基被集成到 Git 工具窗口中，提供了图形化界面来简化这一过程，对不熟悉命令行的开发者非常友好。</p>
+<h2 id="pycharm">如何使用 PyCharm 进行交互式变基<a class="headerlink" href="#pycharm" title="Permanent link">&para;</a></h2>
+<p>假定我们在本地有一个尚未 push 的旧提交需要修正，他们位于远程 <code>origin/master</code> 分支的 HEAD 之后，但位于本地 <code>master</code> 分支的 HEAD 之前。</p>
+<p><a class="glightbox" href="../images/250406-amend-old-commit-interactively-rebase/commit.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="commit" src="../images/250406-amend-old-commit-interactively-rebase/commit.png" /></a></p>
+<p>此时右键选中该提交，选择 “从这里进行交互式变基..”：</p>
+<p><a class="glightbox" href="../images/250406-amend-old-commit-interactively-rebase/git-diag.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="git-diag" src="../images/250406-amend-old-commit-interactively-rebase/git-diag.png" /></a></p>
+<p>Git 插件将启动交互式变基 GUI。选中我们想要修正的那一次提交，点击工具栏的 <span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M14 19h4V5h-4M6 19h4V5H6z"/></svg></span> 按钮（或者右键选择 “停止以编辑”）</p>
+<p><a class="glightbox" href="../images/250406-amend-old-commit-interactively-rebase/rebase-diag.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="rebase-diag" src="../images/250406-amend-old-commit-interactively-rebase/rebase-diag.png" /></a></p>
+<p>此时选中的提交前面将会变为 <span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M14 19h4V5h-4M6 19h4V5H6z"/></svg></span> 图标，表示我们已经暂停在该提交上。接下来，点击右下角的 “启动变基” 即可。</p>
+<p>变基启动之后，你会发现，当前的 HEAD 已经变成了你选中的提交（原本是在 <code>master</code> 上），并且工具栏中也显示了 “正在变基 <code>master</code>”</p>
+<p><a class="glightbox" href="../images/250406-amend-old-commit-interactively-rebase/HEAD.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="HEAD" src="../images/250406-amend-old-commit-interactively-rebase/HEAD.png" /></a></p>
+<p>此时修改你的代码……</p>
+<p>完成修改后，在提交工具窗口勾选 “修正提交” 选项，点击提交。</p>
+<p>最后点击 Git 工具窗口中的 “继续变基” 完成变基操作：</p>
+<p><a class="glightbox" href="../images/250406-amend-old-commit-interactively-rebase/toolbar.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="toolbar" src="../images/250406-amend-old-commit-interactively-rebase/toolbar.png" /></a></p>
+<h2 id="_3">对应的命令行实现<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h2>
+<p>刚刚的这一套操作相当于：</p>
+<ol>
+<li>
+<p>先将你的新变更添加到暂存区：</p>
+<div class="highlight"><pre><span></span><code>git<span class="w"> </span>add<span class="w"> </span>.
+</code></pre></div>
+</li>
+<li>
+<p>启动交互式变基：</p>
+<div class="highlight"><pre><span></span><code>git<span class="w"> </span>rebase<span class="w"> </span>-i<span class="w"> </span>&lt;基准点&gt;
+</code></pre></div>
+</li>
+<li>
+<p>在编辑器中，找到你想要修正的提交，将其前面的 <code>pick</code> 改为 <code>edit</code>，保存并退出编辑器。</p>
+</li>
+<li>
+<p>Git 会停在该提交处，执行：</p>
+<div class="highlight"><pre><span></span><code>git<span class="w"> </span>commit<span class="w"> </span>--amend
+</code></pre></div>
+</li>
+<li>
+<p>然后继续变基：</p>
+<div class="highlight"><pre><span></span><code>git<span class="w"> </span>rebase<span class="w"> </span>--continue
+</code></pre></div>
+</li>
+</ol>
 
     <!-- Last update of source file -->
     
@@ -2292,7 +2338,7 @@ as the main headline.
     <span class="md-icon" title="最后更新">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_datetime" title="2022年11月15日 16:29:10">2022-11-15 16:29:10</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_datetime" title="2025年4月6日 07:34:39">2025-04-06 07:34:39</span>
   </span>
 
     
@@ -2302,7 +2348,7 @@ as the main headline.
     <span class="md-icon" title="创建日期">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M14.47 15.08 11 13V7h1.5v5.25l3.08 1.83c-.41.28-.79.62-1.11 1m-1.39 4.84c-.36.05-.71.08-1.08.08-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8c0 .37-.03.72-.08 1.08.69.1 1.33.32 1.92.64.1-.56.16-1.13.16-1.72 0-5.5-4.5-10-10-10S2 6.5 2 12s4.47 10 10 10c.59 0 1.16-.06 1.72-.16-.32-.59-.54-1.23-.64-1.92M18 15v3h-3v2h3v3h2v-3h3v-2h-3v-3z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_datetime" title="2022年11月15日 13:29:31">2022-11-15 13:29:31</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_datetime" title="2025年4月6日 07:34:39">2025-04-06 07:34:39</span>
   </span>
 
     
@@ -2386,7 +2432,7 @@ as the main headline.
       <nav class="md-footer__inner md-grid" aria-label="页脚" >
         
           
-          <a href="../221113-rclone-sharepoint-oauth-failed/" class="md-footer__link md-footer__link--prev" aria-label="上一页: 通过 WebDAV 解决 Rclone 挂载 SharePoint 时遇到 Error: Auth Error">
+          <a href="../250217-fix-steamdeck-visual-novel-video/" class="md-footer__link md-footer__link--prev" aria-label="上一页: 使用 Protontricks 修复 Steam Deck 上部分视觉小说无法播放视频的问题">
             <div class="md-footer__button md-icon">
               
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
@@ -2396,27 +2442,11 @@ as the main headline.
                 上一页
               </span>
               <div class="md-ellipsis">
-                通过 WebDAV 解决 Rclone 挂载 SharePoint 时遇到 Error: Auth Error
+                使用 Protontricks 修复 Steam Deck 上部分视觉小说无法播放视频的问题
               </div>
             </div>
           </a>
         
-        
-          
-          <a href="../../2023/230113-my-2022-website/" class="md-footer__link md-footer__link--next" aria-label="下一页: 我的浏览器 2022 年度总结">
-            <div class="md-footer__title">
-              <span class="md-footer__direction">
-                下一页
-              </span>
-              <div class="md-ellipsis">
-                我的浏览器 2022 年度总结
-              </div>
-            </div>
-            <div class="md-footer__button md-icon">
-              
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
-            </div>
-          </a>
         
       </nav>
     
