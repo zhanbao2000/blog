@@ -199,7 +199,7 @@ else:
     b = -1
 ```
 
-文言文：
+虚假的文言文：
 
 ```python
 b = 1 if a > 0 else -1
@@ -207,10 +207,10 @@ b = 1 if a > 0 else -1
 
 这个很多人应该都知道，就不赘述了。
 
-这和三目运算符有点相似：
+但是真正的文言文应该是要用到 Python 短路逻辑的：
 
-```C
-b = a > 0 ? 1 : -1
+```python
+b = (a > 0) and 1 or -1
 ```
 
 ### 5. 利用 `if-else` 三目运算符处理序列
@@ -249,6 +249,12 @@ new_msg = ''.join(' ' if char == ' ' else caesar(char) for char in msg)
 
 ```python
 new_msg = ''.join(map(lambda char: ' ' if char == ' ' else caesar(char), msg))
+```
+
+同理，应用 Python 短路逻辑之后，你可以将其写成：
+
+```python
+new_msg = ''.join(map(lambda char: (char == ' ') and ' ' or caesar(char), msg))
 ```
 
 ### 6. 利用 inline 循环移除列表中的重复元素

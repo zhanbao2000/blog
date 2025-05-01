@@ -965,7 +965,7 @@ def sell(item: str, quantity: int, operator: str):
 
     ```python  
     msg = 'the quick brown fox jumps over the lazy dog'
-    new_msg = ''.join(' ' if char == ' ' else chr((ord(char) - ord('a') + 1) % 26 + ord('a')) for char in msg)
+    new_msg = ''.join((char == ' ') and ' ' or chr((ord(char) - ord('a') + 1) % 26 + ord('a')) for char in msg)
     ```
 
 滥用语法糖的最大问题是，对非 Python 使用者非常不友好。请注意，你所写的代码不仅仅是给 Python 使用者看的，同时也是给所有人看的。
