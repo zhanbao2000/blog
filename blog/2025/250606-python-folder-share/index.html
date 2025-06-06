@@ -6,19 +6,17 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
-        <meta name="description" content="Arisa 的个人博客">
+        <meta name="description" content="探索如何使用 Python 自带的 http 模块共享文件夹，并通过修改注册表实现右键菜单一键共享，简化文件共享过程，提升工作效率。">
       
       
         <meta name="author" content="Akiba Arisa">
       
       
-        <link rel="canonical" href="https://blog.arisa.moe/blog/2022/220407-github-pages/">
+        <link rel="canonical" href="https://blog.arisa.moe/blog/2025/250606-python-folder-share/">
       
       
-        <link rel="prev" href="../220407-certbot/">
+        <link rel="prev" href="../250406-amend-old-commit-interactively-rebase/">
       
-      
-        <link rel="next" href="../220408-github-pages-2/">
       
       
       <link rel="icon" href="../../../assets/favicon.webp">
@@ -26,7 +24,7 @@
     
     
       
-        <title>GitHub Pages 文档自动化部署 - MkDocs - Arisa | Blog</title>
+        <title>使用 Python 一键在 Windows 上共享文件夹 - Arisa | Blog</title>
       
     
     
@@ -89,7 +87,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#_1" class="md-skip">
+        <a href="#python-http" class="md-skip">
           跳转至
         </a>
       
@@ -123,7 +121,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              GitHub Pages 文档自动化部署 - MkDocs
+              使用 Python 一键在 Windows 上共享文件夹
             
           </span>
         </div>
@@ -314,7 +312,7 @@
     
     
       <li class="md-tabs__item md-tabs__item--active">
-        <a href="../220406-nginx-stream/" class="md-tabs__link">
+        <a href="../../2022/220406-nginx-stream/" class="md-tabs__link">
           
   
   
@@ -490,8 +488,6 @@
                 
   
   
-    
-  
   
   
     
@@ -502,11 +498,11 @@
       
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_1" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_1" >
         
           
           <label class="md-nav__link" for="__nav_4_1" id="__nav_4_1_label" tabindex="0">
@@ -522,7 +518,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_1_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_1_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_4_1">
             <span class="md-nav__icon md-icon"></span>
             2022
@@ -536,7 +532,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../220406-nginx-stream/" class="md-nav__link">
+      <a href="../../2022/220406-nginx-stream/" class="md-nav__link">
         
   
   
@@ -559,7 +555,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../220406-set-http-proxy/" class="md-nav__link">
+      <a href="../../2022/220406-set-http-proxy/" class="md-nav__link">
         
   
   
@@ -582,7 +578,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../220406-venv-move-file/" class="md-nav__link">
+      <a href="../../2022/220406-venv-move-file/" class="md-nav__link">
         
   
   
@@ -605,7 +601,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../220407-certbot/" class="md-nav__link">
+      <a href="../../2022/220407-certbot/" class="md-nav__link">
         
   
   
@@ -625,30 +621,10 @@
                 
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  
-  <span class="md-ellipsis">
-    GitHub Pages 文档自动化部署 - MkDocs
-    
-  </span>
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../../2022/220407-github-pages/" class="md-nav__link">
         
   
   
@@ -659,93 +635,6 @@
   
 
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="目录">
-  
-  
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      目录
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#_1" class="md-nav__link">
-    <span class="md-ellipsis">
-      本地部署测试
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#vcs-github" class="md-nav__link">
-    <span class="md-ellipsis">
-      创建本地 VCS 并和 GitHub 关联
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="创建本地 VCS 并和 GitHub 关联">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#vcs" class="md-nav__link">
-    <span class="md-ellipsis">
-      创建本地 VCS
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#github" class="md-nav__link">
-    <span class="md-ellipsis">
-      和 GitHub 关联
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#github-actions" class="md-nav__link">
-    <span class="md-ellipsis">
-      在 GitHub 上创建 Actions 任务
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#pages" class="md-nav__link">
-    <span class="md-ellipsis">
-      设置 Pages
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_2" class="md-nav__link">
-    <span class="md-ellipsis">
-      （可选）使用自定义域名
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -758,7 +647,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../220408-github-pages-2/" class="md-nav__link">
+      <a href="../../2022/220408-github-pages-2/" class="md-nav__link">
         
   
   
@@ -781,7 +670,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../220409-cloudflare-workers-arcaea-update/" class="md-nav__link">
+      <a href="../../2022/220409-cloudflare-workers-arcaea-update/" class="md-nav__link">
         
   
   
@@ -804,7 +693,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../220412-ida-substitute-usage/" class="md-nav__link">
+      <a href="../../2022/220412-ida-substitute-usage/" class="md-nav__link">
         
   
   
@@ -827,7 +716,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../220413-Intranet-penetration-bitcomit/" class="md-nav__link">
+      <a href="../../2022/220413-Intranet-penetration-bitcomit/" class="md-nav__link">
         
   
   
@@ -850,7 +739,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../220414-fk-arcaea-songlist-hash/" class="md-nav__link">
+      <a href="../../2022/220414-fk-arcaea-songlist-hash/" class="md-nav__link">
         
   
   
@@ -873,7 +762,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../220416-arcaea-fanmade-chart-problem/" class="md-nav__link">
+      <a href="../../2022/220416-arcaea-fanmade-chart-problem/" class="md-nav__link">
         
   
   
@@ -896,7 +785,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../220417-linux-clean-up-disk-space/" class="md-nav__link">
+      <a href="../../2022/220417-linux-clean-up-disk-space/" class="md-nav__link">
         
   
   
@@ -919,7 +808,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../220421-use-gzip-bomb-against-scanner/" class="md-nav__link">
+      <a href="../../2022/220421-use-gzip-bomb-against-scanner/" class="md-nav__link">
         
   
   
@@ -942,7 +831,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../220428-how-to-ask-questions-like-a-retard/" class="md-nav__link">
+      <a href="../../2022/220428-how-to-ask-questions-like-a-retard/" class="md-nav__link">
         
   
   
@@ -965,7 +854,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../220429-dilb-ultimate-solution/" class="md-nav__link">
+      <a href="../../2022/220429-dilb-ultimate-solution/" class="md-nav__link">
         
   
   
@@ -988,7 +877,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../220502-how-dogs-work-in-epic7/" class="md-nav__link">
+      <a href="../../2022/220502-how-dogs-work-in-epic7/" class="md-nav__link">
         
   
   
@@ -1011,7 +900,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../220511-how-to-write-python-into-classical-chinese/" class="md-nav__link">
+      <a href="../../2022/220511-how-to-write-python-into-classical-chinese/" class="md-nav__link">
         
   
   
@@ -1034,7 +923,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../220529-python-personal-styleguide/" class="md-nav__link">
+      <a href="../../2022/220529-python-personal-styleguide/" class="md-nav__link">
         
   
   
@@ -1057,7 +946,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../220530-auto-sign-in-guide/" class="md-nav__link">
+      <a href="../../2022/220530-auto-sign-in-guide/" class="md-nav__link">
         
   
   
@@ -1080,7 +969,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../220602-ipv6-bypass-billing-system/" class="md-nav__link">
+      <a href="../../2022/220602-ipv6-bypass-billing-system/" class="md-nav__link">
         
   
   
@@ -1103,7 +992,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../220902-python-mutable-defaults/" class="md-nav__link">
+      <a href="../../2022/220902-python-mutable-defaults/" class="md-nav__link">
         
   
   
@@ -1126,7 +1015,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../220913-python-confusing-detail/" class="md-nav__link">
+      <a href="../../2022/220913-python-confusing-detail/" class="md-nav__link">
         
   
   
@@ -1149,7 +1038,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../221113-rclone-sharepoint-for-hentai-at-home/" class="md-nav__link">
+      <a href="../../2022/221113-rclone-sharepoint-for-hentai-at-home/" class="md-nav__link">
         
   
   
@@ -1172,7 +1061,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../221113-rclone-sharepoint-oauth-failed/" class="md-nav__link">
+      <a href="../../2022/221113-rclone-sharepoint-oauth-failed/" class="md-nav__link">
         
   
   
@@ -1195,7 +1084,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../221115-issue-of-position-or-right-and-wrong/" class="md-nav__link">
+      <a href="../../2022/221115-issue-of-position-or-right-and-wrong/" class="md-nav__link">
         
   
   
@@ -2060,6 +1949,8 @@
                 
   
   
+    
+  
   
   
     
@@ -2070,11 +1961,11 @@
       
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_5" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_5" checked>
         
           
           <label class="md-nav__link" for="__nav_4_5" id="__nav_4_5_label" tabindex="0">
@@ -2090,7 +1981,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_5_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_5_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_4_5">
             <span class="md-nav__icon md-icon"></span>
             2025
@@ -2104,7 +1995,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../2025/250217-fix-steamdeck-visual-novel-video/" class="md-nav__link">
+      <a href="../250217-fix-steamdeck-visual-novel-video/" class="md-nav__link">
         
   
   
@@ -2127,7 +2018,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../2025/250406-amend-old-commit-interactively-rebase/" class="md-nav__link">
+      <a href="../250406-amend-old-commit-interactively-rebase/" class="md-nav__link">
         
   
   
@@ -2147,10 +2038,30 @@
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="../../2025/250606-python-folder-share/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    使用 Python 一键在 Windows 上共享文件夹
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   
@@ -2161,6 +2072,75 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#python-http" class="md-nav__link">
+    <span class="md-ellipsis">
+      Python 的 http 模块
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      右键菜单在注册表中的位置
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      添加注册表项
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="添加注册表项">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      直接单击右键
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#shift" class="md-nav__link">
+    <span class="md-ellipsis">
+      按住 Shift 的右键菜单
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -2206,60 +2186,18 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#python-http" class="md-nav__link">
+    <span class="md-ellipsis">
+      Python 的 http 模块
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#_1" class="md-nav__link">
     <span class="md-ellipsis">
-      本地部署测试
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#vcs-github" class="md-nav__link">
-    <span class="md-ellipsis">
-      创建本地 VCS 并和 GitHub 关联
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="创建本地 VCS 并和 GitHub 关联">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#vcs" class="md-nav__link">
-    <span class="md-ellipsis">
-      创建本地 VCS
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#github" class="md-nav__link">
-    <span class="md-ellipsis">
-      和 GitHub 关联
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#github-actions" class="md-nav__link">
-    <span class="md-ellipsis">
-      在 GitHub 上创建 Actions 任务
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#pages" class="md-nav__link">
-    <span class="md-ellipsis">
-      设置 Pages
+      右键菜单在注册表中的位置
     </span>
   </a>
   
@@ -2268,9 +2206,33 @@
         <li class="md-nav__item">
   <a href="#_2" class="md-nav__link">
     <span class="md-ellipsis">
-      （可选）使用自定义域名
+      添加注册表项
     </span>
   </a>
+  
+    <nav class="md-nav" aria-label="添加注册表项">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      直接单击右键
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#shift" class="md-nav__link">
+    <span class="md-ellipsis">
+      按住 Shift 的右键菜单
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -2293,7 +2255,7 @@ doesn't, the page title (or respectively site name) is used
 as the main headline.
 -->
 
-    <h1>GitHub Pages 文档自动化部署 - MkDocs</h1>
+    <h1>使用 Python 一键在 Windows 上共享文件夹</h1>
 
 
 <!-- Markdown content -->
@@ -2312,7 +2274,7 @@ as the main headline.
                     <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" fill="currentColor" class="bi bi-clock" viewBox="0 0 16 16">
                         <path d="M8 3.5a.5.5 0 0 0-1 0V9a.5.5 0 0 0 .252.434l3.5 2a.5.5 0 0 0 .496-.868L8 8.71V3.5z"/>
                         <path d="M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16zm7-8A7 7 0 1 1 1 8a7 7 0 0 1 14 0z"/>
-                    </svg> 11 min read
+                    </svg> 7 min read
                 </span>
             </p>
         </aside>
@@ -2322,218 +2284,87 @@ as the main headline.
     
         <div class="tags">
         
-            <a href="/tags/#github actions" class="tag"><code>#github actions</code></a>
+            <a href="/tags/#python" class="tag"><code>#python</code></a>
         
-            <a href="/tags/#github pages" class="tag"><code>#github pages</code></a>
-        
-            <a href="/tags/#mkdocs" class="tag"><code>#mkdocs</code></a>
+            <a href="/tags/#windows" class="tag"><code>#windows</code></a>
         
         </div>
     
 
-    <p>这篇文章讲述了如何使用 GitHub Actions / Pages 自动化部署文档，以及遇到的坑。</p>
-<p>如你所见，这个博客也是使用 GitHub Actions 自动部署在 GitHub Pages 上的。</p>
-<p>这篇文章将以 <a href="https://www.mkdocs.org/">MkDocs</a> 为例讲述。</p>
-<h2 id="_1">本地部署测试<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
-<p>首先你自己搭建的文档得在本地能用嘛，首先测试下本地是否能用：</p>
-<div class="highlight"><pre><span></span><code>mkdocs serve
+    <h2 id="python-http">Python 的 http 模块<a class="headerlink" href="#python-http" title="Permanent link">&para;</a></h2>
+<p>Python 自带的 <code>http.server</code> 模块可以轻松地将一个文件夹共享为 HTTP 服务器。这个模块提供了一个简单的方式来共享文件和目录，使得其他设备可以通过网络访问这些文件。</p>
+<div class="highlight"><pre><span></span><code>python -m http.server 8888
 </code></pre></div>
-<div class="admonition 小提示">
-<p class="admonition-title">小提示</p>
-<p>使用以下参数可以使 mkdocs 运行在指定地址和端口上：
-<div class="highlight"><pre><span></span><code>mkdocs serve -a localhost:8001
-mkdocs serve --dev-addr localhost:8001
-</code></pre></div></p>
-</div>
-<h2 id="vcs-github">创建本地 VCS 并和 GitHub 关联<a class="headerlink" href="#vcs-github" title="Permanent link">&para;</a></h2>
-<p>这里以 PyCharm 为例：</p>
-<h3 id="vcs">创建本地 VCS<a class="headerlink" href="#vcs" title="Permanent link">&para;</a></h3>
-<pre class="mermaid"><code>graph LR
-  A[VCS] --&gt; B;
-  B[启用版本控制集成] --&gt; C;
-  C[选择 Git] --&gt; D[确定];</code></pre>
-<div class="admonition 注意有坑 attention">
-<p class="admonition-title">注意有坑</p>
-<p>记得在提交之前先创建好 <code>.gitignore</code> 文件，否则你提交之后还要继续提交一次 <code>.gitignore</code> 文件。</p>
-</div>
-<p>然后选择提交。</p>
-<h3 id="github">和 GitHub 关联<a class="headerlink" href="#github" title="Permanent link">&para;</a></h3>
-<p>这一步其实是在 GitHub 上自动创建一个同名仓库。如果仓库已经存在的话，可能需要 Merge 或者 Rebase。</p>
-<pre class="mermaid"><code>graph LR
-  A[Git] --&gt; B;
-  B[GitHub] --&gt; C;
-  C[在 GitHub 上共享项目] --&gt; D[确定];</code></pre>
-<h2 id="github-actions">在 GitHub 上创建 Actions 任务<a class="headerlink" href="#github-actions" title="Permanent link">&para;</a></h2>
-<p>这一步坑巨多。</p>
-<p>首先点击 <code>Actions</code> -&gt; <code>set up a workflow yourself</code></p>
-<p>按照任何一个你能找到的 Pages 部署文档来写这个 <code>yml</code> 文件，这里我们采用 <a href="https://squidfunk.github.io/mkdocs-material/publishing-your-site/#with-github-actions">Material for MkDocs</a> 的模板。</p>
-<div class="admonition 小提示">
-<p class="admonition-title">小提示</p>
-<p>用 MkDocs <a href="https://www.mkdocs.org/user-guide/deploying-your-docs/">官网</a> 的也行，只不过人家不会告诉你怎么写这个 <code>yml</code> 文件。</p>
-</div>
-<p>在 <code>2022年4月6日</code> 的时候我从这里找到的模板是这样的，随着时间的推移可能会有变更，建议从原文档去复制。</p>
-<div class="highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">main.yml（请勿直接使用）</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
-<span class="normal"> 2</span>
-<span class="normal"> 3</span>
-<span class="normal"> 4</span>
-<span class="normal"> 5</span>
-<span class="normal"> 6</span>
-<span class="normal"> 7</span>
-<span class="normal"> 8</span>
-<span class="normal"> 9</span>
-<span class="normal">10</span>
-<span class="normal">11</span>
-<span class="normal">12</span>
-<span class="normal">13</span>
-<span class="normal">14</span>
-<span class="normal">15</span>
-<span class="normal">16</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ci</span><span class="w"> </span>
-<span class="nt">on</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">push</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">branches</span><span class="p">:</span>
-<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">master</span><span class="w"> </span>
-<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">main</span>
-<span class="nt">jobs</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">deploy</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">runs-on</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ubuntu-latest</span>
-<span class="w">    </span><span class="nt">steps</span><span class="p">:</span>
-<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">uses</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">actions/checkout@v2</span>
-<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">uses</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">actions/setup-python@v2</span>
-<span class="w">        </span><span class="nt">with</span><span class="p">:</span>
-<span class="w">          </span><span class="nt">python-version</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">3.x</span>
-<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">run</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">pip install mkdocs-material</span><span class="w"> </span>
-<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">run</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">mkdocs gh-deploy --force</span>
-</code></pre></div></td></tr></table></div>
-<div class="admonition 注意有坑 attention">
-<p class="admonition-title">注意有坑</p>
-<p>首先他这个流程，很明显只用 <code>pip</code> 安装了 <code>mkdocs-material</code>，但是它并没有安装 <code>mkdocs</code>。其实这无所谓，因为 <code>mkdocs-material</code> 的 <code>requirements.txt</code> 中已经包含了 <code>mkdocs</code>，会一并安装。<br />
-重点的地方是，如果你在本地构建的时候依赖了其他的库（比如 <code>mkdocs-blogging-plugin</code>），那你得在 <code>run:</code> 中通过 <code>pip install</code> 安装这些库。</p>
-</div>
-<div class="admonition 注意有坑 attention">
-<p class="admonition-title">注意有坑</p>
-<p>坑还没完，如果你和我一样是 <code>mkdocs-blogging-plugin</code> 的使用者，你还会遇到网站的渲染问题，这里官网也给了解决方案。<br />
-<a href="https://liang2kl.codes/mkdocs-blogging-plugin/#publish-with-github-pages">https://liang2kl.codes/mkdocs-blogging-plugin/#publish-with-github-pages</a><br />
-注意，请不要跟随官网那篇文档里所说的设定 <code>locale: zh-CN</code> 这个键，后面会说到原因。</p>
-</div>
-<p>最终我的 <code>main.yml</code>（后来重命名成 <code>ci.yml</code> 了）长这样：</p>
-<div class="highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">main.yml</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
-<span class="normal"> 2</span>
-<span class="normal"> 3</span>
-<span class="normal"> 4</span>
-<span class="normal"> 5</span>
-<span class="normal"> 6</span>
-<span class="normal"> 7</span>
-<span class="normal"> 8</span>
-<span class="normal"> 9</span>
-<span class="normal">10</span>
-<span class="normal">11</span>
-<span class="normal">12</span>
-<span class="normal">13</span>
-<span class="normal">14</span>
-<span class="normal">15</span>
-<span class="normal">16</span>
-<span class="normal">17</span>
-<span class="normal">18</span>
-<span class="normal">19</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ci</span><span class="w"> </span>
-<span class="nt">on</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">push</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">branches</span><span class="p">:</span>
-<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">master</span><span class="w"> </span>
-<span class="nt">jobs</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">deploy</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">runs-on</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ubuntu-latest</span>
-<span class="w">    </span><span class="nt">steps</span><span class="p">:</span>
-<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">uses</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">actions/checkout@v2</span>
-<span class="hll"><span class="w">        </span><span class="nt">with</span><span class="p">:</span><span class="w">  </span><span class="c1"># mkdocs-blogging-plugin 给出的渲染问题解决方案</span>
-</span><span class="hll"><span class="w">          </span><span class="nt">fetch-depth</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0</span>
-</span><span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">uses</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">actions/setup-python@v2</span>
-<span class="w">        </span><span class="nt">with</span><span class="p">:</span>
-<span class="w">          </span><span class="nt">python-version</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">3.x</span>
-<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">run</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">pip install mkdocs</span>
-<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">run</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">pip install mkdocs-material</span>
-<span class="hll"><span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">run</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">pip install mkdocs-blogging-plugin</span><span class="w">  </span><span class="c1"># 记得安装其他依赖的库</span>
-</span><span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">run</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">mkdocs gh-deploy --force</span>
-</code></pre></div></td></tr></table></div>
-<p>这个时候你就可以在 Actions 页面点 <code>Start commit</code> 了。只要你的本地部署可以通过，在 Actions 上应该也是可以通过的。</p>
-<p>如果 Actions 的 <code>build</code> 或者 <code>deploy</code> 阶段出现了问题，说明可能是那几个 <code>run</code> 里出现了错误，那你应该在本地试一下：</p>
+<p>我们 Python 使用者都知道这个命令，这个命令可以在当前目录（<code>pwd</code>）下启动一个简单的 HTTP 服务器，监听 <code>8888</code> 端口。</p>
+<h2 id="_1">右键菜单在注册表中的位置<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
+<p>根据 <a href="https://stackoverflow.com/questions/20449316/how-add-context-menu-item-to-windows-explorer-for-folders">How add context menu item to Windows Explorer for folders [closed]</a>
+和 <a href="https://www.cnblogs.com/mq0036/p/18872806">注册表编辑win10鼠标右键菜单，详解（右键文件夹、文件以及右键空白区域下三种情况）</a>
+这两篇文章，我们可以了解到在 Windows 资源管理器中，右键菜单被分为了以下几类：</p>
+<table>
+  <tr>
+    <th colspan="3" style="text-align: center;">情形</th>
+    <th style="text-align: center;">注册表位置 </th>
+  </tr>
+  <tr>
+    <td rowspan="3" style="vertical-align: middle;">右键空白区域</td>
+    <td colspan="2">桌面空白区域</td>
+    <td><code>计算机\HKEY_CLASSES_ROOT\DesktopBackground\Shell</code></td>
+  </tr>
+  <tr>
+    <td rowspan="2" style="vertical-align: middle;">一般空白区域</td>
+    <td>管理员</td>
+    <td><code>计算机\HKEY_CLASSES_ROOT\Directory\Background\shell</code></td>
+  </tr>
+  <tr>
+    <td>普通用户</td>
+    <td><code>计算机\HKEY_CURRENT_USER\Software\Classes\Directory\Background\shell</code></td>
+  </tr>
+  <tr>
+    <td rowspan="2" style="vertical-align: middle;">右键文件夹</td>
+    <td colspan="2">管理员</td>
+    <td><code>计算机\HKEY_CLASSES_ROOT\Directory\shell</code></td>
+  </tr>
+  <tr>
+    <td colspan="2">普通用户</td>
+    <td><code>计算机\HKEY_CLASSES_ROOT\Directory\shell</code></td>
+  </tr>
+  <tr>
+    <td rowspan="2" style="vertical-align: middle;">右键文件</td>
+    <td colspan="2">管理员</td>
+    <td><code>计算机\HKEY_CLASSES_ROOT\*\shell</code></td>
+  </tr>
+  <tr>
+    <td colspan="2">普通用户</td>
+    <td><code>计算机\HKEY_CURRENT_USER\Software\Classes\*\shell</code></td>
+  </tr>
+</table>
+
+<h2 id="_2">添加注册表项<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
+<p>由于我们的最终目的是让用户在右键菜单中添加一个 “使用 Python 共享” 的选项，因此我们需要在注册表中添加与文件夹相关的注册表项。</p>
+<p>具体而言，我们应该在以下注册表位置添加相关子项：</p>
 <ul>
-<li>是不是有包忘了 <code>pip install</code> ？</li>
-<li>本地能正常 <code>mkdocs build</code> 嘛？</li>
+<li>桌面空白区域：<code>计算机\HKEY_CLASSES_ROOT\DesktopBackground\Shell</code></li>
+<li>一般空白区域（普通用户）：<code>计算机\HKEY_CURRENT_USER\Software\Classes\Directory\Background\shell</code></li>
+<li>右键文件夹（普通用户）：<code>计算机\HKEY_CLASSES_ROOT\Directory\shell</code></li>
 </ul>
-<p>之前遇到了一个典型的问题导致 build 失败：</p>
-<div class="admonition 注意有坑 attention">
-<p class="admonition-title">注意有坑</p>
-<p><code>mkdocs-blogging-plugin</code> 的官网 <a href="https://liang2kl.codes/mkdocs-blogging-plugin/#publish-with-github-pages">文档</a> 里说，要在 <code>blogging</code> 里建一个 <code>locale: zh-CN</code> 来设置时间格式，但是实际这样做会报错：<code>ValueError: expected only letters, got 'zh-cn'</code>，<br />
-解决方法：不要写 <code>locale: zh-CN</code>，要写 <code>locale: zh_CN</code> 或者干脆写 <code>locale: zh</code></p>
-<div class="highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">mkdocs.yml</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
-<span class="normal">2</span>
-<span class="normal">3</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="nt">plugins</span><span class="p">:</span>
-<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">blogging</span><span class="p">:</span>
-<span class="hll"><span class="w">      </span><span class="nt">locale</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">zh_CN</span>
-</span></code></pre></div></td></tr></table></div>
-</div>
-<p>坑还没结束，继续往下看</p>
-<h2 id="pages">设置 Pages<a class="headerlink" href="#pages" title="Permanent link">&para;</a></h2>
-<p>你以为这样就结束了？</p>
-<p>还没有！</p>
-<p>Actions 结束后会给你一个页面（当然也可以自己去找），你点开这个页面会直接告诉你 <code>404</code>。</p>
-<p>这是因为你还没有为 Pages 指定具体的页面。</p>
-<div class="admonition 小提示">
-<p class="admonition-title">小提示</p>
-<p>这里简单说一下，很多人认为 <code>Actions</code> 和 <code>Pages</code> 是一个东西，因为很多人经常用这俩一起来部署页面。但是其实这俩的功能是各有分工。<br />
- - <code>Actions</code> 的主要功能是编译，就是你指定一个环境，给出一些编译中要执行的命令行，然后给出你的源代码（这里的源代码 GitHub 会自动从你的 repo 里获取所以不用管），GitHub Actions 就会从源代码里编译出对应的静态文件，这些静态文件可能是各种文件，比如二进制文件，或者是网页。<br />
- - <code>Pages</code> 的主要功能是在 <code>&lt;user&gt;.github.io</code> 上部署网页。</p>
-</div>
-<p>Actions 毕竟只是 Actions，他又不是和 Pages 联动的，所以你就算 Actions 编译出了网页也是不会给你自动部署到 Pages 上的。</p>
-<p>接下来手动设置 Pages：</p>
-<pre class="mermaid"><code>graph LR
-  A[打开你的项目仓库] --&gt; B;
-  B[Settings] --&gt; C;
-  C[Pages] --&gt; D[Source];</code></pre>
-<p>选择分支为 <code>gh-pages</code>，这是 Actions 自动构建的文件所存放的分支，目录选择 <code>/</code>。</p>
-<p>点 <code>save</code>，这下是真没问题了。</p>
-<h2 id="_2">（可选）使用自定义域名<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
-<p>使用自定义域名又会带来两个坑，无语。</p>
-<p>首先你在设置 <code>Source</code> 的时候，能看到下面一栏是 <code>Custom domain</code>，这个就是设置自定义域名的地方，比如我这个博客构建在了 <a href="https://zhanbao2000.github.io/blog">https://zhanbao2000.github.io/blog</a> ，但是我想让 <a href="https://blog.arisa.moe/">https://blog.arisa.moe/</a> 指向这个博客，就得修改这玩意。</p>
-<div class="admonition 小提示">
-<p class="admonition-title">小提示</p>
-<p>现在访问 <a href="https://zhanbao2000.github.io/blog">https://zhanbao2000.github.io/blog</a> 会被 <code>301</code> 重定向到 <a href="https://blog.arisa.moe/">https://blog.arisa.moe/</a></p>
-</div>
-<p>直接在框框里写你的域名肯定是不行的，应该遵循以下步骤，以本站为例：</p>
-<ol>
-<li>
-<p>找到你域名的 DNS 服务商，添加一个 CNAME 记录：
-    <div class="highlight"><pre><span></span><code>blog.arisa.moe. 1   IN  CNAME   zhanbao2000.github.io.
-</code></pre></div></p>
-</li>
-<li>
-<p>在刚刚那个框里输入 <code>blog.arisa.moe</code>，点 <code>save</code>。</p>
-</li>
-</ol>
-<p>过一会就好了。</p>
-<p>你以为这样就完了？</p>
-<div class="admonition 注意有坑 attention">
-<p class="admonition-title">注意有坑</p>
-<p>如果你以为这样就完了，等你下次再通过 <code>git push</code> 提交文档/博客的时候，你就会发现你的自定义域名已经变成 <code>404</code> 了。<br />
-此时你打开 GitHub 对应仓库的 Settings 一看，好家伙，框框里什么都没有了。</p>
-</div>
-<p>先说解决方法再说原因。</p>
-<p>解决方法是，在 <code>docs</code> 文件夹里创建一个 <code>CNAME</code> 文件，内容写上你的自定义域名，下次 Actions 运行的时候，Pages 就会自动把这个域名设置成自定义域名了。</p>
-<p>参考以下：</p>
-<ul>
-<li><a href="https://github.com/tschaub/gh-pages/issues/213">Deploying seems to overwrite custom domain #213</a></li>
-<li><a href="https://github.com/tschaub/gh-pages/issues/127">gh-pages -d dist overwrites custom domain #127</a></li>
-<li><a href="https://www.mkdocs.org/user-guide/deploying-your-docs/#custom-domains">MkDocs - Custom Domains</a> 👉 其实 MkDocs 官网有写</li>
-</ul>
-<p>这些 issues 无一例外都提到了要创建一个 <code>CNAME</code> 文件来指示自己的自定义域名。但是距离 issue 提出好像已经过了5年了也没见到 GitHub 官方修复这个问题。</p>
-<p>我自己推测的原因是这样的：</p>
-<p>在 Pages 页面设置自定义域名的时候，实际上是在项目生成目录里自动创建了一个 <code>CNAME</code> 文件的，和我们手动创建的效果一样。但是在 Actions 运作的时候，会覆盖掉整个项目生成目录，包括这个 <code>CNAME</code> 文件。</p>
-<p>那么就有两个办法来解决：</p>
-<ul>
-<li>每次 Actions 结束之后，手动去 Pages 页面添加自定义域名。</li>
-<li>让 Actions 结束之后，项目生成目录里始终有这个 <code>CNAME</code> 文件。</li>
-</ul>
-<p>于是我们选择了后者。</p>
+<p>在注册表中添加右键菜单项分为两种情况，分别是直接单击右键和按住 <span class="keys"><kbd class="key-shift">Shift</kbd></span> 的同时单击右键。</p>
+<p>为了美观，本文建议你只添加按住 <span class="keys"><kbd class="key-shift">Shift</kbd></span> 的右键菜单项。但是本文仍然会对这两种情形都做介绍。</p>
+<h4 id="_3">直接单击右键<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h4>
+<p>以桌面空白区域为例，在 <code>shell</code> 下新建一个子项，名为 <code>使用 Python 共享</code>：</p>
+<p><a class="glightbox" href="../images/250606-python-folder-share/desktop_bg_1.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="desktop_bg_1" src="../images/250606-python-folder-share/desktop_bg_1.png" /></a></p>
+<p>再在 <code>使用 Python 共享</code> 下新建一个子项，名为 <code>command</code>，然后将 <code>command</code> 的默认值设置为以下内容：</p>
+<div class="highlight"><pre><span></span><code>&quot;C:\Develop\envs\Python\3.13\python.exe&quot; -m http.server 8888
+</code></pre></div>
+<p>其中 Python 路径请替换为你自己的 Python 绝对路径，即使你已经在环境变量中设置了 Python 的路径。</p>
+<p><a class="glightbox" href="../images/250606-python-folder-share/desktop_bg_2.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="desktop_bg_2" src="../images/250606-python-folder-share/desktop_bg_2.png" /></a></p>
+<p>改完后重启资源管理器，你在单击桌面空白部分后，应该可以看见已经生效：</p>
+<p><a class="glightbox" href="../images/250606-python-folder-share/desktop_bg_3.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="desktop_bg_3" src="../images/250606-python-folder-share/desktop_bg_3.png" /></a></p>
+<h4 id="shift">按住 <span class="keys"><kbd class="key-shift">Shift</kbd></span> 的右键菜单<a class="headerlink" href="#shift" title="Permanent link">&para;</a></h4>
+<p>首先，按照上面的步骤，创建名为 <code>使用 Python 共享</code> 的子项及其 <code>command</code> 子项。</p>
+<p>然后在 <code>使用 Python 共享</code> 下新建一个名值为 <code>Extended</code> 的字符串值，其值为空：</p>
+<p><a class="glightbox" href="../images/250606-python-folder-share/desktop_bg_4.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="desktop_bg_4" src="../images/250606-python-folder-share/desktop_bg_4.png" /></a></p>
+<p>然后还是一样重启资源管理器，你在按住 <span class="keys"><kbd class="key-shift">Shift</kbd></span> 的同时右键单击桌面空白部分后，应该可以看见已经生效：</p>
+<p><a class="glightbox" href="../images/250606-python-folder-share/desktop_bg_5.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="desktop_bg_5" src="../images/250606-python-folder-share/desktop_bg_5.png" /></a></p>
 
     <!-- Last update of source file -->
     
@@ -2560,7 +2391,7 @@ mkdocs serve --dev-addr localhost:8001
     <span class="md-icon" title="最后更新">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_datetime" title="2022年4月8日 07:06:43 UTC">2022-04-08 07:06:43</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_datetime" title="2025年6月6日 12:00:35 UTC">2025-06-06 12:00:35</span>
   </span>
 
     
@@ -2570,7 +2401,7 @@ mkdocs serve --dev-addr localhost:8001
     <span class="md-icon" title="创建日期">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M14.47 15.08 11 13V7h1.5v5.25l3.08 1.83c-.41.28-.79.62-1.11 1m-1.39 4.84c-.36.05-.71.08-1.08.08-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8c0 .37-.03.72-.08 1.08.69.1 1.33.32 1.92.64.1-.56.16-1.13.16-1.72 0-5.5-4.5-10-10-10S2 6.5 2 12s4.47 10 10 10c.59 0 1.16-.06 1.72-.16-.32-.59-.54-1.23-.64-1.92M18 15v3h-3v2h3v3h2v-3h3v-2h-3v-3z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_datetime" title="2022年4月6日 16:25:14 UTC">2022-04-06 16:25:14</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_datetime" title="2025年6月6日 12:00:35 UTC">2025-06-06 12:00:35</span>
   </span>
 
     
@@ -2654,7 +2485,7 @@ mkdocs serve --dev-addr localhost:8001
       <nav class="md-footer__inner md-grid" aria-label="页脚" >
         
           
-          <a href="../220407-certbot/" class="md-footer__link md-footer__link--prev" aria-label="上一页: certbot 常用操作">
+          <a href="../250406-amend-old-commit-interactively-rebase/" class="md-footer__link md-footer__link--prev" aria-label="上一页: 使用交互式变基修正旧的提交 - 基于 PyCharm Git 插件">
             <div class="md-footer__button md-icon">
               
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
@@ -2664,27 +2495,11 @@ mkdocs serve --dev-addr localhost:8001
                 上一页
               </span>
               <div class="md-ellipsis">
-                certbot 常用操作
+                使用交互式变基修正旧的提交 - 基于 PyCharm Git 插件
               </div>
             </div>
           </a>
         
-        
-          
-          <a href="../220408-github-pages-2/" class="md-footer__link md-footer__link--next" aria-label="下一页: GitHub Pages 文档自动化部署 - VuePress">
-            <div class="md-footer__title">
-              <span class="md-footer__direction">
-                下一页
-              </span>
-              <div class="md-ellipsis">
-                GitHub Pages 文档自动化部署 - VuePress
-              </div>
-            </div>
-            <div class="md-footer__button md-icon">
-              
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
-            </div>
-          </a>
         
       </nav>
     
