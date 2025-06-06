@@ -108,3 +108,11 @@ python -m http.server 8888
 然后还是一样重启资源管理器，你在按住 ++shift++ 的同时右键单击桌面空白部分后，应该可以看见已经生效：
 
 ![desktop_bg_5](images/250606-python-folder-share/desktop_bg_5.png)
+
+## 为右键菜单添加图标
+
+只需要为项 “使用 Python 共享” 添加一个名为 `Icon` 的字符串值，其值为 Python 的可执行路径即可：
+
+![desktop_bg_6](images/250606-python-folder-share/desktop_bg_6.png)
+
+![desktop_bg_7](images/250606-python-folder-share/desktop_bg_7.png)
