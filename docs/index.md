@@ -16,7 +16,6 @@ hide:
 
 [目录 :material-table-of-contents:](toc.md){ .md-button .md-button--primary }
 [标签 :material-tag-outline:](tags.md){ .md-button }
-[扩列 :material-gamepad-variant-outline:](expand.md){ .md-button }
 
 ## 关于我
 
@@ -32,6 +31,8 @@ hide:
  - 能滔滔不绝讲两小时 Transformer 架构，被问到具体实现时默默打开 Colab 抄 Kaggle 代码
  - 每次复现顶会论文都幻想自己是炼丹大师，结果连 CUDA 版本冲突都解决不了
  - 用 matplotlib 调了 2 小时图表样式，最终导出分辨率还没室友手机截屏清晰
+
+[扩列 :material-gamepad-variant-outline:](expand.md){ .md-button .md-button--primary }
 
 ## 半重复访问者计数
 
