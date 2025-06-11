@@ -12,28 +12,28 @@
         <meta name="author" content="Akiba Arisa">
       
       
-        <link rel="canonical" href="https://blog.arisa.moe/blog/2024/241114-google-scholar-403/">
+        <link rel="canonical" href="https://blog.arisa.moe/expand/">
       
       
-        <link rel="prev" href="../241013-hadoop-cluster-setup/">
+        <link rel="prev" href="..">
       
       
-        <link rel="next" href="../241126-google-drive-rclone-webdav/">
+        <link rel="next" href="../tags/">
       
       
-      <link rel="icon" href="../../../assets/favicon.webp">
+      <link rel="icon" href="../assets/favicon.webp">
       <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.14">
     
     
       
-        <title>使用 Cloudflare WARP 解决 Google Scholar 403 问题 - Arisa | Blog</title>
+        <title>扩列 - Arisa | Blog</title>
       
     
     
-      <link rel="stylesheet" href="../../../assets/stylesheets/main.342714a4.min.css">
+      <link rel="stylesheet" href="../assets/stylesheets/main.342714a4.min.css">
       
         
-        <link rel="stylesheet" href="../../../assets/stylesheets/palette.06af60db.min.css">
+        <link rel="stylesheet" href="../assets/stylesheets/palette.06af60db.min.css">
       
       
 
@@ -52,16 +52,16 @@
       
     
     
-      <link rel="stylesheet" href="../../../stylesheets/custom.css">
+      <link rel="stylesheet" href="../stylesheets/custom.css">
     
-    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
 
     
     
     
-   <link href="../../../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>
+   <link href="../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>
     html.glightbox-open { overflow: initial; height: 100%; }
     .gslide-title { margin-top: 0px; user-select: text; }
     .gslide-desc { color: #666; user-select: text; }
@@ -70,7 +70,7 @@
     .gdesc-inner { font-size: 0.75rem; }
     body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color);}
     body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color);}
-    body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color);}</style> <script src="../../../assets/javascripts/glightbox.min.js"></script></head>
+    body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color);}</style> <script src="../assets/javascripts/glightbox.min.js"></script></head>
   
   
     
@@ -103,7 +103,7 @@
 
 <header class="md-header" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="页眉">
-    <a href="../../.." title="Arisa | Blog" class="md-header__button md-logo" aria-label="Arisa | Blog" data-md-component="logo">
+    <a href=".." title="Arisa | Blog" class="md-header__button md-logo" aria-label="Arisa | Blog" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"><path d="M1.75 1h12.5c.966 0 1.75.784 1.75 1.75v8.5A1.75 1.75 0 0 1 14.25 13H8.061l-2.574 2.573A1.458 1.458 0 0 1 3 14.543V13H1.75A1.75 1.75 0 0 1 0 11.25v-8.5C0 1.784.784 1 1.75 1M1.5 2.75v8.5c0 .138.112.25.25.25h2a.75.75 0 0 1 .75.75v2.19l2.72-2.72a.75.75 0 0 1 .53-.22h6.5a.25.25 0 0 0 .25-.25v-8.5a.25.25 0 0 0-.25-.25H1.75a.25.25 0 0 0-.25.25m5.28 1.72a.75.75 0 0 1 0 1.06L5.31 7l1.47 1.47a.75.75 0 0 1-.018 1.042.75.75 0 0 1-1.042.018l-2-2a.75.75 0 0 1 0-1.06l2-2a.75.75 0 0 1 1.06 0m2.44 0a.75.75 0 0 1 1.06 0l2 2a.75.75 0 0 1 0 1.06l-2 2a.75.75 0 0 1-1.042-.018.75.75 0 0 1-.018-1.042L10.69 7 9.22 5.53a.75.75 0 0 1 0-1.06"/></svg>
@@ -123,7 +123,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              使用 Cloudflare WARP 解决 Google Scholar 403 问题
+              扩列
             
           </span>
         </div>
@@ -244,7 +244,7 @@
   
   
     <li class="md-tabs__item">
-      <a href="../../.." class="md-tabs__link">
+      <a href=".." class="md-tabs__link">
         
   
   
@@ -261,9 +261,11 @@
   
   
   
+    
   
-    <li class="md-tabs__item">
-      <a href="../../../expand/" class="md-tabs__link">
+  
+    <li class="md-tabs__item md-tabs__item--active">
+      <a href="./" class="md-tabs__link">
         
   
   
@@ -282,7 +284,7 @@
   
   
     <li class="md-tabs__item">
-      <a href="../../../tags/" class="md-tabs__link">
+      <a href="../tags/" class="md-tabs__link">
         
   
   
@@ -301,7 +303,7 @@
   
   
     <li class="md-tabs__item">
-      <a href="../../../toc/" class="md-tabs__link">
+      <a href="../toc/" class="md-tabs__link">
         
   
   
@@ -318,8 +320,6 @@
   
   
   
-    
-  
   
     
     
@@ -327,13 +327,11 @@
   
   
   
-    
-  
   
     
     
-      <li class="md-tabs__item md-tabs__item--active">
-        <a href="../../2022/220406-nginx-stream/" class="md-tabs__link">
+      <li class="md-tabs__item">
+        <a href="../blog/2022/220406-nginx-stream/" class="md-tabs__link">
           
   
   
@@ -359,7 +357,9 @@
           
             
               
-              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" hidden>
                 <div class="md-sidebar__scrollwrap">
                   <div class="md-sidebar__inner">
                     
@@ -370,7 +370,7 @@
 
 <nav class="md-nav md-nav--primary md-nav--lifted" aria-label="导航栏" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="../../.." title="Arisa | Blog" class="md-nav__button md-logo" aria-label="Arisa | Blog" data-md-component="logo">
+    <a href=".." title="Arisa | Blog" class="md-nav__button md-logo" aria-label="Arisa | Blog" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"><path d="M1.75 1h12.5c.966 0 1.75.784 1.75 1.75v8.5A1.75 1.75 0 0 1 14.25 13H8.061l-2.574 2.573A1.458 1.458 0 0 1 3 14.543V13H1.75A1.75 1.75 0 0 1 0 11.25v-8.5C0 1.784.784 1 1.75 1M1.5 2.75v8.5c0 .138.112.25.25.25h2a.75.75 0 0 1 .75.75v2.19l2.72-2.72a.75.75 0 0 1 .53-.22h6.5a.25.25 0 0 0 .25-.25v-8.5a.25.25 0 0 0-.25-.25H1.75a.25.25 0 0 0-.25.25m5.28 1.72a.75.75 0 0 1 0 1.06L5.31 7l1.47 1.47a.75.75 0 0 1-.018 1.042.75.75 0 0 1-1.042.018l-2-2a.75.75 0 0 1 0-1.06l2-2a.75.75 0 0 1 1.06 0m2.44 0a.75.75 0 0 1 1.06 0l2 2a.75.75 0 0 1 0 1.06l-2 2a.75.75 0 0 1-1.042-.018.75.75 0 0 1-.018-1.042L10.69 7 9.22 5.53a.75.75 0 0 1 0-1.06"/></svg>
@@ -400,7 +400,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../.." class="md-nav__link">
+      <a href=".." class="md-nav__link">
         
   
   
@@ -419,10 +419,32 @@
       
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="../../../expand/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    扩列
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   
@@ -433,6 +455,53 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#steam" class="md-nav__link">
+    <span class="md-ellipsis">
+      Steam
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      バンドリ！ ガールズバンドパーティ！
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#osu" class="md-nav__link">
+    <span class="md-ellipsis">
+      osu!
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -444,7 +513,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../tags/" class="md-nav__link">
+      <a href="../tags/" class="md-nav__link">
         
   
   
@@ -466,7 +535,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../toc/" class="md-nav__link">
+      <a href="../toc/" class="md-nav__link">
         
   
   
@@ -485,29 +554,24 @@
       
   
   
-    
   
   
-  
     
     
     
     
       
-        
-        
-      
       
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
         
           
-          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="">
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
             
   
   
@@ -520,7 +584,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_5">
             <span class="md-nav__icon md-icon"></span>
             Blog
@@ -575,7 +639,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../2022/220406-nginx-stream/" class="md-nav__link">
+      <a href="../blog/2022/220406-nginx-stream/" class="md-nav__link">
         
   
   
@@ -598,7 +662,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../2022/220406-set-http-proxy/" class="md-nav__link">
+      <a href="../blog/2022/220406-set-http-proxy/" class="md-nav__link">
         
   
   
@@ -621,7 +685,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../2022/220406-venv-move-file/" class="md-nav__link">
+      <a href="../blog/2022/220406-venv-move-file/" class="md-nav__link">
         
   
   
@@ -644,7 +708,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../2022/220407-certbot/" class="md-nav__link">
+      <a href="../blog/2022/220407-certbot/" class="md-nav__link">
         
   
   
@@ -667,7 +731,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../2022/220407-github-pages/" class="md-nav__link">
+      <a href="../blog/2022/220407-github-pages/" class="md-nav__link">
         
   
   
@@ -690,7 +754,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../2022/220408-github-pages-2/" class="md-nav__link">
+      <a href="../blog/2022/220408-github-pages-2/" class="md-nav__link">
         
   
   
@@ -713,7 +777,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../2022/220409-cloudflare-workers-arcaea-update/" class="md-nav__link">
+      <a href="../blog/2022/220409-cloudflare-workers-arcaea-update/" class="md-nav__link">
         
   
   
@@ -736,7 +800,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../2022/220412-ida-substitute-usage/" class="md-nav__link">
+      <a href="../blog/2022/220412-ida-substitute-usage/" class="md-nav__link">
         
   
   
@@ -759,7 +823,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../2022/220413-Intranet-penetration-bitcomit/" class="md-nav__link">
+      <a href="../blog/2022/220413-Intranet-penetration-bitcomit/" class="md-nav__link">
         
   
   
@@ -782,7 +846,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../2022/220414-fk-arcaea-songlist-hash/" class="md-nav__link">
+      <a href="../blog/2022/220414-fk-arcaea-songlist-hash/" class="md-nav__link">
         
   
   
@@ -805,7 +869,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../2022/220416-arcaea-fanmade-chart-problem/" class="md-nav__link">
+      <a href="../blog/2022/220416-arcaea-fanmade-chart-problem/" class="md-nav__link">
         
   
   
@@ -828,7 +892,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../2022/220417-linux-clean-up-disk-space/" class="md-nav__link">
+      <a href="../blog/2022/220417-linux-clean-up-disk-space/" class="md-nav__link">
         
   
   
@@ -851,7 +915,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../2022/220421-use-gzip-bomb-against-scanner/" class="md-nav__link">
+      <a href="../blog/2022/220421-use-gzip-bomb-against-scanner/" class="md-nav__link">
         
   
   
@@ -874,7 +938,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../2022/220428-how-to-ask-questions-like-a-retard/" class="md-nav__link">
+      <a href="../blog/2022/220428-how-to-ask-questions-like-a-retard/" class="md-nav__link">
         
   
   
@@ -897,7 +961,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../2022/220429-dilb-ultimate-solution/" class="md-nav__link">
+      <a href="../blog/2022/220429-dilb-ultimate-solution/" class="md-nav__link">
         
   
   
@@ -920,7 +984,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../2022/220502-how-dogs-work-in-epic7/" class="md-nav__link">
+      <a href="../blog/2022/220502-how-dogs-work-in-epic7/" class="md-nav__link">
         
   
   
@@ -943,7 +1007,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../2022/220511-how-to-write-python-into-classical-chinese/" class="md-nav__link">
+      <a href="../blog/2022/220511-how-to-write-python-into-classical-chinese/" class="md-nav__link">
         
   
   
@@ -966,7 +1030,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../2022/220529-python-personal-styleguide/" class="md-nav__link">
+      <a href="../blog/2022/220529-python-personal-styleguide/" class="md-nav__link">
         
   
   
@@ -989,7 +1053,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../2022/220530-auto-sign-in-guide/" class="md-nav__link">
+      <a href="../blog/2022/220530-auto-sign-in-guide/" class="md-nav__link">
         
   
   
@@ -1012,7 +1076,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../2022/220602-ipv6-bypass-billing-system/" class="md-nav__link">
+      <a href="../blog/2022/220602-ipv6-bypass-billing-system/" class="md-nav__link">
         
   
   
@@ -1035,7 +1099,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../2022/220902-python-mutable-defaults/" class="md-nav__link">
+      <a href="../blog/2022/220902-python-mutable-defaults/" class="md-nav__link">
         
   
   
@@ -1058,7 +1122,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../2022/220913-python-confusing-detail/" class="md-nav__link">
+      <a href="../blog/2022/220913-python-confusing-detail/" class="md-nav__link">
         
   
   
@@ -1081,7 +1145,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../2022/221113-rclone-sharepoint-for-hentai-at-home/" class="md-nav__link">
+      <a href="../blog/2022/221113-rclone-sharepoint-for-hentai-at-home/" class="md-nav__link">
         
   
   
@@ -1104,7 +1168,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../2022/221113-rclone-sharepoint-oauth-failed/" class="md-nav__link">
+      <a href="../blog/2022/221113-rclone-sharepoint-oauth-failed/" class="md-nav__link">
         
   
   
@@ -1127,7 +1191,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../2022/221115-issue-of-position-or-right-and-wrong/" class="md-nav__link">
+      <a href="../blog/2022/221115-issue-of-position-or-right-and-wrong/" class="md-nav__link">
         
   
   
@@ -1199,7 +1263,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../2023/230113-my-2022-website/" class="md-nav__link">
+      <a href="../blog/2023/230113-my-2022-website/" class="md-nav__link">
         
   
   
@@ -1222,7 +1286,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../2023/230114-matrix-qq-wechat-bridge/" class="md-nav__link">
+      <a href="../blog/2023/230114-matrix-qq-wechat-bridge/" class="md-nav__link">
         
   
   
@@ -1245,7 +1309,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../2023/230309-pycharm-git-submodule/" class="md-nav__link">
+      <a href="../blog/2023/230309-pycharm-git-submodule/" class="md-nav__link">
         
   
   
@@ -1268,7 +1332,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../2023/230406-pillow-affine-args/" class="md-nav__link">
+      <a href="../blog/2023/230406-pillow-affine-args/" class="md-nav__link">
         
   
   
@@ -1291,7 +1355,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../2023/230428-mokabot-arcaea/" class="md-nav__link">
+      <a href="../blog/2023/230428-mokabot-arcaea/" class="md-nav__link">
         
   
   
@@ -1314,7 +1378,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../2023/230504-chart-analysis-425ex/" class="md-nav__link">
+      <a href="../blog/2023/230504-chart-analysis-425ex/" class="md-nav__link">
         
   
   
@@ -1337,7 +1401,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../2023/230512-arcaea-webapi-archive/" class="md-nav__link">
+      <a href="../blog/2023/230512-arcaea-webapi-archive/" class="md-nav__link">
         
   
   
@@ -1365,8 +1429,6 @@
                 
   
   
-    
-  
   
   
     
@@ -1377,11 +1439,11 @@
       
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_3" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_3" >
         
           
           <label class="md-nav__link" for="__nav_5_3" id="__nav_5_3_label" tabindex="0">
@@ -1397,7 +1459,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_3_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_3_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_5_3">
             <span class="md-nav__icon md-icon"></span>
             2024
@@ -1411,7 +1473,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../240611-python-asynchronous/" class="md-nav__link">
+      <a href="../blog/2024/240611-python-asynchronous/" class="md-nav__link">
         
   
   
@@ -1434,7 +1496,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../241012-ubuntu-2404-multi-vm-networking/" class="md-nav__link">
+      <a href="../blog/2024/241012-ubuntu-2404-multi-vm-networking/" class="md-nav__link">
         
   
   
@@ -1457,7 +1519,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../241013-hadoop-cluster-setup/" class="md-nav__link">
+      <a href="../blog/2024/241013-hadoop-cluster-setup/" class="md-nav__link">
         
   
   
@@ -1477,30 +1539,10 @@
                 
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  
-  <span class="md-ellipsis">
-    使用 Cloudflare WARP 解决 Google Scholar 403 问题
-    
-  </span>
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../blog/2024/241114-google-scholar-403/" class="md-nav__link">
         
   
   
@@ -1511,93 +1553,6 @@
   
 
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="目录">
-  
-  
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      目录
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#_1" class="md-nav__link">
-    <span class="md-ellipsis">
-      问题描述
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_2" class="md-nav__link">
-    <span class="md-ellipsis">
-      解决方案
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="解决方案">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#warp" class="md-nav__link">
-    <span class="md-ellipsis">
-      安装 WARP
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_3" class="md-nav__link">
-    <span class="md-ellipsis">
-      配置代理
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#ip-acl" class="md-nav__link">
-    <span class="md-ellipsis">
-      为 IP 添加 ACL
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_4" class="md-nav__link">
-    <span class="md-ellipsis">
-      协议嗅探
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_5" class="md-nav__link">
-    <span class="md-ellipsis">
-      相关文档
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -1610,7 +1565,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../241126-google-drive-rclone-webdav/" class="md-nav__link">
+      <a href="../blog/2024/241126-google-drive-rclone-webdav/" class="md-nav__link">
         
   
   
@@ -1682,7 +1637,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../2024-leetcode-clock-event/241024-3175/" class="md-nav__link">
+      <a href="../blog/2024-leetcode-clock-event/241024-3175/" class="md-nav__link">
         
   
   
@@ -1705,7 +1660,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../2024-leetcode-clock-event/241025-3180/" class="md-nav__link">
+      <a href="../blog/2024-leetcode-clock-event/241025-3180/" class="md-nav__link">
         
   
   
@@ -1728,7 +1683,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../2024-leetcode-clock-event/241026-3181/" class="md-nav__link">
+      <a href="../blog/2024-leetcode-clock-event/241026-3181/" class="md-nav__link">
         
   
   
@@ -1751,7 +1706,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../2024-leetcode-clock-event/241027-684/" class="md-nav__link">
+      <a href="../blog/2024-leetcode-clock-event/241027-684/" class="md-nav__link">
         
   
   
@@ -1774,7 +1729,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../2024-leetcode-clock-event/241028-685/" class="md-nav__link">
+      <a href="../blog/2024-leetcode-clock-event/241028-685/" class="md-nav__link">
         
   
   
@@ -1797,7 +1752,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../2024-leetcode-clock-event/241029-3211/" class="md-nav__link">
+      <a href="../blog/2024-leetcode-clock-event/241029-3211/" class="md-nav__link">
         
   
   
@@ -1820,7 +1775,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../2024-leetcode-clock-event/241030-3216/" class="md-nav__link">
+      <a href="../blog/2024-leetcode-clock-event/241030-3216/" class="md-nav__link">
         
   
   
@@ -1843,7 +1798,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../2024-leetcode-clock-event/241101-3259/" class="md-nav__link">
+      <a href="../blog/2024-leetcode-clock-event/241101-3259/" class="md-nav__link">
         
   
   
@@ -1866,7 +1821,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../2024-leetcode-clock-event/241102-3226/" class="md-nav__link">
+      <a href="../blog/2024-leetcode-clock-event/241102-3226/" class="md-nav__link">
         
   
   
@@ -1889,7 +1844,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../2024-leetcode-clock-event/241103-638/" class="md-nav__link">
+      <a href="../blog/2024-leetcode-clock-event/241103-638/" class="md-nav__link">
         
   
   
@@ -1912,7 +1867,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../2024-leetcode-clock-event/241104-633/" class="md-nav__link">
+      <a href="../blog/2024-leetcode-clock-event/241104-633/" class="md-nav__link">
         
   
   
@@ -1935,7 +1890,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../2024-leetcode-clock-event/241105-3222/" class="md-nav__link">
+      <a href="../blog/2024-leetcode-clock-event/241105-3222/" class="md-nav__link">
         
   
   
@@ -1958,7 +1913,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../2024-leetcode-clock-event/241106-3254/" class="md-nav__link">
+      <a href="../blog/2024-leetcode-clock-event/241106-3254/" class="md-nav__link">
         
   
   
@@ -1981,7 +1936,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../2024-leetcode-clock-event/241107-3255/" class="md-nav__link">
+      <a href="../blog/2024-leetcode-clock-event/241107-3255/" class="md-nav__link">
         
   
   
@@ -2004,7 +1959,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../2024-leetcode-clock-event/241109-3242/" class="md-nav__link">
+      <a href="../blog/2024-leetcode-clock-event/241109-3242/" class="md-nav__link">
         
   
   
@@ -2027,7 +1982,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../2024-leetcode-clock-event/241110-540/" class="md-nav__link">
+      <a href="../blog/2024-leetcode-clock-event/241110-540/" class="md-nav__link">
         
   
   
@@ -2050,7 +2005,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../2024-leetcode-clock-event/241111-1547/" class="md-nav__link">
+      <a href="../blog/2024-leetcode-clock-event/241111-1547/" class="md-nav__link">
         
   
   
@@ -2073,7 +2028,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../2024-leetcode-clock-event/241112-3258/" class="md-nav__link">
+      <a href="../blog/2024-leetcode-clock-event/241112-3258/" class="md-nav__link">
         
   
   
@@ -2145,7 +2100,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../2025/250217-fix-steamdeck-visual-novel-video/" class="md-nav__link">
+      <a href="../blog/2025/250217-fix-steamdeck-visual-novel-video/" class="md-nav__link">
         
   
   
@@ -2168,7 +2123,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../2025/250406-amend-old-commit-interactively-rebase/" class="md-nav__link">
+      <a href="../blog/2025/250406-amend-old-commit-interactively-rebase/" class="md-nav__link">
         
   
   
@@ -2191,7 +2146,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../2025/250606-python-folder-share/" class="md-nav__link">
+      <a href="../blog/2025/250606-python-folder-share/" class="md-nav__link">
         
   
   
@@ -2230,6 +2185,8 @@
             
             
               
+                
+              
               <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
                 <div class="md-sidebar__scrollwrap">
                   <div class="md-sidebar__inner">
@@ -2239,6 +2196,8 @@
   
   
   
+    
+  
   
     <label class="md-nav__title" for="__toc">
       <span class="md-nav__icon md-icon"></span>
@@ -2247,9 +2206,9 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#_1" class="md-nav__link">
+  <a href="#steam" class="md-nav__link">
     <span class="md-ellipsis">
-      问题描述
+      Steam
     </span>
   </a>
   
@@ -2258,58 +2217,16 @@
         <li class="md-nav__item">
   <a href="#_2" class="md-nav__link">
     <span class="md-ellipsis">
-      解决方案
+      バンドリ！ ガールズバンドパーティ！
     </span>
   </a>
-  
-    <nav class="md-nav" aria-label="解决方案">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#warp" class="md-nav__link">
-    <span class="md-ellipsis">
-      安装 WARP
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_3" class="md-nav__link">
-    <span class="md-ellipsis">
-      配置代理
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#ip-acl" class="md-nav__link">
-    <span class="md-ellipsis">
-      为 IP 添加 ACL
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_4" class="md-nav__link">
-    <span class="md-ellipsis">
-      协议嗅探
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#_5" class="md-nav__link">
+  <a href="#osu" class="md-nav__link">
     <span class="md-ellipsis">
-      相关文档
+      osu!
     </span>
   </a>
   
@@ -2334,99 +2251,38 @@ doesn't, the page title (or respectively site name) is used
 as the main headline.
 -->
 
-    <h1>使用 Cloudflare WARP 解决 Google Scholar 403 问题</h1>
-
 
 <!-- Markdown content -->
 
     
 
-        <aside class="mdx-author">
-            <p>
-                <img src="https://avatars.githubusercontent.com/zhanbao2000" alt="@zhanbao2000">
-            </p>
-            <p>
-                <span>
-                    <b>Akiba Arisa</b> · <a href="https://github.com/zhanbao2000">@zhanbao2000</a>
-                </span>
-                <span>
-                    <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" fill="currentColor" class="bi bi-clock" viewBox="0 0 16 16">
-                        <path d="M8 3.5a.5.5 0 0 0-1 0V9a.5.5 0 0 0 .252.434l3.5 2a.5.5 0 0 0 .496-.868L8 8.71V3.5z"/>
-                        <path d="M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16zm7-8A7 7 0 1 1 1 8a7 7 0 0 1 14 0z"/>
-                    </svg> 4 min read
-                </span>
-            </p>
-        </aside>
-
     
 
-    
-        <div class="tags">
-        
-            <a href="/tags/#cloudflare" class="tag"><code>#cloudflare</code></a>
-        
-            <a href="/tags/#proxy" class="tag"><code>#proxy</code></a>
-        
-        </div>
-    
-
-    <h2 id="_1">问题描述<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
-<p>因为代理服务器 IP 被 Google 拉入了黑名单，导致访问 Google Scholar 时出现 403 错误。但是更换服务器 IP 过于麻烦，因此尝试使用 Cloudflare WARP 来解决这个问题。</p>
-<p>在使用 Cloudflare WARP 方案前，你应该首先考虑以下方案，如果还是解决不了，或者你不愿意，那么你可以试试本篇的方案。</p>
+    <h1 id="_1">扩列<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h1>
+<p>这个页面可能会很乱，毕竟扩列的图实在是太多了。</p>
+<h2 id="steam"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2a10 10 0 0 1 10 10 10 10 0 0 1-10 10c-4.6 0-8.45-3.08-9.64-7.27l3.83 1.58a2.84 2.84 0 0 0 2.78 2.27c1.56 0 2.83-1.27 2.83-2.83v-.13l3.4-2.43h.08c2.08 0 3.77-1.69 3.77-3.77s-1.69-3.77-3.77-3.77-3.78 1.69-3.78 3.77v.05l-2.37 3.46-.16-.01c-.59 0-1.14.18-1.59.49L2 11.2C2.43 6.05 6.73 2 12 2M8.28 17.17c.8.33 1.72-.04 2.05-.84s-.05-1.71-.83-2.04l-1.28-.53c.49-.18 1.04-.19 1.56.03.53.21.94.62 1.15 1.15.22.52.22 1.1 0 1.62-.43 1.08-1.7 1.6-2.78 1.15-.5-.21-.88-.59-1.09-1.04zm9.52-7.75c0 1.39-1.13 2.52-2.52 2.52a2.52 2.52 0 0 1-2.51-2.52 2.5 2.5 0 0 1 2.51-2.51 2.52 2.52 0 0 1 2.52 2.51m-4.4 0c0 1.04.84 1.89 1.89 1.89 1.04 0 1.88-.85 1.88-1.89s-.84-1.89-1.88-1.89c-1.05 0-1.89.85-1.89 1.89"/></svg></span> Steam<a class="headerlink" href="#steam" title="Permanent link">&para;</a></h2>
+<p>基本上只玩 GalGame 和 Counter-Strike 2，偶尔玩一些 3A。团建类很少玩，不过欢迎找我团建。</p>
+<p>刚拿到 Steam Deck 的那一段时间沉迷于土豆兄弟、挺进地牢等小游戏，现在不怎么玩了。</p>
+<p>GalGame 目前进度见 <a href="https://vndb.org/u200138/ulist?vnlist=1">我的 VNDB</a>。</p>
+<p>CS2 完美最高答辩 S，只打 5 排固定队，主要负责在队伍里当瘤子或者拉枪线。</p>
+<p><a href="https://steamcommunity.com/id/akibaarisa/"><img alt="Steam Card" src="https://card.yuy1n.io/card/76561198428921353/dark,en,badge,group,badges,games,reviews" /></a></p>
+<h2 id="_2"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19.59 3H22v2h-1.59l-5.29 5.29-1.41-1.39zM12 9c.26 0 .5.1.71.3l2 2c.18.2.29.43.29.7l-.1.4-4 8c-.19.35-.54.53-.9.53-.35 0-.71-.18-.89-.53l-1.86-3.7-3.7-1.8c-.37-.2-.55-.55-.55-.9s.18-.7.55-.9l8-4c.14-.1.29-.1.45-.1m-2.65 2.82-.7.68 2.85 2.85.68-.7zm-1.41 1.41-.71.71 2.83 2.83.71-.71z"/></svg></span> バンドリ！ ガールズバンドパーティ！<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
+<p>18 年入坑，纯日服玩家，只打有判全 All Perfect，目前 <del>应该还是</del> 全曲 AP，不冲活动，只给各大评级组当工具人。</p>
+<p>打过 3 次ガルパ杯，但是都止步于 2 次予選，毕竟，2 次予選から準決勝に出場できる参加者は 10 名です。偶尔有幸也会参与群友举办的小型比赛，虽然嘴上说着友谊第一，但实际上心想着哪怕拿一次前三也好。</p>
+<p>已经和🐔🐶二团切割，引流的还是太多了。</p>
+<p><a href="https://bestdori.com/community/user/zhanbao2000"><img alt="Bandori Card" src="../assets/bandori_board_250611.webp" /></a></p>
+<p>整过不少烂活，什么🔥🐔仙人、刹那仙人、断手器仙人：</p>
+<p><a class="glightbox" href="../assets/bandori_firebird.webp" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="firebird" src="../assets/bandori_firebird.webp" /></a></p>
+<p><a class="glightbox" href="../assets/bandori_setuna_trip.webp" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="setuna_trip" src="../assets/bandori_setuna_trip.webp" /></a></p>
+<p><a class="glightbox" href="../assets/bandori_happy_synthesizer.webp" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="happy_synthesizer" src="../assets/bandori_happy_synthesizer.webp" /></a></p>
+<h2 id="osu"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M7.698 10.362a1.94 1.94 0 0 0-.7-.516q-.421-.189-.988-.189c-.567 0-.704.063-.982.189s-.51.298-.692.516q-.273.328-.413.777-.139.448-.139.96 0 .511.14.952.139.44.412.767.274.329.692.512t.982.184c.565 0 .707-.062.988-.184q.422-.184.7-.512.279-.327.413-.767.135-.44.135-.952a3.3 3.3 0 0 0-.135-.96 2.1 2.1 0 0 0-.413-.777m-.965 2.81q-.22.372-.723.372-.494 0-.713-.372-.22-.373-.22-1.073c0-.7.073-.824.22-1.073q.22-.372.713-.372.503 0 .723.372.22.373.22 1.073t-.22 1.073m11.89-.83-.09-4.39a4.5 4.5 0 0 1 .69-.054q.351 0 .701.054l-.09 4.39q-.315.053-.601.053a3.5 3.5 0 0 1-.61-.054m1.319 1.4q0 .332-.054.664a4 4 0 0 1-.655.054 4 4 0 0 1-.664-.054 4 4 0 0 1-.054-.655q0-.323.054-.665a4 4 0 0 1 .655-.054q.323 0 .664.054.054.341.054.656m-3.223-4.03q.315 0 .638.053v4.461q-.288.099-.759.193a5.246 5.246 0 0 1-1.863.023 1.7 1.7 0 0 1-.74-.305q-.32-.234-.507-.683-.189-.449-.189-1.193V9.765a4 4 0 0 1 .638-.054q.313 0 .637.054v2.46q0 .367.058.606a.9.9 0 0 0 .18.377.66.66 0 0 0 .3.197q.18.058.422.058.332 0 .557-.062V9.765a4 4 0 0 1 .628-.054m-4.362 2.683q.08.225.08.548a1.4 1.4 0 0 1-.542 1.117q-.265.212-.642.333-.378.12-.853.12a5 5 0 0 1-.395-.013 3 3 0 0 1-.346-.045 4 4 0 0 1-.327-.076 4 4 0 0 1-.35-.116 2.6 2.6 0 0 1 .085-.49 3 3 0 0 1 .175-.48q.296.117.561.175.265.06.552.059.126 0 .274-.023a1 1 0 0 0 .274-.08.65.65 0 0 0 .21-.153.35.35 0 0 0 .086-.247q0-.216-.13-.31a1.3 1.3 0 0 0-.364-.166l-.556-.162q-.503-.143-.786-.426-.282-.283-.283-.848 0-.682.49-1.068.489-.386 1.332-.386.35 0 .692.062.341.063.691.189a2.5 2.5 0 0 1-.09.485 2.3 2.3 0 0 1-.17.44 4 4 0 0 0-.476-.158 2.2 2.2 0 0 0-.548-.067q-.305 0-.476.094a.32.32 0 0 0-.17.301q0 .197.121.278t.346.153l.511.153q.252.072.454.175t.345.255.225.377M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12c6.628 0 12-5.373 12-12S18.628 0 12 0m0 22.8C6.035 22.8 1.2 17.965 1.2 12S6.035 1.2 12 1.2 22.8 6.035 22.8 12 17.965 22.8 12 22.8"/></svg></span> osu!<a class="headerlink" href="#osu" title="Permanent link">&para;</a></h2>
+<p>std 和 4K 玩家，入坑不到半年，有点菜。</p>
 <ul>
-<li>改 IPv6：<a href="https://jlhzabc.sbs/article/33">解决无法访问谷歌学术问题</a></li>
-<li>用 <a href="https://ghelper.net/">谷歌上网助手</a></li>
-<li>换代理 IP：自己去搜对应 VPS 服务商的教程</li>
+<li>键盘：Piifox WALKER68 磁玉轴 Pro</li>
+<li>鼠标：Logitech G PRO WIRELESS</li>
+<li>数位板：Wacom CTL-472</li>
 </ul>
-<h2 id="_2">解决方案<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
-<h3 id="warp">安装 WARP<a class="headerlink" href="#warp" title="Permanent link">&para;</a></h3>
-<p>首先使用 docker 安装 WARP（来源：<a href="https://github.com/TunMax/canal">TunMax/canal</a>）</p>
-<div class="highlight"><pre><span></span><code>docker<span class="w"> </span>run<span class="w"> </span>-d<span class="w"> </span>-p<span class="w"> </span><span class="m">127</span>.0.0.1:1080:1080/tcp<span class="w"> </span>-p<span class="w"> </span><span class="m">127</span>.0.0.1:1080:1080/udp<span class="w"> </span>-e<span class="w"> </span><span class="nv">SOCKS5_MODE</span><span class="o">=</span><span class="nb">true</span><span class="w"> </span>--name<span class="w"> </span>canal<span class="w"> </span>tunmax/canal:latest
-</code></pre></div>
-<p>此时我们获得了一个运行在 <code>socks5://127.0.0.1:1080</code> 的代理。</p>
-<h3 id="_3">配置代理<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
-<p>我们使用 ACL 的方法，在服务端过滤出 Google Scholar 的请求，然后使用 WARP 代理。</p>
-<p>以 Hysteria2 为例，在配置文件 <code>config.yaml</code> 后追加：</p>
-<div class="highlight"><pre><span></span><code><span class="nt">outbounds</span><span class="p">:</span>
-<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">warp</span>
-<span class="w">    </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">socks5</span>
-<span class="w">    </span><span class="nt">socks5</span><span class="p">:</span>
-<span class="w">      </span><span class="nt">addr</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">127.0.0.1:1080</span>
-
-<span class="nt">acl</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">inline</span><span class="p">:</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">warp(geosite:google-scholar)</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">direct(all)</span>
-</code></pre></div>
-<p>上述配置<strong>只适用于使用系统代理的用户</strong>。对于使用 TUN 的用户，可能会遇到仍然 403 的问题。这是因为 TUN 会先解析域名为 IP 再对该 IP 进行访问，这会导致服务端的 ACL 抓不到。</p>
-<p>有两个方式可以解决：</p>
-<ul>
-<li><a href="#ip-acl">为 IP 添加 ACL</a></li>
-<li><a href="#_4">协议嗅探</a></li>
-</ul>
-<h3 id="ip-acl">为 IP 添加 ACL<a class="headerlink" href="#ip-acl" title="Permanent link">&para;</a></h3>
-<p>在 <code>direct(all)</code> 之前添加一行</p>
-<div class="highlight"><pre><span></span><code><span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">warp(142.250.68.100)</span>
-</code></pre></div>
-<p>这会使访问 <code>142.250.68.100</code> 的请求也使用 WARP 代理。具体的 IP 需要在客户端使用 <code>nslookup scholar.google.com</code> 来获取。</p>
-<p>不过 Google Scholar 的 IP 会随时变换，因此这个方法不是很好，需要经常上去更新 IP 地址，而且也会遇到客户端和服务端解析出来的 IP 不一致的问题。因此只适用于临时使用的情况。</p>
-<h3 id="_4">协议嗅探<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h3>
-<p>开启协议嗅探后，服务端能通过 DPI 从上层协议中获取目标域名，将 IP 请求转换为域名请求。</p>
-<p>在配置文件 <code>config.yaml</code> 后继续追加：</p>
-<div class="highlight"><pre><span></span><code><span class="nt">sniff</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">enable</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span><span class="w"> </span>
-<span class="w">  </span><span class="nt">timeout</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">2s</span><span class="w"> </span>
-<span class="w">  </span><span class="nt">rewriteDomain</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span><span class="w"> </span>
-<span class="w">  </span><span class="nt">tcpPorts</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">80,443,8000-9000</span><span class="w"> </span>
-<span class="w">  </span><span class="nt">udpPorts</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">all</span>
-</code></pre></div>
-<p>但是协议嗅探可能会对服务端的性能以及响应速度产生影响，因此需要根据实际情况来决定是否开启。</p>
-<h2 id="_5">相关文档<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h2>
-<ul>
-<li><a href="https://hysteria.network/zh/docs/advanced/Full-Server-Config/#outbounds">outbounds 语法</a></li>
-<li><a href="https://hysteria.network/zh/docs/advanced/ACL/#_6">ACL 语法</a></li>
-<li><a href="https://hysteria.network/zh/docs/advanced/Full-Server-Config/#sniff">协议嗅探 (Sniff)</a></li>
-</ul>
+<p><a href="https://osu.ppy.sh/users/15046470"><img alt="osu! Card" src="../assets/osu_250611.webp" /></a></p>
 
     <!-- Last update of source file -->
     
@@ -2453,7 +2309,7 @@ as the main headline.
     <span class="md-icon" title="最后更新">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_datetime" title="2024年11月15日 11:01:49 UTC">2024-11-15 11:01:49</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_datetime" title="2025年6月11日 03:10:14 UTC">2025-06-11 03:10:14</span>
   </span>
 
     
@@ -2463,7 +2319,7 @@ as the main headline.
     <span class="md-icon" title="创建日期">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M14.47 15.08 11 13V7h1.5v5.25l3.08 1.83c-.41.28-.79.62-1.11 1m-1.39 4.84c-.36.05-.71.08-1.08.08-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8c0 .37-.03.72-.08 1.08.69.1 1.33.32 1.92.64.1-.56.16-1.13.16-1.72 0-5.5-4.5-10-10-10S2 6.5 2 12s4.47 10 10 10c.59 0 1.16-.06 1.72-.16-.32-.59-.54-1.23-.64-1.92M18 15v3h-3v2h3v3h2v-3h3v-2h-3v-3z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_datetime" title="2024年11月14日 10:07:28 UTC">2024-11-14 10:07:28</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_datetime" title="2025年6月11日 03:10:14 UTC">2025-06-11 03:10:14</span>
   </span>
 
     
@@ -2473,54 +2329,6 @@ as the main headline.
 
         
     
-
-    
-
-        <!-- Giscus -->
-        <h2 id="__comments">评论</h2>
-        <script src="https://giscus.app/client.js"
-                data-repo="zhanbao2000/blog"
-                data-repo-id="R_kgDOHIZK7A"
-                data-category="Announcements"
-                data-category-id="DIC_kwDOHIZK7M4COdSe"
-                data-mapping="pathname"
-                data-reactions-enabled="1"
-                data-emit-metadata="0"
-                data-input-position="top"
-                data-theme="light"
-                data-lang="zh-CN"
-                data-loading="lazy"
-                crossorigin="anonymous"
-                async>
-        </script>
-
-        <!-- Reload on palette change -->
-        <script>
-            var palette = __md_get("__palette");
-            if (palette && typeof palette.color === "object")
-                if (palette.color.scheme === "slate") {
-                    const giscus = document.querySelector("script[src*=giscus]");
-                    giscus.setAttribute("data-theme", "transparent_dark")
-                }
-
-            /* Register event handlers after documented loaded */
-            document.addEventListener("DOMContentLoaded", function() {
-                const ref = document.querySelector("[data-md-component=palette]");
-                ref.addEventListener("change", function() {
-                    const palette = __md_get("__palette");
-                    if (palette && typeof palette.color === "object") {
-                        const theme = palette.color.scheme === "slate" ? "transparent_dark" : "light";
-
-                        /* Instruct Giscus to change theme */
-                        const frame = document.querySelector(".giscus-frame");
-                        frame.contentWindow.postMessage(
-                            { giscus: { setConfig: { theme } } },
-                            "https://giscus.app"
-                        )
-                    }
-                })
-            })
-        </script>
 
     
 
@@ -2544,10 +2352,12 @@ as the main headline.
   
     
       
-      <nav class="md-footer__inner md-grid" aria-label="页脚" >
+        
+      
+      <nav class="md-footer__inner md-grid" aria-label="页脚" hidden>
         
           
-          <a href="../241013-hadoop-cluster-setup/" class="md-footer__link md-footer__link--prev" aria-label="上一页: Hadoop 3.4.0 集群搭建教程">
+          <a href=".." class="md-footer__link md-footer__link--prev" aria-label="上一页: 主页">
             <div class="md-footer__button md-icon">
               
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
@@ -2557,20 +2367,20 @@ as the main headline.
                 上一页
               </span>
               <div class="md-ellipsis">
-                Hadoop 3.4.0 集群搭建教程
+                主页
               </div>
             </div>
           </a>
         
         
           
-          <a href="../241126-google-drive-rclone-webdav/" class="md-footer__link md-footer__link--next" aria-label="下一页: 使用 rclone 为 Google Drive 提供 WebDAV 访问方式">
+          <a href="../tags/" class="md-footer__link md-footer__link--next" aria-label="下一页: 标签">
             <div class="md-footer__title">
               <span class="md-footer__direction">
                 下一页
               </span>
               <div class="md-ellipsis">
-                使用 rclone 为 Google Drive 提供 WebDAV 访问方式
+                标签
               </div>
             </div>
             <div class="md-footer__button md-icon">
@@ -2630,18 +2440,18 @@ as the main headline.
     
     
       
-      <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.footer", "navigation.tabs", "navigation.top", "navigation.tracking", "content.code.copy"], "search": "../../../assets/javascripts/workers/search.d50fe291.min.js", "tags": null, "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}, "version": null}</script>
+      <script id="__config" type="application/json">{"base": "..", "features": ["navigation.footer", "navigation.tabs", "navigation.top", "navigation.tracking", "content.code.copy"], "search": "../assets/javascripts/workers/search.d50fe291.min.js", "tags": null, "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}, "version": null}</script>
     
     
-      <script src="../../../assets/javascripts/bundle.13a4f30d.min.js"></script>
+      <script src="../assets/javascripts/bundle.13a4f30d.min.js"></script>
       
-        <script src="../../../javascripts/counter.js"></script>
+        <script src="../javascripts/counter.js"></script>
       
-        <script src="../../../javascripts/mathjax.js"></script>
+        <script src="../javascripts/mathjax.js"></script>
       
         <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
       
-        <script src="../../../javascripts/waifu/autoload.js" async></script>
+        <script src="../javascripts/waifu/autoload.js" async></script>
       
     
   <script id="init-glightbox">const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": false, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});
