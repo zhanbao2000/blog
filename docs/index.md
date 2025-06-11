@@ -15,7 +15,8 @@ hide:
     该博客均为实验性内容，不代表以后最终成品。
 
 [目录 :material-table-of-contents:](toc.md){ .md-button .md-button--primary }
-[标签 :octicons-tag-16:](tags.md){ .md-button }
+[标签 :material-tag-outline:](tags.md){ .md-button }
+[扩列 :material-gamepad-variant-outline:](expand.md){ .md-button }
 
 ## 关于我
 
