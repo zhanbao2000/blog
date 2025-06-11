@@ -9,6 +9,8 @@ hide:
 
 这个页面可能会很乱，毕竟扩列的图实在是太多了。
 
+手机上可能看得更舒服吧。
+
 ## :material-steam: Steam
 
 基本上只玩 GalGame 和 Counter-Strike 2，偶尔玩一些 3A。团建类很少玩，不过欢迎找我团建。
