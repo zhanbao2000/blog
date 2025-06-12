@@ -1,5 +1,6 @@
 ---
 title: 扩列
+giscus: true
 hide:
     - navigation
     - footer
