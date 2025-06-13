@@ -6,19 +6,17 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
-        <meta name="description" content="如题">
+        <meta name="description" content="Arisa 的个人博客">
       
       
         <meta name="author" content="Akiba Arisa">
       
       
-        <link rel="canonical" href="https://blog.arisa.moe/blog/2023/230406-pillow-affine-args/">
+        <link rel="canonical" href="https://blog.arisa.moe/blog/2025/250613-steamdeck_proxy/">
       
       
-        <link rel="prev" href="../230309-pycharm-git-submodule/">
+        <link rel="prev" href="../250611-steamdeck-battery-black-screen-fix/">
       
-      
-        <link rel="next" href="../230428-mokabot-arcaea/">
       
       
       <link rel="icon" href="../../../assets/favicon.webp">
@@ -26,7 +24,7 @@
     
     
       
-        <title>（Pillow）Affine 图形变换的矩阵参数详解 - Arisa | Blog</title>
+        <title>Steam Deck 手机热点代理及其设置方法 - Arisa | Blog</title>
       
     
     
@@ -89,7 +87,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#_1" class="md-skip">
+        <a href="#1" class="md-skip">
           跳转至
         </a>
       
@@ -123,7 +121,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              （Pillow）Affine 图形变换的矩阵参数详解
+              Steam Deck 手机热点代理及其设置方法
             
           </span>
         </div>
@@ -1155,8 +1153,6 @@
                 
   
   
-    
-  
   
   
     
@@ -1167,11 +1163,11 @@
       
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_2" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_2" >
         
           
           <label class="md-nav__link" for="__nav_5_2" id="__nav_5_2_label" tabindex="0">
@@ -1187,7 +1183,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_2_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_2_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_5_2">
             <span class="md-nav__icon md-icon"></span>
             2023
@@ -1201,7 +1197,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../230113-my-2022-website/" class="md-nav__link">
+      <a href="../../2023/230113-my-2022-website/" class="md-nav__link">
         
   
   
@@ -1224,7 +1220,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../230114-matrix-qq-wechat-bridge/" class="md-nav__link">
+      <a href="../../2023/230114-matrix-qq-wechat-bridge/" class="md-nav__link">
         
   
   
@@ -1247,7 +1243,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../230309-pycharm-git-submodule/" class="md-nav__link">
+      <a href="../../2023/230309-pycharm-git-submodule/" class="md-nav__link">
         
   
   
@@ -1267,30 +1263,10 @@
                 
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  
-  <span class="md-ellipsis">
-    （Pillow）Affine 图形变换的矩阵参数详解
-    
-  </span>
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../../2023/230406-pillow-affine-args/" class="md-nav__link">
         
   
   
@@ -1301,120 +1277,6 @@
   
 
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="目录">
-  
-  
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      目录
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#_1" class="md-nav__link">
-    <span class="md-ellipsis">
-      一、背景
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_2" class="md-nav__link">
-    <span class="md-ellipsis">
-      二、渲染方法
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_3" class="md-nav__link">
-    <span class="md-ellipsis">
-      三、变换矩阵
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#pillow" class="md-nav__link">
-    <span class="md-ellipsis">
-      四、矩阵各值对 Pillow 实际图像的影响
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="四、矩阵各值对 Pillow 实际图像的影响">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#41-x-xscale" class="md-nav__link">
-    <span class="md-ellipsis">
-      4.1 x 轴缩放系数 xScale
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#42-x-xskew" class="md-nav__link">
-    <span class="md-ellipsis">
-      4.2 x 轴旋转系数 xSkew
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#43-x-xtranslate" class="md-nav__link">
-    <span class="md-ellipsis">
-      4.3 x 轴平移系数 xTranslate
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#44-y-yskew" class="md-nav__link">
-    <span class="md-ellipsis">
-      4.4 y 轴旋转系数 ySkew
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#45-y-yscale" class="md-nav__link">
-    <span class="md-ellipsis">
-      4.5 y 轴缩放系数 yScale
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#46-y-ytranslate" class="md-nav__link">
-    <span class="md-ellipsis">
-      4.6 y 轴平移系数 yTranslate
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -1427,7 +1289,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../230428-mokabot-arcaea/" class="md-nav__link">
+      <a href="../../2023/230428-mokabot-arcaea/" class="md-nav__link">
         
   
   
@@ -1450,7 +1312,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../230504-chart-analysis-425ex/" class="md-nav__link">
+      <a href="../../2023/230504-chart-analysis-425ex/" class="md-nav__link">
         
   
   
@@ -1473,7 +1335,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../230512-arcaea-webapi-archive/" class="md-nav__link">
+      <a href="../../2023/230512-arcaea-webapi-archive/" class="md-nav__link">
         
   
   
@@ -2128,6 +1990,8 @@
                 
   
   
+    
+  
   
   
     
@@ -2138,11 +2002,11 @@
       
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_5" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_5" checked>
         
           
           <label class="md-nav__link" for="__nav_5_5" id="__nav_5_5_label" tabindex="0">
@@ -2158,7 +2022,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_5_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_5_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_5_5">
             <span class="md-nav__icon md-icon"></span>
             2025
@@ -2172,7 +2036,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../2025/250217-fix-steamdeck-visual-novel-video/" class="md-nav__link">
+      <a href="../250217-fix-steamdeck-visual-novel-video/" class="md-nav__link">
         
   
   
@@ -2195,7 +2059,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../2025/250406-amend-old-commit-interactively-rebase/" class="md-nav__link">
+      <a href="../250406-amend-old-commit-interactively-rebase/" class="md-nav__link">
         
   
   
@@ -2218,7 +2082,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../2025/250606-python-folder-share/" class="md-nav__link">
+      <a href="../250606-python-folder-share/" class="md-nav__link">
         
   
   
@@ -2241,7 +2105,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../2025/250611-steamdeck-battery-black-screen-fix/" class="md-nav__link">
+      <a href="../250611-steamdeck-battery-black-screen-fix/" class="md-nav__link">
         
   
   
@@ -2261,10 +2125,30 @@
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="../../2025/250613-steamdeck_proxy/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    Steam Deck 手机热点代理及其设置方法
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   
@@ -2275,6 +2159,126 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. 背景
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-steam-deck" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. Steam Deck 代理体系说明
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2. Steam Deck 代理体系说明">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#21-kde-plasma" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.1 KDE Plasma 设置应用
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#22-http_proxy-https_proxy" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.2 终端 http_proxy 和 https_proxy 环境变量
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#23" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.3 应用程序内代理
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. 部署局域网代理
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. 设置代理
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4. 设置代理">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#41-steam" class="md-nav__link">
+    <span class="md-ellipsis">
+      4.1 Steam 代理
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#42" class="md-nav__link">
+    <span class="md-ellipsis">
+      4.2 终端代理
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-steam" class="md-nav__link">
+    <span class="md-ellipsis">
+      5. 如何使 Steam 下载流量不经过代理，与社区流量分流
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -2320,91 +2324,46 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#_1" class="md-nav__link">
+  <a href="#1" class="md-nav__link">
     <span class="md-ellipsis">
-      一、背景
+      1. 背景
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#_2" class="md-nav__link">
+  <a href="#2-steam-deck" class="md-nav__link">
     <span class="md-ellipsis">
-      二、渲染方法
+      2. Steam Deck 代理体系说明
     </span>
   </a>
   
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_3" class="md-nav__link">
-    <span class="md-ellipsis">
-      三、变换矩阵
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#pillow" class="md-nav__link">
-    <span class="md-ellipsis">
-      四、矩阵各值对 Pillow 实际图像的影响
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="四、矩阵各值对 Pillow 实际图像的影响">
+    <nav class="md-nav" aria-label="2. Steam Deck 代理体系说明">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#41-x-xscale" class="md-nav__link">
+  <a href="#21-kde-plasma" class="md-nav__link">
     <span class="md-ellipsis">
-      4.1 x 轴缩放系数 xScale
+      2.1 KDE Plasma 设置应用
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#42-x-xskew" class="md-nav__link">
+  <a href="#22-http_proxy-https_proxy" class="md-nav__link">
     <span class="md-ellipsis">
-      4.2 x 轴旋转系数 xSkew
+      2.2 终端 http_proxy 和 https_proxy 环境变量
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#43-x-xtranslate" class="md-nav__link">
+  <a href="#23" class="md-nav__link">
     <span class="md-ellipsis">
-      4.3 x 轴平移系数 xTranslate
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#44-y-yskew" class="md-nav__link">
-    <span class="md-ellipsis">
-      4.4 y 轴旋转系数 ySkew
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#45-y-yscale" class="md-nav__link">
-    <span class="md-ellipsis">
-      4.5 y 轴缩放系数 yScale
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#46-y-ytranslate" class="md-nav__link">
-    <span class="md-ellipsis">
-      4.6 y 轴平移系数 yTranslate
+      2.3 应用程序内代理
     </span>
   </a>
   
@@ -2412,6 +2371,57 @@
         
       </ul>
     </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. 部署局域网代理
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. 设置代理
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4. 设置代理">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#41-steam" class="md-nav__link">
+    <span class="md-ellipsis">
+      4.1 Steam 代理
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#42" class="md-nav__link">
+    <span class="md-ellipsis">
+      4.2 终端代理
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-steam" class="md-nav__link">
+    <span class="md-ellipsis">
+      5. 如何使 Steam 下载流量不经过代理，与社区流量分流
+    </span>
+  </a>
   
 </li>
       
@@ -2434,7 +2444,7 @@ doesn't, the page title (or respectively site name) is used
 as the main headline.
 -->
 
-    <h1>（Pillow）Affine 图形变换的矩阵参数详解</h1>
+    <h1>Steam Deck 手机热点代理及其设置方法</h1>
 
 
 <!-- Markdown content -->
@@ -2453,7 +2463,7 @@ as the main headline.
                     <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" fill="currentColor" class="bi bi-clock" viewBox="0 0 16 16">
                         <path d="M8 3.5a.5.5 0 0 0-1 0V9a.5.5 0 0 0 .252.434l3.5 2a.5.5 0 0 0 .496-.868L8 8.71V3.5z"/>
                         <path d="M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16zm7-8A7 7 0 1 1 1 8a7 7 0 0 1 14 0z"/>
-                    </svg> 13 min read
+                    </svg> 11 min read
                 </span>
             </p>
         </aside>
@@ -2463,112 +2473,98 @@ as the main headline.
     
         <div class="tags">
         
-            <a href="/tags/#python" class="tag"><code>#python</code></a>
+            <a href="/tags/#steam" class="tag"><code>#steam</code></a>
         
-            <a href="/tags/#pillow" class="tag"><code>#pillow</code></a>
+            <a href="/tags/#steamdeck" class="tag"><code>#steamdeck</code></a>
+        
+            <a href="/tags/#proxy" class="tag"><code>#proxy</code></a>
         
         </div>
     
 
-    <h2 id="_1">一、背景<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
-<p>在渲染邦邦谱面时，需要渲染绿条。绿条不一定是个矩形，在起点和终点不一致时，是个变换过后的平行四边形，而素材文件只有一个矩形。这就需要我们用 Pillow 将素材文件进行变换，使其变成一个平行四边形。</p>
-<figure>
-<p><a class="glightbox" href="../images/230406-pillow-affine-args/longNoteLine.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="longNoteLine" src="../images/230406-pillow-affine-args/longNoteLine.png" /></a>
-  </p>
-<figcaption>longNoteLine.png</figcaption>
-</figure>
-<h2 id="_2">二、渲染方法<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
-<p>可以使用 <a href="https://pillow.readthedocs.io/en/stable/reference/Image.html#PIL.Image.Image.transform"><code class="highlight"><span class="n">img</span><span class="o">.</span><span class="n">transform</span></code></a> 和 <a href="https://pillow.readthedocs.io/en/stable/reference/Image.html#PIL.Image.Image.transform"><code class="highlight"><span class="n">Image</span><span class="o">.</span><span class="n">AFFINE</span></code></a> 来实现。</p>
-<p>即：</p>
-<div class="highlight"><pre><span></span><code><span class="n">img2</span> <span class="o">=</span> <span class="n">img</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">bg</span><span class="o">.</span><span class="n">size</span><span class="p">,</span> <span class="n">Image</span><span class="o">.</span><span class="n">AFFINE</span><span class="p">,</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.5</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">))</span>
+    <h2 id="1">1. 背景<a class="headerlink" href="#1" title="Permanent link">&para;</a></h2>
+<p>在大陆使用 Steam Deck 难免会遇到需要代理的问题。而这里所说的代理，不仅仅指访问 Steam 客户端内的代理，同时也包含了终端、Discover 甚至部分软件（比如 Firefox）的代理。</p>
+<p>我们都知道在 Linux 操作系统上设置代理是一件很简单但同时又很麻烦的事。简单是因为 Linux 下绝大多数程序会默认读取环境变量中的 <code>http_proxy</code> 和 <code>https_proxy</code> 作为代理，无需在程序内单独设置，并且非常老实。麻烦是因为这两个环境变量需要每次都去手动设置（包括手动删除），而且只能设置 <code>http</code> 或者 <code>socks</code> 代理（这点和 Windows 上一样，如果需要其他协议，则需要外部代理内核进行 “转发”）。</p>
+<p>而到了 Steam Deck 上，这种麻烦程度则会变本加厉，因为大多数情况下我们不会随身携带键盘，此时只能用触摸屏一个字一个字地输入，且难以进行复制粘贴操作。</p>
+<p>我们当然可以在 Steam Deck 上起一个 <a href="https://github.com/SagerNet/sing-box">sing-box</a> 或者 <a href="https://github.com/v2fly/v2ray-core">v2ray-core</a> 内核，然后搭配 GUI，但这么做只会让操作更加复杂。</p>
+<p>这篇博客的目的，就是提供一种方法，让 Steam Deck 连接到手机热点，即可享受手机上的同等代理及其分流规则。在本博客中，我假设读者已经对 Linux 操作系统与网络代理有最基本的了解。</p>
+<h2 id="2-steam-deck">2. Steam Deck 代理体系说明<a class="headerlink" href="#2-steam-deck" title="Permanent link">&para;</a></h2>
+<p>在解释具体方法之前，我觉得有必要回顾一下 Steam Deck 的代理体系。</p>
+<h4 id="21-kde-plasma">2.1 KDE Plasma 设置应用<a class="headerlink" href="#21-kde-plasma" title="Permanent link">&para;</a></h4>
+<p>Steam Deck 默认的 Linux 桌面是 KDE Plasma，在 Plasma 的系统设置中设置的代理，仅对部分 KDE 桌面应用程序有效。在这里设置代理，基本等同于没设置。</p>
+<h4 id="22-http_proxy-https_proxy">2.2 终端 <code>http_proxy</code> 和 <code>https_proxy</code> 环境变量<a class="headerlink" href="#22-http_proxy-https_proxy" title="Permanent link">&para;</a></h4>
+<p>在 Linux 操作系统中，绝大多数程序均会读取此环境变量作为代理，在这里设置代理，可以让绝大多数程序走代理，但是不保险，可能会有漏网之鱼且难以排查。</p>
+<h4 id="23">2.3 应用程序内代理<a class="headerlink" href="#23" title="Permanent link">&para;</a></h4>
+<p>Steam 客户端等应用程序可以直接在应用程序内设置代理地址。虽然该代理的作用域十分有限，无法对其他程序生效，但至少可以保障在此程序内的网络连接均走代理。</p>
+<p>下文要讲的方法，即是在 Steam 客户端内设置代理。</p>
+<h2 id="3">3. 部署局域网代理<a class="headerlink" href="#3" title="Permanent link">&para;</a></h2>
+<p>我们要在局域网内起一个代理，在此之前你首先得有一个代理。然后就是让你在各个平台上对应的代理软件监听 <code>0.0.0.0</code>（为了方便，我们假设代理端口均设为 <code>2080</code>）。</p>
+<p>如此一来，就省去了在 Steam Deck 上安装外部代理软件的麻烦，并且 Steam Deck 在走代理的同时，还会应用我们的路由规则。</p>
+<p>以 <a href="https://github.com/MatsuriDayo/NekoBoxForAndroid">NekoBox</a> 为例，直接在设置中勾选 <code>允许来自局域网的连接</code> 即可：</p>
+<p><a class="glightbox" href="../images/250613-steamdeck_proxy/nekobox.webp" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="nekobox" src="../images/250613-steamdeck_proxy/nekobox.webp" /></a></p>
+<p>我们开启手机热点后，只需在该子网中找到网关地址（即手机的 IP 地址），并将其作为代理的 IP 地址填写到 Steam Deck 上即可，将在下一节中详细说明。</p>
+<h2 id="4">4. 设置代理<a class="headerlink" href="#4" title="Permanent link">&para;</a></h2>
+<p>这一步我们需要让 Steam Deck 以我们手机在局域网中的 IP 作为代理地址。这个流程中最麻烦的地方在于，这个 IP 地址是不确定的。</p>
+<p>在手机开热点的情况下，只要手机系统不重启不关机，那么无论我们怎么折腾手机热点，分配的子网和网关都会是固定的。因此我们只需要在第一次打开热点后，知道这个子网的网关地址即可。</p>
+<p><a class="glightbox" href="../images/250613-steamdeck_proxy/gateway.webp" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="gateway" src="../images/250613-steamdeck_proxy/gateway.webp" /></a></p>
+<p>但是麻烦之处在于，总会有那么一个时候我们要重启手机，或者用不同的手机开热点的情况。那么每次我们都需要用同样的方式来找到网关的 IP 地址，并且用极其难以操作的输入方式键入该 IP 地址。</p>
+<p>幸运的是我们可以通过 <code class="highlight">ip<span class="w"> </span>route</code> 命令来获取网关地址：</p>
+<div class="highlight"><pre><span></span><code><span class="nv">GATEWAY_IP</span><span class="o">=</span><span class="k">$(</span>ip<span class="w"> </span>route<span class="w"> </span><span class="p">|</span><span class="w"> </span>awk<span class="w"> </span><span class="s1">&#39;/default/ {print $3; exit}&#39;</span><span class="k">)</span>
 </code></pre></div>
-<p>其中：</p>
-<ul>
-<li><code class="highlight"><span class="n">bg</span><span class="o">.</span><span class="n">size</span></code> 是最终图像的裁剪大小，在变换完成后，Pillow 会将图片裁剪至该大小。</li>
-<li><code class="highlight"><span class="n">Image</span><span class="o">.</span><span class="n">AFFINE</span></code> 是变换类型，这里是仿射变换。</li>
-<li><code class="highlight"><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.5</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span></code> 是变换矩阵，用于描述仿射变换的参数。</li>
-</ul>
-<h2 id="_3">三、变换矩阵<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h2>
-<div class="arithmatex">\[
-\begin{bmatrix}
-xScale &amp; xSkew &amp; xTranslate \\
-ySkew &amp; yScale &amp; yTranslate \\
-0 &amp; 0 &amp; 1 \\
-\end{bmatrix}
-\]</div>
-<p>对应的 Python 代码为：</p>
-<div class="highlight"><pre><span></span><code><span class="n">matrix</span> <span class="o">=</span> <span class="p">(</span><span class="n">xScale</span><span class="p">,</span> <span class="n">xSkew</span><span class="p">,</span> <span class="n">xTranslate</span><span class="p">,</span> <span class="n">ySkew</span><span class="p">,</span> <span class="n">yScale</span><span class="p">,</span> <span class="n">yTranslate</span><span class="p">)</span>
+<h4 id="41-steam">4.1 Steam 代理<a class="headerlink" href="#41-steam" title="Permanent link">&para;</a></h4>
+<p>在开启 Steam 大屏幕的情况下，可以直接到网络设置里设置代理：</p>
+<p><a class="glightbox" href="../images/250613-steamdeck_proxy/steam_settings.webp" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="steam_settings" src="../images/250613-steamdeck_proxy/steam_settings.webp" /></a></p>
+<p>在 Steam 启动时，这个代理会成为启动的命令行参数之一，这也是修改 Steam 代理后需要重新启动 Steam 的原因。</p>
+<p>然而在这里手动输入 IP 地址还是太麻烦了，我们可以考虑先通过 <code class="highlight">ip<span class="w"> </span>route</code> 命令来获取网关地址，然后将这个地址设置为代理地址。</p>
+<p>这一步的关键之处，就是 <code>/home/deck/.steam/steam/config/proxyconfig.vdf</code>。这是 Steam 客户端存储代理地址的地方，这个文件打开是这样的（使用制表符 <code>\t</code> 作为分隔符，而不是空格）：</p>
+<div class="highlight"><span class="filename">proxyconfig.vdf</span><pre><span></span><code>&quot;proxyconfig&quot;
+{
+    &quot;proxy_mode&quot;        &quot;2&quot;
+    &quot;address&quot;       &quot;192.168.213.244&quot;
+    &quot;port&quot;      &quot;2080&quot;
+    &quot;exclude_local&quot;     &quot;1&quot;
+}
 </code></pre></div>
-<p>即直接将矩阵的各值按行展开，然后按顺序放入一个元组中。</p>
-<h2 id="pillow">四、矩阵各值对 Pillow 实际图像的影响<a class="headerlink" href="#pillow" title="Permanent link">&para;</a></h2>
-<p>这里使用了以下脚本来展示矩阵各值的几何含义：</p>
-<div class="highlight"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">PIL</span><span class="w"> </span><span class="kn">import</span> <span class="n">Image</span><span class="p">,</span> <span class="n">ImageDraw</span>
+<p>我们可以用 <code>sed</code> 命令修改其中的 <code>address</code> 值。我们可以把整个流程写成一个 bash 脚本：</p>
+<div class="highlight"><pre><span></span><code><span class="ch">#!/bin/bash</span>
 
-<span class="n">bg</span> <span class="o">=</span> <span class="n">Image</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="s1">&#39;RGBA&#39;</span><span class="p">,</span> <span class="p">(</span><span class="mi">500</span><span class="p">,</span> <span class="mi">500</span><span class="p">),</span> <span class="p">(</span><span class="mi">255</span><span class="p">,</span> <span class="mi">255</span><span class="p">,</span> <span class="mi">255</span><span class="p">,</span> <span class="mi">0</span><span class="p">))</span>
-<span class="n">img</span> <span class="o">=</span> <span class="n">Image</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="s1">&#39;longNoteLine2.png&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">convert</span><span class="p">(</span><span class="s1">&#39;RGBA&#39;</span><span class="p">)</span>
+<span class="nv">GATEWAY_IP</span><span class="o">=</span><span class="k">$(</span>ip<span class="w"> </span>route<span class="w"> </span><span class="p">|</span><span class="w"> </span>awk<span class="w"> </span><span class="s1">&#39;/default/ {print $3; exit}&#39;</span><span class="k">)</span>
 
-<span class="c1"># 绘制原图轮廓，以便观察变换</span>
-<span class="n">outline</span> <span class="o">=</span> <span class="n">Image</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="s1">&#39;RGBA&#39;</span><span class="p">,</span> <span class="n">bg</span><span class="o">.</span><span class="n">size</span><span class="p">,</span> <span class="p">(</span><span class="mi">255</span><span class="p">,</span> <span class="mi">255</span><span class="p">,</span> <span class="mi">255</span><span class="p">,</span> <span class="mi">0</span><span class="p">))</span>
-<span class="n">draw</span> <span class="o">=</span> <span class="n">ImageDraw</span><span class="o">.</span><span class="n">Draw</span><span class="p">(</span><span class="n">outline</span><span class="p">)</span>
-<span class="n">draw</span><span class="o">.</span><span class="n">rectangle</span><span class="p">((</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span> <span class="o">+</span> <span class="n">img</span><span class="o">.</span><span class="n">size</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="mi">0</span> <span class="o">+</span> <span class="n">img</span><span class="o">.</span><span class="n">size</span><span class="p">[</span><span class="mi">1</span><span class="p">]),</span> <span class="n">fill</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="n">width</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">outline</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">255</span><span class="p">))</span>
-<span class="n">bg</span><span class="o">.</span><span class="n">alpha_composite</span><span class="p">(</span><span class="n">outline</span><span class="p">,</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">))</span>
+<span class="nv">CONFIG_FILE</span><span class="o">=</span><span class="s2">&quot;/home/deck/.steam/steam/config/proxyconfig.vdf&quot;</span>
 
-<span class="c1"># 进行变换</span>
-<span class="hll"><span class="n">img2</span> <span class="o">=</span> <span class="n">img</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">bg</span><span class="o">.</span><span class="n">size</span><span class="p">,</span> <span class="n">Image</span><span class="o">.</span><span class="n">AFFINE</span><span class="p">,</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">))</span>
-</span>
-<span class="n">bg</span><span class="o">.</span><span class="n">alpha_composite</span><span class="p">(</span><span class="n">img2</span><span class="p">,</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">))</span>
-<span class="n">bg</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+sed<span class="w"> </span>-i<span class="w"> </span><span class="s1">&#39;/&quot;address&quot;/ s/&quot;[^&quot;]*&quot;/&quot;&#39;</span><span class="s2">&quot;</span><span class="nv">$GATEWAY_IP</span><span class="s2">&quot;</span><span class="s1">&#39;&quot;/2&#39;</span><span class="w"> </span><span class="s2">&quot;</span><span class="nv">$CONFIG_FILE</span><span class="s2">&quot;</span>
+
+<span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;代理地址已更新为: </span><span class="nv">$GATEWAY_IP</span><span class="s2">&quot;</span>
+
+<span class="nb">exec</span><span class="w"> </span>bash
 </code></pre></div>
-<p>我将不断调整矩阵的值，并展示变换后的图像。</p>
-<div class="admonition warning">
-<p class="admonition-title">注意</p>
-<p>在 Pillow 中，采用的是左上角为原点的坐标系，而不是数学中的左下角为原点的坐标系。</p>
-</div>
-<h3 id="41-x-xscale">4.1 x 轴缩放系数 <code>xScale</code><a class="headerlink" href="#41-x-xscale" title="Permanent link">&para;</a></h3>
-<p><code class="highlight"><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span></code>：</p>
-<p>什么都不修改时，图像不变：</p>
-<p><a class="glightbox" href="../images/230406-pillow-affine-args/origin.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="origin" src="../images/230406-pillow-affine-args/origin.png" /></a></p>
-<p><code class="highlight"><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span></code>：</p>
-<p><code>xScale == 2</code>，将图像在 x 轴方向上缩小至原来的 1/2。</p>
-<p><a class="glightbox" href="../images/230406-pillow-affine-args/xScale2.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="xScale2" src="../images/230406-pillow-affine-args/xScale2.png" /></a></p>
-<p><code class="highlight"><span class="p">(</span><span class="mf">0.5</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span></code>：</p>
-<p><code>xScale == 0.5</code>，将图像在 x 轴方向上放大至原来的 2 倍。</p>
-<p><a class="glightbox" href="../images/230406-pillow-affine-args/xScale0.5.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="xScale0.5" src="../images/230406-pillow-affine-args/xScale0.5.png" /></a></p>
-<h3 id="42-x-xskew">4.2 x 轴旋转系数 <code>xSkew</code><a class="headerlink" href="#42-x-xskew" title="Permanent link">&para;</a></h3>
-<p><code class="highlight"><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span></code>：</p>
-<p><code>xSkew == tan(45°) == 1</code>，保持<strong>上底边</strong>位置不变，将平行四边形<strong>下底边</strong>在 x 轴<strong>负</strong>方向倾斜至 45°。</p>
-<p><a class="glightbox" href="../images/230406-pillow-affine-args/xSkew1.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="xSkew1" src="../images/230406-pillow-affine-args/xSkew1.png" /></a></p>
-<p><code class="highlight"><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span></code>：</p>
-<p><code>xSkew == tan(-45°) == -1</code>，保持<strong>上底边</strong>位置不变，将平行四边形<strong>下底边</strong>在 x 轴<strong>正</strong>方向倾斜至 45°。</p>
-<p><a class="glightbox" href="../images/230406-pillow-affine-args/xSkew-1.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="xSkew-1" src="../images/230406-pillow-affine-args/xSkew-1.png" /></a></p>
-<h3 id="43-x-xtranslate">4.3 x 轴平移系数 <code>xTranslate</code><a class="headerlink" href="#43-x-xtranslate" title="Permanent link">&para;</a></h3>
-<p><code class="highlight"><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span></code>：</p>
-<p><code>xTranslate == 100</code>，将图像在 x 轴<strong>负</strong>方向上平移 100 像素。</p>
-<p><a class="glightbox" href="../images/230406-pillow-affine-args/xTranslate100.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="xTranslate100" src="../images/230406-pillow-affine-args/xTranslate100.png" /></a></p>
-<p><code class="highlight"><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">100</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span></code>：</p>
-<p><code>xTranslate == -100</code>，将图像在 x 轴<strong>正</strong>方向上平移 100 像素。</p>
-<p><a class="glightbox" href="../images/230406-pillow-affine-args/xTranslate-100.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="xTranslate-100" src="../images/230406-pillow-affine-args/xTranslate-100.png" /></a></p>
-<h3 id="44-y-yskew">4.4 y 轴旋转系数 <code>ySkew</code><a class="headerlink" href="#44-y-yskew" title="Permanent link">&para;</a></h3>
-<p><code class="highlight"><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span></code>：</p>
-<p><code>ySkew == tan(45°) == 1</code>，保持<strong>左底边</strong>位置不变，将平行四边形<strong>右底边</strong>在 y 轴<strong>负</strong>方向斜切至 45°。</p>
-<p><a class="glightbox" href="../images/230406-pillow-affine-args/ySkew1.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="ySkew1" src="../images/230406-pillow-affine-args/ySkew1.png" /></a></p>
-<p><code class="highlight"><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span></code>：</p>
-<p><code>ySkew == tan(-45°) == -1</code>，保持<strong>左底边</strong>位置不变，将平行四边形<strong>右底边</strong>在 y 轴<strong>正</strong>方向斜切至 45°。</p>
-<p><a class="glightbox" href="../images/230406-pillow-affine-args/ySkew-1.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="ySkew-1" src="../images/230406-pillow-affine-args/ySkew-1.png" /></a></p>
-<h3 id="45-y-yscale">4.5 y 轴缩放系数 <code>yScale</code><a class="headerlink" href="#45-y-yscale" title="Permanent link">&para;</a></h3>
-<p><code class="highlight"><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span></code>：</p>
-<p><code>yScale == 2</code>，将图像在 y 轴方向上缩小至原来的 1/2。</p>
-<p><a class="glightbox" href="../images/230406-pillow-affine-args/yScale2.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="yScale2" src="../images/230406-pillow-affine-args/yScale2.png" /></a></p>
-<p><code class="highlight"><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span></code>：</p>
-<p><code>yScale == 0.5</code>，将图像在 y 轴方向上放大至原来的 2 倍。</p>
-<p><a class="glightbox" href="../images/230406-pillow-affine-args/yScale0.5.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="yScale0.5" src="../images/230406-pillow-affine-args/yScale0.5.png" /></a></p>
-<h3 id="46-y-ytranslate">4.6 y 轴平移系数 <code>yTranslate</code><a class="headerlink" href="#46-y-ytranslate" title="Permanent link">&para;</a></h3>
-<p><code class="highlight"><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span></code>：</p>
-<p><code>yTranslate == 100</code>，将图像在 y 轴<strong>负</strong>方向上平移 100 像素。</p>
-<p><a class="glightbox" href="../images/230406-pillow-affine-args/yTranslate100.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="yTranslate100" src="../images/230406-pillow-affine-args/yTranslate100.png" /></a></p>
-<p><code class="highlight"><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">100</span><span class="p">)</span></code>：</p>
-<p><code>yTranslate == -100</code>，将图像在 y 轴<strong>正</strong>方向上平移 100 像素。</p>
-<p><a class="glightbox" href="../images/230406-pillow-affine-args/yTranslate-100.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="yTranslate-100" src="../images/230406-pillow-affine-args/yTranslate-100.png" /></a></p>
+<h4 id="42">4.2 终端代理<a class="headerlink" href="#42" title="Permanent link">&para;</a></h4>
+<p>我们需要在 Konsole 中设置 <code>http_proxy</code> 和 <code>https_proxy</code> 环境变量以设置代理，借鉴上文所述的 bash 脚本，我们在这里可以这么写：</p>
+<div class="highlight"><pre><span></span><code><span class="ch">#!/bin/bash</span>
+
+<span class="nv">GATEWAY_IP</span><span class="o">=</span><span class="k">$(</span>ip<span class="w"> </span>route<span class="w"> </span><span class="p">|</span><span class="w"> </span>awk<span class="w"> </span><span class="s1">&#39;/default/ {print $3; exit}&#39;</span><span class="k">)</span>
+
+<span class="nb">export</span><span class="w"> </span><span class="nv">http_proxy</span><span class="o">=</span>http://<span class="nv">$GATEWAY_IP</span>:2080
+<span class="nb">export</span><span class="w"> </span><span class="nv">https_proxy</span><span class="o">=</span>http://<span class="nv">$GATEWAY_IP</span>:2080
+
+<span class="nb">exec</span><span class="w"> </span>bash
+</code></pre></div>
+<p>需要注意的是，最后一行的 <code class="highlight"><span class="nb">exec</span><span class="w"> </span>bash</code> 会让脚本执行结束后继续进入 bash 界面，如果没加这一行则会卡住。</p>
+<h2 id="5-steam">5. 如何使 Steam 下载流量不经过代理，与社区流量分流<a class="headerlink" href="#5-steam" title="Permanent link">&para;</a></h2>
+<p>题外话。既然我们已经可以让 Steam Deck 上的代理应用我们的路由规则，那么肯定要好好利用。</p>
+<p>之前社区有一个问题是：如何让 Steam 下载流量不经过代理，而除此之外的例如 <code>steamcommunity.com</code> 等域名仍然经过代理。</p>
+<p>这个方法我已经在 <a href="https://github.com/2dust/v2rayN/issues/1361#issuecomment-1856192253">求教怎么手动添加让steam下载走直连 · Issue #1361 · 2dust/v2rayN</a> 进行了回答。</p>
+<p>简单来说，以下直连即可：</p>
+<div class="highlight"><pre><span></span><code>geosite:steam@cn
+domain:steamserver.net
+</code></pre></div>
+<p>解释：</p>
+<ol>
+<li>steam 客户端通过 <code>steamserver.net</code> 最终判断下载位置，该域名在 <code>geosite:steam</code> 中，且没有 <code>@cn</code> 标记。</li>
+<li>若 <code>steamserver.net</code> 经过代理，则 steam 会从 <code>steamcontent.com</code> 域名下载游戏（例如 <code>cache1-hkg1.steamcontent.com</code>）。</li>
+<li>若 <code>steamserver.net</code> 不经过代理，则 steam 会从 <code>xz.pphimalayanrt.com</code> 域名（阿里云）下载游戏，该域名在 <code>geosite:steam@cn</code> 中。</li>
+<li>该操作不影响 <code>steamcommunity.com</code> 等没有 <code>@cn</code> 标记的域名，这些域名依旧会被代理。</li>
+</ol>
 
     <!-- Last update of source file -->
     
@@ -2595,7 +2591,7 @@ ySkew &amp; yScale &amp; yTranslate \\
     <span class="md-icon" title="最后更新">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_datetime" title="2023年4月6日 13:42:50 UTC">2023-04-06 13:42:50</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_datetime" title="2025年6月13日 07:29:51 UTC">2025-06-13 07:29:51</span>
   </span>
 
     
@@ -2605,7 +2601,7 @@ ySkew &amp; yScale &amp; yTranslate \\
     <span class="md-icon" title="创建日期">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M14.47 15.08 11 13V7h1.5v5.25l3.08 1.83c-.41.28-.79.62-1.11 1m-1.39 4.84c-.36.05-.71.08-1.08.08-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8c0 .37-.03.72-.08 1.08.69.1 1.33.32 1.92.64.1-.56.16-1.13.16-1.72 0-5.5-4.5-10-10-10S2 6.5 2 12s4.47 10 10 10c.59 0 1.16-.06 1.72-.16-.32-.59-.54-1.23-.64-1.92M18 15v3h-3v2h3v3h2v-3h3v-2h-3v-3z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_datetime" title="2023年4月6日 13:42:50 UTC">2023-04-06 13:42:50</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_datetime" title="2025年6月13日 07:29:51 UTC">2025-06-13 07:29:51</span>
   </span>
 
     
@@ -2689,7 +2685,7 @@ ySkew &amp; yScale &amp; yTranslate \\
       <nav class="md-footer__inner md-grid" aria-label="页脚" >
         
           
-          <a href="../230309-pycharm-git-submodule/" class="md-footer__link md-footer__link--prev" aria-label="上一页: 如何在 PyCharm 中使用 Git Submodule">
+          <a href="../250611-steamdeck-battery-black-screen-fix/" class="md-footer__link md-footer__link--prev" aria-label="上一页: Steam Deck 因电池耗尽而黑屏，充电却再也无法开机的解决方法">
             <div class="md-footer__button md-icon">
               
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
@@ -2699,27 +2695,11 @@ ySkew &amp; yScale &amp; yTranslate \\
                 上一页
               </span>
               <div class="md-ellipsis">
-                如何在 PyCharm 中使用 Git Submodule
+                Steam Deck 因电池耗尽而黑屏，充电却再也无法开机的解决方法
               </div>
             </div>
           </a>
         
-        
-          
-          <a href="../230428-mokabot-arcaea/" class="md-footer__link md-footer__link--next" aria-label="下一页: mokabot 的 Arcaea 模块发展史">
-            <div class="md-footer__title">
-              <span class="md-footer__direction">
-                下一页
-              </span>
-              <div class="md-ellipsis">
-                mokabot 的 Arcaea 模块发展史
-              </div>
-            </div>
-            <div class="md-footer__button md-icon">
-              
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
-            </div>
-          </a>
         
       </nav>
     
