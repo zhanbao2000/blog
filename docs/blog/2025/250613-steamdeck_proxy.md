@@ -6,7 +6,7 @@ tags:
     - steamdeck
     - proxy
 title: Steam Deck 手机热点代理及其设置方法
-description:
+description: 介绍如何在 Steam Deck 上通过手机热点设置代理，实现全局及分流代理，涵盖具体操作步骤与常见问题解决方法。
 ---
 
 ## 1. 背景
