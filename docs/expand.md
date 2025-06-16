@@ -12,6 +12,8 @@ hide:
 
 手机上可能看得更舒服吧。
 
+欢迎在此页面留言！
+
 ## :material-steam: Steam
 
 基本上只玩 GalGame 和 Counter-Strike 2，偶尔玩一些 3A。团建类很少玩，不过欢迎找我团建。
@@ -23,6 +25,8 @@ GalGame 目前进度见 [我的 VNDB](https://vndb.org/u200138/ulist?vnlist=1)�
 CS2 完美最高答辩 S，只打 5 排固定队，主要负责在队伍里当瘤子或者拉枪线。
 
 [![Steam Card](https://card.yuy1n.io/card/76561198428921353/dark,en,badge,group,badges,games,reviews)](https://steamcommunity.com/id/akibaarisa/)
+
+欲通过此页面添加 Steam 好友，请事先在本页最下方留言。
 
 ## :material-guitar-electric: バンドリ！ ガールズバンドパーティ！
 
