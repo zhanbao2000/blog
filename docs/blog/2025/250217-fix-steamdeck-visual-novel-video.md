@@ -47,9 +47,11 @@ Protontricks 是个好东西，它已经集成了绝大多数游戏运行的所�
 
 !!! tip "关于运行环境的选择"
 
-    一般来说，选择 wmp11 + quartz + directshow 即可解决绝大部分视觉小说无法播放视频的问题。
+    一般来说，选择 wmp11 + quartz + directshow + lavfilters 即可解决绝大部分视觉小说无法播放视频的问题。
 
     如果还是不行，你可以自行尝试排列组合其他组件。
+
+    推荐在 [ProtonDB](https://www.protondb.com/) 事先查询该游戏需要安装哪些运行环境。
 
 点击 `OK` 后，Protontricks 会在后台通过 aria2c 下载所需的运行环境，并自动安装。
 
