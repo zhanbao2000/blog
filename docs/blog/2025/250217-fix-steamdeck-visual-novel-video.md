@@ -13,7 +13,9 @@ description: 本文介绍了如何在 Steam Deck 上使用 Protontricks 修复�
 
 !!! info "省流版"
 
-    其实就是在 Protontricks 安装 wmp11 + quartz + directshow 这些运行环境，然后就可以播放视频了。
+    其实就是在 Protontricks 安装 wmp11 + quartz + directshow + lavfilters 这些运行环境，然后就可以播放视频了。
+
+    推荐在 [ProtonDB](https://www.protondb.com/) 事先查询该游戏需要安装哪些运行环境。
 
 ## 一、安装 Protontricks 工具
 
