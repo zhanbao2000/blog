@@ -6,19 +6,17 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
-        <meta name="description" content="介绍如何在 Steam Deck 上通过手机热点设置代理，实现全局及分流代理，涵盖具体操作步骤与常见问题解决方法。">
+        <meta name="description" content="Arisa 的个人博客">
       
       
         <meta name="author" content="Akiba Arisa">
       
       
-        <link rel="canonical" href="https://blog.arisa.moe/blog/2025/250613-steamdeck_proxy/">
+        <link rel="canonical" href="https://blog.arisa.moe/blog/2025/250814-best-practice-of-anti-dns-leak/">
       
       
-        <link rel="prev" href="../250611-steamdeck-battery-black-screen-fix/">
+        <link rel="prev" href="../250811-create-venv-for-idapython/">
       
-      
-        <link rel="next" href="../250811-create-venv-for-idapython/">
       
       
       <link rel="icon" href="../../../assets/favicon.webp">
@@ -26,7 +24,7 @@
     
     
       
-        <title>Steam Deck 手机热点代理及其设置方法 - Arisa | Blog</title>
+        <title>解决DNS泄露最佳实践——基于 ClashMeta - Arisa | Blog</title>
       
     
     
@@ -89,7 +87,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#1" class="md-skip">
+        <a href="#dns" class="md-skip">
           跳转至
         </a>
       
@@ -123,7 +121,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Steam Deck 手机热点代理及其设置方法
+              解决DNS泄露最佳实践——基于 ClashMeta
             
           </span>
         </div>
@@ -2127,30 +2125,10 @@
                 
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  
-  <span class="md-ellipsis">
-    Steam Deck 手机热点代理及其设置方法
-    
-  </span>
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../250613-steamdeck_proxy/" class="md-nav__link">
         
   
   
@@ -2161,126 +2139,6 @@
   
 
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="目录">
-  
-  
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      目录
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#1" class="md-nav__link">
-    <span class="md-ellipsis">
-      1. 背景
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#2-steam-deck" class="md-nav__link">
-    <span class="md-ellipsis">
-      2. Steam Deck 代理体系说明
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="2. Steam Deck 代理体系说明">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#21-kde-plasma" class="md-nav__link">
-    <span class="md-ellipsis">
-      2.1 KDE Plasma 设置应用
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#22-http_proxy-https_proxy" class="md-nav__link">
-    <span class="md-ellipsis">
-      2.2 终端 http_proxy 和 https_proxy 环境变量
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#23" class="md-nav__link">
-    <span class="md-ellipsis">
-      2.3 应用程序内代理
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#3" class="md-nav__link">
-    <span class="md-ellipsis">
-      3. 部署局域网代理
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#4" class="md-nav__link">
-    <span class="md-ellipsis">
-      4. 设置代理
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="4. 设置代理">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#41-steam" class="md-nav__link">
-    <span class="md-ellipsis">
-      4.1 Steam 代理
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#42" class="md-nav__link">
-    <span class="md-ellipsis">
-      4.2 终端代理
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#5-steam" class="md-nav__link">
-    <span class="md-ellipsis">
-      5. 如何使 Steam 下载流量不经过代理，与社区流量分流
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -2313,10 +2171,30 @@
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="../250814-best-practice-of-anti-dns-leak/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    解决DNS泄露最佳实践——基于 ClashMeta
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   
@@ -2327,6 +2205,117 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#dns" class="md-nav__link">
+    <span class="md-ellipsis">
+      一、DNS 泄露的理解
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      二、最佳实践
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="二、最佳实践">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#21-dns" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.1 在路由规则中避免 DNS 泄露
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#22-dns" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.2 在系统代理场景下避免 DNS 泄露
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#23-tun-dns" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.3 在 TUN 场景下避免 DNS 泄露
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2.3 在 TUN 场景下避免 DNS 泄露">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#dns_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      DNS 劫持
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fake-ip" class="md-nav__link">
+    <span class="md-ellipsis">
+      Fake IP
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#24-dns" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.4 DNS 代理
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      三、结论
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -2372,46 +2361,79 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#1" class="md-nav__link">
+  <a href="#dns" class="md-nav__link">
     <span class="md-ellipsis">
-      1. 背景
+      一、DNS 泄露的理解
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#2-steam-deck" class="md-nav__link">
+  <a href="#_1" class="md-nav__link">
     <span class="md-ellipsis">
-      2. Steam Deck 代理体系说明
+      二、最佳实践
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="2. Steam Deck 代理体系说明">
+    <nav class="md-nav" aria-label="二、最佳实践">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#21-kde-plasma" class="md-nav__link">
+  <a href="#21-dns" class="md-nav__link">
     <span class="md-ellipsis">
-      2.1 KDE Plasma 设置应用
+      2.1 在路由规则中避免 DNS 泄露
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#22-http_proxy-https_proxy" class="md-nav__link">
+  <a href="#22-dns" class="md-nav__link">
     <span class="md-ellipsis">
-      2.2 终端 http_proxy 和 https_proxy 环境变量
+      2.2 在系统代理场景下避免 DNS 泄露
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#23" class="md-nav__link">
+  <a href="#23-tun-dns" class="md-nav__link">
     <span class="md-ellipsis">
-      2.3 应用程序内代理
+      2.3 在 TUN 场景下避免 DNS 泄露
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2.3 在 TUN 场景下避免 DNS 泄露">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#dns_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      DNS 劫持
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fake-ip" class="md-nav__link">
+    <span class="md-ellipsis">
+      Fake IP
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#24-dns" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.4 DNS 代理
     </span>
   </a>
   
@@ -2423,51 +2445,9 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#3" class="md-nav__link">
+  <a href="#_2" class="md-nav__link">
     <span class="md-ellipsis">
-      3. 部署局域网代理
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#4" class="md-nav__link">
-    <span class="md-ellipsis">
-      4. 设置代理
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="4. 设置代理">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#41-steam" class="md-nav__link">
-    <span class="md-ellipsis">
-      4.1 Steam 代理
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#42" class="md-nav__link">
-    <span class="md-ellipsis">
-      4.2 终端代理
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#5-steam" class="md-nav__link">
-    <span class="md-ellipsis">
-      5. 如何使 Steam 下载流量不经过代理，与社区流量分流
+      三、结论
     </span>
   </a>
   
@@ -2492,7 +2472,7 @@ doesn't, the page title (or respectively site name) is used
 as the main headline.
 -->
 
-    <h1>Steam Deck 手机热点代理及其设置方法</h1>
+    <h1>解决DNS泄露最佳实践——基于 ClashMeta</h1>
 
 
 <!-- Markdown content -->
@@ -2511,7 +2491,7 @@ as the main headline.
                     <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" fill="currentColor" class="bi bi-clock" viewBox="0 0 16 16">
                         <path d="M8 3.5a.5.5 0 0 0-1 0V9a.5.5 0 0 0 .252.434l3.5 2a.5.5 0 0 0 .496-.868L8 8.71V3.5z"/>
                         <path d="M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16zm7-8A7 7 0 1 1 1 8a7 7 0 0 1 14 0z"/>
-                    </svg> 11 min read
+                    </svg> 16 min read
                 </span>
             </p>
         </aside>
@@ -2521,98 +2501,119 @@ as the main headline.
     
         <div class="tags">
         
-            <a href="/tags/#steam" class="tag"><code>#steam</code></a>
+            <a href="/tags/#clash" class="tag"><code>#clash</code></a>
         
-            <a href="/tags/#steamdeck" class="tag"><code>#steamdeck</code></a>
+            <a href="/tags/#dns" class="tag"><code>#dns</code></a>
         
             <a href="/tags/#proxy" class="tag"><code>#proxy</code></a>
         
         </div>
     
 
-    <h2 id="1">1. 背景<a class="headerlink" href="#1" title="Permanent link">&para;</a></h2>
-<p>在大陆使用 Steam Deck 难免会遇到需要代理的问题。而这里所说的代理，不仅仅指访问 Steam 客户端内的代理，同时也包含了终端、Discover 甚至部分软件（比如 Firefox）的代理。</p>
-<p>我们都知道在 Linux 操作系统上设置代理是一件很简单但同时又很麻烦的事。简单是因为 Linux 下绝大多数程序会默认读取环境变量中的 <code>http_proxy</code> 和 <code>https_proxy</code> 作为代理，无需在程序内单独设置，并且非常老实。麻烦是因为这两个环境变量需要每次都去手动设置（包括手动删除），而且只能设置 <code>http</code> 或者 <code>socks</code> 代理（这点和 Windows 上一样，如果需要其他协议，则需要外部代理内核进行 “转发”）。</p>
-<p>而到了 Steam Deck 上，这种麻烦程度则会变本加厉，因为大多数情况下我们不会随身携带键盘，此时只能用触摸屏一个字一个字地输入，且难以进行复制粘贴操作。</p>
-<p>我们当然可以在 Steam Deck 上起一个 <a href="https://github.com/SagerNet/sing-box">sing-box</a> 或者 <a href="https://github.com/v2fly/v2ray-core">v2ray-core</a> 内核，然后搭配 GUI，但这么做只会让操作更加复杂。</p>
-<p>这篇博客的目的，就是提供一种方法，让 Steam Deck 连接到手机热点，即可享受手机上的同等代理及其分流规则。在本博客中，我假设读者已经对 Linux 操作系统与网络代理有最基本的了解。</p>
-<h2 id="2-steam-deck">2. Steam Deck 代理体系说明<a class="headerlink" href="#2-steam-deck" title="Permanent link">&para;</a></h2>
-<p>在解释具体方法之前，我觉得有必要回顾一下 Steam Deck 的代理体系。</p>
-<h4 id="21-kde-plasma">2.1 KDE Plasma 设置应用<a class="headerlink" href="#21-kde-plasma" title="Permanent link">&para;</a></h4>
-<p>Steam Deck 默认的 Linux 桌面是 KDE Plasma，在 Plasma 的系统设置中设置的代理，仅对部分 KDE 桌面应用程序有效。在这里设置代理，基本等同于没设置。</p>
-<h4 id="22-http_proxy-https_proxy">2.2 终端 <code>http_proxy</code> 和 <code>https_proxy</code> 环境变量<a class="headerlink" href="#22-http_proxy-https_proxy" title="Permanent link">&para;</a></h4>
-<p>在 Linux 操作系统中，绝大多数程序均会读取此环境变量作为代理，在这里设置代理，可以让绝大多数程序走代理，但是不保险，可能会有漏网之鱼且难以排查。</p>
-<h4 id="23">2.3 应用程序内代理<a class="headerlink" href="#23" title="Permanent link">&para;</a></h4>
-<p>Steam 客户端等应用程序可以直接在应用程序内设置代理地址。虽然该代理的作用域十分有限，无法对其他程序生效，但至少可以保障在此程序内的网络连接均走代理。</p>
-<p>下文要讲的方法，即是在 Steam 客户端内设置代理。</p>
-<h2 id="3">3. 部署局域网代理<a class="headerlink" href="#3" title="Permanent link">&para;</a></h2>
-<p>我们要在局域网内起一个代理，在此之前你首先得有一个代理。然后就是让你在各个平台上对应的代理软件监听 <code>0.0.0.0</code>（为了方便，我们假设代理端口均设为 <code>2080</code>）。</p>
-<p>如此一来，就省去了在 Steam Deck 上安装外部代理软件的麻烦，并且 Steam Deck 在走代理的同时，还会应用我们的路由规则。</p>
-<p>以 <a href="https://github.com/MatsuriDayo/NekoBoxForAndroid">NekoBox</a> 为例，直接在设置中勾选 <code>允许来自局域网的连接</code> 即可：</p>
-<p><a class="glightbox" href="../images/250613-steamdeck_proxy/nekobox.webp" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="nekobox" src="../images/250613-steamdeck_proxy/nekobox.webp" /></a></p>
-<p>我们开启手机热点后，只需在该子网中找到网关地址（即手机的 IP 地址），并将其作为代理的 IP 地址填写到 Steam Deck 上即可，将在下一节中详细说明。</p>
-<h2 id="4">4. 设置代理<a class="headerlink" href="#4" title="Permanent link">&para;</a></h2>
-<p>这一步我们需要让 Steam Deck 以我们手机在局域网中的 IP 作为代理地址。这个流程中最麻烦的地方在于，这个 IP 地址是不确定的。</p>
-<p>在手机开热点的情况下，只要手机系统不重启不关机，那么无论我们怎么折腾手机热点，分配的子网和网关都会是固定的。因此我们只需要在第一次打开热点后，知道这个子网的网关地址即可。</p>
-<p><a class="glightbox" href="../images/250613-steamdeck_proxy/gateway.webp" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="gateway" src="../images/250613-steamdeck_proxy/gateway.webp" /></a></p>
-<p>但是麻烦之处在于，总会有那么一个时候我们要重启手机，或者用不同的手机开热点的情况。那么每次我们都需要用同样的方式来找到网关的 IP 地址，并且用极其难以操作的输入方式键入该 IP 地址。</p>
-<p>幸运的是我们可以通过 <code class="highlight">ip<span class="w"> </span>route</code> 命令来获取网关地址：</p>
-<div class="highlight"><pre><span></span><code><span class="nv">GATEWAY_IP</span><span class="o">=</span><span class="k">$(</span>ip<span class="w"> </span>route<span class="w"> </span><span class="p">|</span><span class="w"> </span>awk<span class="w"> </span><span class="s1">&#39;/default/ {print $3; exit}&#39;</span><span class="k">)</span>
+    <div class="admonition abstract">
+<p class="admonition-title">Abstract</p>
+<p>自使用 <a href="https://github.com/SagerNet/sing-box">sing-box</a> 内核进行代理以来，已经过去了进两年，但由于 sing-box 内核并不支持负载均衡、自动回退等技术，导致我不得不另行其道，使用 <a href="https://github.com/MetaCubeX/mihomo">ClashMeta (a.k.a. mihomo)</a> 作为前者的替代品。</p>
+<p>不得不说，ClashMeta 的功能的确比 sing-box 丰富太多，而作为一把双刃剑，ClashMeta 的配置难度也直线上升。用户不仅需要配置出站代理和路由规则（同 sing-box），还必须手写全局配置，而这一操作在 sing-box 系中通常由客户端软件在 GUI 中进行配置。</p>
+<p>其中一类全局配置就是 DNS 配置。对于习惯于在 GUI 中进行配置的用户来说，手动编写 DNS 规则无疑是一种跳出舒适区的挑战。然而，正因如此，我们也获得了更高的灵活性：既然必须手动管理 DNS，为何不充分利用这一机会，将其变成一个强大的工具？</p>
+</div>
+<h2 id="dns">一、DNS 泄露的理解<a class="headerlink" href="#dns" title="Permanent link">&para;</a></h2>
+<p>DNS 泄露是在手动配置 DNS 过程中始终绕不开的一个话题。</p>
+<p>不同人对 DNS 泄露的定义各不相同。有些人认为，只要 DNS 请求使用了任何大陆的 DNS 提供者，就属于泄露；也有人认为，只要 DNS 请求被运营商污染（例如劫持到广告等返回了意料之外 IP 的情况），就算泄露；还有一些更为激进的观点，认为只要不是由落地代理进行的 DNS 解析，都属于泄露。总之，关于 DNS 泄露的理解五花八门。</p>
+<p>我个人认为的 DNS 泄露的定义是：</p>
+<div class="admonition quote">
+<p>需要进行代理访问的域名不应该被任何直连 DNS 解析。</p>
+</div>
+<p>这里的直连 DNS 指的是能<strong>在大陆保证直连可达</strong>的 DNS，这种 DNS 通常为大陆 DNS（可能被污染）或未加密的非大陆 DNS（可能被劫持），故一般只能用于解析 <code>baidu.com</code> 等大陆直连域名。但是如果你能找到一个可直连的<strong>加密的非大陆</strong>DNS，那么自然无需担心 DNS 泄露问题。</p>
+<p>这个理解的核心思想就是：<strong>不能让直连 DNS 得知你访问的受代理域名</strong>。以 <code>youtube.com</code> 为例，这是一个典型的需要代理访问的域名。如果你向直连 DNS 查询 <code>youtube.com</code>，即使没有用它返回的 IP 建立连接，直连 DNS 依然能获知你的访问意图，这就构成了 DNS 泄露。</p>
+<p>为彻底解决 DNS 泄露问题，必须在 ClashMeta 的各项配置中加以优化，确保所有需要通过代理访问的域名都不会被直连 DNS 解析。</p>
+<h2 id="_1">二、最佳实践<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
+<h3 id="21-dns">2.1 在路由规则中避免 DNS 泄露<a class="headerlink" href="#21-dns" title="Permanent link">&para;</a></h3>
+<p>我们都知道，在应用层发起网络连接时，我们通常可以直接使用<strong>域名</strong>作为远程地址，而无需提前获知具体的远程 <strong>IP</strong>。如果代理软件能够识别出应用试图访问的<strong>域名</strong>，就可以依据<strong>域名路由规则</strong>判断该域名是否需要通过代理，并据此选择合适的 DNS 解析方式。</p>
+<p>但是，如果是 IP 路由规则呢？</p>
+<p>默认情况下，ClashMeta 中的 IP 规则并非只在 IP 传入代理时进行匹配。如果传入的是一个域名，则会先进行 DNS 解析，再对解析到的结果与 IP 规则进行比对。如果想让这个路由规则仅在传入 IP 时生效，而在传入域名时什么也不做（跳过 DNS 解析），则需要对该 IP 规则附加 <code>no-resolve</code> 参数，见 <a href="https://wiki.metacubex.one/config/rules/#no-resolve">文档</a>。</p>
+<p>路由规则是自上而下依次匹配的，一旦某个域名被域名规则捕获，就不会继续匹配后续规则。利用这一机制，可以减少部分需要代理访问的域名被直连 DNS 解析的情况，这对于使用白名单（即使用 <code>MATCH,DIRECT</code> 兜底）的用户来说略有帮助。但这种方式只能降低 DNS 泄露的概率，无法彻底杜绝，因为未被域名规则覆盖的域名最终仍会被直连 DNS 解析。</p>
+<p>IP 规则是导致 DNS 泄露的主要原因。其根本问题在于，匹配路由规则时一旦遇到 IP 规则（显然它此时未被前面的域名规则捕获），无论目标域名是需要直连还是代理访问，此刻都会由 DNS 配置中的 <code>nameserver</code> 字段指定的 DNS 服务器进行解析。这样一来，原本应通过代理访问的域名也可能被直连 DNS 解析，从而引发 DNS 泄露。</p>
+<p>由此，我们得到了第 1 条最佳实践：</p>
+<div class="admonition success">
+<p class="admonition-title">最佳实践 1</p>
+<p>如果没有必要，则不要定义 IP 规则，尽量使用域名规则作为平替。如果非定义不可，则对该 IP 规则附加 <code>no-resolve</code> 参数。</p>
+</div>
+<p>以绕过局域网和内网为例。我们都知道，除了 <code>geosite:private</code> 以外，正常情况下不可能有其他域名能解析到 <code>geoip:lan</code> 中，因此我们可以先设置 <code>GEOSITE,private,DIRECT</code>，然后设置 <code>GEOIP,lan,DIRECT,no-resolve</code>。这样即能保证局域网和内网的请求无论以域名发起还是以 IP 发起，均能被绕过。</p>
+<details class="tip">
+<summary>题外话</summary>
+<p>如果域名匹配到代理，则会将域名<strong>直接发送给代理</strong>，并在流量落地后由落地代理所在的服务器进行解析，而不会使用在客户端定义的任何 DNS 进行解析。按照这种解析方式，自然也就不存在所谓的 “远程 DNS” 的说法。因此，如果能按照本文所述彻底解决 DNS 泄露，完全可以在 <code>nameserver</code> 字段中只指定大陆的 DoH 服务器，以加快解析。</p>
+<p>如果你真的这么做了，建议只使用 IP 格式的 DoH 服务器，以避免需要先使用 <code>default-nameserver</code> 对 DoH 域名进行一次额外的解析：</p>
+<ul>
+<li><a href="https://223.5.5.5/dns-query">https://223.5.5.5/dns-query</a></li>
+<li><a href="https://223.6.6.6/dns-query">https://223.6.6.6/dns-query</a></li>
+<li><a href="https://120.53.53.53/dns-query">https://120.53.53.53/dns-query</a></li>
+<li><a href="https://1.12.12.12/dns-query">https://1.12.12.12/dns-query</a></li>
+</ul>
+<p>为什么不直接使用非大陆的 DoH 或者 DoT 呢？原因很简单：<strong>连不上</strong>。</p>
+</details>
+<h3 id="22-dns">2.2 在系统代理场景下避免 DNS 泄露<a class="headerlink" href="#22-dns" title="Permanent link">&para;</a></h3>
+<p>在启用系统代理时，只有遵守系统代理规则的应用才能使用 ClashMeta 提供的代理，这些应用会在应用层向 ClashMeta 为本地提供的 <code>mixed://127.0.0.1:7890</code> 发起代理请求。而无论是 http 代理还是 socks5 代理，都可以只向代理服务器发送域名，无需由应用本身发起 DNS 请求。</p>
+<p>因此，在系统代理场景下，只要用户正确配置了路由规则，则不可能发生 DNS 泄露。</p>
+<h3 id="23-tun-dns">2.3 在 TUN 场景下避免 DNS 泄露<a class="headerlink" href="#23-tun-dns" title="Permanent link">&para;</a></h3>
+<p>TUN 场景主要带来了两个问题。首先，由于 TUN 对应用来说是透明的。因此应用会像正常情况下那样，由自身发起 DNS 解析，并按照 DNS 应答结果再对 IP 发起连接。其次，TUN 设备工作在网络层，在网络层截获的数据包并不包含域名，故域名规则相当于全部失效。</p>
+<p>在 Android / iOS 系统上，启用 VPN 等同于启用了 TUN。</p>
+<p>当然，系统代理与 TUN 并不冲突，你完全可以在启用 TUN 的同时也启用系统代理。对于浏览器等严格遵循系统代理规则的软件来说，它们会优先选择系统代理，从而规避上述两个问题。总的来说，启用系统代理几乎没有任何负面影响。</p>
+<div class="admonition success">
+<p class="admonition-title">最佳实践 2</p>
+<p>建议总是启用系统代理。</p>
+</div>
+<p>并不是所有的应用都会像浏览器那样严格遵守系统代理，这也是启用 TUN 的直接理由。在启用 TUN 的情况下，想要完全避免 DNS 泄露必须劫持本地 DNS 请求甚至使用 Fake IP。</p>
+<h4 id="dns_1">DNS 劫持<a class="headerlink" href="#dns_1" title="Permanent link">&para;</a></h4>
+<p>由于 TUN 对应用是透明的，应用会自行使用系统 DNS 进行解析，这显然属于 DNS 泄露。为了解决这个问题，可以让 TUN 在网络层拦截所有发往 53 端口的数据包，并将其导入 ClashMeta 的 DNS 模块。要这么做，只需按照 <a href="https://wiki.metacubex.one/config/inbound/tun/#dns-hijack">文档</a> 在 TUN 设置中指定：</p>
+<div class="highlight"><pre><span></span><code><span class="nt">tun</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">dns-hijack</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">any:53</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">tcp://any:53</span>
 </code></pre></div>
-<h4 id="41-steam">4.1 Steam 代理<a class="headerlink" href="#41-steam" title="Permanent link">&para;</a></h4>
-<p>在开启 Steam 大屏幕的情况下，可以直接到网络设置里设置代理：</p>
-<p><a class="glightbox" href="../images/250613-steamdeck_proxy/steam_settings.webp" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="steam_settings" src="../images/250613-steamdeck_proxy/steam_settings.webp" /></a></p>
-<p>在 Steam 启动时，这个代理会成为启动的命令行参数之一，这也是修改 Steam 代理后需要重新启动 Steam 的原因。</p>
-<p>然而在这里手动输入 IP 地址还是太麻烦了，我们可以考虑先通过 <code class="highlight">ip<span class="w"> </span>route</code> 命令来获取网关地址，然后将这个地址设置为代理地址。</p>
-<p>这一步的关键之处，就是 <code>/home/deck/.steam/steam/config/proxyconfig.vdf</code>。这是 Steam 客户端存储代理地址的地方，这个文件打开是这样的（使用制表符 <code>\t</code> 作为分隔符，而不是空格）：</p>
-<div class="highlight"><span class="filename">proxyconfig.vdf</span><pre><span></span><code>&quot;proxyconfig&quot;
-{
-    &quot;proxy_mode&quot;        &quot;2&quot;
-    &quot;address&quot;       &quot;192.168.213.244&quot;
-    &quot;port&quot;      &quot;2080&quot;
-    &quot;exclude_local&quot;     &quot;1&quot;
-}
+<div class="admonition warning">
+<p class="admonition-title">注意</p>
+<ul>
+<li>在 <code>MacOS / Windows</code> 无法自动劫持发往局域网的 DNS 请求</li>
+<li>在 <code>Android</code> 如开启 <code>私人 DNS</code> 则无法自动劫持 DNS 请求</li>
+</ul>
+</div>
+<h4 id="fake-ip">Fake IP<a class="headerlink" href="#fake-ip" title="Permanent link">&para;</a></h4>
+<p>Fake IP 的原理其实也依赖于 DNS 劫持。</p>
+<p>具体来说，当应用试图自行向系统 DNS 发起查询时，TUN 会在网络层拦截所有发往 53 端口的数据包，并将其导入 ClashMeta 的 DNS 模块。之后 DNS 模块不会立即解析域名，而是先记录本次查询的域名，并直接返回一个 Fake IP 地址（通常属于 TUN 网段，如 <code>198.18.0.1/16</code>）。</p>
+<p>应用收到这个 Fake IP 后，会向该 IP 发起连接。代理客户端在截获这个连接的同时，可以通过之前记录的 DNS 查询反查出对应的域名。这样，代理客户端就能利用域名规则进行流量分流。</p>
+<p>如果应用遵循系统代理，则会将域名通过 http 或者 socks5 代理发往 ClashMeta 内核，而不再会向系统 DNS 发起查询，之后的“解析”流程和上述相同，不再赘述。</p>
+<p>启用 Fake IP 会影响所有需要获取真实 IP 的应用，例如 <code>ping</code> 命令或 <code>traceroute</code> 工具。此外，如果某些域名本应解析为局域网地址（如 <code>raspberrypi</code> 或 <code>miwifi.com</code>），但却被落地代理解析，结果往往是错误的。为避免此类问题，需要获取真实 IP 的域名加入 Fake IP 白名单。常见需要加入白名单的域名如下：</p>
+<div class="highlight"><pre><span></span><code><span class="nt">dns</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">fake-ip-filter</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;geosite:private&quot;</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;+.push.apple.com&quot;</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;+.market.xiaomi.com&quot;</span>
 </code></pre></div>
-<p>我们可以用 <code>sed</code> 命令修改其中的 <code>address</code> 值。我们可以把整个流程写成一个 bash 脚本：</p>
-<div class="highlight"><pre><span></span><code><span class="ch">#!/bin/bash</span>
-
-<span class="nv">GATEWAY_IP</span><span class="o">=</span><span class="k">$(</span>ip<span class="w"> </span>route<span class="w"> </span><span class="p">|</span><span class="w"> </span>awk<span class="w"> </span><span class="s1">&#39;/default/ {print $3; exit}&#39;</span><span class="k">)</span>
-
-<span class="nv">CONFIG_FILE</span><span class="o">=</span><span class="s2">&quot;/home/deck/.steam/steam/config/proxyconfig.vdf&quot;</span>
-
-sed<span class="w"> </span>-i<span class="w"> </span><span class="s1">&#39;/&quot;address&quot;/ s/&quot;[^&quot;]*&quot;/&quot;&#39;</span><span class="s2">&quot;</span><span class="nv">$GATEWAY_IP</span><span class="s2">&quot;</span><span class="s1">&#39;&quot;/2&#39;</span><span class="w"> </span><span class="s2">&quot;</span><span class="nv">$CONFIG_FILE</span><span class="s2">&quot;</span>
-
-<span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;代理地址已更新为: </span><span class="nv">$GATEWAY_IP</span><span class="s2">&quot;</span>
-
-<span class="nb">exec</span><span class="w"> </span>bash
+<div class="admonition success">
+<p class="admonition-title">最佳实践 3</p>
+<p>TUN 场景下必须启用 DNS 劫持，若已经启用了 Fake IP，则无需额外再启用 DNS 劫持。</p>
+</div>
+<h3 id="24-dns">2.4 DNS 代理<a class="headerlink" href="#24-dns" title="Permanent link">&para;</a></h3>
+<p>伤敌一千自损八百的做法，就是将 DNS 设置成非大陆的 DoH 或者 DoT，并让 DNS 流量也走代理，做法很简单，以下是两种等价的做法。</p>
+<p>第一种做法是直接启用 <code>respect-rules</code> 参数：</p>
+<div class="highlight"><pre><span></span><code><span class="nt">dns</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">respect-rules</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
 </code></pre></div>
-<h4 id="42">4.2 终端代理<a class="headerlink" href="#42" title="Permanent link">&para;</a></h4>
-<p>我们需要在 Konsole 中设置 <code>http_proxy</code> 和 <code>https_proxy</code> 环境变量以设置代理，借鉴上文所述的 bash 脚本，我们在这里可以这么写：</p>
-<div class="highlight"><pre><span></span><code><span class="ch">#!/bin/bash</span>
+<p>此时 DNS 查询会视为普通请求，其流量会遵守路由规则，即按照首个成功匹配的规则进行出站。通常情况下，如果你配置的是非大陆的 DoH 或 DoT，并且路由规则设置得当，DNS 流量会通过代理服务器转发。</p>
+<p>第二种做法是在 <code>nameserver</code> 字段中明确指定用哪个代理，以一个叫做 <code>myproxy</code> 的代理为例：</p>
+<div class="highlight"><pre><span></span><code><span class="nt">dns</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">nameserver</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&#39;https://8.8.8.8/dns-query#myproxy&#39;</span>
 
-<span class="nv">GATEWAY_IP</span><span class="o">=</span><span class="k">$(</span>ip<span class="w"> </span>route<span class="w"> </span><span class="p">|</span><span class="w"> </span>awk<span class="w"> </span><span class="s1">&#39;/default/ {print $3; exit}&#39;</span><span class="k">)</span>
-
-<span class="nb">export</span><span class="w"> </span><span class="nv">http_proxy</span><span class="o">=</span>http://<span class="nv">$GATEWAY_IP</span>:2080
-<span class="nb">export</span><span class="w"> </span><span class="nv">https_proxy</span><span class="o">=</span>http://<span class="nv">$GATEWAY_IP</span>:2080
-
-<span class="nb">exec</span><span class="w"> </span>bash
+<span class="nt">proxies</span><span class="p">:</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">myproxy</span>
+<span class="w">    </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ss</span>
 </code></pre></div>
-<p>需要注意的是，最后一行的 <code class="highlight"><span class="nb">exec</span><span class="w"> </span>bash</code> 会让脚本执行结束后继续进入 bash 界面，如果没加这一行则会卡住。</p>
-<h2 id="5-steam">5. 如何使 Steam 下载流量不经过代理，与社区流量分流<a class="headerlink" href="#5-steam" title="Permanent link">&para;</a></h2>
-<p>题外话。既然我们已经可以让 Steam Deck 上的代理应用我们的路由规则，那么肯定要好好利用。</p>
-<p>之前社区有一个问题是：如何让 Steam 下载流量不经过代理，而除此之外的例如 <code>steamcommunity.com</code> 等域名仍然经过代理。</p>
-<p>这个方法我已经在 <a href="https://github.com/2dust/v2rayN/issues/1361#issuecomment-1856192253">求教怎么手动添加让steam下载走直连 · Issue #1361 · 2dust/v2rayN</a> 进行了回答。</p>
-<p>简单来说，以下直连即可：</p>
-<div class="highlight"><pre><span></span><code>geosite:steam@cn
-domain:steamserver.net
-</code></pre></div>
-<p>解释：</p>
-<ol>
-<li>steam 客户端通过 <code>steamserver.net</code> 最终判断下载位置，该域名在 <code>geosite:steam</code> 中，且没有 <code>@cn</code> 标记。</li>
-<li>若 <code>steamserver.net</code> 经过代理，则 steam 会从 <code>steamcontent.com</code> 域名下载游戏（例如 <code>cache1-hkg1.steamcontent.com</code>）。</li>
-<li>若 <code>steamserver.net</code> 不经过代理，则 steam 会从 <code>xz.pphimalayanrt.com</code> 域名（阿里云）下载游戏，该域名在 <code>geosite:steam@cn</code> 中。</li>
-<li>该操作不影响 <code>steamcommunity.com</code> 等没有 <code>@cn</code> 标记的域名，这些域名依旧会被代理。</li>
-</ol>
+<p>此时 DNS 流量总会使用 <code>myproxy</code> 进行转发。</p>
+<p>DNS 代理的做法虽然简单，但由于所有 DNS 流量都通过代理转发，访问大陆域名时会显著影响解析性能。此外，这种配置如同悬在用户头上的达摩克利斯之剑：一旦代理服务器失效，所有 DNS 查询将无法完成，导致网络连接全面受阻。</p>
+<h2 id="_2">三、结论<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
+<p>DNS 泄露是代理配置中常被忽视但极为关键的问题。通过合理配置 ClashMeta 的路由规则、DNS 设置以及系统代理和 TUN 相关参数，可以有效避免 DNS 泄露。</p>
+<p>最佳实践包括优先使用域名规则、慎用 IP 规则并加上 no-resolve，始终启用系统代理，以及在 TUN 场景下开启 DNS 劫持或 Fake IP。对于特殊需求，可以让 DNS 流量走代理，但需权衡性能与可用性。</p>
 
     <!-- Last update of source file -->
     
@@ -2639,7 +2640,7 @@ domain:steamserver.net
     <span class="md-icon" title="最后更新">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_datetime" title="2025年6月13日 07:39:58 UTC">2025-06-13 07:39:58</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_datetime" title="2025年8月14日 15:29:09 UTC">2025-08-14 15:29:09</span>
   </span>
 
     
@@ -2649,7 +2650,7 @@ domain:steamserver.net
     <span class="md-icon" title="创建日期">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M14.47 15.08 11 13V7h1.5v5.25l3.08 1.83c-.41.28-.79.62-1.11 1m-1.39 4.84c-.36.05-.71.08-1.08.08-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8c0 .37-.03.72-.08 1.08.69.1 1.33.32 1.92.64.1-.56.16-1.13.16-1.72 0-5.5-4.5-10-10-10S2 6.5 2 12s4.47 10 10 10c.59 0 1.16-.06 1.72-.16-.32-.59-.54-1.23-.64-1.92M18 15v3h-3v2h3v3h2v-3h3v-2h-3v-3z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_datetime" title="2025年6月13日 07:29:51 UTC">2025-06-13 07:29:51</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_datetime" title="2025年8月14日 15:29:09 UTC">2025-08-14 15:29:09</span>
   </span>
 
     
@@ -2733,7 +2734,7 @@ domain:steamserver.net
       <nav class="md-footer__inner md-grid" aria-label="页脚" >
         
           
-          <a href="../250611-steamdeck-battery-black-screen-fix/" class="md-footer__link md-footer__link--prev" aria-label="上一页: Steam Deck 因电池耗尽而黑屏，充电却再也无法开机的解决方法">
+          <a href="../250811-create-venv-for-idapython/" class="md-footer__link md-footer__link--prev" aria-label="上一页: 为 IDAPython 设置虚拟环境">
             <div class="md-footer__button md-icon">
               
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
@@ -2743,27 +2744,11 @@ domain:steamserver.net
                 上一页
               </span>
               <div class="md-ellipsis">
-                Steam Deck 因电池耗尽而黑屏，充电却再也无法开机的解决方法
-              </div>
-            </div>
-          </a>
-        
-        
-          
-          <a href="../250811-create-venv-for-idapython/" class="md-footer__link md-footer__link--next" aria-label="下一页: 为 IDAPython 设置虚拟环境">
-            <div class="md-footer__title">
-              <span class="md-footer__direction">
-                下一页
-              </span>
-              <div class="md-ellipsis">
                 为 IDAPython 设置虚拟环境
               </div>
             </div>
-            <div class="md-footer__button md-icon">
-              
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
-            </div>
           </a>
+        
         
       </nav>
     
