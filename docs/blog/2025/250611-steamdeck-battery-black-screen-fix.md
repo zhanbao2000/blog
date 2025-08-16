@@ -15,6 +15,12 @@ description: 本篇博客介绍了 Steam Deck 因电池耗尽导致黑屏无法�
 [^1]: [Steam Deck won't boot up properly; Black Screen :: Steam Deck 综合讨论](https://steamcommunity.com/app/1675200/discussions/0/3416557114763001833/)
 [^2]: [Steam deck screen wont turn on when powering on : r/SteamDeck](https://www.reddit.com/r/SteamDeck/comments/zy3h69/steam_deck_screen_wont_turn_on_when_powering_on/)
 
+!!! tip "2025-08-16 更新"
+
+    最近，我在低电量（5%）下让 Steam Deck 进入了睡眠模式，过了三天后再开机，结果又复现了这个问题。
+
+    个人推测这个 Bug 就是单纯的低电量睡眠导致的，不过这个操作目前不能稳定复现。
+
 ## 故障描述
 
 疑似电池已经快耗尽的情况下，进入了睡眠模式。一段时间后：
@@ -41,6 +47,12 @@ description: 本篇博客介绍了 Steam Deck 因电池耗尽导致黑屏无法�
 4. 关机后，同时按住 “音量+” 和 “···” 按钮，持续 10 秒以上。
 5. 保持第 4 步的按键不放，用你的脚或者嘴移除电源线（是的）。
 6. 如果操作正确，你应该看到电源白灯闪烁 3 次，之后设备应该不会再对使用电源按钮做出任何反应。 
+
+!!! tip "2025-08-16 更新"
+
+    在第 3 步中，过久地长按电源键会让 Steam Deck 进入启动流程。为了避免这种情况，你只要在长按到白灯亮度发生变化、风扇停止、触摸板无响应时（就像已经关机了那样）立即松开电源键。
+
+    如果此时不松开，则会进入启动流程，之后的操作相当于是在开机的情况下进行。
 
 此时 Steam Deck 已经进入了电池存储模式。接下来需要将其从电池存储模式中唤醒，操作很简单，插入电源线，等待其自动开机即可。
 
