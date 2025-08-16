@@ -22,7 +22,7 @@
       
       
       <link rel="icon" href="../../../assets/favicon.webp">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.16">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.17">
     
     
       
@@ -2361,7 +2361,7 @@ as the main headline.
                     <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" fill="currentColor" class="bi bi-clock" viewBox="0 0 16 16">
                         <path d="M8 3.5a.5.5 0 0 0-1 0V9a.5.5 0 0 0 .252.434l3.5 2a.5.5 0 0 0 .496-.868L8 8.71V3.5z"/>
                         <path d="M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16zm7-8A7 7 0 1 1 1 8a7 7 0 0 1 14 0z"/>
-                    </svg> 5 min read
+                    </svg> 6 min read
                 </span>
             </p>
         </aside>
@@ -2380,6 +2380,11 @@ as the main headline.
 
     <p>前几天把 Steam Deck 玩到只剩 7% 的电就没管了。过了一天发现开不了机，故寻思可能是没电了，遂充电。充了好几个小时，依然无法开机。</p>
 <p>上网查了下，似乎并不是个例<sup id="fnref:1"><a class="footnote-ref" href="#fn:1">1</a></sup><sup id="fnref:2"><a class="footnote-ref" href="#fn:2">2</a></sup>，看起来这是 Steam Deck 的一个 Bug。当然在查找的过程中也找到了正确的解决方法。</p>
+<div class="admonition tip">
+<p class="admonition-title">2025-08-16 更新</p>
+<p>最近，我在低电量（5%）下让 Steam Deck 进入了睡眠模式，过了三天后再开机，结果又复现了这个问题。</p>
+<p>个人推测这个 Bug 就是单纯的低电量睡眠导致的，不过这个操作目前不能稳定复现。</p>
+</div>
 <h2 id="_1">故障描述<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
 <p>疑似电池已经快耗尽的情况下，进入了睡眠模式。一段时间后：</p>
 <p>若按电源键，则白灯闪烁，其他任何硬件均无反应，此为电池耗尽之正常信号<sup id="fnref:3"><a class="footnote-ref" href="#fn:3">3</a></sup>。</p>
@@ -2397,6 +2402,11 @@ as the main headline.
 <li>保持第 4 步的按键不放，用你的脚或者嘴移除电源线（是的）。</li>
 <li>如果操作正确，你应该看到电源白灯闪烁 3 次，之后设备应该不会再对使用电源按钮做出任何反应。 </li>
 </ol>
+<div class="admonition tip">
+<p class="admonition-title">2025-08-16 更新</p>
+<p>在第 3 步中，过久地长按电源键会让 Steam Deck 进入启动流程。为了避免这种情况，你只要在长按到白灯亮度发生变化、风扇停止、触摸板无响应时（就像已经关机了那样）立即松开电源键。</p>
+<p>如果此时不松开，则会进入启动流程，之后的操作相当于是在开机的情况下进行。</p>
+</div>
 <p>此时 Steam Deck 已经进入了电池存储模式。接下来需要将其从电池存储模式中唤醒，操作很简单，插入电源线，等待其自动开机即可。</p>
 <h2 id="_3">关于电池存储模式<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h2>
 <p>参考 <a href="https://help.steampowered.com/zh-cn/faqs/view/69E3-14AF-9764-4C28">Steam 客服 :: Steam Deck - 基本使用及故障排除指南</a> 中的 “长期存放” 一节，若用户将会有一段时间不使用 Steam Deck，并希望使其处于存放模式以改善其长期的电池健康，则可以启用电池存储模式。要从存放模式中唤醒 Steam Deck，请插入所提供的外接电源，然后正常启动。</p>
@@ -2442,7 +2452,7 @@ as the main headline.
     <span class="md-icon" title="最后更新">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_datetime" title="2025年6月12日 11:00:48 UTC">2025-06-12 11:00:48</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_datetime" title="2025年8月16日 04:57:54 UTC">2025-08-16 04:57:54</span>
   </span>
 
     
@@ -2619,10 +2629,10 @@ as the main headline.
     
     
       
-      <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.footer", "navigation.tabs", "navigation.top", "navigation.tracking", "content.code.copy"], "search": "../../../assets/javascripts/workers/search.d50fe291.min.js", "tags": null, "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}, "version": null}</script>
+      <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.footer", "navigation.tabs", "navigation.top", "navigation.tracking", "content.code.copy"], "search": "../../../assets/javascripts/workers/search.973d3a69.min.js", "tags": null, "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}, "version": null}</script>
     
     
-      <script src="../../../assets/javascripts/bundle.50899def.min.js"></script>
+      <script src="../../../assets/javascripts/bundle.92b07e13.min.js"></script>
       
         <script src="../../../javascripts/counter.js"></script>
       
