@@ -116,12 +116,13 @@ Fake IP 的原理其实也依赖于 DNS 劫持。
 
 如果应用遵循系统代理，则会将域名通过 http 或者 socks5 代理发往 ClashMeta 内核，而不再会向系统 DNS 发起查询，之后的“解析”流程和上述相同，不再赘述。
 
-启用 Fake IP 会影响所有需要获取真实 IP 的应用，例如 `ping` 命令或 `traceroute` 工具。此外，如果某些域名本应解析为局域网地址（如 `raspberrypi` 或 `miwifi.com`），但却被落地代理解析，结果往往是错误的。为避免此类问题，需要获取真实 IP 的域名加入 Fake IP 白名单。常见需要加入白名单的域名如下：
+启用 Fake IP 会影响所有需要获取真实 IP 的应用，例如 `ping` 命令或 `traceroute` 工具。此外，如果某些域名本应解析为局域网地址（如 `raspberrypi`、`miwifi.com` 或某些校园网的局域网地址），但却被落地代理解析，结果往往是错误的。为避免此类问题，需要获取真实 IP 的域名加入 Fake IP 白名单。常见需要加入白名单的域名如下：
 
 ```yaml
 dns:
   fake-ip-filter:
     - "geosite:private"
+    - "geosite:category-education-cn"
     - "+.push.apple.com"
     - "+.market.xiaomi.com"
 ```
