@@ -6,7 +6,7 @@ tags:
     - dns
     - proxy
 title: 解决DNS泄露最佳实践——基于 ClashMeta
-description: 
+description: 详细解析 ClashMeta 代理配置中的 DNS 泄露问题，提供从路由规则优化到 TUN 场景配置的完整解决方案，确保代理域名不被直连 DNS 解析。
 ---
 
 !!! abstract
