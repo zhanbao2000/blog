@@ -9,26 +9,26 @@
         <meta name="author" content="Akiba Arisa">
       
       
-        <link rel="canonical" href="https://blog.arisa.moe/">
+        <link rel="canonical" href="https://blog.arisa.moe/blog/2025/250913-azure-intra-data-transfer-costs/">
+      
+      
+        <link rel="prev" href="../250814-best-practice-of-anti-dns-leak/">
       
       
       
-        <link rel="next" href="expand/">
-      
-      
-      <link rel="icon" href="assets/favicon.webp">
+      <link rel="icon" href="../../../assets/favicon.webp">
       <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.19">
     
     
       
-        <title>Arisa | Blog</title>
+        <title>Azure 内部数据传输成本详解 - Arisa | Blog</title>
       
     
     
-      <link rel="stylesheet" href="assets/stylesheets/main.7e37652d.min.css">
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.7e37652d.min.css">
       
         
-        <link rel="stylesheet" href="assets/stylesheets/palette.06af60db.min.css">
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.06af60db.min.css">
       
       
 
@@ -47,16 +47,16 @@
       
     
     
-      <link rel="stylesheet" href="stylesheets/custom.css">
+      <link rel="stylesheet" href="../../../stylesheets/custom.css">
     
-    <script>__md_scope=new URL(".",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
 
     
     
     
-  <link href="assets/stylesheets/glightbox.min.css" rel="stylesheet"><script src="assets/javascripts/glightbox.min.js"></script><style id="glightbox-style">
+  <link href="../../../assets/stylesheets/glightbox.min.css" rel="stylesheet"><script src="../../../assets/javascripts/glightbox.min.js"></script><style id="glightbox-style">
             html.glightbox-open { overflow: initial; height: 100%; }
             .gslide-title { margin-top: 0px; user-select: text; }
             .gslide-desc { color: #666; user-select: text; }
@@ -99,7 +99,7 @@
 
 <header class="md-header" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="页眉">
-    <a href="." title="Arisa | Blog" class="md-header__button md-logo" aria-label="Arisa | Blog" data-md-component="logo">
+    <a href="../../.." title="Arisa | Blog" class="md-header__button md-logo" aria-label="Arisa | Blog" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"><path d="M1.75 1h12.5c.966 0 1.75.784 1.75 1.75v8.5A1.75 1.75 0 0 1 14.25 13H8.061l-2.574 2.573A1.458 1.458 0 0 1 3 14.543V13H1.75A1.75 1.75 0 0 1 0 11.25v-8.5C0 1.784.784 1 1.75 1M1.5 2.75v8.5c0 .138.112.25.25.25h2a.75.75 0 0 1 .75.75v2.19l2.72-2.72a.75.75 0 0 1 .53-.22h6.5a.25.25 0 0 0 .25-.25v-8.5a.25.25 0 0 0-.25-.25H1.75a.25.25 0 0 0-.25.25m5.28 1.72a.75.75 0 0 1 0 1.06L5.31 7l1.47 1.47a.75.75 0 0 1-.018 1.042.75.75 0 0 1-1.042.018l-2-2a.75.75 0 0 1 0-1.06l2-2a.75.75 0 0 1 1.06 0m2.44 0a.75.75 0 0 1 1.06 0l2 2a.75.75 0 0 1 0 1.06l-2 2a.75.75 0 0 1-1.042-.018.75.75 0 0 1-.018-1.042L10.69 7 9.22 5.53a.75.75 0 0 1 0-1.06"></path></svg>
@@ -119,7 +119,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              主页
+              Azure 内部数据传输成本详解
             
           </span>
         </div>
@@ -238,11 +238,9 @@
   
   
   
-    
   
-  
-    <li class="md-tabs__item md-tabs__item--active">
-      <a href="." class="md-tabs__link">
+    <li class="md-tabs__item">
+      <a href="../../.." class="md-tabs__link">
         
   
   
@@ -261,7 +259,7 @@
   
   
     <li class="md-tabs__item">
-      <a href="expand/" class="md-tabs__link">
+      <a href="../../../expand/" class="md-tabs__link">
         
   
   
@@ -280,7 +278,7 @@
   
   
     <li class="md-tabs__item">
-      <a href="tags/" class="md-tabs__link">
+      <a href="../../../tags/" class="md-tabs__link">
         
   
   
@@ -299,7 +297,7 @@
   
   
     <li class="md-tabs__item">
-      <a href="toc/" class="md-tabs__link">
+      <a href="../../../toc/" class="md-tabs__link">
         
   
   
@@ -316,6 +314,8 @@
   
   
   
+    
+  
   
     
     
@@ -323,11 +323,13 @@
   
   
   
+    
+  
   
     
     
-      <li class="md-tabs__item">
-        <a href="blog/2022/220406-nginx-stream/" class="md-tabs__link">
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../../2022/220406-nginx-stream/" class="md-tabs__link">
           
   
   
@@ -353,9 +355,7 @@
           
             
               
-                
-              
-              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" hidden>
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation">
                 <div class="md-sidebar__scrollwrap">
                   <div class="md-sidebar__inner">
                     
@@ -366,7 +366,7 @@
 
 <nav class="md-nav md-nav--primary md-nav--lifted" aria-label="导航栏" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="." title="Arisa | Blog" class="md-nav__button md-logo" aria-label="Arisa | Blog" data-md-component="logo">
+    <a href="../../.." title="Arisa | Blog" class="md-nav__button md-logo" aria-label="Arisa | Blog" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"><path d="M1.75 1h12.5c.966 0 1.75.784 1.75 1.75v8.5A1.75 1.75 0 0 1 14.25 13H8.061l-2.574 2.573A1.458 1.458 0 0 1 3 14.543V13H1.75A1.75 1.75 0 0 1 0 11.25v-8.5C0 1.784.784 1 1.75 1M1.5 2.75v8.5c0 .138.112.25.25.25h2a.75.75 0 0 1 .75.75v2.19l2.72-2.72a.75.75 0 0 1 .53-.22h6.5a.25.25 0 0 0 .25-.25v-8.5a.25.25 0 0 0-.25-.25H1.75a.25.25 0 0 0-.25.25m5.28 1.72a.75.75 0 0 1 0 1.06L5.31 7l1.47 1.47a.75.75 0 0 1-.018 1.042.75.75 0 0 1-1.042.018l-2-2a.75.75 0 0 1 0-1.06l2-2a.75.75 0 0 1 1.06 0m2.44 0a.75.75 0 0 1 1.06 0l2 2a.75.75 0 0 1 0 1.06l-2 2a.75.75 0 0 1-1.042-.018.75.75 0 0 1-.018-1.042L10.69 7 9.22 5.53a.75.75 0 0 1 0-1.06"></path></svg>
@@ -393,32 +393,10 @@
       
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  
-  <span class="md-ellipsis">
-    主页
-    
-  </span>
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="." class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../../.." class="md-nav__link">
         
   
   
@@ -429,53 +407,6 @@
   
 
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="目录">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      目录
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#_2" class="md-nav__link">
-    <span class="md-ellipsis">
-      关于我
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_3" class="md-nav__link">
-    <span class="md-ellipsis">
-      半重复访问者计数
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_4" class="md-nav__link">
-    <span class="md-ellipsis">
-      友情链接
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -487,7 +418,7 @@
   
   
     <li class="md-nav__item">
-      <a href="expand/" class="md-nav__link">
+      <a href="../../../expand/" class="md-nav__link">
         
   
   
@@ -509,7 +440,7 @@
   
   
     <li class="md-nav__item">
-      <a href="tags/" class="md-nav__link">
+      <a href="../../../tags/" class="md-nav__link">
         
   
   
@@ -531,7 +462,7 @@
   
   
     <li class="md-nav__item">
-      <a href="toc/" class="md-nav__link">
+      <a href="../../../toc/" class="md-nav__link">
         
   
   
@@ -550,24 +481,29 @@
       
   
   
+    
   
   
+  
     
     
     
     
-      
-      
-    
-    
-    <li class="md-nav__item md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5">
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" checked>
         
           
-          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="">
             
   
   
@@ -580,7 +516,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_5">
             <span class="md-nav__icon md-icon"></span>
             Blog
@@ -635,7 +571,7 @@
   
   
     <li class="md-nav__item">
-      <a href="blog/2022/220406-nginx-stream/" class="md-nav__link">
+      <a href="../../2022/220406-nginx-stream/" class="md-nav__link">
         
   
   
@@ -658,7 +594,7 @@
   
   
     <li class="md-nav__item">
-      <a href="blog/2022/220406-set-http-proxy/" class="md-nav__link">
+      <a href="../../2022/220406-set-http-proxy/" class="md-nav__link">
         
   
   
@@ -681,7 +617,7 @@
   
   
     <li class="md-nav__item">
-      <a href="blog/2022/220406-venv-move-file/" class="md-nav__link">
+      <a href="../../2022/220406-venv-move-file/" class="md-nav__link">
         
   
   
@@ -704,7 +640,7 @@
   
   
     <li class="md-nav__item">
-      <a href="blog/2022/220407-certbot/" class="md-nav__link">
+      <a href="../../2022/220407-certbot/" class="md-nav__link">
         
   
   
@@ -727,7 +663,7 @@
   
   
     <li class="md-nav__item">
-      <a href="blog/2022/220407-github-pages/" class="md-nav__link">
+      <a href="../../2022/220407-github-pages/" class="md-nav__link">
         
   
   
@@ -750,7 +686,7 @@
   
   
     <li class="md-nav__item">
-      <a href="blog/2022/220408-github-pages-2/" class="md-nav__link">
+      <a href="../../2022/220408-github-pages-2/" class="md-nav__link">
         
   
   
@@ -773,7 +709,7 @@
   
   
     <li class="md-nav__item">
-      <a href="blog/2022/220409-cloudflare-workers-arcaea-update/" class="md-nav__link">
+      <a href="../../2022/220409-cloudflare-workers-arcaea-update/" class="md-nav__link">
         
   
   
@@ -796,7 +732,7 @@
   
   
     <li class="md-nav__item">
-      <a href="blog/2022/220412-ida-substitute-usage/" class="md-nav__link">
+      <a href="../../2022/220412-ida-substitute-usage/" class="md-nav__link">
         
   
   
@@ -819,7 +755,7 @@
   
   
     <li class="md-nav__item">
-      <a href="blog/2022/220413-Intranet-penetration-bitcomit/" class="md-nav__link">
+      <a href="../../2022/220413-Intranet-penetration-bitcomit/" class="md-nav__link">
         
   
   
@@ -842,7 +778,7 @@
   
   
     <li class="md-nav__item">
-      <a href="blog/2022/220414-fk-arcaea-songlist-hash/" class="md-nav__link">
+      <a href="../../2022/220414-fk-arcaea-songlist-hash/" class="md-nav__link">
         
   
   
@@ -865,7 +801,7 @@
   
   
     <li class="md-nav__item">
-      <a href="blog/2022/220416-arcaea-fanmade-chart-problem/" class="md-nav__link">
+      <a href="../../2022/220416-arcaea-fanmade-chart-problem/" class="md-nav__link">
         
   
   
@@ -888,7 +824,7 @@
   
   
     <li class="md-nav__item">
-      <a href="blog/2022/220417-linux-clean-up-disk-space/" class="md-nav__link">
+      <a href="../../2022/220417-linux-clean-up-disk-space/" class="md-nav__link">
         
   
   
@@ -911,7 +847,7 @@
   
   
     <li class="md-nav__item">
-      <a href="blog/2022/220421-use-gzip-bomb-against-scanner/" class="md-nav__link">
+      <a href="../../2022/220421-use-gzip-bomb-against-scanner/" class="md-nav__link">
         
   
   
@@ -934,7 +870,7 @@
   
   
     <li class="md-nav__item">
-      <a href="blog/2022/220428-how-to-ask-questions-like-a-retard/" class="md-nav__link">
+      <a href="../../2022/220428-how-to-ask-questions-like-a-retard/" class="md-nav__link">
         
   
   
@@ -957,7 +893,7 @@
   
   
     <li class="md-nav__item">
-      <a href="blog/2022/220429-dilb-ultimate-solution/" class="md-nav__link">
+      <a href="../../2022/220429-dilb-ultimate-solution/" class="md-nav__link">
         
   
   
@@ -980,7 +916,7 @@
   
   
     <li class="md-nav__item">
-      <a href="blog/2022/220502-how-dogs-work-in-epic7/" class="md-nav__link">
+      <a href="../../2022/220502-how-dogs-work-in-epic7/" class="md-nav__link">
         
   
   
@@ -1003,7 +939,7 @@
   
   
     <li class="md-nav__item">
-      <a href="blog/2022/220511-how-to-write-python-into-classical-chinese/" class="md-nav__link">
+      <a href="../../2022/220511-how-to-write-python-into-classical-chinese/" class="md-nav__link">
         
   
   
@@ -1026,7 +962,7 @@
   
   
     <li class="md-nav__item">
-      <a href="blog/2022/220529-python-personal-styleguide/" class="md-nav__link">
+      <a href="../../2022/220529-python-personal-styleguide/" class="md-nav__link">
         
   
   
@@ -1049,7 +985,7 @@
   
   
     <li class="md-nav__item">
-      <a href="blog/2022/220530-auto-sign-in-guide/" class="md-nav__link">
+      <a href="../../2022/220530-auto-sign-in-guide/" class="md-nav__link">
         
   
   
@@ -1072,7 +1008,7 @@
   
   
     <li class="md-nav__item">
-      <a href="blog/2022/220602-ipv6-bypass-billing-system/" class="md-nav__link">
+      <a href="../../2022/220602-ipv6-bypass-billing-system/" class="md-nav__link">
         
   
   
@@ -1095,7 +1031,7 @@
   
   
     <li class="md-nav__item">
-      <a href="blog/2022/220902-python-mutable-defaults/" class="md-nav__link">
+      <a href="../../2022/220902-python-mutable-defaults/" class="md-nav__link">
         
   
   
@@ -1118,7 +1054,7 @@
   
   
     <li class="md-nav__item">
-      <a href="blog/2022/220913-python-confusing-detail/" class="md-nav__link">
+      <a href="../../2022/220913-python-confusing-detail/" class="md-nav__link">
         
   
   
@@ -1141,7 +1077,7 @@
   
   
     <li class="md-nav__item">
-      <a href="blog/2022/221113-rclone-sharepoint-for-hentai-at-home/" class="md-nav__link">
+      <a href="../../2022/221113-rclone-sharepoint-for-hentai-at-home/" class="md-nav__link">
         
   
   
@@ -1164,7 +1100,7 @@
   
   
     <li class="md-nav__item">
-      <a href="blog/2022/221113-rclone-sharepoint-oauth-failed/" class="md-nav__link">
+      <a href="../../2022/221113-rclone-sharepoint-oauth-failed/" class="md-nav__link">
         
   
   
@@ -1187,7 +1123,7 @@
   
   
     <li class="md-nav__item">
-      <a href="blog/2022/221115-issue-of-position-or-right-and-wrong/" class="md-nav__link">
+      <a href="../../2022/221115-issue-of-position-or-right-and-wrong/" class="md-nav__link">
         
   
   
@@ -1259,7 +1195,7 @@
   
   
     <li class="md-nav__item">
-      <a href="blog/2023/230113-my-2022-website/" class="md-nav__link">
+      <a href="../../2023/230113-my-2022-website/" class="md-nav__link">
         
   
   
@@ -1282,7 +1218,7 @@
   
   
     <li class="md-nav__item">
-      <a href="blog/2023/230114-matrix-qq-wechat-bridge/" class="md-nav__link">
+      <a href="../../2023/230114-matrix-qq-wechat-bridge/" class="md-nav__link">
         
   
   
@@ -1305,7 +1241,7 @@
   
   
     <li class="md-nav__item">
-      <a href="blog/2023/230309-pycharm-git-submodule/" class="md-nav__link">
+      <a href="../../2023/230309-pycharm-git-submodule/" class="md-nav__link">
         
   
   
@@ -1328,7 +1264,7 @@
   
   
     <li class="md-nav__item">
-      <a href="blog/2023/230406-pillow-affine-args/" class="md-nav__link">
+      <a href="../../2023/230406-pillow-affine-args/" class="md-nav__link">
         
   
   
@@ -1351,7 +1287,7 @@
   
   
     <li class="md-nav__item">
-      <a href="blog/2023/230428-mokabot-arcaea/" class="md-nav__link">
+      <a href="../../2023/230428-mokabot-arcaea/" class="md-nav__link">
         
   
   
@@ -1374,7 +1310,7 @@
   
   
     <li class="md-nav__item">
-      <a href="blog/2023/230504-chart-analysis-425ex/" class="md-nav__link">
+      <a href="../../2023/230504-chart-analysis-425ex/" class="md-nav__link">
         
   
   
@@ -1397,7 +1333,7 @@
   
   
     <li class="md-nav__item">
-      <a href="blog/2023/230512-arcaea-webapi-archive/" class="md-nav__link">
+      <a href="../../2023/230512-arcaea-webapi-archive/" class="md-nav__link">
         
   
   
@@ -1469,7 +1405,7 @@
   
   
     <li class="md-nav__item">
-      <a href="blog/2024/240611-python-asynchronous/" class="md-nav__link">
+      <a href="../../2024/240611-python-asynchronous/" class="md-nav__link">
         
   
   
@@ -1492,7 +1428,7 @@
   
   
     <li class="md-nav__item">
-      <a href="blog/2024/241012-ubuntu-2404-multi-vm-networking/" class="md-nav__link">
+      <a href="../../2024/241012-ubuntu-2404-multi-vm-networking/" class="md-nav__link">
         
   
   
@@ -1515,7 +1451,7 @@
   
   
     <li class="md-nav__item">
-      <a href="blog/2024/241013-hadoop-cluster-setup/" class="md-nav__link">
+      <a href="../../2024/241013-hadoop-cluster-setup/" class="md-nav__link">
         
   
   
@@ -1538,7 +1474,7 @@
   
   
     <li class="md-nav__item">
-      <a href="blog/2024/241114-google-scholar-403/" class="md-nav__link">
+      <a href="../../2024/241114-google-scholar-403/" class="md-nav__link">
         
   
   
@@ -1561,7 +1497,7 @@
   
   
     <li class="md-nav__item">
-      <a href="blog/2024/241126-google-drive-rclone-webdav/" class="md-nav__link">
+      <a href="../../2024/241126-google-drive-rclone-webdav/" class="md-nav__link">
         
   
   
@@ -1633,7 +1569,7 @@
   
   
     <li class="md-nav__item">
-      <a href="blog/2024-leetcode-clock-event/241024-3175/" class="md-nav__link">
+      <a href="../../2024-leetcode-clock-event/241024-3175/" class="md-nav__link">
         
   
   
@@ -1656,7 +1592,7 @@
   
   
     <li class="md-nav__item">
-      <a href="blog/2024-leetcode-clock-event/241025-3180/" class="md-nav__link">
+      <a href="../../2024-leetcode-clock-event/241025-3180/" class="md-nav__link">
         
   
   
@@ -1679,7 +1615,7 @@
   
   
     <li class="md-nav__item">
-      <a href="blog/2024-leetcode-clock-event/241026-3181/" class="md-nav__link">
+      <a href="../../2024-leetcode-clock-event/241026-3181/" class="md-nav__link">
         
   
   
@@ -1702,7 +1638,7 @@
   
   
     <li class="md-nav__item">
-      <a href="blog/2024-leetcode-clock-event/241027-684/" class="md-nav__link">
+      <a href="../../2024-leetcode-clock-event/241027-684/" class="md-nav__link">
         
   
   
@@ -1725,7 +1661,7 @@
   
   
     <li class="md-nav__item">
-      <a href="blog/2024-leetcode-clock-event/241028-685/" class="md-nav__link">
+      <a href="../../2024-leetcode-clock-event/241028-685/" class="md-nav__link">
         
   
   
@@ -1748,7 +1684,7 @@
   
   
     <li class="md-nav__item">
-      <a href="blog/2024-leetcode-clock-event/241029-3211/" class="md-nav__link">
+      <a href="../../2024-leetcode-clock-event/241029-3211/" class="md-nav__link">
         
   
   
@@ -1771,7 +1707,7 @@
   
   
     <li class="md-nav__item">
-      <a href="blog/2024-leetcode-clock-event/241030-3216/" class="md-nav__link">
+      <a href="../../2024-leetcode-clock-event/241030-3216/" class="md-nav__link">
         
   
   
@@ -1794,7 +1730,7 @@
   
   
     <li class="md-nav__item">
-      <a href="blog/2024-leetcode-clock-event/241101-3259/" class="md-nav__link">
+      <a href="../../2024-leetcode-clock-event/241101-3259/" class="md-nav__link">
         
   
   
@@ -1817,7 +1753,7 @@
   
   
     <li class="md-nav__item">
-      <a href="blog/2024-leetcode-clock-event/241102-3226/" class="md-nav__link">
+      <a href="../../2024-leetcode-clock-event/241102-3226/" class="md-nav__link">
         
   
   
@@ -1840,7 +1776,7 @@
   
   
     <li class="md-nav__item">
-      <a href="blog/2024-leetcode-clock-event/241103-638/" class="md-nav__link">
+      <a href="../../2024-leetcode-clock-event/241103-638/" class="md-nav__link">
         
   
   
@@ -1863,7 +1799,7 @@
   
   
     <li class="md-nav__item">
-      <a href="blog/2024-leetcode-clock-event/241104-633/" class="md-nav__link">
+      <a href="../../2024-leetcode-clock-event/241104-633/" class="md-nav__link">
         
   
   
@@ -1886,7 +1822,7 @@
   
   
     <li class="md-nav__item">
-      <a href="blog/2024-leetcode-clock-event/241105-3222/" class="md-nav__link">
+      <a href="../../2024-leetcode-clock-event/241105-3222/" class="md-nav__link">
         
   
   
@@ -1909,7 +1845,7 @@
   
   
     <li class="md-nav__item">
-      <a href="blog/2024-leetcode-clock-event/241106-3254/" class="md-nav__link">
+      <a href="../../2024-leetcode-clock-event/241106-3254/" class="md-nav__link">
         
   
   
@@ -1932,7 +1868,7 @@
   
   
     <li class="md-nav__item">
-      <a href="blog/2024-leetcode-clock-event/241107-3255/" class="md-nav__link">
+      <a href="../../2024-leetcode-clock-event/241107-3255/" class="md-nav__link">
         
   
   
@@ -1955,7 +1891,7 @@
   
   
     <li class="md-nav__item">
-      <a href="blog/2024-leetcode-clock-event/241109-3242/" class="md-nav__link">
+      <a href="../../2024-leetcode-clock-event/241109-3242/" class="md-nav__link">
         
   
   
@@ -1978,7 +1914,7 @@
   
   
     <li class="md-nav__item">
-      <a href="blog/2024-leetcode-clock-event/241110-540/" class="md-nav__link">
+      <a href="../../2024-leetcode-clock-event/241110-540/" class="md-nav__link">
         
   
   
@@ -2001,7 +1937,7 @@
   
   
     <li class="md-nav__item">
-      <a href="blog/2024-leetcode-clock-event/241111-1547/" class="md-nav__link">
+      <a href="../../2024-leetcode-clock-event/241111-1547/" class="md-nav__link">
         
   
   
@@ -2024,7 +1960,7 @@
   
   
     <li class="md-nav__item">
-      <a href="blog/2024-leetcode-clock-event/241112-3258/" class="md-nav__link">
+      <a href="../../2024-leetcode-clock-event/241112-3258/" class="md-nav__link">
         
   
   
@@ -2052,6 +1988,8 @@
                 
   
   
+    
+  
   
   
     
@@ -2062,11 +2000,11 @@
       
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_5">
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_5" checked>
         
           
           <label class="md-nav__link" for="__nav_5_5" id="__nav_5_5_label" tabindex="0">
@@ -2082,7 +2020,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_5_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_5_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_5_5">
             <span class="md-nav__icon md-icon"></span>
             2025
@@ -2096,7 +2034,7 @@
   
   
     <li class="md-nav__item">
-      <a href="blog/2025/250217-fix-steamdeck-visual-novel-video/" class="md-nav__link">
+      <a href="../250217-fix-steamdeck-visual-novel-video/" class="md-nav__link">
         
   
   
@@ -2119,7 +2057,7 @@
   
   
     <li class="md-nav__item">
-      <a href="blog/2025/250406-amend-old-commit-interactively-rebase/" class="md-nav__link">
+      <a href="../250406-amend-old-commit-interactively-rebase/" class="md-nav__link">
         
   
   
@@ -2142,7 +2080,7 @@
   
   
     <li class="md-nav__item">
-      <a href="blog/2025/250606-python-folder-share/" class="md-nav__link">
+      <a href="../250606-python-folder-share/" class="md-nav__link">
         
   
   
@@ -2165,7 +2103,7 @@
   
   
     <li class="md-nav__item">
-      <a href="blog/2025/250611-steamdeck-battery-black-screen-fix/" class="md-nav__link">
+      <a href="../250611-steamdeck-battery-black-screen-fix/" class="md-nav__link">
         
   
   
@@ -2188,7 +2126,7 @@
   
   
     <li class="md-nav__item">
-      <a href="blog/2025/250613-steamdeck_proxy/" class="md-nav__link">
+      <a href="../250613-steamdeck_proxy/" class="md-nav__link">
         
   
   
@@ -2211,7 +2149,7 @@
   
   
     <li class="md-nav__item">
-      <a href="blog/2025/250811-create-venv-for-idapython/" class="md-nav__link">
+      <a href="../250811-create-venv-for-idapython/" class="md-nav__link">
         
   
   
@@ -2234,7 +2172,7 @@
   
   
     <li class="md-nav__item">
-      <a href="blog/2025/250814-best-practice-of-anti-dns-leak/" class="md-nav__link">
+      <a href="../250814-best-practice-of-anti-dns-leak/" class="md-nav__link">
         
   
   
@@ -2254,10 +2192,30 @@
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="blog/2025/250913-azure-intra-data-transfer-costs/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    Azure 内部数据传输成本详解
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   
@@ -2268,6 +2226,111 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      背景
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      带宽定价
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      可用性区域
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      虚拟网络定价
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      专用终结点定价
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      总结
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="总结">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      什么情况不需要付费
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    <span class="md-ellipsis">
+      什么情况需要付费
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    <span class="md-ellipsis">
+      最佳实践
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -2296,8 +2359,6 @@
             
             
               
-                
-              
               <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc">
                 <div class="md-sidebar__scrollwrap">
                   <div class="md-sidebar__inner">
@@ -2307,8 +2368,6 @@
   
   
   
-    
-  
   
     <label class="md-nav__title" for="__toc">
       <span class="md-nav__icon md-icon"></span>
@@ -2317,9 +2376,18 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      背景
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#_2" class="md-nav__link">
     <span class="md-ellipsis">
-      关于我
+      带宽定价
     </span>
   </a>
   
@@ -2328,7 +2396,7 @@
         <li class="md-nav__item">
   <a href="#_3" class="md-nav__link">
     <span class="md-ellipsis">
-      半重复访问者计数
+      可用性区域
     </span>
   </a>
   
@@ -2337,9 +2405,60 @@
         <li class="md-nav__item">
   <a href="#_4" class="md-nav__link">
     <span class="md-ellipsis">
-      友情链接
+      虚拟网络定价
     </span>
   </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      专用终结点定价
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      总结
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="总结">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      什么情况不需要付费
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    <span class="md-ellipsis">
+      什么情况需要付费
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    <span class="md-ellipsis">
+      最佳实践
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -2362,47 +2481,137 @@ doesn't, the page title (or respectively site name) is used
 as the main headline.
 -->
 
+    <h1>Azure 内部数据传输成本详解</h1>
+
 
 <!-- Markdown content -->
 
     
 
+        <aside class="mdx-author">
+            <p>
+                <img src="https://avatars.githubusercontent.com/zhanbao2000" alt="@zhanbao2000">
+            </p>
+            <p>
+                <span>
+                    <b>Akiba Arisa</b> · <a href="https://github.com/zhanbao2000">@zhanbao2000</a>
+                </span>
+                <span>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" fill="currentColor" class="bi bi-clock" viewBox="0 0 16 16">
+                        <path d="M8 3.5a.5.5 0 0 0-1 0V9a.5.5 0 0 0 .252.434l3.5 2a.5.5 0 0 0 .496-.868L8 8.71V3.5z"></path>
+                        <path d="M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16zm7-8A7 7 0 1 1 1 8a7 7 0 0 1 14 0z"></path>
+                    </svg> 18 min read
+                </span>
+            </p>
+        </aside>
+
     
 
-    <h1 id="_1">主页<a class="headerlink" href="#_1" title="Permanent link">¶</a></h1>
-<div class="admonition abstract">
-<p class="admonition-title">摘要</p>
-<p>这里是 秋葉亜里沙 的个人博客。</p>
-<p>主要记录分享一些学习和生活过程中的点滴。</p>
-<p>该博客均为实验性内容，不代表以后最终成品。</p>
-</div>
-<p><a class="md-button md-button--primary" href="toc/">目录 <span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 9h14V7H3zm0 4h14v-2H3zm0 4h14v-2H3zm16 0h2v-2h-2zm0-10v2h2V7zm0 6h2v-2h-2z"></path></svg></span></a>
-<a class="md-button" href="tags/">标签 <span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m21.41 11.58-9-9A2 2 0 0 0 11 2H4a2 2 0 0 0-2 2v7a2 2 0 0 0 .59 1.42l9 9A2 2 0 0 0 13 22a2 2 0 0 0 1.41-.59l7-7A2 2 0 0 0 22 13a2 2 0 0 0-.59-1.42M13 20l-9-9V4h7l9 9M6.5 5A1.5 1.5 0 1 1 5 6.5 1.5 1.5 0 0 1 6.5 5"></path></svg></span></a></p>
-<h2 id="_2">关于我<a class="headerlink" href="#_2" title="Permanent link">¶</a></h2>
+    
+        <div class="tags">
+        
+            <a href="/tags/#azure" class="tag"><code>#azure</code></a>
+        
+        </div>
+    
+
+    <h2 id="_1">背景<a class="headerlink" href="#_1" title="Permanent link">¶</a></h2>
+<p>最近需要使用数据库，突然想起来了其实 Azure 学生免费订阅为我们分别提供了 PostgreSQL 和 MySQL 各一个的免费数据库配额，规格都是 B1ms 的 32 GB。于是开始重新折腾了 Azure。</p>
+<p>由于我的虚拟服务器在 East Asia（即香港），考虑到速度和成本，不用多想也知道开一台香港的数据库更好。甚至 Azure 还 “贴心” 地提供了一个服务，能将数据库和虚拟机放在同一个虚拟网络中，省去公网流量费用。<del>虽然后来才知道这纯纯是一个大坑</del></p>
+<p>今天这篇 Blog 就来谈谈 Azure 是怎么计算你的内部数据传输成本的。顺便也记录下自己迁移虚拟机可用性区域的一个过程。</p>
+<p>如果想节约时间的话，可以直接跳到最后的 <a href="#_6">总结</a> 部分。</p>
+<h2 id="_2">带宽定价<a class="headerlink" href="#_2" title="Permanent link">¶</a></h2>
+<p>翻开 <a href="https://azure.microsoft.com/zh-cn/pricing/details/bandwidth/">Azure 带宽定价文档</a>，文档里清清楚楚地写道：</p>
+<figure>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../images/250913-azure-intra-data-transfer-costs/bandwidth_intra_free.png" data-desc-position="bottom"><img alt="bandwidth_intra_free" src="../images/250913-azure-intra-data-transfer-costs/bandwidth_intra_free.png"></a>
+  </p>
+<figcaption>同一可用性区域内的数据传输 免费</figcaption>
+</figure>
+<p>看到这里，其实这篇 Blog 已经可以结束了。“Azure 是怎么计算你的内部数据传输成本的” 这个问题的回答，就是<strong>同一可用性区域内的数据传输是免费的</strong>。</p>
+<p>可是，精简的语言总是蕴藏着巨大的天坑。</p>
+<h2 id="_3">可用性区域<a class="headerlink" href="#_3" title="Permanent link">¶</a></h2>
+<p>如果深入探讨，就不得不提到<strong>可用性区域</strong>这一折磨所有 Azure 人的东西，当然这个东西和我们今天说的主题关系不大，如果你知道什么是可用性区域则完全可以跳过，只是单纯我今天折腾的时候被这玩意折磨得要死，所以特地写一章来记录下。</p>
+<p>何为可用性区域？<strong>可用性区域</strong>和<strong>区域</strong>不同。</p>
 <ul>
-<li>计算机科学与技术硕士研究生在读</li>
-<li>目前主修方向是实验室义务劳动</li>
-<li>喜欢待在工位给同门一种很卷的感觉，实际上在折腾各种浪费时间的东西</li>
-<li>自称逆向工程爱好者，实际上每次打开 IDA Pro 不按下 <span class="keys"><kbd class="key-f5">F5</kbd></span> 就不会玩</li>
-<li>机器学习新手，在 YouTube 上收藏了 27 门 AI 公开课，但所有课程进度都停留在第三章的《线性回归》</li>
-<li>用 LaTeX 写论文时 80% 的时间在调整页边距，剩下 20% 在和 BibTeX 引用格式搏斗</li>
-<li>Git 提交记录里最多的 commit message 是 <code>fix</code> 和 <code>revert</code></li>
-<li>用 Wireshark 抓包分析网络协议，结果 80% 流量来自 YouTube 视频预加载</li>
-<li>Zotero 文库里下载了各类顶会 400 多篇，实际上只粗读了 5 篇</li>
-<li>能滔滔不绝讲两小时 Transformer 架构，被问到具体实现时默默打开 Colab 抄 Kaggle 代码</li>
-<li>每次复现顶会论文都幻想自己是炼丹大师，结果连 CUDA 版本冲突都解决不了</li>
-<li>用 matplotlib 调了 2 小时图表样式，最终导出分辨率还没室友手机截屏清晰</li>
+<li><strong>区域（Region）</strong>是用于计费目的的 Azure 区域的地理分组。数据传输定价基于区域。一个 Azure 区域是一个地理位置（比如 East Asia、Japan East、West US 3）</li>
+<li><strong>可用性区域（Availability Zone, AZ）</strong>是 Azure 区域内的独立位置，且具有自己的独立电源、网络和冷却。Azure 区域中的可用性区域的物理和逻辑分离可防止应用程序和数据出现区域级故障。通常一个区域有 3 个 AZ（比如 East Asia Zone 1 / Zone 2 / Zone 3）。</li>
 </ul>
-<p><a class="md-button md-button--primary" href="expand/">扩列 <span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M6 9h2v2h2v2H8v2H6v-2H4v-2h2zm12.5 0a1.5 1.5 0 0 1 1.5 1.5 1.5 1.5 0 0 1-1.5 1.5 1.5 1.5 0 0 1-1.5-1.5A1.5 1.5 0 0 1 18.5 9m-3 3a1.5 1.5 0 0 1 1.5 1.5 1.5 1.5 0 0 1-1.5 1.5 1.5 1.5 0 0 1-1.5-1.5 1.5 1.5 0 0 1 1.5-1.5M17 5a7 7 0 0 1 7 7 7 7 0 0 1-7 7c-1.96 0-3.73-.8-5-2.1A6.96 6.96 0 0 1 7 19a7 7 0 0 1-7-7 7 7 0 0 1 7-7zM7 7a5 5 0 0 0-5 5 5 5 0 0 0 5 5c1.64 0 3.09-.79 4-2h2c.91 1.21 2.36 2 4 2a5 5 0 0 0 5-5 5 5 0 0 0-5-5z"></path></svg></span></a></p>
-<h2 id="_3">半重复访问者计数<a class="headerlink" href="#_3" title="Permanent link">¶</a></h2>
-<p><a href="https://blog-counter.arisa.moe/"><img alt="arisa:blog" src="https://blog-counter.arisa.moe/arisa:blog?theme=gelbooru"></a></p>
-<h2 id="_4">友情链接<a class="headerlink" href="#_4" title="Permanent link">¶</a></h2>
+<p>你可以在每个资源的<strong>概览</strong>选项卡中找到该资源所在的实际可用性区域：</p>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../images/250913-azure-intra-data-transfer-costs/availability-zones.png" data-desc-position="bottom"><img alt="availability-zones.png" src="../images/250913-azure-intra-data-transfer-costs/availability-zones.png"></a></p>
+<p>每当你创建资源的时候，都有一个可用性区域选项，可以让你把资源放在一个或多个可用性区域中（多选意味着互相备份，但也意味着要多花钱）。</p>
+<p>既然我们已经知道了“同一可用性区域内的数据传输是免费的”，因此只要你把所有资源放在同一个可用性区域里，就能享受免费的内部数据传输：</p>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../images/250913-azure-intra-data-transfer-costs/availability-zones-select.png" data-desc-position="bottom"><img alt="availability-zones-select" src="../images/250913-azure-intra-data-transfer-costs/availability-zones-select.png"></a></p>
+<div class="admonition warning">
+<p class="admonition-title">注意</p>
+<p>如果资源在<strong>邻近放置组（Proximity Placement Group, PPG）</strong>内，将无法指定可用性区域。</p>
+<p>资源实际上被放置在了该区域中的一个<strong>随机</strong>的可用性区域，且对客户透明。后期也无法使资源退出邻近放置组，除非删了重建。</p>
+<p>所以如果没有必要，则不要使用邻近放置组。</p>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">注意 x2</p>
+<p>不过对于虚拟机来说，删了重建问题不大，毕竟托管硬盘、网络接口、公共 IP 地址都是可以选择性删除的，在删除的时候取消勾选这三样即可。</p>
+<p>但是新虚拟机和旧托管磁盘必须位于同一可用性区域，否则无法基于旧托管磁盘创建新虚拟机。</p>
+<p>如果真的发生了这个情况，你只能将旧磁盘创建一个快照，然后基于快照创建一个新的托管磁盘（指定到你期望的可用性区域），最后基于新的托管磁盘创建虚拟机。</p>
+</div>
+<div class="admonition info">
+<p class="admonition-title">提示</p>
+<p>既然都说到这了，不妨再说一说怎么重建新虚拟机。</p>
+<p>假定我们在删除旧虚拟机的时候，保留了托管硬盘、网络接口、公共 IP 地址这三样，那我们有两种方法可以重建新虚拟机：</p>
+<p>第一种是使用 Azure 控制台：</p>
+<div class="highlight"><pre><span></span><code>az<span class="w"> </span>vm<span class="w"> </span>create<span class="w"> </span>--size<span class="w"> </span>Standard_B2ats_v2<span class="w"> </span>--resource-group<span class="w"> </span>资源组名<span class="w"> </span>--name<span class="w"> </span>虚拟机名<span class="w"> </span>--attach-os-disk<span class="w"> </span>磁盘名<span class="w"> </span>--os-type<span class="w"> </span>linux<span class="w"> </span>--nics<span class="w"> </span>网络接口名<span class="w"> </span>--zone<span class="w"> </span><span class="m">3</span>
+</code></pre></div>
+<p>其中 <code>Standard_B2ats_v2</code> 是 Azure 学生免费订阅中可以享受免费资格的虚拟机规格（如果发生了改变，建议自己找下最新的），<code>--zone 3</code> 指定了可用性区域为 Zone 3，修改为你期望的可用性区域即可。由于区域会跟着你指定的资源组走，因此不需要额外指定。</p>
+<p>第二种是直接在原有的托管磁盘概述页上，点击创建 VM：</p>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../images/250913-azure-intra-data-transfer-costs/create_vm.png" data-desc-position="bottom"><img alt="create_vm" src="../images/250913-azure-intra-data-transfer-costs/create_vm.png"></a></p>
+<p>当然由于这个磁盘已经被我 Attach 到对应的虚拟机上了，所以这个按钮是灰色的。如果你是基于快照创建的新磁盘，那么这个按钮就是可点击的。</p>
+</div>
+<h2 id="_4">虚拟网络定价<a class="headerlink" href="#_4" title="Permanent link">¶</a></h2>
+<p>虚拟网络（VNet）顾名思义，能够将多个资源组成一个虚拟网络，这样就能在资源中使用私有 IP 地址访问其他资源了。虚拟网络内的数据传输不收取额外费用，但是如果发生了跨可用性区域流量，还是要正常收费的。</p>
+<p>虚拟网络与区域、可用性区域、邻近放置组都不是一回事。尤其要注意的是，虚拟网络内的资源<strong>不一定</strong>在同一个可用性区域内（但<strong>必须</strong>在同一区域内）。</p>
+<p>比如我可以在 East Asia 区域创建一个虚拟网络 <code>vnet-eastasia</code>，然后把虚拟机放在 Zone 1，把数据库放在 Zone 2，然后把它们的网络接口都绑定到这个虚拟网络上来，这样它们就能用内网 IP 互相访问了，但是它们并不在同一个可用性区域内。</p>
+<div class="admonition warning">
+<p class="admonition-title">注意</p>
+<p>即使它们位于同一个虚拟网络内，跨可用性区域的数据传输也是要收费的。</p>
+</div>
+<p>我也可以在同一 East Asia 区域创建两个虚拟网络 <code>vnet-eastasia-1</code> 和 <code>vnet-eastasia-2</code>，然后把它们连起来。这种用法就是 <a href="https://learn.microsoft.com/zh-cn/azure/virtual-network/virtual-network-peering-overview">Azure 虚拟网络对等互连</a>。这样你就可以用内网流量来连接这两个资源，而不需要经过公共 Internet、网关或加密，<strong>不过你需要对内网流量付费</strong>。</p>
+<figure>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../images/250913-azure-intra-data-transfer-costs/vnet-desc.png" data-desc-position="bottom"><img alt="vnet-desc" src="../images/250913-azure-intra-data-transfer-costs/vnet-desc.png"></a>
+  </p>
+<figcaption>象征性费用</figcaption>
+</figure>
+<p>当然虚拟网络也是可以跨区域的，和上面说的对等互连类似，这个叫做<strong>全球虚拟网络对等互连</strong>，<strong>当然也是要付费的</strong>。但是这么做你就可以用内网 IP 地址访问其他区域的资源了，是不是很酷？实际上这么做有它自己的独特优点：虚拟网络之间的流量仅限于 Microsoft 主干网络，且流量不会从 Microsoft 主干网络中退出。</p>
+<p>刚刚提到了三种虚拟网络的用法，其中后两种用法属于对等互联，都是要付费的，具体价格可以参考 <a href="https://azure.microsoft.com/zh-cn/pricing/details/virtual-network/">Azure 虚拟网络定价文档</a>。这个计费不仅要计出站，甚至还要计入站流量，有点离谱。</p>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../images/250913-azure-intra-data-transfer-costs/vnet-costs.png" data-desc-position="bottom"><img alt="vnet-costs" src="../images/250913-azure-intra-data-transfer-costs/vnet-costs.png"></a></p>
+<div class="admonition warning">
+<p class="admonition-title">注意</p>
+<p>值得注意的是，即使是同一可用性区域内的资源，只要它们不在同一个虚拟网络内，那么它们之间的对等互联也是要收费的。</p>
+</div>
+<h2 id="_5">专用终结点定价<a class="headerlink" href="#_5" title="Permanent link">¶</a></h2>
+<p><strong>专用终结点（Private Endpoint，在具体服务中也可能会看到它叫虚拟终结点、专用链接）</strong>是 Azure 提供的一种将 PaaS 服务（比如 Azure Database for PostgreSQL）连接到你的虚拟网络的方式。专用终结点使用一个私有 IP 地址从你的虚拟网络中进行连接，从而使服务看起来就像是你虚拟网络中的一部分。</p>
+<p>比如说，你创建了一个 PostgreSQL 服务，它在 Azure 中是只有终结点（实际上是域名）没有公网 IP 地址的，因此也不会有网络接口。但是借助专用终结点，你就可以把这项服务分配一个网络接口和私有 IP 地址，把网络接口并入现有的虚拟网络后，你就可以在虚拟网络内的其他资源中通过这个私有 IP 地址访问 PostgreSQL 了：</p>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../images/250913-azure-intra-data-transfer-costs/private-endpoint.png" data-desc-position="bottom"><img alt="private-endpoint" src="../images/250913-azure-intra-data-transfer-costs/private-endpoint.png"></a></p>
+<p>这么做的目的无外乎就是提升安全性，这样你就可以关掉数据库的公网访问了。</p>
+<p>我为 PostgreSQL 启用了专用终结点，结果搞半天没想到这个也是要钱的，具体价格可以参考 <a href="https://azure.microsoft.com/zh-cn/pricing/details/private-link/">Azure 专用链接定价</a>。这个是按照 0.01$ 每小时计费的，折合每月大概 7 元人民币左右。</p>
+<p>如果你和我一样，想把数据库和虚拟机放在同一个虚拟网络中以节省流量费用，那么与其开这个专用终结点，不如直接把数据库和虚拟机放在同一个可用性区域。</p>
+<h2 id="_6">总结<a class="headerlink" href="#_6" title="Permanent link">¶</a></h2>
+<h3 id="_7">什么情况不需要付费<a class="headerlink" href="#_7" title="Permanent link">¶</a></h3>
 <ul>
-<li><a href="https://www.mbrjun.cn/">MBR's Blog</a></li>
-<li><a href="https://blog.amu.moe/">InariAimu's Blog</a></li>
-<li><a href="https://blog.awa.moe/">Atmosphere</a></li>
-<li><a href="https://blog.awbugl.top">Awblogu</a></li>
-<li><a href="https://blog.caqtz.moe/">北落石门</a></li>
+<li>在同一可用性区域内的数据传输，原则上是不需要任何付费的。但是如果你画蛇添足地搞出了 VNet 对等互联，就不要问为什么扣了你的钱了。</li>
+<li>在同一个 VNet 内的发生的数据传输，不需要对此额外付费（若在同一 VNet 中出现了跨可用性区域传输的流量，则正常按照定价计费）。VNet 也许有多个子网，从相同 VNet 的一个子网到另一子网，本质上仍是在同一个 VNet 内，因此不需要付费。</li>
+</ul>
+<h3 id="_8">什么情况需要付费<a class="headerlink" href="#_8" title="Permanent link">¶</a></h3>
+<ul>
+<li>在不同可用性区域内的数据传输，需要为流量付费。至于资源具体被分配到了哪一个可用性区域，可以在对应资源的概览页中查看。<a href="https://azure.microsoft.com/zh-cn/pricing/details/bandwidth/">Azure 带宽定价</a></li>
+<li>跨区域的数据传输，本质上属于更昂贵的跨可用性区域，也需要付费。</li>
+<li>连接两个不同的 VNet 以实现对等互联，需要为内网流量付费。<a href="https://azure.microsoft.com/zh-cn/pricing/details/virtual-network/">Azure 虚拟网络定价</a></li>
+<li>对 PaaS 服务启用专用终结点，需要按小时付费。<a href="https://azure.microsoft.com/zh-cn/pricing/details/private-link/">Azure 专用链接定价</a></li>
+</ul>
+<h3 id="_9">最佳实践<a class="headerlink" href="#_9" title="Permanent link">¶</a></h3>
+<p>如果你真的和我一样，想把数据库和虚拟机放在一起以节省流量费用并且加速，那么：</p>
+<ul>
+<li>不要对虚拟机使用邻近放置组</li>
+<li>把所有资源（包括虚拟机、托管磁盘和数据库）放在同一个可用性区域内</li>
+<li>不要为数据库启用专用终结点，即便这样可以让数据库分配一个私有 IP 地址从而允许你在虚拟机内用内网 IP 地址访问它</li>
 </ul>
 
     
@@ -2430,7 +2639,7 @@ as the main headline.
     <span class="md-icon" title="最后更新">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"></path></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_datetime" title="2025年6月11日 03:35:27 UTC">2025-06-11 03:35:27</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_datetime" title="2025年9月13日 15:33:52 UTC">2025-09-13 15:33:52</span>
   </span>
 
     
@@ -2440,7 +2649,7 @@ as the main headline.
     <span class="md-icon" title="创建日期">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M14.47 15.08 11 13V7h1.5v5.25l3.08 1.83c-.41.28-.79.62-1.11 1m-1.39 4.84c-.36.05-.71.08-1.08.08-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8c0 .37-.03.72-.08 1.08.69.1 1.33.32 1.92.64.1-.56.16-1.13.16-1.72 0-5.5-4.5-10-10-10S2 6.5 2 12s4.47 10 10 10c.59 0 1.16-.06 1.72-.16-.32-.59-.54-1.23-.64-1.92M18 15v3h-3v2h3v3h2v-3h3v-2h-3v-3z"></path></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_datetime" title="2022年4月6日 09:51:16 UTC">2022-04-06 09:51:16</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_datetime" title="2025年9月13日 15:33:52 UTC">2025-09-13 15:33:52</span>
   </span>
 
     
@@ -2450,6 +2659,41 @@ as the main headline.
 
         
     
+
+    
+
+        <!-- Giscus -->
+        <h2 id="__comments">评论</h2>
+        <script src="https://giscus.app/client.js" data-repo="zhanbao2000/blog" data-repo-id="R_kgDOHIZK7A" data-category="Announcements" data-category-id="DIC_kwDOHIZK7M4COdSe" data-mapping="pathname" data-reactions-enabled="1" data-emit-metadata="0" data-input-position="top" data-theme="light" data-lang="zh-CN" data-loading="lazy" crossorigin="anonymous" async>
+        </script>
+
+        <!-- Reload on palette change -->
+        <script>
+            var palette = __md_get("__palette");
+            if (palette && typeof palette.color === "object")
+                if (palette.color.scheme === "slate") {
+                    const giscus = document.querySelector("script[src*=giscus]");
+                    giscus.setAttribute("data-theme", "transparent_dark")
+                }
+
+            /* Register event handlers after documented loaded */
+            document.addEventListener("DOMContentLoaded", function() {
+                const ref = document.querySelector("[data-md-component=palette]");
+                ref.addEventListener("change", function() {
+                    const palette = __md_get("__palette");
+                    if (palette && typeof palette.color === "object") {
+                        const theme = palette.color.scheme === "slate" ? "transparent_dark" : "light";
+
+                        /* Instruct Giscus to change theme */
+                        const frame = document.querySelector(".giscus-frame");
+                        frame.contentWindow.postMessage(
+                            { giscus: { setConfig: { theme } } },
+                            "https://giscus.app"
+                        )
+                    }
+                })
+            })
+        </script>
 
     
 
@@ -2473,26 +2717,24 @@ as the main headline.
   
     
       
-        
-      
-      <nav class="md-footer__inner md-grid" aria-label="页脚" hidden>
-        
+      <nav class="md-footer__inner md-grid" aria-label="页脚">
         
           
-          <a href="expand/" class="md-footer__link md-footer__link--next" aria-label="下一页: 扩列">
-            <div class="md-footer__title">
-              <span class="md-footer__direction">
-                下一页
-              </span>
-              <div class="md-ellipsis">
-                扩列
-              </div>
-            </div>
+          <a href="../250814-best-practice-of-anti-dns-leak/" class="md-footer__link md-footer__link--prev" aria-label="上一页: 解决DNS泄露最佳实践——基于 ClashMeta">
             <div class="md-footer__button md-icon">
               
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"></path></svg>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"></path></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                上一页
+              </span>
+              <div class="md-ellipsis">
+                解决DNS泄露最佳实践——基于 ClashMeta
+              </div>
             </div>
           </a>
+        
         
       </nav>
     
@@ -2546,18 +2788,18 @@ as the main headline.
     
     
       
-      <script id="__config" type="application/json">{"base": ".", "features": ["navigation.footer", "navigation.tabs", "navigation.top", "navigation.tracking", "content.code.copy"], "search": "assets/javascripts/workers/search.973d3a69.min.js", "tags": null, "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}, "version": null}</script>
+      <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.footer", "navigation.tabs", "navigation.top", "navigation.tracking", "content.code.copy"], "search": "../../../assets/javascripts/workers/search.973d3a69.min.js", "tags": null, "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}, "version": null}</script>
     
     
-      <script src="assets/javascripts/bundle.92b07e13.min.js"></script>
+      <script src="../../../assets/javascripts/bundle.92b07e13.min.js"></script>
       
-        <script src="javascripts/counter.js"></script>
+        <script src="../../../javascripts/counter.js"></script>
       
-        <script src="javascripts/mathjax.js"></script>
+        <script src="../../../javascripts/mathjax.js"></script>
       
         <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
       
-        <script src="javascripts/waifu/autoload.js" async></script>
+        <script src="../../../javascripts/waifu/autoload.js" async></script>
       
     
   
