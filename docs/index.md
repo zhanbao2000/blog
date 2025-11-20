@@ -40,7 +40,7 @@ hide:
 
 ## 友情链接
 
- - [MBR's Blog](https://www.mbrjun.cn/)
+ - [MBRjun-Blog](https://www.libmbr.com/)
  - [InariAimu's Blog](https://blog.amu.moe/)
  - [Atmosphere](https://blog.awa.moe/)
  - [Awblogu](https://blog.awbugl.top)
