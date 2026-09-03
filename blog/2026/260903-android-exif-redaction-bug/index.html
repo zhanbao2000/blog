@@ -3,35 +3,35 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
-        <meta name="description" content="Arisa 的个人博客">
+        <meta name="description" content="本文记录了 Android 系统下，通过 Photo Picker / SAF 选图导致图片 EXIF 信息被系统强制脱敏丢失的排查过程及最终解决方案。">
       
       
         <meta name="author" content="Akiba Arisa">
       
       
-        <link rel="canonical" href="https://blog.arisa.moe/">
+        <link rel="canonical" href="https://blog.arisa.moe/blog/2026/260903-android-exif-redaction-bug/">
       
       
+        <link rel="prev" href="../260122-uv-install-env/">
       
-        <link rel="next" href="expand/">
       
       
         
       
       
-      <link rel="icon" href="assets/favicon.webp">
+      <link rel="icon" href="../../../assets/favicon.webp">
       <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
     
     
       
-        <title>Arisa | Blog</title>
+        <title>记一次 Android 选图导致 EXIF 信息丢失的 Debug 踩坑之旅 - Arisa | Blog</title>
       
     
     
-      <link rel="stylesheet" href="assets/stylesheets/main.ec1eaa64.min.css">
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.ec1eaa64.min.css">
       
         
-        <link rel="stylesheet" href="assets/stylesheets/palette.ab4e12ef.min.css">
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.ab4e12ef.min.css">
       
       
 
@@ -50,15 +50,15 @@
       
     
     
-      <link rel="stylesheet" href="stylesheets/custom.css">
+      <link rel="stylesheet" href="../../../stylesheets/custom.css">
     
-    <script>__md_scope=new URL(".",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
 
     
     
-  <link href="assets/stylesheets/glightbox.min.css" rel="stylesheet"><script src="assets/javascripts/glightbox.min.js"></script><style id="glightbox-style">
+  <link href="../../../assets/stylesheets/glightbox.min.css" rel="stylesheet"><script src="../../../assets/javascripts/glightbox.min.js"></script><style id="glightbox-style">
             html.glightbox-open { overflow: initial; height: 100%; }
             .gslide-title { margin-top: 0px; user-select: text; }
             .gslide-desc { color: #666; user-select: text; }
@@ -87,7 +87,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#_1" class="md-skip">
+        <a href="#exif" class="md-skip">
           跳转至
         </a>
       
@@ -101,7 +101,7 @@
 
 <header class="md-header" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="页眉">
-    <a href="." title="Arisa | Blog" class="md-header__button md-logo" aria-label="Arisa | Blog" data-md-component="logo">
+    <a href="../../.." title="Arisa | Blog" class="md-header__button md-logo" aria-label="Arisa | Blog" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"><path d="M1.75 1h12.5c.966 0 1.75.784 1.75 1.75v8.5A1.75 1.75 0 0 1 14.25 13H8.061l-2.574 2.573A1.458 1.458 0 0 1 3 14.543V13H1.75A1.75 1.75 0 0 1 0 11.25v-8.5C0 1.784.784 1 1.75 1M1.5 2.75v8.5c0 .138.112.25.25.25h2a.75.75 0 0 1 .75.75v2.19l2.72-2.72a.75.75 0 0 1 .53-.22h6.5a.25.25 0 0 0 .25-.25v-8.5a.25.25 0 0 0-.25-.25H1.75a.25.25 0 0 0-.25.25m5.28 1.72a.75.75 0 0 1 0 1.06L5.31 7l1.47 1.47a.75.75 0 0 1-.018 1.042.75.75 0 0 1-1.042.018l-2-2a.75.75 0 0 1 0-1.06l2-2a.75.75 0 0 1 1.06 0m2.44 0a.75.75 0 0 1 1.06 0l2 2a.75.75 0 0 1 0 1.06l-2 2a.75.75 0 0 1-1.042-.018.75.75 0 0 1-.018-1.042L10.69 7 9.22 5.53a.75.75 0 0 1 0-1.06"></path></svg>
@@ -121,7 +121,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              主页
+              记一次 Android 选图导致 EXIF 信息丢失的 Debug 踩坑之旅
             
           </span>
         </div>
@@ -240,11 +240,9 @@
   
   
   
-    
   
-  
-    <li class="md-tabs__item md-tabs__item--active">
-      <a href="." class="md-tabs__link">
+    <li class="md-tabs__item">
+      <a href="../../.." class="md-tabs__link">
         
   
   
@@ -263,7 +261,7 @@
   
   
     <li class="md-tabs__item">
-      <a href="expand/" class="md-tabs__link">
+      <a href="../../../expand/" class="md-tabs__link">
         
   
   
@@ -282,7 +280,7 @@
   
   
     <li class="md-tabs__item">
-      <a href="tags/" class="md-tabs__link">
+      <a href="../../../tags/" class="md-tabs__link">
         
   
   
@@ -301,7 +299,7 @@
   
   
     <li class="md-tabs__item">
-      <a href="toc/" class="md-tabs__link">
+      <a href="../../../toc/" class="md-tabs__link">
         
   
   
@@ -318,6 +316,8 @@
   
   
   
+    
+  
   
     
     
@@ -325,11 +325,13 @@
   
   
   
+    
+  
   
     
     
-      <li class="md-tabs__item">
-        <a href="blog/2022/220406-nginx-stream/" class="md-tabs__link">
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../../2022/220406-nginx-stream/" class="md-tabs__link">
           
   
   
@@ -355,9 +357,7 @@
           
             
               
-                
-              
-              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" hidden="">
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation">
                 <div class="md-sidebar__scrollwrap">
                   <div class="md-sidebar__inner">
                     
@@ -368,7 +368,7 @@
 
 <nav class="md-nav md-nav--primary md-nav--lifted" aria-label="导航栏" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="." title="Arisa | Blog" class="md-nav__button md-logo" aria-label="Arisa | Blog" data-md-component="logo">
+    <a href="../../.." title="Arisa | Blog" class="md-nav__button md-logo" aria-label="Arisa | Blog" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"><path d="M1.75 1h12.5c.966 0 1.75.784 1.75 1.75v8.5A1.75 1.75 0 0 1 14.25 13H8.061l-2.574 2.573A1.458 1.458 0 0 1 3 14.543V13H1.75A1.75 1.75 0 0 1 0 11.25v-8.5C0 1.784.784 1 1.75 1M1.5 2.75v8.5c0 .138.112.25.25.25h2a.75.75 0 0 1 .75.75v2.19l2.72-2.72a.75.75 0 0 1 .53-.22h6.5a.25.25 0 0 0 .25-.25v-8.5a.25.25 0 0 0-.25-.25H1.75a.25.25 0 0 0-.25.25m5.28 1.72a.75.75 0 0 1 0 1.06L5.31 7l1.47 1.47a.75.75 0 0 1-.018 1.042.75.75 0 0 1-1.042.018l-2-2a.75.75 0 0 1 0-1.06l2-2a.75.75 0 0 1 1.06 0m2.44 0a.75.75 0 0 1 1.06 0l2 2a.75.75 0 0 1 0 1.06l-2 2a.75.75 0 0 1-1.042-.018.75.75 0 0 1-.018-1.042L10.69 7 9.22 5.53a.75.75 0 0 1 0-1.06"></path></svg>
@@ -395,37 +395,10 @@
       
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    主页
-  
-
-    
-  </span>
-  
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="." class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../../.." class="md-nav__link">
         
   
   
@@ -441,59 +414,6 @@
   
 
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="目录">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      目录
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
-      
-        <li class="md-nav__item">
-  <a href="#_2" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        关于我
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_3" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        半重复访问者计数
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_4" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        友情链接
-      
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -505,7 +425,7 @@
   
   
     <li class="md-nav__item">
-      <a href="expand/" class="md-nav__link">
+      <a href="../../../expand/" class="md-nav__link">
         
   
   
@@ -532,7 +452,7 @@
   
   
     <li class="md-nav__item">
-      <a href="tags/" class="md-nav__link">
+      <a href="../../../tags/" class="md-nav__link">
         
   
   
@@ -559,7 +479,7 @@
   
   
     <li class="md-nav__item">
-      <a href="toc/" class="md-nav__link">
+      <a href="../../../toc/" class="md-nav__link">
         
   
   
@@ -583,24 +503,29 @@
       
   
   
+    
   
   
+  
     
     
     
     
-      
-      
-    
-    
-    <li class="md-nav__item md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5">
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" checked="">
         
           
-          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="">
             
   
   
@@ -618,7 +543,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_5">
             <span class="md-nav__icon md-icon"></span>
             
@@ -686,7 +611,7 @@
   
   
     <li class="md-nav__item">
-      <a href="blog/2022/220406-nginx-stream/" class="md-nav__link">
+      <a href="../../2022/220406-nginx-stream/" class="md-nav__link">
         
   
   
@@ -714,7 +639,7 @@
   
   
     <li class="md-nav__item">
-      <a href="blog/2022/220406-set-http-proxy/" class="md-nav__link">
+      <a href="../../2022/220406-set-http-proxy/" class="md-nav__link">
         
   
   
@@ -742,7 +667,7 @@
   
   
     <li class="md-nav__item">
-      <a href="blog/2022/220406-venv-move-file/" class="md-nav__link">
+      <a href="../../2022/220406-venv-move-file/" class="md-nav__link">
         
   
   
@@ -770,7 +695,7 @@
   
   
     <li class="md-nav__item">
-      <a href="blog/2022/220407-certbot/" class="md-nav__link">
+      <a href="../../2022/220407-certbot/" class="md-nav__link">
         
   
   
@@ -798,7 +723,7 @@
   
   
     <li class="md-nav__item">
-      <a href="blog/2022/220407-github-pages/" class="md-nav__link">
+      <a href="../../2022/220407-github-pages/" class="md-nav__link">
         
   
   
@@ -826,7 +751,7 @@
   
   
     <li class="md-nav__item">
-      <a href="blog/2022/220408-github-pages-2/" class="md-nav__link">
+      <a href="../../2022/220408-github-pages-2/" class="md-nav__link">
         
   
   
@@ -854,7 +779,7 @@
   
   
     <li class="md-nav__item">
-      <a href="blog/2022/220409-cloudflare-workers-arcaea-update/" class="md-nav__link">
+      <a href="../../2022/220409-cloudflare-workers-arcaea-update/" class="md-nav__link">
         
   
   
@@ -882,7 +807,7 @@
   
   
     <li class="md-nav__item">
-      <a href="blog/2022/220412-ida-substitute-usage/" class="md-nav__link">
+      <a href="../../2022/220412-ida-substitute-usage/" class="md-nav__link">
         
   
   
@@ -910,7 +835,7 @@
   
   
     <li class="md-nav__item">
-      <a href="blog/2022/220413-Intranet-penetration-bitcomit/" class="md-nav__link">
+      <a href="../../2022/220413-Intranet-penetration-bitcomit/" class="md-nav__link">
         
   
   
@@ -938,7 +863,7 @@
   
   
     <li class="md-nav__item">
-      <a href="blog/2022/220414-fk-arcaea-songlist-hash/" class="md-nav__link">
+      <a href="../../2022/220414-fk-arcaea-songlist-hash/" class="md-nav__link">
         
   
   
@@ -966,7 +891,7 @@
   
   
     <li class="md-nav__item">
-      <a href="blog/2022/220416-arcaea-fanmade-chart-problem/" class="md-nav__link">
+      <a href="../../2022/220416-arcaea-fanmade-chart-problem/" class="md-nav__link">
         
   
   
@@ -994,7 +919,7 @@
   
   
     <li class="md-nav__item">
-      <a href="blog/2022/220417-linux-clean-up-disk-space/" class="md-nav__link">
+      <a href="../../2022/220417-linux-clean-up-disk-space/" class="md-nav__link">
         
   
   
@@ -1022,7 +947,7 @@
   
   
     <li class="md-nav__item">
-      <a href="blog/2022/220421-use-gzip-bomb-against-scanner/" class="md-nav__link">
+      <a href="../../2022/220421-use-gzip-bomb-against-scanner/" class="md-nav__link">
         
   
   
@@ -1050,7 +975,7 @@
   
   
     <li class="md-nav__item">
-      <a href="blog/2022/220428-how-to-ask-questions-like-a-retard/" class="md-nav__link">
+      <a href="../../2022/220428-how-to-ask-questions-like-a-retard/" class="md-nav__link">
         
   
   
@@ -1078,7 +1003,7 @@
   
   
     <li class="md-nav__item">
-      <a href="blog/2022/220429-dilb-ultimate-solution/" class="md-nav__link">
+      <a href="../../2022/220429-dilb-ultimate-solution/" class="md-nav__link">
         
   
   
@@ -1106,7 +1031,7 @@
   
   
     <li class="md-nav__item">
-      <a href="blog/2022/220502-how-dogs-work-in-epic7/" class="md-nav__link">
+      <a href="../../2022/220502-how-dogs-work-in-epic7/" class="md-nav__link">
         
   
   
@@ -1134,7 +1059,7 @@
   
   
     <li class="md-nav__item">
-      <a href="blog/2022/220511-how-to-write-python-into-classical-chinese/" class="md-nav__link">
+      <a href="../../2022/220511-how-to-write-python-into-classical-chinese/" class="md-nav__link">
         
   
   
@@ -1162,7 +1087,7 @@
   
   
     <li class="md-nav__item">
-      <a href="blog/2022/220529-python-personal-styleguide/" class="md-nav__link">
+      <a href="../../2022/220529-python-personal-styleguide/" class="md-nav__link">
         
   
   
@@ -1190,7 +1115,7 @@
   
   
     <li class="md-nav__item">
-      <a href="blog/2022/220530-auto-sign-in-guide/" class="md-nav__link">
+      <a href="../../2022/220530-auto-sign-in-guide/" class="md-nav__link">
         
   
   
@@ -1218,7 +1143,7 @@
   
   
     <li class="md-nav__item">
-      <a href="blog/2022/220602-ipv6-bypass-billing-system/" class="md-nav__link">
+      <a href="../../2022/220602-ipv6-bypass-billing-system/" class="md-nav__link">
         
   
   
@@ -1246,7 +1171,7 @@
   
   
     <li class="md-nav__item">
-      <a href="blog/2022/220902-python-mutable-defaults/" class="md-nav__link">
+      <a href="../../2022/220902-python-mutable-defaults/" class="md-nav__link">
         
   
   
@@ -1274,7 +1199,7 @@
   
   
     <li class="md-nav__item">
-      <a href="blog/2022/220913-python-confusing-detail/" class="md-nav__link">
+      <a href="../../2022/220913-python-confusing-detail/" class="md-nav__link">
         
   
   
@@ -1302,7 +1227,7 @@
   
   
     <li class="md-nav__item">
-      <a href="blog/2022/221113-rclone-sharepoint-for-hentai-at-home/" class="md-nav__link">
+      <a href="../../2022/221113-rclone-sharepoint-for-hentai-at-home/" class="md-nav__link">
         
   
   
@@ -1330,7 +1255,7 @@
   
   
     <li class="md-nav__item">
-      <a href="blog/2022/221113-rclone-sharepoint-oauth-failed/" class="md-nav__link">
+      <a href="../../2022/221113-rclone-sharepoint-oauth-failed/" class="md-nav__link">
         
   
   
@@ -1358,7 +1283,7 @@
   
   
     <li class="md-nav__item">
-      <a href="blog/2022/221115-issue-of-position-or-right-and-wrong/" class="md-nav__link">
+      <a href="../../2022/221115-issue-of-position-or-right-and-wrong/" class="md-nav__link">
         
   
   
@@ -1444,7 +1369,7 @@
   
   
     <li class="md-nav__item">
-      <a href="blog/2023/230113-my-2022-website/" class="md-nav__link">
+      <a href="../../2023/230113-my-2022-website/" class="md-nav__link">
         
   
   
@@ -1472,7 +1397,7 @@
   
   
     <li class="md-nav__item">
-      <a href="blog/2023/230114-matrix-qq-wechat-bridge/" class="md-nav__link">
+      <a href="../../2023/230114-matrix-qq-wechat-bridge/" class="md-nav__link">
         
   
   
@@ -1500,7 +1425,7 @@
   
   
     <li class="md-nav__item">
-      <a href="blog/2023/230309-pycharm-git-submodule/" class="md-nav__link">
+      <a href="../../2023/230309-pycharm-git-submodule/" class="md-nav__link">
         
   
   
@@ -1528,7 +1453,7 @@
   
   
     <li class="md-nav__item">
-      <a href="blog/2023/230406-pillow-affine-args/" class="md-nav__link">
+      <a href="../../2023/230406-pillow-affine-args/" class="md-nav__link">
         
   
   
@@ -1556,7 +1481,7 @@
   
   
     <li class="md-nav__item">
-      <a href="blog/2023/230428-mokabot-arcaea/" class="md-nav__link">
+      <a href="../../2023/230428-mokabot-arcaea/" class="md-nav__link">
         
   
   
@@ -1584,7 +1509,7 @@
   
   
     <li class="md-nav__item">
-      <a href="blog/2023/230504-chart-analysis-425ex/" class="md-nav__link">
+      <a href="../../2023/230504-chart-analysis-425ex/" class="md-nav__link">
         
   
   
@@ -1612,7 +1537,7 @@
   
   
     <li class="md-nav__item">
-      <a href="blog/2023/230512-arcaea-webapi-archive/" class="md-nav__link">
+      <a href="../../2023/230512-arcaea-webapi-archive/" class="md-nav__link">
         
   
   
@@ -1698,7 +1623,7 @@
   
   
     <li class="md-nav__item">
-      <a href="blog/2024/240611-python-asynchronous/" class="md-nav__link">
+      <a href="../../2024/240611-python-asynchronous/" class="md-nav__link">
         
   
   
@@ -1726,7 +1651,7 @@
   
   
     <li class="md-nav__item">
-      <a href="blog/2024/241012-ubuntu-2404-multi-vm-networking/" class="md-nav__link">
+      <a href="../../2024/241012-ubuntu-2404-multi-vm-networking/" class="md-nav__link">
         
   
   
@@ -1754,7 +1679,7 @@
   
   
     <li class="md-nav__item">
-      <a href="blog/2024/241013-hadoop-cluster-setup/" class="md-nav__link">
+      <a href="../../2024/241013-hadoop-cluster-setup/" class="md-nav__link">
         
   
   
@@ -1782,7 +1707,7 @@
   
   
     <li class="md-nav__item">
-      <a href="blog/2024/241114-google-scholar-403/" class="md-nav__link">
+      <a href="../../2024/241114-google-scholar-403/" class="md-nav__link">
         
   
   
@@ -1810,7 +1735,7 @@
   
   
     <li class="md-nav__item">
-      <a href="blog/2024/241126-google-drive-rclone-webdav/" class="md-nav__link">
+      <a href="../../2024/241126-google-drive-rclone-webdav/" class="md-nav__link">
         
   
   
@@ -1896,7 +1821,7 @@
   
   
     <li class="md-nav__item">
-      <a href="blog/2024-leetcode-clock-event/241024-3175/" class="md-nav__link">
+      <a href="../../2024-leetcode-clock-event/241024-3175/" class="md-nav__link">
         
   
   
@@ -1924,7 +1849,7 @@
   
   
     <li class="md-nav__item">
-      <a href="blog/2024-leetcode-clock-event/241025-3180/" class="md-nav__link">
+      <a href="../../2024-leetcode-clock-event/241025-3180/" class="md-nav__link">
         
   
   
@@ -1952,7 +1877,7 @@
   
   
     <li class="md-nav__item">
-      <a href="blog/2024-leetcode-clock-event/241026-3181/" class="md-nav__link">
+      <a href="../../2024-leetcode-clock-event/241026-3181/" class="md-nav__link">
         
   
   
@@ -1980,7 +1905,7 @@
   
   
     <li class="md-nav__item">
-      <a href="blog/2024-leetcode-clock-event/241027-684/" class="md-nav__link">
+      <a href="../../2024-leetcode-clock-event/241027-684/" class="md-nav__link">
         
   
   
@@ -2008,7 +1933,7 @@
   
   
     <li class="md-nav__item">
-      <a href="blog/2024-leetcode-clock-event/241028-685/" class="md-nav__link">
+      <a href="../../2024-leetcode-clock-event/241028-685/" class="md-nav__link">
         
   
   
@@ -2036,7 +1961,7 @@
   
   
     <li class="md-nav__item">
-      <a href="blog/2024-leetcode-clock-event/241029-3211/" class="md-nav__link">
+      <a href="../../2024-leetcode-clock-event/241029-3211/" class="md-nav__link">
         
   
   
@@ -2064,7 +1989,7 @@
   
   
     <li class="md-nav__item">
-      <a href="blog/2024-leetcode-clock-event/241030-3216/" class="md-nav__link">
+      <a href="../../2024-leetcode-clock-event/241030-3216/" class="md-nav__link">
         
   
   
@@ -2092,7 +2017,7 @@
   
   
     <li class="md-nav__item">
-      <a href="blog/2024-leetcode-clock-event/241101-3259/" class="md-nav__link">
+      <a href="../../2024-leetcode-clock-event/241101-3259/" class="md-nav__link">
         
   
   
@@ -2120,7 +2045,7 @@
   
   
     <li class="md-nav__item">
-      <a href="blog/2024-leetcode-clock-event/241102-3226/" class="md-nav__link">
+      <a href="../../2024-leetcode-clock-event/241102-3226/" class="md-nav__link">
         
   
   
@@ -2148,7 +2073,7 @@
   
   
     <li class="md-nav__item">
-      <a href="blog/2024-leetcode-clock-event/241103-638/" class="md-nav__link">
+      <a href="../../2024-leetcode-clock-event/241103-638/" class="md-nav__link">
         
   
   
@@ -2176,7 +2101,7 @@
   
   
     <li class="md-nav__item">
-      <a href="blog/2024-leetcode-clock-event/241104-633/" class="md-nav__link">
+      <a href="../../2024-leetcode-clock-event/241104-633/" class="md-nav__link">
         
   
   
@@ -2204,7 +2129,7 @@
   
   
     <li class="md-nav__item">
-      <a href="blog/2024-leetcode-clock-event/241105-3222/" class="md-nav__link">
+      <a href="../../2024-leetcode-clock-event/241105-3222/" class="md-nav__link">
         
   
   
@@ -2232,7 +2157,7 @@
   
   
     <li class="md-nav__item">
-      <a href="blog/2024-leetcode-clock-event/241106-3254/" class="md-nav__link">
+      <a href="../../2024-leetcode-clock-event/241106-3254/" class="md-nav__link">
         
   
   
@@ -2260,7 +2185,7 @@
   
   
     <li class="md-nav__item">
-      <a href="blog/2024-leetcode-clock-event/241107-3255/" class="md-nav__link">
+      <a href="../../2024-leetcode-clock-event/241107-3255/" class="md-nav__link">
         
   
   
@@ -2288,7 +2213,7 @@
   
   
     <li class="md-nav__item">
-      <a href="blog/2024-leetcode-clock-event/241109-3242/" class="md-nav__link">
+      <a href="../../2024-leetcode-clock-event/241109-3242/" class="md-nav__link">
         
   
   
@@ -2316,7 +2241,7 @@
   
   
     <li class="md-nav__item">
-      <a href="blog/2024-leetcode-clock-event/241110-540/" class="md-nav__link">
+      <a href="../../2024-leetcode-clock-event/241110-540/" class="md-nav__link">
         
   
   
@@ -2344,7 +2269,7 @@
   
   
     <li class="md-nav__item">
-      <a href="blog/2024-leetcode-clock-event/241111-1547/" class="md-nav__link">
+      <a href="../../2024-leetcode-clock-event/241111-1547/" class="md-nav__link">
         
   
   
@@ -2372,7 +2297,7 @@
   
   
     <li class="md-nav__item">
-      <a href="blog/2024-leetcode-clock-event/241112-3258/" class="md-nav__link">
+      <a href="../../2024-leetcode-clock-event/241112-3258/" class="md-nav__link">
         
   
   
@@ -2458,7 +2383,7 @@
   
   
     <li class="md-nav__item">
-      <a href="blog/2025/250217-fix-steamdeck-visual-novel-video/" class="md-nav__link">
+      <a href="../../2025/250217-fix-steamdeck-visual-novel-video/" class="md-nav__link">
         
   
   
@@ -2486,7 +2411,7 @@
   
   
     <li class="md-nav__item">
-      <a href="blog/2025/250406-amend-old-commit-interactively-rebase/" class="md-nav__link">
+      <a href="../../2025/250406-amend-old-commit-interactively-rebase/" class="md-nav__link">
         
   
   
@@ -2514,7 +2439,7 @@
   
   
     <li class="md-nav__item">
-      <a href="blog/2025/250606-python-folder-share/" class="md-nav__link">
+      <a href="../../2025/250606-python-folder-share/" class="md-nav__link">
         
   
   
@@ -2542,7 +2467,7 @@
   
   
     <li class="md-nav__item">
-      <a href="blog/2025/250611-steamdeck-battery-black-screen-fix/" class="md-nav__link">
+      <a href="../../2025/250611-steamdeck-battery-black-screen-fix/" class="md-nav__link">
         
   
   
@@ -2570,7 +2495,7 @@
   
   
     <li class="md-nav__item">
-      <a href="blog/2025/250613-steamdeck_proxy/" class="md-nav__link">
+      <a href="../../2025/250613-steamdeck_proxy/" class="md-nav__link">
         
   
   
@@ -2598,7 +2523,7 @@
   
   
     <li class="md-nav__item">
-      <a href="blog/2025/250811-create-venv-for-idapython/" class="md-nav__link">
+      <a href="../../2025/250811-create-venv-for-idapython/" class="md-nav__link">
         
   
   
@@ -2626,7 +2551,7 @@
   
   
     <li class="md-nav__item">
-      <a href="blog/2025/250814-best-practice-of-anti-dns-leak/" class="md-nav__link">
+      <a href="../../2025/250814-best-practice-of-anti-dns-leak/" class="md-nav__link">
         
   
   
@@ -2654,7 +2579,7 @@
   
   
     <li class="md-nav__item">
-      <a href="blog/2025/250913-azure-intra-data-transfer-costs/" class="md-nav__link">
+      <a href="../../2025/250913-azure-intra-data-transfer-costs/" class="md-nav__link">
         
   
   
@@ -2687,6 +2612,8 @@
                 
   
   
+    
+  
   
   
     
@@ -2697,11 +2624,11 @@
       
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_6">
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_6" checked="">
         
           
           <label class="md-nav__link" for="__nav_5_6" id="__nav_5_6_label" tabindex="0">
@@ -2722,7 +2649,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_6_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_6_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_5_6">
             <span class="md-nav__icon md-icon"></span>
             
@@ -2740,7 +2667,7 @@
   
   
     <li class="md-nav__item">
-      <a href="blog/2026/260122-uv-install-env/" class="md-nav__link">
+      <a href="../260122-uv-install-env/" class="md-nav__link">
         
   
   
@@ -2765,10 +2692,35 @@
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="blog/2026/260903-android-exif-redaction-bug/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    记一次 Android 选图导致 EXIF 信息丢失的 Debug 踩坑之旅
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   
@@ -2784,6 +2736,135 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
+      
+        <li class="md-nav__item">
+  <a href="#exif" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        一、起因：离奇丢失的 EXIF 信息
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        二、排查过程
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="二、排查过程">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-inputstream-seek" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. 怀疑是 InputStream 不支持 Seek 导致解析失败
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-crc32" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. CRC32 校验比对
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. 交叉验证
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        三、真相大白
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        四、最终解决方案
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="四、最终解决方案">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#photo-picker" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        第一步：放弃 Photo Picker
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        第二步：动态申请专属媒体权限
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -2812,8 +2893,6 @@
             
             
               
-                
-              
               <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc">
                 <div class="md-sidebar__scrollwrap">
                   <div class="md-sidebar__inner">
@@ -2823,8 +2902,6 @@
   
   
   
-    
-  
   
     <label class="md-nav__title" for="__toc">
       <span class="md-nav__icon md-icon"></span>
@@ -2833,10 +2910,71 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
       
         <li class="md-nav__item">
+  <a href="#exif" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        一、起因：离奇丢失的 EXIF 信息
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        二、排查过程
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="二、排查过程">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-inputstream-seek" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. 怀疑是 InputStream 不支持 Seek 导致解析失败
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-crc32" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. CRC32 校验比对
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. 交叉验证
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#_2" class="md-nav__link">
     <span class="md-ellipsis">
       
-        关于我
+        三、真相大白
       
     </span>
   </a>
@@ -2847,21 +2985,38 @@
   <a href="#_3" class="md-nav__link">
     <span class="md-ellipsis">
       
-        半重复访问者计数
+        四、最终解决方案
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="四、最终解决方案">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#photo-picker" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        第一步：放弃 Photo Picker
       
     </span>
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
+        
+          <li class="md-nav__item">
   <a href="#_4" class="md-nav__link">
     <span class="md-ellipsis">
       
-        友情链接
+        第二步：动态申请专属媒体权限
       
     </span>
   </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -2885,49 +3040,105 @@ doesn't, the page title (or respectively site name) is used
 as the main headline.
 -->
 
+    <h1>记一次 Android 选图导致 EXIF 信息丢失的 Debug 踩坑之旅</h1>
+
 
 <!-- Markdown content -->
 
     
 
+        <aside class="mdx-author">
+            <p>
+                <img src="https://avatars.githubusercontent.com/zhanbao2000" alt="@zhanbao2000">
+            </p>
+            <p>
+                <span>
+                    <b>Akiba Arisa</b> · <a href="https://github.com/zhanbao2000">@zhanbao2000</a>
+                </span>
+                <span>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" fill="currentColor" class="bi bi-clock" viewBox="0 0 16 16">
+                        <path d="M8 3.5a.5.5 0 0 0-1 0V9a.5.5 0 0 0 .252.434l3.5 2a.5.5 0 0 0 .496-.868L8 8.71V3.5z"></path>
+                        <path d="M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16zm7-8A7 7 0 1 1 1 8a7 7 0 0 1 14 0z"></path>
+                    </svg> 7 min read
+                </span>
+            </p>
+        </aside>
+
     
 
-    <h1 id="_1">主页<a class="headerlink" href="#_1" title="Permanent link">¶</a></h1>
-<div class="admonition abstract">
-<p class="admonition-title">摘要</p>
-<p>这里是 秋葉亜里沙 的个人博客。</p>
-<p>主要记录分享一些学习和生活过程中的点滴。</p>
-<p>该博客均为实验性内容，不代表以后最终成品。</p>
+    
+        <div class="tags">
+        
+            <a href="/tags/#android" class="tag"><code>#android</code></a>
+        
+            <a href="/tags/#kotlin" class="tag"><code>#kotlin</code></a>
+        
+            <a href="/tags/#debug" class="tag"><code>#debug</code></a>
+        
+        </div>
+    
+
+    <div class="admonition info">
+<p class="admonition-title">省流版</p>
+<p>Android 系统为了保护隐私，使用新版照片选择器 <code>PickMultipleVisualMedia()</code> 或在未授权的情况下通过系统 SAF 获取的图片流，会被底层强制脱敏，抹除 EXIF 信息。</p>
+<p>最终解决方案：放弃新版照片选择器，改用传统的 <code>GetMultipleContents()</code>，并动态申请 <code>READ_MEDIA_IMAGES</code> 与 <code>ACCESS_MEDIA_LOCATION</code> 权限。授权后，系统将放行完整的原图字节流。</p>
 </div>
-<p><a class="md-button md-button--primary" href="toc/">目录 <span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 9h14V7H3zm0 4h14v-2H3zm0 4h14v-2H3zm16 0h2v-2h-2zm0-10v2h2V7zm0 6h2v-2h-2z"></path></svg></span></a>
-<a class="md-button" href="tags/">标签 <span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m21.41 11.58-9-9A2 2 0 0 0 11 2H4a2 2 0 0 0-2 2v7a2 2 0 0 0 .59 1.42l9 9A2 2 0 0 0 13 22a2 2 0 0 0 1.41-.59l7-7A2 2 0 0 0 22 13a2 2 0 0 0-.59-1.42M13 20l-9-9V4h7l9 9M6.5 5A1.5 1.5 0 1 1 5 6.5 1.5 1.5 0 0 1 6.5 5"></path></svg></span></a></p>
-<h2 id="_2">关于我<a class="headerlink" href="#_2" title="Permanent link">¶</a></h2>
+<h2 id="exif">一、起因：离奇丢失的 EXIF 信息<a class="headerlink" href="#exif" title="Permanent link">¶</a></h2>
+<p>最近在开发 Android 应用时，遇到了一个诡异的问题：应用无法获取原始 EXIF 信息。</p>
+<p>调查发现，当你通过代码从 <code>ContentResolver.openInputStream(uri)</code> 获取 InputStream，并交给 <code>ExifInterface</code> 解析时，解析出来的对象要么是全空，要么只能读到 <code>ImageWidth</code>、<code>ImageLength</code> 等少数几个 Tag，且具体的值全是 <code>00</code>。</p>
+<p>但是，把原图导出到电脑上看，所有的 EXIF 信息明明都完好无损地存在。</p>
+<h2 id="_1">二、排查过程<a class="headerlink" href="#_1" title="Permanent link">¶</a></h2>
+<h3 id="1-inputstream-seek">1. 怀疑是 InputStream 不支持 Seek 导致解析失败<a class="headerlink" href="#1-inputstream-seek" title="Permanent link">¶</a></h3>
+<p>最初，我怀疑是因为 <code>ContentResolver</code> 返回的 <code>InputStream</code> 只能顺序读取，而 EXIF 的 IFD 偏移量通常需要向后或向前跳转 seek。这经常导致 <code>ExifInterface</code> 解析出错。</p>
+<p>于是我们将方案改为获取 <code>FileDescriptor</code>，甚至是把输入流直接拷贝到本地的一个带有 <code>.jpg</code> / <code>.png</code> 扩展名的临时文件中，再让 <code>ExifInterface</code> 直接去解析这个临时文件。</p>
+<p>结果：依然全空</p>
+<h3 id="2-crc32">2. CRC32 校验比对<a class="headerlink" href="#2-crc32" title="Permanent link">¶</a></h3>
+<p>这不禁让人怀疑：到底是从一开始就没读到，还是解析的问题？</p>
+<p>我在代码中加入了一段逻辑，在把流保存为临时文件后，打印出它的 CRC32：</p>
+<div class="highlight"><pre><span></span><code><span class="kd">val</span><span class="w"> </span><span class="nv">crc32</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">java</span><span class="p">.</span><span class="na">util</span><span class="p">.</span><span class="na">zip</span><span class="p">.</span><span class="na">CRC32</span><span class="p">()</span>
+<span class="n">tempFile</span><span class="p">.</span><span class="na">inputStream</span><span class="p">().</span><span class="na">use</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">input</span><span class="w"> </span><span class="o">-&gt;</span>
+<span class="w">    </span><span class="kd">val</span><span class="w"> </span><span class="nv">buffer</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ByteArray</span><span class="p">(</span><span class="m">8192</span><span class="p">)</span>
+<span class="w">    </span><span class="kd">var</span><span class="w"> </span><span class="nv">bytesRead</span><span class="p">:</span><span class="w"> </span><span class="kt">Int</span>
+<span class="w">    </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="n">input</span><span class="p">.</span><span class="na">read</span><span class="p">(</span><span class="n">buffer</span><span class="p">).</span><span class="na">also</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">bytesRead</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">it</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="o">-</span><span class="m">1</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">crc32</span><span class="p">.</span><span class="na">update</span><span class="p">(</span><span class="n">buffer</span><span class="p">,</span><span class="w"> </span><span class="m">0</span><span class="p">,</span><span class="w"> </span><span class="n">bytesRead</span><span class="p">)</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+<span class="kd">val</span><span class="w"> </span><span class="nv">crc32Hex</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kt">String</span><span class="p">.</span><span class="na">format</span><span class="p">(</span><span class="s">"%08X"</span><span class="p">,</span><span class="w"> </span><span class="n">crc32</span><span class="p">.</span><span class="na">value</span><span class="p">)</span>
+<span class="n">Log</span><span class="p">.</span><span class="na">d</span><span class="p">(</span><span class="s">"EXIF_DEBUG"</span><span class="p">,</span><span class="w"> </span><span class="s">"tempFile CRC32: </span><span class="si">$</span><span class="n">crc32Hex</span><span class="s">"</span><span class="p">)</span>
+</code></pre></div>
+<p>结论：从 <code>InputStream</code> 读取后算出的 CRC32，与原图真实的 CRC32 不一致。</p>
+<h3 id="3">3. 交叉验证<a class="headerlink" href="#3" title="Permanent link">¶</a></h3>
+<p>为了排除偶然因素，我又进行了不同环境的选图交叉验证</p>
 <ul>
-<li>计算机科学与技术硕士研究生在读</li>
-<li>目前主修方向是实验室义务劳动</li>
-<li>喜欢待在工位给同门一种很卷的感觉，实际上在折腾各种浪费时间的东西</li>
-<li>自称逆向工程爱好者，实际上每次打开 IDA Pro 不按下 <span class="keys"><kbd class="key-f5">F5</kbd></span> 就不会玩</li>
-<li>机器学习新手，在 YouTube 上收藏了 27 门 AI 公开课，但所有课程进度都停留在第三章的《线性回归》</li>
-<li>用 LaTeX 写论文时 80% 的时间在调整页边距，剩下 20% 在和 BibTeX 引用格式搏斗</li>
-<li>Git 提交记录里最多的 commit message 是 <code>fix</code> 和 <code>revert</code></li>
-<li>用 Wireshark 抓包分析网络协议，结果 80% 流量来自 YouTube 视频预加载</li>
-<li>Zotero 文库里下载了各类顶会 400 多篇，实际上只粗读了 5 篇</li>
-<li>能滔滔不绝讲两小时 Transformer 架构，被问到具体实现时默默打开 Colab 抄 Kaggle 代码</li>
-<li>每次复现顶会论文都幻想自己是炼丹大师，结果连 CUDA 版本冲突都解决不了</li>
-<li>用 matplotlib 调了 2 小时图表样式，最终导出分辨率还没室友手机截屏清晰</li>
+<li>在应用内点击加号，通过原生 SAF / Photo Picker 选图：<strong>CRC32 不一致</strong>。</li>
+<li>在系统相册中点击分享，发送到我的应用：<strong>CRC32 不一致</strong>。</li>
+<li>在第三方开源文件管理器（如质感文件）中点击分享，发送到我的应用：<strong>CRC32 一致</strong></li>
 </ul>
-<p><a class="md-button md-button--primary" href="expand/">扩列 <span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M6 9h2v2h2v2H8v2H6v-2H4v-2h2zm12.5 0a1.5 1.5 0 0 1 1.5 1.5 1.5 1.5 0 0 1-1.5 1.5 1.5 1.5 0 0 1-1.5-1.5A1.5 1.5 0 0 1 18.5 9m-3 3a1.5 1.5 0 0 1 1.5 1.5 1.5 1.5 0 0 1-1.5 1.5 1.5 1.5 0 0 1-1.5-1.5 1.5 1.5 0 0 1 1.5-1.5M17 5a7 7 0 0 1 7 7 7 7 0 0 1-7 7c-1.96 0-3.73-.8-5-2.1A6.96 6.96 0 0 1 7 19a7 7 0 0 1-7-7 7 7 0 0 1 7-7zM7 7a5 5 0 0 0-5 5 5 5 0 0 0 5 5c1.64 0 3.09-.79 4-2h2c.91 1.21 2.36 2 4 2a5 5 0 0 0 5-5 5 5 0 0 0-5-5z"></path></svg></span></a></p>
-<h2 id="_3">半重复访问者计数<a class="headerlink" href="#_3" title="Permanent link">¶</a></h2>
-<p><a href="https://blog-counter.arisa.moe/"><img alt="arisa:blog" src="https://blog-counter.arisa.moe/arisa:blog?theme=gelbooru"></a></p>
-<h2 id="_4">友情链接<a class="headerlink" href="#_4" title="Permanent link">¶</a></h2>
-<ul>
-<li><a href="https://www.libmbr.com/">MBRjun-Blog</a></li>
-<li><a href="https://blog.amu.moe/">InariAimu's Blog</a></li>
-<li><a href="https://blog.awa.moe/">Atmosphere</a></li>
-<li><a href="https://blog.awbugl.top">Awblogu</a></li>
-<li><a href="https://blog.caqtz.moe/">北落石门</a></li>
-<li><a href="https://hana0721.top/">Hana's Blog</a></li>
-</ul>
+<h2 id="_2">三、真相大白<a class="headerlink" href="#_2" title="Permanent link">¶</a></h2>
+<p>结合交叉验证的结果，这就彻底破案了：问题根本不在代码怎么写，而是 Android 系统的隐私保护策略的问题。</p>
+<ol>
+<li>当你使用 Android 13 引入的 <strong>Photo Picker</strong>（<code>PickMultipleVisualMedia</code>）或者在<strong>没给足权限</strong>的情况下使用原生相册提供文件时，Android MediaStore底层会作为一个代理。为了保护用户的地理位置等隐私，系统会在内存里动态把文件复制一遍并把 EXIF 信息强行抹除。</li>
+<li>而质感文件这类拥有所有文件访问权限的第三方文件管理器，它是通过自己的 <code>FileProvider</code> 直接把硬盘上原始的文件字节流推给你的 App，完全绕过了 Android 系统的脱敏代理。</li>
+</ol>
+<p>由于在底层拿到的字节流在物理上就已经是被阉割过的副本，这就解释了为什么不管我们在代码里怎么调整 <code>ExifInterface</code>，都无法读出数据。</p>
+<h2 id="_3">四、最终解决方案<a class="headerlink" href="#_3" title="Permanent link">¶</a></h2>
+<p>要彻底解决这个问题，想要在 App 中通过常规选择器拿到带 EXIF 的原图，就不能使用 Photo Picker。</p>
+<h3 id="photo-picker">第一步：放弃 Photo Picker<a class="headerlink" href="#photo-picker" title="Permanent link">¶</a></h3>
+<p>根据 Google 官方 <a href="https://developer.android.com/training/data-storage/shared/media?hl=zh-cn#kotlin">文档</a>，Photo Picker 永远会强制抹除图片的 GPS 位置 EXIF 数据。即使你申请并获得了 ACCESS_MEDIA_LOCATION 权限，你也无法从 Photo Picker 返回的文件里拿到位置信息。</p>
+<p>我起初也头铁尝试了文档中提到的 <code>MediaStore.setRequireOriginal(uri)</code> 这一 API，试图要求系统交出未经修改的原图流。但遗憾的是，系统直接抛出了异常：</p>
+<div class="highlight"><pre><span></span><code>Require Original is not supported for Picker URI content://media/picker/0/com.android.providers.media.photopicker/media/1000155558?requireOriginal=1
+</code></pre></div>
+<p>也有人给 Google 发了 <a href="https://issuetracker.google.com/issues/243294058">issue</a>。</p>
+<p>事实证明，Photo Picker 对于隐私的隔离是绝对且彻底的。</p>
+<p>因此，如果你的业务硬性要求完整保留包含位置在内的所有 EXIF 数据，我们必须将 <code>ActivityResultContracts.PickMultipleVisualMedia()</code> 替换回 <code>ActivityResultContracts.GetMultipleContents()</code> 或 <code>OpenMultipleDocuments()</code>。</p>
+<h3 id="_4">第二步：动态申请专属媒体权限<a class="headerlink" href="#_4" title="Permanent link">¶</a></h3>
+<p>只有当 App 拥有了读取媒体和位置的对应权限，系统的 SAF 框架（以及系统相册）才会认定你的 App 属于受信任的访客，从而撤销脱敏拦截，交出原文件。</p>
+<p>我们需要在 <code>AndroidManifest.xml</code> 中加入：</p>
+<div class="highlight"><pre><span></span><code><span class="nt">&lt;uses-permission</span><span class="w"> </span><span class="na">android:name=</span><span class="s">"android.permission.READ_MEDIA_IMAGES"</span><span class="w"> </span><span class="nt">/&gt;</span>
+<span class="nt">&lt;uses-permission</span><span class="w"> </span><span class="na">android:name=</span><span class="s">"android.permission.ACCESS_MEDIA_LOCATION"</span><span class="w"> </span><span class="nt">/&gt;</span>
+</code></pre></div>
+<p>并在调起选图界面前，动态请求这些权限。一旦用户授权，再通过 <code>GetMultipleContents()</code> 选图时，你会发现 CRC32 终于吻合了，EXIF 信息也终于重新出来了。</p>
+<p>话说怎么不早点推出 <a href="https://www.reddit.com/r/androiddev/comments/1vuk8fr/introducing_the_location_metadata_api_for_the/">这个东西</a> 呢？</p>
 
     
     
@@ -2954,7 +3165,7 @@ as the main headline.
     <span class="md-icon" title="最后更新">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"></path></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_datetime" title="2026年4月13日 16:18:37 UTC">2026-04-13 16:18:37</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_datetime" title="2026年9月3日 09:27:43 UTC">2026-09-03 09:27:43</span>
   </span>
 
     
@@ -2964,7 +3175,7 @@ as the main headline.
     <span class="md-icon" title="创建日期">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M14.47 15.08 11 13V7h1.5v5.25l3.08 1.83c-.41.28-.79.62-1.11 1m-1.39 4.84c-.36.05-.71.08-1.08.08-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8c0 .37-.03.72-.08 1.08.69.1 1.33.32 1.92.64.1-.56.16-1.13.16-1.72 0-5.5-4.5-10-10-10S2 6.5 2 12s4.47 10 10 10c.59 0 1.16-.06 1.72-.16-.32-.59-.54-1.23-.64-1.92M18 15v3h-3v2h3v3h2v-3h3v-2h-3v-3z"></path></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_datetime" title="2022年4月6日 09:51:16 UTC">2022-04-06 09:51:16</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_datetime" title="2026年9月3日 09:27:43 UTC">2026-09-03 09:27:43</span>
   </span>
 
     
@@ -2974,6 +3185,41 @@ as the main headline.
 
         
     
+
+    
+
+        <!-- Giscus -->
+        <h2 id="__comments">评论</h2>
+        <script src="https://giscus.app/client.js" data-repo="zhanbao2000/blog" data-repo-id="R_kgDOHIZK7A" data-category="Announcements" data-category-id="DIC_kwDOHIZK7M4COdSe" data-mapping="pathname" data-reactions-enabled="1" data-emit-metadata="0" data-input-position="top" data-theme="light" data-lang="zh-CN" data-loading="lazy" crossorigin="anonymous" async="">
+        </script>
+
+        <!-- Reload on palette change -->
+        <script>
+            var palette = __md_get("__palette");
+            if (palette && typeof palette.color === "object")
+                if (palette.color.scheme === "slate") {
+                    const giscus = document.querySelector("script[src*=giscus]");
+                    giscus.setAttribute("data-theme", "transparent_dark")
+                }
+
+            /* Register event handlers after documented loaded */
+            document.addEventListener("DOMContentLoaded", function() {
+                const ref = document.querySelector("[data-md-component=palette]");
+                ref.addEventListener("change", function() {
+                    const palette = __md_get("__palette");
+                    if (palette && typeof palette.color === "object") {
+                        const theme = palette.color.scheme === "slate" ? "transparent_dark" : "light";
+
+                        /* Instruct Giscus to change theme */
+                        const frame = document.querySelector(".giscus-frame");
+                        frame.contentWindow.postMessage(
+                            { giscus: { setConfig: { theme } } },
+                            "https://giscus.app"
+                        )
+                    }
+                })
+            })
+        </script>
 
     
 
@@ -2997,26 +3243,24 @@ as the main headline.
   
     
       
-        
-      
-      <nav class="md-footer__inner md-grid" aria-label="页脚" hidden="">
-        
+      <nav class="md-footer__inner md-grid" aria-label="页脚">
         
           
-          <a href="expand/" class="md-footer__link md-footer__link--next" aria-label="下一页: 扩列">
-            <div class="md-footer__title">
-              <span class="md-footer__direction">
-                下一页
-              </span>
-              <div class="md-ellipsis">
-                扩列
-              </div>
-            </div>
+          <a href="../260122-uv-install-env/" class="md-footer__link md-footer__link--prev" aria-label="上一页: 使用 uv 虚拟环境时，如何替代 setup.py 安装">
             <div class="md-footer__button md-icon">
               
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"></path></svg>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"></path></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                上一页
+              </span>
+              <div class="md-ellipsis">
+                使用 uv 虚拟环境时，如何替代 setup.py 安装
+              </div>
             </div>
           </a>
+        
         
       </nav>
     
@@ -3071,18 +3315,18 @@ as the main headline.
     
       
       
-      <script id="__config" type="application/json">{"annotate": null, "base": ".", "features": ["navigation.footer", "navigation.tabs", "navigation.top", "navigation.tracking", "content.code.copy"], "search": "assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}, "version": null}</script>
+      <script id="__config" type="application/json">{"annotate": null, "base": "../../..", "features": ["navigation.footer", "navigation.tabs", "navigation.top", "navigation.tracking", "content.code.copy"], "search": "../../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}, "version": null}</script>
     
     
-      <script src="assets/javascripts/bundle.d7400e89.min.js"></script>
+      <script src="../../../assets/javascripts/bundle.d7400e89.min.js"></script>
       
-        <script src="javascripts/counter.js"></script>
+        <script src="../../../javascripts/counter.js"></script>
       
-        <script src="javascripts/mathjax.js"></script>
+        <script src="../../../javascripts/mathjax.js"></script>
       
         <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
       
-        <script src="javascripts/waifu/autoload.js" async=""></script>
+        <script src="../../../javascripts/waifu/autoload.js" async=""></script>
       
     
   
